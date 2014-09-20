@@ -1,0 +1,26 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Position Statement for D-12644969 (margin) on 8/11/14 22:08:06
+
+None
+Instrument,Qty,Days,Trade Price,Mark,Mrk Chng,Delta,Gamma,Theta,Vega,% Change,P/L Open,P/L Day,BP Effect
+AAPL,,,,,,142.19,4.71,-3.85,12.37,+0.98%,$58.50,$58.50,"$4,783.00"
+APPLE INC COM,+100,,95.24,95.66,+.92,100.00,.00,.00,.00,,$42.00,$42.00,
+100 SEP 14 97.5 CALL,-1,39,2.27,2.435,+.28,42.19,4.71,-3.85,12.37,,$16.50,$16.50,
+BAC,,,,,,-42.18,35.12,-.52,1.97,-0.07%,($0.50),($0.50),"($2,278.50)"
+BANK OF AMERICA CORP COM,-100,,15.19,15.19,-.01,-100.00,.00,.00,.00,,$0.00,$0.00,
+100 SEP 14 15 CALL,+1,39,.54,.535,0,57.82,35.12,-.52,1.97,,($0.50),($0.50),
+C,,,,,,-55.89,-12.47,1.54,-6.31,-0.21%,($0.50),($0.50),"($7,252.50)"
+CITIGROUP INC COM,-100,,48.34,48.35,-.10,-100.00,.00,.00,.00,,($1.00),($1.00),
+100 SEP 14 48 PUT,-1,39,1.09,1.085,-.005,44.11,-12.47,1.54,-6.31,,$0.50,$0.50,
+DDD,,,,,,111.14,10.43,-7.52,12.86,+2.29%,($4.47),($4.47),"$2,480.52"
+3 D SYSTEMS CORP COM,+100,,49.67,49.6103,+1.1103,100.00,.00,.00,.00,,($5.97),($5.97),
+100 SEP 14 48 PUT,+1,39,2.79,2.765,-.51,-39.16,4.27,-4.27,6.31,,($2.50),($2.50),
+
+
+
+Cash & Sweep Vehicle,"$84,542.68"
+OVERALL P/L YTD,$52.41
+BP ADJUSTMENT,$0.00
+OVERNIGHT FUTURES BP,"$71,406.94"
+AVAILABLE DOLLARS,"$71,406.94"

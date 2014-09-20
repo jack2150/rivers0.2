@@ -1,0 +1,96 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Account Statement for <TOTAL> (ALL ACCOUNTS) since 9/18/14 through 9/18/14
+
+Cash Balance
+DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
+,,,,TOTAL,,,,
+
+Futures Statements
+Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
+
+Forex Statements
+,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance
+
+Account Order History
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+
+Account Trade History
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+
+Equities
+Symbol,Description,Qty,Trade Price,Mark,Mark Value
+AAPL,APPLE INC COM,+100,98.77,101.79,"$10,179.00"
+CSCO,CISCO SYSTEMS INC COM,+100,25.01,25.22,"$2,522.00"
+FB,FACEBOOK INC COM,-100,77.08,77.00,"($7,700.00)"
+CELG,CELGENE CORP COM,+100,93.26,93.27,"$9,327.00"
+FSLR,FIRST SOLAR INC COM,-100,71.48,71.69,"($7,169.00)"
+BIDU,BAIDU INC ADR,-10,226.86,228.40,"($2,284.00)"
+,OVERALL TOTALS,,,,"$4,875.00"
+
+Options
+Symbol,Option Code,Exp,Strike,Type,Qty,Trade Price,Mark,Mark Value
+TSLA,TSLA140920P275,SEP 14,275,PUT,+1,6.75,11.275,"$1,127.50"
+TSLA,TSLA140920P277.5,SEP 14,277.5,PUT,-1,8.00,13.775,"($1,377.50)"
+INTC,INTC140920C35.5,SEP 14,35.5,CALL,-1,.30,.015,($1.50)
+SBUX,SBUX140920C77.5,SEP 14,77.5,CALL,-1,1.03,.02,($2.00)
+SBUX,SBUX140920C79,SEP 14,79,CALL,+1,.38,.015,$1.50
+IBM,IBM140920P190,SEP 14,190,PUT,+1,1.36,.06,$6.00
+QCOM,QCOM140920C75,SEP 14,75,CALL,+1,1.24,1.37,$137.00
+QCOM,QCOM140920C76,SEP 14,76,CALL,-1,.67,.535,($53.50)
+MSFT,MSFT140920P45.5,SEP 14,45.5,PUT,-1,.37,.035,($3.50)
+CSCO,CSCO140920P25,SEP 14,25,PUT,+1,.22,.025,$2.50
+FB,FB140920C77.5,SEP 14,77.5,CALL,+1,1.33,.215,$21.50
+CELG,CELG140920C91,SEP 14,91,CALL,-1,3.15,2.03,($203.00)
+FSLR,FSLR140920P71,SEP 14,71,PUT,-1,1.67,.27,($27.00)
+GILD,GILD140920C105,SEP 14,105,CALL,+1,2.67,1.35,$135.00
+SNDK,SNDK140920P97.5,SEP 14,97.5,PUT,-1,1.26,.03,($3.00)
+SNDK,SNDK140920P99,SEP 14,99,PUT,+1,1.94,.03,$3.00
+,,,,,,,,($237.00)
+
+Profits and Losses 
+Symbol,Description,P/L Open,P/L %,P/L Day,P/L YTD,Margin Req,Mark Value
+AAPL,APPLE INC COM,$302.00,+3.06%,$21.00,$302.00,"$5,089.50","$10,179.00"
+AMD,ADVANCED MICRO DEVICES INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+BAC,BANK OF AMERICA CORP COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+BIDU,BAIDU INC ADR,($15.40),-0.68%,($93.20),($15.40),"$1,142.00","($2,284.00)"
+BMY,BRISTOL-MYERS SQUIBB CM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+C,CITIGROUP INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+CELG,CELGENE CORP COM,$113.00,+1.17%,$56.50,$113.00,"$4,777.00","$9,124.00"
+CSCO,CISCO SYSTEMS INC COM,$1.50,+0.06%,($1.00),$1.50,"$1,261.00","$2,524.50"
+DDD,3 D SYSTEMS CORP COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+FAZ,DIREXION SHARES TRUST 3X BEAR ETF,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+FB,FACEBOOK INC COM,($103.50),-1.32%,($53.00),($103.50),"$3,850.00","($7,678.50)"
+FSLR,FIRST SOLAR INC COM,$119.00,+1.63%,$31.50,$119.00,"$3,584.50","($7,196.00)"
+GE,GENERAL ELECTRIC CO COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+GILD,GILEAD SCIENCES INC COM,($132.00),-49.44%,$70.50,($132.00),$0.00,$135.00
+IBM,INTL BUSINESS MACHINES COM,($130.00),-95.59%,($6.50),($130.00),$0.00,$6.00
+INTC,INTEL CORP COM,$28.50,+95.00%,$0.50,$28.50,$671.90,($1.50)
+JPM,JP MORGAN CHASE & CO COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+MSFT,MICROSOFT CORP COM,$33.50,+90.54%,$4.00,$33.50,$833.50,($3.50)
+QCOM,QUALCOMM INC COM,$26.50,+13.87%,$5.50,$26.50,$0.00,$83.50
+SBUX,STARBUCKS CORP COM,$64.50,+45.74%,$1.00,$64.50,$150.00,($0.50)
+SNDK,SANDISK CORP COM,($68.00),-21.25%,($23.00),($68.00),$0.00,$0.00
+SPY,SPDR TR S&P 500 ETF TR,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+TNA,DIREXION SHARES TRUST SMALL CAP BULL 3X SHARES,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+TSLA,TESLA MOTORS INC COM,($125.00),-8.47%,($5.00),($125.00),$250.00,($250.00)
+TZA,DIREXION SHARES TRUST DAILY SMALL CAP BEAR 3X SHAR,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+WFC,WELLS FARGO & CO COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+YHOO,YAHOO! INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+,OVERALL TOTALS,$114.60,+0.27%,$8.80,$114.60,"$21,609.40","$4,638.00"
+
+Forex Account Summary
+Cash,"$10,000.00"
+UPL,$0.00
+Floating P/L,$0.00
+Equity,"$10,000.00"
+Margin,$0.00
+Available Equity,"$10,000.00"
+Risk Level,0.00%
+
+Account Summary
+Net Liquidating Value,"$199,962.16"
+Stock Buying Power,"$257,179.52"
+Option Buying Power,"$178,589.76"
+Commissions YTD,$152.44
+Futures Commissions YTD,$0.00

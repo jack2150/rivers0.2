@@ -1,0 +1,27 @@
+﻿Today's Trade Activity for  (Virtual Account) on 8/19/14 00:30:00
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,8/19/14 00:30:00,STOCK,SELL,-100,AUTO,FB,,,STOCK,82.00,LMT,GTC,74.50,WORKING
+,,,RE #2146483674,,,,,,,,,,,,
+,,8/19/14 00:30:00,SINGLE,SELL,-1,AUTO,SNDK,SEP 14,92.5,PUT,2.00,LMT,DAY,1.65,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,8/19/14 00:30:00,STOCK,BUY,+100,AUTO,FB,,,STOCK,74.51,74.51,MKT
+,8/19/14 00:30:00,STOCK,BUY,+10,AUTO,IBM,,,STOCK,189.43,189.43,MKT
+,8/19/14 00:30:00,COVERED,SELL,-1,AUTO,BAC,SEP 14,15,CALL,.57,14.87,MKT
+,,,BUY,+100,AUTO,BAC,,,STOCK,15.44,DEBIT,
+,8/19/14 00:30:00,VERTICAL,BUY,+1,AUTO,GOOG,SEP 14,582.5,PUT,10.80,1.05,MKT
+,,,SELL,-1,AUTO,GOOG,SEP 14,580,PUT,9.75,DEBIT,
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,8/19/14 00:30:00,STOCK,SELL,-100,AUTO,FB,,,STOCK,82.00,LMT,DAY,CANCELED
+,,8/19/14 00:30:00,COVERED,SELL,-1,AUTO,FB,SEP 14,74.5,PUT,,MKT,DAY,"REJECTED: This stock is not available to borrow. If you want us to try to locate it for you, please call our trade desk."
+,,,,SELL,-100,AUTO,FB,,,STOCK,,,,
+,,8/19/14 00:30:00,STOCK,SELL,-10,AUTO,IBM,,,STOCK,,MKT,DAY,"REJECTED: This stock is not available to borrow. If you want us to try to locate it for you, please call our trade desk."
+,,8/19/14 00:30:00,STOCK,SELL,-10,AUTO,IBM,,,STOCK,189.40,LMT,DAY,"REJECTED: This stock is not available to borrow. If you want us to try to locate it for you, please call our trade desk."
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

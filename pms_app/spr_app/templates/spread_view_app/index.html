@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head_js %}
+    <script type="text/javascript" src="{% url 'pms_app_links' %}"></script>
+    <script type="text/javascript" src="{% url 'spread_view_webix_js' %}"></script>
+    <script type="text/javascript" src="{% url 'spread_view_logic_js' %}"></script>
+{% endblock %}
+
+{% block title %}Spreads Default Views{% endblock %}
+
+{% block body %}
+    <script type="text/javascript">
+        var date = "{{ date }}";
+        var spread_url = "{% url 'spread_view_spreads_json' date=date symbol='_symbol_' %}";
+        var symbols_json = "{% url 'spread_view_symbols_json' date=date %}";
+
+        var worst_symbol = "{{ worst_symbol }}";
+    </script>
+{% endblock %}

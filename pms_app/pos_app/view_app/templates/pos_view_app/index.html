@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head_js %}
+    <script type="text/javascript" src="{% url 'pms_app_links' %}"></script>
+    <script type="text/javascript" src="{% url 'pos_view_webix_js' %}"></script>
+    <script type="text/javascript" src="{% url 'pos_view_logic_js' %}"></script>
+{% endblock %}
+
+{% block title %}Positions Default Views{% endblock %}
+
+{% block body %}
+    <script type="text/javascript">
+        var date = "{{ date }}";
+        var overall_url = "{% url 'pos_view_overall_json' date=date %}";
+        var positions_url = "{% url 'pos_view_positions_json' date=date %}"
+    </script>
+{% endblock %}
