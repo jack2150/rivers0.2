@@ -1,105 +1,18 @@
 import os
-from django.test import TestCase
+from lib.test import TestSetUp
 from rivers.settings import FILES
 from lib.io.open_pos import OpenPos
 
 
 # noinspection PyPep8Naming
-class TestOpenPosCSV(TestCase):
+class TestOpenPos(TestSetUp):
     def setUp(self):
-        print '=' * 100
-        print "%s: currently run: %s" % (self.__class__.__name__, self._testMethodName)
-        print '-' * 100 + '\n'
+        TestSetUp.setUp(self)
 
-        test_file = os.path.join(FILES['position_statement'], '2014-08-01-PositionStatement.csv')
-        self.open_csv = OpenPos(fname=test_file)
+        self.test_file = os.path.join(FILES['position_statement'],
+                                      '2014-08-01-PositionStatement.csv')
 
-    def tearDown(self):
-        print '\n' + '=' * 100 + '\n\n'
-
-        del self.open_csv
-
-    def test_read_lines_from_file(self):
-        """
-        Test read lines from file with test file
-        """
-        lines = self.open_csv.read_lines_from_file()
-
-        print 'lines type: %s' % type(lines)
-        print 'lines length: %d\n' % len(lines)
-        print 'first 5 rows in lines:'
-
-        for line in lines[:5]:
-            print '\t"' + line + '"'
-
-        self.assertTrue(len(lines))
-        self.assertEqual(type(lines), list)
-
-    def test_replace_dash_inside_quote(self):
-        """
-        Test replace dash inside quote
-        example "$1,254.00" become $1254.00
-        """
-        line = 'OVERNIGHT FUTURES BP,"$1,653.36"'
-        result = self.open_csv.replace_dash_inside_quote(line)
-
-        print 'line: %s' % line
-        print 'result: %s' % result
-
-        self.assertNotIn('"', result)
-
-    def test_split_lines_with_dash(self):
-        """
-        Test split line using dash into list of items
-        """
-        line = 'TSLA,,,,,,5.18,-.12,1.29,-1.06,+4.46%,$8.00,$8.00,($250.00)'
-        result = self.open_csv.split_lines_with_dash(line)
-
-        print 'line: %s' % line
-        print 'result: %s' % result
-        print 'type: %s' % type(result)
-        print 'length: %d' % len(result)
-
-        self.assertEqual(len(result), 14)
-        self.assertEqual(type(result), list)
-
-    def test_remove_bracket_then_add_negative(self):
-        """
-        Test remove brackets '()' on str item then add negative
-        """
-        item = '($5609.52)'
-        result = self.open_csv.remove_bracket_then_add_negative(item)
-
-        print 'item: %s' % item
-        print 'result: %s' % result
-
-        self.assertNotIn('(', result)
-        self.assertNotIn(')', result)
-        self.assertIn('-', result)
-
-    def test_remove_dollar_symbols(self):
-        """
-        Test remove dollar symbol on str item
-        """
-        item = '3773.49'
-        result = self.open_csv.remove_dollar_symbols(item)
-
-        print 'item: %s' % item
-        print 'result: %s' % result
-
-        self.assertNotIn('$', result)
-
-    def test_remove_percent_symbols(self):
-        """
-        Test remove dollar symbol on str item
-        """
-        item = '+1.77%'
-        result = self.open_csv.remove_percent_symbols(item)
-
-        print 'item: %s' % item
-        print 'result: %s' % result
-
-        self.assertNotIn('%', result)
+        self.open_csv = OpenPos(fname=self.test_file)
 
     def test_is_positions(self):
         """
@@ -499,19 +412,6 @@ class TestOpenPosCSV(TestCase):
             print 'Stock: %s' % pos['Stock']
             print 'Options: %s' % pos['Options']
             print ''
-
-    def test_last_five_lines(self):
-        """
-        Test using a list of lines get last 5 items
-        """
-        lines = range(10)
-        result = self.open_csv.last_five_lines(lines)
-
-        print 'lines type: %s' % type(result)
-        print 'lines length: %s' % len(result)
-
-        self.assertEqual(type(result), list)
-        self.assertEqual(len(result), 5)
 
     def test_is_overall(self):
         """

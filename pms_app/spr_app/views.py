@@ -119,5 +119,6 @@ def symbols_json(request, date):
     )
 
 
-
+# todo: spread view is a list of symbol with type of spread and pl related
+# todo: not including deep analysis becuase that is for analysis view
 

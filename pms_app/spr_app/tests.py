@@ -22,20 +22,6 @@ class TestSpreadView(TestReadyUp):
         """
         self.ready_fname(date=self.real_date, path=self.path)
 
-    def test_spreads_json(self):
-        """
-        Test spreads json return correct data
-        """
-        contexts = ['stock', 'hedge', 'leg_one']
-
-        self.ready_spreads()
-
-        response = self.client.get(
-            reverse('spread_view_spreads_json', args=(self.real_date, contexts[0]))
-        )
-
-        print response.content
-
     def test_symbols_json(self):
         """
         Test symbols_ui json make a list of selective json
@@ -47,12 +33,14 @@ class TestSpreadView(TestReadyUp):
         )
 
         symbols = eval(response.content)
+        print symbols
+
         pprint(symbols, width=60)
 
         self.assertEqual(type(symbols), list)
         for symbol in symbols:
             self.assertEqual(type(symbol), dict)
 
-            expect_keys = ['pl_open', 'symbol', 'spread', 'status']
+            expect_keys = ['id', 'pl_open', 'spread', 'status', 'symbol']
             for key in symbol.keys():
                 self.assertIn(key, expect_keys)

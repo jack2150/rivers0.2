@@ -1,4 +1,7 @@
-class OpenPos(object):
+from lib.io.open_csv import OpenCSV
+
+
+class OpenPos(OpenCSV):
     """
     Open a positions csv file from tos
     format then read positions data
@@ -8,7 +11,7 @@ class OpenPos(object):
         :param fname: str
         """
         # file name
-        self.fname = fname
+        OpenCSV.__init__(self, fname)
 
         # position columns
         self.position_columns = [
@@ -52,67 +55,6 @@ class OpenPos(object):
             'strike_price',
             'contract'
         ]
-
-    def read_lines_from_file(self):
-        """
-        Read line from position file and
-        remove new line at end of line
-        :rtype : list
-        """
-        return map(lambda l: l.rstrip(), open(self.fname).readlines())
-
-    @classmethod
-    def replace_dash_inside_quote(cls, line):
-        """
-        Replace dash inside double quotes
-        :rtype : str
-        """
-        if '"' in line:
-            line = line.split('"')
-            for k, i in enumerate(line):
-                if k % 2 and ',' in i:
-                    line[k] = i.replace(',', '')
-
-            line = ''.join(line)
-
-        return line
-
-    @classmethod
-    def split_lines_with_dash(cls, line):
-        """
-        Split a str line into list items
-        :rtype : list
-        """
-        return map(lambda x: x.rstrip(), line.split(','))
-
-    @classmethod
-    def remove_bracket_then_add_negative(cls, item):
-        """
-        Using input item return no brackets str
-        :param item: str
-        :return: str
-        """
-        if item[0] == '(' and item[-1] == ')':
-            item = '-' + item[1:-1]
-        return item
-
-    @classmethod
-    def remove_dollar_symbols(cls, item):
-        """
-        Using input item return  a no dollar symbol str
-        :type item: str
-        :rtype : str
-        """
-        return item.replace('$', '')
-
-    @classmethod
-    def remove_percent_symbols(cls, item):
-        """
-        Using input item return a no percent str
-        :param item: str
-        :return: str
-        """
-        return item.replace('%', '')
 
     @classmethod
     def is_positions(cls, items):
@@ -195,15 +137,6 @@ class OpenPos(object):
         """
         items.insert(1, 'Normal')
 
-    @classmethod
-    def remove_brackets_only(cls, items):
-        """
-        Remove brackets on first item of a list
-        :param items: str
-        :return: str
-        """
-        return items.replace('(', '').replace(')', '')
-
     def make_options_name_dict(self, items):
         """
         Make a dict using options list with column names
@@ -211,15 +144,6 @@ class OpenPos(object):
         :return: dict
         """
         return {c: o for c, o in zip(self.options_name_columns, items)}
-
-    @classmethod
-    def split_str_with_space(cls, item):
-        """
-        Split str item into list
-        :param item: str
-        :return: list
-        """
-        return item.split(' ')
 
     def format_option_contract(self, item):
         """
@@ -376,14 +300,6 @@ class OpenPos(object):
         return self.positions
 
     @classmethod
-    def last_five_lines(cls, lines):
-        """
-        Return the last 5 lines on a lines list
-        :rtype : list
-        """
-        return lines[-5:]
-
-    @classmethod
     def is_overall(cls, items):
         """
         Check the list items is overall lines
@@ -459,4 +375,3 @@ class OpenPos(object):
         self.set_overall_from_lines()
 
         return self.positions, self.overall
-
