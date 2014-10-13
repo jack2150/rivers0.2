@@ -258,15 +258,94 @@ class TestOpenCSV(TestSetUp):
         self.assertGreater(len(items), len(result))
         self.assertNotIn('', result.keys())
 
+    def test_fillna_dict(self):
+        """
+        Test fill empty or none value in dict
+        """
+        self.open_csv = OpenCSV(
+            os.path.join(FILES['account_statement'], '2014-07-23-AccountStatement.csv')
+        )
+        self.open_csv.trade_history = list()
 
+        trade_history_keys = [
+            '', 'execute_time', 'spread', 'side', 'quantity',
+            'pos_effect', 'symbol', 'expire_date', 'strike',
+            'contract', 'price', 'net_price', 'order_type'
+        ]
 
+        self.open_csv.set_values(
+            start_phrase='Account Trade History',
+            end_phrase=None,
+            start_add=2,
+            end_reduce=-1,
+            prop_keys=trade_history_keys,
+            prop_name='trade_history'
+        )
 
+        before_fillna = self.open_csv.trade_history
+        after_fillna = self.open_csv.fillna_dict(self.open_csv.trade_history)
+        after_fillna = map(self.open_csv.del_empty_keys, after_fillna)
 
+        for tk1, tk2 in zip(before_fillna, after_fillna):
+            print tk1
+            print tk2
+            print ''
 
+            self.assertIn('', tk1.values())
+            self.assertNotIn('', tk2.values())
 
+            for value1, value2 in zip(tk1.values(), tk2.values()):
+                if value1 and (value1 != 'DEBIT' and value1 != 'CREDIT'):
+                    self.assertIn(value1, tk2.values())
 
+            for key in tk1.keys():
+                if key:
+                    self.assertIn(key, tk2.keys())
 
+    def test_set_values(self):
+        """
+        Test open files, get lines section, format data,
+        make dict and finally set values in property
+        """
+        self.open_csv = OpenCSV(
+            os.path.join(FILES['account_statement'], '2014-07-23-AccountStatement.csv')
+        )
+        self.open_csv.trade_history = list()
 
+        trade_history_keys = [
+            '', 'execute_time', 'spread', 'side', 'quantity',
+            'pos_effect', 'symbol', 'expire_date', 'strike',
+            'contract', 'price', 'net_price', 'order_type'
+        ]
 
+        start_phrase = 'Account Trade History'
+        end_phrase = None
+        start_add = 2
+        end_reduce = -1
+        prop_name = 'trade_history'
 
+        print 'start phrase: %s, end phrase: %s' % (start_phrase, end_phrase)
+        print 'start add: %d, end reduce: %d' % (start_add, end_reduce)
+        print 'property name: %s' % prop_name
 
+        self.open_csv.set_values(
+            start_phrase=start_phrase,
+            end_phrase=end_phrase,
+            start_add=start_add,
+            end_reduce=end_reduce,
+            prop_keys=trade_history_keys,
+            prop_name=prop_name
+        )
+
+        trade_history = self.open_csv.trade_history
+
+        lines = self.open_csv.get_lines('Account Trade History')
+
+        self.assertEqual(len(lines), len(trade_history) + 2 + 1)
+        self.assertEqual(type(trade_history), list)
+
+        print ''
+        for tk in trade_history:
+            print tk
+            self.assertEqual(type(tk), dict)
+            self.assertEqual(len(tk), 13)

@@ -1,6 +1,6 @@
-import numpy
+from datetime import datetime
+from django.utils.timezone import utc
 from lib.io.open_csv import OpenCSV
-from pandas import DataFrame
 
 
 class OpenAcc(OpenCSV):
@@ -47,7 +47,7 @@ class OpenAcc(OpenCSV):
         ]
 
         self.forex_keys = [
-            'date', 'time', 'contract', 'ref_no',
+            '', 'date', 'time', 'contract', 'ref_no',
             'description', 'commissions', 'amount',
             'amount_usd', 'balance'
         ]
@@ -105,31 +105,66 @@ class OpenAcc(OpenCSV):
 
         self.summary = self.make_dict(self.summary_keys, summary)
 
-    def set_values(self, start_phrase, end_phrase, start_add, end_reduce, prop_keys, prop_name):
+    @classmethod
+    def convert_date(cls, date):
         """
-        Make a dict from file lines for single section
-        then save it into class property
-        :param start_phrase: str
-        :param end_phrase: str
-        :param start_add: int
-        :param end_reduce: int
-        :param prop_keys: list
-        :param prop_name: str
+        Convert date format into YYYY-MM-DD
+        :param date: str
+        :return: str
+        """
+        result = datetime.strptime(date, '%m/%d/%y').strftime('%Y-%m-%d')
+
+        return result
+
+    @classmethod
+    def convert_time(cls, time):
+        """
+        Convert date format into %H:%M:%S
+        :param time: str
+        :return: str
+        """
+        result = datetime.strptime(time, '%H:%M:%S').strftime('%H:%M:%S')
+
+        return result
+
+    @classmethod
+    def convert_datetime(cls, date):
+        """
+        Convert date format into YYYY-MM-DD 7/23/14 22:21:27
+        :param date: str
+        :return: str
+        """
+        result = datetime.strptime(date, '%m/%d/%y %H:%M:%S').utcnow().replace(tzinfo=utc)
+        #result = timezone(result, timezone.get_current_timezone())
+
+        return result
+
+    @classmethod
+    def convert_specific_type(cls, prop_obj, column_name, specific_type, empty_value):
+        """
+        Convert item for dict in list into specific type
+        :param prop_obj: list
+        :param column_name: str
+        :param specific_type: type
         :return: None
         """
-        prop_list = list()
+        for key, item in enumerate(prop_obj):
+            if item[column_name]:
+                prop_obj[key][column_name] = specific_type(item[column_name])
+            else:
+                prop_obj[key][column_name] = empty_value
 
-        lines = self.get_lines(start_phrase, end_phrase)
-
-        for line in lines[start_add:end_reduce]:
-            line = self.replace_dash_inside_quote(line)
-            items = self.split_lines_with_dash(line)
-
-            items = map(self.format_item, items)
-
-            prop_list.append(self.make_dict(prop_keys, items))
-
-        setattr(self, prop_name, prop_list)
+    @classmethod
+    def replace_zero(cls, prop_obj):
+        """
+        Convert item for dict in list into specific type
+        :param prop_obj: list
+        :return: None
+        """
+        for key, item in enumerate(prop_obj):
+            for column, value in item.items():
+                if value == '--':
+                    prop_obj[key][column] = int(0)
 
     def set_cash_balance(self):
         """
@@ -145,6 +180,9 @@ class OpenAcc(OpenCSV):
             prop_name='cash_balance'
         )
 
+        self.convert_specific_type(self.cash_balance, 'date', self.convert_date, '')
+        self.convert_specific_type(self.cash_balance, 'ref_no', int, 0)
+
     def set_futures(self):
         """
         Set futures into class property
@@ -158,6 +196,10 @@ class OpenAcc(OpenCSV):
             prop_keys=self.futures_keys,
             prop_name='futures'
         )
+
+        self.convert_specific_type(self.futures, 'trade_date', self.convert_date, '')
+        self.convert_specific_type(self.futures, 'execute_date', self.convert_date, '')
+        self.convert_specific_type(self.futures, 'execute_time', self.convert_time, '')
 
     def set_forex(self):
         """
@@ -173,16 +215,17 @@ class OpenAcc(OpenCSV):
             prop_name='forex'
         )
 
-    @classmethod
-    def fillna_history_sections(cls, prop):
-        """
-        Use trade history then fill empty with value row above
-        """
-        df = DataFrame(prop)
-        df = df.replace(['', 'DEBIT', 'CREDIT'], numpy.nan)
-        df = df.fillna(method='ffill')
+        self.replace_zero(self.forex)
+        self.forex = map(self.del_empty_keys, self.forex)
+        self.forex = self.fillna_dict(self.forex)
 
-        return [r.to_dict() for k, r in df.iterrows()]
+        self.convert_specific_type(self.forex, 'commissions', float, 0.0)
+        self.convert_specific_type(self.forex, 'amount', float, 0.0)
+        self.convert_specific_type(self.forex, 'amount_usd', float, 0.0)
+        self.convert_specific_type(self.forex, 'balance', float, 0.0)
+
+        self.convert_specific_type(self.forex, 'date', self.convert_date, '')
+        self.convert_specific_type(self.forex, 'time', self.convert_time, '')
 
     def set_trade_history(self):
         """
@@ -199,7 +242,10 @@ class OpenAcc(OpenCSV):
         )
 
         self.trade_history = map(self.del_empty_keys, self.trade_history)
-        self.trade_history = self.fillna_history_sections(self.trade_history)
+        self.trade_history = self.fillna_dict(self.trade_history)
+
+        self.convert_specific_type(self.trade_history, 'execute_time', self.convert_datetime, '')
+        self.convert_specific_type(self.trade_history, 'quantity', int, 0)
 
     def set_order_history(self):
         """
@@ -216,7 +262,10 @@ class OpenAcc(OpenCSV):
         )
 
         self.order_history = map(self.del_empty_keys, self.order_history)
-        self.order_history = self.fillna_history_sections(self.order_history)
+        self.order_history = self.fillna_dict(self.order_history)
+
+        self.convert_specific_type(self.order_history, 'time_placed', self.convert_datetime, '')
+        self.convert_specific_type(self.order_history, 'quantity', int, 0)
 
     def set_equities(self):
         """
@@ -232,6 +281,8 @@ class OpenAcc(OpenCSV):
             prop_name='equities'
         )
 
+        self.convert_specific_type(self.equities, 'quantity', int, 0)
+
     def set_options(self):
         """
         Set options into class property
@@ -245,6 +296,8 @@ class OpenAcc(OpenCSV):
             prop_keys=self.options_keys,
             prop_name='options'
         )
+
+        self.convert_specific_type(self.options, 'quantity', int, 0)
 
     def set_profits_losses(self):
         """
@@ -285,54 +338,3 @@ class OpenAcc(OpenCSV):
             options=self.options,
             summary=self.summary
         )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

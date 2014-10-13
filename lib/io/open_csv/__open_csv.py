@@ -1,3 +1,7 @@
+import numpy
+from pandas import DataFrame
+
+
 class OpenCSV(object):
     """
     All class methods in here
@@ -172,14 +176,39 @@ class OpenCSV(object):
         """
         return {key: value for key, value in x.items() if key != ''}
 
+    @classmethod
+    def fillna_dict(cls, prop):
+        """
+        Use trade history then fill empty with value row above
+        """
+        df = DataFrame(prop)
+        df = df.replace(['', 'DEBIT', 'CREDIT'], numpy.nan)
+        df = df.fillna(method='ffill')
 
+        return [r.to_dict() for k, r in df.iterrows()]
 
+    def set_values(self, start_phrase, end_phrase, start_add, end_reduce, prop_keys, prop_name):
+        """
+        Make a dict from file lines for single section
+        then save it into class property
+        :param start_phrase: str
+        :param end_phrase: str
+        :param start_add: int
+        :param end_reduce: int
+        :param prop_keys: list
+        :param prop_name: str
+        :return: None
+        """
+        prop_list = list()
 
+        lines = self.get_lines(start_phrase, end_phrase)
 
+        for line in lines[start_add:end_reduce]:
+            line = self.replace_dash_inside_quote(line)
+            items = self.split_lines_with_dash(line)
 
+            items = map(self.format_item, items)
 
+            prop_list.append(self.make_dict(prop_keys, items))
 
-
-
-
-
+        setattr(self, prop_name, prop_list)

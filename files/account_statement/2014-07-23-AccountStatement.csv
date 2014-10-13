@@ -16,6 +16,7 @@ DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
 
 Futures Statements
 Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
+7/23/14,7/23/14,22:21:27,BUY,ABC123456,Enter Market,2.34,4.95,3130.00,4000.00
 
 Forex Statements
 ,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance

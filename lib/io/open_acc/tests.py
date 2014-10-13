@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 from pprint import pprint
 from lib.test import TestSetUp
@@ -63,75 +64,52 @@ class TestOpenAcc(TestSetUp):
             self.assertIn(key, self.open_acc.summary_keys)
             self.assertEqual(type(item), float)
 
-    def test_set_values(self):
+    def test_convert_date(self):
         """
-        Test open files, get lines section, format data,
-        make dict and finally set values in property
+        Test convert date format into YYYY-MM-DD
         """
-        start_phrase = 'Account Trade History'
-        end_phrase = None
-        start_add = 2
-        end_reduce = -1
-        prop_name = 'trade_history'
+        dates = ['7/29/14', '11/4/13', '9/8/12', '1/26/13', '7/30/14']
 
-        print 'start phrase: %s, end phrase: %s' % (start_phrase, end_phrase)
-        print 'start add: %d, end reduce: %d' % (start_add, end_reduce)
-        print 'property name: %s' % prop_name
+        for date in dates:
+            result = self.open_acc.convert_date(date)
 
-        self.open_acc.set_values(
-            start_phrase=start_phrase,
-            end_phrase=end_phrase,
-            start_add=start_add,
-            end_reduce=end_reduce,
-            prop_keys=self.open_acc.trade_history_keys,
-            prop_name=prop_name
-        )
+            print 'date: %s, result: %s' % (date, result)
 
-        trade_history = self.open_acc.trade_history
-
-        lines = self.open_acc.get_lines('Account Trade History')
-
-        self.assertEqual(len(lines), len(trade_history) + 2 + 1)
-        self.assertEqual(type(trade_history), list)
-
-        print ''
-        for tk in trade_history:
-            print tk
-            self.assertEqual(type(tk), dict)
-            self.assertEqual(len(tk), 13)
-
-    def test_fillna_history_sections(self):
+    def test_convert_datetime(self):
         """
-        Test fill empty or none value in dict
+        Test convert date format into YYYY-MM-DD
         """
-        self.open_acc.set_values(
-            start_phrase='Account Trade History',
-            end_phrase=None,
-            start_add=2,
-            end_reduce=-1,
-            prop_keys=self.open_acc.trade_history_keys,
-            prop_name='trade_history'
-        )
+        dates = [
+            '7/25/14 21:55:09', '11/4/13 02:54:13', '9/8/12 21:38:24',
+            '1/26/13 21:37:06', '7/30/14 05:54:58'
+        ]
 
-        before_fillna = self.open_acc.trade_history
-        after_fillna = self.open_acc.fillna_history_sections(self.open_acc.trade_history)
-        after_fillna = map(self.open_acc.del_empty_keys, after_fillna)
+        for date in dates:
+            result = self.open_acc.convert_datetime(date)
 
-        for tk1, tk2 in zip(before_fillna, after_fillna):
-            print tk1
-            print tk2
-            print ''
+            print 'date: %s, result: %s' % (date, result)
 
-            self.assertIn('', tk1.values())
-            self.assertNotIn('', tk2.values())
+    def test_convert_specific_type(self):
+        """
+        Test convert specific type for dict in a list
+        """
+        items = [
+            {'a': 0, 'ref_no': 793403165.0, 'c': 0},
+            {'a': 0, 'ref_no': 801854049.0, 'c': 0},
+            {'a': 0, 'ref_no': 802092476.0, 'c': 0},
+            {'a': 0, 'ref_no': 17.0, 'c': 0},
+            {'a': 0, 'ref_no': 123.0, 'c': 0},
+        ]
 
-            for value1, value2 in zip(tk1.values(), tk2.values()):
-                if value1 and (value1 != 'DEBIT' and value1 != 'CREDIT'):
-                    self.assertIn(value1, tk2.values())
+        self.open_acc.cash_balance = [dict(i) for i in items]
 
-            for key in tk1.keys():
-                if key:
-                    self.assertIn(key, tk2.keys())
+        self.open_acc.convert_specific_type(self.open_acc.cash_balance, 'ref_no', int, 0)
+
+        for item, result in zip(items, self.open_acc.cash_balance):
+            print 'dict: %s, result: %s' % (item, result)
+
+            self.assertEqual(item['ref_no'], result['ref_no'])
+            self.assertNotEqual(type(item['ref_no']), type(result['ref_no']))
 
     def set_sections(self, method, prop, length, keys):
         """
@@ -140,6 +118,12 @@ class TestOpenAcc(TestSetUp):
         getattr(self.open_acc, method)()
 
         order_history = getattr(self.open_acc, prop)
+
+        print 'property: %s' % prop
+        print 'method: %s' % method
+        print 'item length: %d' % length
+        print 'prop length: %s' % len(order_history)
+        print 'keys: %s\n' % keys
 
         self.assertEqual(type(order_history), list)
         self.assertGreaterEqual(len(order_history), 0)
