@@ -96,4 +96,4 @@ class TestIdentify(TestReadyUp):
             if spread is not None:
                 print '%s\n' % spread(pos_set)
 
-            # todo: to be continue... after all more class
+            # todo: to be continue... after all more spread and class

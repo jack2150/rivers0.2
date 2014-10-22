@@ -174,8 +174,8 @@ class OpenAcc(OpenCSV):
         self.set_values(
             start_phrase='Cash Balance',
             end_phrase='TOTAL',
-            start_add=2,
-            end_reduce=-1,
+            start_with=2,
+            end_until=-1,
             prop_keys=self.cash_balance_keys,
             prop_name='cash_balance'
         )
@@ -191,8 +191,8 @@ class OpenAcc(OpenCSV):
         self.set_values(
             start_phrase='Futures Statements',
             end_phrase=None,
-            start_add=2,
-            end_reduce=-1,
+            start_with=2,
+            end_until=-1,
             prop_keys=self.futures_keys,
             prop_name='futures'
         )
@@ -209,8 +209,8 @@ class OpenAcc(OpenCSV):
         self.set_values(
             start_phrase='Forex Statements',
             end_phrase=None,
-            start_add=2,
-            end_reduce=-1,
+            start_with=2,
+            end_until=-1,
             prop_keys=self.forex_keys,
             prop_name='forex'
         )
@@ -235,8 +235,8 @@ class OpenAcc(OpenCSV):
         self.set_values(
             start_phrase='Account Trade History',
             end_phrase=None,
-            start_add=2,
-            end_reduce=-1,
+            start_with=2,
+            end_until=-1,
             prop_keys=self.trade_history_keys,
             prop_name='trade_history'
         )
@@ -255,8 +255,8 @@ class OpenAcc(OpenCSV):
         self.set_values(
             start_phrase='Account Order History',
             end_phrase=None,
-            start_add=2,
-            end_reduce=-1,
+            start_with=2,
+            end_until=-1,
             prop_keys=self.order_history_keys,
             prop_name='order_history'
         )
@@ -275,8 +275,8 @@ class OpenAcc(OpenCSV):
         self.set_values(
             start_phrase='Equities',
             end_phrase='OVERALL TOTALS',
-            start_add=2,
-            end_reduce=-1,
+            start_with=2,
+            end_until=-1,
             prop_keys=self.equity_keys,
             prop_name='equities'
         )
@@ -291,8 +291,8 @@ class OpenAcc(OpenCSV):
         self.set_values(
             start_phrase='Options',
             end_phrase=',,,,,,',
-            start_add=2,
-            end_reduce=-1,
+            start_with=2,
+            end_until=-1,
             prop_keys=self.options_keys,
             prop_name='options'
         )
@@ -307,8 +307,8 @@ class OpenAcc(OpenCSV):
         self.set_values(
             start_phrase='Profits and Losses',
             end_phrase='OVERALL TOTALS',
-            start_add=2,
-            end_reduce=-1,
+            start_with=2,
+            end_until=-1,
             prop_keys=self.profits_losses_keys,
             prop_name='profits_losses'
         )

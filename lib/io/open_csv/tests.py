@@ -276,8 +276,8 @@ class TestOpenCSV(TestSetUp):
         self.open_csv.set_values(
             start_phrase='Account Trade History',
             end_phrase=None,
-            start_add=2,
-            end_reduce=-1,
+            start_with=2,
+            end_until=-1,
             prop_keys=trade_history_keys,
             prop_name='trade_history'
         )
@@ -331,8 +331,8 @@ class TestOpenCSV(TestSetUp):
         self.open_csv.set_values(
             start_phrase=start_phrase,
             end_phrase=end_phrase,
-            start_add=start_add,
-            end_reduce=end_reduce,
+            start_with=start_add,
+            end_until=end_reduce,
             prop_keys=trade_history_keys,
             prop_name=prop_name
         )

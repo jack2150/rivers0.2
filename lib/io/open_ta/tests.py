@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 from pprint import pprint
 from lib.test import TestSetUp
@@ -9,9 +10,9 @@ class TestOpenTA(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
-        self.fnames = ['2014-09-19-TradeActivity.csv']
+        self.fnames = ['2014-09-19-TradeActivity.csv', '2014-10-22-TradeActivity.csv']
 
-        self.test_file = os.path.join(FILES['trade_activity'], self.fnames[0])
+        self.test_file = os.path.join(FILES['trade_activity'], self.fnames[1])
 
         self.open_ta = OpenTA(fname=self.test_file)
 
@@ -41,6 +42,23 @@ class TestOpenTA(TestSetUp):
             for key in o.keys():
                 self.assertIn(key, keys)
 
+    def test_convert_hour_minute(self):
+        """
+        Test convert hour minute from string
+        """
+        samples = ['08:45', '09:00', '11:00', '14:45', '10:35']
+        expects = ['08:45:00', '09:00:00', '11:00:00', '14:45:00', '10:35:00']
+
+        for sample, expect in zip(samples, expects):
+            print 'sample: %s' % sample
+            print 'expect: %s' % expect
+
+            result = self.open_ta.convert_hour_minute(sample)
+
+            print 'result: %s\n' % result
+
+            self.assertEqual(result, expect)
+
     def test_set_working_order(self):
         """
         Test set working_order
@@ -51,6 +69,14 @@ class TestOpenTA(TestSetUp):
             length=14,
             keys=self.open_ta.working_order_keys
         )
+
+        # correct data type
+        for working_order in self.open_ta.working_order:
+            self.assertEqual(type(working_order['quantity']), int)
+            self.assertEqual(type(working_order['strike']), float)
+            self.assertEqual(type(working_order['price']), float)
+
+            self.assertIn(type(working_order['time_placed']), (datetime, type(None)))
 
     def test_set_filled_orders(self):
         """
@@ -63,6 +89,16 @@ class TestOpenTA(TestSetUp):
             keys=self.open_ta.filled_order_keys
         )
 
+        # correct data type
+        for filled_order in self.open_ta.filled_order:
+            self.assertEqual(type(filled_order['quantity']), int)
+            self.assertEqual(type(filled_order['strike']), float)
+            self.assertEqual(type(filled_order['price']), float)
+            self.assertEqual(type(filled_order['net_price']), float)
+            self.assertEqual(type(filled_order['expire_date']), str)
+
+            self.assertIn(type(filled_order['exec_time']), (datetime, type(None)))
+
     def test_set_cancelled_orders(self):
         """
         Test set cancelled_orders
@@ -74,16 +110,113 @@ class TestOpenTA(TestSetUp):
             keys=self.open_ta.cancelled_order_keys
         )
 
+        # correct data type
+        for cancelled_order in self.open_ta.cancelled_order:
+            self.assertEqual(type(cancelled_order['quantity']), int)
+            self.assertEqual(type(cancelled_order['strike']), float)
+            self.assertEqual(type(cancelled_order['price']), float)
+            self.assertEqual(type(cancelled_order['expire_date']), str)
+
+            self.assertIn(type(cancelled_order['time_cancelled']), (datetime, type(None)))
+
+    def sub_format_rolling_strategy(self, cls_name, keys_length, keys_list, not_in_key):
+        """
+        Test format rolling strategy options
+        """
+        self.open_ta.set_values(
+            start_phrase='Rolling Strategies',
+            end_phrase=None,
+            start_with=2,
+            end_until=None,
+            prop_keys=self.open_ta.rolling_strategy_keys,
+            prop_name='rolling_strategy'
+        )
+
+        before_keys_length = len(self.open_ta.rolling_strategy[0].keys())
+        print 'rolling strategy length: %d' % len(self.open_ta.rolling_strategy)
+        print 'rolling strategy columns: %d' % before_keys_length
+        print 'rolling strategy: '
+        pprint(self.open_ta.rolling_strategy, width=300)
+
+        test_cls = getattr(self.open_ta, cls_name)
+        test_cls()
+
+        after_keys_length = len(self.open_ta.rolling_strategy[0].keys())
+        print '\n' + 'rolling strategy length: %d' % len(self.open_ta.rolling_strategy)
+        print 'rolling strategy columns: %d' % after_keys_length
+        print 'rolling strategy: '
+        pprint(self.open_ta.rolling_strategy, width=400)
+
+        self.assertNotEqual(before_keys_length, after_keys_length)
+        self.assertEqual(after_keys_length, keys_length)
+
+        for x in keys_list:
+            self.assertIn(x, self.open_ta.rolling_strategy[0].keys())
+
+        self.assertNotIn(not_in_key, self.open_ta.rolling_strategy[0].keys())
+
+    def test_format_rolling_strategy_options(self):
+        """
+        Test format rolling strategy options
+        """
+        self.sub_format_rolling_strategy(
+            'format_rolling_strategy_options',
+            14,
+            self.open_ta.rolling_strategy_options,
+            'position'
+        )
+
+    def test_format_rolling_strategy_market_time(self):
+        """
+        Test format_rolling_strategy_market_time
+        """
+        self.sub_format_rolling_strategy(
+            'format_rolling_strategy_market_time',
+            9,
+            ['move_to_market_time_start', 'move_to_market_time_end'],
+            'move_to_market_time'
+        )
+
+    def test_format_rolling_strategy_active_time(self):
+        """
+        Test format_rolling_strategy_active_time
+        """
+        self.sub_format_rolling_strategy(
+            'format_rolling_strategy_active_time',
+            9,
+            ['active_time_start', 'active_time_end'],
+            'active_time'
+        )
+
     def test_set_rolling_strategy(self):
         """
         Test set rolling_strategy
         """
+        result_keys = [
+            'status', 'move_to_market_time_end', 'right', 'strike_price', 'days_begin',
+            'new_expire_date', 'symbol', 'ex_month', 'call_by', 'contract', 'order_price',
+            'ex_year', 'move_to_market_time_start', 'active_time_start', 'side',
+            'active_time_end'
+        ]
+
         self.set_sections(
             method='set_rolling_strategy',
             prop='rolling_strategy',
-            length=13,
-            keys=self.open_ta.rolling_strategy_keys
+            length=16,
+            keys=result_keys
         )
+
+        # correct format
+        for rolling_strategy in self.open_ta.rolling_strategy:
+            self.assertEqual(type(rolling_strategy['side']), int)
+            self.assertEqual(type(rolling_strategy['right']), int)
+            self.assertEqual(type(rolling_strategy['side']), int)
+            self.assertEqual(type(rolling_strategy['strike_price']), float)
+
+            self.assertTrue(datetime.strptime(rolling_strategy['active_time_start'], '%H:%M:%S'))
+            self.assertTrue(datetime.strptime(rolling_strategy['active_time_end'], '%H:%M:%S'))
+            self.assertTrue(datetime.strptime(rolling_strategy['move_to_market_time_start'], '%H:%M:%S'))
+            self.assertTrue(datetime.strptime(rolling_strategy['move_to_market_time_end'], '%H:%M:%S'))
 
     def test_ready(self):
         """
@@ -113,7 +246,35 @@ class TestOpenTA(TestSetUp):
 
             print '\n' + '-' * 100 + '\n'
 
+    def test_read(self):
+        """
+        Test most important part in class
+        """
+        keys = ['working_order', 'filled_order', 'cancelled_order', 'rolling_strategy']
 
+        for fname in self.fnames:
+            path = os.path.join(FILES['trade_activity'], fname)
+
+            print 'fname: %s' % fname
+            print 'path: %s' % path
+
+            open_acc = OpenTA(path)
+
+            result = open_acc.read()
+            self.assertEqual(type(result), dict)
+            self.assertEqual(len(result), 4)
+
+            pprint(result, width=200)
+
+            for key in result.keys():
+                if key == 'summary':
+                    self.assertEqual(type(result[key]), dict)
+                else:
+                    self.assertEqual(type(result[key]), list)
+
+                self.assertIn(key, keys)
+
+            print '\n' + '-' * 100 + '\n'
 
 
 

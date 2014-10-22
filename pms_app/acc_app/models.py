@@ -34,7 +34,7 @@ class CashBalance(models.Model, SampleModel):
         output += '"date": "%s", ' % self.date
         output += '"time": "%s", ' % self.time
         output += '"contract": "%s", ' % self.contract
-        output += '"ref_no": %s, ' % self.ref_no
+        output += '"ref_no": "%s", ' % self.ref_no
         output += '"description": "%s", ' % self.description
         output += '"fees": %.2f, ' % self.fees
         output += '"commissions": %.2f, ' % self.commissions

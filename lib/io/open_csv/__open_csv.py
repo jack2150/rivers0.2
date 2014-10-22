@@ -140,6 +140,7 @@ class OpenCSV(object):
         :param end_phrase:
         :return: list
         """
+        start = 0
         try:
             start = [key for key, line in enumerate(self.lines)
                      if start_phrase in line].pop(0)
@@ -154,7 +155,10 @@ class OpenCSV(object):
 
             lines = self.lines[start:start+end+1]
         except IndexError:
-            lines = list()
+            if start:
+                lines = self.lines[start:]
+            else:
+                lines = list()
 
         return lines
 
@@ -187,14 +191,14 @@ class OpenCSV(object):
 
         return [r.to_dict() for k, r in df.iterrows()]
 
-    def set_values(self, start_phrase, end_phrase, start_add, end_reduce, prop_keys, prop_name):
+    def set_values(self, start_phrase, end_phrase, start_with, end_until, prop_keys, prop_name):
         """
         Make a dict from file lines for single section
         then save it into class property
         :param start_phrase: str
         :param end_phrase: str
-        :param start_add: int
-        :param end_reduce: int
+        :param start_with: int
+        :param end_until: int
         :param prop_keys: list
         :param prop_name: str
         :return: None
@@ -203,7 +207,7 @@ class OpenCSV(object):
 
         lines = self.get_lines(start_phrase, end_phrase)
 
-        for line in lines[start_add:end_reduce]:
+        for line in lines[start_with:end_until]:
             line = self.replace_dash_inside_quote(line)
             items = self.split_lines_with_dash(line)
 

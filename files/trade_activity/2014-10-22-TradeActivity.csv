@@ -1,0 +1,44 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for D-12644969 (margin) on 10/22/14 02:46:30
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,8/19/14 00:30:00,STOCK,SELL,-100,AUTO,FB,,,STOCK,82.00,LMT,GTC,74.50,WORKING
+,,,RE #2146483674,,,,,,,,,,,,
+,,8/19/14 00:30:00,SINGLE,SELL,-1,AUTO,SNDK,SEP 14,92.5,PUT,2.00,LMT,DAY,1.65,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,10/22/14 02:46:20,COVERED,SELL,-1,TO CLOSE,VXX,NOV 14,35.5,PUT,4.60,37.86,MKT
+,,,SELL,-100,TO CLOSE,VXX,,,ETF,33.26,CREDIT,
+,10/22/14 02:46:08,STOCK,SELL,-100,TO CLOSE,QCOM,,,STOCK,75.01,75.01,MKT
+,10/22/14 02:45:52,SINGLE,BUY,+1,TO CLOSE,FB,DEC 14,75,PUT,3.05,3.05,MKT
+,10/22/14 02:45:45,SINGLE,BUY,+1,TO CLOSE,FB,NOV 14,77.5,CALL,4.45,4.45,MKT
+,10/22/14 02:45:32,COVERED,SELL,-1,TO CLOSE,FB,DEC 14,75,PUT,3.00,81.58,MKT
+,,,SELL,-100,TO CLOSE,FB,,,STOCK,78.58,CREDIT,
+,10/22/14 02:45:32,COVERED,SELL,-1,TO CLOSE,FB,DEC 14,75,PUT,3.00,81.58,MKT
+,,,SELL,-100,TO CLOSE,FB,,,STOCK,78.58,CREDIT,
+,10/22/14 02:45:08,STOCK,BUY,+100,TO CLOSE,EWZ,,,ETF,41.56,41.56,MKT
+,10/22/14 02:43:28,COVERED,SELL,-1,TO OPEN,SLV,NOV 14,16.5,CALL,.64,16.17,MKT
+,,,BUY,+100,TO OPEN,SLV,,,ETF,16.81,DEBIT,
+,10/22/14 02:43:10,COVERED,BUY,+1,TO OPEN,SLW,NOV 14,20,CALL,1.04,19.19,MKT
+,,,SELL,-100,TO OPEN,SLW,,,STOCK,20.23,CREDIT,
+,10/22/14 02:42:54,COVERED,BUY,+1,TO OPEN,GG,NOV 14,23,PUT,.78,24.19,MKT
+,,,BUY,+100,TO OPEN,GG,,,STOCK,23.41,DEBIT,
+,10/22/14 02:42:29,COVERED,SELL,-1,TO OPEN,AMD,NOV 14,3,PUT,.33,3.09,MKT
+,,,SELL,-100,TO OPEN,AMD,,,STOCK,2.76,CREDIT,
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,8/19/14 00:30:00,STOCK,SELL,-100,AUTO,FB,,,STOCK,82.00,LMT,DAY,CANCELED
+,,8/19/14 00:30:00,COVERED,SELL,-1,AUTO,FB,SEP 14,74.5,PUT,,MKT,DAY,"REJECTED: This stock is not available to borrow. If you want us to try to locate it for you, please call our trade desk."
+,,,,SELL,-100,AUTO,FB,,,STOCK,,,,
+,,8/19/14 00:30:00,STOCK,SELL,-10,AUTO,IBM,,,STOCK,,MKT,DAY,"REJECTED: This stock is not available to borrow. If you want us to try to locate it for you, please call our trade desk."
+,,8/19/14 00:30:00,STOCK,SELL,-10,AUTO,IBM,,,STOCK,189.40,LMT,DAY,"REJECTED: This stock is not available to borrow. If you want us to try to locate it for you, please call our trade desk."
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status
+-1 SLV 100 NOV 14 16.5 CALL,JAN 15,Strike ATM,8,55% of (NAT - MID),10:20 - 10:35,11:00 - 14:45,WAIT TRG
+-1 FB 100 NOV 14 77.5 CALL,NOV4 14,Strike +1 ATM,2,AUTO,08:45 - 09:00,11:00 - 14:45,CANCELED
+-1 BAC 100 NOV 14 16 CALL,DEC 14,Delta .50,6,55% of (NAT - MID),08:45 - 09:00,11:00 - 14:45,WAIT TRG

@@ -1,0 +1,35 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for D-12644969 (margin) on 10/21/14 03:56:38
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,10/21/14 03:55:29,COVERED,SELL,-1,TO OPEN,BAC,NOV 14,16,CALL,.60,15.68,MKT
+,,,BUY,+100,TO OPEN,BAC,,,STOCK,16.28,DEBIT,
+,10/21/14 03:55:02,COVERED,BUY,+1,TO OPEN,VXX,NOV 14,35.5,PUT,3.70,39.34,MKT
+,,,BUY,+100,TO OPEN,VXX,,,ETF,35.64,DEBIT,
+,10/21/14 02:44:22,VERTICAL,BUY,+1,TO OPEN,IBM,NOV 14,167.5,CALL,4.30,1.36,MKT
+,,,SELL,-1,TO OPEN,IBM,NOV 14,170,CALL,2.94,DEBIT,
+,10/21/14 02:42:49,DIAGONAL,BUY,+1,TO OPEN,FB,DEC 14,75,PUT,4.10,.25,MKT
+,,,SELL,-1,TO CLOSE,FB,NOV4 14,76,PUT,3.85,DEBIT,
+,10/21/14 02:41:31,COVERED,SELL,-1,TO OPEN,FB,NOV 14,77.5,CALL,3.60,73.10,MKT
+,,,BUY,+100,TO OPEN,FB,,,STOCK,76.70,DEBIT,
+,10/21/14 02:41:07,CALENDAR,BUY,+1,TO OPEN,FB,NOV4 14,76,PUT,3.95,.25,MKT
+,,,SELL,-1,TO CLOSE,FB,NOV 14,76,PUT,3.70,DEBIT,
+,10/21/14 02:40:41,COVERED,BUY,+1,TO OPEN,FB,NOV 14,76,PUT,3.80,80.46,MKT
+,,,BUY,+100,TO OPEN,FB,,,STOCK,76.66,DEBIT,
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,10/21/14 02:43:27,DIAGONAL,SELL,-1,TO OPEN,FB,NOV4 14,75,CALL,1.52,LMT,DAY,CANCELED
+,,,,BUY,+1,TO CLOSE,FB,NOV 14,77.5,CALL,,,,
+,,10/21/14 02:41:07,CALENDAR,BUY,+1,TO OPEN,FB,NOV4 14,76,PUT,.18,LMT,DAY,CANCELED
+,,,,SELL,-1,TO CLOSE,FB,NOV 14,76,PUT,,,,
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status
+-1 FB 100 NOV 14 77.5 CALL,NOV4 14,Strike +1 ATM,2,AUTO,08:45 - 09:00,11:00 - 14:45,WAIT TRG
+-1 BAC 100 NOV 14 16 CALL,DEC 14,Delta .50,6,55% of (NAT - MID),08:45 - 09:00,11:00 - 14:45,WAIT TRG
