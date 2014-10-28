@@ -1,5 +1,5 @@
 from lib.test import TestReadyUp
-from pms_app.pos_app.models import Position, PositionSet
+from pms_app.pos_app.models import Underlying, PositionSet
 import lib.pos.spread.leg_one as leg_one
 
 
@@ -8,7 +8,7 @@ class TestLegOneContext(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=3)
 
-        position = Position.objects.first()
+        position = Underlying.objects.first()
         self.pos_set = PositionSet(position)
 
         self.leg_one_context = leg_one.LegOneContext(self.pos_set)
@@ -59,7 +59,7 @@ class TestCallLong(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=3)
 
-        position = Position.objects.get(symbol='AAPL')
+        position = Underlying.objects.get(symbol='AAPL')
         self.pos_set = PositionSet(position)
 
         self.call_long = leg_one.CallLong(self.pos_set)
@@ -200,7 +200,7 @@ class TestCallNaked(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=3)
 
-        position = Position.objects.get(symbol='FB')
+        position = Underlying.objects.get(symbol='FB')
         self.pos_set = PositionSet(position)
 
         self.call_naked = leg_one.CallNaked(self.pos_set)
@@ -341,7 +341,7 @@ class TestPutLong(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=3)
 
-        position = Position.objects.get(symbol='IBM')
+        position = Underlying.objects.get(symbol='IBM')
         self.pos_set = PositionSet(position)
 
         self.put_long = leg_one.PutLong(self.pos_set)
@@ -502,7 +502,7 @@ class TestPutNaked(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=3)
 
-        position = Position.objects.get(symbol='FSLR')
+        position = Underlying.objects.get(symbol='FSLR')
         self.pos_set = PositionSet(position)
 
         self.put_naked = leg_one.PutNaked(self.pos_set)

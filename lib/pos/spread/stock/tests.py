@@ -1,5 +1,5 @@
 from lib.test import TestReadyUp
-from pms_app.pos_app.models import Position, PositionSet
+from pms_app.pos_app.models import Underlying, PositionSet
 import lib.pos.spread.stock as stock
 
 
@@ -8,7 +8,7 @@ class TestStockContext(TestReadyUp):
         TestReadyUp.setUp(self)
 
         self.ready_all(key=1)
-        position = Position.objects.first()
+        position = Underlying.objects.first()
         pos_set = PositionSet(position)
 
         self.stock_context = stock.StockContext(pos_set)
@@ -133,10 +133,10 @@ class TestStockLong(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=1)
 
-        position = Position.objects.first()
+        position = Underlying.objects.first()
         self.pos_set = PositionSet(position)
 
-        print 'Symbol: %s\n' % self.pos_set.stock.position.symbol
+        print 'Symbol: %s\n' % self.pos_set.stock.underlying.symbol
 
         self.stock_long = stock.StockLong(self.pos_set)
 
@@ -238,10 +238,10 @@ class TestStockShort(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=1)
 
-        position = Position.objects.first()
+        position = Underlying.objects.first()
         self.pos_set = PositionSet(position)
 
-        print 'Symbol: %s\n' % self.pos_set.stock.position.symbol
+        print 'Symbol: %s\n' % self.pos_set.stock.underlying.symbol
 
         self.stock_short = stock.StockShort(self.pos_set)
 

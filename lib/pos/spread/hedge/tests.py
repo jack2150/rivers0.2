@@ -1,6 +1,6 @@
 # perfect...
 from lib.test import TestReadyUp
-from pms_app.pos_app.models import Position, PositionSet
+from pms_app.pos_app.models import Underlying, PositionSet
 import lib.pos.spread.hedge as hedge
 
 
@@ -9,7 +9,7 @@ class TestHedgeContext(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=2)
 
-        position = Position.objects.first()
+        position = Underlying.objects.first()
         self.pos_set = PositionSet(position)
 
         self.hedge_context = hedge.HedgeContext(self.pos_set)
@@ -174,7 +174,7 @@ class TestCoveredCall(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=2)
 
-        position = Position.objects.get(symbol='AAPL')
+        position = Underlying.objects.get(symbol='AAPL')
         self.pos_set = PositionSet(position)
 
         self.covered_call = hedge.CoveredCall(self.pos_set)
@@ -335,7 +335,7 @@ class TestProtectivePut(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=2)
 
-        position = Position.objects.get(symbol='DDD')
+        position = Underlying.objects.get(symbol='DDD')
         self.pos_set = PositionSet(position)
 
         self.protective_put = hedge.ProtectivePut(self.pos_set)
@@ -477,7 +477,7 @@ class TestCoveredPut(TestReadyUp):
         TestReadyUp.setUp(self)
         self.ready_all(key=2)
 
-        position = Position.objects.get(symbol='C')
+        position = Underlying.objects.get(symbol='C')
         self.pos_set = PositionSet(position)
 
         self.covered_put = hedge.CoveredPut(self.pos_set)
@@ -619,7 +619,7 @@ class TestProtectiveCall(TestReadyUp):
         TestReadyUp.setUp(self)
 
         self.ready_all(key=2)
-        position = Position.objects.get(symbol='BAC')
+        position = Underlying.objects.get(symbol='BAC')
         self.pos_set = PositionSet(position)
 
         self.protective_call = hedge.ProtectiveCall(self.pos_set)

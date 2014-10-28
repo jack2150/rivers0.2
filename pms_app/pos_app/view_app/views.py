@@ -15,8 +15,8 @@ def index(request, date=None):
     :return: render
     """
     if date is None:
-        if models.Overall.objects.exists():
-            overall = models.Overall.objects.last()
+        if models.PositionStatement.objects.exists():
+            overall = models.PositionStatement.objects.last()
             date = overall.date.strftime('%Y-%m-%d')
         else:
             date = datetime.date.today()
@@ -36,7 +36,7 @@ def date_exists(request, date):
     :param date: str
     :return: HttpResponse
     """
-    overall = models.Overall.objects.filter(date=date)
+    overall = models.PositionStatement.objects.filter(date=date)
 
     if overall.exists():
         found = True
@@ -77,20 +77,20 @@ def overall_json(request, date=None):
     :return: HttpResponse
     """
     if date:
-        overall = models.Overall.objects.filter(date=date)
+        position_statement = models.PositionStatement.objects.filter(date=date)
 
-        if overall.exists():
-            overall = overall.last()
+        if position_statement.exists():
+            position_statement = position_statement.last()
         else:
-            overall = {}
+            position_statement = {}
     else:
-        if models.Overall.objects.exists():
-            overall = models.Overall.objects.latest('date')
+        if models.PositionStatement.objects.exists():
+            position_statement = models.PositionStatement.objects.latest('date')
         else:
-            overall = {}
+            position_statement = {}
 
     return HttpResponse(
-        overall,
+        position_statement,
         content_type='application/json'
     )
 
@@ -104,28 +104,29 @@ def positions_json(request, date=None):
     """
     json = list()
 
-    if date is None:
-        #date = models.Position.objects.latest('date')
-        if models.Overall.objects.exists():
-            date = models.Overall.objects.latest('date')
-        else:
-            date = datetime.date.today().strftime('%Y-%m-%d')
+    if date is None and models.PositionStatement.objects.exists():
+        position_statement = models.PositionStatement.objects.latest('date')
+    else:
+        position_statement = models.PositionStatement.objects.latest(date=date)
 
-    positions = models.Position.objects.filter(date=date)
-    instruments = models.PositionInstrument.objects.filter(position=positions)
-    stocks = models.PositionStock.objects.filter(position=positions)
-    options = models.PositionOption.objects.filter(position=positions)
+    if position_statement:
+        positions = models.Underlying.objects.filter(position_statement=position_statement)
+        instruments = models.PositionInstrument.objects.filter(position=positions)
+        stocks = models.PositionStock.objects.filter(position=positions)
+        options = models.PositionOption.objects.filter(position=positions)
 
-    if positions.exists():
-        for pos in positions:
-            #json.append('{%s}' % instruments.get(position=pos).__str__()[1:-1])
-            json.append('{%s, "data": [%s, %s]}' % (
-                instruments.get(position=pos).__str__()[1:-1],
-                stocks.get(position=pos).__str__(),
-                ','.join([option.__str__() for option in options.filter(position=pos)])
-            ))
+        if positions.exists():
+            for pos in positions:
+                #json.append('{%s}' % instruments.get(position=pos).__str__()[1:-1])
+                json.append('{%s, "data": [%s, %s]}' % (
+                    instruments.get(position=pos).__str__()[1:-1],
+                    stocks.get(position=pos).__str__(),
+                    ','.join([option.__str__() for option in options.filter(position=pos)])
+                ))
 
-    json = '[' + ','.join(json) + ']'
+        json = '[' + ','.join(json) + ']'
+    else:
+        json = []
 
     return HttpResponse(
         json,

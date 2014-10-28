@@ -73,4 +73,4 @@ class TestLegOneIdentify(TestReadyUp):
                  None]
             )
 
-            print cls(PositionSet(option.position))
+            print cls(PositionSet(option.underlying))

@@ -1,5 +1,5 @@
 from lib.test import TestSetUp, TestReadyUp
-from pms_app.pos_app.models import Position, PositionSet
+from pms_app.pos_app.models import Underlying, PositionSet
 import lib.pos.spread.__spread as spread
 
 
@@ -9,7 +9,7 @@ class TestSpreads(TestReadyUp):
 
         self.ready_all(key=1)
 
-        position = Position.objects.all().first()
+        position = Underlying.objects.all().first()
         pos_set = PositionSet(position)
 
         # first create spread

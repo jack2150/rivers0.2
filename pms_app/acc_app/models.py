@@ -1,21 +1,49 @@
 from django.db import models
 
 
-class SampleModel(object):
-    def set_dict(self, items):
-        """
-        using raw dict, set related column into property only
-        :type items: dict
-        """
-        properties = vars(self)
-
-        for key, item in items.items():
-            if key in properties.keys():
-                setattr(self, key, item)
-
-
-class CashBalance(models.Model, SampleModel):
+class AccountStatement(models.Model):
     date = models.DateField()
+
+    net_liquid_value = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
+    stock_buying_power = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
+    option_buying_power = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
+    commissions_ytd = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
+    futures_commissions_ytd = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
+
+    def json(self):
+        """
+        Using all property inside class and return json format string
+        :return: str
+        """
+        output = '{'
+        output += '"date": "%s", ' % self.date
+        output += '"net_liquid_value": %.2f, ' % self.net_liquid_value
+        output += '"stock_buying_power": %.2f, ' % self.stock_buying_power
+        output += '"option_buying_power": %.2f, ' % self.option_buying_power
+        output += '"commissions_ytd": %.2f, ' % self.commissions_ytd
+        output += '"futures_commissions_ytd": %.2f' % self.futures_commissions_ytd
+        output += '}'
+
+        return output
+
+    def __unicode__(self):
+        """
+        Normal string output for class detail
+        :return: str
+        """
+        position_statement = '<Account Statement> {date}, Net Liquid Value: {net_liquid_value}'
+
+        return '{position_statement}'.format(
+            position_statement=position_statement.format(
+                date='%s' % self.date,
+                net_liquid_value='%+.2f' % self.net_liquid_value,
+            )
+        )
+
+
+class CashBalance(models.Model):
+    account_statement = models.ForeignKey(AccountStatement)
+
     time = models.TimeField()
     contract = models.CharField(max_length=10)
     ref_no = models.IntegerField()
@@ -45,8 +73,9 @@ class CashBalance(models.Model, SampleModel):
         return output
 
 
-class ProfitsLosses(models.Model, SampleModel):
-    date = models.DateField()
+class ProfitsLosses(models.Model):
+    account_statement = models.ForeignKey(AccountStatement)
+
     symbol = models.CharField(max_length=50)
     description = models.CharField(max_length=255)
     pl_open = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
@@ -74,33 +103,9 @@ class ProfitsLosses(models.Model, SampleModel):
         return output
 
 
-class AccountSummary(models.Model, SampleModel):
-    date = models.DateField()
-    net_liquid_value = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
-    stock_buying_power = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
-    option_buying_power = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
-    commissions_ytd = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
-    futures_commissions_ytd = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
+class OrderHistory(models.Model):
+    account_statement = models.ForeignKey(AccountStatement)
 
-    def __unicode__(self):
-        """
-        Using all property inside class and return json format string
-        :return: str
-        """
-        output = '{'
-        output += '"date": "%s", ' % self.date
-        output += '"net_liquid_value": %.2f, ' % self.net_liquid_value
-        output += '"stock_buying_power": %.2f, ' % self.stock_buying_power
-        output += '"option_buying_power": %.2f, ' % self.option_buying_power
-        output += '"commissions_ytd": %.2f, ' % self.commissions_ytd
-        output += '"futures_commissions_ytd": %.2f' % self.futures_commissions_ytd
-        output += '}'
-
-        return output
-
-
-class OrderHistory(models.Model, SampleModel):
-    date = models.DateField()
     status = models.CharField(max_length=50)
     pos_effect = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
@@ -140,8 +145,9 @@ class OrderHistory(models.Model, SampleModel):
         return output
 
 
-class TradeHistory(models.Model, SampleModel):
-    date = models.DateField()
+class TradeHistory(models.Model):
+    account_statement = models.ForeignKey(AccountStatement)
+
     execute_time = models.DateTimeField()
     spread = models.CharField(max_length=50)
     side = models.CharField(max_length=20)
@@ -179,8 +185,9 @@ class TradeHistory(models.Model, SampleModel):
         return output
 
 
-class Equities(models.Model, SampleModel):
-    date = models.DateField()
+class Equities(models.Model):
+    account_statement = models.ForeignKey(AccountStatement)
+
     symbol = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     quantity = models.IntegerField(default=0)
@@ -202,8 +209,9 @@ class Equities(models.Model, SampleModel):
         return output
 
 
-class Options(models.Model, SampleModel):
-    date = models.DateField()
+class Options(models.Model):
+    account_statement = models.ForeignKey(AccountStatement)
+
     symbol = models.CharField(max_length=50)
     option_code = models.CharField(max_length=200)
     expire_date = models.CharField(max_length=50)
@@ -231,8 +239,9 @@ class Options(models.Model, SampleModel):
         return output
 
 
-class Futures(models.Model, SampleModel):
-    date = models.DateField()
+class Futures(models.Model):
+    account_statement = models.ForeignKey(AccountStatement)
+
     trade_date = models.DateField()
     execute_date = models.DateField()
     execute_time = models.TimeField()
@@ -266,8 +275,9 @@ class Futures(models.Model, SampleModel):
         return output
 
 
-class Forex(models.Model, SampleModel):
-    date = models.DateField()
+class Forex(models.Model):
+    account_statement = models.ForeignKey(AccountStatement)
+
     time = models.TimeField()
     contract = models.CharField(max_length=20)
     ref_no = models.CharField(max_length=200)

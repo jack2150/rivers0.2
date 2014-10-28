@@ -68,7 +68,7 @@ class TestViews(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-        positions = pm.Position.objects.all()
+        positions = pm.Underlying.objects.all()
         self.assertEqual(positions.count(), 21)
         print 'positions saved: %d' % positions.count()
 

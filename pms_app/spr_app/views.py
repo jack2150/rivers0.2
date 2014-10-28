@@ -11,11 +11,11 @@ def worst_symbol(date):
     :return: str
     """
     # get worst position for date
-    positions = models.Position.objects.filter(date=date)
+    positions = models.Underlying.objects.filter(date=date)
     instruments = models.PositionInstrument.objects.filter(position=positions)
     min_pl_open = instruments.aggregate(Min('pl_open'))['pl_open__min']
 
-    return instruments.get(pl_open=min_pl_open).position.symbol
+    return instruments.get(pl_open=min_pl_open).underlying.symbol
 
 
 def index(request, date=None):
@@ -66,7 +66,7 @@ def spreads_json(request, date=None, symbol=None):
     spreads = dict()
 
     if date and symbol:
-        position = models.Position.objects.get(date=date, symbol=symbol.upper())
+        position = models.Underlying.objects.get(date=date, symbol=symbol.upper())
 
         spreads = dict(
             date=date,
@@ -95,7 +95,7 @@ def symbols_json(request, date):
     """
     symbols = list()
 
-    positions = models.Position.objects.filter(date=date)
+    positions = models.Underlying.objects.filter(date=date)
 
     for position in positions:
         pos_set = models.PositionSet(position)

@@ -1,6 +1,6 @@
 from lib.test import TestReadyUp
 from lib.pos.identify import Identify
-from pms_app.pos_app.models import Position, PositionSet
+from pms_app.pos_app.models import Underlying, PositionSet
 
 
 class TestIdentify(TestReadyUp):
@@ -13,7 +13,7 @@ class TestIdentify(TestReadyUp):
         """
         self.ready_all(key)
 
-        for position in Position.objects.all():
+        for position in Underlying.objects.all():
             pos_set = PositionSet(position)
 
             self.identify = Identify(pos_set)
@@ -26,7 +26,7 @@ class TestIdentify(TestReadyUp):
 
             self.assertEqual(result, expect)
 
-        Position.objects.all().delete()
+        Underlying.objects.all().delete()
 
         print '\n' + '-' * 100 + '\n'
 
@@ -85,7 +85,7 @@ class TestIdentify(TestReadyUp):
         """
         self.ready_all()
 
-        for position in Position.objects.all():
+        for position in Underlying.objects.all():
             pos_set = PositionSet(position)
 
             self.identify = Identify(pos_set)

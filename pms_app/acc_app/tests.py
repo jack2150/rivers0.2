@@ -97,7 +97,7 @@ class TestAccountSummary(TestSetUp):
             'stock_buying_power': 5063.58
         }
 
-        self.account_summary = models.AccountSummary(date=self.date, **self.items)
+        self.account_summary = models.AccountStatement(date=self.date, **self.items)
 
     def test_save(self):
         """

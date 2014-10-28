@@ -1,1 +1,1 @@
-from lib.test.__test import TestSetUp, TestSetUpModel, TestReadyUp
+from lib.test.__test import TestSetUp, TestReadyUp

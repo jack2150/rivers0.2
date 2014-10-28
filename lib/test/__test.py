@@ -1,8 +1,7 @@
 import os
 from django.test import TestCase
 from lib.io.open_pos import OpenPos
-from pms_app.pos_app.models import Position, PositionInstrument
-from pms_app.pos_app.models import PositionStock, PositionOption, Overall
+from pms_app.pos_app import models
 from rivers.settings import FILES
 
 
@@ -20,23 +19,6 @@ class TestSetUp(TestCase):
         remove variables after test
         """
         print '\n' + '=' * 100 + '\n\n'
-
-
-class TestSetUpModel(TestSetUp):
-    def ready_pos(self):
-        """
-        Ready up pos object and use as foreign key
-        """
-        items = {
-            'symbol': 'SPX',
-            'company': 'SPX',
-            'date': '2014-08-01',
-        }
-
-        pos = Position(**items)
-        pos.save()
-
-        return pos
 
 
 class TestReadyUp(TestCase):
@@ -64,37 +46,37 @@ class TestReadyUp(TestCase):
         """
         positions, overall = OpenPos(path).read()
 
+        # save position statement
+        position_statement = models.PositionStatement(date=date, **overall)
+        position_statement.save()
+
         for position in positions:
             # save positions
-            pos = Position(
+            pos = models.Underlying(
+                position_statement=position_statement,
                 symbol=position['Symbol'],
-                company=position['Company'],
-                date=date
+                company=position['Company']
             )
             pos.save()
 
             # save instrument
-            instrument = PositionInstrument()
+            instrument = models.PositionInstrument()
             instrument.set_dict(position['Instrument'])
-            instrument.position = pos
+            instrument.underlying = pos
             instrument.save()
 
             # save stock
-            stock = PositionStock()
+            stock = models.PositionStock()
             stock.set_dict(position['Stock'])
-            stock.position = pos
+            stock.underlying = pos
             stock.save()
 
             # save options
             for pos_option in position['Options']:
-                option = PositionOption()
+                option = models.PositionOption()
                 option.set_dict(pos_option)
-                option.position = pos
+                option.underlying = pos
                 option.save()
-
-        pos_overall = Overall(**overall)
-        pos_overall.date = date
-        pos_overall.save()
 
     def ready_all(self, key=None):
         """
@@ -118,7 +100,9 @@ class TestReadyUp(TestCase):
             path = os.path.join(FILES['position_statement'], 'tests', fname)
             self.ready_fname(date=date, path=path)
 
-        pos_count = Position.objects.count()
-        overall_count = Overall.objects.count()
+        position_statement_count = models.PositionStatement.objects.count()
+        position_count = models.Underlying.objects.count()
 
-        print 'pos count: %d and overall count: %d\n' % (pos_count, overall_count)
+
+        print 'position statement count: %d and position count: %d\n' \
+              % (position_statement_count, position_count)

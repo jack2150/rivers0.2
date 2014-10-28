@@ -30,7 +30,7 @@ class TestViews(TestCase):
         self.client.get(reverse('pos_import_app_complete', args=(self.file_date,)))
         self.move_csv_back_to_folder()
 
-        pos_count = models.Position.objects.count()
+        pos_count = models.Underlying.objects.count()
         overall_count = models.Overall.objects.count()
 
         print 'pos count: %d and overall count: %d' % (pos_count, overall_count)

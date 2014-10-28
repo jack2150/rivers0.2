@@ -42,37 +42,45 @@ def complete(request, date=None):
         # continues...
         positions, overall = OpenPos(path).read()
 
+        position_statement = pm.PositionStatement(**overall)
+        position_statement.date = date
+        position_statement.save()
+
         for position in positions:
-            # save positions
-            pos = pm.Position(
-                symbol=position['Symbol'],
-                company=position['Company'],
-                date=date
-            )
-            pos.save()
+            # save underlying if not exists
+            underlying_obj = pm.Underlying.objects.filter(symbol=position['Symbol'])
+            if underlying_obj.exists():
+                underlying = underlying_obj.first()
+            else:
+                underlying = pm.Underlying(
+                    symbol=position['Symbol'],
+                    company=position['Company']
+                )
+                underlying.save()
 
             # save instrument
             instrument = pm.PositionInstrument()
             instrument.set_dict(position['Instrument'])
-            instrument.position = pos
+            instrument.position_statement = position_statement
+            instrument.underlying = underlying
             instrument.save()
 
             # save stock
             stock = pm.PositionStock()
             stock.set_dict(position['Stock'])
-            stock.position = pos
+            stock.position_statement = position_statement
+            stock.underlying = underlying
+            stock.instrument = instrument
             stock.save()
 
             # save options
             for pos_option in position['Options']:
                 option = pm.PositionOption()
                 option.set_dict(pos_option)
-                option.position = pos
+                option.position_statement = position_statement
+                option.underlying = underlying
+                option.instrument = instrument
                 option.save()
-
-        pos_overall = pm.Overall(**overall)
-        pos_overall.date = date
-        pos_overall.save()
 
         # move files into completed folder
         rename(path, os.path.join(FILES['position_statement'], 'save', fname))
@@ -82,6 +90,7 @@ def complete(request, date=None):
             'date': str(date),
             'fname': str(fname)
         }
+
     except IOError:
         # set parameters into templates
         parameters = {
