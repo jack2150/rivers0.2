@@ -1,4 +1,5 @@
 import os
+from pprint import pprint
 from lib.test import TestSetUp
 from rivers.settings import FILES
 from lib.io.open_pos import OpenPos
@@ -9,10 +10,13 @@ class TestOpenPos(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
-        self.test_file = os.path.join(FILES['position_statement'],
-                                      '2014-10-22-PositionStatement.csv')
+        self.test_file = os.path.join(
+            FILES['position_statement'], '2014-10-22-PositionStatement.csv'
+        )
 
-        self.open_csv = OpenPos(fname=self.test_file)
+        self.pos_data = open(self.test_file).read()
+
+        self.open_csv = OpenPos(data=self.pos_data)
 
     def test_is_positions(self):
         """
@@ -375,18 +379,18 @@ class TestOpenPos(TestSetUp):
         positions = self.open_csv.positions
 
         for pos in positions:
-            self.assertEqual(pos['Symbol'], symbol)
-            self.assertIn('Symbol', pos.keys())
-            self.assertIn('Company', pos.keys())
-            self.assertIn('Instrument', pos.keys())
-            self.assertIn('Stock', pos.keys())
-            self.assertIn('Options', pos.keys())
+            self.assertEqual(pos['symbol'], symbol)
+            self.assertIn('symbol', pos.keys())
+            self.assertIn('company', pos.keys())
+            self.assertIn('instrument', pos.keys())
+            self.assertIn('stock', pos.keys())
+            self.assertIn('options', pos.keys())
 
-            print 'Symbol: %s' % pos['Symbol']
-            print 'Company: %s' % pos['Company']
-            print 'Instrument: %s' % pos['Instrument']
-            print 'Stock: %s' % pos['Stock']
-            print 'Options: %s' % pos['Options']
+            print 'Symbol: %s' % pos['symbol']
+            print 'Company: %s' % pos['company']
+            print 'Instrument: %s' % pos['instrument']
+            print 'Stock: %s' % pos['stock']
+            print 'Options: %s' % pos['options']
 
     def test_set_pos_from_lines(self):
         """
@@ -400,17 +404,17 @@ class TestOpenPos(TestSetUp):
         #self.assertEqual(len(positions), 21)
 
         for pos in positions:
-            self.assertIn('Symbol', pos.keys())
-            self.assertIn('Company', pos.keys())
-            self.assertIn('Instrument', pos.keys())
-            self.assertIn('Stock', pos.keys())
-            self.assertIn('Options', pos.keys())
+            self.assertIn('symbol', pos.keys())
+            self.assertIn('company', pos.keys())
+            self.assertIn('instrument', pos.keys())
+            self.assertIn('stock', pos.keys())
+            self.assertIn('options', pos.keys())
 
-            print 'Symbol: %s' % pos['Symbol']
-            print 'Company: %s' % pos['Company']
-            print 'Instrument: %s' % pos['Instrument']
-            print 'Stock: %s' % pos['Stock']
-            print 'Options: %s' % pos['Options']
+            print 'Symbol: %s' % pos['symbol']
+            print 'Company: %s' % pos['company']
+            print 'Instrument: %s' % pos['instrument']
+            print 'Stock: %s' % pos['stock']
+            print 'Options: %s' % pos['options']
             print ''
 
     def test_is_overall(self):
@@ -559,17 +563,17 @@ class TestOpenPos(TestSetUp):
                 elif key == 'Options':
                     self.assertEqual(type(item), list)
 
-            self.assertIn('Symbol', position.keys())
-            self.assertIn('Company', position.keys())
-            self.assertIn('Instrument', position.keys())
-            self.assertIn('Stock', position.keys())
-            self.assertIn('Options', position.keys())
+            self.assertIn('symbol', position.keys())
+            self.assertIn('company', position.keys())
+            self.assertIn('instrument', position.keys())
+            self.assertIn('stock', position.keys())
+            self.assertIn('options', position.keys())
 
-            print 'Symbol: %s' % position['Symbol']
-            print 'Company: %s' % position['Company']
-            print 'Instrument: %s' % position['Instrument']
-            print 'Stock: %s' % position['Stock']
-            print 'Options: %s' % position['Options']
+            print 'Symbol: %s' % position['symbol']
+            print 'Company: %s' % position['company']
+            print 'Instrument: %s' % position['instrument']
+            print 'Stock: %s' % position['stock']
+            print 'Options: %s' % position['options']
             print ''
 
         # overall section
@@ -588,11 +592,12 @@ class TestOpenPos(TestSetUp):
         """
         test_date = '2014-03-10'
         test_path = os.path.join(FILES['position_statement'], 'tests', '2014-03-10-stock.csv')
+        data = open(test_path).read()
 
         print 'file date: %s' % test_date
         print 'file path: %s\n' % test_path
 
-        open_csv = OpenPos(fname=test_path)
+        open_csv = OpenPos(data=data)
 
         positions, overalls = open_csv.read()
 
@@ -606,7 +611,7 @@ class TestOpenPos(TestSetUp):
                 elif key == 'Options':
                     self.assertEqual(type(item), list)
 
-            for key in ['Symbol', 'Company', 'Instrument', 'Stock', 'Options']:
+            for key in ['symbol', 'company', 'instrument', 'stock', 'options']:
                 self.assertIn(key, position.keys())
                 print '%s found in positions!' % key
 
@@ -627,24 +632,32 @@ class TestOpenPos(TestSetUp):
         ]
 
         for f in files:
-            open_csv = OpenPos(fname=os.path.join(FILES['position_statement'], 'tests', f))
+            data = open(os.path.join(FILES['position_statement'], 'tests', f)).read()
+            open_pso = OpenPos(data=data)
 
-            pos, ov = open_csv.read()
+            positions, overall = open_pso.read()
 
             print 'fname: %s' % f
-            print 'positions length: %d' % len(pos)
-            print 'overall length: %d\n' % len(ov)
+            print 'positions length: %d' % len(positions)
+            print 'overall length: %d\n' % len(overall)
 
-            self.assertGreater(len(pos), 1)
-            self.assertEqual(len(ov), 5)
+            self.assertGreater(len(positions), 1)
+            self.assertEqual(len(overall), 5)
 
     def test_2014_09_06_file(self):
         f = os.path.join(FILES['position_statement'], '2014-09-06-PositionStatement.csv')
+        data = open(f).read()
 
-        open_csv = OpenPos(fname=f)
+        open_pos = OpenPos(data=data)
 
-        pos, ov = open_csv.read()
+        positions, overall = open_pos.read()
 
         print 'fname: %s' % f
-        print 'positions length: %d' % len(pos)
-        print 'overall length: %d\n' % len(ov)
+        print 'positions length: %d' % len(positions)
+        print 'overall length: %d\n' % len(overall)
+
+        self.assertEqual(len(positions), 14)
+        self.assertEqual(len(overall), 5)
+
+        pprint(positions)
+        pprint(overall)

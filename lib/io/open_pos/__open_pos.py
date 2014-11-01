@@ -6,12 +6,12 @@ class OpenPos(OpenCSV):
     Open a positions csv file from tos
     format then read positions data
     """
-    def __init__(self, fname):
+    def __init__(self, data):
         """
-        :param fname: str
+        :param data: str
         """
         # file name
-        OpenCSV.__init__(self, fname)
+        OpenCSV.__init__(self, data)
 
         # position columns
         self.position_columns = [
@@ -236,11 +236,11 @@ class OpenPos(OpenCSV):
         :param symbol: str
         """
         self.positions.append({
-            'Symbol': symbol,
-            'Company': self.get_company_name(stock),
-            'Instrument': instrument,
-            'Stock': stock,
-            'Options': options
+            'symbol': symbol,
+            'company': self.get_company_name(stock),
+            'instrument': instrument,
+            'stock': stock,
+            'options': options
         })
 
     def set_pos_from_lines(self):
@@ -255,7 +255,8 @@ class OpenPos(OpenCSV):
 
         :rtype: None
         """
-        lines = self.read_lines_from_file()
+        #lines = self.read_lines_from_file()
+        lines = self.lines
 
         symbol, instrument = self.reset_symbol_and_instrument()
         stock, options = self.reset_stock_and_options()
@@ -349,7 +350,8 @@ class OpenPos(OpenCSV):
         and create overall dict then save into class
         :rtype : None
         """
-        lines = self.read_lines_from_file()
+        #lines = self.read_lines_from_file()
+        lines = self.lines
 
         # reset the overall variable
         overall = list()

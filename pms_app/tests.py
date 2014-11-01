@@ -1,14 +1,20 @@
+from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from lib.test import TestSetUp
-from pms_app import models, admin
+from pms_app import admin
+from pms_app.acc_app.models import *
+from pms_app.pos_app.models import *
+from pms_app.ta_app.models import *
 from django.core.files.uploadedfile import SimpleUploadedFile
 from pprint import pprint
+from rivers.settings import BASE_DIR
 
 
 class TestSetUpUnderlying(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
-        self.underlying = models.Underlying(
+        self.underlying = Underlying(
             symbol='SPX',
             company='S&P 500 Index'
         )
@@ -19,7 +25,7 @@ class TestUnderlying(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
-        self.underlying = models.Underlying(
+        self.underlying = Underlying(
             symbol='SPX',
             company='S&P 500 Index'
         )
@@ -55,7 +61,7 @@ class TestStatement(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
-        self.statement = models.Statement(
+        self.statement = Statement(
             date='2014-10-21',
             account_statement='account statement data',
             position_statement='position statement data',
@@ -77,6 +83,19 @@ class TestStatement(TestSetUp):
         print 'statement id: %d' % self.statement.id
 
         self.assertTrue(self.statement.id)
+
+
+class TestReadyStatement(TestSetUp):
+    def setUp(self):
+        TestSetUp.setUp(self)
+
+        self.statement = Statement(
+            date='2014-10-21',
+            account_statement='account statement data',
+            position_statement='position statement data',
+            trade_activity='trade activity data'
+        )
+        self.statement.save()
 
 
 class TestPmsImportStatementsForm(TestSetUp):
@@ -132,10 +151,7 @@ class TestPmsImportStatementsForm(TestSetUp):
         self.assertFalse(result)
 
         errors = self.pms_form.errors.as_text()
-        self.assertIn(
-            'All statement files must have (-1 biz day) as file date',
-            errors
-        )
+        self.assertIn('All date must have (-1 BDay', errors)
 
         print 'errors text:'
         print errors
@@ -267,3 +283,84 @@ class TestPmsImportStatementsForm(TestSetUp):
 class TestPmsImportStatementView(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
+
+        self.user = User.objects.create_superuser(
+            username='jack',
+            email='a@b.com',
+            password='pass'
+        )
+
+        self.date = '2014-10-21'
+
+        self.account_statement = SimpleUploadedFile(
+            '2014-10-22-AccountStatement.csv',
+            open(BASE_DIR + '/pms_app/tests/2014-10-31/2014-10-31-AccountStatement.csv').read()
+        )
+        self.position_statement = SimpleUploadedFile(
+            '2014-10-22-PositionStatement.csv',
+            open(BASE_DIR + '/pms_app/tests/2014-10-31/2014-10-31-PositionStatement.csv').read()
+        )
+        self.trade_activity = SimpleUploadedFile(
+            '2014-10-22-TradeActivity.csv',
+            open(BASE_DIR + '/pms_app/tests/2014-10-31/2014-10-31-TradeActivity.csv').read()
+        )
+
+    def test_submit_import_statement_form(self):
+        """
+        Test open import statement url and set post data then upload files
+        :return: None
+        """
+        print 'login as superuser...'
+        self.client.login(username='jack', password='pass')
+
+        print 'submit import statements form with post data...'
+        response = self.client.post(
+            path=reverse('admin:import_statement'),
+            data=dict(
+                date=self.date,
+                account_statement=self.account_statement,
+                position_statement=self.position_statement,
+                trade_activity=self.trade_activity
+            )
+        )
+
+        print 'testing redirect back into import form...'
+        self.assertRedirects(
+            response,
+            reverse('admin:import_statement', kwargs={'statement_id': 1}),
+            status_code=302,
+            target_status_code=200,
+            msg_prefix='',
+        )
+
+        print 'check statements is successful insert db...'
+        response = self.client.get(response['location'])
+        self.assertContains(response, 'All statements was inserted successfully.')
+
+        print 'Statement count: %d\n' % Statement.objects.count()
+
+        print '-' * 100 + '\n' + 'Account Statement\n' + '-' * 100
+        print 'AccountStatement count: %d' % AccountStatement.objects.count()
+        print 'ProfitsLosses count: %d' % ProfitsLosses.objects.count()
+        print 'TradeHistory count: %d' % TradeHistory.objects.count()
+        print 'OrderHistory count: %d' % OrderHistory.objects.count()
+        print 'Equities count: %d' % Equities.objects.count()
+        print 'Options count: %d' % Options.objects.count()
+        print 'CashBalance count: %d' % CashBalance.objects.count()
+        print 'Futures count: %d' % Futures.objects.count()
+        print 'Forex count: %d\n' % Forex.objects.count()
+
+        print '-' * 100 + '\n' + 'Position Statement\n' + '-' * 100
+        print 'PositionStatement count: %d' % PositionStatement.objects.count()
+        print 'statement count: %d' % Statement.objects.count()
+        print 'position statement count: %d' % PositionStatement.objects.count()
+        print 'position instrument count: %d' % PositionInstrument.objects.count()
+        print 'position stock count: %d' % PositionStock.objects.count()
+        print 'position options count: %d\n' % PositionOption.objects.count()
+
+        print '-' * 100 + '\n' + 'Trade Activity\n' + '-' * 100
+        print 'TradeActivity count: %d' % TradeActivity.objects.count()
+        print 'WorkingOrder count: %d' % WorkingOrder.objects.count()
+        print 'FilledOrder count: %d' % FilledOrder.objects.count()
+        print 'CancelledOrder count: %d' % CancelledOrder.objects.count()
+        print 'RollingStrategy count: %d\n' % RollingStrategy.objects.count()

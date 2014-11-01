@@ -45,7 +45,7 @@
 
 
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <form action="{% url 'admin:admin_import_position_statement' %}"
+    <form action="{% url 'admin:import_statement' %}"
           method="post" enctype="multipart/form-data">
         {% if form.errors %}
             <p class="errornote"> Please correct the error below. </p>

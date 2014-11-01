@@ -1,4 +1,3 @@
-from datetime import datetime
 import os
 from pprint import pprint
 from lib.test import TestSetUp
@@ -17,8 +16,9 @@ class TestOpenAcc(TestSetUp):
                        '2014-07-29-AccountStatement.csv']
 
         self.test_file = os.path.join(FILES['account_statement'], self.fnames[0])
+        self.sample_data = open(self.test_file).read()
 
-        self.open_acc = OpenAcc(fname=self.test_file)
+        self.open_acc = OpenAcc(data=self.sample_data)
 
     def test_property(self):
         """
@@ -230,7 +230,7 @@ class TestOpenAcc(TestSetUp):
         Test most important part in class
         """
         keys = ['cash_balance', 'futures', 'forex', 'order_history',
-                'trade_history', 'equities', 'options', 'summary']
+                'trade_history', 'equities', 'options', 'summary', 'profits_losses']
 
         for fname in self.fnames:
             path = os.path.join(FILES['account_statement'], fname)
@@ -238,11 +238,13 @@ class TestOpenAcc(TestSetUp):
             print 'fname: %s' % fname
             print 'path: %s' % path
 
-            open_acc = OpenAcc(path)
+            data = open(path).read()
+
+            open_acc = OpenAcc(data=data)
 
             result = open_acc.read()
             self.assertEqual(type(result), dict)
-            self.assertEqual(len(result), 8)
+            self.assertEqual(len(result), 9)
 
             pprint(result, width=200)
 

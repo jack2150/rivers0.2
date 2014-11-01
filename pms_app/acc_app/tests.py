@@ -1,90 +1,14 @@
 from datetime import datetime
+from glob import glob
 from pprint import pprint
 from django.utils.timezone import utc
+from lib.io.open_acc import OpenAcc
 from lib.test import TestSetUp
 from pms_app.acc_app import models
+from rivers.settings import FILES
 
 
-class TestCashBalance(TestSetUp):
-    def setUp(self):
-        TestSetUp.setUp(self)
-
-        self.items = {
-            'description': 'SOLD -1 VERTICAL FXI 100 AUG 14 40/38.5 PUT @.59', 'commissions': -3.0,
-            'time': '02:49:35', 'contract': 'TRD', 'ref_no': 798680668, 'amount': 59.0, 'fees': -0.07,
-            'date': '2014-07-24', 'balance': 956.94
-        }
-
-        self.cash_balance = models.CashBalance(**self.items)
-
-    def test_save(self):
-        """
-        Test set dict data into pos
-        """
-        self.cash_balance.save()
-
-        print 'Account statement saved!'
-        print 'pos id: %d' % self.cash_balance.id
-
-        self.assertTrue(self.cash_balance.id)
-
-    def test_json(self):
-        """
-        Test output json format data
-        """
-        print 'acc in json:'
-        pprint(eval(self.cash_balance.__unicode__()))
-
-        json = self.cash_balance.__unicode__()
-        self.assertEqual('{', json[0])
-        self.assertEqual('}', json[-1])
-
-        for key, item in self.items.items():
-            self.assertIn(key, json)
-            self.assertIn(str(item), json)
-
-
-class TestProfitsLosses(TestSetUp):
-    def setUp(self):
-        TestSetUp.setUp(self)
-
-        self.date = '2014-07-24'
-        self.items = {
-            'pl_pct': 0.0, 'description': 'GOLDMAN SACHS GROUP INC COM', 'pl_open': 0.0,
-            'margin_req': 0.0, 'symbol': 'GS', 'pl_day': 0.0, 'pl_ytd': -292.0
-        }
-
-        self.profits_losses = models.ProfitsLosses(date=self.date, **self.items)
-
-    def test_save(self):
-        """
-        Test set dict data into pos
-        """
-        self.profits_losses.save()
-
-        print 'Account statement saved!'
-        print 'pos id: %d' % self.profits_losses.id
-
-        self.assertTrue(self.profits_losses.id)
-
-    def test_json(self):
-        """
-        Test output json format data
-        """
-        print 'acc in json:'
-
-        pprint(eval(self.profits_losses.__unicode__()))
-
-        json = self.profits_losses.__unicode__()
-        self.assertEqual('{', json[0])
-        self.assertEqual('}', json[-1])
-
-        for key, item in self.items.items():
-            self.assertIn(key, json)
-            self.assertIn(str(item), json)
-
-
-class TestAccountSummary(TestSetUp):
+class TestAccountStatement(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
@@ -97,87 +21,105 @@ class TestAccountSummary(TestSetUp):
             'stock_buying_power': 5063.58
         }
 
-        self.account_summary = models.AccountStatement(date=self.date, **self.items)
+        self.statement = models.Statement(
+            date=self.date,
+            account_statement='All raw file data keep here...',
+            position_statement='None',
+            trade_activity='None',
+        )
+        self.statement.save()
+
+        self.account_statement = models.AccountStatement(
+            statement=self.statement,
+            date=self.date,
+            **self.items
+        )
+
+        self.cls_var = self.account_statement
+        self.expect_keys = (
+            'futures_commissions_ytd',
+            'stock_buying_power',
+            'commissions_ytd',
+            'date',
+            'net_liquid_value',
+            'option_buying_power'
+        )
 
     def test_save(self):
         """
-        Test set dict data into pos
+        Method use for test saving data into db
         """
-        self.account_summary.save()
+        if self.cls_var:
+            print 'sample date: '
+            pprint(self.items)
 
-        print 'Account statement saved!'
-        print 'pos id: %d' % self.account_summary.id
+            self.cls_var.save()
 
-        self.assertTrue(self.account_summary.id)
+            print '\n' + '%s saved!' % self.cls_var.__class__.__name__
+            print '%s id: %d' % (self.cls_var.__class__.__name__, self.cls_var.id)
 
-    def test_json(self):
+            self.assertTrue(self.cls_var.id)
+
+    def test_json_output(self):
         """
-        Test output json format data
+        Method use for test json output
         """
-        print 'acc in json:'
+        if self.cls_var:
+            cls_name = self.cls_var.__class__.__name__
+            print '%s in normal: %s' % (cls_name, self.cls_var.__unicode__())
+            print '%s in json: \n%s\n' % (cls_name, self.cls_var.json())
 
-        pprint(eval(self.account_summary.__unicode__()))
+            json = eval(self.cls_var.json())
 
-        json = self.account_summary.__unicode__()
-        self.assertEqual('{', json[0])
-        self.assertEqual('}', json[-1])
+            print 'dict:'
+            print json.keys()
 
-        for key, item in self.items.items():
-            self.assertIn(key, json)
-            self.assertIn(str(item), json)
+            print 'convert into dict:'
+            pprint(json)
+
+            for key in json.keys():
+                self.assertIn(key, self.expect_keys)
 
 
-class TestOrderHistory(TestSetUp):
+class TestOrderHistory(TestAccountStatement):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
 
-        self.date = '2014-07-24'
         use_dt = datetime(2014, 9, 28, 16, 16, 42, 462000, tzinfo=utc)
-        self.items ={
+        self.items = {
             'status': 'CANCELED', 'pos_effect': 'TO CLOSE', 'price': 0.95, 'contract': 'PUT',
             'side': 'BUY', 'symbol': 'FB', 'time_placed': use_dt, 'spread': 'VERTICAL',
             'expire_date': 'JUL4 14', 'strike': 67.0, 'tif': 'GTC', 'order': 'MKT', 'quantity': 1
         }
 
-        self.order_history = models.OrderHistory(date=self.date, **self.items)
+        self.underlying = models.Underlying(
+            symbol=self.items['symbol'],
+            company=''
+        )
+        self.underlying.save()
 
-    def test_save(self):
-        """
-        Test set dict data into pos
-        """
-        self.order_history.save()
+        self.order_history = models.OrderHistory(
+            account_statement=self.account_statement,
+            underlying=self.underlying
+        )
+        self.order_history.set_dict(items=self.items)
 
-        print 'Account statement saved!'
-        print 'pos id: %d' % self.order_history.id
+        self.cls_var = self.order_history
 
-        self.assertTrue(self.order_history.id)
-
-    def test_json(self):
-        """
-        Test output json format data
-        """
-        print 'acc in json:'
-
-        json = self.order_history.__unicode__()
-        pprint(eval(json))
-
-        self.assertEqual('{', json[0])
-        self.assertEqual('}', json[-1])
-
-        for key, item in self.items.items():
-            self.assertIn(key, json)
-
-            if key == 'time_placed':
-                self.assertEqual(type(item), datetime)
-            else:
-                self.assertIn(str(item), json)
+        self.expect_keys = (
+            'status', 'pos_effect', 'price', 'time_placed',
+            'account_statement', 'contract', 'side', 'spread',
+            'expire_date', 'strike', 'tif', 'order', 'symbol',
+            'quantity'
+        )
 
 
-class TestTradeHistory(TestSetUp):
+class TestTradeHistory(TestAccountStatement):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
 
-        self.date = '2014-07-24'
         use_dt = datetime(2014, 9, 28, 17, 57, 31, 114000, tzinfo=utc)
         self.items = {
             'pos_effect': 'TO CLOSE', 'order_type': 'LMT', 'net_price': 0.96, 'side': 'SELL',
@@ -185,200 +127,381 @@ class TestTradeHistory(TestSetUp):
             'execute_time': use_dt, 'strike': 37.5, 'price': 0.57, 'quantity': -3
         }
 
-        self.trade_history = models.TradeHistory(date=self.date, **self.items)
+        self.underlying = models.Underlying(
+            symbol=self.items['symbol'],
+            company=''
+        )
+        self.underlying.save()
 
-    def test_save(self):
-        """
-        Test set dict data into pos
-        """
-        self.trade_history.save()
+        self.trade_history = models.TradeHistory(
+            account_statement=self.account_statement,
+            underlying=self.underlying
+        )
+        self.trade_history.set_dict(self.items)
 
-        print 'Account statement saved!'
-        print 'pos id: %d' % self.trade_history.id
+        self.cls_var = self.trade_history
 
-        self.assertTrue(self.trade_history.id)
-
-    def test_json(self):
-        """
-        Test output json format data
-        """
-        print 'acc in json:'
-
-        json = self.trade_history.__unicode__()
-        pprint(eval(json))
-
-        self.assertEqual('{', json[0])
-        self.assertEqual('}', json[-1])
-
-        for key, item in self.items.items():
-            self.assertIn(key, json)
-
-            if key == 'execute_time':
-                self.assertEqual(type(item), datetime)
-            else:
-                self.assertIn(str(item), json)
+        self.expect_keys = (
+            'pos_effect', 'price', 'execute_time', 'account_statement',
+            'order_type', 'net_price', 'contract', 'side', 'spread',
+            'expire_date', 'strike', 'symbol', 'quantity'
+        )
 
 
-class TestEquities(TestSetUp):
+class TestCashBalance(TestAccountStatement):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
 
-        self.date = '2014-07-24'
+        self.items = {
+            'description': 'SOLD -1 VERTICAL FXI 100 AUG 14 40/38.5 PUT @.59', 'commissions': -3.0,
+            'time': '02:49:35', 'contract': 'TRD', 'ref_no': 798680668, 'amount': 59.0, 'fees': -0.07,
+            'balance': 956.94
+        }
+
+        self.cash_balance = models.CashBalance(
+            account_statement=self.account_statement,
+            **self.items
+        )
+
+        self.cls_var = self.cash_balance
+        self.expect_keys = (
+            'ref_no', 'amount', 'balance', 'contract', 'time',
+            'commissions', 'fees', 'account_statement', 'description'
+        )
+
+
+class TestProfitsLosses(TestAccountStatement):
+    def setUp(self):
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
+
+        self.items = {
+            'pl_pct': 0.0, 'description': 'GOLDMAN SACHS GROUP INC COM', 'pl_open': 0.0,
+            'margin_req': 0.0, 'symbol': 'GS', 'pl_day': 0.0, 'pl_ytd': -292.0
+        }
+
+        self.underlying = models.Underlying(
+            symbol=self.items['symbol'],
+            company=self.items['description']
+        )
+        self.underlying.save()
+
+        self.profits_losses = models.ProfitsLosses(
+            account_statement=self.account_statement,
+            underlying=self.underlying
+        )
+        self.profits_losses.set_dict(self.items)
+
+        self.cls_var = self.profits_losses
+
+        self.expect_keys = (
+            'pl_pct', 'description', 'pl_ytd', 'pl_open', 'margin_req',
+            'symbol', 'account_statement', 'pl_day'
+        )
+
+
+class TestEquities(TestAccountStatement):
+    def setUp(self):
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
+
         self.items = {
             'symbol': 'TZA', 'trade_price': 15.12, 'quantity': 200,
             'description': 'DIREXION SHARES TRUST DAILY SMALL CAP BEAR 3X SHAR'
         }
 
-        self.equities = models.Equities(date=self.date, **self.items)
+        self.underlying = models.Underlying(
+            symbol=self.items['symbol'],
+            company=self.items['description']
+        )
+        self.underlying.save()
 
-    def test_save(self):
-        """
-        Test set dict data into pos
-        """
-        self.equities.save()
+        self.equities = models.Equities(
+            account_statement=self.account_statement,
+            underlying=self.underlying
+        )
+        self.equities.set_dict(self.items)
 
-        print 'Account statement saved!'
-        print 'pos id: %d' % self.equities.id
-
-        self.assertTrue(self.equities.id)
-
-    def test_json(self):
-        """
-        Test output json format data
-        """
-        print 'acc in json:'
-
-        json = self.equities.__unicode__()
-        pprint(eval(json))
-
-        self.assertEqual('{', json[0])
-        self.assertEqual('}', json[-1])
-
-        for key, item in self.items.items():
-            self.assertIn(key, json)
-
-            self.assertIn(str(item), json)
+        self.cls_var = self.equities
+        self.expect_keys = (
+            'symbol', 'trade_price', 'description', 'account_statement', 'quantity'
+        )
 
 
-class TestOptions(TestSetUp):
+class TestOptions(TestAccountStatement):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
 
-        self.date = '2014-07-24'
         self.items = {
             'symbol': 'TLT', 'contract': 'PUT', 'option_code': 'TLT140816P113',
             'expire_date': 'AUG 14', 'strike': 113.0, 'trade_price': 0.74, 'quantity': 3
         }
 
-        self.options = models.Options(date=self.date, **self.items)
+        self.underlying = models.Underlying(
+            symbol=self.items['symbol'],
+            company=''
+        )
+        self.underlying.save()
 
-    def test_save(self):
-        """
-        Test set dict data into pos
-        """
-        self.options.save()
+        self.options = models.Options(
+            account_statement=self.account_statement,
+            underlying=self.underlying
+        )
+        self.options.set_dict(self.items)
 
-        print 'Account statement saved!'
-        print 'pos id: %d' % self.options.id
-
-        self.assertTrue(self.options.id)
-
-    def test_json(self):
-        """
-        Test output json format data
-        """
-        print 'acc in json:'
-
-        json = self.options.__unicode__()
-        pprint(eval(json))
-
-        self.assertEqual('{', json[0])
-        self.assertEqual('}', json[-1])
-
-        for key, item in self.items.items():
-            self.assertIn(key, json)
-
-            self.assertIn(str(item), json)
+        self.cls_var = self.options
+        self.expect_keys = (
+            'contract', 'option_code', 'expire_date', 'strike', 'symbol',
+            'trade_price', 'account_statement', 'quantity'
+        )
 
 
-class TestFutures(TestSetUp):
+class TestFutures(TestAccountStatement):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
 
-        self.date = '2014-07-24'
         self.items = {
             'execute_date': '2014-07-23', 'description': 'Enter Market', 'commissions': 4.95, 'fees': 2.34,
             'contract': 'BUY', 'execute_time': '22:21:27', 'ref_no': 'ABC123456', 'amount': 3130.0,
             'trade_date': '2014-07-23', 'balance': 4000.0
         }
 
-        self.futures = models.Futures(date=self.date, **self.items)
+        self.futures = models.Futures(
+            account_statement=self.account_statement,
+            **self.items
+        )
 
-    def test_save(self):
-        """
-        Test set dict data into pos
-        """
-        self.futures.save()
-
-        print 'Account statement saved!'
-        print 'pos id: %d' % self.futures.id
-
-        self.assertTrue(self.futures.id)
-
-    def test_json(self):
-        """
-        Test output json format data
-        """
-        print 'acc in json:'
-
-        json = self.futures.__unicode__()
-        pprint(eval(json))
-
-        self.assertEqual('{', json[0])
-        self.assertEqual('}', json[-1])
-
-        for key, item in self.items.items():
-            self.assertIn(key, json)
-
-            self.assertIn(str(item), json)
+        self.cls_var = self.futures
+        self.expect_keys = [
+            'description', 'commissions', 'execute_time', 'fees', 'account_statement',
+            'execute_date', 'contract', 'ref_no', 'amount', 'trade_date', 'balance'
+        ]
 
 
-class TestForex(TestSetUp):
+class TestForex(TestAccountStatement):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
 
         self.items = {
             'amount_usd': 0.0, 'description': 'Cash balance at the start of the business day 23.07 CST',
             'commissions': 0.0, 'contract': 'BAL', 'ref_no': 0L, 'amount': 0.0, 'time': '13:00:00',
-            'date': '2014-07-23', 'balance': 0.0
+            'balance': 0.0
         }
 
-        self.forex = models.Forex(**self.items)
+        self.forex = models.Forex(
+            account_statement=self.account_statement,
+            **self.items
+        )
 
-    def test_save(self):
+        self.cls_var = self.forex
+        self.expect_keys = [
+            'ref_no', 'amount', 'balance', 'contract', 'time', 'commissions',
+            'amount_usd', 'account_statement', 'description'
+        ]
+
+
+class TestOpenAccSaveAll(TestSetUp):
+    def setUp(self):
+        TestSetUp.setUp(self)
+
+        self.acc_files = glob(FILES['account_statement'] + '/*.csv')
+
+    def insert_db(self, no, account_statement, test_model, data_list):
         """
-        Test set dict data into pos
+        Save related data into model with pos statement
+        :param no: int
+        :param account_statement: TradeActivity
+        :param test_model: any models.class
+        :param data_list: list of dict
         """
-        self.forex.save()
+        ids = list()
+        for data in data_list:
+              # if symbol key exists in data_list
+            if 'symbol' in data.keys():
+                test_cls = test_model(account_statement=account_statement)
 
-        print 'Account statement saved!'
-        print 'pos id: %d' % self.forex.id
+                underlying_obj = models.Underlying.objects.filter(symbol=data['symbol'])
+                if underlying_obj.count():
+                    underlying = underlying_obj.first()
+                else:
+                    company = ''
+                    if 'description' in data.keys():
+                        company = data['description']
 
-        self.assertTrue(self.forex.id)
+                    underlying = models.Underlying(
+                        symbol=data['symbol'],
+                        company=company
+                    )
+                    underlying.save()
 
-    def test_json(self):
+                test_cls.underlying = underlying
+                test_cls.set_dict(data)
+                test_cls.save()
+            else:
+                test_cls = test_model(account_statement=account_statement)
+                test_cls.set_dict(data)
+                test_cls.save()
+
+            ids.append(test_cls.id)
+
+        print '%d. save %s... ids: %s' % (
+            no, test_model.__name__, ids
+        )
+
+        for saved_cls in test_model.objects.all():
+            print saved_cls.id, saved_cls, saved_cls.json()
+
+    def test_read_save(self):
         """
-        Test output json format data
+        Open Acc file data then save all fields into db
         """
-        print 'acc in json:'
+        for key, acc_file in enumerate(self.acc_files, start=1):
+            print '%d. run filename: %s' % (key, acc_file)
+            print 'starting...\n'
 
-        json = self.forex.__unicode__()
-        pprint(eval(json))
+            date = acc_file[54:64]
+            file_data = open(acc_file).read()
 
-        self.assertEqual('{', json[0])
-        self.assertEqual('}', json[-1])
+            statement = models.Statement(
+                date=date,
+                account_statement=file_data,
+                position_statement='None',
+                trade_activity='None',
+            )
+            statement.save()
 
-        for key, item in self.items.items():
-            self.assertIn(key, json)
+            # open acc
+            acc_data = OpenAcc(data=file_data).read()
 
-            self.assertIn(str(item), json)
+            # start save acc statement
+            account_statement = models.AccountStatement(
+                statement=statement,
+                date=date,
+                **acc_data['summary']
+            )
+            account_statement.save()
+
+            print 'statement id: %d' % statement.id
+            print 'account_statement id: %d' % account_statement.id
+
+            # first, must save profits losses
+            self.insert_db(
+                no=key,
+                account_statement=account_statement,
+                test_model=models.ProfitsLosses,
+                data_list=acc_data['profits_losses']
+            )
+
+            self.insert_db(
+                no=key,
+                account_statement=account_statement,
+                test_model=models.OrderHistory,
+                data_list=acc_data['order_history']
+            )
+
+            self.insert_db(
+                no=key,
+                account_statement=account_statement,
+                test_model=models.TradeHistory,
+                data_list=acc_data['trade_history']
+            )
+
+            self.insert_db(
+                no=key,
+                account_statement=account_statement,
+                test_model=models.CashBalance,
+                data_list=acc_data['cash_balance']
+            )
+
+            self.insert_db(
+                no=key,
+                account_statement=account_statement,
+                test_model=models.Equities,
+                data_list=acc_data['equities']
+            )
+
+            self.insert_db(
+                no=key,
+                account_statement=account_statement,
+                test_model=models.Options,
+                data_list=acc_data['options']
+            )
+
+            self.insert_db(
+                no=key,
+                account_statement=account_statement,
+                test_model=models.Futures,
+                data_list=acc_data['futures']
+            )
+
+            self.insert_db(
+                no=key,
+                account_statement=account_statement,
+                test_model=models.Forex,
+                data_list=acc_data['forex']
+            )
+
+            print '\n' + '-' * 100
+
+        print 'underlying count: %d' % models.Underlying.objects.count()
+
+
+class TestSaveAccountStatement(TestSetUp):
+    def setUp(self):
+        TestSetUp.setUp(self)
+
+        self.acc_files = glob(FILES['account_statement'] + '/*.csv')
+
+    def test_save_all(self):
+        """
+        Test save all data from pos_data into models
+        :return: None
+        """
+        for no, acc_file in enumerate(self.acc_files, start=1):
+            print '%d. run filename: %s' % (no, acc_file)
+            print 'starting...\n'
+
+            date = acc_file[54:64]
+            acc_data = open(acc_file).read()
+
+            statement = models.Statement(
+                date=date,
+                account_statement='None',
+                position_statement=acc_data,
+                trade_activity='None',
+            )
+            statement.save()
+
+            save_acc = models.SaveAccountStatement(
+                date=date,
+                statement=statement,
+                file_data=acc_data
+            )
+            save_acc.save_all()
+
+            print 'Statement count: %d' % models.Statement.objects.count()
+            print 'AccountStatement count: %d' % models.AccountStatement.objects.count()
+            print 'ProfitsLosses count: %d' % models.ProfitsLosses.objects.count()
+            print 'TradeHistory count: %d' % models.TradeHistory.objects.count()
+            print 'OrderHistory count: %d' % models.OrderHistory.objects.count()
+            print 'Equities count: %d' % models.Equities.objects.count()
+            print 'Options count: %d' % models.Options.objects.count()
+            print 'CashBalance count: %d' % models.CashBalance.objects.count()
+            print 'Futures count: %d' % models.Futures.objects.count()
+            print 'Forex count: %d\n' % models.Forex.objects.count()
+
+            self.assertEqual(models.Statement.objects.count(), no)
+            self.assertEqual(models.AccountStatement.objects.count(), no)
+            self.assertGreater(models.ProfitsLosses.objects.count(), 0)
+            self.assertGreater(models.TradeHistory.objects.count(), 0)
+            self.assertGreater(models.Equities.objects.count(), 0)
+            self.assertGreater(models.Options.objects.count(), 0)
+            self.assertGreater(models.Options.objects.count(), 0)
+            self.assertGreater(models.CashBalance.objects.count(), 0)
+            self.assertGreater(models.Futures.objects.count(), 0)
+            self.assertGreater(models.Futures.objects.count(), 0)
+

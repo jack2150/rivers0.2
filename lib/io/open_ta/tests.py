@@ -13,8 +13,9 @@ class TestOpenTA(TestSetUp):
         self.fnames = ['2014-09-19-TradeActivity.csv', '2014-10-22-TradeActivity.csv']
 
         self.test_file = os.path.join(FILES['trade_activity'], self.fnames[1])
+        self.test_data = open(self.test_file).read()
 
-        self.open_ta = OpenTA(fname=self.test_file)
+        self.open_ta = OpenTA(data=self.test_data)
 
     def set_sections(self, method, prop, length, keys):
         """
@@ -58,6 +59,33 @@ class TestOpenTA(TestSetUp):
             print 'result: %s\n' % result
 
             self.assertEqual(result, expect)
+
+    def test_remove_working_order_rows(self):
+        """
+        Test remove empty quantity row in working order
+        """
+        self.open_ta.set_values(
+            start_phrase='Working Orders',
+            end_phrase=None,
+            start_with=2,
+            end_until=-1,
+            prop_keys=self.open_ta.working_order_keys,
+            prop_name='working_order'
+        )
+
+        print 'before, working order row: %d' % len(self.open_ta.working_order)
+        self.assertEqual(len(self.open_ta.working_order), 3)
+
+        print 'run remove empty quantity working order...\n'
+        self.open_ta.remove_working_order_rows()
+
+        for key, working_order in enumerate(self.open_ta.working_order):
+            print 'row: %d, working order: %d' % (key, working_order['quantity'])
+            self.assertTrue(working_order['quantity'])
+
+        print '\n' + 'after, working order row: %d' % len(self.open_ta.working_order)
+        self.assertEqual(len(self.open_ta.working_order), 2)
+
 
     def test_set_working_order(self):
         """
@@ -227,11 +255,12 @@ class TestOpenTA(TestSetUp):
 
         for fname in self.fnames:
             path = os.path.join(FILES['trade_activity'], fname)
+            data = open(path).read()
 
             print 'fname: %s' % fname
             print 'path: %s' % path
 
-            open_ta = OpenTA(path)
+            open_ta = OpenTA(data=data)
 
             result = open_ta.read()
             self.assertEqual(type(result), dict)
@@ -254,11 +283,12 @@ class TestOpenTA(TestSetUp):
 
         for fname in self.fnames:
             path = os.path.join(FILES['trade_activity'], fname)
+            data = open(path).read()
 
             print 'fname: %s' % fname
             print 'path: %s' % path
 
-            open_acc = OpenTA(path)
+            open_acc = OpenTA(data=data)
 
             result = open_acc.read()
             self.assertEqual(type(result), dict)

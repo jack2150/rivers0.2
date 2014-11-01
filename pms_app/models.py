@@ -38,15 +38,9 @@ class Statement(models.Model):
     """
     date = models.DateField(help_text='All statements date.')
     account_statement = models.TextField(help_text='Account statement file data.')
-    #account_statement_id = models.ForeignKey(PositionStatement, null=True)
-
     position_statement = models.TextField(help_text='Position statement file data.')
-    #position_statement_id = models.ForeignKey(PositionStatement, null=True)
-
     trade_activity = models.TextField(help_text='Trade activity file data.')
-    #trade_activity_id = models.ForeignKey(PositionStatement, null=True)
 
-    # todo: modify acc and ta model for foreign key
     def __unicode__(self):
         """
         Normal string output for class detail

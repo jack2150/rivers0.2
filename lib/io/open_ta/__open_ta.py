@@ -1,12 +1,11 @@
 from datetime import datetime
 from django.utils.timezone import utc
-import numpy
 from lib.io.open_csv import OpenCSV
 
 
 class OpenTA(OpenCSV):
-    def __init__(self, fname):
-        OpenCSV.__init__(self, fname)
+    def __init__(self, data):
+        OpenCSV.__init__(self, data)
 
         self.working_order_keys = [
             '', '', 'time_placed', 'spread', 'side', 'quantity',
@@ -90,6 +89,14 @@ class OpenTA(OpenCSV):
                 if str(value) == 'nan':
                     prop_obj[key][column] = 0.0
 
+    def remove_working_order_rows(self):
+        """
+        Remove empty quantity row in working orders
+        """
+        for key, working_order in enumerate(self.working_order):
+            if not working_order['quantity']:
+                self.working_order.pop(key)
+
     def set_working_order(self):
         """
         Set working_order into class property
@@ -103,6 +110,8 @@ class OpenTA(OpenCSV):
             prop_keys=self.working_order_keys,
             prop_name='working_order'
         )
+
+        self.remove_working_order_rows()
 
         self.working_order = map(self.del_empty_keys, self.working_order)
         self.convert_type(self.working_order, 'time_placed', self.convert_datetime, None)

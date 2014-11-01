@@ -8,8 +8,8 @@ class OpenAcc(OpenCSV):
     Open an account statement file and
     format then return all data as dict
     """
-    def __init__(self, fname):
-        OpenCSV.__init__(self, fname)
+    def __init__(self, data):
+        OpenCSV.__init__(self, data)
 
         self.summary_keys = [
             'net_liquid_value',
@@ -181,7 +181,11 @@ class OpenAcc(OpenCSV):
         )
 
         self.convert_specific_type(self.cash_balance, 'date', self.convert_date, '')
-        self.convert_specific_type(self.cash_balance, 'ref_no', int, 0)
+        self.convert_specific_type(self.cash_balance, 'ref_no', float, 0)
+        self.convert_specific_type(self.cash_balance, 'fees', float, 0.0)
+        self.convert_specific_type(self.cash_balance, 'commissions', float, 0.0)
+        self.convert_specific_type(self.cash_balance, 'amount', float, 0.0)
+        self.convert_specific_type(self.cash_balance, 'balance', float, 0.0)
 
     def set_futures(self):
         """
@@ -326,6 +330,7 @@ class OpenAcc(OpenCSV):
         self.set_trade_history()
         self.set_equities()
         self.set_options()
+        self.set_profits_losses()
         self.set_summary()
 
         return dict(
@@ -336,5 +341,6 @@ class OpenAcc(OpenCSV):
             trade_history=self.trade_history,
             equities=self.equities,
             options=self.options,
+            profits_losses=self.profits_losses,
             summary=self.summary
         )

@@ -6,18 +6,23 @@ class OpenCSV(object):
     """
     All class methods in here
     """
-    def __init__(self, fname):
-        self.fname = fname
+    def __init__(self, data):
+        #self.fname = fname
+        #self.lines = self.read_lines_from_file()
 
-        self.lines = self.read_lines_from_file()
+        self.lines = map(lambda l: l.rstrip(), data.split('\n'))
+        if not len(self.lines[-1]):
+            self.lines = self.lines[:-1]
 
-    def read_lines_from_file(self):
+
+
+    def read_lines_from_file(self, fname):
         """
         Read line from position file and
         remove new line at end of line
         :rtype : list
         """
-        return map(lambda l: l.rstrip(), open(self.fname).readlines())
+        self.lines = map(lambda l: l.rstrip(), open(fname).readlines())
 
     @classmethod
     def replace_dash_inside_quote(cls, line):

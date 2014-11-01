@@ -1,47 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="Complete: TA models, OpenIO">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/position_statement/2014-09-19-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/2014-10-22-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/files/2014-10-22-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/pms_app/app_index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/pms_app/filter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/pms_app/statement/import_position_statement.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/pms_app/pos_stock_change_list.html" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\files\position_statement\save\2014-09-19-PositionStatement.csv" afterPath="$PROJECT_DIR$/files/2014-10-22-PositionStatement.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Jack.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Jack.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/test/__init__.py" afterPath="$PROJECT_DIR$/lib/test/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/test/__test.py" afterPath="$PROJECT_DIR$/lib/test/__test.py" />
+    <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="Complete: new PosModel with blind&#10;Complete: import pms statements view and tests&#10;Starting: new AccModel with blind">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pms_app/tests/2014-10-31/2014-10-31-AccountStatement.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pms_app/tests/2014-10-31/2014-10-31-PositionStatement.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pms_app/tests/2014-10-31/2014-10-31-TradeActivity.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pms_app/tests/2014-11-01/2014-11-01-AccountStatement.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pms_app/tests/2014-11-01/2014-11-01-PositionStatement.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pms_app/tests/2014-11-01/2014-11-01-TradeActivity.csv" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\pms_app\statement\import_position_statement.html" afterPath="$PROJECT_DIR$/templates/admin/pms_app/statement/import_statement.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/open_acc/__open_acc.py" afterPath="$PROJECT_DIR$/lib/io/open_acc/__open_acc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/open_csv/__open_csv.py" afterPath="$PROJECT_DIR$/lib/io/open_csv/__open_csv.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/open_pos/__open_pos.py" afterPath="$PROJECT_DIR$/lib/io/open_pos/__open_pos.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/open_ta/__open_ta.py" afterPath="$PROJECT_DIR$/lib/io/open_ta/__open_ta.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/admin.py" afterPath="$PROJECT_DIR$/pms_app/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/acc_app/admin.py" afterPath="$PROJECT_DIR$/pms_app/acc_app/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/pos_app/admin.py" afterPath="$PROJECT_DIR$/pms_app/pos_app/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/ta_app/admin.py" afterPath="$PROJECT_DIR$/pms_app/ta_app/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/models.py" afterPath="$PROJECT_DIR$/pms_app/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/acc_app/models.py" afterPath="$PROJECT_DIR$/pms_app/acc_app/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/pos_app/models.py" afterPath="$PROJECT_DIR$/pms_app/pos_app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/settings.py" afterPath="$PROJECT_DIR$/rivers/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/ta_app/models.py" afterPath="$PROJECT_DIR$/pms_app/ta_app/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/open_acc/tests.py" afterPath="$PROJECT_DIR$/lib/io/open_acc/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/open_csv/tests.py" afterPath="$PROJECT_DIR$/lib/io/open_csv/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/open_pos/tests.py" afterPath="$PROJECT_DIR$/lib/io/open_pos/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/pos/identify/tests.py" afterPath="$PROJECT_DIR$/lib/pos/identify/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/pos/identify/hedge/tests.py" afterPath="$PROJECT_DIR$/lib/pos/identify/hedge/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/pos/identify/leg_one/tests.py" afterPath="$PROJECT_DIR$/lib/pos/identify/leg_one/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/pos/spread/tests.py" afterPath="$PROJECT_DIR$/lib/pos/spread/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/pos/spread/hedge/tests.py" afterPath="$PROJECT_DIR$/lib/pos/spread/hedge/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/pos/spread/leg_one/tests.py" afterPath="$PROJECT_DIR$/lib/pos/spread/leg_one/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/pos/spread/stock/tests.py" afterPath="$PROJECT_DIR$/lib/pos/spread/stock/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/open_ta/tests.py" afterPath="$PROJECT_DIR$/lib/io/open_ta/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/tests.py" afterPath="$PROJECT_DIR$/pms_app/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/acc_app/tests.py" afterPath="$PROJECT_DIR$/pms_app/acc_app/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/pos_app/tests.py" afterPath="$PROJECT_DIR$/pms_app/pos_app/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/pos_app/import_app/tests.py" afterPath="$PROJECT_DIR$/pms_app/pos_app/import_app/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/pos_app/view_app/tests.py" afterPath="$PROJECT_DIR$/pms_app/pos_app/view_app/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/pos_app/urls.py" afterPath="$PROJECT_DIR$/pms_app/pos_app/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/urls.py" afterPath="$PROJECT_DIR$/rivers/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/pos_app/views.py" afterPath="$PROJECT_DIR$/pms_app/pos_app/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/pos_app/import_app/views.py" afterPath="$PROJECT_DIR$/pms_app/pos_app/import_app/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/pos_app/view_app/views.py" afterPath="$PROJECT_DIR$/pms_app/pos_app/view_app/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/spr_app/views.py" afterPath="$PROJECT_DIR$/pms_app/spr_app/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pms_app/ta_app/tests.py" afterPath="$PROJECT_DIR$/pms_app/ta_app/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rivers.iws" />
@@ -55,31 +39,31 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_acc_tests.coverage" NAME="Test: lib.io.open_acc.tests Coverage Results" MODIFIED="1413330083710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_acc_tests.coverage" NAME="Test: lib.io.open_acc.tests Coverage Results" MODIFIED="1414663711203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__test_all.coverage" NAME="Test: test_all Coverage Results" MODIFIED="1411252037835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__pms_app_spr_app_tests.coverage" NAME="Test: pms_app.spr_app.tests Coverage Results" MODIFIED="1411252268368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__pms_app_pos_app_import_app_tests.coverage" NAME="Test: pms_app.pos_app.import_app.tests Coverage Results" MODIFIED="1411250494706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_pos_app_view_app_tests.coverage" NAME="Test: pms_app.pos_app.view_app.tests Coverage Results" MODIFIED="1411250500322" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_pos_app_view_app_tests.coverage" NAME="Test: pms_app.pos_app.view_app.tests Coverage Results" MODIFIED="1414685738901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_hedge_tests.coverage" NAME="Test: lib.pos.identify.hedge.tests Coverage Results" MODIFIED="1411250314367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__base_app_tests.coverage" NAME="Test: base_app.tests Coverage Results" MODIFIED="1411251891478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_stock_tests.coverage" NAME="Test: lib.pos.identify.stock.tests Coverage Results" MODIFIED="1411250333587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__lib_test___test.coverage" NAME="Test: lib.test.__test Coverage Results" MODIFIED="1414862193074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_dir_tests.coverage" NAME="Test: lib.io.open_dir.tests Coverage Results" MODIFIED="1411331814691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__lib_test___test.coverage" NAME="Test: lib.test.__test Coverage Results" MODIFIED="1414033778308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_leg_one_tests.coverage" NAME="Test: lib.pos.spread.leg_one.tests Coverage Results" MODIFIED="1411250358836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_stock_tests.coverage" NAME="Test: lib.pos.spread.stock.tests Coverage Results" MODIFIED="1411250363783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_tests.coverage" NAME="Test: lib.pos.spread.tests Coverage Results" MODIFIED="1411250344143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__all.coverage" NAME="Test: all Coverage Results" MODIFIED="1413945461773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_pos_app_tests.coverage" NAME="Test: pms_app.pos_app.tests Coverage Results" MODIFIED="1414144904944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_ta_tests.coverage" NAME="Test: lib.io.open_ta.tests Coverage Results" MODIFIED="1413945342895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__all.coverage" NAME="Test: all Coverage Results" MODIFIED="1414862199018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_pos_app_tests.coverage" NAME="Test: pms_app.pos_app.tests Coverage Results" MODIFIED="1414848752068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_ta_tests.coverage" NAME="Test: lib.io.open_ta.tests Coverage Results" MODIFIED="1414783357268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_hedge_tests.coverage" NAME="Test: lib.pos.spread.hedge.tests Coverage Results" MODIFIED="1411250353610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_tests_TestIdentify_is_methods.coverage" NAME="Test: lib.pos.identify.tests.TestIdentify.is_methods Coverage Results" MODIFIED="1411250278067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_tests.coverage" NAME="Test: pms_app.tests Coverage Results" MODIFIED="1414529055906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_tests.coverage" NAME="Test: pms_app.tests Coverage Results" MODIFIED="1414861947988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_tests.coverage" NAME="Test: lib.pos.identify.tests Coverage Results" MODIFIED="1411250291468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_acc_app_tests.coverage" NAME="Test: pms_app.acc_app.tests Coverage Results" MODIFIED="1414538380084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_acc_app_tests.coverage" NAME="Test: pms_app.acc_app.tests Coverage Results" MODIFIED="1414850942568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_leg_one_tests.coverage" NAME="Test: lib.pos.identify.leg_one.tests Coverage Results" MODIFIED="1411250323455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_ta_app_tests.coverage" NAME="Test: pms_app.ta_app.tests Coverage Results" MODIFIED="1413944242145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_csv_tests.coverage" NAME="Test: lib.io.open_csv.tests Coverage Results" MODIFIED="1411387120033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_pos_tests.coverage" NAME="Test: lib.io.open_pos.tests Coverage Results" MODIFIED="1414032478106" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_ta_app_tests.coverage" NAME="Test: pms_app.ta_app.tests Coverage Results" MODIFIED="1414854321680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_csv_tests.coverage" NAME="Test: lib.io.open_csv.tests Coverage Results" MODIFIED="1414663399675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_pos_tests.coverage" NAME="Test: lib.io.open_pos.tests Coverage Results" MODIFIED="1414848626273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -93,43 +77,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pms_app/acc_app/models.py">
+      <file leaf-file-name="tests.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/io/open_acc/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9282">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="6760">
+              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pms_app/pos_app/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="7410">
-              <caret line="45" column="11" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="tests.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pms_app/pos_app/tests.py">
+        <entry file="file://$PROJECT_DIR$/base_app/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47871116" vertical-offset="468" max-vertical-offset="6942">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.41887227" vertical-offset="0" max-vertical-offset="1066">
+              <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="tests.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pms_app/acc_app/tests.py">
+        <entry file="file://$PROJECT_DIR$/pms_app/spr_app/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2622" max-vertical-offset="10010">
-              <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1222">
+              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -153,26 +125,13 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/lib/io/open_pos/__open_pos.py" />
-        <option value="$PROJECT_DIR$/lib/io/open_ta/__init__.py" />
-        <option value="$PROJECT_DIR$/lib/io/open_csv/tests.py" />
-        <option value="$PROJECT_DIR$/lib/io/open_acc/tests.py" />
-        <option value="$PROJECT_DIR$/files/account_statement/2014-07-23-AccountStatement.csv" />
-        <option value="$PROJECT_DIR$/lib/io/open_acc/__open_acc.py" />
         <option value="$PROJECT_DIR$/lib/pos/identify/tests.py" />
-        <option value="$PROJECT_DIR$/pms_app/acc_app/tests.py" />
-        <option value="$PROJECT_DIR$/lib/io/open_csv/__open_csv.py" />
         <option value="$PROJECT_DIR$/files/trade_activity/2014-10-21-TradeActivity.csv" />
-        <option value="$PROJECT_DIR$/pms_app/ta_app/models.py" />
-        <option value="$PROJECT_DIR$/pms_app/ta_app/tests.py" />
-        <option value="$PROJECT_DIR$/lib/io/open_ta/__open_ta.py" />
         <option value="$PROJECT_DIR$/files/trade_activity/2014-10-22-TradeActivity.csv" />
-        <option value="$PROJECT_DIR$/lib/io/open_ta/tests.py" />
         <option value="$PROJECT_DIR$/pms_app/ta_app/admin.py" />
         <option value="$PROJECT_DIR$/pms_app/acc_app/admin.py" />
         <option value="$PROJECT_DIR$/pms_app/pos_app/tests2.py" />
         <option value="$PROJECT_DIR$/pms_app/pos_app/models2.py" />
-        <option value="$PROJECT_DIR$/lib/io/open_pos/tests.py" />
         <option value="$PROJECT_DIR$/lib/test/__init__.py" />
         <option value="$PROJECT_DIR$/lib/test/__test.py" />
         <option value="$PROJECT_DIR$/rivers/menu.py" />
@@ -185,7 +144,6 @@
         <option value="$PROJECT_DIR$/pms_app/pos_app/view_app/views.py" />
         <option value="dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..pos_app_position" />
         <option value="dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..pos_app_positionstatement" />
-        <option value="$PROJECT_DIR$/pms_app/pos_app/tests.py" />
         <option value="$PROJECT_DIR$/pms_app/pos_app/import_app/views.py" />
         <option value="$PROJECT_DIR$/templates/admin/pms_app/pos_stock_change_form.html" />
         <option value="C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/filter.html" />
@@ -195,15 +153,29 @@
         <option value="$PROJECT_DIR$/templates/admin/pms_app/pos_stock_change_list.html" />
         <option value="C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/index.html" />
         <option value="$PROJECT_DIR$/templates/admin/pms_app/pos_app/import_position_statement.html" />
-        <option value="dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..pms_app_statement" />
-        <option value="$PROJECT_DIR$/pms_app/tests.py" />
         <option value="$PROJECT_DIR$/templates/admin/pms_app/app_index.html" />
-        <option value="$PROJECT_DIR$/templates/admin/pms_app/statement/import_position_statement.html" />
-        <option value="$PROJECT_DIR$/pms_app/models.py" />
         <option value="dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..django_admin_log" />
-        <option value="$PROJECT_DIR$/pms_app/admin.py" />
-        <option value="$PROJECT_DIR$/pms_app/pos_app/models.py" />
+        <option value="$PROJECT_DIR$/lib/io/open_csv/__open_csv.py" />
+        <option value="$PROJECT_DIR$/lib/io/open_csv/tests.py" />
+        <option value="$PROJECT_DIR$/lib/io/open_ta/__open_ta.py" />
+        <option value="$PROJECT_DIR$/lib/io/open_ta/tests.py" />
+        <option value="$PROJECT_DIR$/lib/io/open_acc/__open_acc.py" />
+        <option value="$PROJECT_DIR$/lib/io/open_pos/__open_pos.py" />
+        <option value="$PROJECT_DIR$/lib/io/open_pos/tests.py" />
+        <option value="$PROJECT_DIR$/pms_app/pos_app/tests.py" />
+        <option value="$PROJECT_DIR$/lib/io/open_acc/tests.py" />
+        <option value="$PROJECT_DIR$/pms_app/acc_app/tests.py" />
+        <option value="$PROJECT_DIR$/pms_app/ta_app/tests.py" />
+        <option value="$PROJECT_DIR$/pms_app/ta_app/models.py" />
         <option value="$PROJECT_DIR$/pms_app/acc_app/models.py" />
+        <option value="$PROJECT_DIR$/pms_app/pos_app/models.py" />
+        <option value="dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..auth_user" />
+        <option value="$PROJECT_DIR$/templates/admin/pms_app/statement/import_position_statement.html" />
+        <option value="dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..pms_app_statement" />
+        <option value="$PROJECT_DIR$/pms_app/admin.py" />
+        <option value="$PROJECT_DIR$/templates/admin/pms_app/statement/import_statements.html" />
+        <option value="$PROJECT_DIR$/pms_app/tests.py" />
+        <option value="$PROJECT_DIR$/pms_app/models.py" />
       </list>
     </option>
   </component>
@@ -309,68 +281,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pms_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pms_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="rivers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -407,78 +317,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pms_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="acc_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="open_pos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -488,13 +326,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHub/dzh3uhos.sit/cmd/git.exe" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.2975" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="FullScreen" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Jack/Projects/rivers/pms_app/acc_app/models.py" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -503,14 +342,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jack\Projects\rivers\pms_app\tests" />
       <recent name="C:\Users\Jack\Projects\rivers\templates\admin\pms_app\statement" />
       <recent name="C:\Users\Jack\Projects\rivers\templates\admin\pms_app" />
       <recent name="C:\Users\Jack\Projects\rivers\files\position_statement" />
       <recent name="C:\Users\Jack\Projects\rivers\rivers" />
-      <recent name="C:\Users\Jack\Projects\rivers\files\trade_activity" />
     </key>
   </component>
-  <component name="RunManager" selected="Django tests.Test: pms_app.acc_app.tests">
+  <component name="RunManager" selected="Django tests.Test: all">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -690,6 +529,32 @@
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
+    <configuration default="false" name="rivers" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="rivers.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python\Anaconda\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <configuration default="false" name="Test: base_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="base_app">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -815,7 +680,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="rivers" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="lib.io.open_ta.tests.TestOpenTA.test_read" />
+      <option name="TARGET" value="lib.io.open_ta.tests" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
@@ -1004,7 +869,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Test: pms_app.pos_app.import_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="pos_app">
+    <configuration default="false" name="Test: pms_app.pos_app.import_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="pms.app">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -1026,7 +891,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Test: pms_app.pos_app.view_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="pos_app">
+    <configuration default="false" name="Test: pms_app.pos_app.view_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="pms.app">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -1048,7 +913,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Test: pms_app.acc_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="pos_app">
+    <configuration default="false" name="Test: pms_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="pms.app">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -1061,7 +926,31 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="rivers" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="pms_app.acc_app.tests" />
+      <option name="TARGET" value="pms_app.tests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test: pms_app.acc_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="pms.app">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="pms_app.acc_app.tests.TestSaveAccountStatement" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
@@ -1070,7 +959,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Test: pms_app.ta_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="pos_app">
+    <configuration default="false" name="Test: pms_app.pos_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="pms.app">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -1083,7 +972,31 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="rivers" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="pms_app.ta_app.tests" />
+      <option name="TARGET" value="pms_app.pos_app.tests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test: pms_app.ta_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="pms.app">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="pms_app.ta_app.tests.TestSaveTradeActivity" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
@@ -1114,76 +1027,6 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="rivers" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="rivers.settings" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python\Anaconda\python.exe" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: pms_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="pms_app.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: pms_app.pos_app.tests" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="pms_app.pos_app.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="Test: all" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -1206,53 +1049,30 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Test: lib.test.__test" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="lib.test.__test" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <list size="24">
-      <item index="0" class="java.lang.String" itemvalue="Django tests.Test: base_app.tests" />
-      <item index="1" class="java.lang.String" itemvalue="Django tests.Test: lib.io.open_dir.tests" />
-      <item index="2" class="java.lang.String" itemvalue="Django tests.Test: lib.io.open_csv.tests" />
-      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: lib.io.open_pos.tests" />
-      <item index="4" class="java.lang.String" itemvalue="Django tests.Test: lib.io.open_acc.tests" />
-      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: lib.io.open_ta.tests" />
-      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.identify.tests" />
-      <item index="7" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.identify.stock.tests" />
-      <item index="8" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.identify.hedge.tests" />
-      <item index="9" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.identify.leg_one.tests" />
-      <item index="10" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.spread.tests" />
-      <item index="11" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.spread.stock.tests" />
-      <item index="12" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.spread.hedge.tests" />
-      <item index="13" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.spread.leg_one.tests" />
-      <item index="14" class="java.lang.String" itemvalue="Django tests.Test: pms_app.pos_app.import_app.tests" />
-      <item index="15" class="java.lang.String" itemvalue="Django tests.Test: pms_app.pos_app.view_app.tests" />
-      <item index="16" class="java.lang.String" itemvalue="Django tests.Test: pms_app.acc_app.tests" />
-      <item index="17" class="java.lang.String" itemvalue="Django tests.Test: pms_app.ta_app.tests" />
-      <item index="18" class="java.lang.String" itemvalue="Django tests.Test: pms_app.spr_app.tests" />
-      <item index="19" class="java.lang.String" itemvalue="Django server.rivers" />
-      <item index="20" class="java.lang.String" itemvalue="Django tests.Test: pms_app.tests" />
-      <item index="21" class="java.lang.String" itemvalue="Django tests.Test: pms_app.pos_app.tests" />
+    <list size="23">
+      <item index="0" class="java.lang.String" itemvalue="Django server.rivers" />
+      <item index="1" class="java.lang.String" itemvalue="Django tests.Test: base_app.tests" />
+      <item index="2" class="java.lang.String" itemvalue="Django tests.Test: lib.io.open_dir.tests" />
+      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: lib.io.open_csv.tests" />
+      <item index="4" class="java.lang.String" itemvalue="Django tests.Test: lib.io.open_pos.tests" />
+      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: lib.io.open_acc.tests" />
+      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: lib.io.open_ta.tests" />
+      <item index="7" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.identify.tests" />
+      <item index="8" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.identify.stock.tests" />
+      <item index="9" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.identify.hedge.tests" />
+      <item index="10" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.identify.leg_one.tests" />
+      <item index="11" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.spread.tests" />
+      <item index="12" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.spread.stock.tests" />
+      <item index="13" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.spread.hedge.tests" />
+      <item index="14" class="java.lang.String" itemvalue="Django tests.Test: lib.pos.spread.leg_one.tests" />
+      <item index="15" class="java.lang.String" itemvalue="Django tests.Test: pms_app.pos_app.import_app.tests" />
+      <item index="16" class="java.lang.String" itemvalue="Django tests.Test: pms_app.pos_app.view_app.tests" />
+      <item index="17" class="java.lang.String" itemvalue="Django tests.Test: pms_app.tests" />
+      <item index="18" class="java.lang.String" itemvalue="Django tests.Test: pms_app.acc_app.tests" />
+      <item index="19" class="java.lang.String" itemvalue="Django tests.Test: pms_app.pos_app.tests" />
+      <item index="20" class="java.lang.String" itemvalue="Django tests.Test: pms_app.ta_app.tests" />
+      <item index="21" class="java.lang.String" itemvalue="Django tests.Test: pms_app.spr_app.tests" />
       <item index="22" class="java.lang.String" itemvalue="Django tests.Test: all" />
-      <item index="23" class="java.lang.String" itemvalue="Django tests.Test: lib.test.__test" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -1301,7 +1121,11 @@
       <created>1413945407020</created>
       <updated>1413945407020</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Complete: new PosModel with blind&#10;Complete: import pms statements view and tests&#10;Starting: new AccModel with blind">
+      <created>1414538480375</created>
+      <updated>1414538480375</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1331,18 +1155,18 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25240642" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2721925" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27807486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1391,7 +1215,8 @@
     <MESSAGE value="Complete: OpenAcc" />
     <MESSAGE value="Complete: Model Acc" />
     <MESSAGE value="Complete: TA models, OpenIO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete: TA models, OpenIO" />
+    <MESSAGE value="Complete: new PosModel with blind&#10;Complete: import pms statements view and tests&#10;Starting: new AccModel with blind" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete: new PosModel with blind&#10;Complete: import pms statements view and tests&#10;Starting: new AccModel with blind" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1405,176 +1230,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/pos/identify/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7905639" vertical-offset="1809" max-vertical-offset="2678">
-          <caret line="98" column="68" selection-start-line="98" selection-start-column="68" selection-end-line="98" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/ta_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.23935558" vertical-offset="3822" max-vertical-offset="5122">
-          <caret line="139" column="21" selection-start-line="139" selection-start-column="6" selection-end-line="139" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/ta_app/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.059838895" vertical-offset="0" max-vertical-offset="869">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/account_statement/2014-07-23-AccountStatement.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69417477" vertical-offset="0" max-vertical-offset="3770">
-          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/test/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="156">
-          <caret line="0" column="48" selection-start-line="0" selection-start-column="48" selection-end-line="0" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/test/__test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44764096" vertical-offset="963" max-vertical-offset="2938">
-          <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/position_statement/2014-10-22-PositionStatement.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44174758" vertical-offset="0" max-vertical-offset="1508">
-          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/io/open_pos/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21864212" vertical-offset="9872" max-vertical-offset="16952">
-          <caret line="390" column="8" selection-start-line="390" selection-start-column="8" selection-end-line="390" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26927504" vertical-offset="0" max-vertical-offset="869">
-          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..pos_app_position">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..pos_app_positionstatement">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/position_statement/2014-09-06-PositionStatement.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58980584" vertical-offset="788" max-vertical-offset="1612">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/db/backends/sqlite3/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21728972" vertical-offset="11046" max-vertical-offset="13546">
-          <caret line="451" column="0" selection-start-line="451" selection-start-column="0" selection-end-line="451" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/pos_app/import_app/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4056">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/pos_app/import_app/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/pos_app/import_app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="3666">
-          <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/filter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1558753" vertical-offset="0" max-vertical-offset="834">
-          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/pms_app/filter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28057554" vertical-offset="0" max-vertical-offset="834">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/static/admin/css/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21864212" vertical-offset="19310" max-vertical-offset="21996">
-          <caret line="750" column="1" selection-start-line="750" selection-start-column="1" selection-end-line="750" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/app_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37410071" vertical-offset="0" max-vertical-offset="834">
-          <caret line="12" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rivers/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50863063" vertical-offset="0" max-vertical-offset="869">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/pos_app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.803805" vertical-offset="0" max-vertical-offset="841">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pms_app/pos_app/view_app/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.86563617" vertical-offset="0" max-vertical-offset="3614">
@@ -1593,14 +1248,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42990655" vertical-offset="11254" max-vertical-offset="44278">
           <caret line="488" column="36" selection-start-line="488" selection-start-column="36" selection-end-line="488" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rivers/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.50863063" vertical-offset="624" max-vertical-offset="3094">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1629,74 +1276,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.2801461" vertical-offset="2117" max-vertical-offset="2938">
           <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..pms_app_statement">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/files/2014-10-22-AccountStatement.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4101942" vertical-offset="0" max-vertical-offset="3328">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/2014-10-22-TradeActivity.csv">
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6626214" vertical-offset="468" max-vertical-offset="1300">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/2014-10-22-PositionStatement.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6529126" vertical-offset="788" max-vertical-offset="1612">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="55" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0909091" vertical-offset="650" max-vertical-offset="7072">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pms_app/pos_app/view_app/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.59090906" vertical-offset="0" max-vertical-offset="728">
           <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/io/open_pos/__open_pos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36363637" vertical-offset="2808" max-vertical-offset="9932">
-          <caret line="116" column="25" selection-start-line="116" selection-start-column="11" selection-end-line="116" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1704,7 +1300,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.045454547" vertical-offset="0" max-vertical-offset="572">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1712,7 +1307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18705036" vertical-offset="0" max-vertical-offset="834">
           <caret line="6" column="54" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1720,7 +1314,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.71702635" vertical-offset="0" max-vertical-offset="1586">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="24" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1728,7 +1321,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.2485614" vertical-offset="338" max-vertical-offset="6266">
           <caret line="158" column="28" selection-start-line="158" selection-start-column="28" selection-end-line="158" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1736,85 +1328,343 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44336176" vertical-offset="234" max-vertical-offset="2210">
           <caret line="23" column="25" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..django_admin_log">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.01726122" vertical-offset="6983" max-vertical-offset="8164">
-          <caret line="268" column="28" selection-start-line="268" selection-start-column="28" selection-end-line="268" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76064444" vertical-offset="769" max-vertical-offset="1638">
-          <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/pms_app/statement/import_position_statement.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12470024" vertical-offset="0" max-vertical-offset="2886">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pms_app/acc_app/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41887227" vertical-offset="0" max-vertical-offset="869">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/io/open_csv/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57767546" vertical-offset="2696" max-vertical-offset="9256">
+          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/io/open_csv/__open_csv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38895282" vertical-offset="0" max-vertical-offset="5928">
+          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/trade_activity/2014-09-19-TradeActivity.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15776698" vertical-offset="0" max-vertical-offset="858">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/account_statement/2014-07-25-AccountStatement.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="4030">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/account_statement/2014-07-29-AccountStatement.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3354">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/account_statement/2014-10-22-AccountStatement.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9538834" vertical-offset="3258" max-vertical-offset="4082">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/io/open_acc/__open_acc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.018412" vertical-offset="5617" max-vertical-offset="9100">
+          <caret line="184" column="72" selection-start-line="184" selection-start-column="72" selection-end-line="184" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/io/open_ta/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7100115" vertical-offset="5441" max-vertical-offset="8476">
+          <caret line="238" column="65" selection-start-line="238" selection-start-column="65" selection-end-line="238" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/2014-10-22-TradeActivity.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7160194" vertical-offset="476" max-vertical-offset="1300">
+          <caret line="41" column="2" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="2" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/io/open_ta/__open_ta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23820484" vertical-offset="5695" max-vertical-offset="7280">
+          <caret line="229" column="60" selection-start-line="229" selection-start-column="60" selection-end-line="229" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/trade_activity/2014-10-21-TradeActivity.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.2936893" vertical-offset="242" max-vertical-offset="1066">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/account_statement/2014-07-23-AccountStatement.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2184465" vertical-offset="2652" max-vertical-offset="3770">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/2014-10-22-PositionStatement.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6092232" vertical-offset="0" max-vertical-offset="1612">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="55" selection-end-column="31" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/pos/identify/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7905639" vertical-offset="1809" max-vertical-offset="2678">
+          <caret line="98" column="14" selection-start-line="98" selection-start-column="14" selection-end-line="98" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/io/open_pos/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6503497" vertical-offset="14552" max-vertical-offset="17264">
+          <caret line="578" column="25" selection-start-line="578" selection-start-column="25" selection-end-line="578" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/io/open_pos/__open_pos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20828539" vertical-offset="5877" max-vertical-offset="9984">
+          <caret line="233" column="28" selection-start-line="233" selection-start-column="28" selection-end-line="233" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..auth_user">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="156">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pms_app/pos_app/import_app/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35788262" vertical-offset="3043" max-vertical-offset="3952">
+          <caret line="133" column="27" selection-start-line="133" selection-start-column="27" selection-end-line="133" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..pms_app_statement">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="312">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pms_app/pos_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="431" max-vertical-offset="2392">
+          <caret line="273" column="27" selection-start-line="273" selection-start-column="6" selection-end-line="273" selection-end-column="27" />
+          <folding>
+            <element signature="e#479#2179#0" expanded="false" />
+            <element signature="e#2241#4473#0" expanded="false" />
+            <element signature="e#4530#6707#0" expanded="false" />
+            <element signature="e#6750#10994#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pms_app/ta_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10241657" vertical-offset="2771" max-vertical-offset="5278">
+          <caret line="273" column="23" selection-start-line="273" selection-start-column="6" selection-end-line="273" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#141#434#0" expanded="false" />
+            <element signature="e#1164#3550#0" expanded="false" />
+            <element signature="e#3599#5773#0" expanded="false" />
+            <element signature="e#5825#8079#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pms_app/acc_app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9282">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.36214954" vertical-offset="11312" max-vertical-offset="14274">
+          <caret line="449" column="49" selection-start-line="449" selection-start-column="23" selection-end-line="449" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pms_app/acc_app/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2622" max-vertical-offset="10010">
-          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4228972" vertical-offset="12326" max-vertical-offset="13338">
+          <caret line="488" column="36" selection-start-line="488" selection-start-column="36" selection-end-line="488" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#29#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pms_app/tests/2014-10-31/2014-10-31-AccountStatement.csv">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3250">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pms_app/pos_app/models.py">
+    <entry file="file://$PROJECT_DIR$/pms_app/ta_app/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="7410">
-          <caret line="45" column="11" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.5140187" vertical-offset="8140" max-vertical-offset="9074">
+          <caret line="338" column="0" selection-start-line="338" selection-start-column="0" selection-end-line="343" selection-end-column="88" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pms_app/pos_app/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47871116" vertical-offset="468" max-vertical-offset="6942">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4913694" vertical-offset="8595" max-vertical-offset="9464">
+          <caret line="353" column="0" selection-start-line="353" selection-start-column="0" selection-end-line="358" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rivers/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1015" max-vertical-offset="3094">
+          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/pms_app/statement/import_statement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.014706" vertical-offset="955" max-vertical-offset="2886">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pms_app/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42857143" vertical-offset="3539" max-vertical-offset="9672">
+          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pms_app/spr_app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59090906" vertical-offset="2730" max-vertical-offset="3302">
+          <caret line="121" column="2" selection-start-line="121" selection-start-column="2" selection-end-line="121" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pms_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46144995" vertical-offset="613" max-vertical-offset="1482">
+          <caret line="39" column="71" selection-start-line="39" selection-start-column="71" selection-end-line="39" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pms_app/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.730725" vertical-offset="5787" max-vertical-offset="6890">
+          <caret line="338" column="36" selection-start-line="338" selection-start-column="36" selection-end-line="338" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#844#1889#0" expanded="false" />
+            <element signature="e#1940#2465#0" expanded="false" />
+            <element signature="e#2517#2804#0" expanded="false" />
+            <element signature="e#2857#3147#0" expanded="false" />
+            <element signature="e#3196#3468#0" expanded="false" />
+            <element signature="e#5347#5644#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/io/open_acc/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="6760">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pms_app/spr_app/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1222">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base_app/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41887227" vertical-offset="0" max-vertical-offset="1066">
+          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
           <folding />
         </state>
       </provider>

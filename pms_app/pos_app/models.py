@@ -1,13 +1,27 @@
 from django.db import models
-from pms_app.models import Underlying
+from lib.io import OpenPos
+from pms_app.models import Underlying, Statement
+
+
+class PositionModel(object):
+    def set_dict(self, items):
+        """
+        using raw dict, set related column into property only
+        :type items: dict
+        """
+        properties = vars(self)
+
+        for key, item in items.items():
+            if key in properties.keys():
+                setattr(self, key, item)
 
 
 class PositionStatement(models.Model):
     """
     A position statement contain date and overall data
     """
+    statement = models.ForeignKey(Statement)
     date = models.DateField(unique=True, verbose_name="Date")
-
     cash_sweep = models.DecimalField(
         max_digits=10, decimal_places=2, default=0.0, verbose_name="Cash Sweep"
     )
@@ -54,7 +68,7 @@ class PositionStatement(models.Model):
         )
 
 
-class PositionInstrument(models.Model):
+class PositionInstrument(models.Model, PositionModel):
     position_statement = models.ForeignKey(PositionStatement)
     underlying = models.ForeignKey(Underlying)
 
@@ -66,17 +80,6 @@ class PositionInstrument(models.Model):
     pl_open = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Open")
     pl_day = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Day")
     bp_effect = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="BP Effect")
-
-    def set_dict(self, items):
-        """
-        using raw dict, set related column into property only
-        :type items: dict
-        """
-        properties = vars(self)
-
-        for key, item in items.items():
-            if key in properties.keys():
-                setattr(self, key, item)
 
     def json(self):
         """
@@ -118,7 +121,7 @@ class PositionInstrument(models.Model):
         )
 
 
-class PositionStock(models.Model):
+class PositionStock(models.Model, PositionModel):
     position_statement = models.ForeignKey(PositionStatement)
     underlying = models.ForeignKey(Underlying)
     instrument = models.ForeignKey(PositionInstrument)
@@ -131,17 +134,6 @@ class PositionStock(models.Model):
     pl_open = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Open")
     pl_day = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Day")
     bp_effect = models.DecimalField(max_digits=10, decimal_places=2, default=0.0, verbose_name="BP Effect")
-
-    def set_dict(self, items):
-        """
-        using raw dict, set related column into property only
-        :type items: dict
-        """
-        properties = vars(self)
-
-        for key, item in items.items():
-            if key in properties.keys():
-                setattr(self, key, item)
 
     def json(self):
         output = '{'
@@ -277,3 +269,63 @@ class PositionOption(models.Model):
                 contract=self.contract
             )
         )
+
+
+class SavePositionStatement(object):
+    def __init__(self, date, statement, file_data):
+        """
+        :param date: str
+        :param statement: Statement
+        :param file_data: str, raw file read
+        """
+        self.date = date
+        self.statement = statement
+        self.positions, self.overall = OpenPos(data=file_data).read()
+
+        # get all underlying, fast query speed
+        self.underlying = Underlying.objects.all()
+
+    def save_all(self):
+        """
+        Save all data into position models
+        """
+        position_statement = PositionStatement(
+            statement=self.statement,
+            date=self.date,
+            **self.overall
+        )
+        position_statement.save()
+
+        for position in self.positions:
+            if self.underlying.filter(symbol=position['symbol']).count():
+                underlying = self.underlying.get(symbol=position['symbol'])
+            else:
+                underlying = Underlying(
+                    symbol=position['symbol'],
+                    company=position['company']
+                )
+                underlying.save()
+
+            instrument = PositionInstrument(
+                position_statement=position_statement,
+                underlying=underlying
+            )
+            instrument.set_dict(position['instrument'])
+            instrument.save()
+
+            stock = PositionStock(
+                position_statement=position_statement,
+                underlying=underlying,
+                instrument=instrument
+            )
+            stock.set_dict(position['stock'])
+            stock.save()
+
+            for option_data in position['options']:
+                option = PositionOption(
+                    position_statement=position_statement,
+                    underlying=underlying,
+                    instrument=instrument
+                )
+                option.set_dict(option_data)
+                option.save()

@@ -2,15 +2,17 @@ from datetime import datetime
 import os
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django import forms
-from django.utils.encoding import force_unicode
 from pandas.tseries.offsets import BDay
 from pms_app import models
-from pms_app.pos_app.models import PositionInstrument
+from pms_app.acc_app.models import SaveAccountStatement
+from pms_app.pos_app.models import PositionInstrument, SavePositionStatement
+from pms_app.ta_app.models import SaveTradeActivity
 from django.contrib.admin import widgets
 from django.contrib.admin.models import LogEntry, ADDITION
 
@@ -132,15 +134,31 @@ class PmsImportStatementsForm(forms.Form):
 
         if not len(self._errors):
             # no error found for field
-            tomorrow = cleaned_data.get("date") + BDay(1)
-            file_date = tomorrow.strftime('%Y-%m-%d')
+            file_date = cleaned_data.get("date").strftime('%Y-%m-%d')
 
-            acc_date = cleaned_data.get("account_statement").name[:10]
-            pos_date = cleaned_data.get("position_statement").name[:10]
-            ta_date = cleaned_data.get("trade_activity").name[:10]
+            acc_date = datetime.strptime(
+                cleaned_data.get("account_statement").name[:10], '%Y-%m-%d'
+            )
+            pos_date = datetime.strptime(
+                cleaned_data.get("position_statement").name[:10], '%Y-%m-%d'
+            )
+            ta_date = datetime.strptime(
+                cleaned_data.get("trade_activity").name[:10], '%Y-%m-%d'
+            )
 
-            if not (file_date == acc_date == pos_date == ta_date):
-                error_message = 'All statement files must have (-1 biz day) as file date.'
+            acc_date = acc_date - BDay(1)
+            acc_date = acc_date.strftime('%Y-%m-%d')
+            pos_date = pos_date - BDay(1)
+            pos_date = pos_date.strftime('%Y-%m-%d')
+            ta_date = ta_date - BDay(1)
+            ta_date = ta_date.strftime('%Y-%m-%d')
+
+            if acc_date == pos_date == ta_date:
+                if file_date != acc_date:
+                    error_message = 'All date must have (-1 BDay, %s != %s).' % (file_date, acc_date)
+                    self._errors['date'] = self.error_class([error_message])
+            else:
+                error_message = 'All file date must be same.'
                 self._errors['date'] = self.error_class([error_message])
 
 
@@ -241,49 +259,73 @@ class StatementAdmin(admin.ModelAdmin):
         urls = super(StatementAdmin, self).get_urls()
         my_urls = [
             url(
-                r'^import_position_statement/$',
-                self.import_position_statement,
-                name='admin_import_position_statement',
+                r'^import_statements/$',
+                self.import_statement,
+                name='import_statement',
             ),
             url(
-                r'^import_position_statement/(?P<statement_id>\d)/$',
-                self.import_position_statement,
-                name='admin_import_position_statement',
+                r'^import_statements/(?P<statement_id>\d)/$',
+                self.import_statement,
+                name='import_statement',
             ),
         ]
         return my_urls + urls
 
     @staticmethod
-    def import_position_statement(request, statement_id=0):
+    @staff_member_required
+    def import_statement(request, statement_id=0):
         # custom view which should return an HttpResponse
         # return HttpResponse('something')
-        template = 'admin/pms_app/statement/import_position_statement.html'
+        template = 'admin/pms_app/statement/import_statement.html'
 
         if request.method == 'POST':
             import_statement_form = PmsImportStatementsForm(request.POST, request.FILES)
             if import_statement_form.is_valid():
-                statements = models.Statement(
-                    date=request.POST['date'],
-                    account_statement=request.FILES['account_statement'].read(),
-                    position_statement=request.FILES['position_statement'].read(),
-                    trade_activity=request.FILES['trade_activity'].read()
+                date = request.POST['date']
+                acc_data = request.FILES['account_statement'].read()
+                pos_data = request.FILES['position_statement'].read()
+                ta_data = request.FILES['trade_activity'].read()
+
+                statement = models.Statement(
+                    date=date,
+                    account_statement=acc_data,
+                    position_statement=pos_data,
+                    trade_activity=ta_data
                 )
-                statements.save()
-                # todo: later save all into model
+                statement.save()
+
+                # save acc, pos, ta into db
+
+                SaveAccountStatement(
+                    date=date,
+                    statement=statement,
+                    file_data=acc_data
+                ).save_all()
+
+                SavePositionStatement(
+                    date=date,
+                    statement=statement,
+                    file_data=pos_data
+                ).save_all()
+
+                SaveTradeActivity(
+                    date=date,
+                    statement=statement,
+                    file_data=ta_data
+                ).save_all()
 
                 # log import
                 LogEntry.objects.log_action(
                     user_id=request.user.id,
                     content_type_id=ContentType.objects.get_for_model(models.Statement).id,
-                    object_id=statements.id,
-                    object_repr=statements.__unicode__(),
+                    object_id=statement.id,
+                    object_repr=statement.__unicode__(),
                     action_flag=ADDITION
                 )
 
                 return HttpResponseRedirect(
                     #reverse('admin:pms_app_statement_change', args=(statements.id,))
-                    reverse('admin:admin_import_position_statement',
-                            kwargs=dict(statement_id=statements.id))
+                    reverse('admin:import_statement', kwargs=dict(statement_id=statement.id))
                 )
         else:
             import_statement_form = PmsImportStatementsForm()
@@ -306,4 +348,4 @@ admin.site.template = 'admin/pms_app/app_index.html'
 
 #admin_site = PmsAppAdminSite()
 #admin_site.register(models.Underlying, UnderlyingAdmin)
-# todo: next account model change, trade activity model change...
+# todo: pos, acc, ta admin detail

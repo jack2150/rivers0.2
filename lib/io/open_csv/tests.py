@@ -1,4 +1,5 @@
 import os
+from pprint import pprint
 from lib.test import TestSetUp
 from rivers.settings import FILES
 from lib.io.open_csv import OpenCSV
@@ -8,24 +9,33 @@ class TestOpenCSV(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
-        self.test_file = os.path.join(FILES['position_statement'],
-                                      '2014-08-01-PositionStatement.csv')
+        self.pos_file = os.path.join(
+            FILES['position_statement'], '2014-08-01-PositionStatement.csv'
+        )
+        self.acc_file = os.path.join(
+            FILES['account_statement'], '2014-07-23-AccountStatement.csv'
+        )
 
-        self.open_csv = OpenCSV(fname=self.test_file)
+        self.pos_data = open(self.pos_file, mode='r').read()
+        self.acc_data = open(self.acc_file, mode='r').read()
+
+        self.open_csv = OpenCSV(data=self.pos_data)
 
     def test_property(self):
         """
         Test property inside class
         """
-        print 'fname: %s' % self.open_csv.fname
+        print 'data: %s' % self.open_csv.lines
 
-        self.assertEqual(self.open_csv.fname, self.test_file)
+        self.assertEqual(type(self.open_csv.lines), list)
+        self.assertGreater(len(self.open_csv.lines), 0)
 
     def test_read_lines_from_file(self):
         """
         Test read lines from file with test file
         """
-        lines = self.open_csv.read_lines_from_file()
+        self.open_csv.read_lines_from_file(fname=self.pos_file)
+        lines = self.open_csv.lines
 
         print 'lines type: %s' % type(lines)
         print 'lines length: %d\n' % len(lines)
@@ -154,6 +164,9 @@ class TestOpenCSV(TestSetUp):
         self.assertEqual(type(result), list)
         self.assertEqual(len(result), 5)
 
+        pprint(result)
+        pprint(self.open_csv.last_five_lines(self.open_csv.lines))
+
     def test_convert_float_or_str(self):
         """
         Test convert item into float or string
@@ -194,10 +207,7 @@ class TestOpenCSV(TestSetUp):
         """
         Test get lines section from lines
         """
-        self.open_csv = OpenCSV(
-            fname=os.path.join(FILES['account_statement'],
-                               '2014-07-23-AccountStatement.csv')
-        )
+        self.open_csv = OpenCSV(self.acc_data)
 
         phrases = [
             ('Profits and Losses', 'OVERALL TOTALS'),
@@ -219,13 +229,6 @@ class TestOpenCSV(TestSetUp):
 
             print '-' * 100
 
-            #self.assertIn(start, lines[0])
-
-            #if end:
-            #    self.assertIn(end, lines[-1])
-            #else:
-            #    self.assertFalse(lines[-1])
-
     def test_make_dict(self):
         """
         Test make dict using keys and values
@@ -233,7 +236,11 @@ class TestOpenCSV(TestSetUp):
         keys = ['symbol', 'description', 'pl_open', 'pl_pct', 'pl_day', 'pl_ytd', 'margin_req']
         values = ['AA', 'ALCOA INC COM', 0.0, 0.0, 0.0, -271.98, 0.0]
 
+        print 'keys: %s' % keys
+        print 'values: %s' % values
+
         result = self.open_csv.make_dict(keys, values)
+        print 'result: %s' % result
 
         for key, value in result.items():
             self.assertIn(key, keys)
@@ -262,9 +269,7 @@ class TestOpenCSV(TestSetUp):
         """
         Test fill empty or none value in dict
         """
-        self.open_csv = OpenCSV(
-            os.path.join(FILES['account_statement'], '2014-07-23-AccountStatement.csv')
-        )
+        self.open_csv = OpenCSV(self.acc_data)
         self.open_csv.trade_history = list()
 
         trade_history_keys = [
@@ -307,9 +312,7 @@ class TestOpenCSV(TestSetUp):
         Test open files, get lines section, format data,
         make dict and finally set values in property
         """
-        self.open_csv = OpenCSV(
-            os.path.join(FILES['account_statement'], '2014-07-23-AccountStatement.csv')
-        )
+        self.open_csv = OpenCSV(self.acc_data)
         self.open_csv.trade_history = list()
 
         trade_history_keys = [
@@ -341,11 +344,11 @@ class TestOpenCSV(TestSetUp):
 
         lines = self.open_csv.get_lines('Account Trade History')
 
-        self.assertEqual(len(lines), len(trade_history) + 2 + 1)
-        self.assertEqual(type(trade_history), list)
-
         print ''
         for tk in trade_history:
             print tk
             self.assertEqual(type(tk), dict)
             self.assertEqual(len(tk), 13)
+
+        self.assertEqual(len(lines), len(trade_history) + 2 + 1)
+        self.assertEqual(type(trade_history), list)

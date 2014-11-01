@@ -1,0 +1,105 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Account Statement for <TOTAL> (ALL ACCOUNTS) since 11/1/14 through 11/1/14
+
+Cash Balance
+DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
+,,,,TOTAL,,,,
+
+Futures Statements
+Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
+
+Forex Statements
+,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance
+
+ 
+"Total Cash $199,772.87"
+
+
+Account Order History
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+
+Account Trade History
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+
+Equities
+Symbol,Description,Qty,Trade Price,Mark,Mark Value
+SLV,ISHARES SILVER TRUST,+100,16.81,15.50,"$1,550.00"
+BAC,BANK OF AMERICA CORP COM,+100,16.28,17.15,"$1,715.00"
+BIDU,BAIDU INC ADR,-10,226.86,238.77,"($2,387.70)"
+AMD,ADVANCED MICRO DEVICES INC COM,-100,2.76,2.80,($280.00)
+RSX,MARKET VECTORS RUSSIA,+100,23.55,21.97,"$2,197.00"
+IWM,ISHARES RUSSELL 2000 ETF,-10,113.88,116.56,"($1,165.60)"
+GG,GOLDCORP INC COM,+100,23.41,18.78,"$1,878.00"
+,OVERALL TOTALS,,,,"$3,506.70"
+
+Options
+Symbol,Option Code,Exp,Strike,Type,Qty,Trade Price,Mark,Mark Value
+AMD,AMD141122P3,NOV 14,3,PUT,-1,.33,.25,($25.00)
+,,,,,,,,($25.00)
+BAC,BAC141122C16,NOV 14,16,CALL,-1,.60,1.195,($119.50)
+,,,,,,,,($119.50)
+GG,GG141122P23,NOV 14,23,PUT,+1,.78,4.325,$432.50
+,,,,,,,,$432.50
+IBM,IBM141122C167.5,NOV 14,167.5,CALL,+1,4.30,.84,$84.00
+IBM,IBM141122C170,NOV 14,170,CALL,-1,2.94,.405,($40.50)
+,,,,,,,,$43.50
+SLV,SLV141122C16.5,NOV 14,16.5,CALL,-1,.64,.125,($12.50)
+,,,,,,,,($12.50)
+,,,,,,,,$319.00
+
+Profits and Losses 
+Symbol,Description,P/L Open,P/L %,P/L Day,P/L YTD,Margin Req,Mark Value
+AAPL,APPLE INC COM,$0.00,0.00%,$0.00,$98.00,$0.00,$0.00
+AMD,ADVANCED MICRO DEVICES INC COM,$4.00,+1.29%,$0.00,$4.00,$520.00,($305.00)
+BAC,BANK OF AMERICA CORP COM,$27.50,+1.63%,($1.00),$27.50,$915.00,"$1,595.50"
+BIDU,BAIDU INC ADR,($119.10),-5.25%,$0.00,($119.10),"$1,193.85","($2,387.70)"
+BMY,BRISTOL-MYERS SQUIBB CM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+C,CITIGROUP INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+CELG,CELGENE CORP COM,$0.00,0.00%,$0.00,$89.00,$0.00,$0.00
+CSCO,CISCO SYSTEMS INC COM,$0.00,0.00%,$0.00,($123.00),$0.00,$0.00
+DDD,3 D SYSTEMS CORP COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+EWZ,ISHARES MSCI BRAZIL CAPPED ETF,$0.00,0.00%,$0.00,$322.00,$0.00,$0.00
+FAZ,DIREXION SHARES TRUST 3X BEAR ETF,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+FB,FACEBOOK INC COM,$0.00,0.00%,$0.00,($15.00),$0.00,$0.00
+FSLR,FIRST SOLAR INC COM,$0.00,0.00%,$0.00,$215.00,$0.00,$0.00
+FXI,ISHARES CHINA LARGE-CAP ETF,$0.00,0.00%,$0.00,($185.00),$0.00,$0.00
+GE,GENERAL ELECTRIC CO COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+GG,GOLDCORP INC COM,($108.50),-4.49%,$0.00,($108.50),$939.00,"$2,310.50"
+GILD,GILEAD SCIENCES INC COM,$0.00,0.00%,$0.00,$616.00,$0.00,$0.00
+IBM,INTL BUSINESS MACHINES COM,($92.50),-12.78%,$0.00,($228.50),$0.00,$43.50
+INTC,INTEL CORP COM,$0.00,0.00%,$0.00,$30.00,$0.00,$0.00
+IWM,ISHARES RUSSELL 2000 ETF,($26.80),-2.35%,$0.00,($26.80),$582.80,"($1,165.60)"
+JPM,JP MORGAN CHASE & CO COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+MSFT,MICROSOFT CORP COM,$0.00,0.00%,$0.00,$37.00,$0.00,$0.00
+QCOM,QUALCOMM INC COM,$0.00,0.00%,$0.00,($56.00),$0.00,$0.00
+RSX,MARKET VECTORS RUSSIA,($158.00),-6.71%,$0.00,($158.00),"$1,098.50","$2,197.00"
+SBUX,STARBUCKS CORP COM,$0.00,0.00%,$0.00,$65.00,$0.00,$0.00
+SLV,ISHARES SILVER TRUST,($79.50),-4.56%,$0.00,($134.50),$775.00,"$1,537.50"
+SLW,SILVER WHEATON CORP COM,$0.00,0.00%,$0.00,$122.00,$0.00,$0.00
+SNDK,SANDISK CORP COM,$0.00,0.00%,$0.00,($68.00),$0.00,$0.00
+SPY,SPDR TR S&P 500 ETF TR,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+TLT,ISHARES 20+ YR TREASURY BND ETF,$0.00,0.00%,$0.00,$61.00,$0.00,$0.00
+TNA,DIREXION SHARES TRUST SMALL CAP BULL 3X SHARES,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+TSLA,TESLA MOTORS INC COM,$0.00,0.00%,$0.00,($125.00),$0.00,$0.00
+TZA,DIREXION SHARES TRUST DAILY SMALL CAP BEAR 3X SHAR,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+VXX,BARCLAYS BANK PLC IPATH S&P 500 VIX SHORT TERM,$0.00,0.00%,$0.00,($148.00),$0.00,$0.00
+WFC,WELLS FARGO & CO COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+YHOO,YAHOO! INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+,OVERALL TOTALS,($552.90),-4.37%,($1.00),$191.10,"$6,024.15","$3,825.70"
+
+Forex Account Summary
+Cash,"$10,000.00"
+UPL,$0.00
+Floating P/L,$0.00
+Equity,"$10,000.00"
+Margin,$0.00
+Available Equity,"$10,000.00"
+Risk Level,0.00%
+
+Account Summary
+Net Liquidating Value,"$199,610.81"
+Stock Buying Power,"$286,535.32"
+Option Buying Power,"$193,267.66"
+Commissions YTD,$580.29
+Futures Commissions YTD,$0.00

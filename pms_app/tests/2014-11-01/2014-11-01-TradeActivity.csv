@@ -1,0 +1,17 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for <TOTAL> (ALL ACCOUNTS) on 11/2/14 00:39:25
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status
+-1 SLV 100 NOV 14 16.5 CALL,JAN 15,Strike ATM,8,55% of (NAT - MID),10:20 - 10:35,11:00 - 14:45,WAIT TRG
+-1 BAC 100 NOV 14 16 CALL,DEC 14,Delta .50,6,55% of (NAT - MID),08:45 - 09:00,11:00 - 14:45,WAIT TRG
