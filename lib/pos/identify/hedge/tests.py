@@ -1,5 +1,5 @@
 from lib.test import TestReadyUp
-from pms_app.pos_app.models import Underlying, PositionStock, PositionOption, PositionSet
+from pms_app.pos_app.models import Underlying, InstrumentStock, InstrumentOption, PositionSet
 from lib.pos.identify.hedge import HedgeIdentify
 from lib.pos.spread import hedge
 
@@ -8,8 +8,8 @@ class TestHedgeIdentify(TestReadyUp):
     def setUp(self):
         TestReadyUp.setUp(self)
 
-        self.stock = PositionStock()
-        self.option = PositionOption()
+        self.stock = InstrumentStock()
+        self.option = InstrumentOption()
 
     def stock_cond_method(self, attr, expected):
         """
@@ -108,10 +108,10 @@ class TestHedgeIdentify(TestReadyUp):
         self.ready_all(key=2)
 
         for position in Underlying.objects.all():
-            stock = PositionStock.objects.filter(position=position).first()
+            stock = InstrumentStock.objects.filter(position=position).first()
             """:type: PositionStock"""
 
-            option = PositionOption.objects.filter(position=position).first()
+            option = InstrumentOption.objects.filter(position=position).first()
             """:type: PositionOption"""
 
             hedge_identify = HedgeIdentify(stock, option)

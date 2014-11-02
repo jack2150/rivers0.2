@@ -10,6 +10,8 @@ class Identify(object):
         self.pos_set = pos_set
         """ :type: PositionSet """
 
+        # todo: rework position set
+
         self.__spread = None
 
     def get_spread(self):

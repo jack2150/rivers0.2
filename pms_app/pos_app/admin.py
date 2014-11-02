@@ -11,7 +11,7 @@ class PositionInline(admin.TabularInline):
     """
     Inline Position model inside Position Statement change view
     """
-    model = models.PositionInstrument
+    model = models.Instrument
 
     def instrument_link(self, instance):
         url = reverse('admin:%s_%s_change' % (instance._meta.app_label,
@@ -70,23 +70,20 @@ class PositionStatementAdmin(admin.ModelAdmin):
             )
         }),
     )
-    """
-    readonly_fields = (
-        'date', 'currency_cash_sweep', 'currency_available',
-        'currency_pl_ytd', 'currency_futures_bp', 'currency_bp_adjustment'
-    )
-    """
 
     search_fields = ['date', 'available', 'pl_ytd']
 
     list_per_page = 20
+
+    def has_add_permission(self, request):
+        return False
 
 
 class PositionStockInline(admin.TabularInline):
     """
     Position Stock inline for Position change view
     """
-    model = models.PositionStock
+    model = models.InstrumentStock
     fields = (
         'quantity', 'mark', 'mark_change', 'pct_change',
         'pl_open', 'pl_day', 'bp_effect'
@@ -108,7 +105,7 @@ class PositionOptionsInline(admin.TabularInline):
     """
     Position Options inline for Position change view
     """
-    model = models.PositionOption
+    model = models.InstrumentOption
     extra = 0
 
     fields = (
@@ -143,14 +140,14 @@ class PositionInstrumentAdmin(admin.ModelAdmin):
     def underlying_symbol(self, obj):
         return obj.underlying.symbol
 
-    def PL(self, obj):
+    def profit_loss(self, obj):
         return True if obj.pl_open > 0 else False
-    PL.boolean = True
-    PL.short_description = 'P/L'
+    profit_loss.boolean = True
+    profit_loss.short_description = 'P/L'
 
     list_display = (
         'position_statement_date', 'underlying_symbol', 'pct_change',
-        'pl_open', 'pl_day', 'PL'
+        'pl_open', 'pl_day', 'profit_loss'
     )
 
     fieldsets = (
@@ -163,21 +160,12 @@ class PositionInstrumentAdmin(admin.ModelAdmin):
         }),
     )
 
-    """
-    readonly_fields = (
-        'position_statement', 'underlying',
-        'delta', 'gamma', 'theta', 'vega',
-        'pct_change', 'pl_open', 'pl_day', 'bp_effect'
-    )
-    """
-
-    #list_display_links = ('position_statement_date', 'underlying_symbol')
-
     list_per_page = 30
-
     search_fields = ['position_statement__date', 'underlying__symbol']
-
     list_filter = ['position_statement__date']
+
+    def has_add_permission(self, request):
+        return False
 
 
 # noinspection PyMethodMayBeStatic
@@ -193,6 +181,9 @@ class PositionStockAdmin(admin.ModelAdmin):
     list_per_page = 30
 
     search_fields = ('position_statement__date', 'underlying__symbol')
+
+    def has_add_permission(self, request):
+        return False
 
 
 # noinspection PyMethodMayBeStatic
@@ -223,12 +214,14 @@ class PositionOptionAdmin(admin.ModelAdmin):
 
     search_fields = ['position_statement__date', 'underlying__symbol']
 
+    def has_add_permission(self, request):
+        return False
 
 
 admin.site.register(models.PositionStatement, PositionStatementAdmin)
-admin.site.register(models.PositionInstrument, PositionInstrumentAdmin)
-admin.site.register(models.PositionStock, PositionStockAdmin)
-admin.site.register(models.PositionOption, PositionOptionAdmin)
+admin.site.register(models.Instrument, PositionInstrumentAdmin)
+admin.site.register(models.InstrumentStock, PositionStockAdmin)
+admin.site.register(models.InstrumentOption, PositionOptionAdmin)
 
 
 

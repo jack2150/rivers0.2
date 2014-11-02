@@ -43,6 +43,9 @@ class TradeActivity(models.Model):
             date=self.date
         )
 
+    class Meta:
+        verbose_name_plural = " Trade Activity"
+
 
 class WorkingOrder(models.Model, TaModel):
     trade_activity = models.ForeignKey(TradeActivity)

@@ -1,5 +1,5 @@
 from lib.test import TestReadyUp
-from pms_app.pos_app.models import PositionStock, PositionSet
+from pms_app.pos_app.models import InstrumentStock, PositionSet
 from lib.pos.identify.stock import StockIdentify
 from lib.pos.spread.stock import StockLong, StockShort
 
@@ -9,7 +9,7 @@ class TestStockIdentify(TestReadyUp):
         """
         For test condition methods
         """
-        stock = PositionStock()
+        stock = InstrumentStock()
 
         for qty, expect in zip([1, -1], expected):
             stock.quantity = qty
@@ -39,7 +39,7 @@ class TestStockIdentify(TestReadyUp):
         Test get class return long stock position
         """
         self.ready_all(key=1)
-        stock = PositionStock.objects.exclude(quantity__lte=0).first()
+        stock = InstrumentStock.objects.exclude(quantity__lte=0).first()
 
         stock_identify = StockIdentify(stock)
         cls = stock_identify.get_class()
@@ -56,7 +56,7 @@ class TestStockIdentify(TestReadyUp):
         Test get class return long stock position
         """
         self.ready_all(key=1)
-        stock = PositionStock.objects.exclude(quantity__gte=0).first()
+        stock = InstrumentStock.objects.exclude(quantity__gte=0).first()
 
         stock_identify = StockIdentify(stock)
         cls = stock_identify.get_class()

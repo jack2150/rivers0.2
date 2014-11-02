@@ -99,7 +99,7 @@ class TestPositionInstrument(TestPositionStatement):
             'trade_price': 0.0
         }
 
-        self.position_instrument = models.PositionInstrument()
+        self.position_instrument = models.Instrument()
         self.position_instrument.position_statement = self.position_statement
         self.position_instrument.underlying = self.underlying
         self.position_instrument.set_dict(self.items)
@@ -123,7 +123,7 @@ class TestPositionStock(TestPositionInstrument):
             'pct_change': 0.0, 'quantity': -10.0, 'gamma': 0.0, 'trade_price': 226.86
         }
 
-        self.pos_stock = models.PositionStock()
+        self.pos_stock = models.InstrumentStock()
         self.pos_stock.position_statement = self.position_statement
         self.pos_stock.underlying = self.underlying
         self.pos_stock.instrument = self.position_instrument
@@ -166,7 +166,7 @@ class TestPositionOption(TestPositionInstrument):
         """
 
         for item in self.items:
-            pos_option = models.PositionOption()
+            pos_option = models.InstrumentOption()
             pos_option.position_statement = self.position_statement
             pos_option.underlying = self.underlying
             pos_option.instrument = self.position_instrument
@@ -183,7 +183,7 @@ class TestPositionOption(TestPositionInstrument):
         Test output json data format
         """
         for item in self.items:
-            pos_option = models.PositionOption()
+            pos_option = models.InstrumentOption()
             pos_option.position_statement = self.position_statement
             pos_option.underlying = self.underlying
             pos_option.set_dict(item)
@@ -289,7 +289,7 @@ class TestOpenPosSaveAll(TestSetUp):
                     position_statement=position_statement,
                     underlying=underlying,
                     instrument=None,
-                    test_model=models.PositionInstrument,
+                    test_model=models.Instrument,
                     data=position['instrument']
                 )
 
@@ -299,7 +299,7 @@ class TestOpenPosSaveAll(TestSetUp):
                     position_statement=position_statement,
                     underlying=underlying,
                     instrument=instrument,
-                    test_model=models.PositionStock,
+                    test_model=models.InstrumentStock,
                     data=position['stock']
                 )
 
@@ -309,7 +309,7 @@ class TestOpenPosSaveAll(TestSetUp):
                         position_statement=position_statement,
                         underlying=underlying,
                         instrument=instrument,
-                        test_model=models.PositionOption,
+                        test_model=models.InstrumentOption,
                         data=option
                     )
 
@@ -353,12 +353,12 @@ class TestSavePositionStatement(TestSetUp):
 
             print 'statement count: %d' % models.Statement.objects.count()
             print 'position statement count: %d' % models.PositionStatement.objects.count()
-            print 'position instrument count: %d' % models.PositionInstrument.objects.count()
-            print 'position stock count: %d' % models.PositionStock.objects.count()
-            print 'position options count: %d\n' % models.PositionOption.objects.count()
+            print 'position instrument count: %d' % models.Instrument.objects.count()
+            print 'position stock count: %d' % models.InstrumentStock.objects.count()
+            print 'position options count: %d\n' % models.InstrumentOption.objects.count()
 
             self.assertEqual(models.Statement.objects.count(), no)
             self.assertEqual(models.PositionStatement.objects.count(), no)
-            self.assertEqual(models.PositionInstrument.objects.count(),
-                             models.PositionStock.objects.count())
-            self.assertGreater(models.PositionOption.objects.count(), 0)
+            self.assertEqual(models.Instrument.objects.count(),
+                             models.InstrumentStock.objects.count())
+            self.assertGreater(models.InstrumentOption.objects.count(), 0)

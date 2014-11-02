@@ -64,6 +64,9 @@ class AccountStatement(models.Model):
             net_liquid_value='%.2f' % self.net_liquid_value,
         )
 
+    class Meta:
+        verbose_name_plural = " Account Statement"
+
 
 class OrderHistory(models.Model, AccountModel):
     account_statement = models.ForeignKey(AccountStatement)
@@ -217,7 +220,7 @@ class CashBalance(models.Model, AccountModel):
         )
 
 
-class ProfitsLosses(models.Model, AccountModel):
+class ProfitLoss(models.Model, AccountModel):
     account_statement = models.ForeignKey(AccountStatement)
     underlying = models.ForeignKey(Underlying)
 
@@ -258,7 +261,7 @@ class ProfitsLosses(models.Model, AccountModel):
         )
 
 
-class Equities(models.Model, AccountModel):
+class HoldingEquity(models.Model, AccountModel):
     account_statement = models.ForeignKey(AccountStatement)
     underlying = models.ForeignKey(Underlying)
 
@@ -295,7 +298,7 @@ class Equities(models.Model, AccountModel):
         )
 
 
-class Options(models.Model, AccountModel):
+class HoldingOption(models.Model, AccountModel):
     account_statement = models.ForeignKey(AccountStatement)
     underlying = models.ForeignKey(Underlying)
 
@@ -339,7 +342,7 @@ class Options(models.Model, AccountModel):
         )
 
 
-class Futures(models.Model, AccountModel):
+class Future(models.Model, AccountModel):
     account_statement = models.ForeignKey(AccountStatement)
 
     trade_date = models.DateField(verbose_name='Trade Date')
@@ -535,11 +538,11 @@ class SaveAccountStatement(object):
         )
         self.account_statement.save()
 
-        self.save_single(save_cls=ProfitsLosses, save_data=self.profits_losses)
+        self.save_single(save_cls=ProfitLoss, save_data=self.profits_losses)
         self.save_single(save_cls=TradeHistory, save_data=self.trade_history)
         self.save_single(save_cls=OrderHistory, save_data=self.order_history)
-        self.save_single(save_cls=Equities, save_data=self.equities)
-        self.save_single(save_cls=Options, save_data=self.options)
+        self.save_single(save_cls=HoldingEquity, save_data=self.equities)
+        self.save_single(save_cls=HoldingOption, save_data=self.options)
         self.save_single(save_cls=CashBalance, save_data=self.cash_balance)
-        self.save_single(save_cls=Futures, save_data=self.futures)
+        self.save_single(save_cls=Future, save_data=self.futures)
         self.save_single(save_cls=Forex, save_data=self.forex)

@@ -187,7 +187,7 @@ class TestProfitsLosses(TestAccountStatement):
         )
         self.underlying.save()
 
-        self.profits_losses = models.ProfitsLosses(
+        self.profits_losses = models.ProfitLoss(
             account_statement=self.account_statement,
             underlying=self.underlying
         )
@@ -217,7 +217,7 @@ class TestEquities(TestAccountStatement):
         )
         self.underlying.save()
 
-        self.equities = models.Equities(
+        self.equities = models.HoldingEquity(
             account_statement=self.account_statement,
             underlying=self.underlying
         )
@@ -245,7 +245,7 @@ class TestOptions(TestAccountStatement):
         )
         self.underlying.save()
 
-        self.options = models.Options(
+        self.options = models.HoldingOption(
             account_statement=self.account_statement,
             underlying=self.underlying
         )
@@ -269,7 +269,7 @@ class TestFutures(TestAccountStatement):
             'trade_date': '2014-07-23', 'balance': 4000.0
         }
 
-        self.futures = models.Futures(
+        self.futures = models.Future(
             account_statement=self.account_statement,
             **self.items
         )
@@ -352,8 +352,8 @@ class TestOpenAccSaveAll(TestSetUp):
             no, test_model.__name__, ids
         )
 
-        for saved_cls in test_model.objects.all():
-            print saved_cls.id, saved_cls, saved_cls.json()
+        #for saved_cls in test_model.objects.all():
+        #    print saved_cls.id, saved_cls, saved_cls.json()
 
     def test_read_save(self):
         """
@@ -392,7 +392,7 @@ class TestOpenAccSaveAll(TestSetUp):
             self.insert_db(
                 no=key,
                 account_statement=account_statement,
-                test_model=models.ProfitsLosses,
+                test_model=models.ProfitLoss,
                 data_list=acc_data['profits_losses']
             )
 
@@ -420,21 +420,21 @@ class TestOpenAccSaveAll(TestSetUp):
             self.insert_db(
                 no=key,
                 account_statement=account_statement,
-                test_model=models.Equities,
+                test_model=models.HoldingEquity,
                 data_list=acc_data['equities']
             )
 
             self.insert_db(
                 no=key,
                 account_statement=account_statement,
-                test_model=models.Options,
+                test_model=models.HoldingOption,
                 data_list=acc_data['options']
             )
 
             self.insert_db(
                 no=key,
                 account_statement=account_statement,
-                test_model=models.Futures,
+                test_model=models.Future,
                 data_list=acc_data['futures']
             )
 
@@ -485,23 +485,23 @@ class TestSaveAccountStatement(TestSetUp):
 
             print 'Statement count: %d' % models.Statement.objects.count()
             print 'AccountStatement count: %d' % models.AccountStatement.objects.count()
-            print 'ProfitsLosses count: %d' % models.ProfitsLosses.objects.count()
+            print 'ProfitsLosses count: %d' % models.ProfitLoss.objects.count()
             print 'TradeHistory count: %d' % models.TradeHistory.objects.count()
             print 'OrderHistory count: %d' % models.OrderHistory.objects.count()
-            print 'Equities count: %d' % models.Equities.objects.count()
-            print 'Options count: %d' % models.Options.objects.count()
+            print 'Equities count: %d' % models.HoldingEquity.objects.count()
+            print 'Options count: %d' % models.HoldingOption.objects.count()
             print 'CashBalance count: %d' % models.CashBalance.objects.count()
-            print 'Futures count: %d' % models.Futures.objects.count()
+            print 'Futures count: %d' % models.Future.objects.count()
             print 'Forex count: %d\n' % models.Forex.objects.count()
 
             self.assertEqual(models.Statement.objects.count(), no)
             self.assertEqual(models.AccountStatement.objects.count(), no)
-            self.assertGreater(models.ProfitsLosses.objects.count(), 0)
+            self.assertGreater(models.ProfitLoss.objects.count(), 0)
             self.assertGreater(models.TradeHistory.objects.count(), 0)
-            self.assertGreater(models.Equities.objects.count(), 0)
-            self.assertGreater(models.Options.objects.count(), 0)
-            self.assertGreater(models.Options.objects.count(), 0)
+            self.assertGreater(models.HoldingEquity.objects.count(), 0)
+            self.assertGreater(models.HoldingOption.objects.count(), 0)
+            self.assertGreater(models.HoldingOption.objects.count(), 0)
             self.assertGreater(models.CashBalance.objects.count(), 0)
-            self.assertGreater(models.Futures.objects.count(), 0)
-            self.assertGreater(models.Futures.objects.count(), 0)
+            self.assertGreater(models.Future.objects.count(), 0)
+            self.assertGreater(models.Future.objects.count(), 0)
 

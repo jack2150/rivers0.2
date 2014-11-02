@@ -1,5 +1,5 @@
 from lib.test import TestReadyUp
-from pms_app.pos_app.models import PositionOption, PositionSet
+from pms_app.pos_app.models import InstrumentOption, PositionSet
 from lib.pos.identify.leg_one import LegOneIdentify
 from lib.pos.spread.leg_one import CallLong, CallNaked, PutLong, PutNaked
 
@@ -8,7 +8,7 @@ class TestLegOneIdentify(TestReadyUp):
     def setUp(self):
         TestReadyUp.setUp(self)
 
-        self.option = PositionOption()
+        self.option = InstrumentOption()
 
     def option_conditions(self, attr, expect_results):
         """
@@ -59,7 +59,7 @@ class TestLegOneIdentify(TestReadyUp):
         """
         self.ready_all(key=3)
 
-        for option in PositionOption.objects.exclude(quantity=0).all():
+        for option in InstrumentOption.objects.exclude(quantity=0).all():
             leg_one_identify = LegOneIdentify(option)
 
             cls = leg_one_identify.get_class()

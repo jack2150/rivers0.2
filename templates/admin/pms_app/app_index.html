@@ -15,19 +15,18 @@
 {% endif %}
 
 {% block branding %}
-    branding
+    <h1 id="site-name">Position Management System</h1>
 {% endblock %}
 
 {% block title %}
 title
 {% endblock %}
 
-{% block nav-global %}nav_global{% endblock %}
+{% block nav-global %}
+{% endblock %}
 
 {% block content_title %}
-    <h1>content title</h1>
-
-
+    <h1>PMS App Management</h1>
 {% endblock %}
 
 
@@ -36,7 +35,7 @@ title
     {% block object-tools %}
         <ul class="object-tools">
             <li>
-                <a href="#" class="historylink">some link</a>
+                <a href="{% url 'admin:import_statement' %}" class="historylink">Import Statement</a>
             </li>
         </ul>
     {% endblock %}

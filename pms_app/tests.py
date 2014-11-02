@@ -335,28 +335,29 @@ class TestPmsImportStatementView(TestSetUp):
 
         print 'check statements is successful insert db...'
         response = self.client.get(response['location'])
+        self.assertTrue(response.context['statement_id'])
         self.assertContains(response, 'All statements was inserted successfully.')
 
         print 'Statement count: %d\n' % Statement.objects.count()
 
         print '-' * 100 + '\n' + 'Account Statement\n' + '-' * 100
         print 'AccountStatement count: %d' % AccountStatement.objects.count()
-        print 'ProfitsLosses count: %d' % ProfitsLosses.objects.count()
+        print 'ProfitsLosses count: %d' % ProfitLoss.objects.count()
         print 'TradeHistory count: %d' % TradeHistory.objects.count()
         print 'OrderHistory count: %d' % OrderHistory.objects.count()
-        print 'Equities count: %d' % Equities.objects.count()
-        print 'Options count: %d' % Options.objects.count()
+        print 'Equities count: %d' % HoldingEquity.objects.count()
+        print 'Options count: %d' % HoldingOption.objects.count()
         print 'CashBalance count: %d' % CashBalance.objects.count()
-        print 'Futures count: %d' % Futures.objects.count()
+        print 'Futures count: %d' % Future.objects.count()
         print 'Forex count: %d\n' % Forex.objects.count()
 
         print '-' * 100 + '\n' + 'Position Statement\n' + '-' * 100
         print 'PositionStatement count: %d' % PositionStatement.objects.count()
         print 'statement count: %d' % Statement.objects.count()
         print 'position statement count: %d' % PositionStatement.objects.count()
-        print 'position instrument count: %d' % PositionInstrument.objects.count()
-        print 'position stock count: %d' % PositionStock.objects.count()
-        print 'position options count: %d\n' % PositionOption.objects.count()
+        print 'position instrument count: %d' % Instrument.objects.count()
+        print 'position stock count: %d' % InstrumentStock.objects.count()
+        print 'position options count: %d\n' % InstrumentOption.objects.count()
 
         print '-' * 100 + '\n' + 'Trade Activity\n' + '-' * 100
         print 'TradeActivity count: %d' % TradeActivity.objects.count()

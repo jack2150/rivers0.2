@@ -67,8 +67,11 @@ class PositionStatement(models.Model):
             )
         )
 
+    class Meta:
+        verbose_name_plural = "  Position Statements"
 
-class PositionInstrument(models.Model, PositionModel):
+
+class Instrument(models.Model, PositionModel):
     position_statement = models.ForeignKey(PositionStatement)
     underlying = models.ForeignKey(Underlying)
 
@@ -120,11 +123,14 @@ class PositionInstrument(models.Model, PositionModel):
             )
         )
 
+    class Meta:
+        verbose_name_plural = " Instruments"
 
-class PositionStock(models.Model, PositionModel):
+
+class InstrumentStock(models.Model, PositionModel):
     position_statement = models.ForeignKey(PositionStatement)
     underlying = models.ForeignKey(Underlying)
-    instrument = models.ForeignKey(PositionInstrument)
+    instrument = models.ForeignKey(Instrument)
 
     quantity = models.IntegerField(default=0, verbose_name="Quantity")
     trade_price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price")
@@ -171,10 +177,10 @@ class PositionStock(models.Model, PositionModel):
         )
 
 
-class PositionOption(models.Model):
+class InstrumentOption(models.Model):
     position_statement = models.ForeignKey(PositionStatement)
     underlying = models.ForeignKey(Underlying)
-    instrument = models.ForeignKey(PositionInstrument)
+    instrument = models.ForeignKey(Instrument)
 
     # option contract name
     right = models.IntegerField(default=100, verbose_name="Right")
@@ -306,14 +312,14 @@ class SavePositionStatement(object):
                 )
                 underlying.save()
 
-            instrument = PositionInstrument(
+            instrument = Instrument(
                 position_statement=position_statement,
                 underlying=underlying
             )
             instrument.set_dict(position['instrument'])
             instrument.save()
 
-            stock = PositionStock(
+            stock = InstrumentStock(
                 position_statement=position_statement,
                 underlying=underlying,
                 instrument=instrument
@@ -322,7 +328,7 @@ class SavePositionStatement(object):
             stock.save()
 
             for option_data in position['options']:
-                option = PositionOption(
+                option = InstrumentOption(
                     position_statement=position_statement,
                     underlying=underlying,
                     instrument=instrument

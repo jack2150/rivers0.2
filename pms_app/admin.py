@@ -1,5 +1,5 @@
-from datetime import datetime
 import os
+from datetime import datetime
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
@@ -10,9 +10,9 @@ from django.shortcuts import render
 from django import forms
 from pandas.tseries.offsets import BDay
 from pms_app import models
-from pms_app.acc_app.models import SaveAccountStatement
-from pms_app.pos_app.models import PositionInstrument, SavePositionStatement
-from pms_app.ta_app.models import SaveTradeActivity
+from pms_app.acc_app.models import SaveAccountStatement, AccountStatement
+from pms_app.pos_app.models import Instrument, SavePositionStatement, PositionStatement
+from pms_app.ta_app.models import SaveTradeActivity, TradeActivity
 from django.contrib.admin import widgets
 from django.contrib.admin.models import LogEntry, ADDITION
 
@@ -22,7 +22,7 @@ class InstrumentInline(admin.TabularInline):
     """
     Inline Position model inside Position Statement change view
     """
-    model = PositionInstrument
+    model = Instrument
 
     def instrument_link(self, instance):
         url_link = reverse('admin:%s_%s_change' % (instance._meta.app_label,
@@ -181,6 +181,86 @@ class UnderlyingAdmin(admin.ModelAdmin):
         return False
 
 
+# noinspection PyMethodMayBeStatic,PyProtectedMember
+class AccountStatementInline(admin.TabularInline):
+    model = AccountStatement
+    extra = 0
+
+    def account_statement_link(self, instance):
+        pos_url = reverse(
+            'admin:%s_%s_change' %
+            (instance._meta.app_label, instance._meta.module_name),
+            args=(instance.id,)
+        )
+        return '<a href="%s">View Position Statement</a>' % pos_url
+
+    account_statement_link.allow_tags = True
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    readonly_fields = (
+        'date', 'net_liquid_value', 'stock_buying_power', 'option_buying_power',
+        'commissions_ytd', 'futures_commissions_ytd', 'account_statement_link'
+    )
+
+
+# noinspection PyProtectedMember,PyMethodMayBeStatic
+class PositionStatementInline(admin.TabularInline):
+    model = PositionStatement
+    extra = 0
+
+    def position_statement_link(self, instance):
+        pos_url = reverse(
+            'admin:%s_%s_change' %
+            (instance._meta.app_label, instance._meta.module_name),
+            args=(instance.id,)
+        )
+        return '<a href="%s">View Position Statement</a>' % pos_url
+
+    position_statement_link.allow_tags = True
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    readonly_fields = (
+        'date', 'cash_sweep', 'pl_ytd', 'futures_bp', 'bp_adjustment',
+        'available', 'position_statement_link'
+    )
+
+
+# noinspection PyMethodMayBeStatic,PyProtectedMember
+class TradeActivityInline(admin.TabularInline):
+    model = TradeActivity
+    extra = 0
+
+    def trade_activity_link(self, instance):
+        x = 'admin:%s_%s_change' % (instance._meta.app_label, instance._meta.module_name)
+        pos_url = reverse(
+            'admin:%s_%s_change' %
+            (instance._meta.app_label, instance._meta.module_name),
+            args=(instance.id,)
+        )
+        return '<a href="%s">View Trade Activity</a> %s' % (pos_url, x)
+
+    trade_activity_link.allow_tags = True
+    trade_activity_link.verbose_name = 'Module'
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    readonly_fields = ('date', 'trade_activity_link')
+
+
 # noinspection PyMethodMayBeStatic
 class StatementAdmin(admin.ModelAdmin):
     def account_statement_detail(self, obj):
@@ -196,6 +276,9 @@ class StatementAdmin(admin.ModelAdmin):
         output += "Futures Statements Exists: %s<br>" % ('Futures Statements' in acc)
         output += "Forex Statements Exists: %s<br>" % ('Forex Statements' in acc)
         return output
+
+    account_statement_detail.allow_tags = True
+    account_statement_detail.short_description = 'Acc Detail'
 
     def position_statement_detail(self, obj):
         pos = obj.position_statement
@@ -227,6 +310,9 @@ class StatementAdmin(admin.ModelAdmin):
         output += "Position Overall Count: %s<br>" % overall_count
         return output
 
+    position_statement_detail.allow_tags = True
+    position_statement_detail.short_description = 'Pos Detail'
+
     def trade_activity_detail(self, obj):
         ta = obj.trade_activity
         output = "Line Count: %d<br>" % len(ta.split('\n'))
@@ -236,18 +322,63 @@ class StatementAdmin(admin.ModelAdmin):
         output += "Rolling Strategies Exists: %s<br>" % ('Rolling Strategies' in ta)
         return output
 
-    account_statement_detail.allow_tags = True
-    position_statement_detail.allow_tags = True
     trade_activity_detail.allow_tags = True
+    trade_activity_detail.short_description = 'TA Detail'
 
     list_display = (
         'date', 'account_statement_detail',
         'position_statement_detail', 'trade_activity_detail'
     )
 
-    fields = ('date', 'account_statement', 'position_statement', 'trade_activity')
+    def account_statement_link(self, obj):
+        ta = AccountStatement.objects.get(id=obj.id)
+        acc_url = reverse(
+            'admin:acc_app_accountstatement_change', args=(ta.id,)
+        )
+        return '<a href="%s">View Account Statement</a>' % acc_url
 
-    readonly_fields = ('date', )
+    account_statement_link.allow_tags = True
+    account_statement_link.short_description = 'Acc Link'
+
+    def position_statement_link(self, obj):
+        ta = PositionStatement.objects.get(id=obj.id)
+        pos_url = reverse(
+            'admin:pos_app_positionstatement_change', args=(ta.id,)
+        )
+        return '<a href="%s">View Position Statement</a>' % pos_url
+
+    position_statement_link.allow_tags = True
+    position_statement_link.short_description = 'Pos Link'
+
+    def trade_activity_link(self, obj):
+        ta = TradeActivity.objects.get(id=obj.id)
+        ta_url = reverse(
+            'admin:ta_app_tradeactivity_change', args=(ta.id,)
+        )
+        return '<a href="%s">View Trade Activity</a>' % ta_url
+
+    trade_activity_link.allow_tags = True
+    trade_activity_link.short_description = 'TA Link'
+
+    fieldsets = (
+        ('Date', {
+            'fields': ('date', )
+        }),
+        ('Statements', {
+            'fields': (
+                ('account_statement', 'account_statement_detail', 'account_statement_link'),
+                ('position_statement', 'position_statement_detail', 'position_statement_link'),
+                ('trade_activity', 'trade_activity_detail', 'trade_activity_link')
+            )
+        }),
+
+    )
+
+    readonly_fields = (
+        'date', 'account_statement_detail', 'position_statement_detail',
+        'trade_activity_detail', 'account_statement_link',
+        'position_statement_link', 'trade_activity_link'
+    )
 
     list_per_page = 5
     ordering = ('date', )
@@ -338,6 +469,7 @@ class StatementAdmin(admin.ModelAdmin):
 
         return render(request, template, parameters)
 
+
 #class PmsAppAdminSite(admin.AdminSite):
 #    app_index_template = 'admin/pms_app/app_index.html'
 admin.site.register(models.Underlying, UnderlyingAdmin)
@@ -349,3 +481,6 @@ admin.site.template = 'admin/pms_app/app_index.html'
 #admin_site = PmsAppAdminSite()
 #admin_site.register(models.Underlying, UnderlyingAdmin)
 # todo: pos, acc, ta admin detail
+
+# todo: remove files folder, put all into related tests
+# todo: remove pos and import view

@@ -15,13 +15,14 @@ class AccountSummaryAdmin(admin.ModelAdmin):
     #list_filter = ['date']
     search_fields = ['date', 'net_liquid_value']
 
+
 admin.site.register(models.CashBalance)
-admin.site.register(models.ProfitsLosses)
+admin.site.register(models.ProfitLoss)
 admin.site.register(models.AccountStatement, AccountSummaryAdmin)
 admin.site.register(models.OrderHistory)
 admin.site.register(models.TradeHistory)
-admin.site.register(models.Equities)
-admin.site.register(models.Options)
-admin.site.register(models.Futures)
+admin.site.register(models.HoldingEquity)
+admin.site.register(models.HoldingOption)
+admin.site.register(models.Future)
 admin.site.register(models.Forex)
 

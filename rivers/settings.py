@@ -39,9 +39,6 @@ INSTALLED_APPS = (
     'base_app',
     'pms_app',
     'pms_app.pos_app',
-    'pms_app.pos_app.import_app',
-    'pms_app.pos_app.view_app',
-    'pms_app.spr_app',
     'pms_app.acc_app',
     'pms_app.ta_app',
 )

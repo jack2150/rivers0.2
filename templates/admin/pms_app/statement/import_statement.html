@@ -1,9 +1,9 @@
 {% extends "admin/app_index.html" %}
 {% block branding %}
-    <h1 id="site-name">Position Management System</h1>
+    <h1 id="site-name">Portfolio Management System</h1>
 {% endblock %}
 
-{% block title %}Import Position Statement{% endblock %}
+{% block title %}Import Statement{% endblock %}
 
 {% block extrastyle %}
     {% load static %}
@@ -24,7 +24,7 @@
         &rsaquo;
         <a href="{% url 'admin:app_list' 'pms_app' %}">Pms App</a>
         &rsaquo;
-        Import Position Statement
+        Import Statement
     </div>
     {% if statement_id %}
     <ul class="messagelist">
@@ -37,13 +37,11 @@
 {% endblock %}
 
 {% block content_title %}
-    <h1>Import Statements</h1>
+    <h1>Import Statement</h1>
 
 {% endblock %}
 
 {% block content %}
-
-
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <form action="{% url 'admin:import_statement' %}"
           method="post" enctype="multipart/form-data">
