@@ -68,7 +68,7 @@ class PositionStatement(models.Model):
         )
 
     class Meta:
-        verbose_name_plural = "  Position Statements"
+        verbose_name_plural = "   Position Statements"
 
 
 class Instrument(models.Model, PositionModel):
@@ -119,7 +119,7 @@ class Instrument(models.Model, PositionModel):
         )
 
     class Meta:
-        verbose_name_plural = " Instruments"
+        verbose_name_plural = "  Instruments"
 
 
 class InstrumentStock(models.Model, PositionModel):
@@ -166,6 +166,9 @@ class InstrumentStock(models.Model, PositionModel):
             stock=self.underlying.symbol,
             quantity=self.quantity
         )
+
+    class Meta:
+        verbose_name_plural = " Stock"
 
 
 class InstrumentOption(models.Model):
@@ -266,6 +269,9 @@ class InstrumentOption(models.Model):
                 contract=self.contract
             )
         )
+
+    class Meta:
+        verbose_name_plural = "Option"
 
 
 class SavePositionStatement(object):

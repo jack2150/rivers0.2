@@ -44,7 +44,7 @@ class TradeActivity(models.Model):
         )
 
     class Meta:
-        verbose_name_plural = " Trade Activity"
+        verbose_name_plural = "   Trade Activity"
 
 
 class WorkingOrder(models.Model, TaModel):
@@ -102,6 +102,9 @@ class WorkingOrder(models.Model, TaModel):
             date=self.trade_activity.date
         )
 
+    class Meta:
+        verbose_name_plural = "  Working Orders"
+
 
 class FilledOrder(models.Model, TaModel):
     trade_activity = models.ForeignKey(TradeActivity)
@@ -153,6 +156,9 @@ class FilledOrder(models.Model, TaModel):
             symbol=self.underlying.symbol,
             date=self.trade_activity.date
         )
+
+    class Meta:
+        verbose_name_plural = " Filled Orders"
 
 
 class CancelledOrder(models.Model, TaModel):
@@ -207,6 +213,9 @@ class CancelledOrder(models.Model, TaModel):
             symbol=self.underlying.symbol,
             date=self.trade_activity.date
         )
+
+    class Meta:
+        verbose_name_plural = "Cancelled Orders"
 
 
 class RollingStrategy(models.Model, TaModel):
@@ -281,6 +290,9 @@ class RollingStrategy(models.Model, TaModel):
             ),
             date=self.trade_activity.date
         )
+
+    class Meta:
+        verbose_name_plural = "Rolling Strategies"
 
 
 class SaveTradeActivity(object):

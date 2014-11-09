@@ -381,7 +381,8 @@ class StatementAdmin(admin.ModelAdmin):
     )
 
     list_per_page = 5
-    ordering = ('date', )
+    ordering = ('-date', )
+    date_hierarchy = 'date'
 
     def has_add_permission(self, request):
         return False
