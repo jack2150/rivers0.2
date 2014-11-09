@@ -56,7 +56,7 @@ class WorkingOrder(models.Model, TaModel):
     side = models.CharField(max_length=20, verbose_name="Side")
     quantity = models.IntegerField(default=0, verbose_name="Quantity")
     pos_effect = models.CharField(max_length=200, verbose_name="Pos Effect")
-    expire_date = models.CharField(max_length=20, verbose_name="Expire Date")
+    expire_date = models.CharField(max_length=20, verbose_name="Expire Date", null=True, blank=True)
     strike = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Strike")
     contract = models.CharField(max_length=20, verbose_name="Contract")
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Price")
@@ -95,7 +95,7 @@ class WorkingOrder(models.Model, TaModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Working Order> {symbol} {date}'
+        output = '<WorkingOrder:{date}> {symbol}'
 
         return output.format(
             symbol=self.underlying.symbol,
@@ -112,7 +112,7 @@ class FilledOrder(models.Model, TaModel):
     side = models.CharField(max_length=20, verbose_name="Side")
     quantity = models.IntegerField(default=0, verbose_name="Quantity")
     pos_effect = models.CharField(max_length=200, verbose_name="Pos Effect")
-    expire_date = models.CharField(max_length=20, verbose_name="Expire Date")
+    expire_date = models.CharField(max_length=20, verbose_name="Expire Date", null=True, blank=True)
     strike = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Strike")
     contract = models.CharField(max_length=20, verbose_name="Contract")
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Price")
@@ -147,7 +147,7 @@ class FilledOrder(models.Model, TaModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Filled Order> {symbol} {date}'
+        output = '<FilledOrder:{date}> {symbol}'
 
         return output.format(
             symbol=self.underlying.symbol,
@@ -164,7 +164,7 @@ class CancelledOrder(models.Model, TaModel):
     side = models.CharField(max_length=20, verbose_name="Side")
     quantity = models.IntegerField(default=0, verbose_name="Quantity")
     pos_effect = models.CharField(max_length=200, verbose_name="Pos Effect")
-    expire_date = models.CharField(max_length=20, verbose_name="Expire Date")
+    expire_date = models.CharField(max_length=20, verbose_name="Expire Date", null=True, blank=True)
     strike = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Strike")
     contract = models.CharField(max_length=20, verbose_name="Contract")
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Price")
@@ -201,7 +201,7 @@ class CancelledOrder(models.Model, TaModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Cancelled Order> {symbol} {date}'
+        output = '<CancelledOrder:{date}> {symbol}'
 
         return output.format(
             symbol=self.underlying.symbol,
@@ -214,6 +214,7 @@ class RollingStrategy(models.Model, TaModel):
     underlying = models.ForeignKey(Underlying)
 
     # option contract name
+    # no special for rolling strategy because all will auto use month to month contract
     strategy = models.CharField(default='Covered Call', max_length=20, verbose_name="Strategy")
     side = models.IntegerField(default=0, verbose_name="Side")
     right = models.IntegerField(default=100, verbose_name="Right")
@@ -266,10 +267,18 @@ class RollingStrategy(models.Model, TaModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Rolling Strategy> {symbol} {date}'
+        option = '{symbol} {right} {ex_month} {ex_year} {strike_price} {contract}'
+        output = '<RollingStrategy:{date}> {option}'
 
         return output.format(
-            symbol=self.underlying.symbol,
+            option=option.format(
+                symbol=self.underlying.symbol,
+                right=self.right,
+                ex_month=self.ex_month,
+                ex_year=self.ex_year,
+                strike_price=self.strike_price,
+                contract=self.contract
+            ),
             date=self.trade_activity.date
         )
 

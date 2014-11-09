@@ -113,14 +113,9 @@ class Instrument(models.Model, PositionModel):
         Normal string output for model detail
         :return: str
         """
-        instrument = '{pct_change}, PL Open: {pl_open}, PL Day: {pl_day}'
-
-        return '<Instrument> {instrument}'.format(
-            instrument=instrument.format(
-                pct_change='%+.2f%%' % self.pct_change,
-                pl_open='%+.2f' % self.pl_open,
-                pl_day='%+.2f' % self.pl_day
-            )
+        return '<Instrument:{date}> {pl_open}'.format(
+            date=self.position_statement.date,
+            pl_open='%+.2f' % self.pl_open
         )
 
     class Meta:
@@ -166,14 +161,10 @@ class InstrumentStock(models.Model, PositionModel):
         Normal string output for model detail
         :return: str
         """
-        stock = 'Quantity: {quantity}, Trade Price: {trade_price}, PL Open: {pl_open}'
-
-        return '<Stock> {stock}'.format(
-            stock=stock.format(
-                quantity='%+d' % self.quantity,
-                trade_price='%+.2f' % self.trade_price,
-                pl_open='%+.2f' % self.pl_open
-            )
+        return '<Stock:{date}> {stock} {quantity} Shares'.format(
+            date=self.position_statement.date,
+            stock=self.underlying.symbol,
+            quantity=self.quantity
         )
 
 
@@ -263,7 +254,7 @@ class InstrumentOption(models.Model):
         """
         option = '{symbol} {right} {special} {ex_month} {ex_year} {strike_price} {contract}'
 
-        return '<Option> {option}'.format(
+        return '<Option:{date}> {option}'.format(
             date=self.position_statement.date,
             option=option.format(
                 symbol=self.underlying.symbol,

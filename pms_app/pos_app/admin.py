@@ -64,7 +64,7 @@ class PositionStatementAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Position Statement', {
             'fields': (
-                'date',
+                'statement', 'date',
                 ('cash_sweep', 'available', 'pl_ytd',
                  'futures_bp', 'bp_adjustment')
             )
@@ -194,7 +194,7 @@ class PositionOptionAdmin(admin.ModelAdmin):
         return obj.position_statement.date
 
     def option(self, obj):
-        return obj.__unicode__().split('<Option>')[-1]
+        return obj.__unicode__().split('>')[-1]
 
     list_display = (
         'position_statement_date', 'option', 'quantity', 'days',
@@ -226,6 +226,6 @@ admin.site.register(models.InstrumentOption, PositionOptionAdmin)
 
 
 
-
+# todo: update to better interface
 
 
