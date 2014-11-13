@@ -36,11 +36,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'base_app',
-    'pms_app',
-    'pms_app.pos_app',
-    'pms_app.acc_app',
-    'pms_app.ta_app',
+    'app_pms',
+    'app_pms.app_acc',
+    'app_pms.app_pos',
+    'app_pms.app_ta',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -65,7 +64,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    'base_app.views.current_path',
 )
 
 # Database
@@ -103,9 +101,3 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
-
-FILES = {
-    'position_statement': os.path.join(BASE_DIR, 'files', 'position_statement'),
-    'account_statement': os.path.join(BASE_DIR, 'files', 'account_statement'),
-    'trade_activity': os.path.join(BASE_DIR, 'files', 'trade_activity'),
-}

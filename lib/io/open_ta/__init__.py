@@ -1,1 +1,0 @@
-from lib.io.open_ta.__open_ta import OpenTA

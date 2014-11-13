@@ -1,0 +1,27 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for D-12644969 (margin) on 11/14/14 04:16:26
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,11/14/14 04:16:21,FOREX,BUY,+10000,TO OPEN,GBP/JPY,,,FOREX,181.927,181.927,LMT
+,11/14/14 04:15:53,FUTURE,BUY,+1,TO OPEN,/ZWZ4,DEC 14,,FUTURE,553.75,553.75,LMT
+,11/14/14 04:15:26,VERTICAL,SELL,-5,TO OPEN,UNG,DEC 14,21,PUT,1.34,.89,LMT
+,,,BUY,+5,TO OPEN,UNG,DEC 14,19,PUT,.45,CREDIT,
+,11/14/14 04:15:03,COVERED,SELL,-1,TO OPEN,SLW,DEC 14,19,CALL,1.17,18.03,MKT
+,,,BUY,+100,TO OPEN,SLW,,,STOCK,19.20,DEBIT,
+,11/14/14 04:14:40,VERTICAL,SELL,-1,TO OPEN,TSLA,DEC 14,255,CALL,9.05,2.05,MKT
+,,,BUY,+1,TO OPEN,TSLA,DEC 14,260,CALL,7.00,CREDIT,
+,11/14/14 04:13:53,FOREX,BUY,+10000,TO CLOSE,USD/JPY,,,FOREX,115.755,115.755,MKT
+,11/14/14 04:13:42,FUTURE,SELL,-1,TO CLOSE,/NQZ4,DEC 14,,FUTURE,4208.50,4208.50,MKT
+,11/13/14 22:31:00,COVERED,SELL,-1,TO OPEN,AAPL,DEC 14,110,CALL,3.70,107.96,LMT
+,,,BUY,+100,TO OPEN,AAPL,,,STOCK,111.66,DEBIT,
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

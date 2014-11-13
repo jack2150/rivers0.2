@@ -1,1 +1,0 @@
-from lib.test.__test import TestSetUp, TestReadyUp
