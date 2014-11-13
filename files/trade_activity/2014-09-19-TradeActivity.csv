@@ -25,3 +25,5 @@ Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,T
 
 Rolling Strategies
 Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status
+-1 SLV 100 NOV 14 16.5 CALL,JAN 15,Strike ATM,8,55% of (NAT - MID),10:20 - 10:35,11:00 - 14:45,WAIT TRG
+-1 BAC 100 NOV 14 16 CALL,DEC 14,Delta .50,6,55% of (NAT - MID),08:45 - 09:00,11:00 - 14:45,WAIT TRG

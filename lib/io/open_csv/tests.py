@@ -1,3 +1,4 @@
+from copy import deepcopy
 import os
 from pprint import pprint
 from lib.test import TestSetUp
@@ -306,6 +307,56 @@ class TestOpenCSV(TestSetUp):
             for key in tk1.keys():
                 if key:
                     self.assertIn(key, tk2.keys())
+
+    def test_fillna_dict_with_exists(self):
+        """
+        Test fill empty or none value in dict
+        """
+        self.acc_file = r'C:\Users\Jack\Projects\rivers\pms_app\tests\2014-10-31\2014-10-31-AccountStatement.csv'
+        self.acc_data = open(self.acc_file, mode='r').read()
+        self.open_csv = OpenCSV(self.acc_data)
+        self.open_csv.trade_history = list()
+
+        trade_history_keys = [
+            '', 'execute_time', 'spread', 'side', 'quantity',
+            'pos_effect', 'symbol', 'expire_date', 'strike',
+            'contract', 'price', 'net_price', 'order_type'
+        ]
+
+        self.open_csv.set_values(
+            start_phrase='Account Trade History',
+            end_phrase=None,
+            start_with=2,
+            end_until=-1,
+            prop_keys=trade_history_keys,
+            prop_name='trade_history'
+        )
+
+        before_fillna = deepcopy(self.open_csv.trade_history)
+        for t in before_fillna:
+            print t['execute_time']
+
+        self.open_csv.fillna_dict_with_exists(
+            self.open_csv.trade_history,
+            'execute_time',
+            ('execute_time', 'spread', 'order_type')
+        )
+        after_fillna = self.open_csv.trade_history
+        after_fillna = map(self.open_csv.del_empty_keys, after_fillna)
+
+        for key, (tk1, tk2) in enumerate(zip(before_fillna, after_fillna)):
+            print tk1
+            print tk2
+            print ''
+
+            if not tk1['execute_time']:
+                self.assertEqual(tk1['execute_time'], '')
+                self.assertEqual(tk1['spread'], '')
+                self.assertEqual(tk1['order_type'], '')
+
+                self.assertEqual(tk2['execute_time'], after_fillna[key - 1]['execute_time'])
+                self.assertEqual(tk2['spread'], after_fillna[key - 1]['spread'])
+                self.assertEqual(tk2['order_type'], after_fillna[key - 1]['order_type'])
 
     def test_set_values(self):
         """

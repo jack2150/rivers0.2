@@ -4,10 +4,27 @@ Account Statement for <TOTAL> (ALL ACCOUNTS) since 11/1/14 through 11/1/14
 
 Cash Balance
 DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
-,,,,TOTAL,,,,
+11/11/14,14:00:00,BAL,,Cash balance at the start of business day 11.11 CST,,,,"95,785.11"
+11/11/14,22:31:00,TRD,448880080,SOLD -1 COVERED TSLA 100 NOV 14 240 PUT/TSLA @248.98,-0.44,-10.74,"24,898.00","120,671.93"
+11/11/14,22:31:00,TRD,448880071,BOT +1 COVERED FB 100 NOV 14 75 CALL/FB @73.60,-0.02,-10.74,"-7,360.00","113,301.17"
+11/12/14,04:24:59,LIQ,449261287,Cash liquidation,,,"-13,301.17","100,000.00"
+11/12/14,04:26:01,LIQ,449261844,Cash liquidation,,,"-75,000.00","25,000.00"
+11/12/14,04:34:05,TRD,449263987,BOT +1 /ESZ4 @2032.75,-1.16,-2.00,,"24,996.84"
+11/12/14,04:34:14,TRD,449264502,BOT +1 /YGZ4 @1168.60,-0.83,-2.00,,"24,994.01"
+11/12/14,04:34:40,TRD,449264543,BOT +1 /6JZ4 @.008669,-1.62,-2.00,,"24,990.39"
+11/12/14,04:35:06,TRD,449264562,BOT +1 /ZWZ4 @524.25,-1.83,-2.00,,"24,986.56"
+,,,,TOTAL,($5.90),($29.48),"($70,763.17)","$24,986.56"
 
 Futures Statements
 Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
+
+Futures
+Symbol,Description,SPC,Exp,Qty,Trade Price,Mark,P/L Day
+/6JZ4,"Japanese Yen Futures,Dec-2014,ETH",1/12500000,DEC 14,+1,.008669,.008671,$25.00
+/ZWZ4,"Wheat Futures,Dec-2014,ETH",1/50,DEC 14,+1,524.25,524.25,$0.00
+/YGZ4,Mini Gold Futures - ICUS - Dec14,1/33.2,DEC 14,+1,1168.60,1168.6,$0.00
+/ESZ4,"E-mini S&P 500 Index Futures,Dec-2014,ETH",1/50,DEC 14,+1,2032.75,2033.25,$25.00
+,OVERALL TOTALS,,,,,,$50.00
 
 Forex Statements
 ,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance

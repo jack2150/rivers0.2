@@ -166,6 +166,8 @@ class PmsImportStatementsForm(forms.Form):
 class UnderlyingAdmin(admin.ModelAdmin):
     inlines = [InstrumentInline]
 
+    list_display = ('symbol', 'company')
+
     fieldsets = (
         ('Underlying', {
             'fields': ('symbol', 'company')
@@ -176,6 +178,25 @@ class UnderlyingAdmin(admin.ModelAdmin):
 
     list_per_page = 20
     ordering = ('symbol', )
+
+    def has_add_permission(self, request):
+        return False
+
+
+# noinspection PyMethodMayBeStatic
+class FutureAdmin(admin.ModelAdmin):
+    list_display = ('lookup', 'symbol', 'description', 'expire_date', 'session', 'spc')
+
+    fieldsets = (
+        ('Future', {
+            'fields': ('lookup', 'symbol', 'description', 'expire_date', 'session', 'spc')
+        }),
+    )
+
+    search_fields = ('lookup', 'symbol', 'description', 'expire_date', 'session', 'spc')
+
+    list_per_page = 20
+    ordering = ('lookup', 'symbol')
 
     def has_add_permission(self, request):
         return False
@@ -335,7 +356,9 @@ class StatementAdmin(admin.ModelAdmin):
         acc_url = reverse(
             'admin:acc_app_accountstatement_change', args=(ta.id,)
         )
-        return '<a href="%s">View Account Statement</a>' % acc_url
+        return '<a href="%s" style="display: block; width: 300px;">%s</a>' % (
+            acc_url, 'View Account Statement'
+        )
 
     account_statement_link.allow_tags = True
     account_statement_link.short_description = 'Acc Link'
@@ -345,7 +368,9 @@ class StatementAdmin(admin.ModelAdmin):
         pos_url = reverse(
             'admin:pos_app_positionstatement_change', args=(ta.id,)
         )
-        return '<a href="%s">View Position Statement</a>' % pos_url
+        return '<a href="%s" style="display: block; width: 300px;">%s</a>' % (
+            pos_url, 'View Position Statement'
+        )
 
     position_statement_link.allow_tags = True
     position_statement_link.short_description = 'Pos Link'
@@ -355,7 +380,9 @@ class StatementAdmin(admin.ModelAdmin):
         ta_url = reverse(
             'admin:ta_app_tradeactivity_change', args=(ta.id,)
         )
-        return '<a href="%s">View Trade Activity</a>' % ta_url
+        return '<a href="%s" style="display: block; width: 300px;">%s</a>' % (
+            ta_url, 'View Trade Activity'
+        )
 
     trade_activity_link.allow_tags = True
     trade_activity_link.short_description = 'TA Link'
@@ -474,6 +501,7 @@ class StatementAdmin(admin.ModelAdmin):
 #class PmsAppAdminSite(admin.AdminSite):
 #    app_index_template = 'admin/pms_app/app_index.html'
 admin.site.register(models.Underlying, UnderlyingAdmin)
+admin.site.register(models.Future, FutureAdmin)
 admin.site.register(models.Statement, StatementAdmin)
 admin.site.template = 'admin/pms_app/app_index.html'
 

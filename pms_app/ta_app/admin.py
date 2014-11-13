@@ -323,6 +323,8 @@ class RollingStrategyAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
+# todo: ta... futures working, filled, cancelled
+
 
 admin.site.register(models.TradeActivity, TradeActivityAdmin)
 admin.site.register(models.WorkingOrder, WorkingOrderAdmin)

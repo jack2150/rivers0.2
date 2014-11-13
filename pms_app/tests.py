@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from lib.test import TestSetUp
 from pms_app import admin
+from pms_app.models import Future
 from pms_app.acc_app.models import *
 from pms_app.pos_app.models import *
 from pms_app.ta_app.models import *
@@ -55,6 +56,55 @@ class TestUnderlying(TestSetUp):
 
         for key in json.keys():
             self.assertIn(key, ('symbol', 'company'))
+
+
+class TestFuture(TestSetUp):
+    def setUp(self):
+        TestSetUp.setUp(self)
+        """
+        {'description': 'E-mini S&P 500 Index Futures', 'quantity': 1,
+        'symbol': '/ESZ4', 'mark': 2033.25, 'session': 'ETH',
+        'lookup': 'ES', 'pl_day': 25.0, 'expire_date': 'DEC 14',
+        'spc': '1/50', 'trade_price': 2032.75}
+        """
+
+        self.future = Future(
+            lookup='ES',
+            symbol='SPX',
+            description='E-mini S&P 500 Index Futures',
+            session='ETH',
+            expire_date='DEC 14',
+            spc='1/50'
+        )
+
+    def test_save(self):
+        """
+        Test set dict data into pos
+        """
+        self.future.save()
+
+        print 'Future saved!'
+        print 'Future id: %d' % self.future.id
+
+        self.assertTrue(self.future.id)
+
+    def test_json(self):
+        """
+        Test output json format data
+        """
+        print 'Future in normal: %s' % self.future
+        print 'Future in json: %s\n' % self.future.json()
+
+        json = eval(self.future.json())
+
+        print 'convert into dict:'
+        pprint(json)
+
+        for key in json.keys():
+            self.assertIn(key, (
+                'lookup', 'symbol', 'description',
+                'session', 'expire_date', 'spc'
+            ))
 
 
 class TestStatement(TestSetUp):
@@ -348,7 +398,7 @@ class TestPmsImportStatementView(TestSetUp):
         print 'Equities count: %d' % HoldingEquity.objects.count()
         print 'Options count: %d' % HoldingOption.objects.count()
         print 'CashBalance count: %d' % CashBalance.objects.count()
-        print 'Futures count: %d' % Future.objects.count()
+        print 'Futures count: %d' % HoldingFuture.objects.count()
         print 'Forex count: %d\n' % Forex.objects.count()
 
         print '-' * 100 + '\n' + 'Position Statement\n' + '-' * 100

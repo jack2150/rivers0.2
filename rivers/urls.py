@@ -8,14 +8,8 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-    # admin tools
-    url(r'^admin_tools/', include('admin_tools.urls')),
-
     # base_app
     url(r'^base/', include('base_app.urls')),
-
-    # pms_app
-    url(r'^pms/', include('pms_app.urls')),
 
     # admin
     #url(r'^admin/pos_app/import_pos_csv', views.admin_import_pos_csv, name='admin_import_pos_csv'),

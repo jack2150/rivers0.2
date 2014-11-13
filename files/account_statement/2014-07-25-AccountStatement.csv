@@ -18,6 +18,10 @@ DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
 Futures Statements
 Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
 
+Futures
+Symbol,Description,SPC,Exp,Qty,Trade Price,Mark,P/L Day
+,OVERALL TOTALS,,,,,,0
+
 Forex Statements
 ,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance
 ,7/25/14,13:00:00,BAL,--,Cash balance at the start of the business day 25.07 CST,--,--,--,$0.00

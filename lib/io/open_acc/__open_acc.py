@@ -21,16 +21,16 @@ class OpenAcc(OpenCSV):
 
         self.profits_losses_keys = [
             'symbol', 'description', 'pl_open', 'pl_pct',
-            'pl_day', 'pl_ytd', 'margin_req'
+            'pl_day', 'pl_ytd', 'margin_req', 'mark_value'
         ]
 
         self.equity_keys = [
-            'symbol', 'description', 'quantity', 'trade_price'
+            'symbol', 'description', 'quantity', 'trade_price', 'mark', 'mark_value'
         ]
 
         self.options_keys = [
             'symbol', 'option_code', 'expire_date', 'strike',
-            'contract', 'quantity', 'trade_price'
+            'contract', 'quantity', 'trade_price', 'mark', 'mark_value'
         ]
 
         self.trade_history_keys = [
@@ -52,12 +52,20 @@ class OpenAcc(OpenCSV):
             'amount_usd', 'balance'
         ]
 
-        self.futures_keys = [
+        # real money
+        self.futures_statements_keys = [
             'trade_date', 'execute_date',
             'execute_time', 'contract',
             'ref_no', 'description',
             'fees', 'commissions',
             'amount', 'balance'
+        ]
+
+        # paper money
+        self.holding_future_keys = [
+            'lookup', 'symbol', 'description', '', 'session',
+            'spc', 'expire_date', 'quantity', 'trade_price', 'mark', 'pl_day'
+
         ]
 
         self.cash_balance_keys = [
@@ -190,20 +198,42 @@ class OpenAcc(OpenCSV):
     def set_futures(self):
         """
         Set futures into class property
-        :return: None
         """
-        self.set_values(
-            start_phrase='Futures Statements',
-            end_phrase=None,
-            start_with=2,
-            end_until=-1,
-            prop_keys=self.futures_keys,
-            prop_name='futures'
-        )
+        #lines = self.get_lines('Futures', 'OVERALL TOTALS')
+        start = end = 0
+        for key, line in enumerate(self.lines):
+            if start == 0 and 'Futures' in line and 'Statements' not in line or '/' not in line:
+                start = key
 
-        self.convert_specific_type(self.futures, 'trade_date', self.convert_date, '')
-        self.convert_specific_type(self.futures, 'execute_date', self.convert_date, '')
-        self.convert_specific_type(self.futures, 'execute_time', self.convert_time, '')
+            if end == 0 and start > 0 and 'OVERALL TOTALS' in line:
+                end = key
+
+        lines = []
+        if start and end:
+            lines = self.lines[start:end+1]
+
+        for line in lines[2:-1]:
+            # custom format for future
+            if '"' in line:
+                items = line.split('"')
+                desc = items[1].split(',')
+                line = items[0] + ','.join(desc) + items[2]
+            elif ' - ' in line:
+                items = line.split(',')
+                desc = items[1].split(' - ')
+                line = ','.join([items[0]] + [desc[0], desc[2], desc[1]] + items[2:])
+
+            line = self.replace_dash_inside_quote(line)
+            items = self.split_lines_with_dash(line)
+
+            items = map(self.format_item, items)
+
+            # add lookup field
+            items.insert(0, items[0][1:3])
+
+            self.futures.append(self.make_dict(self.holding_future_keys, items))
+
+        self.futures = map(self.del_empty_keys, self.futures)
 
     def set_forex(self):
         """
@@ -246,10 +276,17 @@ class OpenAcc(OpenCSV):
         )
 
         self.trade_history = map(self.del_empty_keys, self.trade_history)
-        self.trade_history = self.fillna_dict(self.trade_history)
+        #self.trade_history = self.fillna_dict(self.trade_history)
+        self.fillna_dict_with_exists(
+            self.trade_history,
+            'execute_time',
+            ('execute_time', 'spread', 'order_type')
+        )
 
         self.convert_specific_type(self.trade_history, 'execute_time', self.convert_datetime, '')
         self.convert_specific_type(self.trade_history, 'quantity', int, 0)
+        self.convert_specific_type(self.trade_history, 'strike', float, 0.0)
+        self.convert_specific_type(self.trade_history, 'price', float, 0.0)
 
     def set_order_history(self):
         """
@@ -266,10 +303,16 @@ class OpenAcc(OpenCSV):
         )
 
         self.order_history = map(self.del_empty_keys, self.order_history)
-        self.order_history = self.fillna_dict(self.order_history)
+        self.fillna_dict_with_exists(
+            self.order_history,
+            'time_placed',
+            ('time_placed', 'spread', 'order', 'tif', 'status')
+        )
 
         self.convert_specific_type(self.order_history, 'time_placed', self.convert_datetime, '')
         self.convert_specific_type(self.order_history, 'quantity', int, 0)
+        self.convert_specific_type(self.order_history, 'strike', float, 0.0)
+        self.convert_specific_type(self.order_history, 'price', float, 0.0)
 
     def set_equities(self):
         """
@@ -294,7 +337,7 @@ class OpenAcc(OpenCSV):
         """
         self.set_values(
             start_phrase='Options',
-            end_phrase=',,,,,,',
+            end_phrase=None,
             start_with=2,
             end_until=-1,
             prop_keys=self.options_keys,
@@ -302,6 +345,9 @@ class OpenAcc(OpenCSV):
         )
 
         self.convert_specific_type(self.options, 'quantity', int, 0)
+
+        # drop row if symbol not exists
+        self.options = [option for option in self.options if option['symbol']]
 
     def set_profits_losses(self):
         """

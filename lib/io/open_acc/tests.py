@@ -15,7 +15,10 @@ class TestOpenAcc(TestSetUp):
                        '2014-07-28-AccountStatement.csv',
                        '2014-07-29-AccountStatement.csv']
 
-        self.test_file = os.path.join(FILES['account_statement'], self.fnames[0])
+        self.fnames[0] = r'C:\Users\Jack\Projects\rivers\pms_app\tests\2014-11-01\2014-11-01-AccountStatement.csv'
+
+        #self.test_file = os.path.join(FILES['account_statement'], self.fnames[0])
+        self.test_file = self.fnames[0]
         self.sample_data = open(self.test_file).read()
 
         self.open_acc = OpenAcc(data=self.sample_data)
@@ -26,7 +29,8 @@ class TestOpenAcc(TestSetUp):
         """
         properties = ['summary_keys', 'profits_losses_keys', 'options_keys',
                       'trade_history_keys', 'order_history_keys',
-                      'forex_keys', 'futures_keys', 'cash_balance_keys']
+                      'forex_keys', 'futures_statements_keys',
+                      'holding_future_keys', 'cash_balance_keys']
 
         for prop in properties:
             print '%s:' % prop
@@ -155,7 +159,7 @@ class TestOpenAcc(TestSetUp):
         self.set_sections(
             method='set_profits_losses',
             prop='profits_losses',
-            length=7,
+            length=8,
             keys=self.open_acc.profits_losses_keys
         )
 
@@ -166,7 +170,7 @@ class TestOpenAcc(TestSetUp):
         self.set_sections(
             method='set_options',
             prop='options',
-            length=7,
+            length=9,
             keys=self.open_acc.options_keys
         )
 
@@ -177,7 +181,7 @@ class TestOpenAcc(TestSetUp):
         self.set_sections(
             method='set_equities',
             prop='equities',
-            length=4,
+            length=6,
             keys=self.open_acc.equity_keys
         )
 
@@ -205,13 +209,21 @@ class TestOpenAcc(TestSetUp):
 
     def test_set_futures(self):
         """
-        Test set futures
+        Test set futures, currently testing paper money
+
+        on real account
+        Futures Statements
+        Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
+
+        on paper money
+        Futures
+        Symbol,Description,SPC,Exp,Qty,Trade Price,Mark,P/L Day
         """
         self.set_sections(
             method='set_futures',
             prop='futures',
-            length=10,
-            keys=self.open_acc.futures_keys
+            length=10,  # for real money, use 10
+            keys=self.open_acc.holding_future_keys  # for real money, use real_futures_keys
         )
 
     def test_set_forex(self):
@@ -257,3 +269,18 @@ class TestOpenAcc(TestSetUp):
                 self.assertIn(key, keys)
 
             print '\n' + '-' * 100 + '\n'
+
+    def test_set_order_history_with_fix_file(self):
+        """
+        Test set order history
+        """
+        self.test_file = r'C:\Users\Jack\Projects\rivers\pms_app\tests\2014-10-31\2014-10-31-AccountStatement.csv'
+        self.sample_data = open(self.test_file).read()
+        self.open_acc = OpenAcc(data=self.sample_data)
+
+        self.set_sections(
+            method='set_order_history',
+            prop='order_history',
+            length=13,
+            keys=self.open_acc.order_history_keys
+        )

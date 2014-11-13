@@ -14,8 +14,6 @@ class OpenCSV(object):
         if not len(self.lines[-1]):
             self.lines = self.lines[:-1]
 
-
-
     def read_lines_from_file(self, fname):
         """
         Read line from position file and
@@ -195,6 +193,24 @@ class OpenCSV(object):
         df = df.fillna(method='ffill')
 
         return [r.to_dict() for k, r in df.iterrows()]
+
+    @classmethod
+    def fillna_dict_with_exists(cls, prop_obj, key_exists, columns):
+        """
+        Fill none values if key not exists for column names
+        :param prop_obj: list of dict
+        :param key_exists: str
+        :param columns: str
+        :return: None
+        """
+        for key, item in enumerate(prop_obj):
+            if not item[key_exists]:
+                for column in columns:
+                    prop_obj[key][column] = prop_obj[key - 1][column]
+
+            for sub_key, sub_value in item.items():
+                if sub_value == 'DEBIT' or sub_value == 'CREDIT':
+                    item[sub_key] = 0.0
 
     def set_values(self, start_phrase, end_phrase, start_with, end_until, prop_keys, prop_name):
         """

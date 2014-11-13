@@ -7,13 +7,6 @@ DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
 7/25/14,03:09:09,TRD,799574355,SOLD -1 VERTICAL VXX 100 (Weeklys) AUG1 14 28/26.5 PUT @.61 CBOE,-0.07,-3.00,61.00,"1,122.82"
 ,,,,TOTAL,($0.16),($6.00),$172.00,"$1,122.82"
 
-Futures Statements
-Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
-
-Forex Statements
-,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance
-,7/24/14,13:00:00,BAL,--,Cash balance at the start of the business day 24.07 CST,--,--,--,$0.00
-
 Account Order History
 Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
 ,,7/24/14 23:29:45,VERTICAL,BUY,+1,TO CLOSE,AMZN,JUL4 14,357.5,PUT,,MKT,GTC,CANCELED
@@ -40,6 +33,10 @@ Account Trade History
 ,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
 ,7/24/14 23:26:30,VERTICAL,SELL,-1,TO OPEN,AMZN,JUL4 14,357.5,PUT,9.89,1.11,LMT
 ,,,BUY,+1,TO OPEN,AMZN,JUL4 14,355,PUT,8.78,CREDIT,
+
+
+Futures Statements
+Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
 
 Equities
 Symbol,Description,Qty,Trade Price

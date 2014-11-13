@@ -8,8 +8,9 @@ DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
 7/30/14,01:06:23,TRD,802092476,BOT +1 VERTICAL SPX 100 (Weeklys) AUG1 14 1945/1935 PUT @.60 CBOE,-0.06,-3.00,-60.00,"3,581.15"
 ,,,,TOTAL,($0.24),($12.00),$66.00,"$3,581.15"
 
-Futures Statements
-Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
+Futures
+Symbol,Description,SPC,Exp,Qty,Trade Price,Mark,P/L Day
+,OVERALL TOTALS,,,,,,0
 
 Forex Statements
 ,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance

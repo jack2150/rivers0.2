@@ -1,6 +1,6 @@
 from django.db import models
 from lib.io.open_acc import OpenAcc
-from pms_app.models import Underlying, Statement
+from pms_app.models import Underlying, Future, Statement
 
 
 class AccountModel(object):
@@ -10,7 +10,6 @@ class AccountModel(object):
         :type items: dict
         """
         properties = vars(self)
-
         for key, item in items.items():
             if key in properties.keys():
                 setattr(self, key, item)
@@ -57,7 +56,7 @@ class AccountStatement(models.Model):
         Normal string output for class detail
         :return: str
         """
-        account_statement = '<Account Statement> {date}, Net Liquid: {net_liquid_value}'
+        account_statement = '<AccountStatement:{date}> {net_liquid_value}'
 
         return account_statement.format(
             date='%s' % self.date,
@@ -74,13 +73,21 @@ class OrderHistory(models.Model, AccountModel):
 
     status = models.CharField(max_length=50, verbose_name='Status')
     pos_effect = models.CharField(max_length=50, verbose_name='Pos Effect')
-    price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='Price')
+    price = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='Price',
+        null=True, blank=True
+    )
     contract = models.CharField(max_length=20, verbose_name='Contract')
     side = models.CharField(max_length=20, verbose_name='Side')
     time_placed = models.DateTimeField(verbose_name='Time Placed')
     spread = models.CharField(max_length=50, verbose_name='Spread')
-    expire_date = models.CharField(max_length=20, verbose_name='Expire Date')
-    strike = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='Strike')
+    expire_date = models.CharField(
+        max_length=20, verbose_name='Expire Date', null=True, blank=True
+    )
+    strike = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='Strike',
+        null=True, blank=True
+    )
     tif = models.CharField(max_length=20, verbose_name='TIF')
     order = models.CharField(max_length=20, verbose_name='Order')
     quantity = models.IntegerField(verbose_name='Quantity')
@@ -114,7 +121,7 @@ class OrderHistory(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Order History> {symbol} {date}'
+        output = '<OrderHistory:{date}> {symbol} '
 
         return output.format(
             symbol=self.underlying.symbol,
@@ -131,11 +138,23 @@ class TradeHistory(models.Model, AccountModel):
     side = models.CharField(max_length=20, verbose_name='Side')
     quantity = models.IntegerField(default=0, verbose_name='Quantity')
     pos_effect = models.CharField(max_length=50, verbose_name='Pos Effect')
-    expire_date = models.CharField(max_length=50, verbose_name='Expire Date')
-    strike = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='Strike')
+    expire_date = models.CharField(
+        max_length=50, verbose_name='Expire Date',
+        null=True, blank=True
+    )
+    strike = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0,
+        verbose_name='Strike', null=True, blank=True
+    )
     contract = models.CharField(max_length=20, verbose_name='Contract')
-    price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='Price')
-    net_price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='Net Price')
+    price = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0,
+        verbose_name='Price', null=True, blank=True
+    )
+    net_price = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='Net Price',
+        null=True, blank=True
+    )
     order_type = models.CharField(max_length=50, verbose_name='Order Type')
 
     def json(self):
@@ -166,7 +185,7 @@ class TradeHistory(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Trade History> {symbol} {date}'
+        output = '<Trade History:{date}> {symbol} '
 
         return output.format(
             symbol=self.underlying.symbol,
@@ -212,11 +231,11 @@ class CashBalance(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Cash Balance> {date} {time}'
+        output = '<CashBalance:{date}> {balance}'
 
         return output.format(
             date=self.account_statement.date,
-            time=self.time
+            balance=self.balance
         )
 
 
@@ -229,6 +248,10 @@ class ProfitLoss(models.Model, AccountModel):
     pl_day = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='PL Day')
     pl_ytd = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='PL YTD')
     margin_req = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='Margin Req')
+    mark_value = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='Mark Value',
+        null=True, blank=True
+    )
 
     def json(self):
         """
@@ -243,7 +266,8 @@ class ProfitLoss(models.Model, AccountModel):
         output += '"pl_pct": %.2f, ' % self.pl_pct
         output += '"pl_day": %.2f, ' % self.pl_day
         output += '"pl_ytd": %.2f, ' % self.pl_ytd
-        output += '"margin_req": %.2f' % self.margin_req
+        output += '"margin_req": %.2f, ' % self.margin_req
+        output += '"mark_value": %.2f' % self.mark_value
         output += '}'
 
         return output
@@ -253,7 +277,7 @@ class ProfitLoss(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Profits Losses> {symbol} {date}'
+        output = '<ProfitsLosses:{date}> {symbol}'
 
         return output.format(
             symbol=self.underlying.symbol,
@@ -269,6 +293,14 @@ class HoldingEquity(models.Model, AccountModel):
     trade_price = models.DecimalField(
         max_digits=8, decimal_places=2, default=0.0, verbose_name='Trade Price'
     )
+    mark = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='Mark',
+        null=True, blank=True
+    )
+    mark_value = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='Mark Value',
+        null=True, blank=True
+    )
 
     def json(self):
         """
@@ -280,7 +312,9 @@ class HoldingEquity(models.Model, AccountModel):
         output += '"symbol": "%s", ' % self.underlying.symbol
         output += '"description": "%s", ' % self.underlying.company
         output += '"quantity": %d, ' % self.quantity
-        output += '"trade_price": %.2f' % self.trade_price
+        output += '"trade_price": %.2f, ' % self.trade_price
+        output += '"mark": %.2f, ' % self.mark
+        output += '"mark_value": %.2f' % self.mark_value
         output += '}'
 
         return output
@@ -290,7 +324,7 @@ class HoldingEquity(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Equities> {symbol} {date}'
+        output = '<Equities:{date}> {symbol}'
 
         return output.format(
             symbol=self.underlying.symbol,
@@ -310,6 +344,14 @@ class HoldingOption(models.Model, AccountModel):
     trade_price = models.DecimalField(
         max_digits=8, decimal_places=2, default=0.0, verbose_name='Trade Price'
     )
+    mark = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='Mark',
+        null=True, blank=True
+    )
+    mark_value = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='Mark Value',
+        null=True, blank=True
+    )
 
     def json(self):
         """
@@ -324,7 +366,9 @@ class HoldingOption(models.Model, AccountModel):
         output += '"strike": %.2f, ' % self.strike
         output += '"contract": "%s", ' % self.contract
         output += '"quantity": %d, ' % self.quantity
-        output += '"trade_price": %.2f' % self.trade_price
+        output += '"trade_price": %.2f, ' % self.trade_price
+        output += '"mark": %.2f, ' % self.mark
+        output += '"mark_value": %.2f' % self.mark_value
         output += '}'
 
         return output
@@ -334,7 +378,7 @@ class HoldingOption(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Options> {symbol} {date}'
+        output = '<Options:{date}> {symbol}'
 
         return output.format(
             symbol=self.underlying.symbol,
@@ -342,26 +386,19 @@ class HoldingOption(models.Model, AccountModel):
         )
 
 
-class Future(models.Model, AccountModel):
+class HoldingFuture(models.Model, AccountModel):
     account_statement = models.ForeignKey(AccountStatement)
+    future = models.ForeignKey(Future)
 
-    trade_date = models.DateField(verbose_name='Trade Date')
-    execute_date = models.DateField(verbose_name='Execute Date')
-    execute_time = models.TimeField(verbose_name='Execute Time')
-    contract = models.CharField(max_length=20, verbose_name='Contract')
-    ref_no = models.CharField(max_length=200, verbose_name='Ref No')
-    description = models.CharField(max_length=200, verbose_name='Description')
-    fees = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Fees'
+    quantity = models.IntegerField(default=0, verbose_name='Quantity')
+    trade_price = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='Trade Price'
     )
-    commissions = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Commissions'
+    mark = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='Mark'
     )
-    amount = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Amount'
-    )
-    balance = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Balance'
+    pl_day = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name='P/L Day'
     )
 
     def json(self):
@@ -371,16 +408,11 @@ class Future(models.Model, AccountModel):
         """
         output = '{'
         output += '"account_statement": "%s", ' % self.account_statement.__unicode__()
-        output += '"trade_date": "%s", ' % self.trade_date
-        output += '"execute_date": "%s", ' % self.execute_date
-        output += '"execute_time": "%s", ' % self.execute_time
-        output += '"contract": "%s", ' % self.contract
-        output += '"ref_no": "%s", ' % self.ref_no
-        output += '"description": "%s", ' % self.description
-        output += '"fees": %.2f, ' % self.fees
-        output += '"commissions": %.2f, ' % self.commissions
-        output += '"amount": %.2f, ' % self.amount
-        output += '"balance": %.2f' % self.balance
+        output += '"future": "%s", ' % self.future
+        output += '"quantity": %d, ' % self.quantity
+        output += '"trade_price": %.2f, ' % self.trade_price
+        output += '"mark": %.2f, ' % self.mark
+        output += '"pl_day": %.2f' % self.pl_day
         output += '}'
 
         return output
@@ -390,11 +422,11 @@ class Future(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Futures> {contract} {date}'
+        output = '<HoldingFuture:{date}> {future}'
 
         return output.format(
-            contract=self.contract,
-            date=self.account_statement.date
+            date=self.account_statement.date,
+            future=self.future
         )
 
 
@@ -442,10 +474,11 @@ class Forex(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Forex> {date}'
+        output = '<Forex:{date}> {description}'
 
         return output.format(
-            date=self.account_statement.date
+            date=self.account_statement.date,
+            description=self.description
         )
 
 
@@ -466,7 +499,7 @@ class SaveAccountStatement(object):
         self.trade_history = acc_data['trade_history']
         self.equities = acc_data['equities']
         self.options = acc_data['options']
-        self.futures = acc_data['futures']
+        self.holding_future = acc_data['futures']
         self.forex = acc_data['forex']
         self.profits_losses = acc_data['profits_losses']
         self.summary = acc_data['summary']
@@ -475,13 +508,14 @@ class SaveAccountStatement(object):
 
         # get all underlying, fast query speed
         self.underlying = Underlying.objects.all()
+        self.future = Future.objects.all()
 
     def get_underlying(self, symbol, company=''):
         """
         Return saved underlying object from db
         if not exists, save new underlying then return
         :param symbol: str
-        :param company: str
+        :param company: object
         """
         if self.underlying.filter(symbol=symbol).count():
             underlying = self.underlying.get(symbol=symbol)
@@ -494,6 +528,27 @@ class SaveAccountStatement(object):
 
         return underlying
 
+    def get_future(self, symbol, lookup, description, expire_date, session, spc):
+        """
+        Return a future object that have already saved in db
+        :param symbol: str
+        :return: object
+        """
+        if self.future.filter(symbol=symbol).count():
+            future = self.future.get(symbol=symbol)
+        else:
+            future = Future(
+                lookup=lookup,
+                symbol=symbol,
+                description=description,
+                expire_date=expire_date,
+                session=session,
+                spc=spc
+            )
+            future.save()
+
+        return future
+
     def save_single(self, save_cls, save_data):
         """
         Save single model into db
@@ -501,6 +556,7 @@ class SaveAccountStatement(object):
         :param save_data: list of dict
         """
         for data in save_data:
+            print data
             if 'symbol' in data.keys():
                 if 'description' in data.keys():
                     underlying = self.get_underlying(
@@ -527,6 +583,27 @@ class SaveAccountStatement(object):
                 cls_obj.set_dict(data)
                 cls_obj.save()
 
+    def save_future(self, save_data):
+        """
+        For saving future data only
+        """
+        for data in save_data:
+            future = self.get_future(
+                lookup=data['lookup'],
+                symbol=data['symbol'],
+                description=data['description'],
+                expire_date=data['expire_date'],
+                session=data['session'],
+                spc=data['spc']
+            )
+
+            holding_future = HoldingFuture(
+                account_statement=self.account_statement,
+                future=future
+            )
+            holding_future.set_dict(data)
+            holding_future.save()
+
     def save_all(self):
         """
         Save all data into position models
@@ -544,5 +621,5 @@ class SaveAccountStatement(object):
         self.save_single(save_cls=HoldingEquity, save_data=self.equities)
         self.save_single(save_cls=HoldingOption, save_data=self.options)
         self.save_single(save_cls=CashBalance, save_data=self.cash_balance)
-        self.save_single(save_cls=Future, save_data=self.futures)
+        self.save_future(save_data=self.holding_future)
         self.save_single(save_cls=Forex, save_data=self.forex)

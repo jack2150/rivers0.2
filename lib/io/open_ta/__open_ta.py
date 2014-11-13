@@ -110,14 +110,19 @@ class OpenTA(OpenCSV):
             prop_keys=self.working_order_keys,
             prop_name='working_order'
         )
-
         self.remove_working_order_rows()
+        self.fillna_dict_with_exists(
+            self.working_order,
+            'time_placed',
+            ('time_placed', 'spread', 'order', 'tif', 'mark', 'status')
+        )
 
         self.working_order = map(self.del_empty_keys, self.working_order)
         self.convert_type(self.working_order, 'time_placed', self.convert_datetime, None)
         self.convert_type(self.working_order, 'quantity', int, 0)
         self.convert_type(self.working_order, 'strike', float, 0.0)
         self.convert_type(self.working_order, 'price', float, 0.0)
+        self.convert_type(self.working_order, 'expire_date', str, '')
 
     def set_filled_order(self):
         """
@@ -134,17 +139,19 @@ class OpenTA(OpenCSV):
         )
 
         self.filled_order = map(self.del_empty_keys, self.filled_order)
-        self.filled_order = self.fillna_dict(self.filled_order)
+        self.fillna_dict_with_exists(
+            self.filled_order,
+            'exec_time',
+            ('exec_time', 'spread', 'order')
+        )
 
         self.replace_nan(self.filled_order)
-
         self.convert_type(self.filled_order, 'exec_time', self.convert_datetime, 0)
 
         self.convert_type(self.filled_order, 'quantity', int, 0)
         self.convert_type(self.filled_order, 'strike', float, 0.0)
         self.convert_type(self.filled_order, 'price', float, 0.0)
         self.convert_type(self.filled_order, 'net_price', float, 0.0)
-
         self.convert_type(self.filled_order, 'expire_date', str, '')
 
     def set_cancelled_order(self):
@@ -162,16 +169,17 @@ class OpenTA(OpenCSV):
         )
 
         self.cancelled_order = map(self.del_empty_keys, self.cancelled_order)
-        self.cancelled_order = self.fillna_dict(self.cancelled_order)
-
+        self.fillna_dict_with_exists(
+            self.cancelled_order,
+            'time_cancelled',
+            ('time_cancelled', 'spread', 'order', 'tif', 'status')
+        )
         self.replace_nan(self.cancelled_order)
 
         self.convert_type(self.cancelled_order, 'time_cancelled', self.convert_datetime, 0)
-
         self.convert_type(self.cancelled_order, 'quantity', int, 0)
         self.convert_type(self.cancelled_order, 'strike', float, 0.0)
         self.convert_type(self.cancelled_order, 'price', float, 0.0)
-
         self.convert_type(self.cancelled_order, 'expire_date', str, '')
 
     def format_rolling_strategy_market_time(self):

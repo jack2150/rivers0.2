@@ -197,18 +197,18 @@ class TestProfitsLosses(TestAccountStatement):
 
         self.expect_keys = (
             'pl_pct', 'description', 'pl_ytd', 'pl_open', 'margin_req',
-            'symbol', 'account_statement', 'pl_day'
+            'symbol', 'account_statement', 'pl_day', 'mark_value'
         )
 
 
-class TestEquities(TestAccountStatement):
+class TestHoldingEquities(TestAccountStatement):
     def setUp(self):
         TestAccountStatement.setUp(self)
         self.account_statement.save()
 
         self.items = {
-            'symbol': 'TZA', 'trade_price': 15.12, 'quantity': 200,
-            'description': 'DIREXION SHARES TRUST DAILY SMALL CAP BEAR 3X SHAR'
+            'description': 'GOLDCORP INC COM', 'quantity': 100, 'symbol': 'GG', 'mark': 19.3099,
+            'mark_value': 1930.99, 'trade_price': 23.41
         }
 
         self.underlying = models.Underlying(
@@ -225,11 +225,12 @@ class TestEquities(TestAccountStatement):
 
         self.cls_var = self.equities
         self.expect_keys = (
-            'symbol', 'trade_price', 'description', 'account_statement', 'quantity'
+            'symbol', 'trade_price', 'description', 'account_statement',
+            'quantity', 'mark', 'mark_value'
         )
 
 
-class TestOptions(TestAccountStatement):
+class TestHoldingOptions(TestAccountStatement):
     def setUp(self):
         TestAccountStatement.setUp(self)
         self.account_statement.save()
@@ -254,7 +255,7 @@ class TestOptions(TestAccountStatement):
         self.cls_var = self.options
         self.expect_keys = (
             'contract', 'option_code', 'expire_date', 'strike', 'symbol',
-            'trade_price', 'account_statement', 'quantity'
+            'trade_price', 'account_statement', 'quantity', 'mark', 'mark_value'
         )
 
 
@@ -264,20 +265,31 @@ class TestFutures(TestAccountStatement):
         self.account_statement.save()
 
         self.items = {
-            'execute_date': '2014-07-23', 'description': 'Enter Market', 'commissions': 4.95, 'fees': 2.34,
-            'contract': 'BUY', 'execute_time': '22:21:27', 'ref_no': 'ABC123456', 'amount': 3130.0,
-            'trade_date': '2014-07-23', 'balance': 4000.0
+            'description': 'E-mini S&P 500 Index Futures', 'quantity': 1.0, 'symbol': '/ESZ4',
+            'mark': 2033.25, 'session': 'ETH', 'lookup': 'ES', 'pl_day': 25.0, 'expire_date': 'DEC 14',
+            'spc': '1/50', 'trade_price': 2032.75
         }
 
-        self.futures = models.Future(
-            account_statement=self.account_statement,
-            **self.items
+        self.future = models.Future(
+            lookup=self.items['lookup'],
+            symbol=self.items['symbol'],
+            description=self.items['description'],
+            expire_date=self.items['expire_date'],
+            session=self.items['session'],
+            spc=self.items['spc']
         )
+        self.future.save()
 
-        self.cls_var = self.futures
+        self.holding_future = models.HoldingFuture(
+            account_statement=self.account_statement,
+            future=self.future
+        )
+        self.holding_future.set_dict(self.items)
+
+        self.cls_var = self.holding_future
         self.expect_keys = [
-            'description', 'commissions', 'execute_time', 'fees', 'account_statement',
-            'execute_date', 'contract', 'ref_no', 'amount', 'trade_date', 'balance'
+            'account_statement', 'future',
+            'quantity', 'mark', 'pl_day', 'trade_price'
         ]
 
 
@@ -320,8 +332,8 @@ class TestOpenAccSaveAll(TestSetUp):
         """
         ids = list()
         for data in data_list:
-              # if symbol key exists in data_list
-            if 'symbol' in data.keys():
+            if 'symbol' in data.keys() and '/' not in data['symbol']:
+                # for stock and option only
                 test_cls = test_model(account_statement=account_statement)
 
                 underlying_obj = models.Underlying.objects.filter(symbol=data['symbol'])
@@ -338,7 +350,31 @@ class TestOpenAccSaveAll(TestSetUp):
                     )
                     underlying.save()
 
+                #pprint(data)
+
                 test_cls.underlying = underlying
+                test_cls.set_dict(data)
+                test_cls.save()
+
+            elif 'symbol' in data.keys() and '/' in data['symbol']:
+                # for future data
+                test_cls = test_model(account_statement=account_statement)
+
+                future_obj = models.Future.objects.filter(symbol=data['symbol'])
+                if future_obj.count():
+                    future = future_obj.first()
+                    print future.id
+                else:
+                    future = models.Future(
+                        lookup=data['lookup'],
+                        symbol=data['symbol'],
+                        description=data['description'],
+                        expire_date=data['expire_date'],
+                        session=data['session'],
+                        spc=data['spc']
+                    )
+                    future.save()
+                test_cls.future = future
                 test_cls.set_dict(data)
                 test_cls.save()
             else:
@@ -357,7 +393,7 @@ class TestOpenAccSaveAll(TestSetUp):
 
     def test_read_save(self):
         """
-        Open Acc file data then save all fields into db
+        Open Acc file data then save all fields  into db
         """
         for key, acc_file in enumerate(self.acc_files, start=1):
             print '%d. run filename: %s' % (key, acc_file)
@@ -431,10 +467,11 @@ class TestOpenAccSaveAll(TestSetUp):
                 data_list=acc_data['options']
             )
 
+            print acc_data['futures']
             self.insert_db(
                 no=key,
                 account_statement=account_statement,
-                test_model=models.Future,
+                test_model=models.HoldingFuture,
                 data_list=acc_data['futures']
             )
 
@@ -455,6 +492,96 @@ class TestSaveAccountStatement(TestSetUp):
         TestSetUp.setUp(self)
 
         self.acc_files = glob(FILES['account_statement'] + '/*.csv')
+        self.acc_files = [
+            r'C:\Users\Jack\Projects\rivers\pms_app\tests\2014-11-13\2014-11-13-AccountStatement.csv'
+        ]
+
+    def test_get_underlying(self):
+        """
+        Test get existing underlying or save new underlying into model
+        """
+        print 'save AAPL into underlying...'
+        models.Underlying(
+            symbol='AAPL',
+            company='APPLE INC COM'
+        ).save()
+
+        save_acc = models.SaveAccountStatement(
+            date='2014-11-01',
+            statement=None,
+            file_data=''
+        )
+
+        print 'get existing from db...'
+        print 'total underlying in db: %d' % save_acc.underlying.count()
+        self.assertEqual(save_acc.underlying.count(), 1)
+        print 'run get underlying with AAPL...'
+        underlying = save_acc.get_underlying(
+            symbol='AAPL',
+            company='APPLE INC COM'
+        )
+        self.assertEqual(underlying.id, 1)
+
+        print 'save new into db...'
+        print 'run get underlying with BAC...'
+        underlying = save_acc.get_underlying(
+            symbol='BAC',
+            company='BANK OF AMERICA CORP COM'
+        )
+        self.assertEqual(underlying.id, 2)
+        self.assertEqual(save_acc.underlying.count(), 2)
+        print 'total underlying in db: %d' % save_acc.underlying.count()
+        print save_acc.underlying.all()
+
+    def test_get_future(self):
+        """
+        Test get future from db or save new db into db
+        """
+        print 'save AAPL into underlying...'
+        models.Future(
+            lookup='ES',
+            symbol='/ESZ4',
+            description='E-mini S&P 500 Index Futures',
+            expire_date='DEC 14',
+            session='ETH',
+            spc='1/50'
+        ).save()
+
+        save_acc = models.SaveAccountStatement(
+            date='2014-11-01',
+            statement=None,
+            file_data=''
+        )
+
+        print 'get existing from db...'
+        print 'total future in db: %d' % save_acc.future.count()
+        self.assertEqual(save_acc.future.count(), 1)
+        print 'run get future with /ESZ4...'
+        future = save_acc.get_future(
+            lookup='ES',
+            symbol='/ESZ4',
+            description='E-mini S&P 500 Index Futures',
+            expire_date='DEC 14',
+            session='ETH',
+            spc='1/50'
+        )
+        self.assertEqual(future.id, 1)
+
+        print 'save new into db...'
+        print 'run get future with /YGZ4...'
+        '/YGZ4,Mini Gold Futures - ICUS - Dec14,1/33.2,DEC 14,+1,1168.60,1168.6,$0.00'
+        future = save_acc.get_future(
+            lookup='YG',
+            symbol='/YGZ4',
+            description='Mini Gold Futures',
+            expire_date='DEC 14',
+            session='ICUS',
+            spc='1/33.2'
+        )
+        self.assertEqual(future.id, 2)
+        self.assertEqual(save_acc.future.count(), 2)
+        print 'total future in db: %d' % save_acc.future.count()
+        print save_acc.future.all()
 
     def test_save_all(self):
         """
@@ -465,7 +592,8 @@ class TestSaveAccountStatement(TestSetUp):
             print '%d. run filename: %s' % (no, acc_file)
             print 'starting...\n'
 
-            date = acc_file[54:64]
+            #date = acc_file[54:64]
+            date = '2014-11-13'
             acc_data = open(acc_file).read()
 
             statement = models.Statement(
@@ -492,16 +620,19 @@ class TestSaveAccountStatement(TestSetUp):
             print 'Options count: %d' % models.HoldingOption.objects.count()
             print 'CashBalance count: %d' % models.CashBalance.objects.count()
             print 'Futures count: %d' % models.Future.objects.count()
+            print 'Holding Futures count: %d' % models.HoldingFuture.objects.count()
             print 'Forex count: %d\n' % models.Forex.objects.count()
 
             self.assertEqual(models.Statement.objects.count(), no)
             self.assertEqual(models.AccountStatement.objects.count(), no)
-            self.assertGreater(models.ProfitLoss.objects.count(), 0)
-            self.assertGreater(models.TradeHistory.objects.count(), 0)
-            self.assertGreater(models.HoldingEquity.objects.count(), 0)
-            self.assertGreater(models.HoldingOption.objects.count(), 0)
-            self.assertGreater(models.HoldingOption.objects.count(), 0)
-            self.assertGreater(models.CashBalance.objects.count(), 0)
-            self.assertGreater(models.Future.objects.count(), 0)
-            self.assertGreater(models.Future.objects.count(), 0)
+            self.assertGreaterEqual(models.ProfitLoss.objects.count(), 0)
+            self.assertGreaterEqual(models.TradeHistory.objects.count(), 0)
+            self.assertGreaterEqual(models.OrderHistory.objects.count(), 0)
+            self.assertGreaterEqual(models.HoldingEquity.objects.count(), 0)
+            self.assertGreaterEqual(models.HoldingOption.objects.count(), 0)
+            self.assertGreaterEqual(models.CashBalance.objects.count(), 0)
+            self.assertGreaterEqual(models.Future.objects.count(), 0)
+            self.assertGreaterEqual(models.HoldingFuture.objects.count(), 0)
+            self.assertGreaterEqual(models.Forex.objects.count(), 0)
+
 

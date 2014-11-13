@@ -10,9 +10,15 @@ class TestOpenTA(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
-        self.fnames = ['2014-09-19-TradeActivity.csv', '2014-10-22-TradeActivity.csv']
+        self.fnames = [
+            '2014-09-19-TradeActivity.csv',
+            '2014-10-22-TradeActivity.csv'
+        ]
 
-        self.test_file = os.path.join(FILES['trade_activity'], self.fnames[1])
+        #self.fnames[0] = r'C:\Users\Jack\Projects\rivers\pms_app\tests\2014-10-31\2014-10-31-TradeActivity.csv'
+        #self.fnames[1] = r'C:\Users\Jack\Projects\rivers\pms_app\tests\2014-11-01\2014-11-01-TradeActivity.csv'
+
+        self.test_file = os.path.join(FILES['trade_activity'], self.fnames[0])
         self.test_data = open(self.test_file).read()
 
         self.open_ta = OpenTA(data=self.test_data)
@@ -85,7 +91,6 @@ class TestOpenTA(TestSetUp):
 
         print '\n' + 'after, working order row: %d' % len(self.open_ta.working_order)
         self.assertEqual(len(self.open_ta.working_order), 2)
-
 
     def test_set_working_order(self):
         """

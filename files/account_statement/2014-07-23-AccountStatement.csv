@@ -14,9 +14,13 @@ DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
 7/24/14,12:58:00,ADJ,799612938,Courtesy Credit,,,0.04,956.98
 ,,,,TOTAL,($0.62),($33.00),"($3,311.96)",$956.98
 
-Futures Statements
-Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
-7/23/14,7/23/14,22:21:27,BUY,ABC123456,Enter Market,2.34,4.95,3130.00,4000.00
+Futures
+Symbol,Description,SPC,Exp,Qty,Trade Price,Mark,P/L Day
+/6JZ4,"Japanese Yen Futures,Dec-2014,ETH",1/12500000,DEC 14,+1,.008669,.008671,$25.00
+/ZWZ4,"Wheat Futures,Dec-2014,ETH",1/50,DEC 14,+1,524.25,524.25,$0.00
+/YGZ4,Mini Gold Futures - ICUS - Dec14,1/33.2,DEC 14,+1,1168.60,1168.6,$0.00
+/ESZ4,"E-mini S&P 500 Index Futures,Dec-2014,ETH",1/50,DEC 14,+1,2032.75,2033.25,$25.00
+,OVERALL TOTALS,,,,,,$50.00
 
 Forex Statements
 ,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance

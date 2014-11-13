@@ -1,5 +1,4 @@
 from django.db import models
-#from pms_app.pos_app.models import PositionStatement
 
 
 class Underlying(models.Model):
@@ -28,6 +27,44 @@ class Underlying(models.Model):
         """
         return '{symbol}'.format(
             symbol=self.symbol
+        )
+
+
+class Future(models.Model):
+    """
+    A future that have 4 session per year and different symbol
+    """
+    lookup = models.CharField(max_length=2, verbose_name='Lookup')
+    symbol = models.CharField(max_length=20, verbose_name='Symbol')
+    description = models.CharField(max_length=255, verbose_name='Description')
+    expire_date = models.CharField(max_length=20, verbose_name='Expire Date')
+    session = models.CharField(max_length=20, verbose_name='Session')
+    spc = models.CharField(max_length=20, verbose_name='Shares Per Contract')
+
+    def json(self):
+        """
+        Using all property inside class and return json format string
+        :return: str
+        """
+        output = '{'
+        output += '"lookup": "%s", ' % self.lookup
+        output += '"symbol": "%s", ' % self.symbol
+        output += '"description": "%s", ' % self.description
+        output += '"expire_date": "%s", ' % self.expire_date
+        output += '"session": "%s", ' % self.session
+        output += '"spc": "%s"' % self.spc
+        output += '}'
+
+        return output
+
+    def __unicode__(self):
+        """
+        Normal string output for class detail
+        :return: str
+        """
+        return '{description} {expire_date}'.format(
+            description=self.description,
+            expire_date=self.expire_date
         )
 
 
