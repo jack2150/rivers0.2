@@ -3,6 +3,7 @@ from glob import glob
 import os
 from pprint import pprint
 from django.utils.timezone import utc
+from app_pms.test_files import *
 from app_pms.classes.io.open_acc import OpenAcc
 from app_pms.classes.test import TestSetUp
 from app_pms.app_acc import models
@@ -79,6 +80,34 @@ class TestAccountStatement(TestSetUp):
 
             for key in json.keys():
                 self.assertIn(key, self.expect_keys)
+
+
+class TestForexSummary(TestAccountStatement):
+    def setUp(self):
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
+
+        self.items = {
+            'available_equity': 9450.07,
+            'cash': 10000.0,
+            'equity': 10014.39,
+            'floating': 40.79,
+            'margin': 564.32,
+            'risk_level': 100.0,
+            'upl': -26.4
+        }
+
+        self.forex_summary = models.ForexSummary(
+            account_statement=self.account_statement,
+            **self.items
+        )
+
+        self.cls_var = self.forex_summary
+
+        self.expect_keys = (
+            'account_statement', 'cash', 'upl', 'floating',
+            'equity', 'margin', 'available_equity', 'risk_level'
+        )
 
 
 class TestOrderHistory(TestAccountStatement):
@@ -171,7 +200,7 @@ class TestCashBalance(TestAccountStatement):
         )
 
 
-class TestProfitsLosses(TestAccountStatement):
+class TestProfitLoss(TestAccountStatement):
     def setUp(self):
         TestAccountStatement.setUp(self)
         self.account_statement.save()
@@ -187,13 +216,13 @@ class TestProfitsLosses(TestAccountStatement):
         )
         self.underlying.save()
 
-        self.profits_losses = models.ProfitLoss(
+        self.profit_loss = models.ProfitLoss(
             account_statement=self.account_statement,
             underlying=self.underlying
         )
-        self.profits_losses.set_dict(self.items)
+        self.profit_loss.set_dict(self.items)
 
-        self.cls_var = self.profits_losses
+        self.cls_var = self.profit_loss
 
         self.expect_keys = (
             'pl_pct', 'description', 'pl_ytd', 'pl_open', 'margin_req',
@@ -217,13 +246,13 @@ class TestHoldingEquities(TestAccountStatement):
         )
         self.underlying.save()
 
-        self.equities = models.HoldingEquity(
+        self.holding_equity = models.HoldingEquity(
             account_statement=self.account_statement,
             underlying=self.underlying
         )
-        self.equities.set_dict(self.items)
+        self.holding_equity.set_dict(self.items)
 
-        self.cls_var = self.equities
+        self.cls_var = self.holding_equity
         self.expect_keys = (
             'symbol', 'trade_price', 'description', 'account_statement',
             'quantity', 'mark', 'mark_value'
@@ -246,20 +275,44 @@ class TestHoldingOptions(TestAccountStatement):
         )
         self.underlying.save()
 
-        self.options = models.HoldingOption(
+        self.holding_option = models.HoldingOption(
             account_statement=self.account_statement,
             underlying=self.underlying
         )
-        self.options.set_dict(self.items)
+        self.holding_option.set_dict(self.items)
 
-        self.cls_var = self.options
+        self.cls_var = self.holding_option
         self.expect_keys = (
-            'contract', 'option_code', 'expire_date', 'strike', 'symbol',
-            'trade_price', 'account_statement', 'quantity', 'mark', 'mark_value'
+            'account_statement', 'contract', 'option_code', 'expire_date', 'strike',
+            'symbol', 'trade_price', 'account_statement', 'quantity', 'mark', 'mark_value'
         )
 
 
-class TestFutures(TestAccountStatement):
+class TestFutureStatement(TestAccountStatement):
+    def setUp(self):
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
+
+        self.items = {
+            'execute_date': '2014-11-13', 'description': 'BOT +1 /YMZ4 @17559.00',
+            'commissions': 5.0, 'trade_date': '2014-11-13', 'contract': 'TRD',
+            'execute_time': '08:23:06', 'ref_no': 449712262.0,
+            'amount': 17559.0, 'fees': 17559.0, 'balance': 24995.52
+        }
+
+        self.future_statement = models.FutureStatement(
+            account_statement=self.account_statement
+        )
+        self.future_statement.set_dict(self.items)
+
+        self.cls_var = self.future_statement
+        self.expect_keys = [
+            'account_statement', 'execute_date', 'execute_time', 'contract',
+            'ref_no', 'description', 'fee', 'commission', 'amount', 'balance'
+        ]
+
+
+class TestHoldingFuture(TestAccountStatement):
     def setUp(self):
         TestAccountStatement.setUp(self)
         self.account_statement.save()
@@ -293,26 +346,58 @@ class TestFutures(TestAccountStatement):
         ]
 
 
-class TestForex(TestAccountStatement):
+class TestForexStatement(TestAccountStatement):
     def setUp(self):
         TestAccountStatement.setUp(self)
         self.account_statement.save()
 
         self.items = {
-            'amount_usd': 0.0, 'description': 'Cash balance at the start of the business day 23.07 CST',
-            'commissions': 0.0, 'contract': 'BAL', 'ref_no': 0L, 'amount': 0.0, 'time': '13:00:00',
-            'balance': 0.0
+            'amount_usd': -22.4, 'description': 'BOT +10000 USD/JPY @115.755', 'commissions': 0.0,
+            'contract': 'TRD', 'ref_no': 450077888.0, 'amount': -2590.0, 'time': '04:13:53',
+            'date': '2014-11-14', 'balance': 9973.6
         }
 
-        self.forex = models.Forex(
-            account_statement=self.account_statement,
-            **self.items
+        self.forex_statement = models.ForexStatement(
+            account_statement=self.account_statement
         )
+        self.forex_statement.set_dict(self.items)
 
-        self.cls_var = self.forex
+        self.cls_var = self.forex_statement
         self.expect_keys = [
             'ref_no', 'amount', 'balance', 'contract', 'time', 'commissions',
             'amount_usd', 'account_statement', 'description'
+        ]
+
+
+class TestHoldingForex(TestAccountStatement):
+    def setUp(self):
+        TestAccountStatement.setUp(self)
+        self.account_statement.save()
+
+        self.items = {
+            'description': 'GBPound/Japanese Yen Spot', 'fpl': -4.41,
+            'symbol': 'GBP/JPY', 'mark': 181.895,
+            'quantity': 10000.0, 'trade_price': 181.927
+        }
+
+        self.forex = models.Forex(
+            symbol=self.items['symbol'],
+            description=self.items['description']
+        )
+        self.forex.save()
+
+        print 'forex id: %d' % self.forex.id
+
+        self.holding_forex = models.HoldingForex(
+            account_statement=self.account_statement,
+            forex=self.forex
+        )
+        self.holding_forex.set_dict(self.items)
+
+        self.cls_var = self.holding_forex
+        self.expect_keys = [
+            'account_statement', 'forex', 'fpl',
+            'quantity', 'mark', 'trade_price'
         ]
 
 
@@ -483,7 +568,7 @@ class TestOpenAccSaveAll(TestSetUp):
             self.insert_db(
                 no=key,
                 account_statement=account_statement,
-                test_model=models.Forex,
+                test_model=models.ForexStatement,
                 data_list=acc_data['forex']
             )
 
@@ -496,96 +581,94 @@ class TestSaveAccountStatement(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
-        self.acc_files = glob(
-            r'C:\Users\Jack\Projects\rivers\app_pms\tests\account_statement\*.csv'
+        self.acc_files = glob(os.path.join(test_acc_path, '*.csv'))
+
+    def get_methods(self, cls, test_method, data1, data2):
+        """
+        test method for get underlying, future and forex
+        """
+        print 'save %s into underlying...' % data1['symbol']
+        cls(**data1).save()
+
+        save_acc = models.SaveAccountStatement(
+            date='2014-11-01', statement=None, file_data=''
         )
+
+        cls_name = cls.__name__
+
+        print 'get existing from db...'
+        print 'total %s in db: %d' % (cls_name, cls.objects.count())
+        self.assertEqual(cls.objects.count(), 1)
+        print 'run get %s with %s...' % (cls_name, data1['symbol'])
+        cls_obj = getattr(save_acc, test_method)(**data1)
+        self.assertEqual(cls_obj.id, 1)
+
+        print '\n' + 'save new into db...'
+        print 'run get %s with %s...' % (cls_name, data2['symbol'])
+        cls_obj = getattr(save_acc, test_method)(**data2)
+        self.assertEqual(cls_obj.id, 2)
+        self.assertEqual(cls.objects.count(), 2)
+        print 'total %s in db: %d' % (cls_name, cls.objects.count())
+        print cls.objects.all()
 
     def test_get_underlying(self):
         """
         Test get existing underlying or save new underlying into model
         """
-        print 'save AAPL into underlying...'
-        models.Underlying(
-            symbol='AAPL',
-            company='APPLE INC COM'
-        ).save()
-
-        save_acc = models.SaveAccountStatement(
-            date='2014-11-01',
-            statement=None,
-            file_data=''
+        self.get_methods(
+            cls=models.Underlying,
+            test_method='get_underlying',
+            data1=dict(
+                symbol='AAPL',
+                company='APPLE INC COM'
+            ),
+            data2=dict(
+                symbol='BAC',
+                company='BANK OF AMERICA CORP COM'
+            )
         )
-
-        print 'get existing from db...'
-        print 'total underlying in db: %d' % save_acc.underlying.count()
-        self.assertEqual(save_acc.underlying.count(), 1)
-        print 'run get underlying with AAPL...'
-        underlying = save_acc.get_underlying(
-            symbol='AAPL',
-            company='APPLE INC COM'
-        )
-        self.assertEqual(underlying.id, 1)
-
-        print 'save new into db...'
-        print 'run get underlying with BAC...'
-        underlying = save_acc.get_underlying(
-            symbol='BAC',
-            company='BANK OF AMERICA CORP COM'
-        )
-        self.assertEqual(underlying.id, 2)
-        self.assertEqual(save_acc.underlying.count(), 2)
-        print 'total underlying in db: %d' % save_acc.underlying.count()
-        print save_acc.underlying.all()
 
     def test_get_future(self):
         """
         Test get future from db or save new db into db
         """
-        print 'save AAPL into underlying...'
-        models.Future(
-            lookup='ES',
-            symbol='/ESZ4',
-            description='E-mini S&P 500 Index Futures',
-            expire_date='DEC 14',
-            session='ETH',
-            spc='1/50'
-        ).save()
-
-        save_acc = models.SaveAccountStatement(
-            date='2014-11-01',
-            statement=None,
-            file_data=''
+        self.get_methods(
+            cls=models.Future,
+            test_method='get_future',
+            data1=dict(
+                lookup='ES',
+                symbol='/ESZ4',
+                description='E-mini S&P 500 Index Futures',
+                expire_date='DEC 14',
+                session='ETH',
+                spc='1/50'
+            ),
+            data2=dict(
+                lookup='YG',
+                symbol='/YGZ4',
+                description='Mini Gold Futures',
+                expire_date='DEC 14',
+                session='ICUS',
+                spc='1/33.2'
+            )
         )
 
-        print 'get existing from db...'
-        print 'total future in db: %d' % save_acc.future.count()
-        self.assertEqual(save_acc.future.count(), 1)
-        print 'run get future with /ESZ4...'
-        future = save_acc.get_future(
-            lookup='ES',
-            symbol='/ESZ4',
-            description='E-mini S&P 500 Index Futures',
-            expire_date='DEC 14',
-            session='ETH',
-            spc='1/50'
+    def test_get_forex(self):
+        """
+        Test get existing underlying or save new underlying into model
+        """
+        self.get_methods(
+            cls=models.Forex,
+            test_method='get_forex',
+            data1=dict(
+                symbol='EUR/USD',
+                description='Euro/USDollar Spot'
+            ),
+            data2=dict(
+                symbol='GBP/JPY',
+                description='GBPound/Japanese Yen Spot'
+            )
         )
-        self.assertEqual(future.id, 1)
-
-        print 'save new into db...'
-        print 'run get future with /YGZ4...'
-        '/YGZ4,Mini Gold Futures - ICUS - Dec14,1/33.2,DEC 14,+1,1168.60,1168.6,$0.00'
-        future = save_acc.get_future(
-            lookup='YG',
-            symbol='/YGZ4',
-            description='Mini Gold Futures',
-            expire_date='DEC 14',
-            session='ICUS',
-            spc='1/33.2'
-        )
-        self.assertEqual(future.id, 2)
-        self.assertEqual(save_acc.future.count(), 2)
-        print 'total future in db: %d' % save_acc.future.count()
-        print save_acc.future.all()
 
     def test_save_all(self):
         """
@@ -618,26 +701,51 @@ class TestSaveAccountStatement(TestSetUp):
 
             print 'Statement count: %d' % models.Statement.objects.count()
             print 'AccountStatement count: %d' % models.AccountStatement.objects.count()
-            print 'ProfitsLosses count: %d' % models.ProfitLoss.objects.count()
-            print 'TradeHistory count: %d' % models.TradeHistory.objects.count()
-            print 'OrderHistory count: %d' % models.OrderHistory.objects.count()
-            print 'Equities count: %d' % models.HoldingEquity.objects.count()
-            print 'Options count: %d' % models.HoldingOption.objects.count()
-            print 'CashBalance count: %d' % models.CashBalance.objects.count()
-            print 'Futures count: %d' % models.Future.objects.count()
-            print 'Holding Futures count: %d' % models.HoldingFuture.objects.count()
-            print 'Forex count: %d\n' % models.Forex.objects.count()
+            print 'ForexSummary count: %d' % models.ForexSummary.objects.count()
+            print 'ForexStatement count: %d' % models.ForexStatement.objects.count()
+            print 'FutureStatement count: %d' % models.FutureStatement.objects.count()
+
+            print 'HoldingEquity count: %d' % models.HoldingEquity.objects.count()
+            print 'HoldingOption count: %d' % models.HoldingOption.objects.count()
+
+            print 'Future count: %d' % models.Future.objects.count()
+            print 'HoldingFuture count: %d' % models.HoldingFuture.objects.count()
+            print 'Forex count: %d' % models.Forex.objects.count()
+            print 'HoldingForex count: %d' % models.HoldingForex.objects.count()
+
+            print 'ProfitLoss count: %d' % models.ProfitLoss.objects.count()
+
+            #print 'ProfitsLosses count: %d' % models.ProfitLoss.objects.count()
+            #print 'TradeHistory count: %d' % models.TradeHistory.objects.count()
+            #print 'OrderHistory count: %d' % models.OrderHistory.objects.count()
+            #print 'Equities count: %d' % models.HoldingEquity.objects.count()
+            #print 'Options count: %d' % models.HoldingOption.objects.count()
+            #print 'CashBalance count: %d' % models.CashBalance.objects.count()
+            #print 'Futures count: %d' % models.Future.objects.count()
+            #print 'Holding Futures count: %d' % models.HoldingFuture.objects.count()
+            #print 'Forex count: %d\n' % models.ForexStatement.objects.count()
 
             self.assertEqual(models.Statement.objects.count(), no)
             self.assertEqual(models.AccountStatement.objects.count(), no)
-            self.assertGreaterEqual(models.ProfitLoss.objects.count(), 0)
-            self.assertGreaterEqual(models.TradeHistory.objects.count(), 0)
-            self.assertGreaterEqual(models.OrderHistory.objects.count(), 0)
+            self.assertGreaterEqual(models.ForexSummary.objects.count(), 0)
+            self.assertGreaterEqual(models.ForexStatement.objects.count(), 0)
+            self.assertGreaterEqual(models.FutureStatement.objects.count(), 0)
+
             self.assertGreaterEqual(models.HoldingEquity.objects.count(), 0)
             self.assertGreaterEqual(models.HoldingOption.objects.count(), 0)
-            self.assertGreaterEqual(models.CashBalance.objects.count(), 0)
+
             self.assertGreaterEqual(models.Future.objects.count(), 0)
             self.assertGreaterEqual(models.HoldingFuture.objects.count(), 0)
             self.assertGreaterEqual(models.Forex.objects.count(), 0)
+            self.assertGreaterEqual(models.HoldingForex.objects.count(), 0)
+            self.assertGreaterEqual(models.ProfitLoss.objects.count(), 0)
 
-
+            #
+            #self.assertGreaterEqual(models.TradeHistory.objects.count(), 0)
+            #self.assertGreaterEqual(models.OrderHistory.objects.count(), 0)
+            #self.assertGreaterEqual(models.HoldingEquity.objects.count(), 0)
+            #self.assertGreaterEqual(models.HoldingOption.objects.count(), 0)
+            #self.assertGreaterEqual(models.CashBalance.objects.count(), 0)
+            #self.assertGreaterEqual(models.Future.objects.count(), 0)
+            #self.assertGreaterEqual(models.HoldingFuture.objects.count(), 0)
+            #self.assertGreaterEqual(models.ForexStatement.objects.count(), 0)

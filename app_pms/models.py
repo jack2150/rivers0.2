@@ -34,12 +34,12 @@ class Future(models.Model):
     """
     A future that have 4 session per year and different symbol
     """
-    lookup = models.CharField(max_length=2, verbose_name='Lookup')
     symbol = models.CharField(max_length=20, verbose_name='Symbol')
-    description = models.CharField(max_length=255, verbose_name='Description')
-    expire_date = models.CharField(max_length=20, verbose_name='Expire Date')
-    session = models.CharField(max_length=20, verbose_name='Session')
-    spc = models.CharField(max_length=20, verbose_name='Shares Per Contract')
+    lookup = models.CharField(max_length=2, blank=True, null=True, verbose_name='Lookup')
+    description = models.CharField(max_length=255, blank=True, null=True, verbose_name='Description')
+    expire_date = models.CharField(max_length=20, blank=True, null=True, verbose_name='Expire Date')
+    session = models.CharField(max_length=20, blank=True, null=True, verbose_name='Session')
+    spc = models.CharField(max_length=20, blank=True, null=True, verbose_name='Shares Per Contract')
 
     def json(self):
         """
@@ -65,6 +65,32 @@ class Future(models.Model):
         return '{description} {expire_date}'.format(
             description=self.description,
             expire_date=self.expire_date
+        )
+
+
+class Forex(models.Model):
+    symbol = models.CharField(max_length=10, help_text='Forex exchange between two currency.')
+    description = models.CharField(max_length=100, help_text='Description of two currency.')
+
+    def json(self):
+        """
+        Using all property inside class and return json format string
+        :return: str
+        """
+        output = '{'
+        output += '"symbol": "%s", ' % self.symbol
+        output += '"description": "%s"' % self.description
+        output += '}'
+
+        return output
+
+    def __unicode__(self):
+        """
+        Normal string output for class detail
+        :return: str
+        """
+        return '{symbol}'.format(
+            symbol=self.symbol
         )
 
 
