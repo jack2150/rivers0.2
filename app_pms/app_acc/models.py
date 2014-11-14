@@ -716,6 +716,10 @@ class SaveAccountStatement(object):
         """
         if self.underlying.filter(symbol=symbol).count():
             underlying = self.underlying.get(symbol=symbol)
+
+            if underlying.company == '':
+                underlying.company = company
+                underlying.save()
         else:
             underlying = Underlying(
                 symbol=symbol,
@@ -773,6 +777,10 @@ class SaveAccountStatement(object):
         """
         if self.forex.filter(symbol=symbol).count():
             forex = self.forex.get(symbol=symbol)
+
+            if forex.description == '':
+                forex.description = description
+                forex.save()
         else:
             forex = Forex(
                 symbol=symbol,
@@ -782,6 +790,18 @@ class SaveAccountStatement(object):
             self.forex = Forex.objects.all()
 
         return forex
+
+    def save_account_statement(self):
+        """
+        Save account statement into class property and db
+        """
+        self.account_statement = AccountStatement(
+            statement=self.statement,
+            date=self.date,
+            **self.account_summary
+        )
+
+        self.account_statement.save()
 
     def save_single(self, save_cls, save_data):
         """
@@ -884,16 +904,43 @@ class SaveAccountStatement(object):
             holding_future.set_dict(data)
             holding_future.save()
 
+    def save_history(self, save_cls, save_data):
+        """
+        Save order history into table with using
+        underlying, future or forex foreign key
+        """
+        for data in save_data:
+            underlying = None
+            future = None
+            forex = None
+
+            if data['contract'] == 'FUTURE':
+                future = self.get_future(
+                    symbol=data['symbol']
+                )
+            elif data['contract'] == 'FOREX':
+                forex = self.get_forex(
+                    symbol=data['symbol']
+                )
+            else:
+                underlying = self.get_underlying(
+                    symbol=data['symbol']
+                )
+
+            cls_obj = save_cls(
+                account_statement=self.account_statement,
+                underlying=underlying,
+                future=future,
+                forex=forex
+            )
+            cls_obj.set_dict(data)
+            cls_obj.save()
+
     def save_all(self):
         """
         Save all data into position models
         """
-        self.account_statement = AccountStatement(
-            statement=self.statement,
-            date=self.date,
-            **self.account_summary
-        )
-        self.account_statement.save()
+        self.save_account_statement()
 
         self.save_single(save_cls=ForexSummary, save_data=[self.forex_summary])
         self.save_single(save_cls=CashBalance, save_data=self.cash_balance)
@@ -907,14 +954,5 @@ class SaveAccountStatement(object):
 
         self.save_profit_loss(save_data=self.profit_loss)
 
-        #self.save_single(save_cls=TradeHistory, save_data=self.trade_history)
-        #self.save_single(save_cls=OrderHistory, save_data=self.order_history)
-
-        # todo: remain order history, trade history
-
-
-
-
-
-# todo: modify order history, trade history support future and forex
-# todo: profit loss support future
+        self.save_history(save_cls=OrderHistory, save_data=self.order_history)
+        self.save_history(save_cls=TradeHistory, save_data=self.trade_history)

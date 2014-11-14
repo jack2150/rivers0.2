@@ -340,5 +340,5 @@ admin.site.register(models.TradeHistory, TradeHistoryAdmin)
 admin.site.register(models.HoldingEquity, HoldingEquityAdmin)
 admin.site.register(models.HoldingOption, HoldingOptionAdmin)
 admin.site.register(models.HoldingFuture, FutureAdmin)
-admin.site.register(models.Forex)
+admin.site.register(models.ForexStatement)
 

@@ -6,7 +6,7 @@ class Underlying(models.Model):
     A position contains 1 instrument, 1 stock and multiple options
     """
     symbol = models.CharField(max_length=10, help_text='Underlying stock symbol.')
-    company = models.CharField(max_length=100, help_text='Stock company name.')
+    company = models.CharField(max_length=100, null=True, blank=True, help_text='Stock company name.')
 
     def json(self):
         """
@@ -70,7 +70,9 @@ class Future(models.Model):
 
 class Forex(models.Model):
     symbol = models.CharField(max_length=10, help_text='Forex exchange between two currency.')
-    description = models.CharField(max_length=100, help_text='Description of two currency.')
+    description = models.CharField(
+        max_length=100, null=True, blank=True, help_text='Description of two currency.'
+    )
 
     def json(self):
         """

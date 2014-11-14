@@ -14,6 +14,10 @@ DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
 7/24/14,12:58:00,ADJ,799612938,Courtesy Credit,,,0.04,956.98
 ,,,,TOTAL,($0.62),($33.00),"($3,311.96)",$956.98
 
+Futures Statements
+Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
+11/13/14,11/13/14,08:23:06,TRD,449712262,"BOT +1 /YMZ4 @17559.00",17559.00,5.00,17559.00,"$24,995.52"
+
 Futures
 Symbol,Description,SPC,Exp,Qty,Trade Price,Mark,P/L Day
 /6JZ4,"Japanese Yen Futures,Dec-2014,ETH",1/12500000,DEC 14,+1,.008669,.008671,$25.00
@@ -24,10 +28,23 @@ Symbol,Description,SPC,Exp,Qty,Trade Price,Mark,P/L Day
 
 Forex Statements
 ,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance
-,7/23/14,13:00:00,BAL,--,Cash balance at the start of the business day 23.07 CST,--,--,--,$0.00
+,11/13/14,14:00:00,BAL,--,Cash balance at the start of the business day 13.11 CST,--,--,--,"$9,996.00"
+,11/14/14,04:13:53,TRD,450077888,"BOT +10,000 USD/JPY @115.755",--,"-2,590.00",($22.40),"$9,973.60"
+,11/14/14,04:16:21,TRD,450079113,"BOT +10,000 GBP/JPY @181.927",--,--,--,"$9,973.60"
+
+Forex
+Symbol,Description,Qty,Trade Price,Mark,FPL
+EUR/USD,Euro/USDollar Spot              ,+10000,1.24358,1.248185,$45.20
+GBP/JPY,GBPound/Japanese Yen Spot       ,+10000,181.927,181.895,($4.41)
+,OVERALL TOTALS,,,,$40.79
+
 
 Account Order History
 Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,11/14/14 04:16:21,FOREX,BUY,+10000,TO OPEN,GBP/JPY,,,FOREX,181.927,LMT,GTC,FILLED
+,,11/14/14 04:15:53,FUTURE,BUY,+1,TO OPEN,/ZWZ4,DEC 14,,FUTURE,555.25,LMT,DAY,FILLED
+,,11/14/14 04:13:52,FOREX,BUY,+10000,TO CLOSE,USD/JPY,,,FOREX,,MKT,GTC,FILLED
+,,11/14/14 04:13:42,FUTURE,SELL,-1,TO CLOSE,/NQZ4,DEC 14,,FUTURE,,MKT,DAY,FILLED
 ,,7/23/14 22:21:27,VERTICAL,BUY,+1,TO CLOSE,MSFT,JUL4 14,44.5,CALL,.57,LMT,DAY,FILLED
 ,,,,SELL,-1,TO CLOSE,MSFT,JUL4 14,45.5,CALL,,,,
 ,,7/23/14 21:41:37,VERTICAL,BUY,+3,TO CLOSE,USO,JUL4 14,36.5,CALL,.96,LMT,DAY,FILLED
@@ -54,17 +71,22 @@ Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,
 
 Account Trade History
 ,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,11/14/14 04:16:21,FOREX,BUY,+10000,TO OPEN,GBP/JPY,,,FOREX,181.927,181.927,LMT
+,11/14/14 04:15:53,FUTURE,BUY,+1,TO OPEN,/ZWZ4,DEC 14,,FUTURE,553.75,553.75,LMT
 ,7/23/14 22:21:27,VERTICAL,BUY,+1,TO CLOSE,MSFT,JUL4 14,44.5,CALL,.82,.57,LMT
 ,,,SELL,-1,TO CLOSE,MSFT,JUL4 14,45.5,CALL,.25,DEBIT,
 ,7/23/14 21:41:38,VERTICAL,BUY,+3,TO CLOSE,USO,JUL4 14,36.5,CALL,1.53,.96,LMT
 ,,,SELL,-3,TO CLOSE,USO,JUL4 14,37.5,CALL,.57,DEBIT,
 ,7/23/14 21:40:04,VERTICAL,BUY,+1,TO CLOSE,EA,JUL4 14,38.5,PUT,2.09,.87,MKT
 ,,,SELL,-1,TO CLOSE,EA,JUL4 14,37.5,PUT,1.22,DEBIT,
+,11/14/14 04:13:53,FOREX,BUY,+10000,TO CLOSE,USD/JPY,,,FOREX,115.755,115.755,MKT
+,11/14/14 04:13:42,FUTURE,SELL,-1,TO CLOSE,/NQZ4,DEC 14,,FUTURE,4208.50,4208.50,MKT
 
 Equities
-Symbol,Description,Qty,Trade Price
-TZA,DIREXION SHARES TRUST DAILY SMALL CAP BEAR 3X SHAR,+200,15.12
-,OVERALL TOTALS,,
+Symbol,Description,Qty,Trade Price,Mark,Mark Value
+SLW,SILVER WHEATON CORP COM,+100,19.20,19.18,"$1,918.00"
+AAPL,APPLE INC COM,+100,111.66,113.05,"$11,305.00"
+,OVERALL TOTALS,,,,"$13,223.00"
 
 Options
 Symbol,Option Code,Exp,Strike,Type,Qty,Trade Price
@@ -85,6 +107,12 @@ USO,USO140816P38.5,AUG 14,38.5,PUT,-2,.76
 
 Profits and Losses 
 Symbol,Description,P/L Open,P/L %,P/L Day,P/L YTD,Margin Req
+/6JZ4,"Japanese Yen Futures,Dec-2014,ETH",$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+/ESZ4,"E-mini S&P 500 Index Futures,Dec-2014,ETH",$25.00,+0.02%,$25.00,$25.00,"$5,060.00",$25.00
+/NQZ4,"E-mini Nasdaq 100 Index Futures,Dec-2014,ETH",$0.00,0.00%,$320.00,$320.00,$0.00,$0.00
+/YGZ4,Mini Gold Futures - ICUS - Dec14,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+/YMZ4,"Mini Dow Jones Industrial Average Futures,Dec-2014,ETH",$205.00,+0.23%,$205.00,$205.00,"$4,290.00",$205.00
+/ZWZ4,"Wheat Futures,Dec-2014,ETH",$0.00,0.00%,$0.00,$0.00,"$1,430.00",$0.00
 AA,ALCOA INC COM,$0.00,0.00%,$0.00,($271.98),$0.00
 AAPL,APPLE INC COM,($56.00),-39.44%,($56.50),($84.00),$0.00
 AEO,AMERICAN EAGLE OUTFITTERS COM,$0.00,0.00%,$0.00,($91.46),$0.00
@@ -134,6 +162,16 @@ WLT,WALTER ENERGY INC COM,$0.00,0.00%,$0.00,($62.98),$0.00
 YOKU,YOUKU TUDOU INC COM,$0.00,0.00%,$0.00,$92.00,$0.00
 ZNGA,ZYNGA INC COM,$0.00,0.00%,$0.00,$72.00,$0.00
 ,OVERALL TOTALS,$11.00,+0.22%,($123.00),"($5,470.52)","$1,768.00"
+
+Forex Account Summary
+Cash,"$10,000.00"
+UPL,($26.40)
+Floating P/L,$40.79
+Equity,"$10,014.39"
+Margin,$564.32
+Available Equity,"$9,450.07"
+Risk Level,100.00%
+
 
 Account Summary
 Net Liquidating Value,"$3,693.94"

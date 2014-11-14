@@ -22,10 +22,12 @@ class TestOpenAcc(TestSetUp):
         """
         Test property inside class
         """
-        properties = ['summary_keys', 'profits_losses_keys', 'options_keys',
-                      'trade_history_keys', 'order_history_keys',
-                      'forex_keys', 'futures_statements_keys',
-                      'holding_future_keys', 'cash_balance_keys']
+        properties = ['account_summary_keys', 'forex_summary_keys',
+                      'profit_loss_keys', 'holding_equity_keys',
+                      'holding_option_keys', 'trade_history_keys',
+                      'order_history_keys', 'future_statement_keys',
+                      'holding_future_keys', 'forex_statement_keys',
+                      'holding_forex_keys', 'cash_balance_keys']
 
         for prop in properties:
             print '%s:' % prop
@@ -47,12 +49,12 @@ class TestOpenAcc(TestSetUp):
 
         self.assertEqual(result, items[1])
 
-    def test_set_summary(self):
+    def test_set_account_summary(self):
         """
         Test set summary into class
         """
-        self.open_acc.set_summary()
-        summary = self.open_acc.summary
+        self.open_acc.set_account_summary()
+        summary = self.open_acc.account_summary
 
         print 'account summary:'
         pprint(summary)
@@ -60,8 +62,17 @@ class TestOpenAcc(TestSetUp):
         self.assertEqual(len(summary), 5)
 
         for key, item in summary.items():
-            self.assertIn(key, self.open_acc.summary_keys)
+            self.assertIn(key, self.open_acc.account_summary_keys)
             self.assertEqual(type(item), float)
+
+    def test_set_forex_summary(self):
+        """
+        """
+        self.open_acc.set_forex_summary()
+        forex_summary = self.open_acc.forex_summary
+
+        pprint(forex_summary)
+
 
     def test_convert_date(self):
         """
@@ -147,37 +158,41 @@ class TestOpenAcc(TestSetUp):
             keys=self.open_acc.trade_history_keys
         )
 
-    def test_set_profits_losses(self):
+    def test_set_profit_loss(self):
         """
         Test set profits and losses into class property
         """
         self.set_sections(
-            method='set_profits_losses',
-            prop='profits_losses',
+            method='set_profit_loss',
+            prop='profit_loss',
             lengths=(7, 8),  # with or without mark value
-            keys=self.open_acc.profits_losses_keys
+            keys=self.open_acc.profit_loss_keys
         )
 
-    def test_set_options(self):
+        self.open_acc.set_profit_loss()
+
+        pprint(self.open_acc.profit_loss)
+
+    def test_set_holding_option(self):
         """
         Test set profits and losses into class property
         """
         self.set_sections(
-            method='set_options',
-            prop='options',
+            method='set_holding_option',
+            prop='holding_option',
             lengths=(7, ),
-            keys=self.open_acc.options_keys
+            keys=self.open_acc.holding_option_keys
         )
 
-    def test_set_equities(self):
+    def test_set_holding_equity(self):
         """
         Test set profits and losses into class property
         """
         self.set_sections(
-            method='set_equities',
-            prop='equities',
+            method='set_holding_equity',
+            prop='holding_equity',
             lengths=(4, 6),  # with or without mark and mark value
-            keys=self.open_acc.equity_keys
+            keys=self.open_acc.holding_equity_keys
         )
 
     def test_set_order_history(self):
@@ -202,42 +217,91 @@ class TestOpenAcc(TestSetUp):
             keys=self.open_acc.cash_balance_keys
         )
 
-    def test_set_futures(self):
+    def test_set_future_statement(self):
         """
-        Test set futures, currently testing paper money
-
-        on real account
-        Futures Statements
-        Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
-
-        on paper money
-        Futures
-        Symbol,Description,SPC,Exp,Qty,Trade Price,Mark,P/L Day
+        Test set future statement not holding future
         """
         self.set_sections(
-            method='set_futures',
-            prop='futures',
-            lengths=10,  # for real money, use 10
+            method='set_future_statement',
+            prop='future_statement',
+            lengths=(10, ),  # for real money, use 10
+            keys=self.open_acc.future_statement_keys  # for real money, use real_futures_keys
+        )
+
+    def test_get_lines_without_phrase(self):
+        """
+        Test get lines with using start text and end text
+        """
+        lines = self.open_acc.get_lines_without_phrase(
+            start_with=('Futures', ),
+            start_without=('Statements', '/'),
+            end_phrase='OVERALL TOTALS',
+        )
+
+        self.assertIn('Futures', lines[0])
+        for start_without in ('Statements', '/'):
+            self.assertNotIn(start_without, lines[0])
+        self.assertIn('OVERALL TOTALS', lines[-1])
+
+        print 'Get lines result for holding future:'
+        pprint(lines)
+        print ''
+
+        lines = self.open_acc.get_lines_without_phrase(
+            start_with=('Forex', ),
+            start_without=('Statements', '/'),
+            end_phrase='OVERALL TOTALS',
+        )
+        self.assertIn('Forex', lines[0])
+        for start_without in ('Statements', '/'):
+            self.assertNotIn(start_without, lines[0])
+        self.assertIn('OVERALL TOTALS', lines[-1])
+
+        print 'Get lines result for holding forex:'
+        pprint(lines)
+
+    def test_set_holding_future(self):
+        """
+        Test set futures, currently testing paper money
+        """
+        self.set_sections(
+            method='set_holding_future',
+            prop='holding_future',
+            lengths=(10, ),  # for real money, use 10
             keys=self.open_acc.holding_future_keys  # for real money, use real_futures_keys
         )
 
-    def test_set_forex(self):
+    def test_set_forex_statement(self):
+        """
+        Test set forex statement
+        """
+        self.set_sections(
+            method='set_forex_statement',
+            prop='forex_statement',
+            lengths=(9, ),
+            keys=self.open_acc.forex_statement_keys
+        )
+
+    def test_set_holding_forex(self):
         """
         Test set forex
         """
         self.set_sections(
-            method='set_forex',
-            prop='forex',
-            lengths=(9, ),
-            keys=self.open_acc.forex_keys
+            method='set_holding_forex',
+            prop='holding_forex',
+            lengths=(6, ),
+            keys=self.open_acc.holding_forex_keys
         )
 
     def test_read(self):
         """
         Test most important part in class
         """
-        keys = ['cash_balance', 'futures', 'forex', 'order_history',
-                'trade_history', 'equities', 'options', 'summary', 'profits_losses']
+        keys = [
+            'account_summary', 'forex_summary', 'profit_loss', 'holding_option',
+            'holding_equity', 'trade_history', 'order_history', 'cash_balance',
+            'future_statement', 'holding_future', 'forex_statement', 'holding_forex',
+        ]
 
         for fname in self.fnames:
             print 'fname: %s' % fname
@@ -248,12 +312,12 @@ class TestOpenAcc(TestSetUp):
 
             result = open_acc.read()
             self.assertEqual(type(result), dict)
-            self.assertEqual(len(result), 9)
+            self.assertEqual(len(result), 12)
 
-            pprint(result, width=200)
+            pprint(result, width=600)
 
             for key in result.keys():
-                if key == 'summary':
+                if key == 'account_summary' or key == 'forex_summary':
                     self.assertEqual(type(result[key]), dict)
                 else:
                     self.assertEqual(type(result[key]), list)
