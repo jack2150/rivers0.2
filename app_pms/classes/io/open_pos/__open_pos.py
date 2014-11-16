@@ -19,8 +19,9 @@ class OpenPos(OpenCSV):
         ]
 
         self.future_position_keys = [
-            'symbol', 'quantity', 'days', 'trade_price', 'mark', 'mark_change',
-            'pct_change', 'pl_open', 'pl_day', 'bp_effect'
+            'symbol', 'expire_date', 'spc', 'quantity', 'days', 'trade_price',
+            'mark', 'mark_change', 'pct_change', 'pl_open', 'pl_day', 'bp_effect',
+            'session'
         ]
 
         self.forex_position_keys = [
@@ -152,20 +153,45 @@ class OpenPos(OpenCSV):
         """
         Get future and future option from line
         and save it into class property
+        format:
+        'Instrument,Exp,SPC,Qty,Days,Trade Price,Mark,
+         Mrk Chng,% Change,P/L Open,P/L Day,BP Effect'
         """
-        self.set_values(
-            start_phrase='Futures and Futures Options',
-            end_phrase=None,
-            start_with=2,
-            end_until=-1,
-            prop_keys=self.future_position_keys,
-            prop_name='future_position'
-        )
+        lines = self.get_lines('Futures and Futures Options', None)
+        for line in lines[2:-1]:
+            if line[0] == '"':
+                first_item = line.split('"')[1]
+                description = first_item.split(',')[0]
+                session = first_item.split(',')[2]
+            else:
+                first_item = line.split(',')[0]
+                if ' - ' in first_item:
+                    description = first_item.split(' - ')[0]
+                    session = first_item.split(' - ')[1]
+                else:
+                    description = line.split(',')[0][1:]
+                    session = ''
+
+            description = description.upper()
+
+            line = self.replace_dash_inside_quote(line)
+            items = self.split_lines_with_dash(line)
+
+            items = [description] + map(self.format_item, items[1:]) + [session]
+
+            self.future_position.append(
+                self.make_dict(self.future_position_keys, items)
+            )
 
         future_position = list()
         for instrument, future in zip(self.future_position[0::2], self.future_position[1::2]):
             future_position.append(dict(
-                symbol=instrument['symbol'],
+                lookup=instrument['symbol'],  # so it use lookup
+                symbol='',  # none because no season in future symbol
+                description=future['symbol'],
+                expire_date=future['expire_date'],
+                session=future['session'],
+                spc=future['spc'],
                 quantity=instrument['quantity'],
                 days=future['days'],
                 trade_price=future['trade_price'],
@@ -197,16 +223,17 @@ class OpenPos(OpenCSV):
         )
 
         forex_position = list()
-        for instrument, future in zip(self.forex_position[0::2], self.forex_position[1::2]):
+        for instrument, forex in zip(self.forex_position[0::2], self.forex_position[1::2]):
             forex_position.append(dict(
                 symbol=instrument['symbol'],
+                description=forex['symbol'],
                 quantity=instrument['quantity'],
-                trade_price=future['trade_price'],
+                trade_price=forex['trade_price'],
                 mark=instrument['mark'],
                 mark_change=instrument['mark_change'],
                 pct_change=instrument['pct_change'],
-                pl_open=future['pl_open'],
-                pl_day=future['pl_day'],
+                pl_open=forex['pl_open'],
+                pl_day=forex['pl_day'],
                 bp_effect=instrument['bp_effect']
             ))
 
@@ -241,6 +268,8 @@ class OpenPos(OpenCSV):
         """
         Get instrument, stock, option from line
         and save it into class property
+        'Instrument,Qty,Days,Trade Price,Mark,Mrk Chng,Delta,
+         Gamma,Theta,Vega,% Change,P/L Open,P/L Day,BP Effect'
         """
         # new format
         lines = self.get_lines(
@@ -311,7 +340,6 @@ class OpenPos(OpenCSV):
             position_summary=self.position_summary
         )
 
-# todo: save pos
 
 
 

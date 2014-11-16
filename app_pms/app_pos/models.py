@@ -303,7 +303,7 @@ class PositionFuture(models.Model, PositionModel):
 
     def json(self):
         output = '{'
-        output += '"symbol": "%s", ' % self.future.symbol
+        output += '"symbol": "/%s", ' % self.future.lookup
         output += '"quantity": %+d, ' % self.quantity
         output += '"days": %d, ' % self.days
         output += '"trade_price": %.2f, ' % self.trade_price
@@ -322,9 +322,9 @@ class PositionFuture(models.Model, PositionModel):
         Normal string output for model detail
         :return: str
         """
-        return '<PositionFuture:{date}> {symbol}'.format(
+        return '<PositionFuture:{date}> /{symbol}'.format(
             date=self.position_statement.date,
-            symbol=self.future.symbol
+            symbol=self.future.lookup
         )
 
 
@@ -381,7 +381,6 @@ class PositionForex(models.Model, PositionModel):
         )
 
 
-
 class SavePositionStatement(SaveAppModel):
     def __init__(self, date, statement, file_data):
         """
@@ -416,7 +415,14 @@ class SavePositionStatement(SaveAppModel):
         Save future position into db
         """
         for future_position in self.future_position:
-            future = self.get_future(symbol=future_position['symbol'])
+            future = self.get_future(
+                lookup=future_position['lookup'],
+                symbol=future_position['symbol'],
+                description=future_position['description'],
+                expire_date=future_position['expire_date'],
+                session=future_position['session'],
+                spc=future_position['spc']
+            )
 
             pos_future = PositionFuture(
                 position_statement=self.position_statement,
@@ -438,9 +444,6 @@ class SavePositionStatement(SaveAppModel):
             )
             pos_forex.set_dict(forex_position)
             pos_forex.save()
-
-        # todo: update open pos support symbol description for forex
-        # todo: possible update for future open pos too, add more field
 
     def save_equity_option_position(self):
         """

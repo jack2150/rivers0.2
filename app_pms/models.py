@@ -34,7 +34,7 @@ class Future(models.Model):
     """
     A future that have 4 session per year and different symbol
     """
-    symbol = models.CharField(max_length=20, verbose_name='Symbol')
+    symbol = models.CharField(max_length=20, blank=True, null=True, verbose_name='Symbol')
     lookup = models.CharField(max_length=2, blank=True, null=True, verbose_name='Lookup')
     description = models.CharField(max_length=255, blank=True, null=True, verbose_name='Description')
     expire_date = models.CharField(max_length=20, blank=True, null=True, verbose_name='Expire Date')
@@ -62,9 +62,8 @@ class Future(models.Model):
         Normal string output for class detail
         :return: str
         """
-        return '{description} {expire_date}'.format(
-            description=self.description,
-            expire_date=self.expire_date
+        return '/{lookup}'.format(
+            lookup=self.lookup
         )
 
 
@@ -168,8 +167,21 @@ class SaveAppModel(object):
         :param spc: str
         :return: Future
         """
-        if self.future.filter(symbol=symbol).count():
-            future = self.future.get(symbol=symbol)
+        if lookup:
+            if symbol:
+                found = self.future.filter(symbol=symbol, lookup=lookup)
+            else:
+                found = self.future.filter(lookup=lookup)
+        else:
+            found = self.future.filter(symbol=symbol)
+
+        if found.count():
+            future = found.last()
+
+            # update symbol if missing
+            if future.symbol == '':
+                future.symbol = symbol
+                future.save()
 
             # update existing if empty
             if future.description == '':

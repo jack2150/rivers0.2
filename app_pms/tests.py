@@ -245,6 +245,13 @@ class TestSaveAppModel(TestSetUp):
             )
         )
 
+        future = self.save_app_model.get_future(
+            symbol='', lookup='ES'
+        )
+
+        self.assertEqual('ES', future.lookup)
+
+
     def test_get_forex(self):
         """
         Test get existing underlying or save new underlying into model

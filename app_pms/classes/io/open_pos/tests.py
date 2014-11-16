@@ -205,8 +205,10 @@ class TestOpenPos(TestSetUp):
         self.set_sections(
             method='set_future_position',
             prop='future_position',
-            lengths=(10, ),  # with or without mark value
-            keys=self.open_pos.future_position_keys
+            lengths=(15, ),
+            keys=self.open_pos.future_position_keys + [
+                'lookup', 'description', 'session'
+            ]
         )
 
     def test_set_forex_position(self):
@@ -216,8 +218,8 @@ class TestOpenPos(TestSetUp):
         self.set_sections(
             method='set_forex_position',
             prop='forex_position',
-            lengths=(9, ),  # with or without mark value
-            keys=self.open_pos.forex_position_keys
+            lengths=(10, ),  # with or without mark value
+            keys=self.open_pos.forex_position_keys + ['description']
         )
 
     def test_set_position_summary(self):

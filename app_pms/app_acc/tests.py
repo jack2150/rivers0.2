@@ -748,10 +748,6 @@ class TestSaveAccountStatement(TestSetUp):
         self.assertGreaterEqual(models.OrderHistory.objects.count(), 1)
         self.assertGreaterEqual(models.TradeHistory.objects.count(), 1)
 
-
-
-    # todo: test for all method
-
     def test_save_all(self):
         """
         Test save all data from pos_data into models

@@ -477,6 +477,3 @@ class OpenAcc(OpenCSV):
             forex_summary=self.forex_summary,
             account_summary=self.account_summary
         )
-
-# todo: order history and trade history support for future and forex,
-# todo: forex summary and profit loss for future (no forex)

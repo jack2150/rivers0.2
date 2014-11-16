@@ -314,6 +314,10 @@ class TestSavePositionStatement(TestSetUp):
         pos_futures = models.PositionFuture.objects.all()
         pprint(pos_futures)
 
+        for future in models.Future.objects.all():
+            print future
+            #pprint(eval(future.json()), width=300)
+
         for pos_future in pos_futures:
             pprint(eval(pos_future.json()), width=300)
 
@@ -383,23 +387,23 @@ class TestSavePositionStatement(TestSetUp):
             )
             save_pos.save_all()
 
-        print 'Underlying count: %d' % models.Underlying.objects.count()
-        print 'statement count: %d' % models.Statement.objects.count()
-        print 'position statement count: %d' % models.PositionStatement.objects.count()
-        print 'position instrument count: %d' % models.PositionInstrument.objects.count()
-        print 'position stock count: %d' % models.PositionEquity.objects.count()
-        print 'position options count: %d\n' % models.PositionOption.objects.count()
-        print 'Forex count: %d' % models.Forex.objects.count()
-        print 'PositionForex count: %d' % models.PositionForex.objects.count()
-        print 'Future count: %d' % models.Future.objects.count()
-        print 'PositionFuture count: %d' % models.PositionFuture.objects.count()
+            print 'Underlying count: %d' % models.Underlying.objects.count()
+            print 'statement count: %d' % models.Statement.objects.count()
+            print 'position statement count: %d' % models.PositionStatement.objects.count()
+            print 'position instrument count: %d' % models.PositionInstrument.objects.count()
+            print 'position stock count: %d' % models.PositionEquity.objects.count()
+            print 'position options count: %d\n' % models.PositionOption.objects.count()
+            print 'Forex count: %d' % models.Forex.objects.count()
+            print 'PositionForex count: %d' % models.PositionForex.objects.count()
+            print 'Future count: %d' % models.Future.objects.count()
+            print 'PositionFuture count: %d' % models.PositionFuture.objects.count()
 
-        self.assertGreaterEqual(models.Statement.objects.count(), 1)
-        self.assertGreaterEqual(models.PositionStatement.objects.count(), 1)
-        self.assertGreaterEqual(models.PositionInstrument.objects.count(),
-                                models.PositionEquity.objects.count())
-        self.assertGreaterEqual(models.PositionOption.objects.count(), 1)
-        self.assertGreaterEqual(models.Forex.objects.count(), 1)
-        self.assertGreaterEqual(models.PositionForex.objects.count(), 1)
-        self.assertGreaterEqual(models.Future.objects.count(), 1)
-        self.assertGreaterEqual(models.PositionFuture.objects.count(), 1)
+            self.assertGreaterEqual(models.Statement.objects.count(), 1)
+            self.assertGreaterEqual(models.PositionStatement.objects.count(), 1)
+            self.assertGreaterEqual(models.PositionInstrument.objects.count(),
+                                    models.PositionEquity.objects.count())
+            self.assertGreaterEqual(models.PositionOption.objects.count(), 1)
+            self.assertGreaterEqual(models.Forex.objects.count(), 1)
+            self.assertGreaterEqual(models.PositionForex.objects.count(), 1)
+            self.assertGreaterEqual(models.Future.objects.count(), 1)
+            self.assertGreaterEqual(models.PositionFuture.objects.count(), 1)
