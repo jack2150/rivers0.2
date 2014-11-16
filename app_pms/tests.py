@@ -533,9 +533,9 @@ class TestPmsImportStatementView(TestSetUp):
         print 'PositionStatement count: %d' % PositionStatement.objects.count()
         print 'statement count: %d' % Statement.objects.count()
         print 'position statement count: %d' % PositionStatement.objects.count()
-        print 'position instrument count: %d' % Instrument.objects.count()
-        print 'position stock count: %d' % InstrumentStock.objects.count()
-        print 'position options count: %d\n' % InstrumentOption.objects.count()
+        print 'position instrument count: %d' % PositionInstrument.objects.count()
+        print 'position stock count: %d' % PositionEquity.objects.count()
+        print 'position options count: %d\n' % PositionOption.objects.count()
 
         print '-' * 100 + '\n' + 'Trade Activity\n' + '-' * 100
         print 'TradeActivity count: %d' % TradeActivity.objects.count()

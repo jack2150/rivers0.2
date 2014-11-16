@@ -100,7 +100,7 @@ class TestPositionInstrument(TestPositionStatement):
             'trade_price': 0.0
         }
 
-        self.position_instrument = models.Instrument()
+        self.position_instrument = models.PositionInstrument()
         self.position_instrument.position_statement = self.position_statement
         self.position_instrument.underlying = self.underlying
         self.position_instrument.set_dict(self.items)
@@ -113,7 +113,7 @@ class TestPositionInstrument(TestPositionStatement):
         )
 
 
-class TestPositionStock(TestPositionInstrument):
+class TestPositionEquity(TestPositionInstrument):
     def setUp(self):
         TestPositionInstrument.setUp(self)
         self.position_instrument.save()
@@ -124,7 +124,7 @@ class TestPositionStock(TestPositionInstrument):
             'pct_change': 0.0, 'quantity': -10.0, 'gamma': 0.0, 'trade_price': 226.86
         }
 
-        self.pos_stock = models.InstrumentStock()
+        self.pos_stock = models.PositionEquity()
         self.pos_stock.position_statement = self.position_statement
         self.pos_stock.underlying = self.underlying
         self.pos_stock.instrument = self.position_instrument
@@ -144,13 +144,13 @@ class TestPositionOption(TestPositionInstrument):
         self.position_instrument.save()
 
         self.items = [
-            {'name': {'ex_month': 'AUG', 'right': '100', 'strike_price': '58.5',
+            {'name': {'ex_month': 'AUG', 'right': '100', 'strike': '58.5',
                       'contract': 'PUT', 'ex_year': '14', 'special': 'Normal'},
              'mark_change': -0.63, 'pl_open': -219.0, 'days': 15.0,
              'mark': 0.38, 'vega': 18.07, 'pl_day': -189.0, 'delta': 52.79,
              'bp_effect': 0.0, 'theta': -9.71, 'pct_change': 0.0,
              'quantity': 3.0, 'gamma': 18.98, 'trade_price': 1.11},
-            {'name': {'ex_month': 'AUG', 'right': '100', 'strike_price': '72.5',
+            {'name': {'ex_month': 'AUG', 'right': '100', 'strike': '72.5',
                       'contract': 'CALL', 'ex_year': '14', 'special': 'Normal'},
              'mark_change': -0.14, 'pl_open': 57.0, 'days': 15.0,
              'mark': 0.06, 'vega': -6.02, 'pl_day': 42.0, 'delta': -11.92,
@@ -167,7 +167,7 @@ class TestPositionOption(TestPositionInstrument):
         """
 
         for item in self.items:
-            pos_option = models.InstrumentOption()
+            pos_option = models.PositionOption()
             pos_option.position_statement = self.position_statement
             pos_option.underlying = self.underlying
             pos_option.instrument = self.position_instrument
@@ -184,7 +184,7 @@ class TestPositionOption(TestPositionInstrument):
         Test output json data format
         """
         for item in self.items:
-            pos_option = models.InstrumentOption()
+            pos_option = models.PositionOption()
             pos_option.position_statement = self.position_statement
             pos_option.underlying = self.underlying
             pos_option.set_dict(item)
@@ -205,118 +205,60 @@ class TestPositionOption(TestPositionInstrument):
                 self.assertIn(key, keys)
 
 
-class TestOpenPosSaveAll(TestSetUp):
+class TestPositionFuture(TestPositionStatement):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestPositionStatement.setUp(self)
 
-        self.pos_files = glob(test_pos_path + '/*.csv')
+        self.items = {
+            'mark_change': 1.25, 'pl_open': -212.5, 'symbol': '/ES', 'days': 35,
+            'mark': 2039.25, 'pl_day': -62.5, 'bp_effect': -5060.0, 'pct_change': 0.26,
+            'trade_price': 2035.0, 'quantity': -1
+        }
 
-    def insert_db(self, no, position_statement, underlying, instrument, test_model, data):
-        """
-        Save related data into model with pos statement
-        :param no: int
-        :param position_statement: PositionStatement
-        :param underlying: Underlying
-        :param instrument: Instrument
-        :param test_model: any models.class
-        :param data: dict
-        """
-        test_cls = test_model(
-            position_statement=position_statement,
-            underlying=underlying
+        self.future = models.Future(
+            symbol=self.items['symbol']
         )
-        if instrument:
-            test_cls.instrument = instrument
+        self.future.save()
 
-        test_cls.set_dict(data)
-        test_cls.save()
+        self.pos_future = models.PositionFuture(
+            position_statement=self.position_statement,
+            future=self.future
+        )
+        self.pos_future.set_dict(self.items)
 
-        print '%d. save %s... id: %s' % (
-            no, test_model.__name__, test_cls.id
+        self.test_cls = self.pos_future
+        self.expect_keys = (
+            "symbol", "quantity", "days", "trade_price", "mark", "mark_change",
+            "pct_change", "pl_open", "pl_day", "bp_effect"
         )
 
-        return test_cls
 
-    def test_read_save(self):
-        """
-        Open Pos file data then save all fields into db
-        """
-        for no, pos_file in enumerate(self.pos_files, start=1):
-            print '%d. run filename: %s' % (no, pos_file)
-            print 'starting...\n'
+class TestPositionForex(TestPositionStatement):
+    def setUp(self):
+        TestPositionStatement.setUp(self)
 
-            date = pos_file[-32:-22]
-            pos_data = open(pos_file).read()
+        self.items = {
+            'mark_change': 0.4975, 'pl_open': -13.16, 'symbol': 'USD/JPY',
+            'mark': 116.335, 'pl_day': -13.16, 'bp_effect': -213.16, 'pct_change': 0.0,
+            'trade_price': 116.473, 'quantity': 10000
+        }
 
-            positions, overall = OpenPos(data=pos_data).read()
+        self.forex = models.Forex(
+            symbol=self.items['symbol']
+        )
+        self.forex.save()
 
-            statement = models.Statement(
-                date=date,
-                account_statement='None',
-                position_statement=pos_data,
-                trade_activity='None',
-            )
-            statement.save()
+        self.pos_forex = models.PositionForex(
+            position_statement=self.position_statement,
+            forex=self.forex
+        )
+        self.pos_forex.set_dict(self.items)
 
-            position_statement = models.PositionStatement(
-                statement=statement,
-                date=date,
-                **overall
-            )
-            position_statement.save()
-
-            print 'statement id: %d' % statement.id
-            print 'position_statement id: %d' % position_statement.id
-
-            for key, position in enumerate(positions, start=1):
-                print 'current symbol: %s' % position['symbol']
-
-                # save underlying if not exists
-                underlying_obj = models.Underlying.objects.filter(symbol=position['symbol'])
-                if underlying_obj.count():
-                    underlying = underlying_obj.first()
-                    print 'using old underlying, id: %d' % underlying.id
-                else:
-                    underlying = models.Underlying(
-                        symbol=position['symbol'],
-                        company=position['company']
-                    )
-                    underlying.save()
-                    print 'new underlying saved, id: %d' % underlying.id
-
-                # save instrument
-                instrument = self.insert_db(
-                    no=key,
-                    position_statement=position_statement,
-                    underlying=underlying,
-                    instrument=None,
-                    test_model=models.Instrument,
-                    data=position['instrument']
-                )
-
-                # save stock
-                self.insert_db(
-                    no=key,
-                    position_statement=position_statement,
-                    underlying=underlying,
-                    instrument=instrument,
-                    test_model=models.InstrumentStock,
-                    data=position['stock']
-                )
-
-                for option in position['options']:
-                    self.insert_db(
-                        no=key,
-                        position_statement=position_statement,
-                        underlying=underlying,
-                        instrument=instrument,
-                        test_model=models.InstrumentOption,
-                        data=option
-                    )
-
-                print '\n' + '-' * 80
-
-            print '\n' + '=' * 100
+        self.test_cls = self.pos_forex
+        self.expect_keys = (
+            "symbol", "quantity", "trade_price", "mark", "mark_change",
+            "pct_change", "pl_open", "pl_day", "bp_effect"
+        )
 
 
 class TestSavePositionStatement(TestSetUp):
@@ -324,6 +266,95 @@ class TestSavePositionStatement(TestSetUp):
         TestSetUp.setUp(self)
 
         self.pos_files = glob(test_pos_path + '/*.csv')
+
+        pos_file = self.pos_files[0]
+        self.date = os.path.basename(pos_file)[0:10]
+        self.pos_data = open(pos_file).read()
+
+        self.statement = models.Statement(
+            date=self.date,
+            account_statement='None',
+            position_statement=self.pos_data,
+            trade_activity='None',
+        )
+        self.statement.save()
+
+        self.save_pos = models.SavePositionStatement(
+            date=self.date,
+            statement=self.statement,
+            file_data=self.pos_data,
+        )
+
+    def test_save_position_statement(self):
+        """
+        Test save position statement into db
+        """
+        self.save_pos.save_position_statement()
+
+        print 'statement count: %d' % models.Statement.objects.count()
+        print 'PositionStatement count: %d' % models.PositionStatement.objects.count()
+        position_statement = models.PositionStatement.objects.first()
+        pprint(position_statement)
+        pprint(eval(position_statement.json()))
+        self.assertEqual(models.Statement.objects.count(), 1)
+
+    def test_save_future_position(self):
+        """
+        Test save future position list into db
+        """
+        self.save_pos.save_position_statement()
+        self.save_pos.save_future_position()
+
+        print 'Future count: %d' % models.Future.objects.count()
+        print 'PositionFuture count: %d' % models.PositionFuture.objects.count()
+
+        self.assertGreaterEqual(models.Future.objects.count(), 1)
+        self.assertGreaterEqual(models.PositionFuture.objects.count(), 1)
+
+        pos_futures = models.PositionFuture.objects.all()
+        pprint(pos_futures)
+
+        for pos_future in pos_futures:
+            pprint(eval(pos_future.json()), width=300)
+
+    def test_save_forex_position(self):
+        """
+        Test save future position list into db
+        """
+        self.save_pos.save_position_statement()
+        self.save_pos.save_forex_position()
+
+        print 'Forex count: %d' % models.Forex.objects.count()
+        print 'PositionForex count: %d' % models.PositionForex.objects.count()
+
+        self.assertGreaterEqual(models.Forex.objects.count(), 1)
+        self.assertGreaterEqual(models.PositionForex.objects.count(), 1)
+
+        pos_forexs = models.PositionForex.objects.all()
+        pprint(pos_forexs)
+
+        for pos_forex in pos_forexs:
+            pprint(eval(pos_forex.json()), width=300)
+
+    def test_save_equity_option_position(self):
+        """
+        Test save future position list into db
+        """
+        self.save_pos.save_position_statement()
+        self.save_pos.save_equity_option_position()
+
+        print 'Underlying count: %d' % models.Underlying.objects.count()
+        print 'statement count: %d' % models.Statement.objects.count()
+        print 'position statement count: %d' % models.PositionStatement.objects.count()
+        print 'position instrument count: %d' % models.PositionInstrument.objects.count()
+        print 'position stock count: %d' % models.PositionEquity.objects.count()
+        print 'position options count: %d\n' % models.PositionOption.objects.count()
+
+        self.assertEqual(models.Statement.objects.count(), 1)
+        self.assertEqual(models.PositionStatement.objects.count(), 1)
+        self.assertEqual(models.PositionInstrument.objects.count(),
+                         models.PositionEquity.objects.count())
+        self.assertGreater(models.PositionOption.objects.count(), 1)
 
     def test_save_all(self):
         """
@@ -352,14 +383,23 @@ class TestSavePositionStatement(TestSetUp):
             )
             save_pos.save_all()
 
-            print 'statement count: %d' % models.Statement.objects.count()
-            print 'position statement count: %d' % models.PositionStatement.objects.count()
-            print 'position instrument count: %d' % models.Instrument.objects.count()
-            print 'position stock count: %d' % models.InstrumentStock.objects.count()
-            print 'position options count: %d\n' % models.InstrumentOption.objects.count()
+        print 'Underlying count: %d' % models.Underlying.objects.count()
+        print 'statement count: %d' % models.Statement.objects.count()
+        print 'position statement count: %d' % models.PositionStatement.objects.count()
+        print 'position instrument count: %d' % models.PositionInstrument.objects.count()
+        print 'position stock count: %d' % models.PositionEquity.objects.count()
+        print 'position options count: %d\n' % models.PositionOption.objects.count()
+        print 'Forex count: %d' % models.Forex.objects.count()
+        print 'PositionForex count: %d' % models.PositionForex.objects.count()
+        print 'Future count: %d' % models.Future.objects.count()
+        print 'PositionFuture count: %d' % models.PositionFuture.objects.count()
 
-            self.assertEqual(models.Statement.objects.count(), no)
-            self.assertEqual(models.PositionStatement.objects.count(), no)
-            self.assertEqual(models.Instrument.objects.count(),
-                             models.InstrumentStock.objects.count())
-            self.assertGreater(models.InstrumentOption.objects.count(), 0)
+        self.assertGreaterEqual(models.Statement.objects.count(), 1)
+        self.assertGreaterEqual(models.PositionStatement.objects.count(), 1)
+        self.assertGreaterEqual(models.PositionInstrument.objects.count(),
+                                models.PositionEquity.objects.count())
+        self.assertGreaterEqual(models.PositionOption.objects.count(), 1)
+        self.assertGreaterEqual(models.Forex.objects.count(), 1)
+        self.assertGreaterEqual(models.PositionForex.objects.count(), 1)
+        self.assertGreaterEqual(models.Future.objects.count(), 1)
+        self.assertGreaterEqual(models.PositionFuture.objects.count(), 1)

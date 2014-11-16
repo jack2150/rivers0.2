@@ -1,1 +1,0 @@
-from app_pms.classes.io.open_pos2.__open_pos import OpenPos

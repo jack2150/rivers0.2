@@ -34,7 +34,7 @@ class PositionInline(PositionStatementInline):
     """
     Inline Position model inside Position Statement change view
     """
-    model = models.Instrument
+    model = models.PositionInstrument
 
     def formatted_pl_open(self, obj):
         return '%+.2f' % obj.pl_open
@@ -84,7 +84,7 @@ class PositionStatementAdmin(admin.ModelAdmin):
         return obj.date.strftime('%Y-%m-%d')
 
     def instruments(self, obj):
-        return models.Instrument.objects.filter(position_statement=obj).count()
+        return models.PositionInstrument.objects.filter(position_statement=obj).count()
 
     def currency_cash_sweep(self, obj):
         return locale.currency(obj.cash_sweep, grouping=True)
@@ -144,7 +144,7 @@ class PositionStockInline(PositionStatementInline):
     """
     Position Stock inline for Position change view
     """
-    model = models.InstrumentStock
+    model = models.PositionEquity
 
     fields = (
         'quantity', 'trade_price', 'mark', 'mark_change', 'pct_change',
@@ -162,7 +162,7 @@ class PositionOptionsInline(PositionStatementInline):
     """
     Position Options inline for Position change view
     """
-    model = models.InstrumentOption
+    model = models.PositionOption
 
     fields = (
         'quantity', 'days', 'trade_price', 'mark', 'mark_change', 'pct_change',
@@ -359,9 +359,9 @@ class PositionOptionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.PositionStatement, PositionStatementAdmin)
-admin.site.register(models.Instrument, PositionInstrumentAdmin)
-admin.site.register(models.InstrumentStock, PositionStockAdmin)
-admin.site.register(models.InstrumentOption, PositionOptionAdmin)
+admin.site.register(models.PositionInstrument, PositionInstrumentAdmin)
+admin.site.register(models.PositionEquity, PositionStockAdmin)
+admin.site.register(models.PositionOption, PositionOptionAdmin)
 
 
 

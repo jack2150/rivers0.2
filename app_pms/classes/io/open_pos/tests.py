@@ -1,72 +1,32 @@
-from glob import glob
 import os
+from glob import glob
 from pprint import pprint
-from app_pms.test_files import *
+from app_pms.test_files import test_pos_path, test_path
 from app_pms.classes.test import TestSetUp
 from app_pms.classes.io.open_pos import OpenPos
 
 
-# noinspection PyPep8Naming
+# noinspection PyUnresolvedReferences
 class TestOpenPos(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
         self.fnames = glob(os.path.join(test_pos_path + '/*.csv'))
-
-        self.test_file = os.path.join(
-            test_pos_path + '/2014-10-22-PositionStatement.csv'
-        )
-
-        self.pos_data = open(self.test_file).read()
-
-        self.open_csv = OpenPos(data=self.pos_data)
+        self.pos_data = open(self.fnames[0]).read()
+        self.open_pos = OpenPos(data=self.pos_data)
 
     def test_all(self):
-        for key, fname in enumerate(self.fnames, start=1):
-            print '%d. running file: %s' % (key, fname)
+        for key, fname in enumerate(self.fnames):
+            print '%d. fname: %s' % (key, fname)
+            print ''
 
             self.pos_data = open(fname).read()
-            self.open_csv = OpenPos(data=self.pos_data)
-            self.test_read()
+            self.open_pos = OpenPos(data=self.pos_data)
 
-            print '\n'
-
-    def test_is_positions(self):
-        """
-        Test using list decide it is positions or not
-        """
-        items = [
-            ['TSLA', '', '', '', '', '', '5.18', '-.12', '1.29',
-             '-1.06', '+4.46%', '$8.00', '$8.00', '($250.00)'],
-            ['TSLA', '', '', '', '', '', '5.18', '-.12', '1.29',
-             '-1.06', '+4.46%', '$8.00', '$8.00'],
-            ['Instrument', '', '', '', '', '', '5.18', '-.12', '1.29',
-             '-1.06', '+4.46%', '', '', '($250.00)'],
-        ]
-
-        for key, item in enumerate(items):
-            result = self.open_csv.is_positions(item)
-
-            print 'items: %s' % item
-            print 'result: %s\n' % result
-
-            if key == 0:
-                self.assertTrue(result)
-            else:
-                self.assertFalse(result)
-
-    def test_get_first_items(self):
-        """
-        Test get first item in a list
-        """
-        items = ['TSLA', '', '', '', '', '', '5.18', '-.12', '1.29']
-        result = self.open_csv.get_first_items(items)
-
-        print 'items: %s' % items
-        print 'result: %s' % result
-
-        self.assertEqual(result, 'TSLA')
-        self.assertEqual(type(result), str)
+            self.test_set_future_position()
+            self.test_set_forex_position()
+            self.test_set_position_summary()
+            self.test_set_equity_option_position()
 
     def test_is_instrument(self):
         """
@@ -79,7 +39,7 @@ class TestOpenPos(TestSetUp):
         ]
 
         for key, item in enumerate(items):
-            result = self.open_csv.is_instrument(item)
+            result = self.open_pos.is_instrument(item)
 
             print 'item: %s' % item
             print 'result: %s\n' % result
@@ -91,7 +51,7 @@ class TestOpenPos(TestSetUp):
             else:
                 self.assertFalse(result)
 
-    def test_is_stock(self):
+    def test_is_equity(self):
         """
         Test check the lines is stock using first item
         """
@@ -102,7 +62,7 @@ class TestOpenPos(TestSetUp):
         ]
 
         for key, item in enumerate(items):
-            result = self.open_csv.is_stock(item)
+            result = self.open_pos.is_equity(item)
 
             print 'item: %s' % item
             print 'result: %s\n' % result
@@ -114,7 +74,7 @@ class TestOpenPos(TestSetUp):
             else:
                 self.assertFalse(result)
 
-    def test_is_options(self):
+    def test_is_option(self):
         """
         Test check the lines is options using first item
         """
@@ -125,7 +85,7 @@ class TestOpenPos(TestSetUp):
         ]
 
         for key, item in enumerate(items):
-            result = self.open_csv.is_options(item)
+            result = self.open_pos.is_option(item)
 
             print 'item: %s' % item
             print 'result: %s\n' % result
@@ -136,112 +96,6 @@ class TestOpenPos(TestSetUp):
                 self.assertTrue(result)
             else:
                 self.assertFalse(result)
-
-    def test_split_str_with_space(self):
-        """
-        Test split str with space
-        """
-        items = [
-            '100 AUG 14 67.5 CALL',
-            '100 (Weeklys) AUG1 14 50 PUT',
-            '100 AUG 14 26.5 CALL'
-        ]
-
-        for item in items:
-            result = self.open_csv.split_str_with_space(item)
-
-            print 'item: %s' % item
-            print 'result: %s\n' % result
-
-            self.assertEqual(type(result), list)
-            self.assertIn(len(result), (5, 6))
-
-    def test_options_is_normal_contract(self):
-        """
-        Test check options is normal contract or not
-        """
-        items = [
-            ['100', 'AUG', '14', '67.5', 'CALL'],
-            ['100', 'Weeklys', 'AUG1', '14', '50', 'PUT']
-        ]
-
-        for key, item in enumerate(items):
-            result = self.open_csv.options_is_normal_contract(item)
-
-            print 'item: %s' % item
-            print 'result: %s\n' % result
-
-            self.assertEqual(type(result), bool)
-
-            if key == 0:
-                self.assertTrue(result)
-            else:
-                self.assertFalse(result)
-
-    def test_add_normal_to_options_name(self):
-        """
-        Test add item into first position in list
-        """
-        items = [
-            [1, 2, 3, 4],
-            ['a', 'b', 'c'],
-            ['100', 'AUG', '14', '67.5', 'CALL'],
-        ]
-
-        for item in items:
-            print 'item before: %s' % item
-            self.open_csv.add_normal_to_options_name(item)
-            print 'item after: %s\n' % item
-
-            self.assertEqual(item[1], 'Normal')
-
-    def test_remove_brackets_only(self):
-        """
-        Test remove brackets on options name
-        """
-        items = [
-            '100 AUG 14 47 PUT',
-            '100 (Weeklys) AUG2 14 1990 CALL',
-            '100 (Mini) AUG1 14 20 PUT',
-        ]
-
-        for item in items:
-            result = self.open_csv.remove_brackets_only(item)
-
-            print 'item: %s' % item
-            print 'result: %s' % result
-
-            self.assertNotIn('(', result)
-            self.assertNotIn(')', result)
-
-    def test_make_options_name_dict(self):
-        """
-        Test make options name from list into dict
-        """
-        items = [
-            ['100', 'Normal', 'AUG', '14', '67.5', 'CALL'],
-            ['100', 'Weeklys', 'AUG1', '14', '50', 'PUT']
-        ]
-
-        columns = [
-            'right',
-            'special',
-            'ex_month',
-            'ex_year',
-            'strike_price',
-            'contract'
-        ]
-
-        for item in items:
-            result = self.open_csv.make_options_name_dict(item)
-
-            print 'item: %s' % item
-            print 'result: %s\n' % result
-
-            self.assertEqual(type(result), dict)
-
-            for column in columns:
-                self.assertIn(column, result.keys())
 
     def test_format_option_contract(self):
         """
@@ -255,7 +109,7 @@ class TestOpenPos(TestSetUp):
         ]
 
         for item in items:
-            result = self.open_csv.format_option_contract(item)
+            result = self.open_pos.format_option_contract(item)
 
             print 'item: %s' % item
             print 'result: %s' % result
@@ -265,410 +119,211 @@ class TestOpenPos(TestSetUp):
             self.assertEqual(len(result), 6)
             self.assertEqual(type(result), dict)
 
-    def test_make_pos_dict(self):
+            self.assertEqual(type(result['right']), int)
+            self.assertEqual(type(result['ex_year']), int)
+            self.assertEqual(type(result['strike']), float)
+
+    def test_reset_position_set(self):
         """
-        Test make positions dict using list item
+        Test reset position set into blank dict
         """
-        items = ['TSLA', '', '', '', '', '', '5.18', '-.12', '1.29',
-                 '-1.06', '+4.46%', '$8.00', '$8.00', '($250.00)']
-        result = self.open_csv.make_pos_dict(items)
+        position_set = self.open_pos.reset_position_set()
 
-        print 'item: %s' % items
-        print 'result:'
-        for k, r in result.items():
-            print '%s: "%s"' % (k, r)
-            self.assertIn(k, self.open_csv.position_columns)
+        pprint(position_set)
 
-        self.assertEqual(len(result), 14)
-        self.assertEqual(type(result), dict)
+        self.assertEqual(position_set['symbol'], '')
+        self.assertEqual(position_set['company'], '')
+        self.assertEqual(position_set['instrument'], None)
+        self.assertEqual(position_set['equity'], None)
+        self.assertEqual(position_set['options'], list())
 
-    def test_reset_stock_and_options(self):
+    def test_append_equity_option_position(self):
         """
-        Test reset that return empty list and dict
+        Test append position set into equity option position
         """
-        stock, options = self.open_csv.reset_stock_and_options()
+        position_set = self.open_pos.reset_position_set()
+        position_set['instrument'] = {
+            'mark_change': 0.0, 'name': 'CELG', 'pl_open': -7.5, 'days': 0.0, 'mark': 0.0,
+            'vega': -0.25, 'pl_day': -13.0, 'delta': 12.41, 'bp_effect': -150.0, 'theta': 0.0,
+            'pct_change': -1.35, 'quantity': 0.0, 'gamma': -0.54, 'trade_price': 0.0
+        }
+        position_set['equity'] = {
+            'mark_change': -1.19, 'name': 'CELGENE CORP COM', 'pl_open': 0.0, 'days': 0.0,
+            'mark': 87.15, 'vega': 0.0, 'pl_day': 0.0, 'delta': 0.0, 'bp_effect': 0.0,
+            'theta': 0.0, 'pct_change': 0.0, 'quantity': 0.0, 'gamma': 0.0, 'trade_price': 0.0
+        }
 
-        print 'stock type: %s' % type(stock)
-        print 'stock length: %s\n' % len(stock)
+        self.open_pos.append_equity_option_position(position_set)
 
-        self.assertEqual(type(stock), dict)
-        self.assertFalse(len(stock))
+        self.assertEqual(len(self.open_pos.equity_option_position), 1)
 
-        print 'options type: %s' % type(options)
-        print 'options length: %s' % len(options)
+        print 'symbol: %s' % self.open_pos.equity_option_position[0]['symbol']
+        print 'company: %s' % self.open_pos.equity_option_position[0]['company']
 
-        self.assertEqual(type(options), list)
-        self.assertFalse(len(options))
+        self.assertEqual(
+            self.open_pos.equity_option_position[0]['symbol'],
+            position_set['instrument']['name']
+        )
 
-    def test_reset_symbol_and_instrument(self):
+        self.assertEqual(
+            self.open_pos.equity_option_position[0]['company'],
+            position_set['equity']['name']
+        )
+
+        pprint(self.open_pos.equity_option_position, width=400)
+
+    def set_sections(self, method, prop, lengths, keys):
         """
-        Test reset that result str and dict
+        Test set section into class property
         """
-        symbol, instrument = self.open_csv.reset_symbol_and_instrument()
+        getattr(self.open_pos, method)()
 
-        print 'symbol type: %s' % type(symbol)
-        print 'symbol length: %s\n' % len(symbol)
+        test_prop = getattr(self.open_pos, prop)
 
-        self.assertEqual(type(symbol), str)
-        self.assertFalse(len(symbol))
+        print 'property: %s' % prop
+        print 'method: %s' % method
+        print 'item length: ', lengths
+        print 'prop length: %s' % len(test_prop)
+        print 'keys: %s\n' % keys
 
-        print 'instrument type: %s' % type(instrument)
-        print 'instrument length: %s' % len(instrument)
+        self.assertEqual(type(test_prop), list)
+        self.assertGreaterEqual(len(test_prop), 0)
 
-        self.assertEqual(type(instrument), dict)
-        self.assertFalse(len(instrument))
+        for o in test_prop:
+            print o
 
-    def test_format_positions(self):
+            self.assertIn(len(o), lengths)
+            self.assertEqual(type(o), dict)
+
+            for key in o.keys():
+                self.assertIn(key, keys)
+
+    def test_set_future_position(self):
         """
-        Test format position that ready for insert db
+        Test set future position into class property
         """
-        items = [
-            ['ORACLE CORP COM', '0', '', '.00', '40.39', '-.57', '.00', '.00',
-             '.00', '.00', '', '$0.00', '$0.00', ''],
-            ['100 AUG 14 76 CALL', '+1', '15', '.54', '.36', '-.61', '22.01',
-             '10.16', '-2.58', '4.57', '', '($18.00)', '($18.00)', ''],
-            ['100 AUG 14 67.5 CALL', '+2', '15', '.37', '.31', 'N/A', '58.46',
-             '39.94', '-3.41', '9.57', '', '($12.00)', '($12.00)', '']
-        ]
+        self.set_sections(
+            method='set_future_position',
+            prop='future_position',
+            lengths=(10, ),  # with or without mark value
+            keys=self.open_pos.future_position_keys
+        )
 
-        for item in items:
-            result = self.open_csv.format_positions(item)
-
-            print 'item: %s' % item
-            print 'result: %s\n' % result
-
-            self.assertNotIn('N/A', result)
-            self.assertNotIn('', result)
-            self.assertNotIn('$', result)
-            self.assertNotIn('(', result)
-            self.assertNotIn(')', result)
-
-    def test_get_company_name(self):
+    def test_set_forex_position(self):
         """
-        Test get company name from list
-        :return:
+        Test set forex position into class property
         """
-        stock = {'mark_change': '-1.19', 'name': 'CELGENE CORP COM', 'pl_open': '$0.00',
-                 'days': '', 'mark': '87.15', 'vega': '.00', 'pl_day': '$0.00',
-                 'delta': '.00', 'bp_effect': '', 'theta': '.00', 'pct_change': '',
-                 'quantity': '0', 'gamma': '.00', 'trade_price': '.00'}
+        self.set_sections(
+            method='set_forex_position',
+            prop='forex_position',
+            lengths=(9, ),  # with or without mark value
+            keys=self.open_pos.forex_position_keys
+        )
 
-        result = self.open_csv.get_company_name(stock)
-
-        print 'stock: %s' % stock
-        print 'result: %s' % result
-
-        self.assertEqual(result, 'CELGENE CORP COM')
-        self.assertEqual(type(result), str)
-
-    def test_set_pos(self):
+    def test_set_position_summary(self):
         """
-        Test set positions into class with instrument, stock and options
+        Test set position summary into class property
         """
-        symbol = 'CELG'
+        self.open_pos.set_position_summary()
 
-        instrument = {'mark_change': '', 'name': 'CELG', 'pl_open': '($7.50)',
-                      'days': '', 'mark': '', 'vega': '-.25', 'pl_day': '($13.00)',
-                      'delta': '12.41', 'bp_effect': '($150.00)', 'theta': '.00',
-                      'pct_change': '-1.35%', 'quantity': '', 'gamma': '-.54',
-                      'trade_price': ''}
+        self.assertEqual(type(self.open_pos.position_summary), dict)
+        self.assertEqual(len(self.open_pos.position_summary), 5)
+        for key in self.open_pos.position_summary_keys:
+            self.assertIn(key, self.open_pos.position_summary.keys())
 
-        stock = {'mark_change': '-1.19', 'name': 'CELGENE CORP COM', 'pl_open': '$0.00',
-                 'days': '', 'mark': '87.15', 'vega': '.00', 'pl_day': '$0.00',
-                 'delta': '.00', 'bp_effect': '', 'theta': '.00', 'pct_change': '',
-                 'quantity': '0', 'gamma': '.00', 'trade_price': '.00'}
+        print 'item length: ', len(self.open_pos.position_summary)
+        print 'keys: %s\n' % self.open_pos.position_summary.keys()
 
-        options = [{'mark_change': '+.46', 'name': '100 AUG 14 86 PUT', 'pl_open': '$13.50',
-                    'days': '15', 'mark': '1.395', 'vega': '7.02', 'pl_day': '$46.00',
-                    'delta': '-39.37', 'bp_effect': '', 'theta': '-5.72', 'pct_change': '',
-                    'quantity': '+1', 'gamma': '7.94', 'trade_price': '1.26'},
-                   {'mark_change': '+.59', 'name': '100 AUG 14 87.5 PUT', 'pl_open': '($21.00)',
-                    'days': '15', 'mark': '2.05', 'vega': '-7.27', 'pl_day': '($59.00)',
-                    'delta': '51.78', 'bp_effect': '', 'theta': '5.72', 'pct_change': '',
-                    'quantity': '-1', 'gamma': '-8.49', 'trade_price': '1.84'}]
+        print 'position summary:'
+        pprint(self.open_pos.position_summary)
 
-        self.open_csv.set_pos(symbol, instrument, stock, options)
-
-        positions = self.open_csv.positions
-
-        for pos in positions:
-            self.assertEqual(pos['symbol'], symbol)
-            self.assertIn('symbol', pos.keys())
-            self.assertIn('company', pos.keys())
-            self.assertIn('instrument', pos.keys())
-            self.assertIn('stock', pos.keys())
-            self.assertIn('options', pos.keys())
-
-            print 'Symbol: %s' % pos['symbol']
-            print 'Company: %s' % pos['company']
-            print 'Instrument: %s' % pos['instrument']
-            print 'Stock: %s' % pos['stock']
-            print 'Options: %s' % pos['options']
-
-    def test_set_pos_from_lines(self):
+    def test_set_equity_option_position(self):
         """
-        Test open pos csv files then get instrument, stock, options
-        and set it into class property
+        Test set instrument, stock, option into class property
         """
-        self.open_csv.set_pos_from_lines()
+        self.open_pos.set_equity_option_position()
 
-        positions = self.open_csv.positions
+        print 'position length: %d' % len(self.open_pos.equity_option_position)
+        print 'position type: %s' % type(self.open_pos.equity_option_position)
 
-        #self.assertEqual(len(positions), 21)
+        self.assertEqual(type(self.open_pos.equity_option_position), list)
 
-        for pos in positions:
-            self.assertIn('symbol', pos.keys())
-            self.assertIn('company', pos.keys())
-            self.assertIn('instrument', pos.keys())
-            self.assertIn('stock', pos.keys())
-            self.assertIn('options', pos.keys())
-
-            print 'Symbol: %s' % pos['symbol']
-            print 'Company: %s' % pos['company']
-            print 'Instrument: %s' % pos['instrument']
-            print 'Stock: %s' % pos['stock']
-            print 'Options: %s' % pos['options']
+        for position in self.open_pos.equity_option_position:
+            print 'symbol: %s' % position['symbol']
+            print 'company: %s' % position['company']
+            print 'instrument:\n%s' % position['instrument']
+            print 'equity:\n%s' % position['equity']
+            print 'options:'
+            pprint(position['options'], width=400)
             print ''
 
-    def test_is_overall(self):
-        """
-        Test the line is overall or not
-        """
-        items = [
-            ['OVERNIGHT FUTURES BP', '$1873.49'],
-            ['Position Statement for 865073982 () on 8/1/14 04:55:00'],
-            ['BP ADJUSTMENT', '$0.00']
-        ]
+            self.assertNotEqual(position['symbol'], '')
+            self.assertGreater(len(position['symbol']), 0)
+            self.assertEqual(type(position['symbol']), str)
+            self.assertNotEqual(position['company'], '')
+            self.assertGreater(len(position['company']), 0)
+            self.assertEqual(type(position['company']), str)
 
-        for item in items:
-            result = self.open_csv.is_overall(item)
+            self.assertEqual(len(position['instrument'].keys()), 14)
+            self.assertEqual(type(position['instrument']), dict)
 
-            print 'item: %s' % item
-            print 'result: %s\n' % result
+            if len(position['equity']):
+                self.assertEqual(len(position['equity'].keys()), 14)
+                self.assertEqual(type(position['equity']), dict)
 
-            if len(item) == 2:
-                self.assertTrue(result)
-            else:
-                self.assertFalse(result)
+            if len(position['options']):
+                self.assertEqual(len(position['options'][0].keys()), 14)
+                self.assertEqual(type(position['options']), list)
+                self.assertEqual(type(position['options'][0]), dict)
 
-    def test_get_overall_data_only(self):
-        """
-        Test return overall data only, do not return columns
-        """
-        items = [
-            ['OVERNIGHT FUTURES BP', '$1873.49'],
-            ['BP ADJUSTMENT', '$0.00']
-        ]
+            for key, value in position['instrument'].items():
+                self.assertIn(key, self.open_pos.equity_option_keys)
+                self.assertNotEqual(value, '')
 
-        for item in items:
-            result = self.open_csv.get_overall_data_only(item)
+            for key, value in position['equity'].items():
+                self.assertIn(key, self.open_pos.equity_option_keys)
+                self.assertNotEqual(value, '')
 
-            print 'item: %s' % item
-            print 'result: %s\n' % result
-
-            self.assertEqual(type(result), str)
-            self.assertEqual(result, item[1])
-
-    def test_format_overall(self):
-        """
-        Test format overall that remove symbols_ui and signs
-        """
-        items = ['$3773.49', '($5609.52)', '$0.00', '$1873.49', '$1873.49']
-
-        for item in items:
-            result = self.open_csv.format_overall_item(item)
-
-            print 'item: %s' % item
-            print 'result: %s\n' % result
-
-            self.assertEqual(type(result), float)
-
-    def test_make_overall_dict(self):
-        """
-        Test using overall data list and make dict
-        """
-        items = [
-            '$3773.49',
-            '($5609.52)',
-            '$0.00',
-            '$1873.49',
-            '$1873.49'
-        ]
-
-        result = self.open_csv.make_overall_dict(items)
-
-        print 'items: %s\n' % items
-        print 'result:'
-        for k, r in result.items():
-            print k, r
-
-        print ''
-        print 'result length: %d' % len(result)
-        print 'result type: %s' % type(result)
-
-        self.assertEqual(type(result), dict)
-        self.assertEqual(len(result), 5)
-
-        columns_name = [
-            'cash_sweep',
-            'pl_ytd',
-            'bp_adjustment',
-            'futures_bp',
-            'available'
-        ]
-
-        for name in columns_name:
-            self.assertIn(name, result.keys())
-
-    def test_set_overall(self):
-        """
-        Test set overall into class property
-        """
-        items = ['$3773.49', '($5609.52)', '$0.00', '$1873.49', '$1873.49']
-        self.open_csv.set_overall(items)
-
-        overall = self.open_csv.overall
-
-        print 'overall type: %s' % type(overall)
-        print 'overall length: %d' % len(overall)
-
-        self.assertEqual(type(overall), dict)
-        self.assertEqual(len(overall), 5)
-
-        print '\n' + 'overall dict:'
-        for k, o in overall.items():
-            print '%s: %s' % (k, o)
-
-    def test_set_overall_from_lines(self):
-        """
-        Test open csv files and set overall property
-        """
-        self.open_csv.set_overall_from_lines()
-
-        overall = self.open_csv.overall
-
-        print 'overall type: %s' % type(overall)
-        print 'overall length: %d' % len(overall)
-
-        self.assertEqual(type(overall), dict)
-        self.assertEqual(len(overall), 5)
-
-        print '\n' + 'overall dict:'
-        for k, o in overall.items():
-            print '%s: %s' % (k, o)
+            for option in position['options']:
+                for key, value in option.items():
+                    self.assertIn(key, self.open_pos.equity_option_keys)
+                    self.assertNotEqual(value, '')
 
     def test_read(self):
         """
-        Final test, read csv files and return positions and overall dict
+        Test read position statement file and output dict data
         """
-        positions, overall = self.open_csv.read()
-
-        print 'positions type: %s' % type(positions)
-        print 'positions length: %d\n' % len(positions)
-
-        for position in positions:
-            for key, item in position.items():
-                if key == 'Symbol' or key == 'Company':
-                    self.assertEqual(type(item), str)
-                elif key == 'Instrument' or key == 'Stock':
-                    self.assertEqual(type(item), dict)
-                    self.assertIn(len(item), (0, 14))
-                elif key == 'Options':
-                    self.assertEqual(type(item), list)
-
-            self.assertIn('symbol', position.keys())
-            self.assertIn('company', position.keys())
-            self.assertIn('instrument', position.keys())
-            self.assertIn('stock', position.keys())
-            self.assertIn('options', position.keys())
-
-            print 'Symbol: %s' % position['symbol']
-            print 'Company: %s' % position['company']
-            print 'Instrument: %s' % position['instrument']
-            print 'Stock: %s' % position['stock']
-            print 'Options: %s' % position['options']
-            print ''
-
-        # overall section
-        print '\n' + 'overall type: %s' % type(overall)
-        print 'overall length: %d' % len(overall)
-
-        self.assertEqual(type(overall), dict)
-        self.assertEqual(len(overall), 5)
-
-        print '\n' + 'overall dict:'
-        print overall
-
-    def test_stock_only_files(self):
-        """
-        Test ready stock only files
-        """
-        test_file = os.path.join(test_spreads, '2014-03-10-stock.csv')
-        data = open(test_file).read()
-
-        print 'file date: %s' % test_file
-
-        open_csv = OpenPos(data=data)
-
-        positions, overalls = open_csv.read()
-
-        for position in positions:
-            for key, item in position.items():
-                if key == 'Symbol' or key == 'Company':
-                    self.assertEqual(type(item), str)
-                elif key == 'Instrument' or key == 'Stock':
-                    self.assertEqual(type(item), dict)
-                    self.assertIn(len(item), (0, 14))
-                elif key == 'Options':
-                    self.assertEqual(type(item), list)
-
-            for key in ['symbol', 'company', 'instrument', 'stock', 'options']:
-                self.assertIn(key, position.keys())
-                print '%s found in positions!' % key
-
-            print ''
-
-    def test_ready_multiple_files(self):
-        """
-        Test read on all files inside tos.pos
-        """
-        files = [
-            '2014-03-07-closed.csv',
-            '2014-03-10-stock.csv',
-            '2014-03-11-hedge.csv',
-            '2014-03-12-one-leg.csv',
-            '2014-03-13-two-legs.csv',
-            '2014-03-14-three-legs.csv',
-            '2014-03-17-four-legs-part-1.csv'
+        self.fnames = self.fnames + [
+            os.path.join(test_path, '2014-11-14/2014-11-14-PositionStatement.csv'),
+            os.path.join(test_path, '2014-11-15/2014-11-15-PositionStatement.csv'),
         ]
 
-        for f in files:
-            data = open(os.path.join(test_spreads, f)).read()
-            open_pso = OpenPos(data=data)
+        expected_keys = [
+            'equity_option_position', 'future_position',
+            'forex_position', 'position_summary'
+        ]
 
-            positions, overall = open_pso.read()
+        for file_no, fname in enumerate(self.fnames):
+            print '%d. fname: %s\n' % (file_no, fname)
 
-            print 'fname: %s' % f
-            print 'positions length: %d' % len(positions)
-            print 'overall length: %d\n' % len(overall)
+            pos_data = open(fname).read()
+            open_pos = OpenPos(data=pos_data)
 
-            self.assertGreater(len(positions), 1)
-            self.assertEqual(len(overall), 5)
+            pos = open_pos.read()
 
-    def test_2014_09_06_file(self):
-        f = os.path.join(test_pos_path, '2014-09-06-PositionStatement.csv')
-        data = open(f).read()
+            for key in pos.keys():
+                self.assertIn(key, expected_keys)
 
-        open_pos = OpenPos(data=data)
+            print 'Equity and Option Position:'
+            pprint(pos['equity_option_position'], width=400)
 
-        positions, overall = open_pos.read()
+            print '\n' + 'Future Position:'
+            pprint(pos['future_position'], width=400)
 
-        print 'fname: %s' % f
-        print 'positions length: %d' % len(positions)
-        print 'overall length: %d\n' % len(overall)
+            print '\n' + 'Position Summary:'
+            pprint(pos['position_summary'], width=400)
 
-        self.assertEqual(len(positions), 14)
-        self.assertEqual(len(overall), 5)
+            print '\n' + 'Forex Position:'
+            pprint(pos['forex_position'], width=400)
 
-        pprint(positions)
-        pprint(overall)
+            print '-' * 100 + '\n'

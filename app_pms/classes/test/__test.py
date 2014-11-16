@@ -59,20 +59,20 @@ class TestReadyUp(TestCase):
             pos.save()
 
             # save instrument
-            instrument = models.Instrument()
+            instrument = models.PositionInstrument()
             instrument.set_dict(position['Instrument'])
             instrument.underlying = pos
             instrument.save()
 
             # save stock
-            stock = models.InstrumentStock()
+            stock = models.PositionEquity()
             stock.set_dict(position['Stock'])
             stock.underlying = pos
             stock.save()
 
             # save options
             for pos_option in position['Options']:
-                option = models.InstrumentOption()
+                option = models.PositionOption()
                 option.set_dict(pos_option)
                 option.underlying = pos
                 option.save()

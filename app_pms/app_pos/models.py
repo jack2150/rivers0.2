@@ -1,6 +1,6 @@
 from django.db import models
 from app_pms.classes.io import OpenPos
-from app_pms.models import Underlying, Statement
+from app_pms.models import Underlying, Statement, SaveAppModel, Future, Forex
 
 
 class PositionModel(object):
@@ -58,7 +58,7 @@ class PositionStatement(models.Model):
         Normal string output for class detail
         :return: str
         """
-        position_statement = '<Position Statement> {date}, PL YTD: {pl_ytd}'
+        position_statement = '<PositionStatement:{date}> {pl_ytd}'
 
         return '{position_statement}'.format(
             position_statement=position_statement.format(
@@ -71,7 +71,7 @@ class PositionStatement(models.Model):
         verbose_name_plural = "   Position Statements"
 
 
-class Instrument(models.Model, PositionModel):
+class PositionInstrument(models.Model, PositionModel):
     position_statement = models.ForeignKey(PositionStatement)
     underlying = models.ForeignKey(Underlying)
 
@@ -113,19 +113,19 @@ class Instrument(models.Model, PositionModel):
         Normal string output for model detail
         :return: str
         """
-        return '<Instrument:{date}> {pl_open}'.format(
+        return '<PositionInstrument:{date}> {symbol}'.format(
             date=self.position_statement.date,
-            pl_open='%+.2f' % self.pl_open
+            symbol=self.underlying.symbol
         )
 
     class Meta:
         verbose_name_plural = "  Instruments"
 
 
-class InstrumentStock(models.Model, PositionModel):
+class PositionEquity(models.Model, PositionModel):
     position_statement = models.ForeignKey(PositionStatement)
     underlying = models.ForeignKey(Underlying)
-    instrument = models.ForeignKey(Instrument)
+    instrument = models.ForeignKey(PositionInstrument)
 
     quantity = models.IntegerField(default=0, verbose_name="Quantity")
     trade_price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price")
@@ -161,20 +161,19 @@ class InstrumentStock(models.Model, PositionModel):
         Normal string output for model detail
         :return: str
         """
-        return '<Stock:{date}> {stock} {quantity} Shares'.format(
+        return '<PositionEquity:{date}> {symbol}'.format(
             date=self.position_statement.date,
-            stock=self.underlying.symbol,
-            quantity=self.quantity
+            symbol=self.underlying.symbol,
         )
 
     class Meta:
         verbose_name_plural = " Stock"
 
 
-class InstrumentOption(models.Model):
+class PositionOption(models.Model):
     position_statement = models.ForeignKey(PositionStatement)
     underlying = models.ForeignKey(Underlying)
-    instrument = models.ForeignKey(Instrument)
+    instrument = models.ForeignKey(PositionInstrument)
 
     # option contract name
     right = models.IntegerField(default=100, verbose_name="Right")
@@ -257,7 +256,7 @@ class InstrumentOption(models.Model):
         """
         option = '{symbol} {right} {special} {ex_month} {ex_year} {strike_price} {contract}'
 
-        return '<Option:{date}> {option}'.format(
+        return '<PositionOption:{date}> {option}'.format(
             date=self.position_statement.date,
             option=option.format(
                 symbol=self.underlying.symbol,
@@ -274,61 +273,214 @@ class InstrumentOption(models.Model):
         verbose_name_plural = "Option"
 
 
-class SavePositionStatement(object):
+class PositionFuture(models.Model, PositionModel):
+    position_statement = models.ForeignKey(PositionStatement, verbose_name='Position Statement')
+    future = models.ForeignKey(Future, verbose_name='Future')
+
+    quantity = models.IntegerField(default=0, verbose_name='Quantity')
+    days = models.IntegerField(default=0, verbose_name='Days')
+    trade_price = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price"
+    )
+    mark = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark"
+    )
+    mark_change = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Change"
+    )
+    pct_change = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="Percent Change"
+    )
+    pl_open = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="P/L Open"
+    )
+    pl_day = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="P/L Day"
+    )
+    bp_effect = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="BP Effect"
+    )
+
+    def json(self):
+        output = '{'
+        output += '"symbol": "%s", ' % self.future.symbol
+        output += '"quantity": %+d, ' % self.quantity
+        output += '"days": %d, ' % self.days
+        output += '"trade_price": %.2f, ' % self.trade_price
+        output += '"mark": %.2f, ' % self.mark
+        output += '"mark_change": %.2f, ' % self.mark_change
+        output += '"pct_change": %.2f, ' % self.pct_change
+        output += '"pl_open": %.2f, ' % self.pl_open
+        output += '"pl_day": %.2f, ' % self.pl_day
+        output += '"bp_effect": %.2f' % self.bp_effect
+        output += '}'
+
+        return output
+
+    def __unicode__(self):
+        """
+        Normal string output for model detail
+        :return: str
+        """
+        return '<PositionFuture:{date}> {symbol}'.format(
+            date=self.position_statement.date,
+            symbol=self.future.symbol
+        )
+
+
+class PositionForex(models.Model, PositionModel):
+    position_statement = models.ForeignKey(PositionStatement, verbose_name='Position Statement')
+    forex = models.ForeignKey(Forex, verbose_name='Forex')
+
+    quantity = models.IntegerField(default=0, verbose_name='Quantity')
+    trade_price = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price"
+    )
+    mark = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark"
+    )
+    mark_change = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Change"
+    )
+    pct_change = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="Percent Change"
+    )
+    pl_open = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="P/L Open"
+    )
+    pl_day = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="P/L Day"
+    )
+    bp_effect = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="BP Effect"
+    )
+
+    def json(self):
+        output = '{'
+        output += '"symbol": "%s", ' % self.forex.symbol
+        output += '"quantity": %+d, ' % self.quantity
+        output += '"trade_price": %.2f, ' % self.trade_price
+        output += '"mark": %.2f, ' % self.mark
+        output += '"mark_change": %.2f, ' % self.mark_change
+        output += '"pct_change": %.2f, ' % self.pct_change
+        output += '"pl_open": %.2f, ' % self.pl_open
+        output += '"pl_day": %.2f, ' % self.pl_day
+        output += '"bp_effect": %.2f' % self.bp_effect
+        output += '}'
+
+        return output
+
+    def __unicode__(self):
+        """
+        Normal string output for model detail
+        :return: str
+        """
+        return '<PositionForex:{date}> {symbol}'.format(
+            date=self.position_statement.date,
+            symbol=self.forex.symbol
+        )
+
+
+
+class SavePositionStatement(SaveAppModel):
     def __init__(self, date, statement, file_data):
         """
         :param date: str
         :param statement: Statement
         :param file_data: str, raw file read
         """
-        self.date = date
-        self.statement = statement
-        self.positions, self.overall = OpenPos(data=file_data).read()
+        SaveAppModel.__init__(self, date, statement, file_data)
 
-        # get all underlying, fast query speed
-        self.underlying = Underlying.objects.all()
+        pos_data = OpenPos(data=self.file_data).read()
+
+        self.equity_option_position = pos_data['equity_option_position']
+        self.future_position = pos_data['future_position']
+        self.forex_position = pos_data['forex_position']
+        self.position_summary = pos_data['position_summary']
+
+        self.position_statement = None
+
+    def save_position_statement(self):
+        """
+        Save position statement into db
+        """
+        self.position_statement = PositionStatement(
+            statement=self.statement,
+            date=self.date,
+            **self.position_summary
+        )
+        self.position_statement.save()
+
+    def save_future_position(self):
+        """
+        Save future position into db
+        """
+        for future_position in self.future_position:
+            future = self.get_future(symbol=future_position['symbol'])
+
+            pos_future = PositionFuture(
+                position_statement=self.position_statement,
+                future=future
+            )
+            pos_future.set_dict(future_position)
+            pos_future.save()
+
+    def save_forex_position(self):
+        """
+        Save forex position into db
+        """
+        for forex_position in self.forex_position:
+            forex = self.get_forex(symbol=forex_position['symbol'])
+
+            pos_forex = PositionForex(
+                position_statement=self.position_statement,
+                forex=forex
+            )
+            pos_forex.set_dict(forex_position)
+            pos_forex.save()
+
+        # todo: update open pos support symbol description for forex
+        # todo: possible update for future open pos too, add more field
+
+    def save_equity_option_position(self):
+        """
+        Save instrument, equity, option into db
+        """
+        for equity_option_position in self.equity_option_position:
+            underlying = self.get_underlying(
+                symbol=equity_option_position['symbol'],
+                company=equity_option_position['company']
+            )
+
+            pos_instrument = PositionInstrument(
+                position_statement=self.position_statement,
+                underlying=underlying
+            )
+            pos_instrument.set_dict(equity_option_position['instrument'])
+            pos_instrument.save()
+
+            pos_equity = PositionEquity(
+                position_statement=self.position_statement,
+                underlying=underlying,
+                instrument=pos_instrument
+            )
+            pos_equity.set_dict(equity_option_position['equity'])
+            pos_equity.save()
+
+            for option in equity_option_position['options']:
+                pos_option = PositionOption(
+                    position_statement=self.position_statement,
+                    underlying=underlying,
+                    instrument=pos_instrument
+                )
+                pos_option.set_dict(option)
+                pos_option.save()
 
     def save_all(self):
         """
         Save all data into position models
         """
-        position_statement = PositionStatement(
-            statement=self.statement,
-            date=self.date,
-            **self.overall
-        )
-        position_statement.save()
-
-        for position in self.positions:
-            if self.underlying.filter(symbol=position['symbol']).count():
-                underlying = self.underlying.get(symbol=position['symbol'])
-            else:
-                underlying = Underlying(
-                    symbol=position['symbol'],
-                    company=position['company']
-                )
-                underlying.save()
-
-            instrument = Instrument(
-                position_statement=position_statement,
-                underlying=underlying
-            )
-            instrument.set_dict(position['instrument'])
-            instrument.save()
-
-            stock = InstrumentStock(
-                position_statement=position_statement,
-                underlying=underlying,
-                instrument=instrument
-            )
-            stock.set_dict(position['stock'])
-            stock.save()
-
-            for option_data in position['options']:
-                option = InstrumentOption(
-                    position_statement=position_statement,
-                    underlying=underlying,
-                    instrument=instrument
-                )
-                option.set_dict(option_data)
-                option.save()
+        self.save_position_statement()
+        self.save_equity_option_position()
+        self.save_future_position()
+        self.save_forex_position()

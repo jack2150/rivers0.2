@@ -11,7 +11,7 @@ from django import forms
 from pandas.tseries.offsets import BDay
 from app_pms import models
 from app_pms.app_acc.models import SaveAccountStatement, AccountStatement
-from app_pms.app_pos.models import Instrument, SavePositionStatement, PositionStatement
+from app_pms.app_pos.models import PositionInstrument, SavePositionStatement, PositionStatement
 from app_pms.app_ta.models import SaveTradeActivity, TradeActivity
 from django.contrib.admin import widgets
 from django.contrib.admin.models import LogEntry, ADDITION
@@ -22,7 +22,7 @@ class InstrumentInline(admin.TabularInline):
     """
     Inline Position model inside Position Statement change view
     """
-    model = Instrument
+    model = PositionInstrument
 
     def instrument_link(self, instance):
         url_link = reverse('admin:%s_%s_change' % (instance._meta.app_label,

@@ -2,193 +2,36 @@ from app_pms.classes.io.open_csv import OpenCSV
 
 
 class OpenPos(OpenCSV):
-    """
-    Open a positions csv file from tos
-    format then read positions data
-    """
     def __init__(self, data):
-        """
-        :param data: str
-        """
-        # file name
-        OpenCSV.__init__(self, data)
+        OpenCSV.__init__(self, data=data)
 
-        # position columns
-        self.position_columns = [
-            'name',
-            'quantity',
-            'days',
-            'trade_price',
-            'mark',
-            'mark_change',
-            'delta',
-            'gamma',
-            'theta',
-            'vega',
-            'pct_change',
-            'pl_open',
-            'pl_day',
-            'bp_effect'
+        self.equity_option_keys = [
+            'name', 'quantity', 'days', 'trade_price', 'mark', 'mark_change', 'delta',
+            'gamma', 'theta', 'vega', 'pct_change', 'pl_open', 'pl_day', 'bp_effect'
         ]
 
-        # positions
-        self.positions = list()
-
-        # overall columns
-        self.overall_columns = [
-            'cash_sweep',
-            'pl_ytd',
-            'bp_adjustment',
-            'futures_bp',
-            'available'
+        self.position_summary_keys = [
+            'cash_sweep', 'pl_ytd', 'bp_adjustment', 'futures_bp', 'available'
         ]
 
-        # overall
-        self.overall = dict()
-
-        # options name
-        self.options_name_columns = [
-            'right',
-            'special',
-            'ex_month',
-            'ex_year',
-            'strike_price',
-            'contract'
+        self.option_key = [
+            'right', 'special', 'ex_month', 'ex_year', 'strike', 'contract'
         ]
 
-    @classmethod
-    def is_positions(cls, items):
-        """
-        Check line is positions data or not
-        :rtype : bool
-        """
-        return len(items) == 14 and items[0] != 'Instrument'
+        self.future_position_keys = [
+            'symbol', 'quantity', 'days', 'trade_price', 'mark', 'mark_change',
+            'pct_change', 'pl_open', 'pl_day', 'bp_effect'
+        ]
 
-    @classmethod
-    def get_first_items(cls, items):
-        """
-        Get first item from a list
-        :rtype : str
-        """
-        return items[0]
+        self.forex_position_keys = [
+            'symbol', 'quantity', 'trade_price', 'mark', 'mark_change',
+            'pct_change', 'pl_open', 'pl_day', 'bp_effect'
+        ]
 
-    @classmethod
-    def is_instrument(cls, item):
-        """
-        Check first item is instrument or not
-        :rtype : bool
-        """
-        if item:
-            words = item.split(' ')
-            result = bool(len(words) == 1)
-        else:
-            result = False
-
-        return result
-
-    @classmethod
-    def is_stock(cls, item):
-        """
-        Check first item is stock or not
-        :rtype : bool
-        """
-        if item:
-            words = item.split(' ')
-
-            result = False
-            if words[0] not in ('100', '10'):
-                if words[-1] not in ('CALL', 'PUT'):
-                    if len(words) > 1:
-                        result = True
-        else:
-            result = True
-
-        return result
-
-    @classmethod
-    def is_options(cls, item):
-        """
-        Check first item is options or not
-        :rtype : bool
-        """
-        words = item.split(' ')
-
-        result = False
-        if words[0].isdigit():
-            if words[-1] in ('CALL', 'PUT'):
-                result = True
-
-        return result
-
-    @classmethod
-    def options_is_normal_contract(cls, items):
-        """
-        Check options only have 5 items
-        :param items: str
-        :return: bool
-        """
-        return len(items) == 5
-
-    @classmethod
-    def add_normal_to_options_name(cls, items):
-        """
-        Add item into first key of a list
-        :param items: list
-        """
-        items.insert(1, 'Normal')
-
-    def make_options_name_dict(self, items):
-        """
-        Make a dict using options list with column names
-        :type items: object
-        :return: dict
-        """
-        return {c: o for c, o in zip(self.options_name_columns, items)}
-
-    def options_is_normal_contract(self, item):
-        """
-        Get first item and split it into option contract
-        :return: list
-        """
-        item = self.remove_brackets_only(item)
-        items = self.split_str_with_space(item)
-
-        if self.options_is_normal_contract(items):
-            self.add_normal_to_options_name(items)
-
-        options = self.make_options_name_dict(items)
-
-        return options
-
-    def set_options_name_in_items(self, items):
-        """
-        Set first item in list into options name list
-        :param items: list
-        """
-        items[0] = self.format_option_contract(items[0])
-
-    def make_pos_dict(self, items):
-        """
-        Input a list of position items and make a new dict with column names
-        :rtype : dict
-        """
-        return {c: i for c, i in zip(self.position_columns, items)}
-
-    @classmethod
-    def reset_stock_and_options(cls):
-        """
-        Return two empty dict
-        :rtype : dict, dict
-        """
-        return dict(), list()
-
-    @classmethod
-    def reset_symbol_and_instrument(cls):
-        """
-        Return a empty str and empty dict
-        :rtype : str, dict
-        """
-        return str(), dict()
+        self.equity_option_position = list()
+        self.position_summary = list()
+        self.future_position = list()
+        self.forex_position = list()
 
     def format_positions(self, items):
         """
@@ -218,164 +61,274 @@ class OpenPos(OpenCSV):
 
         return items
 
-    @classmethod
-    def get_company_name(cls, stock):
+    @staticmethod
+    def is_instrument(item):
         """
-        Get company name from stock list
-        :param stock: dict
-        :return: str
-        """
-        return stock['name']
-
-    def set_pos(self, symbol, instrument, stock, options):
-        """
-        Save instrument, stock and options into class positions property
-        :param instrument: dict
-        :param options: list
-        :param stock: dict
-        :param symbol: str
-        """
-        self.positions.append({
-            'symbol': symbol,
-            'company': self.get_company_name(stock),
-            'instrument': instrument,
-            'stock': stock,
-            'options': options
-        })
-
-    def set_pos_from_lines(self):
-        """
-        split lines into each symbol group
-        each symbol group got 3 parts
-        summary, underlying and options
-
-        make sure ordered columns on csv files:
-        Instrument,Qty,Days,Trade Price,Mark,Mrk Chng,Delta,
-        Gamma,Theta,Vega,% Change,P/L Open,P/L Day,BP Effect
-
-        :rtype: None
-        """
-        #lines = self.read_lines_from_file()
-        lines = self.lines
-
-        symbol, instrument = self.reset_symbol_and_instrument()
-        stock, options = self.reset_stock_and_options()
-
-        for line in lines:
-            line = self.replace_dash_inside_quote(line)
-            items = self.split_lines_with_dash(line)
-
-            if self.is_positions(items):
-                items = self.format_positions(items)
-
-                first_item = self.get_first_items(items)
-
-                # in order, instrument stock options
-                if self.is_instrument(first_item):
-                    # append position into positions
-                    if symbol is not first_item and len(symbol):
-                        self.set_pos(symbol, instrument, stock, options)
-
-                    # set symbol for this position
-                    symbol = first_item
-
-                    # set instrument for positions
-                    instrument = self.make_pos_dict(items)
-
-                    # reset stock and options
-                    stock, options = self.reset_stock_and_options()
-
-                elif self.is_stock(first_item):
-                    # set stock for positions
-                    stock = self.make_pos_dict(items)
-
-                elif self.is_options(first_item):
-                    # set options for positions
-                    self.set_options_name_in_items(items)
-
-                    options.append(self.make_pos_dict(items))
-        else:
-            if len(symbol):
-                self.set_pos(symbol, instrument, stock, options)
-
-        return self.positions
-
-    @classmethod
-    def is_overall(cls, items):
-        """
-        Check the list items is overall lines
+        Check first item is instrument or not
         :rtype : bool
         """
-        return len(items) == 2
+        if item:
+            words = item.split(' ')
+            result = bool(len(words) == 1)
+        else:
+            result = False
 
-    @classmethod
-    def get_overall_data_only(cls, items):
-        """
-        Input a list and return first item of the list
-        :rtype : str
-        """
-        return items[1]
+        return result
 
-    def format_overall_item(self, item):
+    @staticmethod
+    def is_equity(item):
         """
-        Format overall items that ready for insert db
-        :type item : str
-        :rtype : float
+        Check first item is stock or not
+        :rtype : bool
         """
-        item = self.remove_bracket_then_add_negative(item)
-        item = self.remove_dollar_symbols(item)
+        if item:
+            words = item.split(' ')
 
-        return float(item)
+            result = False
+            if words[0] not in ('100', '10'):
+                if words[-1] not in ('CALL', 'PUT'):
+                    if len(words) > 1:
+                        result = True
+        else:
+            result = True
 
-    def make_overall_dict(self, overall):
+        return result
+
+    @staticmethod
+    def is_option(item):
         """
-        Input a list of overall data and use overall columns
-        make a new overall dict
+        Check first item is options or not
+        :rtype : bool
+        """
+        words = item.split(' ')
+
+        result = False
+        if words[0].isdigit():
+            if words[-1] in ('CALL', 'PUT'):
+                result = True
+
+        return result
+
+    def format_option_contract(self, item):
+        """
+        Get first item and split it into option contract
+        :return: list
+        """
+        items = self.split_str_with_space(item)
+
+        if len(items) == 5:
+            items.insert(1, 'Normal')
+
+        items[0] = int(items[0])  # right
+        items[3] = int(items[3])  # year
+        items[4] = float(items[4])  # strike
+
+        return {key: value for key, value in zip(self.option_key, items)}
+
+    @staticmethod
+    def reset_position_set():
+        """
+        Return a blank dict
         :rtype : dict
         """
-        return {c: o for c, o in zip(self.overall_columns, overall)}
+        return dict(
+            symbol='',
+            company='',
+            instrument=None,
+            equity=None,
+            options=list()
+        )
 
-    def set_overall(self, overall):
+    def append_equity_option_position(self, position_set):
         """
-        Using overall list data and make dict with columns name
-        then save it into class property overall
-        :rtype : None
+        Append data into equity option position class property
         """
-        self.overall = self.make_overall_dict(overall)
+        position_set['symbol'] = position_set['instrument']['name']
+        position_set['company'] = position_set['equity']['name']
 
-    def set_overall_from_lines(self):
-        """
-        Read lines from csv positions files
-        use the last 5 lines in files
-        and create overall dict then save into class
-        :rtype : None
-        """
-        #lines = self.read_lines_from_file()
-        lines = self.lines
+        self.equity_option_position.append(position_set)
 
-        # reset the overall variable
-        overall = list()
+    def set_future_position(self):
+        """
+        Get future and future option from line
+        and save it into class property
+        """
+        self.set_values(
+            start_phrase='Futures and Futures Options',
+            end_phrase=None,
+            start_with=2,
+            end_until=-1,
+            prop_keys=self.future_position_keys,
+            prop_name='future_position'
+        )
 
-        for line in self.last_five_lines(lines):
+        future_position = list()
+        for instrument, future in zip(self.future_position[0::2], self.future_position[1::2]):
+            future_position.append(dict(
+                symbol=instrument['symbol'],
+                quantity=instrument['quantity'],
+                days=future['days'],
+                trade_price=future['trade_price'],
+                mark=instrument['mark'],
+                mark_change=instrument['mark_change'],
+                pct_change=instrument['pct_change'],
+                pl_open=future['pl_open'],
+                pl_day=future['pl_day'],
+                bp_effect=instrument['bp_effect']
+            ))
+
+        self.future_position = future_position
+
+        self.convert_specific_type(self.future_position, 'quantity', int, 0)
+        self.convert_specific_type(self.future_position, 'days', int, 0)
+
+    def set_forex_position(self):
+        """
+        Get forex from line
+        and save it into class property
+        """
+        self.set_values(
+            start_phrase='Forex',
+            end_phrase=None,
+            start_with=2,
+            end_until=-1,
+            prop_keys=self.forex_position_keys,
+            prop_name='forex_position'
+        )
+
+        forex_position = list()
+        for instrument, future in zip(self.forex_position[0::2], self.forex_position[1::2]):
+            forex_position.append(dict(
+                symbol=instrument['symbol'],
+                quantity=instrument['quantity'],
+                trade_price=future['trade_price'],
+                mark=instrument['mark'],
+                mark_change=instrument['mark_change'],
+                pct_change=instrument['pct_change'],
+                pl_open=future['pl_open'],
+                pl_day=future['pl_day'],
+                bp_effect=instrument['bp_effect']
+            ))
+
+        self.forex_position = forex_position
+
+        self.convert_specific_type(self.forex_position, 'quantity', int, 0)
+
+    def set_position_summary(self):
+        """
+        Get position summary from line
+        and save it into class property
+        """
+        lines = self.get_lines(
+            start_phrase='Cash & Sweep Vehicle',
+            end_phrase='AVAILABLE DOLLARS'
+        )
+
+        position_summary = list()
+        for line in lines:
+            line = self.replace_dash_inside_quote(line)
+            item = self.split_lines_with_dash(line)[1]
+
+            item = self.format_item(item)
+
+            position_summary.append(item)
+
+        self.position_summary = {
+            key: value for key, value in zip(self.position_summary_keys, position_summary)
+        }
+
+    def set_equity_option_position(self):
+        """
+        Get instrument, stock, option from line
+        and save it into class property
+        """
+        # new format
+        lines = self.get_lines(
+            start_phrase='Equities and Equity Options',
+            end_phrase=None
+        )
+
+        position_set = self.reset_position_set()
+        equity_exist = False
+        options_exist = False
+
+        for line in lines[2:-1]:
             line = self.replace_dash_inside_quote(line)
             items = self.split_lines_with_dash(line)
 
-            if self.is_overall(items):
-                item = self.get_overall_data_only(items)
-                item = self.format_overall_item(item)
+            if len(items) == 14:  # is position
+                items = self.format_positions(items)
+                first_item = items[0]
 
-                overall.append(item)
+                # check is next instrument
+                if self.is_instrument(first_item) and (equity_exist or options_exist):
+                    #print 'next...\n'
 
-        self.set_overall(overall)
+                    self.append_equity_option_position(position_set)
+                    position_set = self.reset_position_set()
+                    equity_exist = False
+                    options_exist = False
+
+                if self.is_instrument(first_item):
+                    position_set['instrument'] = {
+                        key: value for key, value in zip(self.equity_option_keys, items)
+                    }
+                    #print 'instrument', position_set['instrument']
+                elif self.is_equity(first_item):
+                    position_set['equity'] = {
+                        key: value for key, value in zip(self.equity_option_keys, items)
+                    }
+                    equity_exist = True
+                    #print 'equity', position_set['equity']
+                elif self.is_option(first_item):
+                    option = {
+                        key: value for key, value in zip(self.equity_option_keys, items)
+                    }
+
+                    option['name'] = self.format_option_contract(option['name'])
+
+                    position_set['options'].append(option)
+                    options_exist = True
+                    #print 'options', position_set['options']
+        else:
+            # last position set
+            self.append_equity_option_position(position_set)
 
     def read(self):
         """
         Most important, read files and return positions and overall
-        :rtype : list of dict, dict
+        :rtype : dict
         """
-        self.set_pos_from_lines()
-        self.set_overall_from_lines()
+        self.set_equity_option_position()
+        self.set_future_position()
+        self.set_position_summary()
+        self.set_forex_position()
 
-        return self.positions, self.overall
+        return dict(
+            equity_option_position=self.equity_option_position,
+            future_position=self.future_position,
+            forex_position=self.forex_position,
+            position_summary=self.position_summary
+        )
 
-# todo: rework open_pos
+# todo: save pos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
