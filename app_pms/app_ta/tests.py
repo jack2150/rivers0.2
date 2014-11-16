@@ -10,6 +10,81 @@ from app_pms.app_ta import models
 from app_pms.tests import TestReadyStatement
 
 
+class TestTaModel(TestSetUp):
+    def setUp(self):
+        TestSetUp.setUp(self)
+
+        self.ta_model = models.TaModel()
+
+        self.underlying = models.Underlying(
+            symbol='TSLA',
+            company='TESLA MOTORS INC COM',
+        )
+        self.underlying.save()
+
+        self.future = models.Future(
+            lookup='ES',
+            symbol='/ESZ4',
+            description='E-mini S&P 500 Index Futures',
+            expire_date='DEC 14',
+            session='ETH',
+            spc='1/50'
+        )
+        self.future.save()
+
+        self.future_without_symbol = models.Future(
+            lookup='ES',
+            symbol='',
+            description='E-mini S&P 500 Index Futures',
+            expire_date='DEC 14',
+            session='ETH',
+            spc='1/50'
+        )
+        self.future_without_symbol.save()
+
+        self.forex = models.Forex(
+            symbol='AUD/USD',
+            description='AusDollar/US Dollar Spot',
+        )
+        self.forex.save()
+
+    def test_get_symbol(self):
+        """
+        Test get symbol from either underlying or future or forex
+        """
+        foreign_key_sets = [
+            ('Underlying', 'TSLA', dict(
+                underlying=self.underlying,
+                future=None,
+                forex=None
+            )),
+            ('Future', '/ESZ4', dict(
+                underlying=None,
+                future=self.future,
+                forex=None
+            )),
+            ('Future', '/ES', dict(
+                underlying=None,
+                future=self.future_without_symbol,
+                forex=None
+            )),
+            ('Forex', 'AUD/USD', dict(
+                underlying=None,
+                future=None,
+                forex=self.forex
+            ))
+        ]
+
+        for cls_name, expect_result, key_set in foreign_key_sets:
+            self.ta_model.underlying = key_set['underlying']
+            self.ta_model.future = key_set['future']
+            self.ta_model.forex = key_set['forex']
+            symbol = self.ta_model.get_symbol()
+
+            print 'get symbol from %s: %s' % (cls_name, symbol)
+            self.assertEqual(symbol, expect_result)
+
+
 class TestTradeActivity(TestReadyStatement):
     def setUp(self):
         TestReadyStatement.setUp(self)

@@ -337,8 +337,13 @@ admin.site.register(models.CashBalance, CashBalanceAdmin)
 admin.site.register(models.ProfitLoss, ProfitLossAdmin)
 admin.site.register(models.OrderHistory, OrderHistoryAdmin)
 admin.site.register(models.TradeHistory, TradeHistoryAdmin)
+
 admin.site.register(models.HoldingEquity, HoldingEquityAdmin)
 admin.site.register(models.HoldingOption, HoldingOptionAdmin)
 admin.site.register(models.HoldingFuture, FutureAdmin)
+admin.site.register(models.HoldingForex)
+
+admin.site.register(models.FutureStatement)
 admin.site.register(models.ForexStatement)
+admin.site.register(models.ForexSummary)
 

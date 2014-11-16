@@ -5,6 +5,9 @@ from app_pms.app_ta import models
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember
 class TradeActivityInline(admin.TabularInline):
+    def symbol(self, obj):
+        return obj.get_symbol()
+
     def link(self, instance):
         url = reverse(
             'admin:%s_%s_change' % (
@@ -16,6 +19,8 @@ class TradeActivityInline(admin.TabularInline):
 
     link.allow_tags = True
     link.short_description = 'Action'
+
+    exclude = ('underlying', 'future', 'forex')
 
     extra = 0
 
@@ -30,35 +35,35 @@ class FilledOrderInline(TradeActivityInline):
     model = models.FilledOrder
 
     readonly_fields = (
-        'underlying', 'exec_time', 'spread', 'side', 'quantity', 'pos_effect',
-        'expire_date', 'strike', 'contract', 'price', 'net_price', 'order', 'link'
+        'symbol', 'exec_time', 'spread', 'side',
+        'quantity', 'pos_effect', 'expire_date', 'strike', 'contract',
+        'price', 'net_price', 'order', 'link'
     )
 
-    ordering = ('underlying', )
+    ordering = ('exec_time', 'future', 'forex', 'underlying')
 
 
 class WorkingOrderInline(TradeActivityInline):
     model = models.WorkingOrder
 
     readonly_fields = (
-        'underlying', 'time_placed', 'spread', 'side', 'quantity', 'pos_effect',
-        'expire_date', 'strike', 'contract', 'price', 'order', 'tif', 'mark',
-        'status', 'link'
+        'symbol', 'time_placed', 'spread', 'side',
+        'quantity', 'pos_effect', 'expire_date', 'strike', 'contract',
+        'price', 'order', 'tif', 'mark', 'status', 'link'
     )
 
-    ordering = ('underlying', )
+    ordering = ('time_placed', 'future', 'forex', 'underlying')
 
 
 class CancelledOrderInline(TradeActivityInline):
     model = models.CancelledOrder
 
     readonly_fields = (
-        'underlying', 'time_cancelled', 'spread', 'side', 'quantity', 'pos_effect',
+        'symbol', 'time_cancelled', 'spread', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'order', 'tif', 'status', 'link'
     )
 
-    ordering = ('underlying', )
-
+    ordering = ('time_cancelled', 'future', 'forex', 'underlying')
 
 class RollingStrategyInline(TradeActivityInline):
     model = models.RollingStrategy
@@ -71,7 +76,7 @@ class RollingStrategyInline(TradeActivityInline):
 
     exclude = ('strategy', 'side', 'right', 'ex_month', 'ex_year', 'strike_price', 'contract')
 
-    ordering = ('underlying', )
+    ordering = ('active_time_start', 'underlying')
 
 
 # noinspection PyMethodMayBeStatic
@@ -323,8 +328,8 @@ class RollingStrategyAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
-# todo: ta... futures working, filled, cancelled
 
+# todo: bug, all time incorrect, please check
 
 admin.site.register(models.TradeActivity, TradeActivityAdmin)
 admin.site.register(models.WorkingOrder, WorkingOrderAdmin)

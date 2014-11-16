@@ -349,7 +349,7 @@ class ProfitLoss(models.Model, AccountModel):
         """
         output = '{'
         output += '"account_statement": "%s", ' % self.account_statement.__unicode__()
-        output += '"symbol": "%s", ' % self.underlying if self.underlying.id else self.future
+        output += '"symbol": "%s", ' % self.underlying if self.underlying else self.future
         output += '"description": "%s", ' % self.underlying.company
         output += '"pl_open": %.2f, ' % self.pl_open
         output += '"pl_pct": %.2f, ' % self.pl_pct
@@ -369,7 +369,7 @@ class ProfitLoss(models.Model, AccountModel):
         output = '<ProfitsLosses:{date}> {symbol}'
 
         return output.format(
-            symbol=self.underlying if self.underlying.id else self.future,
+            symbol=self.underlying if self.underlying else self.future,
             date=self.account_statement.date
         )
 

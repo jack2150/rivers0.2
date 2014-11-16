@@ -4,6 +4,10 @@ from app_pms.models import Underlying, Future, Forex, Statement, SaveAppModel
 
 
 class TaModel(object):
+    underlying = None
+    future = None
+    forex = None
+
     def set_dict(self, items):
         """
         using raw dict, set related column into property only
@@ -14,6 +18,24 @@ class TaModel(object):
         for key, item in items.items():
             if key in properties.keys():
                 setattr(self, key, item)
+
+    def get_symbol(self):
+        """
+        Get either one symbol from model
+        underlying or future or forex
+        :return: str
+        """
+        if self.future:
+            if self.future.symbol:
+                symbol = self.future.symbol
+            else:
+                symbol = '/%s' % self.future.lookup
+        elif self.forex:
+            symbol = self.forex.symbol
+        else:
+            symbol = self.underlying.symbol
+
+        return symbol
 
 
 class TradeActivity(models.Model):
@@ -80,7 +102,7 @@ class WorkingOrder(models.Model, TaModel):
         output += '"side": "%s", ' % self.side
         output += '"quantity": %d, ' % self.quantity
         output += '"pos_effect": "%s", ' % self.pos_effect
-        output += '"symbol": "%s", ' % self.underlying.symbol
+        output += '"symbol": "%s", ' % self.get_symbol()
         output += '"expire_date": "%s", ' % self.expire_date
         output += '"strike": %.2f, ' % self.strike
         output += '"contract": "%s", ' % self.contract
@@ -101,7 +123,7 @@ class WorkingOrder(models.Model, TaModel):
         output = '<WorkingOrder:{date}> {symbol}'
 
         return output.format(
-            symbol=self.underlying.symbol,
+            symbol=self.get_symbol(),
             date=self.trade_activity.date
         )
 
@@ -140,7 +162,7 @@ class FilledOrder(models.Model, TaModel):
         output += '"side": "%s", ' % self.side
         output += '"quantity": %d, ' % self.quantity
         output += '"pos_effect": "%s", ' % self.pos_effect
-        output += '"symbol": "%s", ' % self.underlying.symbol
+        output += '"symbol": "%s", ' % self.get_symbol()
         output += '"expire_date": "%s", ' % self.expire_date
         output += '"strike": %.2f, ' % self.strike
         output += '"contract": "%s", ' % self.contract
@@ -159,7 +181,7 @@ class FilledOrder(models.Model, TaModel):
         output = '<FilledOrder:{date}> {symbol}'
 
         return output.format(
-            symbol=self.underlying.symbol,
+            symbol=self.get_symbol(),
             date=self.trade_activity.date
         )
 
@@ -199,7 +221,7 @@ class CancelledOrder(models.Model, TaModel):
         output += '"side": "%s", ' % self.side
         output += '"quantity": %d, ' % self.quantity
         output += '"pos_effect": "%s", ' % self.pos_effect
-        output += '"symbol": "%s", ' % self.underlying.symbol
+        output += '"symbol": "%s", ' % self.get_symbol()
         output += '"expire_date": "%s", ' % self.expire_date
         output += '"strike": %.2f, ' % self.strike
         output += '"contract": "%s", ' % self.contract
@@ -219,7 +241,7 @@ class CancelledOrder(models.Model, TaModel):
         output = '<CancelledOrder:{date}> {symbol}'
 
         return output.format(
-            symbol=self.underlying.symbol,
+            symbol=self.get_symbol(),
             date=self.trade_activity.date
         )
 

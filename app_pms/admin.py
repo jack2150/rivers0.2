@@ -11,46 +11,74 @@ from django import forms
 from pandas.tseries.offsets import BDay
 from app_pms import models
 from app_pms.app_acc.models import SaveAccountStatement, AccountStatement
-from app_pms.app_pos.models import PositionInstrument, SavePositionStatement, PositionStatement
+from app_pms.app_pos.admin import PositionInline
+from app_pms.app_pos.models import SavePositionStatement, PositionStatement
 from app_pms.app_ta.models import SaveTradeActivity, TradeActivity
 from django.contrib.admin import widgets
 from django.contrib.admin.models import LogEntry, ADDITION
 
 
 # noinspection PyProtectedMember,PyMethodMayBeStatic
-class InstrumentInline(admin.TabularInline):
-    """
-    Inline Position model inside Position Statement change view
-    """
-    model = PositionInstrument
+class InstrumentInline(PositionInline):
+    max_num = 3
 
-    def instrument_link(self, instance):
-        url_link = reverse('admin:%s_%s_change' % (instance._meta.app_label,
-                                                   instance._meta.module_name),
-                           args=(instance.id,))
-        return '<a href="%s">View Position</a>' % url_link
 
-    def position_statement_date(self, obj):
-        return obj.position_statement.date
+# noinspection PyMethodMayBeStatic
+class UnderlyingAdmin(admin.ModelAdmin):
+    inlines = (PositionInline, )
 
-    instrument_link.allow_tags = True
+    list_display = ('symbol', 'company')
 
-    fields = (
-        'position_statement_date', 'underlying', 'pct_change',
-        'pl_open', 'pl_day', 'bp_effect', 'instrument_link'
+    fieldsets = (
+        ('Underlying', {
+            'fields': ('symbol', 'company')
+        }),
     )
 
-    readonly_fields = (
-        'position_statement_date', 'underlying', 'pct_change',
-        'pl_open', 'pl_day', 'bp_effect', 'instrument_link'
-    )
-    exclude = ('delta', 'gamma', 'theta', 'vega')
-    extra = 0
+    search_fields = ('symbol', 'company')
+
+    list_per_page = 20
+    ordering = ('symbol', )
 
     def has_add_permission(self, request):
         return False
 
-    def has_delete_permission(self, request, obj=None):
+
+# noinspection PyMethodMayBeStatic
+class FutureAdmin(admin.ModelAdmin):
+    list_display = ('lookup', 'symbol', 'description', 'expire_date', 'session', 'spc')
+
+    fieldsets = (
+        ('Future', {
+            'fields': ('lookup', 'symbol', 'description', 'expire_date', 'session', 'spc')
+        }),
+    )
+
+    search_fields = ('lookup', 'symbol', 'description', 'expire_date', 'session', 'spc')
+
+    list_per_page = 20
+    ordering = ('lookup', 'symbol')
+
+    def has_add_permission(self, request):
+        return False
+
+
+# noinspection PyMethodMayBeStatic
+class ForexAdmin(admin.ModelAdmin):
+    list_display = ('symbol', 'description')
+
+    fieldsets = (
+        ('Forex', {
+            'fields': ('symbol', 'description')
+        }),
+    )
+
+    search_fields = ('symbol', 'description')
+
+    list_per_page = 20
+    ordering = ('symbol', )
+
+    def has_add_permission(self, request):
         return False
 
 
@@ -160,46 +188,6 @@ class PmsImportStatementsForm(forms.Form):
             else:
                 error_message = 'All file date must be same.'
                 self._errors['date'] = self.error_class([error_message])
-
-
-# noinspection PyMethodMayBeStatic
-class UnderlyingAdmin(admin.ModelAdmin):
-    inlines = [InstrumentInline]
-
-    list_display = ('symbol', 'company')
-
-    fieldsets = (
-        ('Underlying', {
-            'fields': ('symbol', 'company')
-        }),
-    )
-
-    search_fields = ('symbol', 'company')
-
-    list_per_page = 20
-    ordering = ('symbol', )
-
-    def has_add_permission(self, request):
-        return False
-
-
-# noinspection PyMethodMayBeStatic
-class FutureAdmin(admin.ModelAdmin):
-    list_display = ('lookup', 'symbol', 'description', 'expire_date', 'session', 'spc')
-
-    fieldsets = (
-        ('Future', {
-            'fields': ('lookup', 'symbol', 'description', 'expire_date', 'session', 'spc')
-        }),
-    )
-
-    search_fields = ('lookup', 'symbol', 'description', 'expire_date', 'session', 'spc')
-
-    list_per_page = 20
-    ordering = ('lookup', 'symbol')
-
-    def has_add_permission(self, request):
-        return False
 
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember
@@ -500,9 +488,12 @@ class StatementAdmin(admin.ModelAdmin):
 
 #class PmsAppAdminSite(admin.AdminSite):
 #    app_index_template = 'admin/pms_app/app_index.html'
+admin.site.register(models.Statement, StatementAdmin)
+
 admin.site.register(models.Underlying, UnderlyingAdmin)
 admin.site.register(models.Future, FutureAdmin)
-admin.site.register(models.Statement, StatementAdmin)
+admin.site.register(models.Forex, ForexAdmin)
+
 admin.site.template = 'admin/pms_app/app_index.html'
 
 #admin.site.app_index = PmsAppIndexAdmin

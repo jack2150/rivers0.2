@@ -357,16 +357,14 @@ class PositionOptionAdmin(admin.ModelAdmin):
         return False
 
 
-
 admin.site.register(models.PositionStatement, PositionStatementAdmin)
 admin.site.register(models.PositionInstrument, PositionInstrumentAdmin)
 admin.site.register(models.PositionEquity, PositionStockAdmin)
 admin.site.register(models.PositionOption, PositionOptionAdmin)
+admin.site.register(models.PositionFuture)
+admin.site.register(models.PositionForex)
 
 
 
 
 # todo: update to better interface
-
-
-# todo: support for future

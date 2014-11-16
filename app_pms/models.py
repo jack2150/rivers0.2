@@ -62,8 +62,13 @@ class Future(models.Model):
         Normal string output for class detail
         :return: str
         """
-        return '/{lookup}'.format(
-            lookup=self.lookup
+        if self.symbol:
+            symbol = self.symbol
+        else:
+            symbol = '/%s' % self.lookup
+
+        return '{symbol}'.format(
+            symbol=symbol
         )
 
 

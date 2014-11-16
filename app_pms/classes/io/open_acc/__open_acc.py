@@ -170,7 +170,8 @@ class OpenAcc(OpenCSV):
         :param date: str
         :return: str
         """
-        result = datetime.strptime(date, '%m/%d/%y %H:%M:%S').utcnow().replace(tzinfo=utc)
+        result = datetime.strptime(date, '%m/%d/%y %H:%M:%S').replace(tzinfo=utc)
+        #result = datetime.strptime(date, '%m/%d/%y %H:%M:%S').utcnow().replace(tzinfo=utc)
         #result = timezone(result, timezone.get_current_timezone())
 
         return result
