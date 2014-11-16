@@ -328,9 +328,6 @@ class RollingStrategyAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
-
-# todo: bug, all time incorrect, please check
-
 admin.site.register(models.TradeActivity, TradeActivityAdmin)
 admin.site.register(models.WorkingOrder, WorkingOrderAdmin)
 admin.site.register(models.FilledOrder, FilledOrderAdmin)

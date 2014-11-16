@@ -266,20 +266,3 @@ class OpenTA(OpenCSV):
             cancelled_order=self.cancelled_order,
             rolling_strategy=self.rolling_strategy
         )
-
-
-
-
-
-
-# todo: fix bug, datetime field
-
-
-
-
-
-
-
-
-
-
