@@ -1,0 +1,57 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Position Statement for D-12644969 (margin) on 11/15/14 07:05:14
+
+Equities and Equity Options
+Instrument,Qty,Days,Trade Price,Mark,Mrk Chng,Delta,Gamma,Theta,Vega,% Change,P/L Open,P/L Day,BP Effect
+AAPL,,,,,,.00,.00,.00,.00,+1.21%,$0.00,$26.50,$0.00
+APPLE INC COM,0,,.00,114.26,+1.44,.00,.00,.00,.00,,$0.00,$99.00,
+100 DEC 14 110 CALL,0,35,.00,5.425,+1.00,.00,.00,.00,.00,,$0.00,($72.50),
+SLW,,,,,,31.41,-12.04,1.40,-2.24,+5.93%,$34.50,$40.50,$950.00
+SILVER WHEATON CORP COM,+100,,19.20,20.19,+1.13,100.00,.00,.00,.00,,$99.00,$113.00,
+100 DEC 14 19 CALL,-1,35,1.17,1.815,+.725,-68.59,-12.04,1.40,-2.24,,($64.50),($72.50),
+TSLA,,,,,,-7.34,.05,-.04,.55,+2.77%,($57.50),($47.50),($500.00)
+TESLA MOTORS INC COM,0,,.00,258.54,+6.84,.00,.00,.00,.00,,$0.00,$0.00,
+100 DEC 14 255 CALL,-1,35,9.05,12.725,+3.60,-57.36,-1.43,14.99,-31.83,,($367.50),($360.00),
+100 DEC 14 260 CALL,+1,35,7.00,10.10,+3.125,50.02,1.48,-15.03,32.38,,$310.00,$312.50,
+UNG,,,,,,118.90,-16.51,2.82,-3.95,+2.21%,$60.00,$55.00,"($1,000.00)"
+UNITED STATES NAT GAS FUND ETF,0,,.00,21.30,+.46,.00,.00,.00,.00,,$0.00,$0.00,
+100 DEC 14 19 PUT,+5,35,.45,.355,-.08,-96.78,44.56,-5.86,9.20,,($47.50),($40.00),
+100 DEC 14 21 PUT,-5,35,1.34,1.125,-.19,215.68,-61.06,8.68,-13.14,,$107.50,$95.00,
+VXX,,,,,,102.18,10.79,.56,2.47,+0.32%,($30.00),($30.00),$0.00
+BARCLAYS BANK PLC IPATH S&P 500 VIX SHORT TERM,0,,.00,28.45,-.12,.00,.00,.00,.00,,$0.00,$0.00,
+100 DEC 14 29 CALL,+5,35,2.01,1.87,-.23,248.32,37.66,-14.72,17.82,,($70.00),($70.00),
+100 DEC 14 33 CALL,-5,35,1.13,1.05,-.15,-146.14,-26.87,15.28,-15.34,,$40.00,$40.00,
+
+Futures and Futures Options
+Instrument,Exp,SPC,Qty,Days,Trade Price,Mark,Mrk Chng,% Change,P/L Open,P/L Day,BP Effect
+/ES,,,-1,,2035.00,2039.25,+1.25,+0.26%,($212.50),($62.50),"($5,060.00)"
+"E-mini S&P 500 Index Futures,Dec-2014,ETH",DEC 14,1/50,-1,33,2035.00,2039.25,+1.25,,($212.50),($62.50),
+/QM,,,+1,,75.925,75.925,+.105,+2.32%,$0.00,$52.50,"($1,870.00)"
+"NYMEX miNY Light Sweet Crude Oil Futures,Dec-2014,ETH",NOV 14,1/500,+1,3,75.925,75.925,+.105,,$0.00,$52.50,
+/ZW,,,+1,,553.75,560.00,-.50,+1.22%,$312.50,($25.00),"($1,430.00)"
+"Wheat Futures,Dec-2014,ETH",DEC2 14,1/50,+1,26,553.75,560.00,-.50,,$312.50,($25.00),
+
+Cash & Sweep Vehicle,"$23,973.70"
+OVERALL P/L YTD,$594.50
+BP ADJUSTMENT,$0.00
+OVERNIGHT FUTURES BP,"$5,933.70"
+AVAILABLE DOLLARS,"$5,933.70"
+
+Forex
+Instrument,Qty,Trade Price,Mark,Mrk Chng,% Change,P/L Open,P/L Day,BP Effect
+AUD/USD,0,.00,.87565,+.00503,0.00%,$0.00,$0.00,$0.00
+AusDollar/US Dollar Spot,0,.00,.87565,+.00503,,$0.00,$0.00,
+EUR/MXN,0,.00,16.95425,-.0195,0.00%,$0.00,$0.00,($626.29)
+Euro/NewMexican Peso Spot,0,.00,16.95425,-.0195,,$0.00,$0.00,
+EUR/USD,+10000,1.247713,1.25255,+.005835,0.00%,$88.07,$56.72,($203.64)
+Euro/USDollar Spot,+10000,1.247713,1.25255,+.005835,,$88.07,$56.72,
+GBP/JPY,+10000,181.9383,182.234,+.4685,0.00%,$23.11,$37.00,($291.45)
+GBPound/Japanese Yen Spot,+10000,181.9383,182.234,+.4685,,$23.11,$37.00,
+GBP/SGD,0,.00,2.0337,+.00425,0.00%,$0.00,$0.00,($783.79)
+GBPound/Singapore Dollar Spot,0,.00,2.03370,+.00425,,$0.00,$0.00,
+USD/JPY,+10000,116.473,116.335,+.4975,0.00%,($13.16),($13.16),($213.16)
+USDollar/Japanese Yen Spot,+10000,116.473,116.335,+.4975,,($13.16),($13.16),
+
+FOREX CASH WITH UPL,"$10,016.04"
+AVAILABLE DOLLARS,"$7,897.72"
