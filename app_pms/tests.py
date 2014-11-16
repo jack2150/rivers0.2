@@ -1,7 +1,6 @@
 import os
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from app_pms.models import Forex
 from app_pms.test_files import *
 from app_pms.classes.test import TestSetUp
 from app_pms import admin
@@ -10,7 +9,6 @@ from app_pms.app_pos.models import *
 from app_pms.app_ta.models import *
 from django.core.files.uploadedfile import SimpleUploadedFile
 from pprint import pprint
-from rivers.settings import BASE_DIR
 
 
 class TestSetUpUnderlying(TestSetUp):
@@ -146,7 +144,7 @@ class TestStatement(TestSetUp):
         TestSetUp.setUp(self)
 
         self.statement = Statement(
-            date='2014-10-21',
+            date='2014-11-14',
             account_statement='account statement data',
             position_statement='position statement data',
             trade_activity='trade activity data'
@@ -174,7 +172,7 @@ class TestSaveAppModel(TestSetUp):
         TestSetUp.setUp(self)
 
         self.save_app_model = SaveAppModel(
-            date='2014-11-15',
+            date='2014-11-14',
             statement=None,
             file_data=''
         )
@@ -249,8 +247,7 @@ class TestSaveAppModel(TestSetUp):
             symbol='', lookup='ES'
         )
 
-        self.assertEqual('ES', future.lookup)
-
+        self.assertEqual(future.lookup, 'ES')
 
     def test_get_forex(self):
         """
@@ -275,7 +272,7 @@ class TestReadyStatement(TestSetUp):
         TestSetUp.setUp(self)
 
         self.statement = Statement(
-            date='2014-10-21',
+            date='2014-11-14',
             account_statement='account statement data',
             position_statement='position statement data',
             trade_activity='trade activity data'
@@ -287,10 +284,10 @@ class TestPmsImportStatementsForm(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
-        self.date = '2014-10-21'
-        self.account_statement = SimpleUploadedFile('2014-10-22-AccountStatement.csv', 'something')
-        self.position_statement = SimpleUploadedFile('2014-10-22-PositionStatement.csv', 'something')
-        self.trade_activity = SimpleUploadedFile('2014-10-22-TradeActivity.csv', 'something')
+        self.date = '2014-11-14'
+        self.account_statement = SimpleUploadedFile('2014-11-15-AccountStatement.csv', 'something')
+        self.position_statement = SimpleUploadedFile('2014-11-15-PositionStatement.csv', 'something')
+        self.trade_activity = SimpleUploadedFile('2014-11-15-TradeActivity.csv', 'something')
 
         self.value_data = dict(
             date=self.date
@@ -408,7 +405,7 @@ class TestPmsImportStatementsForm(TestSetUp):
         :param fname: str filename
         """
         wrong_fname = getattr(self, fname).name.replace(
-            '2014-10-22', '10-22-2014'
+            '2014-11-15', '11-15-2014'
         )
 
         self.validate_file_field_with_invalid_filename(
@@ -465,6 +462,7 @@ class TestPmsImportStatementsForm(TestSetUp):
         self.validate_file_field_wrong_file_ext('trade_activity')
 
 
+# todo: test until here...
 class TestPmsImportStatementView(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
@@ -475,19 +473,19 @@ class TestPmsImportStatementView(TestSetUp):
             password='pass'
         )
 
-        self.date = '2014-10-21'
+        self.date = '2014-11-14'
 
         self.account_statement = SimpleUploadedFile(
-            '2014-10-22-AccountStatement.csv',
-            open(os.path.join(test_path, '2014-10-31', '2014-10-31-AccountStatement.csv')).read()
+            '2014-11-15-AccountStatement.csv',
+            open(os.path.join(test_path, '2014-11-15', '2014-11-15-AccountStatement.csv')).read()
         )
         self.position_statement = SimpleUploadedFile(
-            '2014-10-22-PositionStatement.csv',
-            open(os.path.join(test_path, '2014-10-31', '2014-10-31-PositionStatement.csv')).read()
+            '2014-11-15-PositionStatement.csv',
+            open(os.path.join(test_path, '2014-11-15', '2014-11-15-PositionStatement.csv')).read()
         )
         self.trade_activity = SimpleUploadedFile(
-            '2014-10-22-TradeActivity.csv',
-            open(os.path.join(test_path, '2014-10-31', '2014-10-31-TradeActivity.csv')).read()
+            '2014-11-15-TradeActivity.csv',
+            open(os.path.join(test_path, '2014-11-15', '2014-11-15-TradeActivity.csv')).read()
         )
 
     def test_submit_import_statement_form(self):
@@ -525,6 +523,10 @@ class TestPmsImportStatementView(TestSetUp):
 
         print 'Statement count: %d\n' % Statement.objects.count()
 
+        print 'Underlying count: %d' % Underlying.objects.count()
+        print 'Future count: %d' % Future.objects.count()
+        print 'Forex count: %d\n' % Forex.objects.count()
+
         print '-' * 100 + '\n' + 'Account Statement\n' + '-' * 100
         print 'AccountStatement count: %d' % AccountStatement.objects.count()
         print 'ProfitsLosses count: %d' % ProfitLoss.objects.count()
@@ -532,17 +534,21 @@ class TestPmsImportStatementView(TestSetUp):
         print 'OrderHistory count: %d' % OrderHistory.objects.count()
         print 'Equities count: %d' % HoldingEquity.objects.count()
         print 'Options count: %d' % HoldingOption.objects.count()
+        print 'HoldingFuture count: %d' % HoldingFuture.objects.count()
+        print 'HoldingForex count: %d' % HoldingForex.objects.count()
+        print 'ForexStatement count: %d' % ForexStatement.objects.count()
+        print 'FutureStatement count: %d' % FutureStatement.objects.count()
         print 'CashBalance count: %d' % CashBalance.objects.count()
-        print 'Futures count: %d' % HoldingFuture.objects.count()
-        print 'Forex count: %d\n' % ForexStatement.objects.count()
 
         print '-' * 100 + '\n' + 'Position Statement\n' + '-' * 100
         print 'PositionStatement count: %d' % PositionStatement.objects.count()
-        print 'statement count: %d' % Statement.objects.count()
-        print 'position statement count: %d' % PositionStatement.objects.count()
-        print 'position instrument count: %d' % PositionInstrument.objects.count()
-        print 'position stock count: %d' % PositionEquity.objects.count()
-        print 'position options count: %d\n' % PositionOption.objects.count()
+        print 'Statement count: %d' % Statement.objects.count()
+        print 'PositionStatement count: %d' % PositionStatement.objects.count()
+        print 'PositionInstrument count: %d' % PositionInstrument.objects.count()
+        print 'PositionEquity count: %d' % PositionEquity.objects.count()
+        print 'PositionOption count: %d\n' % PositionOption.objects.count()
+        print 'PositionFuture count: %d\n' % PositionFuture.objects.count()
+        print 'PositionForex count: %d\n' % PositionForex.objects.count()
 
         print '-' * 100 + '\n' + 'Trade Activity\n' + '-' * 100
         print 'TradeActivity count: %d' % TradeActivity.objects.count()
