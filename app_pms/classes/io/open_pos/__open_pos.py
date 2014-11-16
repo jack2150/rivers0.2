@@ -145,7 +145,7 @@ class OpenPos(OpenCSV):
         """
         return {c: o for c, o in zip(self.options_name_columns, items)}
 
-    def format_option_contract(self, item):
+    def options_is_normal_contract(self, item):
         """
         Get first item and split it into option contract
         :return: list
@@ -377,3 +377,5 @@ class OpenPos(OpenCSV):
         self.set_overall_from_lines()
 
         return self.positions, self.overall
+
+# todo: rework open_pos

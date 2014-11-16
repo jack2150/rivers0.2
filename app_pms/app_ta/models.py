@@ -1,6 +1,6 @@
 from django.db import models
 from app_pms.classes.io.open_ta import OpenTA
-from app_pms.models import Underlying, Statement
+from app_pms.models import Underlying, Future, Forex, Statement, SaveAppModel
 
 
 class TaModel(object):
@@ -48,8 +48,11 @@ class TradeActivity(models.Model):
 
 
 class WorkingOrder(models.Model, TaModel):
-    trade_activity = models.ForeignKey(TradeActivity)
-    underlying = models.ForeignKey(Underlying)
+    trade_activity = models.ForeignKey(TradeActivity, verbose_name='Trade Activity')
+
+    underlying = models.ForeignKey(Underlying, null=True, blank=True, verbose_name='Underlying')
+    future = models.ForeignKey(Future, null=True, blank=True, verbose_name='Future')
+    forex = models.ForeignKey(Forex, null=True, blank=True, verbose_name='Forex')
 
     time_placed = models.DateTimeField(verbose_name="Time Placed")
     spread = models.CharField(max_length=20, verbose_name="Spread")
@@ -107,8 +110,11 @@ class WorkingOrder(models.Model, TaModel):
 
 
 class FilledOrder(models.Model, TaModel):
-    trade_activity = models.ForeignKey(TradeActivity)
-    underlying = models.ForeignKey(Underlying)
+    trade_activity = models.ForeignKey(TradeActivity, verbose_name='Trade Activity')
+
+    underlying = models.ForeignKey(Underlying, null=True, blank=True, verbose_name='Underlying')
+    future = models.ForeignKey(Future, null=True, blank=True, verbose_name='Future')
+    forex = models.ForeignKey(Forex, null=True, blank=True, verbose_name='Forex')
 
     exec_time = models.DateTimeField(verbose_name="Execute Time")
     spread = models.CharField(max_length=20, verbose_name="Spread")
@@ -162,8 +168,11 @@ class FilledOrder(models.Model, TaModel):
 
 
 class CancelledOrder(models.Model, TaModel):
-    trade_activity = models.ForeignKey(TradeActivity)
-    underlying = models.ForeignKey(Underlying)
+    trade_activity = models.ForeignKey(TradeActivity, verbose_name='Trade Activity')
+
+    underlying = models.ForeignKey(Underlying, null=True, blank=True, verbose_name='Underlying')
+    future = models.ForeignKey(Future, null=True, blank=True, verbose_name='Future')
+    forex = models.ForeignKey(Forex, null=True, blank=True, verbose_name='Forex')
 
     time_cancelled = models.DateTimeField(verbose_name="Time Cancelled")
     spread = models.CharField(max_length=20, verbose_name="Spread")
@@ -295,17 +304,16 @@ class RollingStrategy(models.Model, TaModel):
         verbose_name_plural = "Rolling Strategies"
 
 
-class SaveTradeActivity(object):
+class SaveTradeActivity(SaveAppModel):
     def __init__(self, date, statement, file_data):
         """
         :param date: str
         :param statement: Statement
         :param file_data: str, raw file read
         """
-        self.date = date
-        self.statement = statement
+        SaveAppModel.__init__(self, date, statement, file_data)
 
-        ta_data = OpenTA(data=file_data).read()
+        ta_data = OpenTA(data=self.file_data).read()
 
         self.working_order = ta_data['working_order']
         self.filled_order = ta_data['filled_order']
@@ -314,71 +322,67 @@ class SaveTradeActivity(object):
 
         self.trade_activity = None
 
-        # get all underlying, fast query speed
-        self.underlying = Underlying.objects.all()
-
-    def get_underlying(self, symbol, company=''):
+    def save_trade_activity(self):
         """
-        Return saved underlying object from db
-        if not exists, save new underlying then return
-        :param symbol: str
-        :param company: str
-        """
-        if self.underlying.filter(symbol=symbol).count():
-            underlying = self.underlying.get(symbol=symbol)
-        else:
-            underlying = Underlying(
-                symbol=symbol,
-                company=company
-            )
-            underlying.save()
-
-        return underlying
-
-    def save_single(self, save_cls, save_data):
-        """
-        Save single model into db
-        :param save_cls: model class
-        :param save_data: list of dict
-        """
-        for data in save_data:
-            if 'symbol' in data.keys():
-                if 'description' in data.keys():
-                    underlying = self.get_underlying(
-                        symbol=data['symbol'],
-                        company=data['description'],
-                    )
-                else:
-                    underlying = self.get_underlying(
-                        symbol=data['symbol']
-                    )
-
-                cls_obj = save_cls(
-                    trade_activity=self.trade_activity,
-                    underlying=underlying
-                )
-
-                cls_obj.set_dict(data)
-                cls_obj.save()
-            else:
-                cls_obj = save_cls(
-                    trade_activity=self.trade_activity
-                )
-
-                cls_obj.set_dict(data)
-                cls_obj.save()
-
-    def save_all(self):
-        """
-        Save all data into position models
+        Save trade activity into db
         """
         self.trade_activity = TradeActivity(
             statement=self.statement,
             date=self.date
         )
+
         self.trade_activity.save()
+
+    def save_single(self, save_cls, save_data):
+        """
+        Save single model into db,
+        support underlying, future and forex foreign key
+        :param save_cls: model class
+        :param save_data: list of dict
+        """
+        for data in save_data:
+            if 'symbol' in data.keys():
+                underlying = None
+                future = None
+                forex = None
+
+                if data['contract'] == 'FUTURE':
+                    future = self.get_future(symbol=data['symbol'])
+                elif data['contract'] == 'FOREX':
+                    forex = self.get_forex(symbol=data['symbol'])
+                else:
+                    underlying = self.get_underlying(symbol=data['symbol'])
+
+                cls_obj = save_cls(
+                    trade_activity=self.trade_activity,
+                    underlying=underlying,
+                    future=future,
+                    forex=forex
+                )
+                cls_obj.set_dict(data)
+                cls_obj.save()
+
+    def save_rolling_strategy(self):
+        """
+        Save rolling strategy into db
+        """
+        for data in self.rolling_strategy:
+            underlying = self.get_underlying(symbol=data['symbol'])
+
+            rolling_strategy = RollingStrategy(
+                trade_activity=self.trade_activity,
+                underlying=underlying
+            )
+            rolling_strategy.set_dict(data)
+            rolling_strategy.save()
+
+    def save_all(self):
+        """
+        Save all data into position models
+        """
+        self.save_trade_activity()
 
         self.save_single(save_cls=WorkingOrder, save_data=self.working_order)
         self.save_single(save_cls=FilledOrder, save_data=self.filled_order)
         self.save_single(save_cls=CancelledOrder, save_data=self.cancelled_order)
-        self.save_single(save_cls=RollingStrategy, save_data=self.rolling_strategy)
+        self.save_rolling_strategy()

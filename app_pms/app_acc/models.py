@@ -1,6 +1,6 @@
 from django.db import models
 from app_pms.classes.io.open_acc import OpenAcc
-from app_pms.models import Underlying, Future, Forex, Statement
+from app_pms.models import Underlying, Future, Forex, Statement, SaveAppModel
 
 
 class AccountModel(object):
@@ -670,17 +670,16 @@ class HoldingForex(models.Model, AccountModel):
         )
 
 
-class SaveAccountStatement(object):
+class SaveAccountStatement(SaveAppModel):
     def __init__(self, date, statement, file_data):
         """
         :param date: str
         :param statement: Statement
         :param file_data: str, raw file read
         """
-        self.date = date
-        self.statement = statement
+        SaveAppModel.__init__(self, date, statement, file_data)
 
-        acc_data = OpenAcc(data=file_data).read()
+        acc_data = OpenAcc(data=self.file_data).read()
 
         self.cash_balance = acc_data['cash_balance']
         self.profit_loss = acc_data['profit_loss']
@@ -701,96 +700,6 @@ class SaveAccountStatement(object):
 
         self.account_statement = None
 
-        # get all underlying, fast query speed
-        self.underlying = Underlying.objects.all()
-        self.future = Future.objects.all()
-        self.forex = Forex.objects.all()
-
-    def get_underlying(self, symbol, company=''):
-        """
-        Return saved underlying object from db
-        if not exists, save new underlying then return
-        :param symbol: str
-        :param company: object
-        :rtype : Underlying
-        """
-        if self.underlying.filter(symbol=symbol).count():
-            underlying = self.underlying.get(symbol=symbol)
-
-            if underlying.company == '':
-                underlying.company = company
-                underlying.save()
-        else:
-            underlying = Underlying(
-                symbol=symbol,
-                company=company
-            )
-            underlying.save()
-            self.underlying = Underlying.objects.all()
-
-        return underlying
-
-    def get_future(self, symbol, lookup='', description='',
-                   expire_date='', session='', spc=''):
-        """
-        Return a future object that have already saved in db
-        :param symbol: str
-        :param lookup: str
-        :param description: str
-        :param expire_date: str
-        :param session:  str
-        :param spc: str
-        :return: Future
-        """
-        if self.future.filter(symbol=symbol).count():
-            future = self.future.get(symbol=symbol)
-
-            # update existing if empty
-            if future.description == '':
-                future.lookup = lookup
-                future.description = description
-                future.expire_date = expire_date
-                future.session = session
-                future.spc = spc
-                future.save()
-        else:
-            future = Future(
-                lookup=lookup,
-                symbol=symbol,
-                description=description,
-                expire_date=expire_date,
-                session=session,
-                spc=spc
-            )
-            future.save()
-            self.future = Future.objects.all()
-
-        return future
-
-    def get_forex(self, symbol, description=''):
-        """
-        Return saved underlying object from db
-        if not exists, save new underlying then return
-        :param symbol: str
-        :param description: str
-        :rtype : Forex
-        """
-        if self.forex.filter(symbol=symbol).count():
-            forex = self.forex.get(symbol=symbol)
-
-            if forex.description == '':
-                forex.description = description
-                forex.save()
-        else:
-            forex = Forex(
-                symbol=symbol,
-                description=description
-            )
-            forex.save()
-            self.forex = Forex.objects.all()
-
-        return forex
-
     def save_account_statement(self):
         """
         Save account statement into class property and db
@@ -803,7 +712,7 @@ class SaveAccountStatement(object):
 
         self.account_statement.save()
 
-    def save_single(self, save_cls, save_data):
+    def save_single_with_underlying(self, save_cls, save_data):
         """
         Save single model into db
         :param save_cls: model class
@@ -942,13 +851,13 @@ class SaveAccountStatement(object):
         """
         self.save_account_statement()
 
-        self.save_single(save_cls=ForexSummary, save_data=[self.forex_summary])
-        self.save_single(save_cls=CashBalance, save_data=self.cash_balance)
-        self.save_single(save_cls=ForexStatement, save_data=self.forex_statement)
-        self.save_single(save_cls=FutureStatement, save_data=self.future_statement)
+        self.save_single_with_underlying(save_cls=ForexSummary, save_data=[self.forex_summary])
+        self.save_single_with_underlying(save_cls=CashBalance, save_data=self.cash_balance)
+        self.save_single_with_underlying(save_cls=ForexStatement, save_data=self.forex_statement)
+        self.save_single_with_underlying(save_cls=FutureStatement, save_data=self.future_statement)
 
-        self.save_single(save_cls=HoldingEquity, save_data=self.holding_equity)
-        self.save_single(save_cls=HoldingOption, save_data=self.holding_option)
+        self.save_single_with_underlying(save_cls=HoldingEquity, save_data=self.holding_equity)
+        self.save_single_with_underlying(save_cls=HoldingOption, save_data=self.holding_option)
         self.save_holding_future(save_data=self.holding_future)
         self.save_holding_forex(save_data=self.holding_forex)
 

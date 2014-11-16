@@ -1,8 +1,7 @@
 ﻿Position Statement for 865073982 () on 8/1/14 04:55:00
 
-None
+Equities and Equity Options
 Instrument,Qty,Days,Trade Price,Mark,Mrk Chng,Delta,Gamma,Theta,Vega,% Change,P/L Open,P/L Day,BP Effect
-
 CELG,,,,,,12.41,-.54,.00,-.25,-1.35%,($7.50),($13.00),($150.00)
 CELGENE CORP COM,0,,.00,87.15,-1.19,.00,.00,.00,.00,,$0.00,$0.00,
 100 AUG 14 86 PUT,+1,15,1.26,1.395,+.46,-39.37,7.94,-5.72,7.02,,$13.50,$46.00,
@@ -89,8 +88,41 @@ UNITED STATES NAT GAS FUND ETF,0,,.00,21.10,+.31,.00,.00,.00,.00,,$0.00,$0.00,
 100 (Weeklys) AUG1 14 20 PUT,0,1,.00,.07,+.04,.00,.00,.00,.00,,$0.00,$0.00,
 100 (Weeklys) AUG1 14 21 PUT,0,1,.00,.095,-.27,.00,.00,.00,.00,,$0.00,$3.50,
 
-Cash & Sweep Vehicle,"$3,773.49"
-OVERALL P/L YTD,"($5,609.52)"
+Futures and Futures Options
+Instrument,Qty,Days,Trade Price,Mark,Mrk Chng,% Change,P/L Open,P/L Day,BP Effect
+/ES,-1,,2035.00,2039.25,+1.25,+0.26%,($212.50),($62.50),"($5,060.00)"
+"E-mini S&P 500 Index Futures,Dec-2014,ETH",-1,35,2035.00,2039.25,+1.25,,($212.50),($62.50),
+/QM,+1,,75.925,75.925,+.105,+2.32%,$0.00,$0.00,"($3,740.00)"
+"NYMEX miNY Light Sweet Crude Oil Futures,Dec-2014,ETH",+1,5,75.925,75.925,+.105,,$0.00,$0.00,
+/TF,0,,.00,1172.80,-.10,-0.03%,$0.00,$0.00,"($5,610.00)"
+Russell 2000 Index Mini Futures - NYCC - Dec14,0,35,.00,1172.8,-.10,,$0.00,$0.00,
+/YG,0,,.00,1187.10,+1.50,+2.20%,$0.00,$0.00,"($1,650.00)"
+Mini Gold Futures - ICUS - Dec14,0,45,.00,1187.1,+1.50,,$0.00,$0.00,
+/YM,0,,.00,17617.00,+13.00,+0.12%,$0.00,$0.00,$0.00
+"Mini Dow Jones Industrial Average Futures,Dec-2014,ETH",0,35,.00,17617,+13.00,,$0.00,$0.00,
+/ZW,+1,,553.75,560.00,-.50,+1.22%,$312.50,($25.00),"($1,430.00)"
+"Wheat Futures,Dec-2014,ETH",+1,28,553.75,560.00,-.50,,$312.50,($25.00),
+
+Cash & Sweep Vehicle,"$23,973.70"
+OVERALL P/L YTD,$594.50
 BP ADJUSTMENT,$0.00
-OVERNIGHT FUTURES BP,"$1,873.49"
-AVAILABLE DOLLARS,"$1,873.49"
+OVERNIGHT FUTURES BP,"$5,933.70"
+AVAILABLE DOLLARS,"$5,933.70"
+
+Forex
+Instrument,Qty,Trade Price,Mark,Mrk Chng,% Change,P/L Open,P/L Day,BP Effect
+AUD/USD,0,.00,.87565,+.00503,0.00%,$0.00,$0.00,$0.00
+AusDollar/US Dollar Spot,0,.00,.87565,+.00503,,$0.00,$0.00,
+EUR/MXN,0,.00,16.95425,-.0195,0.00%,$0.00,$0.00,($626.29)
+Euro/NewMexican Peso Spot,0,.00,16.95425,-.0195,,$0.00,$0.00,
+EUR/USD,+10000,1.247713,1.25255,+.005835,0.00%,$88.07,$56.72,($203.64)
+Euro/USDollar Spot,+10000,1.247713,1.25255,+.005835,,$88.07,$56.72,
+GBP/JPY,+10000,181.9383,182.234,+.4685,0.00%,$23.11,$37.00,($291.45)
+GBPound/Japanese Yen Spot,+10000,181.9383,182.234,+.4685,,$23.11,$37.00,
+GBP/SGD,0,.00,2.0337,+.00425,0.00%,$0.00,$0.00,($783.79)
+GBPound/Singapore Dollar Spot,0,.00,2.03370,+.00425,,$0.00,$0.00,
+USD/JPY,+10000,116.473,116.335,+.4975,0.00%,($13.16),($13.16),($213.16)
+USDollar/Japanese Yen Spot,+10000,116.473,116.335,+.4975,,($13.16),($13.16),
+
+FOREX CASH WITH UPL,"$10,016.04"
+AVAILABLE DOLLARS,"$7,897.72"

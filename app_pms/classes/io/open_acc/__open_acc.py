@@ -176,21 +176,6 @@ class OpenAcc(OpenCSV):
         return result
 
     @classmethod
-    def convert_specific_type(cls, prop_obj, column_name, specific_type, empty_value):
-        """
-        Convert item for dict in list into specific type
-        :param prop_obj: list
-        :param column_name: str
-        :param specific_type: type
-        :return: None
-        """
-        for key, item in enumerate(prop_obj):
-            if item[column_name]:
-                prop_obj[key][column_name] = specific_type(item[column_name])
-            else:
-                prop_obj[key][column_name] = empty_value
-
-    @classmethod
     def replace_zero(cls, prop_obj):
         """
         Convert item for dict in list into specific type

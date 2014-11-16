@@ -181,7 +181,7 @@ class InstrumentOption(models.Model):
     special = models.CharField(max_length=100, verbose_name="Special")
     ex_month = models.CharField(max_length=10, verbose_name="Expire Month")
     ex_year = models.IntegerField(verbose_name="Expire Year")
-    strike_price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Strike Price")
+    strike = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Strike")
     contract = models.CharField(max_length=10, verbose_name="Contract")
 
     # position details
@@ -226,7 +226,7 @@ class InstrumentOption(models.Model):
             self.special,
             self.ex_month,
             self.ex_year,
-            self.strike_price,
+            self.strike,
             self.contract
         )
 
@@ -265,7 +265,7 @@ class InstrumentOption(models.Model):
                 special=self.special,
                 ex_month=self.ex_month,
                 ex_year=self.ex_year,
-                strike_price=self.strike_price,
+                strike_price=self.strike,
                 contract=self.contract
             )
         )

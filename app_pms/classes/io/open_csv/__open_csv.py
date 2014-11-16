@@ -212,6 +212,21 @@ class OpenCSV(object):
                 if sub_value == 'DEBIT' or sub_value == 'CREDIT':
                     item[sub_key] = 0.0
 
+    @classmethod
+    def convert_specific_type(cls, prop_obj, column_name, specific_type, empty_value):
+        """
+        Convert item for dict in list into specific type
+        :param prop_obj: list
+        :param column_name: str
+        :param specific_type: type
+        :return: None
+        """
+        for key, item in enumerate(prop_obj):
+            if item[column_name]:
+                prop_obj[key][column_name] = specific_type(item[column_name])
+            else:
+                prop_obj[key][column_name] = empty_value
+
     def set_values(self, start_phrase, end_phrase, start_with, end_until, prop_keys, prop_name):
         """
         Make a dict from file lines for single section

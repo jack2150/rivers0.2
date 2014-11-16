@@ -310,6 +310,88 @@ class TestSaveTradeActivity(TestSetUp):
 
         self.ta_files = glob(test_ta_path + '/*.csv')
 
+    def ready_account_statement(self):
+        """
+        Test method for ready up account statement
+        """
+        ta_file = self.ta_files[0]
+        date = os.path.basename(ta_file)[0:10]
+        print 'Date: %s' % date
+
+        ta_data = open(ta_file).read()
+
+        statement = models.Statement(
+            date=date,
+            account_statement='None',
+            position_statement=ta_data,
+            trade_activity='None',
+        )
+        statement.save()
+
+        self.save_ta = models.SaveTradeActivity(
+            date=date,
+            statement=statement,
+            file_data=ta_data
+        )
+
+    def test_save_trade_activity(self):
+        """
+        Test save trade activity into db
+        """
+        self.ready_account_statement()
+        self.save_ta.save_trade_activity()
+
+        print 'TradeActivity count: %d' % models.TradeActivity.objects.count()
+        self.assertGreaterEqual(models.TradeActivity.objects.count(), 1)
+
+    def test_save_single(self):
+        """
+        Test save single order into db with
+        underlying, future or forex foreign key
+        """
+        self.ready_account_statement()
+        self.save_ta.save_trade_activity()
+
+        self.save_ta.save_single(
+            save_cls=models.WorkingOrder, save_data=self.save_ta.working_order
+        )
+        self.save_ta.save_single(
+            save_cls=models.FilledOrder, save_data=self.save_ta.filled_order
+        )
+        self.save_ta.save_single(
+            save_cls=models.CancelledOrder, save_data=self.save_ta.cancelled_order
+        )
+
+        print 'Underlying count: %d' % models.Underlying.objects.count()
+        print 'Future count: %d' % models.Future.objects.count()
+        print 'Forex count: %d' % models.Forex.objects.count()
+        print 'WorkingOrder count: %d' % models.WorkingOrder.objects.count()
+        print 'FilledOrder count: %d' % models.FilledOrder.objects.count()
+        print 'CancelledOrder count: %d' % models.CancelledOrder.objects.count()
+
+        self.assertGreaterEqual(models.Underlying.objects.count(), 1)
+        self.assertGreaterEqual(models.Future.objects.count(), 1)
+        self.assertGreaterEqual(models.Forex.objects.count(), 1)
+        self.assertGreaterEqual(models.WorkingOrder.objects.count(), 1)
+        self.assertGreaterEqual(models.FilledOrder.objects.count(), 1)
+        self.assertGreaterEqual(models.CancelledOrder.objects.count(), 1)
+
+    def test_save_rolling_strategy(self):
+        """
+        Test save rolling strategy into db
+        :return:
+        """
+        self.ready_account_statement()
+        self.save_ta.save_trade_activity()
+
+        self.save_ta.save_rolling_strategy()
+
+        print 'Underlying count: %d' % models.Underlying.objects.count()
+        print 'RollingStrategy count: %d' % models.RollingStrategy.objects.count()
+
+        self.assertGreaterEqual(models.Underlying.objects.count(), 1)
+        self.assertGreaterEqual(models.RollingStrategy.objects.count(), 1)
+
     def test_save_all(self):
         """
         Test save all data from pos_data into models
@@ -339,6 +421,11 @@ class TestSaveTradeActivity(TestSetUp):
 
             print 'Statement count: %d' % models.Statement.objects.count()
             print 'TradeActivity count: %d' % models.TradeActivity.objects.count()
+
+            print 'Underlying count: %d' % models.Underlying.objects.count()
+            print 'Future count: %d' % models.Future.objects.count()
+            print 'Forex count: %d' % models.Forex.objects.count()
+
             print 'WorkingOrder count: %d' % models.WorkingOrder.objects.count()
             print 'FilledOrder count: %d' % models.FilledOrder.objects.count()
             print 'CancelledOrder count: %d' % models.CancelledOrder.objects.count()
@@ -346,7 +433,12 @@ class TestSaveTradeActivity(TestSetUp):
 
             self.assertEqual(models.Statement.objects.count(), no)
             self.assertEqual(models.TradeActivity.objects.count(), no)
-            self.assertGreater(models.WorkingOrder.objects.count(), 0)
-            self.assertGreater(models.FilledOrder.objects.count(), 0)
-            self.assertGreater(models.CancelledOrder.objects.count(), 0)
-            self.assertGreater(models.RollingStrategy.objects.count(), -1)
+
+            self.assertGreaterEqual(models.Underlying.objects.count(), 0)
+            self.assertGreaterEqual(models.Future.objects.count(), 0)
+            self.assertGreaterEqual(models.Forex.objects.count(), 0)
+
+            self.assertGreaterEqual(models.WorkingOrder.objects.count(), 0)
+            self.assertGreaterEqual(models.FilledOrder.objects.count(), 0)
+            self.assertGreaterEqual(models.CancelledOrder.objects.count(), 0)
+            self.assertGreaterEqual(models.RollingStrategy.objects.count(), -1)

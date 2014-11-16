@@ -585,93 +585,6 @@ class TestSaveAccountStatement(TestSetUp):
 
         self.save_acc = None
 
-    def get_methods(self, cls, test_method, data1, data2):
-        """
-        test method for get underlying, future and forex
-        """
-        print 'save %s into underlying...' % data1['symbol']
-        cls(**data1).save()
-
-        save_acc = models.SaveAccountStatement(
-            date='2014-11-01', statement=None, file_data=''
-        )
-
-        cls_name = cls.__name__
-
-        print 'get existing from db...'
-        print 'total %s in db: %d' % (cls_name, cls.objects.count())
-        self.assertEqual(cls.objects.count(), 1)
-        print 'run get %s with %s...' % (cls_name, data1['symbol'])
-        cls_obj = getattr(save_acc, test_method)(**data1)
-        self.assertEqual(cls_obj.id, 1)
-
-        print '\n' + 'save new into db...'
-        print 'run get %s with %s...' % (cls_name, data2['symbol'])
-        cls_obj = getattr(save_acc, test_method)(**data2)
-        self.assertEqual(cls_obj.id, 2)
-        self.assertEqual(cls.objects.count(), 2)
-        print 'total %s in db: %d' % (cls_name, cls.objects.count())
-        print cls.objects.all()
-
-    def test_get_underlying(self):
-        """
-        Test get existing underlying or save new underlying into model
-        """
-        self.get_methods(
-            cls=models.Underlying,
-            test_method='get_underlying',
-            data1=dict(
-                symbol='AAPL',
-                company='APPLE INC COM'
-            ),
-            data2=dict(
-                symbol='BAC',
-                company='BANK OF AMERICA CORP COM'
-            )
-        )
-
-    def test_get_future(self):
-        """
-        Test get future from db or save new db into db
-        """
-        self.get_methods(
-            cls=models.Future,
-            test_method='get_future',
-            data1=dict(
-                lookup='ES',
-                symbol='/ESZ4',
-                description='E-mini S&P 500 Index Futures',
-                expire_date='DEC 14',
-                session='ETH',
-                spc='1/50'
-            ),
-            data2=dict(
-                lookup='YG',
-                symbol='/YGZ4',
-                description='Mini Gold Futures',
-                expire_date='DEC 14',
-                session='ICUS',
-                spc='1/33.2'
-            )
-        )
-
-    def test_get_forex(self):
-        """
-        Test get existing underlying or save new underlying into model
-        """
-        self.get_methods(
-            cls=models.Forex,
-            test_method='get_forex',
-            data1=dict(
-                symbol='EUR/USD',
-                description='Euro/USDollar Spot'
-            ),
-            data2=dict(
-                symbol='GBP/JPY',
-                description='GBPound/Japanese Yen Spot'
-            )
-        )
-
     def ready_account_statement(self):
         """
         Test method for ready up account statement
@@ -711,7 +624,7 @@ class TestSaveAccountStatement(TestSetUp):
 
         pprint(models.AccountStatement.objects.all())
 
-    def test_save_single(self):
+    def test_save_single_with_underlying(self):
         """
         Test save single (only underlying, no future or forex) into class
         """
@@ -734,7 +647,7 @@ class TestSaveAccountStatement(TestSetUp):
         ]
 
         for save_cls, save_data in zip(cls_list, data_list):
-            self.save_acc.save_single(
+            self.save_acc.save_single_with_underlying(
                 save_cls=save_cls,
                 save_data=save_data
             )

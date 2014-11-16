@@ -353,6 +353,28 @@ class TestOpenCSV(TestSetUp):
                 self.assertEqual(tk2['spread'], after_fillna[key - 1]['spread'])
                 self.assertEqual(tk2['order_type'], after_fillna[key - 1]['order_type'])
 
+    def test_convert_specific_type(self):
+        """
+        Test convert specific type for dict in a list
+        """
+        items = [
+            {'a': 0, 'ref_no': 793403165.0, 'c': 0},
+            {'a': 0, 'ref_no': 801854049.0, 'c': 0},
+            {'a': 0, 'ref_no': 802092476.0, 'c': 0},
+            {'a': 0, 'ref_no': 17.0, 'c': 0},
+            {'a': 0, 'ref_no': 123.0, 'c': 0},
+        ]
+
+        self.open_csv.cash_balance = [dict(i) for i in items]
+
+        self.open_csv.convert_specific_type(self.open_csv.cash_balance, 'ref_no', int, 0)
+
+        for item, result in zip(items, self.open_csv.cash_balance):
+            print 'dict: %s, result: %s' % (item, result)
+
+            self.assertEqual(item['ref_no'], result['ref_no'])
+            self.assertNotEqual(type(item['ref_no']), type(result['ref_no']))
+
     def test_set_values(self):
         """
         Test open files, get lines section, format data,

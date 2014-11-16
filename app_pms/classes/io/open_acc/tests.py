@@ -99,28 +99,6 @@ class TestOpenAcc(TestSetUp):
 
             print 'date: %s, result: %s' % (date, result)
 
-    def test_convert_specific_type(self):
-        """
-        Test convert specific type for dict in a list
-        """
-        items = [
-            {'a': 0, 'ref_no': 793403165.0, 'c': 0},
-            {'a': 0, 'ref_no': 801854049.0, 'c': 0},
-            {'a': 0, 'ref_no': 802092476.0, 'c': 0},
-            {'a': 0, 'ref_no': 17.0, 'c': 0},
-            {'a': 0, 'ref_no': 123.0, 'c': 0},
-        ]
-
-        self.open_acc.cash_balance = [dict(i) for i in items]
-
-        self.open_acc.convert_specific_type(self.open_acc.cash_balance, 'ref_no', int, 0)
-
-        for item, result in zip(items, self.open_acc.cash_balance):
-            print 'dict: %s, result: %s' % (item, result)
-
-            self.assertEqual(item['ref_no'], result['ref_no'])
-            self.assertNotEqual(type(item['ref_no']), type(result['ref_no']))
-
     def set_sections(self, method, prop, lengths, keys):
         """
         Test set section into class property

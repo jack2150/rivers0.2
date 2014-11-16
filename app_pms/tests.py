@@ -169,6 +169,100 @@ class TestStatement(TestSetUp):
         self.assertTrue(self.statement.id)
 
 
+class TestSaveAppModel(TestSetUp):
+    def setUp(self):
+        TestSetUp.setUp(self)
+
+        self.save_app_model = SaveAppModel(
+            date='2014-11-15',
+            statement=None,
+            file_data=''
+        )
+
+    def get_methods(self, cls, test_method, data1, data2):
+        """
+        test method for get underlying, future and forex
+        """
+        print 'save %s into underlying...' % data1['symbol']
+        cls(**data1).save()
+
+        cls_name = cls.__name__
+
+        print 'get existing from db...'
+        print 'total %s in db: %d' % (cls_name, cls.objects.count())
+        self.assertEqual(cls.objects.count(), 1)
+        print 'run get %s with %s...' % (cls_name, data1['symbol'])
+        cls_obj = getattr(self.save_app_model, test_method)(**data1)
+        self.assertEqual(cls_obj.id, 1)
+
+        print '\n' + 'save new into db...'
+        print 'run get %s with %s...' % (cls_name, data2['symbol'])
+        cls_obj = getattr(self.save_app_model, test_method)(**data2)
+        self.assertEqual(cls_obj.id, 2)
+        self.assertEqual(cls.objects.count(), 2)
+        print 'total %s in db: %d' % (cls_name, cls.objects.count())
+        print cls.objects.all()
+
+    def test_get_underlying(self):
+        """
+        Test get existing underlying or save new underlying into model
+        """
+        self.get_methods(
+            cls=Underlying,
+            test_method='get_underlying',
+            data1=dict(
+                symbol='AAPL',
+                company='APPLE INC COM'
+            ),
+            data2=dict(
+                symbol='BAC',
+                company='BANK OF AMERICA CORP COM'
+            )
+        )
+
+    def test_get_future(self):
+        """
+        Test get future from db or save new db into db
+        """
+        self.get_methods(
+            cls=Future,
+            test_method='get_future',
+            data1=dict(
+                lookup='ES',
+                symbol='/ESZ4',
+                description='E-mini S&P 500 Index Futures',
+                expire_date='DEC 14',
+                session='ETH',
+                spc='1/50'
+            ),
+            data2=dict(
+                lookup='YG',
+                symbol='/YGZ4',
+                description='Mini Gold Futures',
+                expire_date='DEC 14',
+                session='ICUS',
+                spc='1/33.2'
+            )
+        )
+
+    def test_get_forex(self):
+        """
+        Test get existing underlying or save new underlying into model
+        """
+        self.get_methods(
+            cls=Forex,
+            test_method='get_forex',
+            data1=dict(
+                symbol='EUR/USD',
+                description='Euro/USDollar Spot'
+            ),
+            data2=dict(
+                symbol='GBP/JPY',
+                description='GBPound/Japanese Yen Spot'
+            )
+        )
+
+
 class TestReadyStatement(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)

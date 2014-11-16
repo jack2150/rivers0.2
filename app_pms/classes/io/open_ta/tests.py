@@ -269,7 +269,7 @@ class TestOpenTA(TestSetUp):
             self.assertEqual(type(result), dict)
             self.assertEqual(len(result), 4)
 
-            pprint(result, width=200)
+            pprint(result, width=400)
 
             for key in result.keys():
                 self.assertEqual(type(result[key]), list)
