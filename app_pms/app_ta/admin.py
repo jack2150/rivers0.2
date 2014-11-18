@@ -6,14 +6,37 @@ from app_pms.app_ta import models
 # noinspection PyMethodMayBeStatic,PyProtectedMember
 class TradeActivityInline(admin.TabularInline):
     def symbol(self, obj):
-        return obj.get_symbol()
+        if obj.future:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.future._meta.app_label, obj.future._meta.module_name
+                ),
+                args=(obj.future.id,)
+            )
+        elif obj.forex:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.forex._meta.app_label, obj.forex._meta.module_name
+                ),
+                args=(obj.forex.id,)
+            )
+        else:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.underlying._meta.app_label, obj.underlying._meta.module_name
+                ),
+                args=(obj.underlying.id,)
+            )
+        return '<a href="%s">%s</a>' % (url, obj.get_symbol())
 
-    def link(self, instance):
+    symbol.allow_tags = True
+
+    def link(self, obj):
         url = reverse(
             'admin:%s_%s_change' % (
-                instance._meta.app_label, instance._meta.module_name
+                obj._meta.app_label, obj._meta.module_name
             ),
-            args=(instance.id,)
+            args=(obj.id,)
         )
         return '<a href="%s">Change</a>' % url
 
@@ -65,6 +88,7 @@ class CancelledOrderInline(TradeActivityInline):
 
     ordering = ('time_cancelled', 'future', 'forex', 'underlying')
 
+
 class RollingStrategyInline(TradeActivityInline):
     model = models.RollingStrategy
 
@@ -74,7 +98,7 @@ class RollingStrategyInline(TradeActivityInline):
         'move_to_market_time_start', 'move_to_market_time_end', 'status', 'link'
     )
 
-    exclude = ('strategy', 'side', 'right', 'ex_month', 'ex_year', 'strike_price', 'contract')
+    exclude = ('strategy', 'side', 'right', 'ex_month', 'ex_year', 'strike', 'contract')
 
     ordering = ('active_time_start', 'underlying')
 
@@ -132,18 +156,61 @@ class TradeActivityAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 
+# noinspection PyMethodMayBeStatic,PyProtectedMember
+class TaAdmin(admin.ModelAdmin):
+    def symbol(self, obj):
+        if obj.future:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.future._meta.app_label, obj.future._meta.module_name
+                ),
+                args=(obj.future.id,)
+            )
+        elif obj.forex:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.forex._meta.app_label, obj.forex._meta.module_name
+                ),
+                args=(obj.forex.id,)
+            )
+        else:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.underlying._meta.app_label, obj.underlying._meta.module_name
+                ),
+                args=(obj.underlying.id,)
+            )
+        return '<a href="%s">%s</a>' % (url, obj.get_symbol())
+
+    symbol.allow_tags = True
+
+    readonly_fields = (
+        'trade_activity', 'underlying', 'future', 'forex'
+    )
+
+    search_fields = (
+        'trade_activity__date',
+        'underlying__symbol', 'underlying__company',
+        'forex__symbol', 'forex__description',
+        'future__symbol', 'future__lookup', 'future__description',
+        'future__expire_date', 'future__session', 'future__spc',
+        'quantity'
+    )
+
+    list_per_page = 30
+
+    def has_add_permission(self, request):
+        return False
+
+
 # noinspection PyMethodMayBeStatic
-class WorkingOrderAdmin(admin.ModelAdmin):
+class WorkingOrderAdmin(TaAdmin):
     def date(self, obj):
         return obj.trade_activity.date.strftime('%Y-%m-%d')
 
     list_display = (
-        'date', 'underlying', 'time_placed', 'spread', 'side', 'quantity', 'pos_effect',
+        'date', 'symbol', 'spread', 'time_placed', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'order', 'tif', 'mark', 'status'
-    )
-
-    search_fields = (
-        'trade_activity__date', 'underlying__symbol', 'quantity'
     )
 
     list_filter = (
@@ -154,7 +221,7 @@ class WorkingOrderAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Foreign Key', {
             'classes': ('collapse', 'open'),
-            'fields': ('trade_activity', 'underlying')
+            'fields': ('trade_activity', 'underlying', 'future', 'forex')
         }),
         ('Working Order', {
             'fields': (
@@ -167,25 +234,19 @@ class WorkingOrderAdmin(admin.ModelAdmin):
         }),
     )
 
-    readonly_fields = (
-        'trade_activity', 'underlying'
+    ordering = (
+        '-trade_activity__date', '-time_placed',
+        'future__symbol', 'forex__symbol', 'underlying__symbol'
     )
-
-    list_per_page = 30
-
-    ordering = ('-trade_activity__date', 'underlying__symbol')
-
-    def has_add_permission(self, request):
-        return False
 
 
 # noinspection PyMethodMayBeStatic
-class FilledOrderAdmin(admin.ModelAdmin):
+class FilledOrderAdmin(TaAdmin):
     def date(self, obj):
         return obj.trade_activity.date.strftime('%Y-%m-%d')
 
     list_display = (
-        'date', 'underlying', 'exec_time', 'spread', 'side', 'quantity', 'pos_effect',
+        'date', 'symbol', 'spread', 'exec_time', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'net_price', 'order'
     )
 
@@ -193,14 +254,10 @@ class FilledOrderAdmin(admin.ModelAdmin):
         'trade_activity__date', 'spread', 'side', 'contract', 'pos_effect', 'order'
     )
 
-    search_fields = (
-        'trade_activity__date', 'underlying__symbol', 'quantity'
-    )
-
     fieldsets = (
         ('Foreign Key', {
             'classes': ('collapse', 'open'),
-            'fields': ('trade_activity', 'underlying')
+            'fields': ('trade_activity', 'underlying', 'future', 'forex')
         }),
         ('Filled Order', {
             'fields': (
@@ -213,30 +270,17 @@ class FilledOrderAdmin(admin.ModelAdmin):
         })
     )
 
-    readonly_fields = (
-        'trade_activity', 'underlying'
-    )
-
-    list_per_page = 30
-
-    ordering = ('-trade_activity__date', 'underlying__symbol')
-
-    def has_add_permission(self, request):
-        return False
+    ordering = ('-trade_activity__date', '-exec_time')
 
 
 # noinspection PyMethodMayBeStatic
-class CancelledOrderAdmin(admin.ModelAdmin):
+class CancelledOrderAdmin(TaAdmin):
     def date(self, obj):
         return obj.trade_activity.date.strftime('%Y-%m-%d')
 
     list_display = (
-        'date', 'underlying', 'time_cancelled', 'spread', 'side', 'quantity', 'pos_effect',
+        'date', 'symbol', 'spread', 'time_cancelled', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'order', 'tif', 'status'
-    )
-
-    search_fields = (
-        'trade_activity__date', 'underlying__symbol', 'quantity'
     )
 
     list_filter = (
@@ -247,7 +291,7 @@ class CancelledOrderAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Foreign Key', {
             'classes': ('collapse', 'open'),
-            'fields': ('trade_activity', 'underlying')
+            'fields': ('trade_activity', 'underlying', 'future', 'forex')
         }),
         ('Cancelled Order', {
             'fields': (
@@ -260,39 +304,43 @@ class CancelledOrderAdmin(admin.ModelAdmin):
         }),
     )
 
-    readonly_fields = (
-        'trade_activity', 'underlying'
-    )
-
-    list_per_page = 30
-
-    ordering = ('-trade_activity__date', 'underlying__symbol')
-
-    def has_add_permission(self, request):
-        return False
+    ordering = ('-trade_activity__date', '-time_cancelled')
 
 
-# noinspection PyMethodMayBeStatic
+# noinspection PyMethodMayBeStatic,PyProtectedMember
 class RollingStrategyAdmin(admin.ModelAdmin):
     def date(self, obj):
         return obj.trade_activity.date.strftime('%Y-%m-%d')
+
+    def symbol(self, obj):
+        url = reverse(
+            'admin:%s_%s_change' % (
+                obj.underlying._meta.app_label,
+                obj.underlying._meta.module_name
+            ),
+            args=(obj.underlying.id,)
+        )
+        return '<a href="%s">%s</a>' % (url, obj.underlying.symbol)
+
+    symbol.allow_tags = True
 
     def option(self, obj):
         return obj.__unicode__().split('>')[-1]
 
     list_display = (
-        'date', 'underlying', 'strategy', 'option', 'side',
+        'date', 'symbol', 'strategy', 'option', 'side',
         'new_expire_date', 'call_by', 'days_begin',
         'order_price', 'status'
     )
 
     search_fields = (
-        'trade_activity__date', 'underlying__symbol', 'ex_month', 'ex_year',
+        'trade_activity__date', 'underlying__symbol', 'underlying__company',
+        'strategy', 'right', 'ex_month', 'ex_year', 'strike',
         'new_expire_date', 'call_by', 'days_begin', 'order_price'
     )
 
     list_filter = (
-        'trade_activity__date', 'status'
+        'trade_activity__date', 'right', 'contract', 'status',
     )
 
     fieldsets = (
@@ -312,7 +360,7 @@ class RollingStrategyAdmin(admin.ModelAdmin):
         ('Option', {
             'fields': (
                 'side', 'right', 'ex_month',
-                'ex_year', 'strike_price', 'contract'
+                'ex_year', 'strike', 'contract'
             )
         })
     )

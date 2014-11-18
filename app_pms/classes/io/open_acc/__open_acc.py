@@ -287,7 +287,10 @@ class OpenAcc(OpenCSV):
             # add lookup field
             items.insert(0, items[0][1:3])
 
-            self.holding_future.append(self.make_dict(self.holding_future_keys, items))
+            holding_future = self.make_dict(self.holding_future_keys, items)
+            holding_future['description'] = holding_future['description'].upper()
+
+            self.holding_future.append(holding_future)
 
         self.holding_future = map(self.del_empty_keys, self.holding_future)
 
@@ -333,7 +336,9 @@ class OpenAcc(OpenCSV):
 
             items = map(self.format_item, items)
 
-            self.holding_forex.append(self.make_dict(self.holding_forex_keys, items))
+            holding_forex = self.make_dict(self.holding_forex_keys, items)
+            holding_forex['description'] = holding_forex['description'].upper()
+            self.holding_forex.append(holding_forex)
 
     def set_trade_history(self):
         """
@@ -423,11 +428,36 @@ class OpenAcc(OpenCSV):
         # drop row if symbol not exists
         self.holding_option = [option for option in self.holding_option if option['symbol']]
 
+    def get_future_detail(self, line):
+        lookup = ''
+        description = ''
+        expire_date = ''
+        session = ''
+
+        if line[0] == '/':
+            # is future
+            line = self.replace_dash_inside_quote(line, replace_with=':')
+            items = self.split_lines_with_dash(line)
+
+            lookup = items[0][1:3]
+
+            if ':' in items[1]:
+                description, expire_date, session = map(lambda x: x.upper(), items[1].split(':'))
+            elif ' - ' in items[1]:
+                description, session, expire_date = map(lambda x: x.upper(), items[1].split(' - '))
+
+        return dict(
+            lookup=lookup,
+            description=description,
+            expire_date=expire_date,
+            session=session
+        )
+
     def set_profit_loss(self):
         """
         Set profits and losses into class property
         :return: None
-        """
+
         self.set_values(
             start_phrase='Profits and Losses',
             end_phrase='OVERALL TOTALS',
@@ -436,6 +466,22 @@ class OpenAcc(OpenCSV):
             prop_keys=self.profit_loss_keys,
             prop_name='profit_loss'
         )
+        """
+
+        lines = self.get_lines('Profits and Losses', 'OVERALL TOTALS')
+        for line in lines[2:-1]:
+            future = self.get_future_detail(line)
+            line = self.replace_dash_inside_quote(line)
+            items = self.split_lines_with_dash(line)
+            items = map(self.format_item, items)
+
+            profit_loss = self.make_dict(self.profit_loss_keys, items)
+
+            if profit_loss['symbol'][0] == '/':
+                # is future
+                profit_loss['description'] = future
+
+            self.profit_loss.append(profit_loss)
 
     def read(self):
         """

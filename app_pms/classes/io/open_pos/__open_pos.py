@@ -149,6 +149,23 @@ class OpenPos(OpenCSV):
 
         self.equity_option_position.append(position_set)
 
+    @staticmethod
+    def get_description_session(line):
+        if line[0] == '"':
+            first_item = line.split('"')[1]
+            description = first_item.split(',')[0]
+            session = first_item.split(',')[2]
+        else:
+            first_item = line.split(',')[0]
+            if ' - ' in first_item:
+                description = first_item.split(' - ')[0]
+                session = first_item.split(' - ')[1]
+            else:
+                description = line.split(',')[0][1:]
+                session = ''
+        description = description.upper()
+        return description, session
+
     def set_future_position(self):
         """
         Get future and future option from line
@@ -159,20 +176,7 @@ class OpenPos(OpenCSV):
         """
         lines = self.get_lines('Futures and Futures Options', None)
         for line in lines[2:-1]:
-            if line[0] == '"':
-                first_item = line.split('"')[1]
-                description = first_item.split(',')[0]
-                session = first_item.split(',')[2]
-            else:
-                first_item = line.split(',')[0]
-                if ' - ' in first_item:
-                    description = first_item.split(' - ')[0]
-                    session = first_item.split(' - ')[1]
-                else:
-                    description = line.split(',')[0][1:]
-                    session = ''
-
-            description = description.upper()
+            description, session = self.get_description_session(line)
 
             line = self.replace_dash_inside_quote(line)
             items = self.split_lines_with_dash(line)
@@ -226,7 +230,7 @@ class OpenPos(OpenCSV):
         for instrument, forex in zip(self.forex_position[0::2], self.forex_position[1::2]):
             forex_position.append(dict(
                 symbol=instrument['symbol'],
-                description=forex['symbol'],
+                description=forex['symbol'].upper(),
                 quantity=instrument['quantity'],
                 trade_price=forex['trade_price'],
                 mark=instrument['mark'],

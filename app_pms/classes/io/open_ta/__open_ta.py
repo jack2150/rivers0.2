@@ -31,7 +31,7 @@ class OpenTA(OpenCSV):
         ]
 
         self.rolling_strategy_options = [
-            'side', 'symbol', 'right', 'ex_month', 'ex_year', 'strike_price', 'contract'
+            'side', 'symbol', 'right', 'ex_month', 'ex_year', 'strike', 'contract'
         ]
 
         self.working_order = list()
@@ -238,7 +238,7 @@ class OpenTA(OpenCSV):
         self.convert_type(self.rolling_strategy, 'side', int, 0)
         self.convert_type(self.rolling_strategy, 'right', int, 0)
         self.convert_type(self.rolling_strategy, 'ex_year', int, 0)
-        self.convert_type(self.rolling_strategy, 'strike_price', float, 0.0)
+        self.convert_type(self.rolling_strategy, 'strike', float, 0.0)
 
         # time format
         self.convert_type(self.rolling_strategy, 'active_time_start',

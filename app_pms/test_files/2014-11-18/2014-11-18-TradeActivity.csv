@@ -1,0 +1,35 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for D-12644969 (margin) on 11/18/14 04:50:18
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,11/18/14 04:50:14,VERTICAL,SELL,-1,TO OPEN,FB,DEC 14,75,PUT,1.30,LMT,DAY,1.165,WORKING
+,,,,BUY,+1,TO OPEN,FB,DEC 14,72.5,PUT,,,,,
+,,11/18/14 01:27:42,FOREX,SELL,-10000,TO CLOSE,GBP/SGD,,,FOREX,2.03115,LMT,GTC,2.0301,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,11/18/14 04:49:45,FUTURE,SELL,-1,TO CLOSE,/NGZ4,DEC 14,,FUTURE,4.30,4.30,LMT
+,11/18/14 04:49:28,VERTICAL,SELL,-1,TO OPEN,WFC,DEC 14,55,PUT,1.88,1.43,LMT
+,,,BUY,+1,TO OPEN,WFC,DEC 14,52.5,PUT,.45,CREDIT,
+,11/18/14 04:49:08,VERTICAL,SELL,-5,TO CLOSE,WFC,DEC 14,55,PUT,1.87,1.73,LMT
+,,,BUY,+5,TO CLOSE,WFC,DEC 14,50,PUT,.14,CREDIT,
+,11/18/14 02:07:05,VERTICAL,BUY,+5,TO OPEN,WFC,DEC 14,55,PUT,1.95,1.80,LMT
+,,,SELL,-5,TO OPEN,WFC,DEC 14,50,PUT,.15,DEBIT,
+,11/18/14 01:32:04,FOREX,BUY,+10000,TO OPEN,USD/SEK,,,FOREX,7.4304,7.4304,LMT
+,11/18/14 01:31:16,VERTICAL,BUY,+5,TO CLOSE,UNG,DEC 14,21,PUT,.89,.63,LMT
+,,,SELL,-5,TO CLOSE,UNG,DEC 14,19,PUT,.26,DEBIT,
+,11/18/14 01:30:11,FUTURE,BUY,+1,TO OPEN,/GCZ4,DEC 14,,FUTURE,1184.00,1184.00,LMT
+,11/18/14 01:28:44,FUTURE,BUY,+1,TO OPEN,/NGZ4,DEC 14,,FUTURE,4.22,4.22,LMT
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,11/18/14 01:31:54,FOREX,BUY,+10000,TO OPEN,USD/SEK,,,FOREX,7.4309,LMT,GTC,REJECTED: Limit price must be less than or equal to 7.4308 (unsupported order characteristic)
+,,11/18/14 03:15:00,FUTURE,SELL,-1,TO CLOSE,/ZWZ4,DEC 14,,FUTURE,555.00,LMT,DAY,EXPIRED
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status
+-1 SLV 100 NOV 14 16.5 CALL,JAN 15,Strike ATM,8,55% of (NAT - MID),10:20 - 10:35,11:00 - 14:45,WAIT TRG
+-1 FB 100 NOV 14 77.5 CALL,NOV4 14,Strike +1 ATM,2,AUTO,08:45 - 09:00,11:00 - 14:45,CANCELED
+-1 BAC 100 NOV 14 16 CALL,DEC 14,Delta .50,6,55% of (NAT - MID),08:45 - 09:00,11:00 - 14:45,WAIT TRG

@@ -136,6 +136,46 @@ class TestOpenAcc(TestSetUp):
             keys=self.open_acc.trade_history_keys
         )
 
+    def test_get_future_detail(self):
+        """
+        Test get description, expire date and session from line
+        """
+        lines = [
+            '/ESZ4,"E-mini S&P 500 Index Futures,Dec-2014,ETH",'
+            '($212.50),-0.21%,($62.50),($450.00),"$5,060.00",($62.50)',
+            '/YGZ4,Mini Gold Futures - ICUS - Dec14,$0.00,'
+            '0.00%,$0.00,$0.00,"$1,650.00",$0.00'
+        ]
+
+        expected_results = [
+            dict(
+                lookup='ES',
+                description='E-MINI S&P 500 INDEX FUTURES',
+                expire_date='DEC-2014',
+                session='ETH'
+            ),
+            dict(
+                lookup='YG',
+                description='MINI GOLD FUTURES',
+                expire_date='DEC14',
+                session='ICUS',
+            )
+        ]
+
+        for line, expected_result in zip(lines, expected_results):
+            result = self.open_acc.get_future_detail(line)
+
+            print 'result:'
+            print 'lookup: %s' % result['lookup']
+            print 'description: %s' % result['description']
+            print 'expire date: %s' % result['expire_date']
+            print 'session: %s\n' % result['session']
+
+            self.assertEqual(result['lookup'], expected_result['lookup'])
+            self.assertEqual(result['description'], expected_result['description'])
+            self.assertEqual(result['expire_date'], expected_result['expire_date'])
+            self.assertEqual(result['session'], expected_result['session'])
+
     def test_set_profit_loss(self):
         """
         Test set profits and losses into class property
@@ -144,12 +184,12 @@ class TestOpenAcc(TestSetUp):
             method='set_profit_loss',
             prop='profit_loss',
             lengths=(7, 8),  # with or without mark value
-            keys=self.open_acc.profit_loss_keys
+            keys=self.open_acc.profit_loss_keys + [
+                'expire_date', 'session'
+            ]
         )
 
-        self.open_acc.set_profit_loss()
-
-        pprint(self.open_acc.profit_loss)
+        pprint(self.open_acc.profit_loss, width=400)
 
     def test_set_holding_option(self):
         """

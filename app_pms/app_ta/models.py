@@ -260,7 +260,7 @@ class RollingStrategy(models.Model, TaModel):
     right = models.IntegerField(default=100, verbose_name="Right")
     ex_month = models.CharField(max_length=10, verbose_name="Expire Month")
     ex_year = models.IntegerField(verbose_name="Expire Year")
-    strike_price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Strike Price")
+    strike = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Strike")
     contract = models.CharField(max_length=10, verbose_name="Contract")
 
     # position details
@@ -287,7 +287,7 @@ class RollingStrategy(models.Model, TaModel):
         output += '"right": %d, ' % self.right
         output += '"ex_month": "%s", ' % self.ex_month
         output += '"ex_year": %d, ' % self.ex_year
-        output += '"strike_price": %.2f, ' % self.strike_price
+        output += '"strike_price": %.2f, ' % self.strike
         output += '"contract": "%s", ' % self.contract
         output += '"new_expire_date": "%s", ' % self.new_expire_date
         output += '"call_by": "%s", ' % self.call_by
@@ -316,7 +316,7 @@ class RollingStrategy(models.Model, TaModel):
                 right=self.right,
                 ex_month=self.ex_month,
                 ex_year=self.ex_year,
-                strike_price=self.strike_price,
+                strike_price=self.strike,
                 contract=self.contract
             ),
             date=self.trade_activity.date

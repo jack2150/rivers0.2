@@ -23,16 +23,18 @@ class OpenCSV(object):
         self.lines = map(lambda l: l.rstrip(), open(fname).readlines())
 
     @classmethod
-    def replace_dash_inside_quote(cls, line):
+    def replace_dash_inside_quote(cls, line, replace_with=''):
         """
         Replace dash inside double quotes
+        :param line: str
+        :param replace_with: str
         :rtype : str
         """
         if '"' in line:
             line = line.split('"')
             for k, i in enumerate(line):
                 if k % 2 and ',' in i:
-                    line[k] = i.replace(',', '')
+                    line[k] = i.replace(',', replace_with)
 
             line = ''.join(line)
 

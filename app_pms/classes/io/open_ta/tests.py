@@ -226,7 +226,7 @@ class TestOpenTA(TestSetUp):
         Test set rolling_strategy
         """
         result_keys = [
-            'status', 'move_to_market_time_end', 'right', 'strike_price', 'days_begin',
+            'status', 'move_to_market_time_end', 'right', 'strike', 'days_begin',
             'new_expire_date', 'symbol', 'ex_month', 'call_by', 'contract', 'order_price',
             'ex_year', 'move_to_market_time_start', 'active_time_start', 'side',
             'active_time_end'
@@ -244,7 +244,7 @@ class TestOpenTA(TestSetUp):
             self.assertEqual(type(rolling_strategy['side']), int)
             self.assertEqual(type(rolling_strategy['right']), int)
             self.assertEqual(type(rolling_strategy['side']), int)
-            self.assertEqual(type(rolling_strategy['strike_price']), float)
+            self.assertEqual(type(rolling_strategy['strike']), float)
 
             self.assertTrue(datetime.strptime(rolling_strategy['active_time_start'], '%H:%M:%S'))
             self.assertTrue(datetime.strptime(rolling_strategy['active_time_end'], '%H:%M:%S'))

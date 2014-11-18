@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.core.urlresolvers import reverse
+from django.db.models import Q
 from app_pms.app_pos import models
 import locale
 
@@ -29,13 +30,8 @@ class PositionStatementInline(admin.TabularInline):
         return False
 
 
-# noinspection PyProtectedMember,PyMethodMayBeStatic
-class PositionInline(PositionStatementInline):
-    """
-    Inline Position model inside Position Statement change view
-    """
-    model = models.PositionInstrument
-
+# noinspection PyMethodMayBeStatic
+class PositionStatementInlinePL(PositionStatementInline):
     def formatted_pl_open(self, obj):
         return '%+.2f' % obj.pl_open
 
@@ -43,12 +39,27 @@ class PositionInline(PositionStatementInline):
         return '%+.2f' % obj.pl_day
 
     def profit_loss(self, obj):
-        return True if obj.pl_open >= 0 else False
+        if obj.pl_open > 0:
+            result = True
+        elif obj.pl_open < 0:
+            result = False
+        else:
+            result = None
+        return result
+
     profit_loss.boolean = True
     profit_loss.short_description = 'P/L'
 
     formatted_pl_open.short_description = 'P/L Open'
     formatted_pl_day.short_description = 'P/L Day'
+
+
+# noinspection PyProtectedMember,PyMethodMayBeStatic
+class PositionInstrumentInline(PositionStatementInlinePL):
+    """
+    Inline Position model inside Position Statement change view
+    """
+    model = models.PositionInstrument
 
     fields = (
         'underlying', 'delta', 'gamma', 'theta', 'vega',
@@ -66,11 +77,53 @@ class PositionInline(PositionStatementInline):
 
     ordering = ('underlying', )
 
-    def has_add_permission(self, request):
-        return False
 
-    def has_delete_permission(self, request, obj=None):
-        return False
+# noinspection PyProtectedMember,PyMethodMayBeStatic
+class PositionFutureInline(PositionStatementInlinePL):
+    """
+    Inline Position model inside Position Statement change view
+    """
+    model = models.PositionFuture
+
+    fields = (
+        'future', 'quantity', 'days', 'trade_price',
+        'mark', 'mark_change', 'pct_change', 'pl_open', 'pl_day', 'bp_effect',
+        'profit_loss', 'link'
+    )
+
+    readonly_fields = (
+        'future', 'quantity', 'days', 'trade_price',
+        'mark', 'mark_change', 'pct_change', 'pl_open', 'pl_day', 'bp_effect',
+        'profit_loss', 'link'
+    )
+    # exclude = ('delta', 'gamma', 'theta', 'vega')
+    extra = 0
+
+    ordering = ('future', )
+
+
+# noinspection PyProtectedMember,PyMethodMayBeStatic
+class PositionForexInline(PositionStatementInlinePL):
+    """
+    Inline Position model inside Position Statement change view
+    """
+    model = models.PositionForex
+
+    fields = (
+        'forex', 'quantity', 'trade_price', 'mark', 'mark_change',
+        'pct_change', 'pl_open', 'pl_day', 'bp_effect',
+        'profit_loss', 'link'
+    )
+
+    readonly_fields = (
+        'forex', 'quantity', 'trade_price', 'mark', 'mark_change',
+        'pct_change', 'pl_open', 'pl_day', 'bp_effect',
+        'profit_loss', 'link'
+    )
+    # exclude = ('delta', 'gamma', 'theta', 'vega')
+    extra = 0
+
+    ordering = ('forex', )
 
 
 # noinspection PyMethodMayBeStatic
@@ -78,7 +131,7 @@ class PositionStatementAdmin(admin.ModelAdmin):
     """
     Position Statement admin interface
     """
-    inlines = (PositionInline, )
+    inlines = (PositionInstrumentInline, PositionFutureInline, PositionForexInline)
 
     def position_statement_date(self, obj):
         return obj.date.strftime('%Y-%m-%d')
@@ -186,34 +239,104 @@ class ProfitLossListFilter(admin.SimpleListFilter):
     parameter_name = 'profit_loss'
 
     def lookups(self, request, model_admin):
-        """
-        Returns a list of tuples. The first element in each
-        tuple is the coded value for the option that will
-        appear in the URL query. The second element is the
-        human-readable name for the option that will appear
-        in the right sidebar.
-        """
         return (
             ('profit', 'Profit'),
             ('loss', 'Loss'),
+            ('even', 'Even'),
         )
 
     def queryset(self, request, queryset):
-        """
-        Returns the filtered queryset based on the value
-        provided in the query string and retrievable via
-        `self.value()`.
-        """
         # Compare the requested value (either '80s' or '90s')
         # to decide how to filter the queryset.
         if self.value() == 'profit':
-            return queryset.filter(pl_open__gte=0)
+            return queryset.filter(pl_open__gt=0)
         if self.value() == 'loss':
             return queryset.filter(pl_open__lt=0)
+        if self.value() == 'even':
+            return queryset.filter(pl_open=0)
+
+
+# noinspection PyMethodMayBeStatic,PyProtectedMember
+class PsModelAdmin(admin.ModelAdmin):
+    def position_statement_date(self, obj):
+        return obj.position_statement.date.strftime('%Y-%m-%d')
+
+    position_statement_date.short_description = 'Date'
+
+    def symbol(self, obj):
+        url = reverse(
+            'admin:%s_%s_change' % (
+                obj.underlying._meta.app_label,
+                obj.underlying._meta.module_name
+            ),
+            args=(obj.underlying.id,)
+        )
+
+        return '<a href="%s">%s</a>' % (url, obj.underlying.symbol)
+
+    symbol.allow_tags = True
+
+    def description(self, obj):
+        return obj.underlying.company
+
+    def profit_loss(self, obj):
+        if obj.pl_open > 0:
+            result = True
+        elif obj.pl_open < 0:
+            result = False
+        else:
+            result = None
+        return result
+
+    profit_loss.boolean = True
+    profit_loss.short_description = 'P/L'
+
+    list_per_page = 30
+
+    def has_add_permission(self, request):
+        return False
+
+
+class SpreadTypeListFilter(admin.SimpleListFilter):
+    # Human-readable title which will be displayed in the
+    # right admin sidebar just above the filter options.
+    title = 'Position Type'
+
+    # Parameter for the filter that will be used in the URL query.
+    parameter_name = 'position type'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('closed', 'Closed'),
+            ('equity', 'Equity Only'),
+            ('hedge', 'Hedge Strategy'),
+            ('one_leg', 'One Leg Option'),
+            ('two_leg', 'Two Leg Options'),
+            ('three_leg', 'Three Leg Options'),
+            ('four_leg', 'Four Leg Options'),
+            ('custom', 'Custom'),
+        )
+
+    def queryset(self, request, queryset):
+        # Compare the requested value (either '80s' or '90s')
+        # to decide how to filter the queryset.
+        if self.value() == 'closed':
+            # equity = 0 and options = 0
+            pass
+        elif self.value() == 'equity':
+            pass
+        elif self.value() == 'hedge':
+            pass
+
+        result = queryset.all()
+
+        return result
+
+# todo: until here... search equity and options quantity
 
 
 # noinspection PyMethodMayBeStatic
-class PositionInstrumentAdmin(admin.ModelAdmin):
+class PositionInstrumentAdmin(PsModelAdmin):
     """
     Position admin interface for Position model only
     """
@@ -221,20 +344,19 @@ class PositionInstrumentAdmin(admin.ModelAdmin):
 
     inlines = [PositionStockInline, PositionOptionsInline]
 
-    def position_statement_date(self, obj):
-        return obj.position_statement.date.strftime('%Y-%m-%d')
+    def equity(self, obj):
+        return models.PositionEquity.objects.\
+            filter(instrument=obj).exclude(quantity=0).count()
 
-    def underlying_symbol(self, obj):
-        return obj.underlying.symbol
-
-    def profit_loss(self, obj):
-        return True if obj.pl_open >= 0 else False
-    profit_loss.boolean = True
-    profit_loss.short_description = 'P/L'
+    def options(self, obj):
+        return models.PositionOption.objects.\
+            filter(instrument=obj).exclude(quantity=0).count()
 
     list_display = (
-        'position_statement_date', 'underlying_symbol', 'pct_change',
-        'pl_open', 'pl_day', 'profit_loss'
+        'position_statement_date', 'symbol', 'description', 'pct_change',
+        'delta', 'gamma', 'theta', 'vega',
+        'pct_change', 'pl_open', 'profit_loss', 'pl_day', 'bp_effect',
+        'equity', 'options'
     )
 
     fieldsets = (
@@ -254,32 +376,54 @@ class PositionInstrumentAdmin(admin.ModelAdmin):
 
     readonly_fields = ('position_statement', 'underlying')
 
-    list_per_page = 30
-    search_fields = ('position_statement__date', 'underlying__symbol')
-    list_filter = ('position_statement__date', ProfitLossListFilter)
-
+    search_fields = (
+        'position_statement__date', 'underlying__symbol', 'underlying__company'
+    )
+    list_filter = (
+        'position_statement__date', SpreadTypeListFilter, ProfitLossListFilter
+    )
     ordering = ('-position_statement__date', 'underlying__symbol')
 
-    def has_add_permission(self, request):
-        return False
+
+class QuantityListFilter(admin.SimpleListFilter):
+    # Human-readable title which will be displayed in the
+    # right admin sidebar just above the filter options.
+    title = 'Quantity'
+
+    # Parameter for the filter that will be used in the URL query.
+    parameter_name = 'quantity'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('opened', 'Opened'),
+            ('closed', 'Closed'),
+        )
+
+    def queryset(self, request, queryset):
+        # Compare the requested value (either '80s' or '90s')
+        # to decide how to filter the queryset.
+        if self.value() == 'opened':
+            return queryset.filter(quantity__gt=0)
+        elif self.value() == 'closed':
+            return queryset.filter(quantity=0)
 
 
 # noinspection PyMethodMayBeStatic
-class PositionStockAdmin(admin.ModelAdmin):
-    def position_statement_date(self, obj):
-        return obj.position_statement.date.strftime('%Y-%m-%d')
-    position_statement_date.short_description = 'Date'
-
+class PositionEquityAdmin(PsModelAdmin):
     list_display = (
-        'position_statement_date', 'underlying',
-        'quantity', 'trade_price', 'mark', 'mark_change',
-        'pct_change', 'pl_open', 'pl_day', 'bp_effect'
+        'position_statement_date', 'symbol', 'description', 'quantity',
+        'trade_price', 'mark', 'mark_change', 'pct_change',
+        'pl_open', 'profit_loss', 'pl_day', 'bp_effect'
+    )
+
+    list_filter = (
+        'position_statement__date', ProfitLossListFilter, QuantityListFilter
     )
 
     fieldsets = (
         ('Foreign Key', {
             'classes': ('wide', 'collapse', 'open'),
-            'fields': ('position_statement', 'underlying', 'instrument')
+            'fields': ('position_statement', 'instrument', 'underlying')
         }),
         ('Stock', {
             'fields': (
@@ -290,53 +434,73 @@ class PositionStockAdmin(admin.ModelAdmin):
     )
 
     readonly_fields = (
-        'position_statement', 'underlying', 'instrument'
+        'position_statement', 'instrument', 'underlying'
     )
 
-    list_per_page = 30
+    search_fields = (
+        'position_statement__date', 'underlying__symbol', 'underlying__company'
+    )
     ordering = ('-position_statement__date', 'underlying__symbol')
 
-    search_fields = ('position_statement__date', 'underlying__symbol')
 
-    def has_add_permission(self, request):
-        return False
+class DteListFilter(admin.SimpleListFilter):
+    # Human-readable title which will be displayed in the
+    # right admin sidebar just above the filter options.
+    title = 'DTE'
+
+    # Parameter for the filter that will be used in the URL query.
+    parameter_name = 'dte'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('>30', '30 above'),
+            ('16-30', '16 until 30'),
+            ('0-15', 'below 15'),
+        )
+
+    def queryset(self, request, queryset):
+        # Compare the requested value (either '80s' or '90s')
+        # to decide how to filter the queryset.
+        if self.value() == '>30':
+            return queryset.filter(days__gt=30)
+        if self.value() == '16-30':
+            return queryset.filter(Q(days__gte=16) & Q(days__lt=30))
+        if self.value() == '0-15':
+            return queryset.filter(days__lte=15)
 
 
 # noinspection PyMethodMayBeStatic
-class PositionOptionAdmin(admin.ModelAdmin):
-    list_per_page = 30
-
-    def position_statement_date(self, obj):
-        return obj.position_statement.date.strftime('%Y-%m-%d')
-
+class PositionOptionAdmin(PsModelAdmin):
     def option(self, obj):
         return obj.__unicode__().split('>')[-1]
 
     list_display = (
-        'position_statement_date', 'option',
+        'position_statement_date', 'symbol', 'option',
         'quantity', 'days', 'mark', 'mark_change',
-        'delta', 'gamma', 'theta', 'vega',
-        'pct_change', 'pl_open', 'pl_day', 'bp_effect'
+        'delta', 'gamma', 'theta', 'vega', 'pct_change',
+        'pl_open', 'profit_loss', 'pl_day', 'bp_effect'
     )
 
     list_filter = (
         'position_statement__date',
-        'right', 'special', 'ex_month', 'ex_year', 'contract'
+        ProfitLossListFilter, DteListFilter, QuantityListFilter,
+        'right', 'special', 'contract',
     )
 
     search_fields = (
-        'position_statement__date', 'underlying__symbol',
-        'right', 'special', 'ex_month', 'ex_year', 'strike_price', 'contract'
+        'position_statement__date', 'underlying__symbol', 'underlying__company',
+        'right', 'special', 'ex_month', 'ex_year', 'strike', 'contract'
     )
 
     fieldsets = (
         ('Foreign Key', {
             'classes': ('wide', 'collapse', 'open'),
-            'fields': ('position_statement', 'underlying', 'instrument')
+            'fields': ('position_statement', 'instrument', 'underlying')
         }),
         ('Detail', {
             'fields': (
-                ('mark', 'mark_change', 'trade_price', 'quantity', 'days'),
+                ('quantity', 'days'),
+                ('mark', 'mark_change', 'trade_price'),
                 ('delta', 'gamma', 'theta', 'vega'),
                 ('pct_change', 'pl_open', 'pl_day', 'bp_effect')
             )
@@ -344,25 +508,126 @@ class PositionOptionAdmin(admin.ModelAdmin):
         ('Option', {
             'fields': (
                 'right', 'special', 'ex_month',
-                'ex_year', 'strike_price', 'contract'
+                'ex_year', 'strike', 'contract'
             )
         }),
     )
 
     readonly_fields = (
-        'position_statement', 'underlying', 'instrument'
+        'position_statement', 'instrument', 'underlying'
+    )
+    ordering = ('-position_statement__date', 'underlying__symbol')
+
+
+# noinspection PyMethodMayBeStatic,PyProtectedMember
+class PositionFutureAdmin(PsModelAdmin):
+    def future_link(self, obj):
+        url = reverse(
+            'admin:%s_%s_change' % (
+                obj.future._meta.app_label,
+                obj.future._meta.module_name
+            ),
+            args=(obj.future.id,)
+        )
+        return '<a href="%s">%s</a>' % (url, obj.future.symbol)
+
+    future_link.allow_tags = True
+    future_link.short_description = 'Futures'
+
+    def description(self, obj):
+        return obj.future.description
+
+    list_display = (
+        'position_statement_date', 'future_link', 'description',
+        'quantity', 'days', 'trade_price', 'mark', 'mark_change', 'pct_change',
+        'pl_open', 'profit_loss', 'pl_day', 'bp_effect'
     )
 
-    def has_add_permission(self, request):
-        return False
+    list_filter = (
+        'position_statement__date', ProfitLossListFilter
+    )
 
+    search_fields = (
+        'position_statement__date', 'future__symbol', 'future__lookup',
+        'future__description', 'future__spc', 'future__expire_date'
+    )
+
+    fieldsets = (
+        ('Foreign Key', {
+            'classes': ('wide', 'collapse', 'open'),
+            'fields': ('position_statement', 'future')
+        }),
+        ('Detail', {
+            'fields': (
+                'quantity', 'days', 'trade_price', 'mark', 'mark_change',
+                'pct_change', 'pl_open', 'pl_day', 'bp_effect'
+            )
+        }),
+    )
+
+    readonly_fields = (
+        'position_statement', 'future'
+    )
+    ordering = ('-position_statement__date', 'future__symbol')
+
+
+# noinspection PyMethodMayBeStatic,PyProtectedMember
+class PositionForexAdmin(PsModelAdmin):
+    def forex_link(self, obj):
+        url = reverse(
+            'admin:%s_%s_change' % (
+                obj.forex._meta.app_label,
+                obj.forex._meta.module_name
+            ),
+            args=(obj.forex.id,)
+        )
+        return '<a href="%s">%s</a>' % (url, obj.forex.symbol)
+
+    forex_link.allow_tags = True
+    forex_link.short_description = 'Forex'
+
+    def description(self, obj):
+        return obj.forex.description
+
+    list_display = (
+        'position_statement_date', 'forex_link', 'description',
+        'quantity', 'trade_price', 'mark', 'mark_change', 'pct_change',
+        'pl_open', 'profit_loss', 'pl_day', 'bp_effect'
+    )
+
+    list_filter = (
+        'position_statement__date', ProfitLossListFilter
+    )
+
+    search_fields = (
+        'position_statement__date', 'forex__symbol', 'forex__description',
+    )
+
+    fieldsets = (
+        ('Foreign Key', {
+            'classes': ('wide', 'collapse', 'open'),
+            'fields': ('position_statement', 'forex')
+        }),
+        ('Position Forex', {
+            'fields': (
+                'quantity', 'trade_price', 'mark', 'mark_change',
+                'pct_change', 'pl_open', 'pl_day', 'bp_effect'
+            )
+        }),
+    )
+
+    readonly_fields = (
+        'position_statement', 'forex'
+    )
+
+    ordering = ('-position_statement__date', 'forex__symbol')
 
 admin.site.register(models.PositionStatement, PositionStatementAdmin)
 admin.site.register(models.PositionInstrument, PositionInstrumentAdmin)
-admin.site.register(models.PositionEquity, PositionStockAdmin)
+admin.site.register(models.PositionEquity, PositionEquityAdmin)
 admin.site.register(models.PositionOption, PositionOptionAdmin)
-admin.site.register(models.PositionFuture)
-admin.site.register(models.PositionForex)
+admin.site.register(models.PositionFuture, PositionFutureAdmin)
+admin.site.register(models.PositionForex, PositionForexAdmin)
 
 
 

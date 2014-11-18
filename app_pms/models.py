@@ -183,19 +183,25 @@ class SaveAppModel(object):
         if found.count():
             future = found.last()
 
-            # update symbol if missing
-            if future.symbol == '':
+            if future.symbol == '' and symbol:
                 future.symbol = symbol
-                future.save()
 
-            # update existing if empty
-            if future.description == '':
+            if future.lookup == '' and lookup:
                 future.lookup = lookup
+
+            if future.description == '' and description:
                 future.description = description
+
+            if future.expire_date == '' and expire_date:
                 future.expire_date = expire_date
+
+            if future.session == '' and session:
                 future.session = session
+
+            if future.spc == '' and spc:
                 future.spc = spc
-                future.save()
+
+            future.save()
         else:
             future = Future(
                 lookup=lookup,

@@ -758,7 +758,11 @@ class SaveAccountStatement(SaveAppModel):
 
             if '/' in data['symbol']:
                 future = self.get_future(
-                    symbol=data['symbol']
+                    symbol=data['symbol'],
+                    lookup=data['description']['lookup'],
+                    description=data['description']['description'],
+                    expire_date=data['description']['expire_date'],
+                    session=data['description']['session']
                 )
             else:
                 underlying = self.get_underlying(
@@ -851,6 +855,11 @@ class SaveAccountStatement(SaveAppModel):
         """
         self.save_account_statement()
 
+        self.save_holding_future(save_data=self.holding_future)
+        self.save_holding_forex(save_data=self.holding_forex)
+
+        self.save_profit_loss(save_data=self.profit_loss)
+
         self.save_single_with_underlying(save_cls=ForexSummary, save_data=[self.forex_summary])
         self.save_single_with_underlying(save_cls=CashBalance, save_data=self.cash_balance)
         self.save_single_with_underlying(save_cls=ForexStatement, save_data=self.forex_statement)
@@ -858,10 +867,6 @@ class SaveAccountStatement(SaveAppModel):
 
         self.save_single_with_underlying(save_cls=HoldingEquity, save_data=self.holding_equity)
         self.save_single_with_underlying(save_cls=HoldingOption, save_data=self.holding_option)
-        self.save_holding_future(save_data=self.holding_future)
-        self.save_holding_forex(save_data=self.holding_forex)
-
-        self.save_profit_loss(save_data=self.profit_loss)
 
         self.save_history(save_cls=OrderHistory, save_data=self.order_history)
         self.save_history(save_cls=TradeHistory, save_data=self.trade_history)

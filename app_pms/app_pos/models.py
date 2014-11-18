@@ -79,7 +79,7 @@ class PositionInstrument(models.Model, PositionModel):
     gamma = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Gamma")
     theta = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Theta")
     vega = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Vega")
-    pct_change = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Pct Change")
+    pct_change = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="% Change")
     pl_open = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Open")
     pl_day = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Day")
     bp_effect = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="BP Effect")
@@ -119,7 +119,7 @@ class PositionInstrument(models.Model, PositionModel):
         )
 
     class Meta:
-        verbose_name_plural = "  Instruments"
+        verbose_name_plural = "  Position Instrument"
 
 
 class PositionEquity(models.Model, PositionModel):
@@ -127,11 +127,11 @@ class PositionEquity(models.Model, PositionModel):
     underlying = models.ForeignKey(Underlying)
     instrument = models.ForeignKey(PositionInstrument)
 
-    quantity = models.IntegerField(default=0, verbose_name="Quantity")
+    quantity = models.IntegerField(default=0, verbose_name="Qty")
     trade_price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price")
     mark = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark")
-    mark_change = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Change")
-    pct_change = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Pct Change")
+    mark_change = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Chg")
+    pct_change = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="% Change ")
     pl_open = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Open")
     pl_day = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Day")
     bp_effect = models.DecimalField(max_digits=10, decimal_places=2, default=0.0, verbose_name="BP Effect")
@@ -167,7 +167,7 @@ class PositionEquity(models.Model, PositionModel):
         )
 
     class Meta:
-        verbose_name_plural = " Stock"
+        verbose_name_plural = " Position Equity"
 
 
 class PositionOption(models.Model):
@@ -184,16 +184,16 @@ class PositionOption(models.Model):
     contract = models.CharField(max_length=10, verbose_name="Contract")
 
     # position details
-    quantity = models.IntegerField(default=0, verbose_name="Quantity")
+    quantity = models.IntegerField(default=0, verbose_name="Qty")
     days = models.IntegerField(default=0, verbose_name="DTE")
     trade_price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price")
     mark = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark")
-    mark_change = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Change")
+    mark_change = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Chg")
     delta = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Delta")
     gamma = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Gamma")
     theta = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Theta")
     vega = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Vega")
-    pct_change = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Percent Change")
+    pct_change = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="% Change")
     pl_open = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Open")
     pl_day = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Day")
     bp_effect = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="BP Effect")
@@ -254,7 +254,7 @@ class PositionOption(models.Model):
         Normal string output for model detail
         :return: str
         """
-        option = '{symbol} {right} {special} {ex_month} {ex_year} {strike_price} {contract}'
+        option = '{symbol} {right} {special} {ex_month} {ex_year} {strike} {contract}'
 
         return '<PositionOption:{date}> {option}'.format(
             date=self.position_statement.date,
@@ -264,20 +264,20 @@ class PositionOption(models.Model):
                 special=self.special,
                 ex_month=self.ex_month,
                 ex_year=self.ex_year,
-                strike_price=self.strike,
+                strike=self.strike,
                 contract=self.contract
             )
         )
 
     class Meta:
-        verbose_name_plural = "Option"
+        verbose_name_plural = " Position Option"
 
 
 class PositionFuture(models.Model, PositionModel):
     position_statement = models.ForeignKey(PositionStatement, verbose_name='Position Statement')
     future = models.ForeignKey(Future, verbose_name='Future')
 
-    quantity = models.IntegerField(default=0, verbose_name='Quantity')
+    quantity = models.IntegerField(default=0, verbose_name='Qty')
     days = models.IntegerField(default=0, verbose_name='Days')
     trade_price = models.DecimalField(
         max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price"
@@ -286,10 +286,10 @@ class PositionFuture(models.Model, PositionModel):
         max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark"
     )
     mark_change = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Change"
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Chg"
     )
     pct_change = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="Percent Change"
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="% Change"
     )
     pl_open = models.DecimalField(
         max_digits=8, decimal_places=2, default=0.0, verbose_name="P/L Open"
@@ -327,12 +327,15 @@ class PositionFuture(models.Model, PositionModel):
             symbol=self.future.lookup
         )
 
+    class Meta:
+        verbose_name_plural = "Position Futures"
+
 
 class PositionForex(models.Model, PositionModel):
     position_statement = models.ForeignKey(PositionStatement, verbose_name='Position Statement')
     forex = models.ForeignKey(Forex, verbose_name='Forex')
 
-    quantity = models.IntegerField(default=0, verbose_name='Quantity')
+    quantity = models.IntegerField(default=0, verbose_name='Qty')
     trade_price = models.DecimalField(
         max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price"
     )
@@ -340,10 +343,10 @@ class PositionForex(models.Model, PositionModel):
         max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark"
     )
     mark_change = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Change"
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Chg"
     )
     pct_change = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="Percent Change"
+        max_digits=8, decimal_places=2, default=0.0, verbose_name="% Change"
     )
     pl_open = models.DecimalField(
         max_digits=8, decimal_places=2, default=0.0, verbose_name="P/L Open"
@@ -379,6 +382,9 @@ class PositionForex(models.Model, PositionModel):
             date=self.position_statement.date,
             symbol=self.forex.symbol
         )
+
+    class Meta:
+        verbose_name_plural = "Position Forex"
 
 
 class SavePositionStatement(SaveAppModel):
@@ -436,7 +442,10 @@ class SavePositionStatement(SaveAppModel):
         Save forex position into db
         """
         for forex_position in self.forex_position:
-            forex = self.get_forex(symbol=forex_position['symbol'])
+            forex = self.get_forex(
+                symbol=forex_position['symbol'],
+                description=forex_position['description'],
+            )
 
             pos_forex = PositionForex(
                 position_statement=self.position_statement,

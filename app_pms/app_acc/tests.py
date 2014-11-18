@@ -683,6 +683,9 @@ class TestSaveAccountStatement(TestSetUp):
         self.assertGreaterEqual(models.Future.objects.count(), 1)
         self.assertGreaterEqual(models.ProfitLoss.objects.count(), 1)
 
+        for future in models.Future.objects.all():
+            pprint(future.json(), width=300)
+
     def test_save_holding_forex(self):
         """
         Test save holding forex into class

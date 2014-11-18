@@ -237,8 +237,9 @@ class TestRollingStrategy(TestTradeActivity):
         self.trade_activity.save()
 
         self.items = {
-            'status': 'WAIT TRG', 'right': 100, 'strike_price': 77.5, 'days_begin': 2.0, 'new_expire_date': 'NOV4 14',
-            'symbol': 'FB', 'ex_month': 'NOV', 'call_by': 'Strike +1 ATM', 'contract': 'CALL', 'order_price': 'AUTO',
+            'status': 'WAIT TRG', 'right': 100, 'strike': 77.5, 'days_begin': 2.0,
+            'new_expire_date': 'NOV4 14', 'symbol': 'FB', 'ex_month': 'NOV',
+            'call_by': 'Strike +1 ATM', 'contract': 'CALL', 'order_price': 'AUTO',
             'ex_year': 14, 'move_to_market_time_start': '11:00:00', 'active_time_start': '08:45:00',
             'active_time_end': '09:00:00', 'side': -1, 'move_to_market_time_end': '14:45:00'
         }

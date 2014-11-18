@@ -11,7 +11,7 @@ from django import forms
 from pandas.tseries.offsets import BDay
 from app_pms import models
 from app_pms.app_acc.models import SaveAccountStatement, AccountStatement
-from app_pms.app_pos.admin import PositionInline
+from app_pms.app_pos.admin import PositionInstrumentInline
 from app_pms.app_pos.models import SavePositionStatement, PositionStatement
 from app_pms.app_ta.models import SaveTradeActivity, TradeActivity
 from django.contrib.admin import widgets
@@ -19,13 +19,13 @@ from django.contrib.admin.models import LogEntry, ADDITION
 
 
 # noinspection PyProtectedMember,PyMethodMayBeStatic
-class InstrumentInline(PositionInline):
+class InstrumentInstrumentInline(PositionInstrumentInline):
     max_num = 3
 
 
 # noinspection PyMethodMayBeStatic
 class UnderlyingAdmin(admin.ModelAdmin):
-    inlines = (PositionInline, )
+    inlines = (PositionInstrumentInline, )
 
     list_display = ('symbol', 'company')
 
