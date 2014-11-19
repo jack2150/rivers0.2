@@ -38,6 +38,12 @@ class PositionStatement(models.Model):
         max_digits=10, decimal_places=2, default=0.0, verbose_name="AVAILABLE $"
     )
 
+    #instrument = models.ManyToManyField(PositionInstrument)
+    #equities = models.ManyToManyField(PositionEquity)
+    #options = models.ManyToManyField(PositionOption)
+    #futures = models.ManyToManyField(PositionFuture)
+    #forexs = models.ManyToManyField(PositionForex)
+
     def json(self):
         """
         use all property and output json format string
@@ -84,11 +90,15 @@ class PositionInstrument(models.Model, PositionModel):
     pl_day = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Day")
     bp_effect = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="BP Effect")
 
+    #equities = models.ManyToManyField(PositionEquity)
+    #options = models.ManyToManyField(PositionOption)
+
     def json(self):
         """
         Using all property inside class and return json format string
         :return: str
         """
+
         output = '{'
         output += '"name": "%s", ' % self.underlying.company
         output += '"quantity": 0, '

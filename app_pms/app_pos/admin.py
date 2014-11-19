@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.core.urlresolvers import reverse
-from django.db.models import Q
+from django.db.models import Q, Count, Max
 from app_pms.app_pos import models
 import locale
 
@@ -136,34 +136,58 @@ class PositionStatementAdmin(admin.ModelAdmin):
     def position_statement_date(self, obj):
         return obj.date.strftime('%Y-%m-%d')
 
+    position_statement_date.short_description = 'Date'
+    position_statement_date.admin_order_field = 'date'
+
     def instruments(self, obj):
-        return models.PositionInstrument.objects.filter(position_statement=obj).count()
+        return obj.positioninstrument_set.count()
+
+    def equities(self, obj):
+        return obj.positionequity_set.count()
+
+    def options(self, obj):
+        return obj.positionoption_set.count()
+
+    def futures(self, obj):
+        return obj.positionfuture_set.count()
+
+    def forexs(self, obj):
+        return obj.positionforex_set.count()
 
     def currency_cash_sweep(self, obj):
         return locale.currency(obj.cash_sweep, grouping=True)
 
+    currency_cash_sweep.short_description = 'Cash Sweep'
+    currency_cash_sweep.admin_order_field = 'cash_sweep'
+
     def currency_available(self, obj):
         return locale.currency(obj.available, grouping=True)
+
+    currency_available.short_description = 'Dollar Available'
+    currency_available.admin_order_field = 'available'
 
     def currency_pl_ytd(self, obj):
         return locale.currency(obj.pl_ytd, grouping=True)
 
+    currency_pl_ytd.short_description = 'PL YTD'
+    currency_pl_ytd.admin_order_field = 'pl_ytd'
+
     def currency_futures_bp(self, obj):
         return locale.currency(obj.futures_bp, grouping=True)
+
+    currency_futures_bp.short_description = 'Futures BP'
+    currency_futures_bp.admin_order_field = 'futures_bp'
 
     def currency_bp_adjustment(self, obj):
         return locale.currency(obj.bp_adjustment, grouping=True)
 
-    currency_cash_sweep.short_description = 'Cash Sweep'
-    currency_available.short_description = 'Dollar Available'
-    currency_pl_ytd.short_description = 'PL YTD'
-    currency_futures_bp.short_description = 'Futures BP'
     currency_bp_adjustment.short_description = 'BP Adjustment'
-    position_statement_date.short_description = 'Date'
+    currency_bp_adjustment.admin_order_field = 'bp_adjustment'
 
     list_display = (
         'position_statement_date', 'currency_cash_sweep', 'currency_available',
-        'currency_pl_ytd', 'currency_futures_bp', 'currency_bp_adjustment', 'instruments'
+        'currency_pl_ytd', 'currency_futures_bp', 'currency_bp_adjustment',
+        'instruments', 'equities', 'options', 'futures', 'forexs'
     )
 
     fieldsets = (
@@ -175,8 +199,7 @@ class PositionStatementAdmin(admin.ModelAdmin):
         ('Position Statement', {
             'fields': (
                 'date',
-                ('cash_sweep', 'available', 'pl_ytd'),
-                ('futures_bp', 'bp_adjustment')
+                'cash_sweep', 'available', 'pl_ytd', 'futures_bp', 'bp_adjustment'
             )
         }),
     )
@@ -262,6 +285,7 @@ class PsModelAdmin(admin.ModelAdmin):
         return obj.position_statement.date.strftime('%Y-%m-%d')
 
     position_statement_date.short_description = 'Date'
+    position_statement_date.admin_order_field = 'position_statement__date'
 
     def symbol(self, obj):
         url = reverse(
@@ -275,9 +299,12 @@ class PsModelAdmin(admin.ModelAdmin):
         return '<a href="%s">%s</a>' % (url, obj.underlying.symbol)
 
     symbol.allow_tags = True
+    symbol.admin_order_field = 'underlying__symbol'
 
     def description(self, obj):
         return obj.underlying.company
+
+    description.admin_order_field = 'underlying__company'
 
     def profit_loss(self, obj):
         if obj.pl_open > 0:
@@ -290,6 +317,7 @@ class PsModelAdmin(admin.ModelAdmin):
 
     profit_loss.boolean = True
     profit_loss.short_description = 'P/L'
+    profit_loss.admin_order_field = 'pl_open'
 
     list_per_page = 30
 
@@ -297,13 +325,14 @@ class PsModelAdmin(admin.ModelAdmin):
         return False
 
 
+# noinspection PyMethodMayBeStatic
 class SpreadTypeListFilter(admin.SimpleListFilter):
     # Human-readable title which will be displayed in the
     # right admin sidebar just above the filter options.
-    title = 'Position Type'
+    title = 'Spread Type'
 
     # Parameter for the filter that will be used in the URL query.
-    parameter_name = 'position type'
+    parameter_name = 'spread_type'
 
     def lookups(self, request, model_admin):
         return (
@@ -317,22 +346,52 @@ class SpreadTypeListFilter(admin.SimpleListFilter):
             ('custom', 'Custom'),
         )
 
+    def option_leg_queryset(self, queryset, leg_num):
+        """
+        Make option 1-4 leg queryset
+        :param queryset: QuerySet
+        :param leg_num: int
+        """
+        # equity = 0, option only have 1 row and not quantity 0, done
+        return queryset.filter(positionequity__quantity=0).filter(
+            Q(positionoption__quantity__gt=0) | Q(positionoption__quantity__lt=0)
+        ).annotate(option_count=Count('positionoption')).filter(option_count=leg_num)
+
     def queryset(self, request, queryset):
         # Compare the requested value (either '80s' or '90s')
         # to decide how to filter the queryset.
         if self.value() == 'closed':
-            # equity = 0 and options = 0
-            pass
+            # equity = 0 and options = 0 or option not exists
+            queryset = queryset.filter(positionequity__quantity=0).filter(
+                Q(positionoption__quantity=0) | Q(positionoption__isnull=True)
+            ).exclude(
+                Q(positionoption__quantity__lt=0) | Q(positionoption__quantity__gt=0)
+            ).annotate()
         elif self.value() == 'equity':
-            pass
+            # equity exists, option quantity is 0 or option not exists
+            queryset = queryset.filter(
+                ~Q(positionequity__quantity=0) &
+                (Q(positionoption__quantity=0) | Q(positionoption__isnull=True))
+            )
         elif self.value() == 'hedge':
-            pass
+            # equity exists, option exists and option is not null
+            queryset = queryset.exclude(positionequity__quantity=0)\
+                .exclude(positionoption__quantity=0)\
+                .exclude(positionoption__isnull=True)
+        elif self.value() == 'one_leg':
+            # equity = 0, option only have 1 row and not quantity 0, done
+            queryset = self.option_leg_queryset(queryset, 1)
+        elif self.value() == 'two_leg':
+            # equity = 0, option only have 1 row and not quantity 0, done
+            queryset = self.option_leg_queryset(queryset, 2)
+        elif self.value() == 'three_leg':
+            # equity = 0, option only have 1 row and not quantity 0, done
+            queryset = self.option_leg_queryset(queryset, 3)
+        elif self.value() == 'four_leg':
+            # equity = 0, option only have 1 row and not quantity 0, done
+            queryset = self.option_leg_queryset(queryset, 4)
 
-        result = queryset.all()
-
-        return result
-
-# todo: until here... search equity and options quantity
+        return queryset
 
 
 # noinspection PyMethodMayBeStatic
@@ -345,12 +404,10 @@ class PositionInstrumentAdmin(PsModelAdmin):
     inlines = [PositionStockInline, PositionOptionsInline]
 
     def equity(self, obj):
-        return models.PositionEquity.objects.\
-            filter(instrument=obj).exclude(quantity=0).count()
+        return obj.positionequity_set.exclude(quantity=0).count()
 
     def options(self, obj):
-        return models.PositionOption.objects.\
-            filter(instrument=obj).exclude(quantity=0).count()
+        return obj.positionoption_set.exclude(quantity=0).count()
 
     list_display = (
         'position_statement_date', 'symbol', 'description', 'pct_change',
@@ -361,7 +418,7 @@ class PositionInstrumentAdmin(PsModelAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('wide', ),
+            'classes': ('wide', 'collapse', 'open'),
             'fields': (
                 ('position_statement', 'underlying')
             )
@@ -425,7 +482,7 @@ class PositionEquityAdmin(PsModelAdmin):
             'classes': ('wide', 'collapse', 'open'),
             'fields': ('position_statement', 'instrument', 'underlying')
         }),
-        ('Stock', {
+        ('Equity', {
             'fields': (
                 ('trade_price', 'mark', 'mark_change', 'quantity'),
                 ('pct_change', 'pl_open', 'pl_day', 'bp_effect')

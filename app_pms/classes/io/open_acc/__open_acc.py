@@ -57,7 +57,7 @@ class OpenAcc(OpenCSV):
         ]
 
         self.holding_future_keys = [
-            'lookup', 'symbol', 'description', '', 'session',  # not duplicate expire date
+            'lookup', 'symbol', 'description',  # not duplicate expire date
             'spc', 'expire_date', 'quantity', 'trade_price', 'mark', 'pl_day'
 
         ]
@@ -270,14 +270,7 @@ class OpenAcc(OpenCSV):
 
         for line in lines[2:-1]:
             # custom format for future
-            if '"' in line:
-                items = line.split('"')
-                desc = items[1].split(',')
-                line = items[0] + ','.join(desc) + items[2]
-            elif ' - ' in line:
-                items = line.split(',')
-                desc = items[1].split(' - ')
-                line = ','.join([items[0]] + [desc[0], desc[2], desc[1]] + items[2:])
+            future = self.get_future_detail(line)
 
             line = self.replace_dash_inside_quote(line)
             items = self.split_lines_with_dash(line)
@@ -288,11 +281,11 @@ class OpenAcc(OpenCSV):
             items.insert(0, items[0][1:3])
 
             holding_future = self.make_dict(self.holding_future_keys, items)
-            holding_future['description'] = holding_future['description'].upper()
+            holding_future['session'] = future['session'].upper()
+            holding_future['description'] = future['description'].upper()
 
             self.holding_future.append(holding_future)
 
-        self.holding_future = map(self.del_empty_keys, self.holding_future)
 
     def set_forex_statement(self):
         """

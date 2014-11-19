@@ -1,4 +1,5 @@
 from glob import glob
+import os
 from pprint import pprint
 from app_pms.test_files import *
 from app_pms.classes.test import TestSetUp
@@ -10,7 +11,8 @@ class TestOpenAcc(TestSetUp):
         TestSetUp.setUp(self)
 
         self.fnames = glob(test_acc_path + '/*.csv') + [
-            test_path + r'/2014-11-01/2014-11-01-AccountStatement.csv'
+            os.path.join(test_path, '2014-11-01', '2014-11-01-AccountStatement.csv'),
+            os.path.join(test_path, '2014-11-19', '2014-11-19-AccountStatement.csv')
         ]
 
         self.test_file = self.fnames[0]
@@ -286,7 +288,7 @@ class TestOpenAcc(TestSetUp):
             method='set_holding_future',
             prop='holding_future',
             lengths=(10, ),  # for real money, use 10
-            keys=self.open_acc.holding_future_keys  # for real money, use real_futures_keys
+            keys=self.open_acc.holding_future_keys + ['session']
         )
 
     def test_set_forex_statement(self):
@@ -321,7 +323,7 @@ class TestOpenAcc(TestSetUp):
             'future_statement', 'holding_future', 'forex_statement', 'holding_forex',
         ]
 
-        for fname in self.fnames:
+        for fname in self.fnames[-1:]:
             print 'fname: %s' % fname
 
             data = open(fname).read()
@@ -332,7 +334,10 @@ class TestOpenAcc(TestSetUp):
             self.assertEqual(type(result), dict)
             self.assertEqual(len(result), 12)
 
-            pprint(result, width=600)
+            pprint(result['holding_future'], width=400)
+
+
+            #pprint(result, width=600)
 
             for key in result.keys():
                 if key == 'account_summary' or key == 'forex_summary':
