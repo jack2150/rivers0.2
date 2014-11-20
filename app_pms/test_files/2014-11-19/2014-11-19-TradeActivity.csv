@@ -1,0 +1,32 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for D-12644969 (margin) on 11/19/14 04:13:34
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,11/19/14 04:13:31,FOREX,BUY,+10000,TO CLOSE,EUR/MXN,,,FOREX,16.985,LMT,GTC,16.985,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,11/19/14 04:12:59,COVERED,SELL,-1,TO OPEN,GG,DEC 14,21,CALL,1.13,20.06,LMT
+,,,BUY,+100,TO OPEN,GG,,,STOCK,21.19,DEBIT,
+,11/19/14 04:12:21,STOCK,SELL,-100,TO OPEN,GE,,,STOCK,27.00,27.00,LMT
+,11/19/14 04:11:58,STOCK,BUY,+10,TO OPEN,BIDU,,,STOCK,241.88,241.88,LMT
+,11/19/14 04:11:34,STOCK,BUY,+500,TO OPEN,AMD,,,STOCK,2.66,2.66,LMT
+,11/19/14 01:03:10,VERTICAL,SELL,-10,TO OPEN,MSFT,DEC 14,49,CALL,1.04,.44,LMT
+,,,BUY,+10,TO OPEN,MSFT,DEC 14,50,CALL,.60,CREDIT,
+,11/19/14 01:02:49,VERTICAL,SELL,-5,TO CLOSE,VXX,DEC 14,29,CALL,1.44,.67,LMT
+,,,BUY,+5,TO CLOSE,VXX,DEC 14,33,CALL,.77,CREDIT,
+,11/19/14 00:57:02,FUTURE,BUY,+1,TO OPEN,/QMF5,JAN 15,,FUTURE,74.45,74.45,LMT
+,11/19/14 00:56:52,FUTURE,SELL,-1,TO OPEN,/NQZ4,DEC 14,,FUTURE,4235.00,4235.00,LMT
+,11/19/14 00:56:32,FOREX,SELL,-10000,TO CLOSE,USD/SEK,,,FOREX,7.3598,7.3598,LMT
+,11/19/14 00:56:26,FOREX,BUY,+10000,TO OPEN,USD/JPY,,,FOREX,116.742,116.742,LMT
+,11/19/14 00:55:47,FUTURE,SELL,-1,TO CLOSE,/ZWZ4,DEC 14,,FUTURE,547.75,547.75,LMT
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,11/19/14 04:12:09,STOCK,SELL,-100,TO OPEN,DDD,,,STOCK,35.68,LMT,DAY,"REJECTED: This stock is not available to borrow. If you want us to try to locate it for you, please call our trade desk."
+,,11/19/14 00:56:20,FOREX,BUY,+10000,TO OPEN,USD/JPY,,,FOREX,116.744,LMT,GTC,REJECTED: Limit price must be less than or equal to 116.737 (unsupported order characteristic)
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

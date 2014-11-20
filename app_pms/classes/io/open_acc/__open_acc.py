@@ -286,7 +286,6 @@ class OpenAcc(OpenCSV):
 
             self.holding_future.append(holding_future)
 
-
     def set_forex_statement(self):
         """
         Set forex into class property

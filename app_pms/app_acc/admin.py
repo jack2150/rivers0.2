@@ -1,10 +1,59 @@
 import locale
 from django.contrib import admin
+from django.core.urlresolvers import reverse
 from app_pms.app_acc import models
 
 
 # noinspection PyMethodMayBeStatic
+class AccountSummaryInline(admin.TabularInline):
+    def symbol(self, obj):
+        return obj.get_symbol()
+
+    def custom_status(self, obj):
+        return obj.status.split(':')[0] if ':' in obj.status else obj.status
+
+    custom_status.short_description = 'Status'
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
+class ProfitLossInline(AccountSummaryInline):
+    model = models.ProfitLoss
+
+    readonly_fields = (
+        'symbol', 'pl_open', 'pl_pct', 'pl_day', 'pl_ytd', 'margin_req', 'mark_value'
+    )
+    exclude = ('underlying', 'future')
+
+
+class OrderHistoryInline(AccountSummaryInline):
+    model = models.OrderHistory
+
+    readonly_fields = (
+        'symbol', 'time_placed', 'custom_status', 'pos_effect', 'quantity', 'contract',
+        'side', 'price', 'expire_date', 'tif', 'strike', 'order', 'spread'
+    )
+    exclude = ('underlying', 'future', 'forex', 'status')
+
+
+class TradeHistoryInline(AccountSummaryInline):
+    model = models.TradeHistory
+
+    readonly_fields = (
+        'symbol', 'execute_time', 'spread', 'side', 'contract', 'pos_effect',
+        'expire_date', 'order_type', 'quantity', 'strike', 'net_price', 'price'
+    )
+    exclude = ('underlying', 'future', 'forex', 'status')
+
+
+# noinspection PyMethodMayBeStatic
 class AccountSummaryAdmin(admin.ModelAdmin):
+    #inlines = (TradeHistoryInline, OrderHistoryInline, ProfitLossInline, )
+
     def formatted_date(self, obj):
         return obj.date.strftime('%Y-%m-%d')
     formatted_date.short_description = 'Date'
@@ -64,11 +113,17 @@ class AccountStatementForeignAdmin(admin.ModelAdmin):
         return obj.account_statement.date.strftime('%Y-%m-%d')
 
     account_statement_date.short_description = 'Date'
+    account_statement_date.admin_order_field = 'account_statement__date'
 
-    def underlying_symbol(self, obj):
+    def symbol(self, obj):
         return obj.underlying.symbol
 
-    underlying_symbol.short_description = 'Symbol'
+    symbol.admin_order_field = 'underlying__symbol'
+
+    def description(self, obj):
+        return obj.underlying.company
+
+    description.admin_order_field = 'underlying__company'
 
     list_per_page = 30
 
@@ -84,50 +139,126 @@ class AccountStatementForeignAdmin(admin.ModelAdmin):
         return False
 
 
+class StatusListFilter(admin.SimpleListFilter):
+    # Human-readable title which will be displayed in the
+    # right admin sidebar just above the filter options.
+    title = 'Status'
+
+    # Parameter for the filter that will be used in the URL query.
+    parameter_name = 'status'
+
+    def lookups(self, request, model_admin):
+        return (
+            ('filled', 'FILLED'),
+            ('working', 'WORKING'),
+            ('accepted', 'ACCEPTED'),
+            ('expired', 'EXPIRED'),
+            ('rejected', 'REJECTED')
+        )
+
+    def queryset(self, request, queryset):
+        # Compare the requested value (either '80s' or '90s')
+        # to decide how to filter the queryset.
+        if self.value() == 'filled':
+            return queryset.filter(status='FILLED')
+        elif self.value() == 'working':
+            return queryset.filter(status='WORKING')
+        elif self.value() == 'accepted':
+            return queryset.filter(status='ACCEPTED')
+        elif self.value() == 'expired':
+            return queryset.filter(status='EXPIRED')
+        elif self.value() == 'rejected':
+            return queryset.filter(status__contains='REJECTED')
+
+
+# noinspection PyProtectedMember
+class OrderTradeAdmin(AccountStatementForeignAdmin):
+    def symbol(self, obj):
+        if obj.future:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.future._meta.app_label, obj.future._meta.module_name
+                ),
+                args=(obj.future.id,)
+            )
+        elif obj.forex:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.forex._meta.app_label, obj.forex._meta.module_name
+                ),
+                args=(obj.forex.id,)
+            )
+        else:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.underlying._meta.app_label, obj.underlying._meta.module_name
+                ),
+                args=(obj.underlying.id,)
+            )
+        return '<a href="%s">%s</a>' % (url, obj.get_symbol())
+
+    symbol.allow_tags = True
+
+
 # noinspection PyMethodMayBeStatic
-class OrderHistoryAdmin(AccountStatementForeignAdmin):
+class OrderHistoryAdmin(OrderTradeAdmin):
+    def custom_status(self, obj):
+        return obj.status.split(':')[0] if ':' in obj.status else obj.status
+
+    custom_status.short_description = 'Status'
+
     list_display = (
-        'account_statement_date', 'underlying_symbol',
-        'status', 'time_placed', 'pos_effect', 'contract', 'side',
+        'account_statement_date', 'symbol',
+        'custom_status', 'time_placed', 'pos_effect', 'contract', 'side',
         'spread', 'expire_date', 'strike', 'tif', 'price', 'order', 'quantity'
     )
 
     search_fields = (
-        'account_statement__date', 'underlying__symbol', 'expire_date', 'quantity'
+        'account_statement__date',
+        'underlying__symbol', 'underlying__company',
+        'future__symbol', 'future__lookup', 'future__description',
+        'forex__symbol', 'forex__description',
+        'expire_date', 'quantity', 'status'
     )
 
     list_filter = (
-        'status', 'pos_effect', 'contract', 'side', 'spread', 'tif', 'order'
+        StatusListFilter, 'pos_effect', 'contract',
+        'side', 'spread', 'tif', 'order'
     )
 
     fieldsets = (
         ('Foreign Key', {
             'classes': ('wide', 'collapse', 'open'),
-            'fields': ('account_statement', 'underlying')
+            'fields': ('account_statement', 'underlying', 'future', 'forex')
         }),
         ('Order History', {
-            #'classes': ('wide', ),
             'fields': (
                 'time_placed',
-                ('status', 'pos_effect', 'quantity'),
-                ('contract', 'side', 'price'),
-                ('expire_date', 'tif', 'strike'),
-                ('order', 'spread')
+                'status', 'pos_effect', 'quantity',
+                'contract', 'side', 'price',
+                'expire_date', 'tif', 'strike',
+                'order', 'spread'
             )
         })
     )
 
+    readonly_fields = ('account_statement', 'underlying', 'future', 'forex')
+
 
 # noinspection PyMethodMayBeStatic
-class TradeHistoryAdmin(AccountStatementForeignAdmin):
+class TradeHistoryAdmin(OrderTradeAdmin):
     list_display = (
-        'account_statement_date', 'underlying_symbol',
+        'account_statement_date', 'symbol',
         'execute_time', 'spread', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'net_price', 'order_type'
     )
 
     search_fields = (
-        'account_statement__date', 'underlying__symbol', 'expire_date', 'quantity'
+        'account_statement__date',
+        'underlying__symbol', 'underlying__company',
+        'future__symbol', 'future__lookup', 'future__description',
+        'forex__symbol', 'forex__description',
+        'expire_date', 'quantity'
     )
 
     list_filter = (
@@ -137,96 +268,85 @@ class TradeHistoryAdmin(AccountStatementForeignAdmin):
     fieldsets = (
         ('Foreign Key', {
             'classes': ('wide', 'collapse', 'open'),
-            'fields': ('account_statement', 'underlying')
+            'fields': ('account_statement', 'underlying', 'future', 'forex')
         }),
         ('Trade History', {
             'fields': (
                 'execute_time',
-                ('spread', 'side', 'contract'),
-                ('pos_effect', 'expire_date', 'order_type'),
-                ('quantity', 'strike', 'net_price', 'price')
+                'spread', 'side', 'contract',
+                'pos_effect', 'expire_date', 'order_type',
+                'quantity', 'strike', 'net_price', 'price'
             )
         })
     )
 
-
-# noinspection PyMethodMayBeStatic
-class HoldingEquityAdmin(AccountStatementForeignAdmin):
-    list_display = (
-        'account_statement_date', 'underlying_symbol',
-        'quantity', 'trade_price', 'mark', 'mark_value'
-    )
-
-    search_fields = (
-        'account_statement__date', 'underlying__symbol', 'quantity'
-    )
-
-    fieldsets = (
-        ('Foreign Key', {
-            'classes': ('wide', 'collapse', 'open'),
-            'fields': ('account_statement', 'underlying')
-        }),
-        ('Holding Equity', {
-            'fields': (
-                'quantity', 'trade_price', 'mark', 'mark_value'
-            )
-        })
-    )
-
-    readonly_fields = (
-        'account_statement', 'underlying'
-    )
-
-    ordering = (
-        '-account_statement__date', 'underlying__symbol'
-    )
+    readonly_fields = ('account_statement', 'underlying', 'future', 'forex')
 
 
-# noinspection PyMethodMayBeStatic
-class HoldingOptionAdmin(AccountStatementForeignAdmin):
-    list_display = (
-        'account_statement_date', 'underlying_symbol',
-        'option_code', 'expire_date', 'strike',
-        'contract', 'quantity', 'trade_price', 'mark', 'mark_value'
-    )
+class ContractListFilter(admin.SimpleListFilter):
+    # Human-readable title which will be displayed in the
+    # right admin sidebar just above the filter options.
+    title = 'Status'
 
-    search_fields = (
-        'account_statement__date', 'underlying__symbol', 'option_code', 'expire_date', 'quantity'
-    )
+    # Parameter for the filter that will be used in the URL query.
+    parameter_name = 'status'
 
-    list_filter = (
-        'contract',
-    )
+    def lookups(self, request, model_admin):
+        return (
+            ('future', 'FUTURE'),
+            ('equity_options', 'EQUITY & OPTIONS')
+        )
 
-    fieldsets = (
-        ('Foreign Key', {
-            'classes': ('wide', 'collapse', 'open'),
-            'fields': ('account_statement', 'underlying')
-        }),
-        ('Holding Option', {
-            'fields': (
-                'option_code', 'expire_date', 'strike',
-                'contract', 'quantity', 'trade_price', 'mark', 'mark_value'
-            )
-        })
-    )
+    def queryset(self, request, queryset):
+        # Compare the requested value (either '80s' or '90s')
+        # to decide how to filter the queryset.
+        if self.value() == 'future':
+            return queryset.filter(underlying__isnull=True)
+        elif self.value() == 'equity_options':
+            return queryset.filter(future__isnull=True)
 
 
-# noinspection PyMethodMayBeStatic
+# noinspection PyMethodMayBeStatic,PyProtectedMember
 class ProfitLossAdmin(AccountStatementForeignAdmin):
+    def symbol(self, obj):
+        if obj.future:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.future._meta.app_label, obj.future._meta.module_name
+                ),
+                args=(obj.future.id,)
+            )
+        else:
+            url = reverse(
+                'admin:%s_%s_change' % (
+                    obj.underlying._meta.app_label, obj.underlying._meta.module_name
+                ),
+                args=(obj.underlying.id,)
+            )
+        return '<a href="%s">%s</a>' % (url, obj.get_symbol())
+
+    symbol.allow_tags = True
+
+    def description(self, obj):
+        return obj.get_description()
+
     list_display = (
-        'account_statement_date', 'underlying_symbol',
+        'account_statement_date', 'symbol', 'description',
         'pl_open', 'pl_pct', 'pl_day', 'pl_ytd', 'margin_req', 'mark_value'
     )
 
     search_fields = (
-        'account_statement__date', 'underlying__symbol',
+        'account_statement__date',
+        'underlying__symbol', 'underlying__company',
+        'future__symbol', 'future__lookup', 'future__description',
     )
+
+    list_filter = (ContractListFilter, )
 
     fieldsets = (
         ('Foreign Key', {
             'classes': ('wide', 'collapse', 'open'),
-            'fields': ('account_statement', 'underlying')
+            'fields': ('account_statement', 'underlying', 'future')
         }),
         ('Profit Loss', {
             'fields': (
@@ -234,6 +354,8 @@ class ProfitLossAdmin(AccountStatementForeignAdmin):
             )
         })
     )
+
+    readonly_fields = ('account_statement', 'underlying', 'future')
 
 
 # noinspection PyMethodMayBeStatic
@@ -275,30 +397,96 @@ class CashBalanceAdmin(AccountStatementForeignAdmin):
 
 
 # noinspection PyMethodMayBeStatic
-class FutureAdmin(AccountStatementForeignAdmin):
+class HoldingEquityAdmin(AccountStatementForeignAdmin):
+    list_display = (
+        'account_statement_date', 'symbol', 'description',
+        'quantity', 'trade_price', 'mark', 'mark_value'
+    )
+
+    search_fields = (
+        'account_statement__date', 'underlying__symbol', 'quantity'
+    )
+
+    fieldsets = (
+        ('Foreign Key', {
+            'classes': ('wide', 'collapse', 'open'),
+            'fields': ('account_statement', 'underlying')
+        }),
+        ('Holding Equity', {
+            'fields': (
+                'quantity', 'trade_price', 'mark', 'mark_value'
+            )
+        })
+    )
+
+    readonly_fields = (
+        'account_statement', 'underlying'
+    )
+
+    ordering = (
+        '-account_statement__date', 'underlying__symbol'
+    )
+
+
+# noinspection PyMethodMayBeStatic
+class HoldingOptionAdmin(AccountStatementForeignAdmin):
+    list_display = (
+        'account_statement_date', 'symbol',
+        'option_code', 'expire_date', 'strike',
+        'contract', 'quantity', 'trade_price', 'mark', 'mark_value'
+    )
+
+    search_fields = (
+        'account_statement__date', 'underlying__symbol', 'option_code', 'expire_date', 'quantity'
+    )
+
+    list_filter = (
+        'contract',
+    )
+
+    fieldsets = (
+        ('Foreign Key', {
+            'classes': ('wide', 'collapse', 'open'),
+            'fields': ('account_statement', 'underlying')
+        }),
+        ('Holding Option', {
+            'fields': (
+                'option_code', 'expire_date', 'strike',
+                'contract', 'quantity', 'trade_price', 'mark', 'mark_value'
+            )
+        })
+    )
+
+
+# noinspection PyMethodMayBeStatic
+class HoldingFutureAdmin(AccountStatementForeignAdmin):
     def future_lookup(self, obj):
         return obj.future.lookup
 
     future_lookup.short_description = 'Lookup'
+    future_lookup.admin_order_field = 'future__lookup'
 
     def future_symbol(self, obj):
         return obj.future.symbol
 
     future_symbol.short_description = 'Symbol'
+    future_symbol.admin_order_field = 'future__symbol'
 
     def future_expire_date(self, obj):
         return obj.future.expire_date
 
     future_expire_date.short_description = 'Expire Date'
+    future_expire_date.admin_order_field = 'future__expire_date'
 
     def future_description(self, obj):
         return obj.future.description
 
     future_description.short_description = 'Description'
+    future_description.admin_order_field = 'future__description'
 
     list_display = (
         'account_statement_date',
-        'future_lookup', 'future_symbol', 'future_expire_date', 'future_description',
+        'future_lookup', 'future_symbol', 'future_description', 'future_expire_date',
         'quantity', 'trade_price', 'mark', 'pl_day'
     )
 
@@ -328,22 +516,145 @@ class FutureAdmin(AccountStatementForeignAdmin):
     )
 
 
-# todo: acc... future statements, futures profit losses, order history, trade history
+class HoldingForexAdmin(AccountStatementForeignAdmin):
+    def symbol(self, obj):
+        return obj.forex.symbol
+
+    symbol.admin_order_field = 'forex__symbol'
+
+    def description(self, obj):
+        return obj.forex.description
+
+    description.admin_order_field = 'forex__description'
+
+    list_display = (
+        'account_statement_date',
+        'symbol', 'description',
+        'quantity', 'mark', 'trade_price', 'fpl'
+    )
+
+    search_fields = (
+        'account_statement__date', 'forex__symbol', 'forex__description',
+    )
+
+    fieldsets = (
+        ('Foreign Key', {
+            'classes': ('wide', 'collapse', 'open'),
+            'fields': ('account_statement', 'forex')
+        }),
+        ('Holding Forex', {
+            'fields': (
+                'quantity', 'mark', 'trade_price', 'fpl'
+            )
+        })
+    )
+
+    readonly_fields = (
+        'account_statement', 'forex'
+    )
+
+    ordering = (
+        '-account_statement__date', 'forex'
+    )
 
 
+class ForexSummaryAdmin(AccountStatementForeignAdmin):
+    list_display = (
+        'account_statement_date',
+        'cash', 'upl', 'floating', 'equity', 'margin',
+        'available_equity', 'risk_level'
+    )
 
-admin.site.register(models.AccountStatement, AccountSummaryAdmin)
-admin.site.register(models.CashBalance, CashBalanceAdmin)
-admin.site.register(models.ProfitLoss, ProfitLossAdmin)
-admin.site.register(models.OrderHistory, OrderHistoryAdmin)
-admin.site.register(models.TradeHistory, TradeHistoryAdmin)
+    search_fields = ('account_statement__date', )
 
-admin.site.register(models.HoldingEquity, HoldingEquityAdmin)
-admin.site.register(models.HoldingOption, HoldingOptionAdmin)
-admin.site.register(models.HoldingFuture, FutureAdmin)
-admin.site.register(models.HoldingForex)
+    fieldsets = (
+        ('Foreign Key', {
+            'classes': ('wide', 'collapse', 'open'),
+            'fields': ('account_statement', )
+        }),
+        ('Forex Summary', {
+            'fields': (
+                'cash', 'upl', 'floating', 'equity', 'margin',
+                'available_equity', 'risk_level'
+            )
+        })
+    )
 
-admin.site.register(models.FutureStatement)
-admin.site.register(models.ForexStatement)
-admin.site.register(models.ForexSummary)
+    readonly_fields = ('account_statement', )
 
+    ordering = ('-account_statement__date', )
+
+
+class ForexStatementAdmin(AccountStatementForeignAdmin):
+    list_display = (
+        'account_statement_date',
+        'time', 'contract', 'ref_no', 'description',
+        'commissions', 'amount', 'amount_usd', 'balance'
+    )
+
+    search_fields = ('account_statement__date', 'description')
+
+    list_filter = ('contract', )
+
+    fieldsets = (
+        ('Foreign Key', {
+            'classes': ('wide', 'collapse', 'open'),
+            'fields': ('account_statement', )
+        }),
+        ('Forex Statement', {
+            'fields': (
+                'time', 'contract', 'ref_no', 'description',
+                'commissions', 'amount', 'amount_usd', 'balance'
+            )
+        })
+    )
+
+    readonly_fields = ('account_statement', )
+
+    ordering = ('-account_statement__date',)
+
+
+class FutureStatementAdmin(AccountStatementForeignAdmin):
+    list_display = (
+        'account_statement_date',
+        'execute_date', 'execute_time', 'contract',
+        'ref_no', 'description', 'fee', 'commission', 'amount', 'balance'
+    )
+
+    search_fields = ('account_statement__date', 'description')
+
+    list_filter = ('contract', )
+
+    fieldsets = (
+        ('Foreign Key', {
+            'classes': ('wide', 'collapse', 'open'),
+            'fields': ('account_statement', )
+        }),
+        ('Future Statement', {
+            'fields': (
+                'account_statement_date',
+                'execute_date', 'execute_time', 'contract',
+                'ref_no', 'description', 'fee', 'commission', 'amount', 'balance'
+            )
+        })
+    )
+
+    readonly_fields = ('account_statement', )
+
+    ordering = ('-account_statement__date', '-execute_date', '-execute_time')
+
+
+admin.site.register(models.AccountStatement, AccountSummaryAdmin)  # wait
+admin.site.register(models.CashBalance, CashBalanceAdmin)  # done
+admin.site.register(models.ProfitLoss, ProfitLossAdmin)  # done
+admin.site.register(models.OrderHistory, OrderHistoryAdmin)  # done
+admin.site.register(models.TradeHistory, TradeHistoryAdmin)  # done
+
+admin.site.register(models.HoldingEquity, HoldingEquityAdmin)  # done
+admin.site.register(models.HoldingOption, HoldingOptionAdmin)  # done
+admin.site.register(models.HoldingFuture, HoldingFutureAdmin)  # done
+admin.site.register(models.HoldingForex, HoldingForexAdmin)  # done
+
+admin.site.register(models.FutureStatement, FutureStatementAdmin)  # done
+admin.site.register(models.ForexStatement, ForexStatementAdmin)  # done
+admin.site.register(models.ForexSummary, ForexSummaryAdmin)  # done

@@ -37,6 +37,21 @@ class TaModel(object):
 
         return symbol
 
+    def get_description(self):
+        """
+        Get either one description from model
+        underlying or future or forex
+        :return: str
+        """
+        if self.future:
+            description = self.future.description
+        elif self.forex:
+            description = self.forex.description
+        else:
+            description = self.underlying.company
+
+        return description
+
 
 class TradeActivity(models.Model):
     statement = models.ForeignKey(Statement)

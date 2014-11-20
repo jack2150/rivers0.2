@@ -3,6 +3,7 @@ from app_pms.classes.io.open_acc import OpenAcc
 from app_pms.models import Underlying, Future, Forex, Statement, SaveAppModel
 
 
+# noinspection PyUnresolvedReferences
 class AccountModel(object):
     def set_dict(self, items):
         """
@@ -13,6 +14,39 @@ class AccountModel(object):
         for key, item in items.items():
             if key in properties.keys():
                 setattr(self, key, item)
+
+    def get_symbol(self):
+        """
+        Get either one symbol from model
+        underlying or future or forex
+        :return: str
+        """
+        if self.future:
+            if self.future.symbol:
+                symbol = self.future.symbol
+            else:
+                symbol = '/%s' % self.future.lookup
+        elif self.forex:
+            symbol = self.forex.symbol
+        else:
+            symbol = self.underlying.symbol
+
+        return symbol
+
+    def get_description(self):
+        """
+        Get either one symbol from model
+        underlying or future or forex
+        :return: str
+        """
+        if self.future:
+            description = self.future.description
+        elif self.forex:
+            description = self.forex.description
+        else:
+            description = self.underlying.company
+
+        return description
 
 
 class AccountStatement(models.Model):
@@ -195,21 +229,6 @@ class OrderHistory(models.Model, AccountModel):
     order = models.CharField(max_length=20, verbose_name='Order')
     quantity = models.IntegerField(verbose_name='Quantity')
 
-    def get_symbol(self):
-        """
-        Get either underlying or future or forex symbol
-        either one but not all three
-        :return: object
-        """
-        if self.underlying:
-            symbol = self.underlying
-        elif self.future:
-            symbol = self.future
-        else:
-            symbol = self.forex
-
-        return symbol
-
     def json(self):
         """
         Using all property inside class and return json format string
@@ -274,21 +293,6 @@ class TradeHistory(models.Model, AccountModel):
     )
     order_type = models.CharField(max_length=50, verbose_name='Order Type')
 
-    def get_symbol(self):
-        """
-        Get either underlying or future or forex symbol
-        either one but not all three
-        :return: object
-        """
-        if self.underlying:
-            symbol = self.underlying
-        elif self.future:
-            symbol = self.future
-        else:
-            symbol = self.forex
-
-        return symbol
-
     def json(self):
         """
         Using all property inside class and return json format string
@@ -325,7 +329,7 @@ class TradeHistory(models.Model, AccountModel):
         )
 
 
-class ProfitLoss(models.Model, AccountModel):
+class ProfitLoss(models.Model):
     account_statement = models.ForeignKey(AccountStatement)
 
     # either one but not both
@@ -342,6 +346,35 @@ class ProfitLoss(models.Model, AccountModel):
         null=True, blank=True
     )
 
+    def get_symbol(self):
+        """
+        Get either one symbol from model
+        underlying or future or forex
+        :return: str
+        """
+        if self.future:
+            if self.future.symbol:
+                symbol = self.future.symbol
+            else:
+                symbol = '/%s' % self.future.lookup
+        else:
+            symbol = self.underlying.symbol
+
+        return symbol
+
+    def get_description(self):
+        """
+        Get either one symbol from model
+        underlying or future or forex
+        :return: str
+        """
+        if self.future:
+            description = self.future.description
+        else:
+            description = self.underlying.company
+
+        return description
+
     def json(self):
         """
         Using all property inside class and return json format string
@@ -350,7 +383,6 @@ class ProfitLoss(models.Model, AccountModel):
         output = '{'
         output += '"account_statement": "%s", ' % self.account_statement.__unicode__()
         output += '"symbol": "%s", ' % self.underlying if self.underlying else self.future
-        output += '"description": "%s", ' % self.underlying.company
         output += '"pl_open": %.2f, ' % self.pl_open
         output += '"pl_pct": %.2f, ' % self.pl_pct
         output += '"pl_day": %.2f, ' % self.pl_day
@@ -366,7 +398,7 @@ class ProfitLoss(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<ProfitsLosses:{date}> {symbol}'
+        output = '<ProfitLoss:{date}> {symbol}'
 
         return output.format(
             symbol=self.underlying if self.underlying else self.future,

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.core.urlresolvers import reverse
+from django.db.models import Count
 from app_pms.app_ta import models
 
 
@@ -110,22 +111,32 @@ class TradeActivityAdmin(admin.ModelAdmin):
         CancelledOrderInline, RollingStrategyInline
     )
 
-    def filled_order_count(self, obj):
-        return models.FilledOrder.objects.filter(trade_activity=obj).count()
+    def queryset(self, request):
+        return models.TradeActivity.objects\
+            .annotate(working_order=Count('workingorder', distinct=True)) \
+            .annotate(filled_order=Count('filledorder', distinct=True)) \
+            .annotate(cancelled_order=Count('cancelledorder', distinct=True)) \
+            .annotate(rolling_strategy=Count('rollingstrategy', distinct=True))
 
-    def working_order_count(self, obj):
-        return models.WorkingOrder.objects.filter(trade_activity=obj).count()
+    def working_orders(self, obj):
+        return obj.working_order
 
-    def cancelled_order_count(self, obj):
-        return models.CancelledOrder.objects.filter(trade_activity=obj).count()
+    working_orders.admin_order_field = 'working_order'
 
-    def rolling_strategy_count(self, obj):
-        return models.RollingStrategy.objects.filter(trade_activity=obj).count()
+    def filled_orders(self, obj):
+        return obj.filled_order
 
-    filled_order_count.short_description = 'Filled Orders'
-    working_order_count.short_description = 'Working Orders'
-    cancelled_order_count.short_description = 'Cancelled Orders'
-    rolling_strategy_count.short_description = 'Rolling Strategy'
+    filled_orders.admin_order_field = 'filled_order'
+
+    def cancelled_orders(self, obj):
+        return obj.cancelled_order
+
+    cancelled_orders.admin_order_field = 'cancelled_order'
+
+    def rolling_strategies(self, obj):
+        return obj.rolling_strategy
+
+    rolling_strategies.admin_order_field = 'rolling_strategy'
 
     def get_inline_instances(self, request, obj=None):
         return obj and super(TradeActivityAdmin, self).get_inline_instances(request, obj) or []
@@ -133,9 +144,11 @@ class TradeActivityAdmin(admin.ModelAdmin):
     def date_formatted(self, obj):
         return obj.date.strftime('%Y-%m-%d')
 
+    date_formatted.admin_order_field = 'date'
+
     list_display = (
-        'date_formatted', 'filled_order_count', 'working_order_count',
-        'cancelled_order_count', 'rolling_strategy_count'
+        'date_formatted', 'working_orders', 'filled_orders',
+        'cancelled_orders', 'rolling_strategies'
     )
 
     fieldsets = (
@@ -158,6 +171,11 @@ class TradeActivityAdmin(admin.ModelAdmin):
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember
 class TaAdmin(admin.ModelAdmin):
+    def date(self, obj):
+        return obj.trade_activity.date.strftime('%Y-%m-%d')
+
+    date.admin_order_field = 'trade_activity__date'
+
     def symbol(self, obj):
         if obj.future:
             url = reverse(
@@ -205,9 +223,6 @@ class TaAdmin(admin.ModelAdmin):
 
 # noinspection PyMethodMayBeStatic
 class WorkingOrderAdmin(TaAdmin):
-    def date(self, obj):
-        return obj.trade_activity.date.strftime('%Y-%m-%d')
-
     list_display = (
         'date', 'symbol', 'spread', 'time_placed', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'order', 'tif', 'mark', 'status'
@@ -242,9 +257,6 @@ class WorkingOrderAdmin(TaAdmin):
 
 # noinspection PyMethodMayBeStatic
 class FilledOrderAdmin(TaAdmin):
-    def date(self, obj):
-        return obj.trade_activity.date.strftime('%Y-%m-%d')
-
     list_display = (
         'date', 'symbol', 'spread', 'exec_time', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'net_price', 'order'
@@ -275,9 +287,6 @@ class FilledOrderAdmin(TaAdmin):
 
 # noinspection PyMethodMayBeStatic
 class CancelledOrderAdmin(TaAdmin):
-    def date(self, obj):
-        return obj.trade_activity.date.strftime('%Y-%m-%d')
-
     list_display = (
         'date', 'symbol', 'spread', 'time_cancelled', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'order', 'tif', 'status'
@@ -311,6 +320,8 @@ class CancelledOrderAdmin(TaAdmin):
 class RollingStrategyAdmin(admin.ModelAdmin):
     def date(self, obj):
         return obj.trade_activity.date.strftime('%Y-%m-%d')
+
+    date.admin_order_field = 'trade_activity__date'
 
     def symbol(self, obj):
         url = reverse(
