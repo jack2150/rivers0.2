@@ -30,6 +30,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    # plugin package
+    'suit',
+    'adminplus',
+
+    # django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -101,3 +106,22 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
+
+# Django admin suit
+"""
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'Portfolio Management System',
+    'HEADER_DATE_FORMAT': 'Y-m-d',  # Saturday, 16th March 2013
+    'HEADER_TIME_FORMAT': 'H:i',  # 18:42
+
+    'SHOW_REQUIRED_ASTERISK': False,
+    'CONFIRM_UNSAVED_CHANGES': False,
+
+    # Set to empty string if you want to hide search from menu
+    'SEARCH_URL': '',
+
+    'MENU_OPEN_FIRST_CHILD': False,
+
+    # icon demo in http://getbootstrap.com/components/
+}
+"""

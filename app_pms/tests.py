@@ -462,7 +462,6 @@ class TestPmsImportStatementsForm(TestSetUp):
         self.validate_file_field_wrong_file_ext('trade_activity')
 
 
-# todo: test until here...
 class TestPmsImportStatementView(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)

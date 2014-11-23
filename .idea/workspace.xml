@@ -4,15 +4,90 @@
     <bookmark url="file://$PROJECT_DIR$/app_pms/classes/io/open_acc/tests.py" line="180" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/test_files/2014-11-19/2014-11-19-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/test_files/2014-11-19/2014-11-19-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/test_files/2014-11-19/2014-11-19-TradeActivity.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/classes/io/open_acc/__open_acc.py" afterPath="$PROJECT_DIR$/app_pms/classes/io/open_acc/__open_acc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/app_acc/admin.py" afterPath="$PROJECT_DIR$/app_pms/app_acc/admin.py" />
+    <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="acc admin done...">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/app_pms/app_ta/working_order.html" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\apps\pms_app\spread_view_app\spread_ui.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\apps\pms_app\spread_view_app\symbols_ui.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\css\base.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\fonts\PTS-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\fonts\PTS-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\fonts\PTS-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\fonts\font-license.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\fonts\fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\fonts\fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\fonts\fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\legacy\excanvas\AUTHORS.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\legacy\excanvas\COPYING.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\legacy\excanvas\README.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\legacy\excanvas\excanvas.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\air.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\aircompact.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\clouds.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\compact.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\air.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\aircompact.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\clouds.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\compact.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\flat.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\glamour.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\light.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\metro.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\terrace.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\touch.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\debug\web.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\flat.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\glamour.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\light.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\metro.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\terrace.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\touch.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\skins\web.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\webix.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\webix.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\js\webix\webix_debug.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\css\font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\css\font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\fonts\FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\fonts\fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\fonts\fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\fonts\fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\fonts\fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\bordered-pulled.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\core.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\fixed-width.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\font-awesome.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\icons.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\larger.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\list.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\mixins.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\path.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\rotated-flipped.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\spinning.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\stacked.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\less\variables.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_bordered-pulled.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_core.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_fixed-width.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_icons.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_larger.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_list.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_mixins.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_path.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_rotated-flipped.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_spinning.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_stacked.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\_variables.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\pic\font-awesome\scss\font-awesome.scss" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\pms_app\app_index.html" afterPath="$PROJECT_DIR$/templates/admin/app_pms/app_index.html" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\pms_app\filter.html" afterPath="$PROJECT_DIR$/templates/admin/app_pms/filter.html" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\pms_app\pos_stock_change_list.html" afterPath="$PROJECT_DIR$/templates/admin/app_pms/pos_stock_change_list.html" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\pms_app\statement\import_statement.html" afterPath="$PROJECT_DIR$/templates/admin/app_pms/statement/import_statement.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/admin.py" afterPath="$PROJECT_DIR$/app_pms/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/app_pos/admin.py" afterPath="$PROJECT_DIR$/app_pms/app_pos/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/app_ta/admin.py" afterPath="$PROJECT_DIR$/app_pms/app_ta/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/app_acc/models.py" afterPath="$PROJECT_DIR$/app_pms/app_acc/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/app_ta/models.py" afterPath="$PROJECT_DIR$/app_pms/app_ta/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/settings.py" afterPath="$PROJECT_DIR$/rivers/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/tests.py" afterPath="$PROJECT_DIR$/app_pms/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/urls.py" afterPath="$PROJECT_DIR$/rivers/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rivers.iws" />
@@ -26,15 +101,15 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/rivers$Test__app_pms_app_pos_tests.coverage" NAME="Test: app_pms.app_pos.tests Coverage Results" MODIFIED="1416155401619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_acc_tests.coverage" NAME="Test: lib.io.open_acc.tests Coverage Results" MODIFIED="1415830659334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__app_pms_app_pos_tests.coverage" NAME="Test: app_pms.app_pos.tests Coverage Results" MODIFIED="1416155401619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_classes_io_open_csv_tests.coverage" NAME="Test: app_pms.classes.io.open_csv.tests Coverage Results" MODIFIED="1416109952859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_app_acc_tests.coverage" NAME="Test: app_pms.app_acc.tests Coverage Results" MODIFIED="1416353967314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__test_all.coverage" NAME="Test: test_all Coverage Results" MODIFIED="1411252037835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__pms_app_spr_app_tests.coverage" NAME="Test: pms_app.spr_app.tests Coverage Results" MODIFIED="1411252268368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__pms_app_pos_app_import_app_tests.coverage" NAME="Test: pms_app.pos_app.import_app.tests Coverage Results" MODIFIED="1411250494706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_pos_app_view_app_tests.coverage" NAME="Test: pms_app.pos_app.view_app.tests Coverage Results" MODIFIED="1414685738901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_classes_io_open_acc_tests.coverage" NAME="Test: app_pms.classes.io.open_acc.tests Coverage Results" MODIFIED="1416369947272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_pos_app_view_app_tests.coverage" NAME="Test: pms_app.pos_app.view_app.tests Coverage Results" MODIFIED="1414685738901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_hedge_tests.coverage" NAME="Test: lib.pos.identify.hedge.tests Coverage Results" MODIFIED="1411250314367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__base_app_tests.coverage" NAME="Test: base_app.tests Coverage Results" MODIFIED="1411251891478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_stock_tests.coverage" NAME="Test: lib.pos.identify.stock.tests Coverage Results" MODIFIED="1411250333587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -51,15 +126,15 @@
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_hedge_tests.coverage" NAME="Test: lib.pos.spread.hedge.tests Coverage Results" MODIFIED="1411250353610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_tests_TestIdentify_is_methods.coverage" NAME="Test: lib.pos.identify.tests.TestIdentify.is_methods Coverage Results" MODIFIED="1411250278067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_classes_io_open_pos_tests.coverage" NAME="Test: app_pms.classes.io.open_pos.tests Coverage Results" MODIFIED="1416246339391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__app_pms_classes_io_open_pos2_tests.coverage" NAME="Test: app_pms.classes.io.open_pos2.tests Coverage Results" MODIFIED="1416103985830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_tests.coverage" NAME="Test: pms_app.tests Coverage Results" MODIFIED="1415744833734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_tests.coverage" NAME="Test: lib.pos.identify.tests Coverage Results" MODIFIED="1411250291468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_acc_app_tests.coverage" NAME="Test: pms_app.acc_app.tests Coverage Results" MODIFIED="1415835012900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_tests.coverage" NAME="Test: pms_app.tests Coverage Results" MODIFIED="1415744833734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__app_pms_classes_io_open_pos2_tests.coverage" NAME="Test: app_pms.classes.io.open_pos2.tests Coverage Results" MODIFIED="1416103985830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_app_ta_tests.coverage" NAME="Test: app_pms.app_ta.tests Coverage Results" MODIFIED="1416264159156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__pms_app_acc_app_tests.coverage" NAME="Test: pms_app.acc_app.tests Coverage Results" MODIFIED="1415835012900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_leg_one_tests.coverage" NAME="Test: lib.pos.identify.leg_one.tests Coverage Results" MODIFIED="1411250323455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__pms_app_ta_app_tests.coverage" NAME="Test: pms_app.ta_app.tests Coverage Results" MODIFIED="1415654107516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_pos_tests.coverage" NAME="Test: lib.io.open_pos.tests Coverage Results" MODIFIED="1414848626273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_csv_tests.coverage" NAME="Test: lib.io.open_csv.tests Coverage Results" MODIFIED="1415655671309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_pos_tests.coverage" NAME="Test: lib.io.open_pos.tests Coverage Results" MODIFIED="1414848626273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -90,14 +165,12 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app_pms/classes/io/open_pos/__init__.py" />
         <option value="$PROJECT_DIR$/app_pms/classes/io/open_ta/__init__.py" />
         <option value="$PROJECT_DIR$/app_pms/classes/io/__init__.py" />
         <option value="$PROJECT_DIR$/app_pms/app_pos/views.py" />
         <option value="$PROJECT_DIR$/app_pms/classes/test/__test.py" />
         <option value="$PROJECT_DIR$/app_pms/__init__.py" />
         <option value="$PROJECT_DIR$/app_pms/tests/__init__.py" />
-        <option value="$PROJECT_DIR$/rivers/urls.py" />
         <option value="$PROJECT_DIR$/templates/admin/pms_app/statement/import_statement.html" />
         <option value="$PROJECT_DIR$/app_pms/test_files/2014-11-13/2014-11-13-AccountStatement.csv" />
         <option value="$PROJECT_DIR$/app_pms/test_files/account_statement/2014-07-23-AccountStatement.csv" />
@@ -122,8 +195,6 @@
         <option value="$PROJECT_DIR$/app_pms/test_files/position_statement/2014-08-01-PositionStatement.csv" />
         <option value="$PROJECT_DIR$/app_pms/classes/io/open_pos/tests.py" />
         <option value="$PROJECT_DIR$/app_pms/app_pos/tests.py" />
-        <option value="$PROJECT_DIR$/app_pms/tests.py" />
-        <option value="$PROJECT_DIR$/app_pms/admin.py" />
         <option value="$PROJECT_DIR$/app_pms/classes/io/open_csv/__open_csv.py" />
         <option value="$PROJECT_DIR$/app_pms/models.py" />
         <option value="$PROJECT_DIR$/app_pms/classes/io/open_pos/__open_pos.py" />
@@ -133,14 +204,18 @@
         <option value="$PROJECT_DIR$/app_pms/app_ta/tests.py" />
         <option value="$PROJECT_DIR$/app_pms/app_acc/tests.py" />
         <option value="$PROJECT_DIR$/app_pms/classes/io/open_acc/tests.py" />
-        <option value="$PROJECT_DIR$/app_pms/app_pos/models.py" />
-        <option value="$PROJECT_DIR$/rivers/settings.py" />
-        <option value="$PROJECT_DIR$/app_pms/app_pos/admin.py" />
         <option value="$PROJECT_DIR$/app_pms/classes/io/open_acc/__open_acc.py" />
         <option value="$PROJECT_DIR$/app_pms/app_ta/models.py" />
-        <option value="$PROJECT_DIR$/app_pms/app_ta/admin.py" />
         <option value="$PROJECT_DIR$/app_pms/app_acc/models.py" />
+        <option value="$PROJECT_DIR$/app_pms/tests.py" />
+        <option value="$PROJECT_DIR$/app_pms/app_pos/admin.py" />
+        <option value="$PROJECT_DIR$/app_pms/app_pos/models.py" />
+        <option value="$PROJECT_DIR$/templates/admin/app_pms/app_ta/working_order.html" />
         <option value="$PROJECT_DIR$/app_pms/app_acc/admin.py" />
+        <option value="$PROJECT_DIR$/app_pms/admin.py" />
+        <option value="$PROJECT_DIR$/rivers/urls.py" />
+        <option value="$PROJECT_DIR$/rivers/settings.py" />
+        <option value="$PROJECT_DIR$/app_pms/app_ta/admin.py" />
       </list>
     </option>
   </component>
@@ -246,7 +321,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="rivers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -296,24 +371,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app_pos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app_pms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app_acc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -327,7 +384,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHub/PortableGit_ed44d00daa128db527396557813e7b68709ed0e2/bin/git.exe" />
-    <property name="options.lastSelected" value="vcs.Git" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="options.splitter.main.proportions" value="0.2975" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -350,7 +407,7 @@
       <recent name="C:\Users\Jack\Projects\rivers\pms_app" />
     </key>
   </component>
-  <component name="RunManager" selected="Django tests.Test: all">
+  <component name="RunManager" selected="Django server.rivers">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -435,7 +492,27 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -461,27 +538,7 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -889,7 +946,11 @@
       <created>1416376996109</created>
       <updated>1416376996109</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="acc admin done...">
+      <created>1416527259275</created>
+      <updated>1416527259275</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -916,7 +977,7 @@
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25240642" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
@@ -925,16 +986,16 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29822618" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29822618" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -953,9 +1014,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2919786" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29822618" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29822618" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -995,7 +1056,8 @@
     <MESSAGE value="fix datetime bug..." />
     <MESSAGE value="before use many to many field" />
     <MESSAGE value="ta admin, pos admin done..." />
-    <option name="LAST_COMMIT_MESSAGE" value="ta admin, pos admin done..." />
+    <MESSAGE value="acc admin done..." />
+    <option name="LAST_COMMIT_MESSAGE" value="acc admin done..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1009,53 +1071,11 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app_pms/test_files/2014-10-31/2014-10-31-AccountStatement.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app_pms/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1875" vertical-offset="120" max-vertical-offset="3250">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/test_files/2014-11-01/2014-11-01-AccountStatement.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1875" vertical-offset="276" max-vertical-offset="3328">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/test_files/account_statement/2014-07-25-AccountStatement.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3592233" vertical-offset="328" max-vertical-offset="4134">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/test_files/2014-11-14/2014-11-14-AccountStatement.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3592233" vertical-offset="1810" max-vertical-offset="4134">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/test_files/account_statement/2014-07-24-AccountStatement.csv">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5169903" vertical-offset="1628" max-vertical-offset="3692">
-          <caret line="79" column="76" selection-start-line="79" selection-start-column="76" selection-end-line="79" selection-end-column="76" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="624" max-vertical-offset="12818">
+          <caret line="486" column="1" selection-start-line="486" selection-start-column="1" selection-end-line="486" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1200,24 +1220,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/db/models/query.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22780374" vertical-offset="7423" max-vertical-offset="44824">
-          <caret line="309" column="0" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_pms/app_pos/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44042057" vertical-offset="9035" max-vertical-offset="10608">
           <caret line="369" column="33" selection-start-line="369" selection-start-column="33" selection-end-line="369" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5684695" vertical-offset="0" max-vertical-offset="13286">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1235,14 +1241,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6708861" vertical-offset="5709" max-vertical-offset="6786">
           <caret line="243" column="1" selection-start-line="243" selection-start-column="1" selection-end-line="255" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0058411215" vertical-offset="3905" max-vertical-offset="6396">
-          <caret line="150" column="44" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1314,13 +1312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6682243" vertical-offset="0" max-vertical-offset="14404">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_pms/test_files/2014-11-19/2014-11-19-PositionStatement.csv">
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
@@ -1386,21 +1377,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rivers/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46144995" vertical-offset="1965" max-vertical-offset="2834">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/app_pos/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69859815" vertical-offset="0" max-vertical-offset="13286">
-          <caret line="25" column="79" selection-start-line="25" selection-start-column="79" selection-end-line="25" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_pms/classes/io/open_ta/__open_ta.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="5.8342924" vertical-offset="832" max-vertical-offset="7072">
@@ -1412,7 +1388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4487917" vertical-offset="624" max-vertical-offset="11154">
           <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1420,15 +1395,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="832" max-vertical-offset="13546">
           <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="55" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/app_ta/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10400">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="32" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1436,28 +1402,103 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.1542056" vertical-offset="9828" max-vertical-offset="23608">
           <caret line="342" column="9" selection-start-line="342" selection-start-column="9" selection-end-line="342" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/app_pms/app_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.59232616" vertical-offset="624" max-vertical-offset="1560">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_pms/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_pms/app_pos/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.030373832" vertical-offset="0" max-vertical-offset="13286">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_pms/app_pos/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6593786" vertical-offset="14899" max-vertical-offset="17914">
+          <caret line="555" column="11" selection-start-line="555" selection-start-column="11" selection-end-line="555" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/app_pms/statement/import_statement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="182" max-vertical-offset="2834">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/app_pms/app_ta/working_order.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="156">
+          <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_pms/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="13509" max-vertical-offset="14378">
+          <caret line="463" column="0" selection-start-line="463" selection-start-column="0" selection-end-line="463" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_pms/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3905" max-vertical-offset="6396">
+          <caret line="150" column="44" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app_pms/app_acc/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5385501" vertical-offset="0" max-vertical-offset="16458">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="17238">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rivers/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9574223" vertical-offset="208" max-vertical-offset="3458">
+          <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_pms/app_ta/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23935558" vertical-offset="0" max-vertical-offset="12480">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#217#574#0" expanded="false" />
-            <element signature="e#627#808#0" expanded="false" />
-            <element signature="e#863#1142#0" expanded="false" />
-            <element signature="e#1197#1471#0" expanded="false" />
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/app_pos/admin.py">
+    <entry file="file://$PROJECT_DIR$/app_pms/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65822786" vertical-offset="6240" max-vertical-offset="18044">
-          <caret line="266" column="29" selection-start-line="266" selection-start-column="29" selection-end-line="266" selection-end-column="29" />
+        <state vertical-scroll-proportion="13.822784" vertical-offset="208" max-vertical-offset="12402">
+          <caret line="486" column="1" selection-start-line="486" selection-start-column="1" selection-end-line="486" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rivers/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29919448" vertical-offset="0" max-vertical-offset="869">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
           <folding />
         </state>
       </provider>

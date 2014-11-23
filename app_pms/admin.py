@@ -11,22 +11,14 @@ from django import forms
 from pandas.tseries.offsets import BDay
 from app_pms import models
 from app_pms.app_acc.models import SaveAccountStatement, AccountStatement
-from app_pms.app_pos.admin import PositionInstrumentInline
 from app_pms.app_pos.models import SavePositionStatement, PositionStatement
 from app_pms.app_ta.models import SaveTradeActivity, TradeActivity
 from django.contrib.admin import widgets
 from django.contrib.admin.models import LogEntry, ADDITION
 
 
-# noinspection PyProtectedMember,PyMethodMayBeStatic
-class InstrumentInstrumentInline(PositionInstrumentInline):
-    max_num = 3
-
-
 # noinspection PyMethodMayBeStatic
 class UnderlyingAdmin(admin.ModelAdmin):
-    inlines = (PositionInstrumentInline, )
-
     list_display = ('symbol', 'company')
 
     fieldsets = (
@@ -423,7 +415,7 @@ class StatementAdmin(admin.ModelAdmin):
     def import_statement(request, statement_id=0):
         # custom view which should return an HttpResponse
         # return HttpResponse('something')
-        template = 'admin/pms_app/statement/import_statement.html'
+        template = 'admin/app_pms/statement/import_statement.html'
 
         if request.method == 'POST':
             import_statement_form = PmsImportStatementsForm(request.POST, request.FILES)
@@ -486,21 +478,10 @@ class StatementAdmin(admin.ModelAdmin):
         return render(request, template, parameters)
 
 
-#class PmsAppAdminSite(admin.AdminSite):
-#    app_index_template = 'admin/pms_app/app_index.html'
 admin.site.register(models.Statement, StatementAdmin)
 
 admin.site.register(models.Underlying, UnderlyingAdmin)
 admin.site.register(models.Future, FutureAdmin)
 admin.site.register(models.Forex, ForexAdmin)
 
-admin.site.template = 'admin/pms_app/app_index.html'
-
-#admin.site.app_index = PmsAppIndexAdmin
-
-#admin_site = PmsAppAdminSite()
-#admin_site.register(models.Underlying, UnderlyingAdmin)
-# todo: pos, acc, ta admin detail
-
-# todo: remove files folder, put all into related tests
-# todo: remove pos and import view
+#admin.site.template = 'admin/app_pms/app_index.html'

@@ -1,6 +1,8 @@
+from django.forms import ModelForm
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.db.models import Count
+from suit.widgets import SuitSplitDateTimeWidget
 from app_pms.app_ta import models
 
 
@@ -44,8 +46,6 @@ class TradeActivityInline(admin.TabularInline):
     link.allow_tags = True
     link.short_description = 'Action'
 
-    exclude = ('underlying', 'future', 'forex')
-
     extra = 0
 
     def has_add_permission(self, request):
@@ -55,39 +55,69 @@ class TradeActivityInline(admin.TabularInline):
         return False
 
 
+# noinspection PyMethodMayBeStatic
 class FilledOrderInline(TradeActivityInline):
     model = models.FilledOrder
 
+    def order_time(self, obj):
+        return obj.exec_time.strftime('%H:%M')
+
+    order_time.short_description = 'Time'
+    order_time.admin_order_field = 'exec_time'
+
     readonly_fields = (
-        'symbol', 'exec_time', 'spread', 'side',
+        'symbol', 'order_time', 'spread', 'side',
         'quantity', 'pos_effect', 'expire_date', 'strike', 'contract',
         'price', 'net_price', 'order', 'link'
     )
+    exclude = ('exec_time', 'underlying', 'future', 'forex')
 
     ordering = ('exec_time', 'future', 'forex', 'underlying')
 
+    #suit_classes = 'suit-tab suit-tab-filled_order'
 
+
+# noinspection PyMethodMayBeStatic
 class WorkingOrderInline(TradeActivityInline):
     model = models.WorkingOrder
 
+    def order_time(self, obj):
+        return obj.time_placed.strftime('%H:%M')
+
+    order_time.short_description = 'Time'
+    order_time.admin_order_field = 'time_placed'
+
     readonly_fields = (
-        'symbol', 'time_placed', 'spread', 'side',
+        'symbol', 'order_time', 'spread', 'side',
         'quantity', 'pos_effect', 'expire_date', 'strike', 'contract',
         'price', 'order', 'tif', 'mark', 'status', 'link'
     )
+    exclude = ('time_placed', 'underlying', 'future', 'forex')
 
     ordering = ('time_placed', 'future', 'forex', 'underlying')
 
+    #suit_classes = 'suit-tab suit-tab-working_order'
 
+
+# noinspection PyMethodMayBeStatic
 class CancelledOrderInline(TradeActivityInline):
     model = models.CancelledOrder
 
+    def order_time(self, obj):
+        return obj.time_cancelled.strftime('%H:%M')
+
+    order_time.short_description = 'Time'
+    order_time.admin_order_field = 'time_cancelled'
+
     readonly_fields = (
-        'symbol', 'time_cancelled', 'spread', 'side', 'quantity', 'pos_effect',
+        'symbol', 'order_time', 'spread', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'order', 'tif', 'status', 'link'
     )
+    exclude = ('time_cancelled', 'underlying', 'future', 'forex')
 
     ordering = ('time_cancelled', 'future', 'forex', 'underlying')
+
+    #suit_classes = 'suit-tab suit-tab-cancelled_order'
 
 
 class RollingStrategyInline(TradeActivityInline):
@@ -103,8 +133,10 @@ class RollingStrategyInline(TradeActivityInline):
 
     ordering = ('active_time_start', 'underlying')
 
+    #suit_classes = 'suit-tab suit-tab-rolling_strategy'
 
-# noinspection PyMethodMayBeStatic
+
+# noinspection PyMethodMayBeStatic,PyUnusedLocal
 class TradeActivityAdmin(admin.ModelAdmin):
     inlines = (
         WorkingOrderInline, FilledOrderInline,
@@ -153,6 +185,7 @@ class TradeActivityAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Trade Activity', {
+            #'classes': ('suit-tab', 'suit-tab-general',),
             'fields': (
                 'statement', 'date'
             )
@@ -167,6 +200,19 @@ class TradeActivityAdmin(admin.ModelAdmin):
         return False
 
     list_per_page = 20
+
+    suit_form_tabs = (
+        ('general', 'General'),
+        ('working_order', 'Working Order'),
+        ('filled_order', 'Filled Order'),
+        ('cancelled_order', 'Cancelled Order'),
+        ('rolling_strategy', 'Rolling Strategy'),
+    )
+
+    # Read about form includes in next section
+    suit_form_includes = (
+        ('admin/app_pms/app_ta/working_order.html', 'middle', 'cities'),
+    )
 
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember
@@ -221,10 +267,28 @@ class TaAdmin(admin.ModelAdmin):
         return False
 
 
+class TaForm(ModelForm):
+    class Meta:
+        model = models.WorkingOrder
+        widgets = {
+            'time_placed': SuitSplitDateTimeWidget,
+            'exec_time': SuitSplitDateTimeWidget,
+            'time_cancelled': SuitSplitDateTimeWidget,
+        }
+
+
 # noinspection PyMethodMayBeStatic
 class WorkingOrderAdmin(TaAdmin):
+    form = TaForm
+
+    def order_time(self, obj):
+        return obj.time_placed.strftime('%H:%M')
+
+    order_time.short_description = 'Time'
+    order_time.admin_order_field = 'time_placed'
+
     list_display = (
-        'date', 'symbol', 'spread', 'time_placed', 'side', 'quantity', 'pos_effect',
+        'date', 'symbol', 'spread', 'order_time', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'order', 'tif', 'mark', 'status'
     )
 
@@ -241,10 +305,10 @@ class WorkingOrderAdmin(TaAdmin):
         ('Working Order', {
             'fields': (
                 'time_placed',
-                ('spread', 'side', 'quantity'),
-                ('expire_date', 'contract', 'strike'),
-                ('pos_effect', 'status', 'price'),
-                ('order', 'tif', 'mark')
+                'spread', 'side', 'quantity',
+                'expire_date', 'contract', 'strike',
+                'pos_effect', 'status', 'price',
+                'order', 'tif', 'mark'
             )
         }),
     )
@@ -257,8 +321,16 @@ class WorkingOrderAdmin(TaAdmin):
 
 # noinspection PyMethodMayBeStatic
 class FilledOrderAdmin(TaAdmin):
+    form = TaForm
+
+    def order_time(self, obj):
+        return obj.exec_time.strftime('%H:%M')
+
+    order_time.short_description = 'Time'
+    order_time.admin_order_field = 'exec_time'
+
     list_display = (
-        'date', 'symbol', 'spread', 'exec_time', 'side', 'quantity', 'pos_effect',
+        'date', 'symbol', 'spread', 'order_time', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'net_price', 'order'
     )
 
@@ -274,10 +346,10 @@ class FilledOrderAdmin(TaAdmin):
         ('Filled Order', {
             'fields': (
                 'exec_time',
-                ('spread', 'side', 'quantity'),
-                ('expire_date', 'contract', 'strike'),
-                ('pos_effect', 'price'),
-                ('order', 'net_price')
+                'spread', 'side', 'quantity',
+                'expire_date', 'contract', 'strike',
+                'pos_effect', 'price',
+                'order', 'net_price'
             )
         })
     )
@@ -287,8 +359,16 @@ class FilledOrderAdmin(TaAdmin):
 
 # noinspection PyMethodMayBeStatic
 class CancelledOrderAdmin(TaAdmin):
+    form = TaForm
+
+    def order_time(self, obj):
+        return obj.time_cancelled.strftime('%H:%M')
+
+    order_time.short_description = 'Time'
+    order_time.admin_order_field = 'time_cancelled'
+
     list_display = (
-        'date', 'symbol', 'spread', 'time_cancelled', 'side', 'quantity', 'pos_effect',
+        'date', 'symbol', 'spread', 'order_time', 'side', 'quantity', 'pos_effect',
         'expire_date', 'strike', 'contract', 'price', 'order', 'tif', 'status'
     )
 
@@ -305,10 +385,10 @@ class CancelledOrderAdmin(TaAdmin):
         ('Cancelled Order', {
             'fields': (
                 'time_cancelled',
-                ('spread', 'side', 'quantity'),
-                ('expire_date', 'contract', 'strike'),
-                ('pos_effect', 'status', 'price'),
-                ('order', 'tif')
+                'spread', 'side', 'quantity',
+                'expire_date', 'contract', 'strike',
+                'pos_effect', 'status', 'price',
+                'order', 'tif'
             )
         }),
     )
@@ -362,9 +442,9 @@ class RollingStrategyAdmin(admin.ModelAdmin):
         ('Rolling Strategy', {
             'fields': (
                 'strategy',
-                ('new_expire_date', 'call_by'), ('order_price', 'days_begin'),
-                ('active_time_start', 'active_time_end'),
-                ('move_to_market_time_start', 'move_to_market_time_end'),
+                'new_expire_date', 'call_by', 'order_price', 'days_begin',
+                'active_time_start', 'active_time_end',
+                'move_to_market_time_start', 'move_to_market_time_end',
                 'status'
             )
         }),
@@ -392,7 +472,3 @@ admin.site.register(models.WorkingOrder, WorkingOrderAdmin)
 admin.site.register(models.FilledOrder, FilledOrderAdmin)
 admin.site.register(models.CancelledOrder, CancelledOrderAdmin)
 admin.site.register(models.RollingStrategy, RollingStrategyAdmin)
-
-# todo: all models... waiting, add search and filter
-# todo: test all save change
-# todo: pos option missing option fields

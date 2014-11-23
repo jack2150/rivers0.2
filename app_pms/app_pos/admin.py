@@ -401,7 +401,7 @@ class PositionInstrumentAdmin(PsModelAdmin):
     """
     list_select_related = True
 
-    inlines = [PositionStockInline, PositionOptionsInline]
+    inlines = (PositionStockInline, PositionOptionsInline)
 
     def equity(self, obj):
         return obj.positionequity_set.exclude(quantity=0).count()
@@ -425,8 +425,8 @@ class PositionInstrumentAdmin(PsModelAdmin):
         }),
         ('Instrument', {
             'fields': (
-                ('delta', 'gamma', 'theta', 'vega'),
-                ('pct_change', 'pl_open', 'pl_day', 'bp_effect')
+                'delta', 'gamma', 'theta', 'vega',
+                'pct_change', 'pl_open', 'pl_day', 'bp_effect'
             )
         }),
     )
@@ -484,8 +484,8 @@ class PositionEquityAdmin(PsModelAdmin):
         }),
         ('Equity', {
             'fields': (
-                ('trade_price', 'mark', 'mark_change', 'quantity'),
-                ('pct_change', 'pl_open', 'pl_day', 'bp_effect')
+                'trade_price', 'mark', 'mark_change', 'quantity',
+                'pct_change', 'pl_open', 'pl_day', 'bp_effect'
             )
         }),
     )
@@ -556,10 +556,10 @@ class PositionOptionAdmin(PsModelAdmin):
         }),
         ('Detail', {
             'fields': (
-                ('quantity', 'days'),
-                ('mark', 'mark_change', 'trade_price'),
-                ('delta', 'gamma', 'theta', 'vega'),
-                ('pct_change', 'pl_open', 'pl_day', 'bp_effect')
+                'quantity', 'days',
+                'mark', 'mark_change', 'trade_price',
+                'delta', 'gamma', 'theta', 'vega',
+                'pct_change', 'pl_open', 'pl_day', 'bp_effect'
             )
         }),
         ('Option', {
@@ -685,8 +685,3 @@ admin.site.register(models.PositionEquity, PositionEquityAdmin)
 admin.site.register(models.PositionOption, PositionOptionAdmin)
 admin.site.register(models.PositionFuture, PositionFutureAdmin)
 admin.site.register(models.PositionForex, PositionForexAdmin)
-
-
-
-
-# todo: update to better interface
