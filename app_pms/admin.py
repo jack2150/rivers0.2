@@ -5,10 +5,12 @@ from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
+from django.forms import ModelForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django import forms
 from pandas.tseries.offsets import BDay
+from suit.widgets import AutosizedTextarea
 from app_pms import models
 from app_pms.app_acc.models import SaveAccountStatement, AccountStatement
 from app_pms.app_pos.models import SavePositionStatement, PositionStatement
@@ -262,20 +264,31 @@ class TradeActivityInline(admin.TabularInline):
     readonly_fields = ('date', 'trade_activity_link')
 
 
+class StatementForm(ModelForm):
+    class Meta:
+        widgets = {
+            'account_statement': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
+            'position_statement': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
+            'trade_activity': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
+        }
+
+
 # noinspection PyMethodMayBeStatic
 class StatementAdmin(admin.ModelAdmin):
+    form = StatementForm
+
     def account_statement_detail(self, obj):
         acc = obj.account_statement
-        output = "Line Count: %d<br>" % len(acc.split('\n'))
-        output += "Account Summary Exists: %s<br>" % ('Account Summary' in acc)
-        output += "Profits and Losses Exists: %s<br>" % ('Profits and Losses' in acc)
-        output += "Account Trade History Exists: %s<br>" % ('Account Trade' in acc)
-        output += "Account Order History Exists: %s<br>" % ('Account Order' in acc)
-        output += "Cash Balance Exists: %s<br>" % ('Cash Balance' in acc)
-        output += "Options Exists: %s<br>" % ('Options' in acc)
-        output += "Stocks Exists: %s<br>" % ('Stocks' in acc)
-        output += "Futures Statements Exists: %s<br>" % ('Futures Statements' in acc)
-        output += "Forex Statements Exists: %s<br>" % ('Forex Statements' in acc)
+        output = "Line Count: %d, " % len(acc.split('\n'))
+        output += "Account Summary Exists: %s, " % ('Account Summary' in acc)
+        output += "Profits and Losses Exists: %s, " % ('Profits and Losses' in acc)
+        output += "Account Trade History Exists: %s, " % ('Account Trade' in acc)
+        output += "Account Order History Exists: %s, " % ('Account Order' in acc)
+        output += "Cash Balance Exists: %s, " % ('Cash Balance' in acc)
+        output += "Options Exists: %s, " % ('Options' in acc)
+        output += "Stocks Exists: %s, " % ('Stocks' in acc)
+        output += "Futures Statements Exists: %s, " % ('Futures Statements' in acc)
+        output += "Forex Statements Exists: %s" % ('Forex Statements' in acc)
         return output
 
     account_statement_detail.allow_tags = True
@@ -304,11 +317,11 @@ class StatementAdmin(admin.ModelAdmin):
 
         overall_count = sum(map(lambda x: True if len(x) else False, lines[-6:-1]))
 
-        output = "Line Count: %d<br>" % len(lines)
-        output += "Instrument Position Count: %s<br>" % instrument_count
-        output += "Stock Position Count: %s<br>" % stock_count
-        output += "Option Position Count: %s<br>" % options_count
-        output += "Position Overall Count: %s<br>" % overall_count
+        output = "Line Count: %d, " % len(lines)
+        output += "Instrument Position Count: %s, " % instrument_count
+        output += "Stock Position Count: %s, " % stock_count
+        output += "Option Position Count: %s, " % options_count
+        output += "Position Overall Count: %s" % overall_count
         return output
 
     position_statement_detail.allow_tags = True
@@ -316,11 +329,11 @@ class StatementAdmin(admin.ModelAdmin):
 
     def trade_activity_detail(self, obj):
         ta = obj.trade_activity
-        output = "Line Count: %d<br>" % len(ta.split('\n'))
-        output += "Working Orders Exists: %s<br>" % ('Working Orders' in ta)
-        output += "Filled Orders Exists: %s<br>" % ('Filled Orders' in ta)
-        output += "Cancelled Orders Exists: %s<br>" % ('Cancelled Orders' in ta)
-        output += "Rolling Strategies Exists: %s<br>" % ('Rolling Strategies' in ta)
+        output = "Line Count: %d, " % len(ta.split('\n'))
+        output += "Working Orders Exists: %s, " % ('Working Orders' in ta)
+        output += "Filled Orders Exists: %s, " % ('Filled Orders' in ta)
+        output += "Cancelled Orders Exists: %s, " % ('Cancelled Orders' in ta)
+        output += "Rolling Strategies Exists: %s" % ('Rolling Strategies' in ta)
         return output
 
     trade_activity_detail.allow_tags = True
@@ -373,9 +386,9 @@ class StatementAdmin(admin.ModelAdmin):
         }),
         ('Statements', {
             'fields': (
-                ('account_statement', 'account_statement_detail', 'account_statement_link'),
-                ('position_statement', 'position_statement_detail', 'position_statement_link'),
-                ('trade_activity', 'trade_activity_detail', 'trade_activity_link')
+                'account_statement', 'account_statement_detail', 'account_statement_link',
+                'position_statement', 'position_statement_detail', 'position_statement_link',
+                'trade_activity', 'trade_activity_detail', 'trade_activity_link'
             )
         }),
 

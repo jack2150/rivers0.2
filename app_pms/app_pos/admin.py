@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.core.urlresolvers import reverse
-from django.db.models import Q, Count, Max
+from django.db.models import Q, Count
 from app_pms.app_pos import models
 import locale
 
@@ -61,8 +61,20 @@ class PositionInstrumentInline(PositionStatementInlinePL):
     """
     model = models.PositionInstrument
 
+    def symbol(self, obj):
+        url = reverse(
+            'admin:%s_%s_change' % (
+                obj.underlying._meta.app_label,
+                obj.underlying._meta.module_name
+            ),
+            args=(obj.underlying.id,)
+        )
+        return '<a href="%s">%s</a>' % (url, obj.underlying.symbol)
+
+    symbol.allow_tags = True
+
     fields = (
-        'underlying', 'delta', 'gamma', 'theta', 'vega',
+        'symbol', 'delta', 'gamma', 'theta', 'vega',
         'pct_change', 'formatted_pl_open', 'formatted_pl_day',
         'bp_effect', 'profit_loss', 'link'
     )
@@ -70,7 +82,7 @@ class PositionInstrumentInline(PositionStatementInlinePL):
     readonly_fields = (
         'underlying', 'delta', 'gamma', 'theta', 'vega',
         'pct_change', 'formatted_pl_open', 'formatted_pl_day',
-        'bp_effect', 'profit_loss', 'link'
+        'bp_effect', 'profit_loss', 'link', 'symbol'
     )
     #exclude = ('delta', 'gamma', 'theta', 'vega')
     extra = 0
@@ -85,8 +97,20 @@ class PositionFutureInline(PositionStatementInlinePL):
     """
     model = models.PositionFuture
 
+    def symbol(self, obj):
+        url = reverse(
+            'admin:%s_%s_change' % (
+                obj.future._meta.app_label,
+                obj.future._meta.module_name
+            ),
+            args=(obj.future.id,)
+        )
+        return '<a href="%s">%s</a>' % (url, obj.future.symbol)
+
+    symbol.allow_tags = True
+
     fields = (
-        'future', 'quantity', 'days', 'trade_price',
+        'symbol', 'quantity', 'days', 'trade_price',
         'mark', 'mark_change', 'pct_change', 'pl_open', 'pl_day', 'bp_effect',
         'profit_loss', 'link'
     )
@@ -94,7 +118,7 @@ class PositionFutureInline(PositionStatementInlinePL):
     readonly_fields = (
         'future', 'quantity', 'days', 'trade_price',
         'mark', 'mark_change', 'pct_change', 'pl_open', 'pl_day', 'bp_effect',
-        'profit_loss', 'link'
+        'profit_loss', 'link', 'symbol'
     )
     # exclude = ('delta', 'gamma', 'theta', 'vega')
     extra = 0
@@ -109,8 +133,20 @@ class PositionForexInline(PositionStatementInlinePL):
     """
     model = models.PositionForex
 
+    def symbol(self, obj):
+        url = reverse(
+            'admin:%s_%s_change' % (
+                obj.forex._meta.app_label,
+                obj.forex._meta.module_name
+            ),
+            args=(obj.forex.id,)
+        )
+        return '<a href="%s">%s</a>' % (url, obj.forex.symbol)
+
+    symbol.allow_tags = True
+
     fields = (
-        'forex', 'quantity', 'trade_price', 'mark', 'mark_change',
+        'symbol', 'quantity', 'trade_price', 'mark', 'mark_change',
         'pct_change', 'pl_open', 'pl_day', 'bp_effect',
         'profit_loss', 'link'
     )
@@ -118,7 +154,7 @@ class PositionForexInline(PositionStatementInlinePL):
     readonly_fields = (
         'forex', 'quantity', 'trade_price', 'mark', 'mark_change',
         'pct_change', 'pl_open', 'pl_day', 'bp_effect',
-        'profit_loss', 'link'
+        'profit_loss', 'link', 'symbol'
     )
     # exclude = ('delta', 'gamma', 'theta', 'vega')
     extra = 0
@@ -418,7 +454,6 @@ class PositionInstrumentAdmin(PsModelAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('wide', 'collapse', 'open'),
             'fields': (
                 ('position_statement', 'underlying')
             )
@@ -479,7 +514,6 @@ class PositionEquityAdmin(PsModelAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('wide', 'collapse', 'open'),
             'fields': ('position_statement', 'instrument', 'underlying')
         }),
         ('Equity', {
@@ -551,7 +585,6 @@ class PositionOptionAdmin(PsModelAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('wide', 'collapse', 'open'),
             'fields': ('position_statement', 'instrument', 'underlying')
         }),
         ('Detail', {
@@ -611,7 +644,6 @@ class PositionFutureAdmin(PsModelAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('wide', 'collapse', 'open'),
             'fields': ('position_statement', 'future')
         }),
         ('Detail', {
@@ -662,7 +694,6 @@ class PositionForexAdmin(PsModelAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('wide', 'collapse', 'open'),
             'fields': ('position_statement', 'forex')
         }),
         ('Position Forex', {

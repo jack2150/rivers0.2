@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     # plugin package
     'suit',
-    'adminplus',
+    #'adminplus',
 
     # django
     'django.contrib.admin',
@@ -108,13 +108,13 @@ TEMPLATE_DIRS = (
 )
 
 # Django admin suit
-"""
+
 SUIT_CONFIG = {
     'ADMIN_NAME': 'Portfolio Management System',
     'HEADER_DATE_FORMAT': 'Y-m-d',  # Saturday, 16th March 2013
     'HEADER_TIME_FORMAT': 'H:i',  # 18:42
 
-    'SHOW_REQUIRED_ASTERISK': False,
+    'SHOW_REQUIRED_ASTERISK': True,
     'CONFIRM_UNSAVED_CHANGES': False,
 
     # Set to empty string if you want to hide search from menu
@@ -124,4 +124,4 @@ SUIT_CONFIG = {
 
     # icon demo in http://getbootstrap.com/components/
 }
-"""
+

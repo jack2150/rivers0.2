@@ -269,7 +269,6 @@ class TaAdmin(admin.ModelAdmin):
 
 class TaForm(ModelForm):
     class Meta:
-        model = models.WorkingOrder
         widgets = {
             'time_placed': SuitSplitDateTimeWidget,
             'exec_time': SuitSplitDateTimeWidget,
