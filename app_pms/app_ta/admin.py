@@ -192,6 +192,8 @@ class TradeActivityAdmin(admin.ModelAdmin):
         }),
     )
 
+    readonly_fields = ('statement', 'date')
+
     date_hierarchy = 'date'
 
     ordering = ('-date', )
@@ -298,7 +300,6 @@ class WorkingOrderAdmin(TaAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('collapse', 'open'),
             'fields': ('trade_activity', 'underlying', 'future', 'forex')
         }),
         ('Working Order', {
@@ -339,7 +340,6 @@ class FilledOrderAdmin(TaAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('collapse', 'open'),
             'fields': ('trade_activity', 'underlying', 'future', 'forex')
         }),
         ('Filled Order', {
@@ -378,7 +378,6 @@ class CancelledOrderAdmin(TaAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('collapse', 'open'),
             'fields': ('trade_activity', 'underlying', 'future', 'forex')
         }),
         ('Cancelled Order', {
@@ -435,7 +434,6 @@ class RollingStrategyAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('collapse', 'open'),
             'fields': ('trade_activity', 'underlying')
         }),
         ('Rolling Strategy', {
