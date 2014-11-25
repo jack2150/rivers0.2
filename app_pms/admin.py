@@ -10,13 +10,189 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django import forms
 from pandas.tseries.offsets import BDay
-from suit.widgets import AutosizedTextarea
+from suit.widgets import AutosizedTextarea, SuitDateWidget
 from app_pms import models
 from app_pms.app_acc.models import SaveAccountStatement, AccountStatement
 from app_pms.app_pos.models import SavePositionStatement, PositionStatement
 from app_pms.app_ta.models import SaveTradeActivity, TradeActivity
-from django.contrib.admin import widgets
 from django.contrib.admin.models import LogEntry, ADDITION
+
+
+class AccountStatementFile(forms.FileField):
+    def validate(self, value):
+        """
+        Validate file name of account statement file
+        :param value: dict
+        """
+        super(AccountStatementFile, self).validate(value)
+
+        fname = os.path.basename(value.name)
+        validate_filename(fname, 'AccountStatement')
+
+
+class PositionStatementFile(forms.FileField):
+    def validate(self, value):
+        """
+        Validate file name of position statement file
+        :param value: dict
+        """
+        super(PositionStatementFile, self).validate(value)
+
+        fname = os.path.basename(value.name)
+        validate_filename(fname, 'PositionStatement')
+
+
+class TradeActivityFile(forms.FileField):
+    def validate(self, value):
+        """
+        Validate file name of position file
+        :param value: dict
+        """
+        super(TradeActivityFile, self).validate(value)
+
+        fname = os.path.basename(value.name)
+        validate_filename(fname, 'TradeActivity')
+
+
+def validate_filename(fname, validate_str):
+    """
+    Validate filename for all statements
+    :param fname: str
+    :param validate_str: str
+    :return: None
+    """
+    if validate_str in fname:
+        try:
+            datetime.strptime(fname[:10], '%Y-%m-%d')
+        except ValueError:
+            raise forms.ValidationError('Incorrect file date: %s' % fname)
+
+        if fname.split('.', 1)[1] != 'csv':
+            raise forms.ValidationError('Incorrect file extension: %s' % fname)
+    else:
+        raise forms.ValidationError('Incorrect filename: %s' % fname)
+
+
+class PmsImportStatementsForm(forms.Form):
+    date = forms.DateField(
+        # widget=widgets.AdminDateWidget
+        widget=SuitDateWidget
+    )
+
+    account_statement = AccountStatementFile(
+        label='Account Statement'
+    )
+
+    position_statement = PositionStatementFile(
+        label='Position Statement'
+    )
+
+    trade_activity = TradeActivityFile(
+        label='Trace Activity'
+    )
+
+    def clean(self):
+        """
+        Validate date for file date and all import file name date
+        """
+        cleaned_data = super(PmsImportStatementsForm, self).clean()
+
+        if not len(self._errors):
+            # no error found for field
+            file_date = cleaned_data.get("date").strftime('%Y-%m-%d')
+
+            acc_date = datetime.strptime(
+                cleaned_data.get("account_statement").name[:10], '%Y-%m-%d'
+            )
+            pos_date = datetime.strptime(
+                cleaned_data.get("position_statement").name[:10], '%Y-%m-%d'
+            )
+            ta_date = datetime.strptime(
+                cleaned_data.get("trade_activity").name[:10], '%Y-%m-%d'
+            )
+
+            acc_date = acc_date - BDay(1)
+            acc_date = acc_date.strftime('%Y-%m-%d')
+            pos_date = pos_date - BDay(1)
+            pos_date = pos_date.strftime('%Y-%m-%d')
+            ta_date = ta_date - BDay(1)
+            ta_date = ta_date.strftime('%Y-%m-%d')
+
+            if acc_date == pos_date == ta_date:
+                if file_date != acc_date:
+                    error_message = 'All date must have (-1 BDay, %s != %s).' % (file_date, acc_date)
+                    self._errors['date'] = self.error_class([error_message])
+            else:
+                error_message = 'All file date must be same.'
+                self._errors['date'] = self.error_class([error_message])
+
+
+@staff_member_required
+def statement_import(request, statement_id=0):
+    # custom view which should return an HttpResponse
+    # return HttpResponse('something')
+    template = 'admin/app_pms/statement/import_statement.html'
+    # template = 'admin/app_pms/statement/old.html'
+
+    if request.method == 'POST':
+        import_statement_form = PmsImportStatementsForm(request.POST, request.FILES)
+        if import_statement_form.is_valid():
+            date = request.POST['date']
+            acc_data = request.FILES['account_statement'].read()
+            pos_data = request.FILES['position_statement'].read()
+            ta_data = request.FILES['trade_activity'].read()
+
+            statement = models.Statement(
+                date=date,
+                account_statement=acc_data,
+                position_statement=pos_data,
+                trade_activity=ta_data
+            )
+            statement.save()
+
+            # save acc, pos, ta into db
+
+            SaveAccountStatement(
+                date=date,
+                statement=statement,
+                file_data=acc_data
+            ).save_all()
+
+            SavePositionStatement(
+                date=date,
+                statement=statement,
+                file_data=pos_data
+            ).save_all()
+
+            SaveTradeActivity(
+                date=date,
+                statement=statement,
+                file_data=ta_data
+            ).save_all()
+
+            # log import
+            LogEntry.objects.log_action(
+                user_id=request.user.id,
+                content_type_id=ContentType.objects.get_for_model(models.Statement).id,
+                object_id=statement.id,
+                object_repr=statement.__unicode__(),
+                action_flag=ADDITION
+            )
+
+            return HttpResponseRedirect(
+                # reverse('admin:pms_app_statement_change', args=(statements.id,))
+                reverse('admin:statement_import', kwargs=dict(statement_id=statement.id))
+            )
+    else:
+        import_statement_form = PmsImportStatementsForm()
+
+    parameters = dict(
+        request=request,
+        form=import_statement_form,
+        statement_id=statement_id
+    )
+
+    return render(request, template, parameters)
 
 
 # noinspection PyMethodMayBeStatic
@@ -74,114 +250,6 @@ class ForexAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return False
-
-
-def validate_filename(fname, validate_str):
-    """
-    Validate filename for all statements
-    :param fname: str
-    :param validate_str: str
-    :return: None
-    """
-    if validate_str in fname:
-        try:
-            datetime.strptime(fname[:10], '%Y-%m-%d')
-        except ValueError:
-            raise forms.ValidationError('Incorrect file date: %s' % fname)
-
-        if fname.split('.', 1)[1] != 'csv':
-            raise forms.ValidationError('Incorrect file extension: %s' % fname)
-    else:
-        raise forms.ValidationError('Incorrect filename: %s' % fname)
-
-
-class AccountStatementFile(forms.FileField):
-    def validate(self, value):
-        """
-        Validate file name of account statement file
-        :param value: dict
-        """
-        super(AccountStatementFile, self).validate(value)
-
-        fname = os.path.basename(value.name)
-        validate_filename(fname, 'AccountStatement')
-
-
-class PositionStatementFile(forms.FileField):
-    def validate(self, value):
-        """
-        Validate file name of position statement file
-        :param value: dict
-        """
-        super(PositionStatementFile, self).validate(value)
-
-        fname = os.path.basename(value.name)
-        validate_filename(fname, 'PositionStatement')
-
-
-class TradeActivityFile(forms.FileField):
-    def validate(self, value):
-        """
-        Validate file name of position file
-        :param value: dict
-        """
-        super(TradeActivityFile, self).validate(value)
-
-        fname = os.path.basename(value.name)
-        validate_filename(fname, 'TradeActivity')
-
-
-class PmsImportStatementsForm(forms.Form):
-    date = forms.DateField(
-        widget=widgets.AdminDateWidget
-    )
-
-    account_statement = AccountStatementFile(
-        label='Account Statement'
-    )
-
-    position_statement = PositionStatementFile(
-        label='Position Statement'
-    )
-
-    trade_activity = TradeActivityFile(
-        label='Trace Activity'
-    )
-
-    def clean(self):
-        """
-        Validate date for file date and all import file name date
-        """
-        cleaned_data = super(PmsImportStatementsForm, self).clean()
-
-        if not len(self._errors):
-            # no error found for field
-            file_date = cleaned_data.get("date").strftime('%Y-%m-%d')
-
-            acc_date = datetime.strptime(
-                cleaned_data.get("account_statement").name[:10], '%Y-%m-%d'
-            )
-            pos_date = datetime.strptime(
-                cleaned_data.get("position_statement").name[:10], '%Y-%m-%d'
-            )
-            ta_date = datetime.strptime(
-                cleaned_data.get("trade_activity").name[:10], '%Y-%m-%d'
-            )
-
-            acc_date = acc_date - BDay(1)
-            acc_date = acc_date.strftime('%Y-%m-%d')
-            pos_date = pos_date - BDay(1)
-            pos_date = pos_date.strftime('%Y-%m-%d')
-            ta_date = ta_date - BDay(1)
-            ta_date = ta_date.strftime('%Y-%m-%d')
-
-            if acc_date == pos_date == ta_date:
-                if file_date != acc_date:
-                    error_message = 'All date must have (-1 BDay, %s != %s).' % (file_date, acc_date)
-                    self._errors['date'] = self.error_class([error_message])
-            else:
-                error_message = 'All file date must be same.'
-                self._errors['date'] = self.error_class([error_message])
 
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember
@@ -267,6 +335,7 @@ class TradeActivityInline(admin.TabularInline):
 class StatementForm(ModelForm):
     class Meta:
         widgets = {
+            'date': SuitDateWidget(),
             'account_statement': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
             'position_statement': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
             'trade_activity': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
@@ -395,7 +464,7 @@ class StatementAdmin(admin.ModelAdmin):
     )
 
     readonly_fields = (
-        'date', 'account_statement_detail', 'position_statement_detail',
+        'account_statement_detail', 'position_statement_detail',
         'trade_activity_detail', 'account_statement_link',
         'position_statement_link', 'trade_activity_link'
     )
@@ -407,94 +476,24 @@ class StatementAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
-    def get_urls(self):
-        urls = super(StatementAdmin, self).get_urls()
-        my_urls = [
-            url(
-                r'^import_statements/$',
-                self.import_statement,
-                name='import_statement',
-            ),
-            url(
-                r'^import_statements/(?P<statement_id>\d)/$',
-                self.import_statement,
-                name='import_statement',
-            ),
-        ]
-        return my_urls + urls
-
-    @staticmethod
-    @staff_member_required
-    def import_statement(request, statement_id=0):
-        # custom view which should return an HttpResponse
-        # return HttpResponse('something')
-        template = 'admin/app_pms/statement/import_statement.html'
-
-        if request.method == 'POST':
-            import_statement_form = PmsImportStatementsForm(request.POST, request.FILES)
-            if import_statement_form.is_valid():
-                date = request.POST['date']
-                acc_data = request.FILES['account_statement'].read()
-                pos_data = request.FILES['position_statement'].read()
-                ta_data = request.FILES['trade_activity'].read()
-
-                statement = models.Statement(
-                    date=date,
-                    account_statement=acc_data,
-                    position_statement=pos_data,
-                    trade_activity=ta_data
-                )
-                statement.save()
-
-                # save acc, pos, ta into db
-
-                SaveAccountStatement(
-                    date=date,
-                    statement=statement,
-                    file_data=acc_data
-                ).save_all()
-
-                SavePositionStatement(
-                    date=date,
-                    statement=statement,
-                    file_data=pos_data
-                ).save_all()
-
-                SaveTradeActivity(
-                    date=date,
-                    statement=statement,
-                    file_data=ta_data
-                ).save_all()
-
-                # log import
-                LogEntry.objects.log_action(
-                    user_id=request.user.id,
-                    content_type_id=ContentType.objects.get_for_model(models.Statement).id,
-                    object_id=statement.id,
-                    object_repr=statement.__unicode__(),
-                    action_flag=ADDITION
-                )
-
-                return HttpResponseRedirect(
-                    #reverse('admin:pms_app_statement_change', args=(statements.id,))
-                    reverse('admin:import_statement', kwargs=dict(statement_id=statement.id))
-                )
-        else:
-            import_statement_form = PmsImportStatementsForm()
-
-        parameters = dict(
-            request=request,
-            form=import_statement_form,
-            statement_id=statement_id
-        )
-
-        return render(request, template, parameters)
-
 
 admin.site.register(models.Statement, StatementAdmin)
 
 admin.site.register(models.Underlying, UnderlyingAdmin)
 admin.site.register(models.Future, FutureAdmin)
 admin.site.register(models.Forex, ForexAdmin)
+
+admin.site.register_view(
+    'statement/import/$',
+    urlname='statement_import',
+    view=statement_import
+)
+admin.site.register_view(
+    'statement/import/(?P<statement_id>\d+)/$',
+    urlname='statement_import',
+    view=statement_import
+)
+
+
 
 #admin.site.template = 'admin/app_pms/app_index.html'

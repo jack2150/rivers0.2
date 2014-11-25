@@ -1,0 +1,103 @@
+{% extends "admin/app_index.html" %}
+{% block branding %}
+    <h1 id="site-name">Portfolio Management System</h1>
+{% endblock %}
+
+{% block title %}Import Statement{% endblock %}
+
+{% block extrastyle %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %} "/>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %} "/>
+{% endblock %}
+{% block extrahead %}
+    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/jquery.js' %}"></script>
+
+    {{ form.media }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">Home</a>
+        &rsaquo;
+        <a href="{% url 'admin:app_list' 'pms_app' %}">Pms App</a>
+        &rsaquo;
+        Import Statement
+    </div>
+    {% if statement_id %}
+        <ul class="messagelist">
+            <li class="success">
+                All statements was inserted successfully. To view statements
+                data <a href="{% url 'admin:app_pms_statement_change' statement_id %}">click here</a>.
+            </li>
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block content_title %}
+    <h1>Import Statement</h1>
+
+{% endblock %}
+
+{% block content %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <form action="{% url 'admin:import_statement' %}"
+          method="post" enctype="multipart/form-data">
+        {% if form.errors %}
+            <p class="errornote"> Please correct the error below. </p>
+        {% endif %}
+
+        <fieldset class="module aligned ">
+            <h2>Position Statement</h2>
+            {% csrf_token %}
+            <div class="form-row">
+                <div>
+                    {{ form.date.errors }}
+                    <label class="required" for="id_file_date">
+                        {{ form.date.label }}:
+                    </label>
+                    {{ form.date }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div>
+                    {{ form.account_statement.errors }}
+                    <label class="required" style="width: 140px">
+                        {{ form.account_statement.label }}:
+                    </label>
+                    {{ form.account_statement }}
+                    {{ form.account_statement.help_text }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div>
+                    {{ form.position_statement.errors }}
+                    <label class="required" style="width: 140px">
+                        {{ form.position_statement.label }}:
+                    </label>
+                    {{ form.position_statement }}
+                    {{ form.position_statement.help_text }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div>
+                    {{ form.trade_activity.errors }}
+                    <label class="required" style="width: 140px">
+                        {{ form.trade_activity.label }}:
+                    </label>
+                    {{ form.trade_activity }}
+                    {{ form.trade_activity.help_text }}
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="submit-row">
+            <input type="submit" value="Upload Statements"/>
+        </div>
+
+    </form>
+
+{% endblock %}
+

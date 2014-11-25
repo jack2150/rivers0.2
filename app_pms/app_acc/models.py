@@ -329,7 +329,7 @@ class TradeHistory(models.Model, AccountModel):
         )
 
 
-class ProfitLoss(models.Model):
+class ProfitLoss(models.Model, AccountModel):
     account_statement = models.ForeignKey(AccountStatement)
 
     # either one but not both

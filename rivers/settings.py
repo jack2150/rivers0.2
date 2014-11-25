@@ -30,9 +30,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    # plugin package
+    # plugin package, django suit and adminplus
     'suit',
-    #'adminplus',
+    'adminplus',
 
     # django
     'django.contrib.admin',

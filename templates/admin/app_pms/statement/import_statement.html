@@ -1,103 +1,163 @@
-{% extends "admin/app_index.html" %}
-{% block branding %}
-    <h1 id="site-name">Portfolio Management System</h1>
-{% endblock %}
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_modify suit_tags admin_urls %}
+{% load url from future %}
 
-{% block title %}Import Statement{% endblock %}
-
-{% block extrastyle %}
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %} "/>
-    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %} "/>
-{% endblock %}
-{% block extrahead %}
-    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/jquery.js' %}"></script>
+{% block extrahead %}{{ block.super }}
+    {% url 'admin:jsi18n' as jsi18nurl %}
+    <script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}admin/js/core.js"></script>
 
     {{ form.media }}
 {% endblock %}
 
+
+{% block title %}Import Statement{% endblock %}
+
 {% block breadcrumbs %}
-    <div class="breadcrumbs">
-        <a href="{% url 'admin:index' %}">Home</a>
-        &rsaquo;
-        <a href="{% url 'admin:app_list' 'pms_app' %}">Pms App</a>
-        &rsaquo;
-        Import Statement
-    </div>
-    {% if statement_id %}
-    <ul class="messagelist">
-        <li class="success">
-            All statements was inserted successfully. To view statements
-            data <a href="{% url 'admin:app_pms_statement_change' statement_id %}">click here</a>.
+    <ul class="breadcrumb">
+        <li>
+            <a href="{% url 'admin:index' %}">Home</a>
+            <span class="divider">&raquo;</span>
+        </li>
+        <li>
+            <a href="{% url 'admin:app_list' 'app_pms' %}">App_pms</a>
+            <span class="divider">&raquo;</span>
+        </li>
+        <li class="active">
+            Import Statement
         </li>
     </ul>
-    {% endif %}
 {% endblock %}
 
-{% block content_title %}
-    <h1>Import Statement</h1>
-
-{% endblock %}
 
 {% block content %}
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <form action="{% url 'admin:import_statement' %}"
-          method="post" enctype="multipart/form-data">
-        {% if form.errors %}
-            <p class="errornote"> Please correct the error below. </p>
-        {% endif %}
+<div id="content" class="colM row-fluid">
+<div id="content-main" class="inner-two-columns">
+<form method="post" enctype="multipart/form-data" action="{% url 'admin:statement_import' 0 %}"
+      id="import_statement_form" class="form-horizontal">
 
-        <fieldset class="module aligned ">
-            <h2>Position Statement</h2>
-                {% csrf_token %}
-                <div class="form-row">
-                    <div>
-                        {{ form.date.errors }}
-                        <label class="required" for="id_file_date">
-                            {{ form.date.label }}:
-                        </label>
-                        {{ form.date }}
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div>
-                        {{ form.account_statement.errors }}
-                        <label class="required" style="width: 140px">
-                            {{ form.account_statement.label }}:
-                        </label>
-                        {{ form.account_statement }}
-                        {{ form.account_statement.help_text }}
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div>
-                        {{ form.position_statement.errors }}
-                        <label class="required" style="width: 140px">
-                            {{ form.position_statement.label }}:
-                        </label>
-                        {{ form.position_statement }}
-                        {{ form.position_statement.help_text }}
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div>
-                        {{ form.trade_activity.errors }}
-                        <label class="required" style="width: 140px">
-                            {{ form.trade_activity.label }}:
-                        </label>
-                        {{ form.trade_activity }}
-                        {{ form.trade_activity.help_text }}
-                    </div>
-                </div>
-        </fieldset>
+    <div class="inner-right-column">
+        <div class="box save-box">
+            <div class="submit-row clearfix">
+                <button type="submit" class="btn btn-high btn-info" name="_save">
+                    Upload Statements
+                </button>
+            </div>
+        </div>
+    </div>
 
-        <div class="submit-row">
-            <input type="submit" value="Upload Statements"/>
+    <div class="inner-center-column">
+        {% csrf_token %}
+        <div class="tab-content tab-content-main">
+
+
+            {% if form.errors %}
+                <div class="alert alert-error"> Please correct the error below.</div>
+            {% endif %}
+
+            {% if statement_id %}
+            <div class="alert alert-success">
+                <button class="close" data-dismiss="alert">×</button>
+                All statements was inserted successfully. To view statements data
+                <a href="{% url 'admin:app_pms_statement_change' statement_id %}">click here</a>.
+            </div>
+            {% endif %}
+
+            <fieldset class="module aligned with-legend">
+                <h2 class="legend">Import Statement</h2>
+
+                <div class="control-group form-row field-account_statement ">
+                    <div>
+                        <div class="control-label">
+                            <label>{{ form.date.label }}:</label>
+                        </div>
+                        <div class="controls">
+                            {{ form.date }}
+                                <span class="help-inline">
+                                    {{ form.date.help_text }}
+
+                                    {% if form.date.errors %}
+                                        <ul class="errorlist">
+                                            {% for error in form.date.errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group form-row field-account_statement ">
+                    <div>
+                        <div class="control-label">
+                            <label>{{ form.account_statement.label }}:</label>
+                        </div>
+                        <div class="controls">
+                            {{ form.account_statement }}
+                                <span class="help-inline">
+                                    {{ form.account_statement.help_text }}
+                                    {% if form.account_statement.errors %}
+                                        <ul class="errorlist">
+                                            {% for error in form.account_statement.errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group form-row field-account_statement ">
+                    <div>
+                        <div class="control-label">
+                            <label>{{ form.position_statement.label }}:</label>
+                        </div>
+                        <div class="controls">
+                            {{ form.position_statement }}
+                                <span class="help-inline">
+                                    {{ form.position_statement.help_text }}
+                                    {% if form.position_statement.errors %}
+                                        <ul class="errorlist">
+                                            {% for error in form.position_statement.errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group form-row field-account_statement ">
+                    <div>
+                        <div class="control-label">
+                            <label>{{ form.trade_activity.label }}:</label>
+                        </div>
+                        <div class="controls">
+                            {{ form.trade_activity }}
+                                <span class="help-inline">
+                                    {{ form.trade_activity.help_text }}
+                                    {% if form.trade_activity.errors %}
+                                        <ul class="errorlist">
+                                            {% for error in form.trade_activity.errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </span>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
         </div>
 
-    </form>
 
+    </div>
+
+</form>
+</div></div>
 {% endblock %}
 
