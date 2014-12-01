@@ -270,6 +270,9 @@ class TestOpenTASaveAll(TestSetUp):
         TestSetUp.setUp(self)
 
         self.ta_files = glob(test_ta_path + '/*.csv')
+        self.ta_files = self.ta_files + [
+            os.path.join(test_path, '2014-11-25', '2014-11-25-TradeActivity.csv')
+        ]
 
     def insert_db(self, no, trade_activity, test_model, data_list):
         """

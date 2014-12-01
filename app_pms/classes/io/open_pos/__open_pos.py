@@ -211,6 +211,8 @@ class OpenPos(OpenCSV):
 
         self.convert_specific_type(self.future_position, 'quantity', int, 0)
         self.convert_specific_type(self.future_position, 'days', int, 0)
+        self.convert_specific_type(self.future_position, 'mark', float, 0.0)
+        self.convert_specific_type(self.future_position, 'mark_change', float, 0.0)
 
     def set_forex_position(self):
         """
@@ -244,6 +246,8 @@ class OpenPos(OpenCSV):
         self.forex_position = forex_position
 
         self.convert_specific_type(self.forex_position, 'quantity', int, 0)
+        self.convert_specific_type(self.forex_position, 'mark', float, 0.0)
+        self.convert_specific_type(self.forex_position, 'mark_change', float, 0.0)
 
     def set_position_summary(self):
         """

@@ -409,7 +409,8 @@ class TestSaveAccountStatement(TestSetUp):
         self.acc_files = glob(os.path.join(test_acc_path, '*.csv'))
 
         self.acc_files = self.acc_files + [
-            os.path.join(test_path, '2014-11-19', '2014-11-19-AccountStatement.csv')
+            os.path.join(test_path, '2014-11-19', '2014-11-19-AccountStatement.csv'),
+            os.path.join(test_path, '2014-11-25', '2014-11-25-AccountStatement.csv'),
         ]
 
         self.save_acc = None
@@ -644,3 +645,5 @@ class TestSaveAccountStatement(TestSetUp):
             self.assertGreaterEqual(models.ProfitLoss.objects.count(), 0)
             self.assertGreaterEqual(models.OrderHistory.objects.count(), 0)
             self.assertGreaterEqual(models.TradeHistory.objects.count(), 0)
+
+            print '\n' + '-' * 100 + '\n'

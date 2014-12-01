@@ -1,0 +1,131 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Account Statement for <TOTAL> (ALL ACCOUNTS) since 11/25/14 through 11/25/14
+
+Cash Balance
+DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
+11/25/14,14:00:00,BAL,,Cash balance at the start of business day 25.11 CST,,,,"20,169.05"
+11/25/14,16:41:57,TRD,453131393,BOT +1 /ESZ4 @2066.00,-1.16,-2.00,75.00,"20,240.89"
+11/25/14,16:42:02,TRD,453131397,SOLD -1 /GCZ4 @1201.30,-1.47,-2.00,560.00,"20,797.42"
+,,,,TOTAL,($2.63),($4.00),$635.00,"$20,797.42"
+
+Futures Statements
+Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
+
+Forex Statements
+,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance
+
+ 
+"Total Cash ($245,223.06)"
+
+
+Account Order History
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+
+Account Trade History
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+
+Equities
+Symbol,Description,Qty,Trade Price,Mark,Mark Value
+SLW,SILVER WHEATON CORP COM,+100,19.20,21.08,"$2,108.00"
+AMD,ADVANCED MICRO DEVICES INC COM,+500,2.66,2.83,"$1,415.00"
+GE,GENERAL ELECTRIC CO COM,-100,27.00,27.00,"($2,700.00)"
+BIDU,BAIDU INC ADR,+10,241.88,243.91,"$2,439.10"
+GG,GOLDCORP INC COM,+100,21.19,20.39,"$2,039.00"
+,OVERALL TOTALS,,,,"$5,301.10"
+
+Options
+Symbol,Option Code,Exp,Strike,Type,Qty,Trade Price,Mark,Mark Value
+GG,GG141220C21,DEC 14,21,CALL,-1,1.13,.61,($61.00)
+,,,,,,,,($61.00)
+MSFT,MSFT141220C49,DEC 14,49,CALL,-10,1.04,.345,($345.00)
+MSFT,MSFT141220C50,DEC 14,50,CALL,+10,.60,.175,$175.00
+,,,,,,,,($170.00)
+SLW,SLW141220C19,DEC 14,19,CALL,-1,1.17,2.35,($235.00)
+,,,,,,,,($235.00)
+TSLA,TSLA141220C255,DEC 14,255,CALL,-1,9.05,5.125,($512.50)
+TSLA,TSLA141220C260,DEC 14,260,CALL,+1,7.00,3.60,$360.00
+,,,,,,,,($152.50)
+WFC,WFC141220P52.5,DEC 14,52.5,PUT,+1,.45,.20,$20.00
+WFC,WFC141220P55,DEC 14,55,PUT,-1,1.88,1.14,($114.00)
+,,,,,,,,($94.00)
+,,,,,,,,($712.50)
+
+Futures
+Symbol,Description,SPC,Exp,Qty,Trade Price,Mark,P/L Day
+/NQZ4,"E-mini Nasdaq 100 Index Futures,Dec-2014,ETH",1/20,DEC 14,-1,4235.00,4280.00,$40.00
+/QMF5,"NYMEX miNY Light Sweet Crude Oil Futures,Jan-2015,ETH",1/500,JAN 15,+1,74.45,75.825,$22.50
+,OVERALL TOTALS,,,,,,$62.50
+
+Forex
+Symbol,Description,Qty,Trade Price,Mark,FPL
+USD/JPY,USDollar/Japanese Yen Spot      ,+10000,118.2797,117.984,($25.75)
+GBP/JPY,GBPound/Japanese Yen Spot       ,+10000,185.7559,185.0705,($59.69)
+,OVERALL TOTALS,,,,($85.44)
+
+Profits and Losses 
+Symbol,Description,P/L Open,P/L %,P/L Day,P/L YTD,Margin Req,Mark Value
+/6JZ4,"Japanese Yen Futures,Dec-2014,ETH",$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+/ESZ4,"E-mini S&P 500 Index Futures,Dec-2014,ETH",$0.00,0.00%,$75.00,"($1,787.50)",$0.00,$0.00
+/GCZ4,"Gold Futures,Dec-2014, ETH",$0.00,0.00%,$560.00,"$1,730.00",$0.00,$0.00
+/NGZ4,"Natural Gas Futures,Dec-2014,ETH",$0.00,0.00%,$0.00,$800.00,$0.00,$0.00
+/NQZ4,"E-mini Nasdaq 100 Index Futures,Dec-2014,ETH",($900.00),-1.06%,$40.00,($580.00),"$3,960.00",$40.00
+/QMF5,"NYMEX miNY Light Sweet Crude Oil Futures,Jan-2015,ETH",$687.50,+1.85%,$22.50,$687.50,"$2,035.00",$22.50
+/QMZ4,"NYMEX miNY Light Sweet Crude Oil Futures,Dec-2014,ETH",$0.00,0.00%,$0.00,($262.50),$0.00,$0.00
+/YGZ4,Mini Gold Futures - ICUS - Dec14,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+/YMZ4,"Mini Dow Jones Industrial Average Futures,Dec-2014,ETH",$0.00,0.00%,$0.00,($125.00),$0.00,$0.00
+/ZWZ4,"Wheat Futures,Dec-2014,ETH",$0.00,0.00%,$0.00,($300.00),$0.00,$0.00
+AAPL,APPLE INC COM,$0.00,0.00%,$0.00,$70.00,$0.00,$0.00
+AMD,ADVANCED MICRO DEVICES INC COM,$85.00,+6.39%,$0.00,$85.00,"$1,415.00","$1,415.00"
+BAC,BANK OF AMERICA CORP COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+BIDU,BAIDU INC ADR,$20.30,+0.84%,$0.00,$20.30,"$1,219.55","$2,439.10"
+BMY,BRISTOL-MYERS SQUIBB CM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+C,CITIGROUP INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+CELG,CELGENE CORP COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+CSCO,CISCO SYSTEMS INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+DDD,3 D SYSTEMS CORP COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+EWZ,ISHARES MSCI BRAZIL CAPPED ETF,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+FAZ,DIREXION SHARES TRUST 3X BEAR ETF,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+FB,FACEBOOK INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+FSLR,FIRST SOLAR INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+FXI,ISHARES CHINA LARGE-CAP ETF,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+GE,GENERAL ELECTRIC CO COM,$0.00,0.00%,$0.00,$0.00,"$1,350.00","($2,700.00)"
+GG,GOLDCORP INC COM,($28.00),-1.25%,$0.00,($28.00),"$1,019.50","$1,978.00"
+GILD,GILEAD SCIENCES INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+IBM,INTL BUSINESS MACHINES COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+INTC,INTEL CORP COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+IWM,ISHARES RUSSELL 2000 ETF,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+JPM,JP MORGAN CHASE & CO COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+MSFT,MICROSOFT CORP COM,$270.00,+16.46%,$0.00,$270.00,"$1,000.00",($170.00)
+QCOM,QUALCOMM INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+RSX,MARKET VECTORS RUSSIA,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+SBUX,STARBUCKS CORP COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+SLV,ISHARES SILVER TRUST,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+SLW,SILVER WHEATON CORP COM,$70.00,+3.44%,$0.00,$70.00,"$1,158.00","$1,873.00"
+SNDK,SANDISK CORP COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+SPY,SPDR TR S&P 500 ETF TR,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+TLT,ISHARES 20+ YR TREASURY BND ETF,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+TNA,DIREXION SHARES TRUST SMALL CAP BULL 3X SHARES,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+TSLA,TESLA MOTORS INC COM,$52.50,+3.27%,$0.00,$52.50,$500.00,($152.50)
+TZA,DIREXION SHARES TRUST DAILY SMALL CAP BEAR 3X SHAR,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+UNG,UNITED STATES NAT GAS FUND ETF,$0.00,0.00%,$0.00,$130.00,$0.00,$0.00
+VXX,BARCLAYS BANK PLC IPATH S&P 500 VIX SHORT TERM,$0.00,0.00%,$0.00,($105.00),$0.00,$0.00
+WFC,WELLS FARGO & CO COM,$49.00,+21.03%,$0.00,$14.00,$250.00,($94.00)
+YHOO,YAHOO! INC COM,$0.00,0.00%,$0.00,$0.00,$0.00,$0.00
+,OVERALL TOTALS,$306.30,+0.23%,$697.50,$741.30,"$13,907.05","$4,651.10"
+
+Forex Account Summary
+Cash,"$10,239.64"
+UPL,$93.27
+Floating P/L,($85.44)
+Equity,"$10,247.47"
+Margin,$513.88
+Available Equity,"$9,733.59"
+Risk Level,100.00%
+
+Account Summary
+Net Liquidating Value,"$30,448.52"
+Stock Buying Power,"$29,382.94"
+Option Buying Power,"$17,191.47"
+Commissions YTD,$266.82
+Futures Commissions YTD,$65.96

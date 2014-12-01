@@ -1,0 +1,17 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for D-12644969 (margin) on 11/25/14 16:42:34
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,11/25/14 16:42:02,FUTURE,SELL,-1,TO CLOSE,/GCZ4,DEC 14,,FUTURE,1201.30,1201.30,LMT
+,11/25/14 16:41:57,FUTURE,BUY,+1,TO CLOSE,/ESZ4,DEC 14,,FUTURE,2066.00,2066.00,LMT
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

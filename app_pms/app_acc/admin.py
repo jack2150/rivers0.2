@@ -254,26 +254,32 @@ class AccountSummaryAdmin(admin.ModelAdmin):
     def formatted_date(self, obj):
         return obj.date.strftime('%Y-%m-%d')
     formatted_date.short_description = 'Date'
+    formatted_date.admin_order_field = 'date'
 
     def currency_net_liquid_value(self, obj):
         return locale.currency(obj.net_liquid_value, grouping=True)
     currency_net_liquid_value.short_description = 'Net Liquid Value'
+    currency_net_liquid_value.admin_order_field = 'net_liquid_value'
 
     def currency_stock_buying_power(self, obj):
         return locale.currency(obj.stock_buying_power, grouping=True)
     currency_stock_buying_power.short_description = 'Stock Buying Power'
+    currency_stock_buying_power.admin_order_field = 'stock_buying_power'
 
     def currency_option_buying_power(self, obj):
         return locale.currency(obj.option_buying_power, grouping=True)
     currency_option_buying_power.short_description = 'Option Buying Power'
+    currency_option_buying_power.admin_order_field = 'option_buying_power'
 
     def currency_commissions_ytd(self, obj):
         return locale.currency(obj.commissions_ytd, grouping=True)
     currency_commissions_ytd.short_description = 'Commissions YTD'
+    currency_commissions_ytd.admin_order_field = 'commissions_ytd'
 
     def currency_futures_commissions_ytd(self, obj):
         return locale.currency(obj.futures_commissions_ytd, grouping=True)
     currency_futures_commissions_ytd.short_description = 'Futures Commissions YTD'
+    currency_futures_commissions_ytd.admin_order_field = 'futures_commissions_ytd'
 
     list_display = (
         'formatted_date', 'currency_net_liquid_value',
@@ -299,6 +305,7 @@ class AccountSummaryAdmin(admin.ModelAdmin):
 
     date_hierarchy = 'date'
     search_fields = ['date', 'net_liquid_value']
+    ordering = ('-date', )
 
     def has_add_permission(self, request):
         return False

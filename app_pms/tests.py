@@ -1,9 +1,8 @@
-import os
+from rivers import urls
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
 from app_pms.test_files import *
 from app_pms.classes.test import TestSetUp
-from app_pms import admin
+from app_pms.admin import *
 from app_pms.app_acc.models import *
 from app_pms.app_pos.models import *
 from app_pms.app_ta.models import *
@@ -303,7 +302,7 @@ class TestPmsImportStatementsForm(TestSetUp):
         """
         Test import form is valid working fine
         """
-        self.pms_form = admin.PmsImportStatementsForm(self.value_data, self.file_data)
+        self.pms_form = PmsImportStatementsForm(self.value_data, self.file_data)
 
         print 'file_date: %s' % self.date
         print 'account statement file: %s' % self.account_statement
@@ -324,7 +323,7 @@ class TestPmsImportStatementsForm(TestSetUp):
         """
         wrong_date = '2014-07-20'
         print 'using wrong file date: %s' % wrong_date
-        self.pms_form = admin.PmsImportStatementsForm({'date': wrong_date}, self.file_data)
+        self.pms_form = PmsImportStatementsForm({'date': wrong_date}, self.file_data)
 
         print 'run is_valid()...\n'
         result = self.pms_form.is_valid()
@@ -340,7 +339,7 @@ class TestPmsImportStatementsForm(TestSetUp):
 
     def validate_file_field_empty_upload(self, fname):
         print 'test with empty file upload'
-        self.pms_form = admin.PmsImportStatementsForm({}, {})
+        self.pms_form = PmsImportStatementsForm({}, {})
         print 'without setup %s file' % fname
         print 'run is_valid()...'
         self.pms_form.is_valid()
@@ -352,7 +351,7 @@ class TestPmsImportStatementsForm(TestSetUp):
 
     def validate_file_field_correct_upload(self, fname):
         print 'test with correct file upload'
-        self.pms_form = admin.PmsImportStatementsForm({}, {fname: getattr(self, fname)})
+        self.pms_form = PmsImportStatementsForm({}, {fname: getattr(self, fname)})
         print '%s file: %s' % (fname, getattr(self, fname))
         print 'run is_valid()...'
 
@@ -369,7 +368,7 @@ class TestPmsImportStatementsForm(TestSetUp):
         :param wrong_fname: str
         """
         print head_text
-        self.pms_form = admin.PmsImportStatementsForm(
+        self.pms_form = PmsImportStatementsForm(
             {}, {fname: SimpleUploadedFile(wrong_fname, 'something')}
         )
         print 'without setup %s file' % wrong_fname
@@ -462,6 +461,7 @@ class TestPmsImportStatementsForm(TestSetUp):
         self.validate_file_field_wrong_file_ext('trade_activity')
 
 
+# noinspection PyUnresolvedReferences
 class TestPmsImportStatementView(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
@@ -497,7 +497,7 @@ class TestPmsImportStatementView(TestSetUp):
 
         print 'submit import statements form with post data...'
         response = self.client.post(
-            path=reverse('admin:import_statement'),
+            path=reverse('admin:statement_import'),
             data=dict(
                 date=self.date,
                 account_statement=self.account_statement,
@@ -509,7 +509,7 @@ class TestPmsImportStatementView(TestSetUp):
         print 'testing redirect back into import form...'
         self.assertRedirects(
             response,
-            reverse('admin:import_statement', kwargs={'statement_id': 1}),
+            reverse('admin:statement_import', kwargs={'statement_id': 1}),
             status_code=302,
             target_status_code=200,
             msg_prefix='',

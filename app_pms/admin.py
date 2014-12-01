@@ -1,6 +1,5 @@
 import os
 from datetime import datetime
-from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
@@ -484,12 +483,12 @@ admin.site.register(models.Future, FutureAdmin)
 admin.site.register(models.Forex, ForexAdmin)
 
 admin.site.register_view(
-    'statement/import/$',
+    'app_pms/statement/import/$',
     urlname='statement_import',
     view=statement_import
 )
 admin.site.register_view(
-    'statement/import/(?P<statement_id>\d+)/$',
+    'app_pms/statement/import/(?P<statement_id>\d+)/$',
     urlname='statement_import',
     view=statement_import
 )

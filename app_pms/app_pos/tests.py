@@ -1,7 +1,6 @@
 from glob import glob
 import os
 from app_pms.test_files import *
-from app_pms.classes.io import OpenPos
 from app_pms.classes.test import TestSetUp
 from app_pms.tests import TestSetUpUnderlying
 from app_pms.app_pos import models
@@ -267,6 +266,10 @@ class TestSavePositionStatement(TestSetUp):
 
         self.pos_files = glob(test_pos_path + '/*.csv')
 
+        self.pos_files = self.pos_files + [
+            os.path.join(test_path, '2014-11-25', '2014-11-25-PositionStatement.csv')
+        ]
+
         pos_file = self.pos_files[0]
         self.date = os.path.basename(pos_file)[0:10]
         self.pos_data = open(pos_file).read()
@@ -371,6 +374,7 @@ class TestSavePositionStatement(TestSetUp):
 
             date = os.path.basename(pos_file)[0:10]
             pos_data = open(pos_file).read()
+
 
             statement = models.Statement(
                 date=date,

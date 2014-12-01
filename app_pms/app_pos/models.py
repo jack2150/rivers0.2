@@ -408,6 +408,9 @@ class SavePositionStatement(SaveAppModel):
 
         pos_data = OpenPos(data=self.file_data).read()
 
+        from pprint import pprint
+        pprint(pos_data)
+
         self.equity_option_position = pos_data['equity_option_position']
         self.future_position = pos_data['future_position']
         self.forex_position = pos_data['forex_position']

@@ -176,7 +176,9 @@ class TradeActivityAdmin(admin.ModelAdmin):
     def date_formatted(self, obj):
         return obj.date.strftime('%Y-%m-%d')
 
+    date_formatted.short_description = 'Date'
     date_formatted.admin_order_field = 'date'
+
 
     list_display = (
         'date_formatted', 'working_orders', 'filled_orders',
