@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'app_pms.app_acc',
     'app_pms.app_pos',
     'app_pms.app_ta',
+    'app_stat',
 )
 
 MIDDLEWARE_CLASSES = (

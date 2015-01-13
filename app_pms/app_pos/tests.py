@@ -260,6 +260,7 @@ class TestPositionForex(TestPositionStatement):
         )
 
 
+# noinspection PyUnresolvedReferences
 class TestSavePositionStatement(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
@@ -374,7 +375,6 @@ class TestSavePositionStatement(TestSetUp):
 
             date = os.path.basename(pos_file)[0:10]
             pos_data = open(pos_file).read()
-
 
             statement = models.Statement(
                 date=date,

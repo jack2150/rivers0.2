@@ -1,0 +1,6 @@
+1. how much trade you do today?
+2. how much trade you have currently?
+3. a position contain a enter trade, a holding position, and a exit trade? how do you find out all?
+enter trade -> holding position -> exit trade
+then you can define profit or loss
+4.
