@@ -4,8 +4,9 @@
     <database-info product="SQLite" version="3.7.6.3" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
     <schema name="" catalog=""/>
-    <table name="acc_app_accountsummary" schema="" catalog="" type="TABLE">
+    <table name="app_acc_accountstatement" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="net_liquid_value" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="stock_buying_power" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
@@ -13,10 +14,23 @@
       <column name="commissions_ytd" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="futures_commissions_ytd" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_accountstatement_1" columns="statement_id" ref-table="app_pms_statement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_app_acc_cashbalance_1" table="app_acc_cashbalance" schema="" catalog="" columns="account_statement_id"/>
+      <exported-key name="#FAKE_app_acc_forexstatement_1" table="app_acc_forexstatement" schema="" catalog="" columns="account_statement_id"/>
+      <exported-key name="#FAKE_app_acc_forexsummary_1" table="app_acc_forexsummary" schema="" catalog="" columns="account_statement_id"/>
+      <exported-key name="#FAKE_app_acc_futurestatement_1" table="app_acc_futurestatement" schema="" catalog="" columns="account_statement_id"/>
+      <exported-key name="#FAKE_app_acc_holdingequity_2" table="app_acc_holdingequity" schema="" catalog="" columns="account_statement_id"/>
+      <exported-key name="#FAKE_app_acc_holdingforex_2" table="app_acc_holdingforex" schema="" catalog="" columns="account_statement_id"/>
+      <exported-key name="#FAKE_app_acc_holdingfuture_2" table="app_acc_holdingfuture" schema="" catalog="" columns="account_statement_id"/>
+      <exported-key name="#FAKE_app_acc_holdingoption_2" table="app_acc_holdingoption" schema="" catalog="" columns="account_statement_id"/>
+      <exported-key name="#FAKE_app_acc_orderhistory_4" table="app_acc_orderhistory" schema="" catalog="" columns="account_statement_id"/>
+      <exported-key name="#FAKE_app_acc_profitloss_3" table="app_acc_profitloss" schema="" catalog="" columns="account_statement_id"/>
+      <exported-key name="#FAKE_app_acc_tradehistory_4" table="app_acc_tradehistory" schema="" catalog="" columns="account_statement_id"/>
+      <index name="app_acc_accountstatement_9775495e" unique="true" columns="statement_id"/>
     </table>
-    <table name="acc_app_cashbalance" schema="" catalog="" type="TABLE">
+    <table name="app_acc_cashbalance" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="time" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="contract" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="ref_no" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
@@ -26,19 +40,12 @@
       <column name="amount" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="balance" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_cashbalance_1" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_cashbalance_debd6a79" unique="true" columns="account_statement_id"/>
     </table>
-    <table name="acc_app_equities" schema="" catalog="" type="TABLE">
+    <table name="app_acc_forexstatement" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="symbol" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="description" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="acc_app_forex" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="time" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="ref_no" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
@@ -48,80 +55,503 @@
       <column name="amount_usd" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="balance" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_forexstatement_1" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_forexstatement_debd6a79" unique="true" columns="account_statement_id"/>
     </table>
-    <table name="acc_app_futures" schema="" catalog="" type="TABLE">
+    <table name="app_acc_forexsummary" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="trade_date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="cash" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="upl" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="floating" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="equity" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="margin" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="available_equity" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="risk_level" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_forexsummary_1" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_forexsummary_debd6a79" unique="true" columns="account_statement_id"/>
+    </table>
+    <table name="app_acc_futurestatement" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="execute_date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="execute_time" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="ref_no" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="description" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="fees" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="commissions" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="ref_no" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR(255)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="fee" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="commission" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="amount" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="balance" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_futurestatement_1" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_futurestatement_debd6a79" unique="true" columns="account_statement_id"/>
     </table>
-    <table name="acc_app_options" schema="" catalog="" type="TABLE">
+    <table name="app_acc_holdingequity" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="symbol" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
+      <column name="mark_value" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_holdingequity_1" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_holdingequity_2" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_holdingequity_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_acc_holdingequity_debd6a79" unique="true" columns="account_statement_id"/>
+    </table>
+    <table name="app_acc_holdingforex" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="forex_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="fpl" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="quantity" sqlType="REAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_holdingforex_1" columns="forex_id" ref-table="app_pms_forex" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_holdingforex_2" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_holdingforex_f2104221" unique="true" columns="forex_id"/>
+      <index name="app_acc_holdingforex_debd6a79" unique="true" columns="account_statement_id"/>
+    </table>
+    <table name="app_acc_holdingfuture" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="future_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_holdingfuture_1" columns="future_id" ref-table="app_pms_future" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_holdingfuture_2" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_holdingfuture_661bf18b" unique="true" columns="future_id"/>
+      <index name="app_acc_holdingfuture_debd6a79" unique="true" columns="account_statement_id"/>
+    </table>
+    <table name="app_acc_holdingoption" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="option_code" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="expire_date" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
+      <column name="mark_value" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
       <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_holdingoption_1" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_holdingoption_2" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_holdingoption_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_acc_holdingoption_debd6a79" unique="true" columns="account_statement_id"/>
     </table>
-    <table name="acc_app_orderhistory" schema="" catalog="" type="TABLE">
+    <table name="app_acc_orderhistory" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="forex_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <column name="status" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="pos_effect" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
       <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="side" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="symbol" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="time_placed" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="spread" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="expire_date" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="expire_date" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
       <column name="tif" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="order" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_orderhistory_1" columns="forex_id" ref-table="app_pms_forex" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_orderhistory_2" columns="future_id" ref-table="app_pms_future" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_orderhistory_3" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_orderhistory_4" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_orderhistory_f2104221" unique="true" columns="forex_id"/>
+      <index name="app_acc_orderhistory_661bf18b" unique="true" columns="future_id"/>
+      <index name="app_acc_orderhistory_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_acc_orderhistory_debd6a79" unique="true" columns="account_statement_id"/>
     </table>
-    <table name="acc_app_profitslosses" schema="" catalog="" type="TABLE">
+    <table name="app_acc_profitloss" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="symbol" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="description" sqlType="VARCHAR(255)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <column name="pl_open" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="pl_pct" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="pl_ytd" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="margin_req" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark_value" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
       <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_profitloss_1" columns="future_id" ref-table="app_pms_future" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_profitloss_2" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_profitloss_3" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_profitloss_661bf18b" unique="true" columns="future_id"/>
+      <index name="app_acc_profitloss_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_acc_profitloss_debd6a79" unique="true" columns="account_statement_id"/>
     </table>
-    <table name="acc_app_tradehistory" schema="" catalog="" type="TABLE">
+    <table name="app_acc_tradehistory" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="account_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="forex_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <column name="execute_time" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="spread" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="side" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="pos_effect" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="symbol" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="expire_date" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
+      <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
+      <column name="net_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
+      <column name="order_type" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_acc_tradehistory_1" columns="forex_id" ref-table="app_pms_forex" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_tradehistory_2" columns="future_id" ref-table="app_pms_future" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_tradehistory_3" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_acc_tradehistory_4" columns="account_statement_id" ref-table="app_acc_accountstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_acc_tradehistory_f2104221" unique="true" columns="forex_id"/>
+      <index name="app_acc_tradehistory_661bf18b" unique="true" columns="future_id"/>
+      <index name="app_acc_tradehistory_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_acc_tradehistory_debd6a79" unique="true" columns="account_statement_id"/>
+    </table>
+    <table name="app_pms_forex" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="symbol" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_app_acc_holdingforex_1" table="app_acc_holdingforex" schema="" catalog="" columns="forex_id"/>
+      <exported-key name="#FAKE_app_acc_orderhistory_1" table="app_acc_orderhistory" schema="" catalog="" columns="forex_id"/>
+      <exported-key name="#FAKE_app_acc_tradehistory_1" table="app_acc_tradehistory" schema="" catalog="" columns="forex_id"/>
+      <exported-key name="#FAKE_app_pos_positionforex_1" table="app_pos_positionforex" schema="" catalog="" columns="forex_id"/>
+      <exported-key name="#FAKE_app_ta_cancelledorder_1" table="app_ta_cancelledorder" schema="" catalog="" columns="forex_id"/>
+      <exported-key name="#FAKE_app_ta_filledorder_1" table="app_ta_filledorder" schema="" catalog="" columns="forex_id"/>
+      <exported-key name="#FAKE_app_ta_workingorder_1" table="app_ta_workingorder" schema="" catalog="" columns="forex_id"/>
+    </table>
+    <table name="app_pms_future" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="symbol" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="lookup" sqlType="VARCHAR(2)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR(255)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="session" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="spc" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_app_acc_holdingfuture_1" table="app_acc_holdingfuture" schema="" catalog="" columns="future_id"/>
+      <exported-key name="#FAKE_app_acc_orderhistory_2" table="app_acc_orderhistory" schema="" catalog="" columns="future_id"/>
+      <exported-key name="#FAKE_app_acc_profitloss_1" table="app_acc_profitloss" schema="" catalog="" columns="future_id"/>
+      <exported-key name="#FAKE_app_acc_tradehistory_2" table="app_acc_tradehistory" schema="" catalog="" columns="future_id"/>
+      <exported-key name="#FAKE_app_pos_positionfuture_1" table="app_pos_positionfuture" schema="" catalog="" columns="future_id"/>
+      <exported-key name="#FAKE_app_ta_cancelledorder_2" table="app_ta_cancelledorder" schema="" catalog="" columns="future_id"/>
+      <exported-key name="#FAKE_app_ta_filledorder_2" table="app_ta_filledorder" schema="" catalog="" columns="future_id"/>
+      <exported-key name="#FAKE_app_ta_workingorder_2" table="app_ta_workingorder" schema="" catalog="" columns="future_id"/>
+    </table>
+    <table name="app_pms_statement" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="account_statement" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="position_statement" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="trade_activity" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_app_acc_accountstatement_1" table="app_acc_accountstatement" schema="" catalog="" columns="statement_id"/>
+      <exported-key name="#FAKE_app_pos_positionstatement_1" table="app_pos_positionstatement" schema="" catalog="" columns="statement_id"/>
+      <exported-key name="#FAKE_app_stat_day_statday_1" table="app_stat_day_statday" schema="" catalog="" columns="statement_id"/>
+      <exported-key name="#FAKE_app_ta_tradeactivity_1" table="app_ta_tradeactivity" schema="" catalog="" columns="statement_id"/>
+    </table>
+    <table name="app_pms_underlying" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="symbol" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="company" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_app_acc_holdingequity_1" table="app_acc_holdingequity" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_acc_holdingoption_1" table="app_acc_holdingoption" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_acc_orderhistory_3" table="app_acc_orderhistory" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_acc_profitloss_2" table="app_acc_profitloss" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_acc_tradehistory_3" table="app_acc_tradehistory" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_pos_positionequity_2" table="app_pos_positionequity" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_pos_positioninstrument_1" table="app_pos_positioninstrument" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_pos_positionoption_2" table="app_pos_positionoption" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_ta_cancelledorder_3" table="app_ta_cancelledorder" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_ta_filledorder_3" table="app_ta_filledorder" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_ta_rollingstrategy_1" table="app_ta_rollingstrategy" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_app_ta_workingorder_3" table="app_ta_workingorder" schema="" catalog="" columns="underlying_id"/>
+    </table>
+    <table name="app_pos_positionequity" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="position_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="instrument_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pct_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="bp_effect" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_pos_positionequity_1" columns="instrument_id" ref-table="app_pos_positioninstrument" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_pos_positionequity_2" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_pos_positionequity_3" columns="position_statement_id" ref-table="app_pos_positionstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_pos_positionequity_ce1084cd" unique="true" columns="instrument_id"/>
+      <index name="app_pos_positionequity_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_pos_positionequity_976e7200" unique="true" columns="position_statement_id"/>
+    </table>
+    <table name="app_pos_positionforex" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="position_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="forex_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pct_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="bp_effect" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_pos_positionforex_1" columns="forex_id" ref-table="app_pms_forex" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_pos_positionforex_2" columns="position_statement_id" ref-table="app_pos_positionstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_pos_positionforex_f2104221" unique="true" columns="forex_id"/>
+      <index name="app_pos_positionforex_976e7200" unique="true" columns="position_statement_id"/>
+    </table>
+    <table name="app_pos_positionfuture" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="position_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="future_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="days" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pct_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="bp_effect" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_pos_positionfuture_1" columns="future_id" ref-table="app_pms_future" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_pos_positionfuture_2" columns="position_statement_id" ref-table="app_pos_positionstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_pos_positionfuture_661bf18b" unique="true" columns="future_id"/>
+      <index name="app_pos_positionfuture_976e7200" unique="true" columns="position_statement_id"/>
+    </table>
+    <table name="app_pos_positioninstrument" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="position_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="delta" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="gamma" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="theta" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="vega" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pct_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="bp_effect" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_pos_positioninstrument_1" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_pos_positioninstrument_2" columns="position_statement_id" ref-table="app_pos_positionstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_app_pos_positionequity_1" table="app_pos_positionequity" schema="" catalog="" columns="instrument_id"/>
+      <exported-key name="#FAKE_app_pos_positionoption_1" table="app_pos_positionoption" schema="" catalog="" columns="instrument_id"/>
+      <index name="app_pos_positioninstrument_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_pos_positioninstrument_976e7200" unique="true" columns="position_statement_id"/>
+    </table>
+    <table name="app_pos_positionoption" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="position_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="instrument_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="right" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="special" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="ex_month" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="ex_year" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="contract" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="days" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="mark_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="delta" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="gamma" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="theta" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="vega" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pct_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="bp_effect" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_pos_positionoption_1" columns="instrument_id" ref-table="app_pos_positioninstrument" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_pos_positionoption_2" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_pos_positionoption_3" columns="position_statement_id" ref-table="app_pos_positionstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_pos_positionoption_ce1084cd" unique="true" columns="instrument_id"/>
+      <index name="app_pos_positionoption_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_pos_positionoption_976e7200" unique="true" columns="position_statement_id"/>
+    </table>
+    <table name="app_pos_positionstatement" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="cash_sweep" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="pl_ytd" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="futures_bp" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="bp_adjustment" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="available" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_pos_positionstatement_1" columns="statement_id" ref-table="app_pms_statement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_app_pos_positionequity_3" table="app_pos_positionequity" schema="" catalog="" columns="position_statement_id"/>
+      <exported-key name="#FAKE_app_pos_positionforex_2" table="app_pos_positionforex" schema="" catalog="" columns="position_statement_id"/>
+      <exported-key name="#FAKE_app_pos_positionfuture_2" table="app_pos_positionfuture" schema="" catalog="" columns="position_statement_id"/>
+      <exported-key name="#FAKE_app_pos_positioninstrument_2" table="app_pos_positioninstrument" schema="" catalog="" columns="position_statement_id"/>
+      <exported-key name="#FAKE_app_pos_positionoption_3" table="app_pos_positionoption" schema="" catalog="" columns="position_statement_id"/>
+      <index name="app_pos_positionstatement_9775495e" unique="true" columns="statement_id"/>
+    </table>
+    <table name="app_stat_day_statday" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="working_trade" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="cancelled_trade" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="filled_trade" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="profit_loss" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="profit_pos" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="loss_pos" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="profit_pos_sum" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="loss_pos_sum" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="holding_stock" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="holding_option" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="holding_future" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="holding_forex" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_stat_day_statday_1" columns="statement_id" ref-table="app_pms_statement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_stat_day_statday_9775495e" unique="true" columns="statement_id"/>
+    </table>
+    <table name="app_ta_cancelledorder" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade_activity_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="forex_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="time_cancelled" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="spread" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="side" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="pos_effect" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="order" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="tif" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_ta_cancelledorder_1" columns="forex_id" ref-table="app_pms_forex" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_ta_cancelledorder_2" columns="future_id" ref-table="app_pms_future" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_ta_cancelledorder_3" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_ta_cancelledorder_4" columns="trade_activity_id" ref-table="app_ta_tradeactivity" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_ta_cancelledorder_f2104221" unique="true" columns="forex_id"/>
+      <index name="app_ta_cancelledorder_661bf18b" unique="true" columns="future_id"/>
+      <index name="app_ta_cancelledorder_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_ta_cancelledorder_b638fd14" unique="true" columns="trade_activity_id"/>
+    </table>
+    <table name="app_ta_filledorder" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade_activity_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="forex_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="exec_time" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="spread" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="side" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="pos_effect" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
       <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="net_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="order_type" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="order" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_ta_filledorder_1" columns="forex_id" ref-table="app_pms_forex" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_ta_filledorder_2" columns="future_id" ref-table="app_pms_future" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_ta_filledorder_3" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_ta_filledorder_4" columns="trade_activity_id" ref-table="app_ta_tradeactivity" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_ta_filledorder_f2104221" unique="true" columns="forex_id"/>
+      <index name="app_ta_filledorder_661bf18b" unique="true" columns="future_id"/>
+      <index name="app_ta_filledorder_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_ta_filledorder_b638fd14" unique="true" columns="trade_activity_id"/>
+    </table>
+    <table name="app_ta_rollingstrategy" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade_activity_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="strategy" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="side" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="right" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="ex_month" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="ex_year" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="contract" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="new_expire_date" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="call_by" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="days_begin" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="order_price" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="active_time_start" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="active_time_end" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="move_to_market_time_start" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="move_to_market_time_end" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_ta_rollingstrategy_1" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_ta_rollingstrategy_2" columns="trade_activity_id" ref-table="app_ta_tradeactivity" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_ta_rollingstrategy_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_ta_rollingstrategy_b638fd14" unique="true" columns="trade_activity_id"/>
+    </table>
+    <table name="app_ta_tradeactivity" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_ta_tradeactivity_1" columns="statement_id" ref-table="app_pms_statement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_app_ta_cancelledorder_4" table="app_ta_cancelledorder" schema="" catalog="" columns="trade_activity_id"/>
+      <exported-key name="#FAKE_app_ta_filledorder_4" table="app_ta_filledorder" schema="" catalog="" columns="trade_activity_id"/>
+      <exported-key name="#FAKE_app_ta_rollingstrategy_2" table="app_ta_rollingstrategy" schema="" catalog="" columns="trade_activity_id"/>
+      <exported-key name="#FAKE_app_ta_workingorder_4" table="app_ta_workingorder" schema="" catalog="" columns="trade_activity_id"/>
+      <index name="app_ta_tradeactivity_9775495e" unique="true" columns="statement_id"/>
+    </table>
+    <table name="app_ta_workingorder" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="trade_activity_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="forex_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="time_placed" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="spread" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="side" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="pos_effect" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="order" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="tif" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="status" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_ta_workingorder_1" columns="forex_id" ref-table="app_pms_forex" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_ta_workingorder_2" columns="future_id" ref-table="app_pms_future" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_ta_workingorder_3" columns="underlying_id" ref-table="app_pms_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_app_ta_workingorder_4" columns="trade_activity_id" ref-table="app_ta_tradeactivity" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_ta_workingorder_f2104221" unique="true" columns="forex_id"/>
+      <index name="app_ta_workingorder_661bf18b" unique="true" columns="future_id"/>
+      <index name="app_ta_workingorder_9d0f24d9" unique="true" columns="underlying_id"/>
+      <index name="app_ta_workingorder_b638fd14" unique="true" columns="trade_activity_id"/>
     </table>
     <table name="auth_group" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
@@ -206,185 +636,6 @@
       <column name="expire_date" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="session_key"/>
       <index name="django_session_b7b81f0c" unique="true" columns="expire_date"/>
-    </table>
-    <table name="pms_app_statement" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="account_statement" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="position_statement" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="trade_activity" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="pms_app_underlying" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="symbol" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="company" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <primary-key columns="id"/>
-      <exported-key name="#FAKE_pos_app_positioninstrument_1" table="pos_app_positioninstrument" schema="" catalog="" columns="underlying_id"/>
-      <exported-key name="#FAKE_pos_app_positionoption_2" table="pos_app_positionoption" schema="" catalog="" columns="underlying_id"/>
-      <exported-key name="#FAKE_pos_app_positionstock_2" table="pos_app_positionstock" schema="" catalog="" columns="underlying_id"/>
-    </table>
-    <table name="pos_app_positioninstrument" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="position_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="delta" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="gamma" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="theta" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="vega" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="pct_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="pl_open" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="bp_effect" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <primary-key columns="id"/>
-      <foreign-key name="#FAKE_pos_app_positioninstrument_1" columns="underlying_id" ref-table="pms_app_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_pos_app_positioninstrument_2" columns="position_statement_id" ref-table="pos_app_positionstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <exported-key name="#FAKE_pos_app_positionoption_1" table="pos_app_positionoption" schema="" catalog="" columns="instrument_id"/>
-      <exported-key name="#FAKE_pos_app_positionstock_1" table="pos_app_positionstock" schema="" catalog="" columns="instrument_id"/>
-      <index name="pos_app_positioninstrument_9d0f24d9" unique="true" columns="underlying_id"/>
-      <index name="pos_app_positioninstrument_976e7200" unique="true" columns="position_statement_id"/>
-    </table>
-    <table name="pos_app_positionoption" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="position_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="instrument_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="right" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="special" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="ex_month" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="ex_year" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="strike_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="contract" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="days" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="mark_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="delta" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="gamma" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="theta" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="vega" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="pct_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="pl_open" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="bp_effect" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <primary-key columns="id"/>
-      <foreign-key name="#FAKE_pos_app_positionoption_1" columns="instrument_id" ref-table="pos_app_positioninstrument" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_pos_app_positionoption_2" columns="underlying_id" ref-table="pms_app_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_pos_app_positionoption_3" columns="position_statement_id" ref-table="pos_app_positionstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="pos_app_positionoption_ce1084cd" unique="true" columns="instrument_id"/>
-      <index name="pos_app_positionoption_9d0f24d9" unique="true" columns="underlying_id"/>
-      <index name="pos_app_positionoption_976e7200" unique="true" columns="position_statement_id"/>
-    </table>
-    <table name="pos_app_positionstatement" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="cash_sweep" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="pl_ytd" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="futures_bp" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="bp_adjustment" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="available" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <primary-key columns="id"/>
-      <exported-key name="#FAKE_pos_app_positioninstrument_2" table="pos_app_positioninstrument" schema="" catalog="" columns="position_statement_id"/>
-      <exported-key name="#FAKE_pos_app_positionoption_3" table="pos_app_positionoption" schema="" catalog="" columns="position_statement_id"/>
-      <exported-key name="#FAKE_pos_app_positionstock_3" table="pos_app_positionstock" schema="" catalog="" columns="position_statement_id"/>
-    </table>
-    <table name="pos_app_positionstock" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="position_statement_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="underlying_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="instrument_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="trade_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="mark_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="pct_change" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="pl_open" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="bp_effect" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <primary-key columns="id"/>
-      <foreign-key name="#FAKE_pos_app_positionstock_1" columns="instrument_id" ref-table="pos_app_positioninstrument" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_pos_app_positionstock_2" columns="underlying_id" ref-table="pms_app_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_pos_app_positionstock_3" columns="position_statement_id" ref-table="pos_app_positionstatement" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="pos_app_positionstock_ce1084cd" unique="true" columns="instrument_id"/>
-      <index name="pos_app_positionstock_9d0f24d9" unique="true" columns="underlying_id"/>
-      <index name="pos_app_positionstock_976e7200" unique="true" columns="position_statement_id"/>
-    </table>
-    <table name="ta_app_cancelledorder" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="time_cancelled" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="spread" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="side" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="pos_effect" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="symbol" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="expire_date" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="order" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="tif" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="status" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="ta_app_filledorder" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="exec_time" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="spread" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="side" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="pos_effect" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="symbol" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="expire_date" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="net_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="order" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="ta_app_rollingstrategy" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="strategy" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="side" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="symbol" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="right" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="ex_month" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="ex_year" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="strike_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="contract" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="new_expire_date" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="call_by" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="days_begin" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="order_price" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="active_time_start" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="active_time_end" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="move_to_market_time_start" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="move_to_market_time_end" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="status" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
-    <table name="ta_app_workingorder" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="time_placed" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="spread" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="side" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="quantity" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="pos_effect" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="symbol" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="expire_date" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="strike" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="contract" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="order" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="tif" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="mark" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="status" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <primary-key columns="id"/>
     </table>
   </data-source>
 </component>

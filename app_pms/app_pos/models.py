@@ -98,7 +98,6 @@ class PositionInstrument(models.Model, PositionModel):
         Using all property inside class and return json format string
         :return: str
         """
-
         output = '{'
         output += '"name": "%s", ' % self.underlying.company
         output += '"quantity": 0, '
@@ -407,9 +406,6 @@ class SavePositionStatement(SaveAppModel):
         SaveAppModel.__init__(self, date, statement, file_data)
 
         pos_data = OpenPos(data=self.file_data).read()
-
-        from pprint import pprint
-        pprint(pos_data)
 
         self.equity_option_position = pos_data['equity_option_position']
         self.future_position = pos_data['future_position']
