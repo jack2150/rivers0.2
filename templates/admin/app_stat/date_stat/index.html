@@ -1,0 +1,148 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_modify suit_tags admin_urls %}
+{% load url from future %}
+
+{% block extrahead %}{{ block.super }}
+    {% url 'admin:jsi18n' as jsi18nurl %}
+    <script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}admin/js/core.js"></script>
+
+    {{ form.media }}
+{% endblock %}
+
+
+{% block title %}Day Statistic: {{ date }}{% endblock %}
+
+{% block breadcrumbs %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="{% url 'admin:index' %}">Home</a>
+            <span class="divider">&raquo;</span>
+        </li>
+        <li>
+            <a href="{% url 'admin:app_list' 'app_stat' %}">App_Stat</a>
+            <span class="divider">&raquo;</span>
+        </li>
+        <li class="active">
+            Day Statistic: {{ date }}
+        </li>
+    </ul>
+{% endblock %}
+
+
+{% block content %}
+<div id="content" class="colM row-fluid">
+<div id="content-main" class="inner-center-column">
+    <table>
+        <tr>
+            <th>PL Day:</th>
+            <td>{{ date_stat.pl_day }}</td>
+        </tr>
+        <tr>
+            <th>PL YTD:</th>
+            <td>{{ date_stat.pl_ytd }}</td>
+        </tr>
+        <tr>
+            <th>Commission Day:</th>
+            <td>{{ date_stat.c_day }}</td>
+        </tr>
+        <tr>
+            <th>Commission YTD:</th>
+            <td>{{ date_stat.c_ytd }}</td>
+        </tr>
+        <tr>
+            <th>Option BP Day:</th>
+            <td>{{ date_stat.option_bp_day }}</td>
+        </tr>
+        <tr>
+            <th>Stock BP Day:</th>
+            <td>{{ date_stat.stock_bp_day }}</td>
+        </tr>
+        <tr>
+            <th>Total Order:</th>
+            <td>{{ date_stat.total_order }}</td>
+        </tr>
+        <tr>
+            <th>Working Order:</th>
+            <td>{{ date_stat.working_order }}</td>
+        </tr>
+        <tr>
+            <th>Filled Order:</th>
+            <td>{{ date_stat.filled_order }}</td>
+        </tr>
+        <tr>
+            <th>Cancelled Order:</th>
+            <td>{{ date_stat.cancelled_order }}</td>
+        </tr>
+    </table>
+
+
+    {% for x in investment_field %}
+        <table>
+            <tr>
+                <th>Investment:</th>
+                <td>{{ x.name }}</td>
+            </tr>
+            <tr>
+                <th>Total Order:</th>
+                <td>{{ x.total_order }}</td>
+            </tr>
+            <tr>
+                <th>Working Order:</th>
+                <td>{{ x.working_order }}</td>
+            </tr>
+            <tr>
+                <th>Filled Order:</th>
+                <td>{{ x.filled_order }}</td>
+            </tr>
+            <tr>
+                <th>Cancelled Order:</th>
+                <td>{{ x.cancelled_order }}</td>
+            </tr>
+            <tr>
+                <th>Holding:</th>
+                <td>{{ x.holding }}</td>
+            </tr>
+            <tr>
+                <th>Profit Holding:</th>
+                <td>{{ x.profit_holding }}</td>
+            </tr>
+            <tr>
+                <th>Loss Holding:</th>
+                <td>{{ x.loss_holding }}</td>
+            </tr>
+            <tr>
+                <th>PL Total:</th>
+                <td>{{ x.pl_total }}</td>
+            </tr>
+            <tr>
+                <th>Profit Total:</th>
+                <td>{{ x.profit_total }}</td>
+            </tr>
+            <tr>
+                <th>Loss Total:</th>
+                <td>{{ x.loss_total }}</td>
+            </tr>
+        </table>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

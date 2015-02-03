@@ -15,6 +15,7 @@ from app_pms.app_acc.models import SaveAccountStatement, AccountStatement
 from app_pms.app_pos.models import SavePositionStatement, PositionStatement
 from app_pms.app_ta.models import SaveTradeActivity, TradeActivity
 from django.contrib.admin.models import LogEntry, ADDITION
+from app_stat.models import SaveDateStat
 
 
 class AccountStatementFile(forms.FileField):
@@ -150,7 +151,6 @@ def statement_import(request, statement_id=0):
             statement.save()
 
             # save acc, pos, ta into db
-
             SaveAccountStatement(
                 date=date,
                 statement=statement,
@@ -168,6 +168,9 @@ def statement_import(request, statement_id=0):
                 statement=statement,
                 file_data=ta_data
             ).save_all()
+
+            # save date stat
+            SaveDateStat(statement).start()
 
             # log import
             LogEntry.objects.log_action(

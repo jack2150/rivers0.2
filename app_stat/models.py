@@ -40,7 +40,7 @@ class DateStatInvestment(models.Model):
     """
     date_stat = models.ForeignKey(DateStat)
     # can be equity, option, spread, future or forex
-    investment_type = models.CharField(max_length=250)
+    name = models.CharField(max_length=250)
 
     total_order = models.IntegerField(default=0, verbose_name='Total Order')
     working_order = models.IntegerField(default=0, verbose_name='Working Order')
@@ -48,10 +48,10 @@ class DateStatInvestment(models.Model):
     cancelled_order = models.IntegerField(default=0, verbose_name='Cancelled Order')
 
     holding = models.IntegerField(default=0, verbose_name='Holding')
-    profit_count = models.IntegerField(default=0, verbose_name='Profit Count')
-    loss_count = models.IntegerField(default=0, verbose_name='Loss Count')
+    profit_holding = models.IntegerField(default=0, verbose_name='Profit Count')
+    loss_holding = models.IntegerField(default=0, verbose_name='Loss Count')
 
-    total = models.DecimalField(verbose_name='Total', **decimal_field)
+    pl_total = models.DecimalField(verbose_name='Total', **decimal_field)
     profit_total = models.DecimalField(verbose_name='Profit Total', **decimal_field)
     loss_total = models.DecimalField(verbose_name='Loss Total', **decimal_field)
 
@@ -130,7 +130,7 @@ class SaveDateStat(object):
 
             # today pl and ytd pl
             pl_day = float(acc.first().net_liquid_value - acc.last().net_liquid_value)
-            pl_ytd -= float(acc.first().net_liquid_value)
+            pl_ytd = float(acc.first().net_liquid_value) - pl_ytd
 
             # today commission
             c_day = float(acc.first().commissions_ytd - acc.last().commissions_ytd)
@@ -139,6 +139,15 @@ class SaveDateStat(object):
             # bp change
             option_bp_day = float(acc.first().option_buying_power - acc.last().option_buying_power)
             stock_bp_day = float(acc.first().stock_buying_power - acc.last().stock_buying_power)
+        elif acc.count() == 1:
+            pl_day = float(acc.first().net_liquid_value) - pl_ytd
+            pl_ytd = float(acc.first().net_liquid_value) - pl_ytd
+
+            c_day = float(acc.first().commissions_ytd)
+            c_ytd = float(acc.first().commissions_ytd)
+
+            option_bp_day = pl_ytd - float(acc.first().option_buying_power)
+            stock_bp_day = (pl_ytd * 2) - float(acc.first().stock_buying_power)
 
         return dict(
             pl_day=pl_day,
@@ -168,15 +177,15 @@ class SaveDateStat(object):
         total = working + filled + cancelled
 
         return dict(
-            investment_type='future',
+            name='future',
             total_order=total,
             working_order=working,
             filled_order=filled,
             cancelled_order=cancelled,
             holding=holding.count(),
-            profit_count=profit.count(),
-            loss_count=loss.count(),
-            total=float(sum([p.pl_open for p in holding.all()])),
+            profit_holding=profit.count(),
+            loss_holding=loss.count(),
+            pl_total=float(sum([p.pl_open for p in holding.all()])),
             profit_total=float(sum([p.pl_open for p in profit.all()])),
             loss_total=float(sum([p.pl_open for p in loss.all()]))
         )
@@ -196,15 +205,15 @@ class SaveDateStat(object):
         total = working + filled + cancelled
 
         return dict(
-            investment_type='forex',
+            name='forex',
             total_order=total,
             working_order=working,
             filled_order=filled,
             cancelled_order=cancelled,
             holding=holding.count(),
-            profit_count=profit.count(),
-            loss_count=loss.count(),
-            total=float(sum([p.pl_open for p in holding.all()])),
+            profit_holding=profit.count(),
+            loss_holding=loss.count(),
+            pl_total=float(sum([p.pl_open for p in holding.all()])),
             profit_total=float(sum([p.pl_open for p in profit.all()])),
             loss_total=float(sum([p.pl_open for p in loss.all()]))
         )
@@ -243,15 +252,15 @@ class SaveDateStat(object):
                     loss_total += pl_open
 
         return dict(
-            investment_type='equity',
+            name='equity',
             total_order=order,
             working_order=working,
             filled_order=filled,
             cancelled_order=cancelled,
             holding=holding,
-            profit_count=profit,
-            loss_count=loss,
-            total=total,
+            profit_holding=profit,
+            loss_holding=loss,
+            pl_total=total,
             profit_total=profit_total,
             loss_total=loss_total
         )
@@ -290,15 +299,15 @@ class SaveDateStat(object):
                     loss_total += pl_open
 
         return dict(
-            investment_type='option',
+            name='option',
             total_order=order,
             working_order=working,
             filled_order=filled,
             cancelled_order=cancelled,
             holding=holding,
-            profit_count=profit,
-            loss_count=loss,
-            total=total,
+            profit_holding=profit,
+            loss_holding=loss,
+            pl_total=total,
             profit_total=profit_total,
             loss_total=loss_total
         )
@@ -343,15 +352,15 @@ class SaveDateStat(object):
                     loss_total += pl_open
 
         return dict(
-            investment_type='spread',
+            name='spread',
             total_order=order,
             working_order=working,
             filled_order=filled,
             cancelled_order=cancelled,
             holding=holding,
-            profit_count=profit,
-            loss_count=loss,
-            total=total,
+            profit_holding=profit,
+            loss_holding=loss,
+            pl_total=total,
             profit_total=profit_total,
             loss_total=loss_total
         )

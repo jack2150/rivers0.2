@@ -107,25 +107,25 @@ class TestDateStatInvestment(TestSaveData):
         self.date_stat.save()
 
         self.items = dict(
-            investment_type='Equity',
+            name='Equity',
             total_order=5,
             working_order=3,
             filled_order=1,
             cancelled_order=2,
             holding=10,
-            profit_count=7,
-            loss_count=3,
-            total=399.52,
+            profit_holding=7,
+            loss_holding=3,
+            pl_total=399.52,
             profit_total=519.85,
             loss_total=120.33,
         )
         self.test_cls = models.DateStatInvestment(**self.items)
         self.test_cls.date_stat = self.date_stat
         self.expect_keys = [
-            'investment_type',
+            'name',
             'total_order', 'working_order', 'filled_order', 'cancelled_order',
-            'holding', 'profit_count', 'profit_count',
-            'total', 'profit_total', 'loss_total'
+            'holding', 'profit_holding', 'profit_holding',
+            'pl_total', 'profit_total', 'loss_total'
         ]
 
 
@@ -148,10 +148,10 @@ class TestSaveDateStat(TestSetUp):
         self.date_stat = SaveDateStat(statement=self.statement)
 
         self.expected_keys = [
-            'investment_type',
+            'name',
             'total_order', 'working_order', 'filled_order', 'cancelled_order',
-            'holding', 'profit_count', 'loss_count',
-            'total', 'profit_total', 'loss_total',
+            'holding', 'profit_holding', 'loss_holding',
+            'pl_total', 'profit_total', 'loss_total',
         ]
 
     def ready_file(self, real_date, file_date):
@@ -196,7 +196,7 @@ class TestSaveDateStat(TestSetUp):
         """
         future = self.date_stat.get_future()
         self.assertEqual(type(future), dict)
-        self.assertEqual(future['investment_type'], 'future')
+        self.assertEqual(future['name'], 'future')
         for key in self.expected_keys:
             self.assertIn(key, future.keys())
             print '%s: %s' % (key, future[key])
@@ -209,7 +209,7 @@ class TestSaveDateStat(TestSetUp):
         """
         forex = self.date_stat.get_forex()
         self.assertEqual(type(forex), dict)
-        self.assertEqual(forex['investment_type'], 'forex')
+        self.assertEqual(forex['name'], 'forex')
         for key in self.expected_keys:
             self.assertIn(key, forex.keys())
             print '%s: %s' % (key, forex[key])
@@ -221,7 +221,7 @@ class TestSaveDateStat(TestSetUp):
         """
         equity = self.date_stat.get_equity()
         self.assertEqual(type(equity), dict)
-        self.assertEqual(equity['investment_type'], 'equity')
+        self.assertEqual(equity['name'], 'equity')
 
         for key in self.expected_keys:
             self.assertIn(key, equity.keys())
@@ -234,7 +234,7 @@ class TestSaveDateStat(TestSetUp):
         """
         option = self.date_stat.get_option()
         self.assertEqual(type(option), dict)
-        self.assertEqual(option['investment_type'], 'option')
+        self.assertEqual(option['name'], 'option')
 
         for key in self.expected_keys:
             self.assertIn(key, option.keys())
@@ -247,7 +247,7 @@ class TestSaveDateStat(TestSetUp):
         """
         spread = self.date_stat.get_spread()
         self.assertEqual(type(spread), dict)
-        self.assertEqual(spread['investment_type'], 'spread')
+        self.assertEqual(spread['name'], 'spread')
 
         for key in self.expected_keys:
             self.assertIn(key, spread.keys())
@@ -282,16 +282,16 @@ class TestSaveDateStat(TestSetUp):
         ]
 
         investment_keys = [
-            'investment_type',
+            'name',
             'total_order', 'working_order', 'filled_order', 'cancelled_order',
-            'holding', 'profit_count', 'loss_count',
-            'total', 'profit_total', 'loss_total',
+            'holding', 'profit_holding', 'loss_holding',
+            'pl_total', 'profit_total', 'loss_total',
         ]
 
-        self.date_stat.start()
+        #self.date_stat.start()
 
-        self.assertEqual(models.DateStat.objects.count(), 1)
-        self.assertEqual(models.DateStatInvestment.objects.count(), 5)
+        self.assertEqual(models.DateStat.objects.count(), 1 * 3)
+        self.assertEqual(models.DateStatInvestment.objects.count(), 5 * 3)
 
         date_stat = models.DateStat.objects.first()
         investments = models.DateStatInvestment.objects.all()
