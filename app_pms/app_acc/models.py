@@ -98,7 +98,7 @@ class AccountStatement(models.Model):
         )
 
     class Meta:
-        verbose_name_plural = " Account Statement"
+        verbose_name_plural = "Account Statement"
 
 
 class ForexSummary(models.Model, AccountModel):

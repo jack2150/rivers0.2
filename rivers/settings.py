@@ -26,13 +26,14 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = (
     # plugin package, django suit and adminplus
-    'suit',
+    #'suit',
+    'django_admin_bootstrapped',
+    #'grappelli',
     'adminplus',
+    'widget_tweaks',
 
     # django
     'django.contrib.admin',
@@ -46,6 +47,8 @@ INSTALLED_APPS = (
     'app_pms.app_pos',
     'app_pms.app_ta',
     'app_stat',
+    'base',
+
 )
 
 MIDDLEWARE_CLASSES = (

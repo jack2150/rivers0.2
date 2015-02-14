@@ -1,0 +1,20 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for <TOTAL> (ALL ACCOUNTS) on 2/6/15 05:08:06
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,1/30/15 03:51:21,FOREX,BUY,+10000,TO OPEN,USD/THB,,,FOREX,31.00,LMT,GTC,32.597,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,2/6/15 05:00:00,VERTICAL,SELL,-1,TO CLOSE,TSLA,MAR 15,205,CALL,3.80,LMT,DAY,EXPIRED
+,,,RE #474620068,BUY,+1,TO CLOSE,TSLA,MAR 15,210,CALL,,,,
+,,2/6/15 00:23:37,VERTICAL,SELL,-1,TO CLOSE,TSLA,MAR 15,205,CALL,4.00,LMT,DAY,CANCELED
+,,,,BUY,+1,TO CLOSE,TSLA,MAR 15,210,CALL,,,,
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

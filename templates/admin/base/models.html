@@ -1,0 +1,65 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static %}
+
+{% block title %}Models{% endblock %}
+
+{% block extrastyle %}
+  <style>
+    *, *:before, *:after {
+      box-sizing: border-box !important;
+    }
+
+    .row {
+      -moz-column-width: 17em;
+      -webkit-column-width: 17em;
+      -moz-column-gap: -1em;
+      -webkit-column-gap: -1em;
+
+    }
+
+    .menu-category {
+      display: inline-block;
+      margin: 0.25rem;
+      padding: 1rem;
+      width: 100%;
+    }
+  </style>
+{% endblock %}
+
+{% block breadcrumbs %}
+  <li>
+    <a href="{% url 'admin:index' %}">
+        <i class="ace-icon fa fa-home home-icon"></i>
+        Home
+    </a>
+  </li>
+  <li>
+    Models
+  </li>
+{% endblock %}
+
+{% block page-header %}Models{% endblock %}
+
+{% block content %}
+  <div class="container">
+  {% if models %}
+    <!-- #section:elements.accordion -->
+    <div class="menu row">
+    {% for parent, app_list in models %}
+          {% for app_name, app_list in app_list.items %}
+            <div class="menu-category list-group ">
+            <div class="menu-category-name list-group-item active">{{ parent }}:{{ app_name }}</div>
+            {% for app in app_list %}
+              <a href="{{ app.admin_url }}" class="menu-item list-group-item">
+                <i class="ace-icon fa fa-table bigger-110 icon-only"></i>
+                {{ app.name }}
+              </a>
+            {% endfor %}
+            </div>
+          {% endfor %}
+    {% endfor %}
+      </div>
+    <!-- /section:elements.accordion -->
+  {% endif %}
+  </div>
+{% endblock %}

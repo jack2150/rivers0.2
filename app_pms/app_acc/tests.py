@@ -4,7 +4,6 @@ import os
 from pprint import pprint
 from django.utils.timezone import utc
 from app_pms.test_files import *
-from app_pms.classes.io.open_acc import OpenAcc
 from app_pms.classes.test import TestSetUp
 from app_pms.app_acc import models
 
@@ -45,6 +44,7 @@ class TestAccountStatement(TestSetUp):
             'net_liquid_value',
             'option_buying_power'
         )
+        print self.account_statement.get_name()
 
     def test_save(self):
         """

@@ -1,0 +1,25 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for <TOTAL> (ALL ACCOUNTS) on 2/5/15 05:25:52
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,1/30/15 03:51:21,FOREX,BUY,+10000,TO OPEN,USD/THB,,,FOREX,31.00,LMT,GTC,32.612,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,2/5/15 01:01:24,FUTURE,BUY,+1,TO OPEN,/NGH5,MAR 15,,FUTURE,2.68,2.68,LMT
+,2/4/15 23:53:14,SINGLE,BUY,+1,TO OPEN,BABA,MAR 15,95,CALL,1.99,1.99,LMT
+,2/4/15 23:50:25,SINGLE,BUY,+10,TO OPEN,GE,MAR 15,25,CALL,.20,.20,LMT
+,2/4/15 23:48:42,VERTICAL,SELL,-1,TO OPEN,FB,MAR 15,77.5,PUT,3.70,2.16,LMT
+,,,BUY,+1,TO OPEN,FB,MAR 15,72.5,PUT,1.54,CREDIT,
+,2/4/15 23:05:48,FOREX,BUY,+10000,TO OPEN,AUD/SGD,,,FOREX,1.04405,1.04405,LMT
+,2/4/15 23:04:14,VERTICAL,BUY,+2,TO CLOSE,DIS,MAR 15,92.5,PUT,.53,.19,LMT
+,,,SELL,-2,TO CLOSE,DIS,MAR 15,90,PUT,.34,DEBIT,
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,2/5/15 05:00:00,STOCK,SELL,-100,TO CLOSE,USLV,,,ETF,26.50,LMT,DAY,EXPIRED
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

@@ -1,0 +1,17 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for D-12644969 (pm) on 2/12/15 05:48:09
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,1/30/15 03:51:21,FOREX,BUY,+10000,TO OPEN,USD/THB,,,FOREX,31.00,LMT,GTC,32.66,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,2/12/15 05:48:01,FUTURE,SELL,-1,TO CLOSE,/NGH5,MAR 15,,FUTURE,2.828,2.828,LMT
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

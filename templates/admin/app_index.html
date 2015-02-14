@@ -1,0 +1,20 @@
+{% extends "admin/index.html" %}
+{% load i18n %}
+
+{% if not is_popup %}
+  {% block breadcrumbs %}
+    <li>
+      <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+      </a>
+    </li>
+    {% for app in app_list %}
+      <li>{% blocktrans with app.name as name %}{{ name }}{% endblocktrans %}</li>
+    {% endfor %}
+  {% endblock %}
+{% endif %}
+
+{% block sidebar %}{% endblock %}
+
+<!-- todo: until here -->

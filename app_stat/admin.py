@@ -7,7 +7,7 @@ from app_stat.models import DateStat, DateStatInvestment
 @staff_member_required
 def date_stat_view(request, date=''):
     #template = 'admin/app_stat/date_stat/index.html'
-    template = 'admin/app_stat/date_stat/index2.html'
+    template = 'admin/app_stat/date_stat/index3.html'
 
     if date == '':
         date_stat = DateStat.objects.latest('statement__date')

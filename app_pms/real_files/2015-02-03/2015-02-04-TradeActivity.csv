@@ -1,0 +1,33 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for <TOTAL> (ALL ACCOUNTS) on 2/4/15 06:05:34
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,1/30/15 03:51:21,FOREX,BUY,+10000,TO OPEN,USD/THB,,,FOREX,31.00,LMT,GTC,32.61,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,2/4/15 03:25:10,SINGLE,BUY,+1,TO OPEN,VXX,MAR 15,37,CALL,2.67,2.67,LMT
+,2/4/15 03:23:56,SINGLE,BUY,+2,TO OPEN,IBM,MAR 15,165,CALL,1.16,1.16,LMT
+,2/4/15 03:23:46,SINGLE,BUY,+3,TO OPEN,KO,MAR 15,42,CALL,.78,.78,LMT
+,2/4/15 03:23:12,VERTICAL,SELL,-1,TO OPEN,FSLR,MAR 15,47.5,PUT,3.70,1.89,LMT
+,,,BUY,+1,TO OPEN,FSLR,MAR 15,42.5,PUT,1.81,CREDIT,
+,2/4/15 03:20:36,FOREX,SELL,-10000,TO CLOSE,GBP/USD,,,FOREX,1.5157,1.5157,MKT
+,2/4/15 03:20:11,STOCK,BUY,+100,TO OPEN,USLV,,,ETF,24.95,24.95,LMT
+,2/4/15 03:19:06,FOREX,BUY,+10000,TO OPEN,HKD/JPY,,,FOREX,15.16055,15.16055,MKT
+,2/4/15 03:17:42,STOCK,SELL,-300,TO CLOSE,RSX,,,ETF,15.74,15.74,LMT
+,2/3/15 23:03:39,VERTICAL,BUY,+6,TO OPEN,BP,MAR 15,41,CALL,1.01,.36,LMT
+,,,SELL,-6,TO OPEN,BP,MAR 15,42,CALL,.65,DEBIT,
+,2/3/15 23:02:33,VERTICAL,SELL,-2,TO OPEN,DIS,MAR 15,92.5,PUT,2.67,.93,LMT
+,,,BUY,+2,TO OPEN,DIS,MAR 15,90,PUT,1.74,CREDIT,
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,2/4/15 03:19:06,FOREX,BUY,+10000,TO OPEN,HKD/JPY,,,FOREX,15.15935,LMT,GTC,CANCELED
+,,2/4/15 03:18:41,FOREX,BUY,+10000,TO OPEN,HKD/JPY,,,FOREX,15.15865,LMT,GTC,REJECTED: Limit price must be less than or equal to 15.1585 (unsupported order characteristic)
+,,2/4/15 03:20:35,FOREX,SELL,-10000,TO CLOSE,GBP/USD,,,FOREX,1.5162,LMT,GTC,CANCELED
+,,2/4/15 03:17:34,STOCK,SELL,-300,TO CLOSE,RSX,,,ETF,16.00,LMT,DAY,CANCELED
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

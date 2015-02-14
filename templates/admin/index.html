@@ -1,0 +1,41 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static %}
+
+{% block breadcrumbs %}
+  <li>
+    <i class="ace-icon fa fa-home home-icon"></i>
+    Home
+  </li>
+{% endblock %}
+
+{% block page-header %}Models{% endblock %}
+
+{% block content %}
+  {% if app_list %}
+    {% for app in app_list %}
+
+      <div class="col-md-3">
+        <a href="{{ app.app_url }}" class="section"
+           title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">
+          {% blocktrans with name=app.name %}{{ name }}{% endblocktrans %}
+        </a>
+
+
+      <table class="table table-striped">
+      {% for model in app.models %}
+        <tr>
+          <td>
+            {% if model.admin_url %}
+              <a href="{{ model.admin_url }}">{{ model.name }}</a>
+            {% else %}
+              {{ model.name }}
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      </table>
+      </div>
+
+    {% endfor %}
+  {% endif %}
+{% endblock %}
