@@ -45,18 +45,18 @@
   {% if models %}
     <!-- #section:elements.accordion -->
     <div class="menu row">
-    {% for parent, app_list in models %}
-          {% for app_name, app_list in app_list.items %}
-            <div class="menu-category list-group ">
-            <div class="menu-category-name list-group-item active">{{ parent }}:{{ app_name }}</div>
-            {% for app in app_list %}
-              <a href="{{ app.admin_url }}" class="menu-item list-group-item">
-                <i class="ace-icon fa fa-table bigger-110 icon-only"></i>
-                {{ app.name }}
-              </a>
-            {% endfor %}
-            </div>
+    {% for parent, app_model in models %}
+      {% for app_name, app_list, custom_name in app_model %}
+        <div class="menu-category list-group ">
+          <div class="menu-category-name list-group-item active">{{ custom_name }}</div>
+          {% for app in app_list %}
+            <a href="{{ app.admin_url }}" class="menu-item list-group-item">
+              <i class="ace-icon fa fa-table bigger-110 icon-only"></i>
+              {{ app.name }}
+            </a>
           {% endfor %}
+        </div>
+      {% endfor %}
     {% endfor %}
       </div>
     <!-- /section:elements.accordion -->

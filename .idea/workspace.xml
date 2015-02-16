@@ -9,479 +9,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/OpenSans-300.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/OpenSans-400.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/img/alpha.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/avatars/avatar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/avatars/avatar1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/avatars/avatar2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/avatars/avatar3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/avatars/avatar4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/avatars/avatar5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/back_disabled.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/back_enabled.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/back_enabled_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/border.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/border1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/border2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/ie6/borderBottomCenter.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/ie6/borderBottomLeft.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/ie6/borderBottomRight.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/ie6/borderMiddleLeft.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/ie6/borderMiddleRight.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/ie6/borderTopCenter.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/ie6/borderTopLeft.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/ie6/borderTopRight.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/chosen-sprite.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/chosen-sprite@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/img/clear.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/controls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls.swf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/email1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/email2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/email3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/email4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/forward_disabled.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/forward_enabled.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/forward_enabled_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/img/glyphicons-halflings-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/img/glyphicons-halflings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/img/hue.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/image-1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/image-2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/image-3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/image-4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/image-5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/image-6.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/img/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/loading_background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/meteorshower.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/meteorshower2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/overlay.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/pattern.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/pattern.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/avatars/profile-pic.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/img/saturation.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/select2-spinner.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/select2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/select2x2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/sort_asc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/sort_asc_disabled.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/sort_both.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/sort_desc.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/sort_desc_disabled.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/spritemap.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/spritemap.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/images/spritemap@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/spritemap@2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/thumb-1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/thumb-2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/thumb-3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/thumb-4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/thumb-5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/images/gallery/thumb-6.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/avatars/user.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-01-29/2015-01-30-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-01-29/2015-01-30-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-01-29/2015-01-30-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-01-30/2015-01-31-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-01-30/2015-01-31-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-01-30/2015-01-31-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-02/2015-02-03-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-02/2015-02-03-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-02/2015-02-03-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-03/2015-02-04-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-03/2015-02-04-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-03/2015-02-04-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-04/2015-02-05-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-04/2015-02-05-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-04/2015-02-05-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-05/2015-02-06-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-05/2015-02-06-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-05/2015-02-06-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-06/2015-02-07-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-06/2015-02-07-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-06/2015-02-07-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-09/2015-02-10-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-09/2015-02-10-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-09/2015-02-10-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-10/2015-02-11-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-10/2015-02-11-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-10/2015-02-11-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-11/2015-02-12-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-11/2015-02-12-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-11/2015-02-12-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-13/2015-02-14-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-13/2015-02-14-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app_pms/real_files/2015-02-13/2015-02-14-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/base/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/x-editable/ace-editable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace-elements.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace-extra.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/ace-features.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/ace-fonts.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/ace-ie.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/ace-nav.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/ace-part2.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/ace-responsive.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/ace-rtl.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/ace-rtl.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/ace-skins.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.ajax-content.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.auto-container.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.auto-padding.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/ace.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/ace.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/ace.onpage-help.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.onpage-help.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.searchbox-autocomplete.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.settings-rtl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.settings-skin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.settings.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.sidebar-scroll-1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.sidebar-scroll-2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.sidebar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.submenu-hover.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.touch-drag.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.widget-box.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/ace.widget-on-reload.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/active.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/additional-methods.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/base/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/alerts.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/alerts.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/app_index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/app_index2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/background-variant.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/badges.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/base2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/base_site.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/basic.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/bootbox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/bootstrap-colorpicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/date-time/bootstrap-datepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/bootstrap-datetimepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/date-time/bootstrap-datetimepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/bootstrap-duallistbox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/bootstrap-editable.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/x-editable/bootstrap-editable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/markdown/bootstrap-markdown.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/bootstrap-multiselect.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/bootstrap-multiselect.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/bootstrap-tag.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/ext/bootstrap-tag.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/bootstrap-timepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/date-time/bootstrap-timepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/bootstrap-wysiwyg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/app_stat/date_stat/bootstrap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/bootstrap.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/border-radius.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/breadcrumbs.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/breadcrumbs.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bs3-reset.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/button-groups.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/buttons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/buttons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/buttons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/carousel.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/center-block.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/form/checkbox.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/chosen.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/chosen.jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/clearfix.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/close.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/code.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/navbar/collapsible.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/colorbox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/colorpicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/dropdown/colorpicker.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/compact.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/component-animations.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/datepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/daterangepicker.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/date-time/daterangepicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/dropdown.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/dropdowns.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/dropzone.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/dropzone.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/elements.aside.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/elements.colorpicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/elements.fileinput.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/elements.onpage-help.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/elements.scroller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/elements.spinner.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/elements.treeview.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/elements.typeahead.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/elements.wizard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/elements.wysiwyg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/skins/empty.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/excanvas.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/ff_fix.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/form/file.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/font-awesome.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/fonts-rel.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/fonts.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/footer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/footer.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/form.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/forms.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/forms.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/fuelux/fuelux.spinner.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/fuelux/fuelux.tree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/fuelux/fuelux.wizard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/fullcalendar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/fullcalendar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/fullcalendar.print.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/gallery.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/general.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/glyphicons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/gradients.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/grid-framework.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/grid.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/grid.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-ar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-bg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-bg1251.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-cat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-cn.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-cs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-da.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-dk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-el.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-en.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-fa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-fi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-gl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-he.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-hr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-hr1250.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-id.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-is.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-ja.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-kr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-lt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-mne.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-nl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-no.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-pt-br.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-pt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-ro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-sk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-sr-latin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-sr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-sv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-th.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-tw.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-ua.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/i18n/grid.locale-vi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/hide-text.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/highlight.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/horizontal.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/hover.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/html5shiv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/icon-animated.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/image.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/index2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/app_stat/date_stat/index3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/infobox.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/input-groups.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/items.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/jquery-ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/jquery-ui.custom.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery-ui.custom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery-ui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.autosize.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.bootstrap-duallistbox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.colorbox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/dataTables/jquery.dataTables.bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/dataTables/jquery.dataTables.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.easypiechart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/flot/jquery.flot.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/flot/jquery.flot.pie.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/flot/jquery.flot.resize.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/jquery.gritter.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.gritter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.hotkeys.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.inputlimiter.1.3.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jqGrid/jquery.jqGrid.src.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.knob.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.maskedinput.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.mobile.custom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.mousewheel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.nestable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.raty.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.slimscroll.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.sparkline.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.ui.touch-punch.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery.validate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/jquery1x.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/jumbotron.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/label-badge.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/labels.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/labels.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/list-group.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/list-group.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/markdown/markdown.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/media.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/min.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/mixins.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/modal.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/modals.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/base/models.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/base/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/date-time/moment.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/multiple.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/nav-divider.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/nav-vertical-align.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/dropdown/navbar-dropdown.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/navbar/navbar-menu-form.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/dropdown/navbar-tabbed-dropdown.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/navbar.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/navs.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/skins/no-skin.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/normalize.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/old-toggle-button.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/onpage-help.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/opacity.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/other.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/others.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/pace.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/pace.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/page.error.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/page.inbox.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/page.invoice.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/page.login.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/page.pricing.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/page.profile.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/page.timeline.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/pager.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/pagination.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/pagination.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/panels.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/panels.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/popovers.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/prettify.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/prettify.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/print.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/print.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/progress-bar.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/progress-bars.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/progressbar.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/fonts/readme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/readme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/reset-filter.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/resize.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/respond.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/responsive-1.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/responsive-2.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/responsive-3.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/responsive-embed.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/responsive-utilities.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/responsive-visibility.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/scaffolding.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/ace/scripts.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/scroll.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/searchbox.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/select2.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/select2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/shortcuts-toggle.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/sidebar-fixed.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/size.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/skins/skin-1.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/skins/skin-2.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/skins/skin-3.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/skins/skins.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/spin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/sidebar/sub-arrow.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/tab-accordion.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/tab-focus.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/table-row.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/tables.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/tables.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/base/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/text-emphasis.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/text-overflow.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/theme.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-calendar.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-chosen.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-colorbox.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-dataTables.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-date.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-dropzone.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-duallist-multiselect.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-editable.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-fuelux.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-gritter.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-jqgrid.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-jquery-ui.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-nestable.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-raty.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-select2.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-slider.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-typeahead.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/thirdparty-wysiwyg.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/thumbnails.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/markdown/to-markdown.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/navbar/toggle-button.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/tooltip-popover.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/tooltip.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/type.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/js/typeahead.jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/ui.jqgrid.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/navbar/user-buttons-move-down.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/navbar/user-buttons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/navbar/user-dropdown-position.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/navbar/user-menu.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/utilities.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/utility.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/variables.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/variables.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/mixins/vendor-prefixes.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/base/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/bootstrap/wells.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/assets/css/less/widget.less" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\.idea\inspectionProfiles\Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\.idea\inspectionProfiles\profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\base.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_stat/admin.py" afterPath="$PROJECT_DIR$/app_stat/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/app_acc/models.py" afterPath="$PROJECT_DIR$/app_pms/app_acc/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/rivers.iml" afterPath="$PROJECT_DIR$/.idea/rivers.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/settings.py" afterPath="$PROJECT_DIR$/rivers/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/app_acc/tests.py" afterPath="$PROJECT_DIR$/app_pms/app_acc/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/urls.py" afterPath="$PROJECT_DIR$/rivers/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/change_list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/change_list2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/app_pms/statement/import.html" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_pms\statement\import_statement.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_pms\statement\old.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\others.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_pms/admin.py" afterPath="$PROJECT_DIR$/app_pms/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/base.html" afterPath="$PROJECT_DIR$/templates/admin/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/base/models.html" afterPath="$PROJECT_DIR$/templates/admin/base/models.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/views.py" afterPath="$PROJECT_DIR$/base/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rivers.iws" />
@@ -510,7 +47,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__all.coverage" NAME="Test: all Coverage Results" MODIFIED="1420401447626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat.coverage" NAME="Test: app_stat.tests.TestSaveDateStat Coverage Results" MODIFIED="1422646955731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_option.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_option Coverage Results" MODIFIED="1422596760243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestDateStat.coverage" NAME="Test: app_stat.tests.TestDateStat Coverage Results" MODIFIED="1422647301263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestDateStat.coverage" NAME="Test: app_stat.tests.TestDateStat Coverage Results" MODIFIED="1423906092459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_forex.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_forex Coverage Results" MODIFIED="1421375639600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_hedge_tests.coverage" NAME="Test: lib.pos.identify.hedge.tests Coverage Results" MODIFIED="1411250314367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_leg_one_tests.coverage" NAME="Test: lib.pos.identify.leg_one.tests Coverage Results" MODIFIED="1411250323455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -544,7 +81,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_stock.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_stock Coverage Results" MODIFIED="1421360520914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_future.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_future Coverage Results" MODIFIED="1421375511391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__pms_app_spr_app_tests.coverage" NAME="Test: pms_app.spr_app.tests Coverage Results" MODIFIED="1411252268368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__base_tests_TestBaseModelList_test_model_listing.coverage" NAME="Test: base.tests.TestBaseModelList.test_model_listing Coverage Results" MODIFIED="1423901349526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__base_tests_TestBaseModelList_test_model_listing.coverage" NAME="Test: base.tests.TestBaseModelList.test_model_listing Coverage Results" MODIFIED="1423906104013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_spread.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_spread Coverage Results" MODIFIED="1422296110877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_app_acc_tests.coverage" NAME="Test: app_pms.app_acc.tests Coverage Results" MODIFIED="1423878187996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_hedge_tests.coverage" NAME="Test: lib.pos.spread.hedge.tests Coverage Results" MODIFIED="1411250353610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -565,35 +102,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/base/admin.py">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app_pms/app_acc/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/base/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4315305" vertical-offset="899" max-vertical-offset="1768">
-              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/admin/base/models.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.685715" vertical-offset="986" max-vertical-offset="1820">
-              <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.27336448" vertical-offset="1040" max-vertical-offset="23608">
+              <caret line="51" column="22" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -622,12 +135,16 @@
         <option value="$PROJECT_DIR$/templates/admin/index.html" />
         <option value="$PROJECT_DIR$/rivers/settings.py" />
         <option value="$PROJECT_DIR$/templates/admin/base_site.html" />
-        <option value="$PROJECT_DIR$/templates/admin/base.html" />
         <option value="$PROJECT_DIR$/base/tests.py" />
         <option value="$PROJECT_DIR$/templates/admin/base/model-list.html" />
         <option value="$PROJECT_DIR$/base/admin.py" />
-        <option value="$PROJECT_DIR$/base/views.py" />
         <option value="$PROJECT_DIR$/templates/admin/base/models.html" />
+        <option value="$PROJECT_DIR$/base/views.py" />
+        <option value="$PROJECT_DIR$/app_pms/admin.py" />
+        <option value="$PROJECT_DIR$/templates/admin/others.html" />
+        <option value="$PROJECT_DIR$/templates/admin/base.html" />
+        <option value="$PROJECT_DIR$/templates/admin/app_pms/statement/import.html" />
+        <option value="$PROJECT_DIR$/templates/admin/change_list.html" />
       </list>
     </option>
   </component>
@@ -700,6 +217,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -728,54 +246,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app_pms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -790,41 +260,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
+              <option name="myItemId" value="app_pms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app_stat" />
+              <option name="myItemId" value="app_acc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -855,7 +300,7 @@
       <recent name="C:\Users\Jack\Projects\rivers\pms_app" />
     </key>
   </component>
-  <component name="RunManager" selected="Django tests.Test: base.tests.TestBaseModelList.test_model_listing">
+  <component name="RunManager" selected="Django server.rivers">
     <configuration default="false" name="Test: app_stat.tests.TestSaveDateStat.test_get_option" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -1581,9 +1026,9 @@
       <item index="16" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat.test_get_date_stat" />
       <item index="17" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat.test_start" />
       <item index="18" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestDateStat.setUp" />
-      <item index="19" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat.test_get_option" />
-      <item index="20" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestDateStat" />
-      <item index="21" class="java.lang.String" itemvalue="Django tests.Test: base.tests.TestBaseModelList.test_model_listing" />
+      <item index="19" class="java.lang.String" itemvalue="Django tests.Test: base.tests.TestBaseModelList.test_model_listing" />
+      <item index="20" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat.test_get_option" />
+      <item index="21" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestDateStat" />
     </list>
     <recent_temporary>
       <list size="2">
@@ -1819,7 +1264,13 @@
       <option name="project" value="LOCAL" />
       <updated>1422925299600</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="new bootstrap design&#10;models page view&#10;">
+      <created>1423901671791</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1423901671791</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1854,11 +1305,10 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37915742" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2540107" sideWeight="0.76053214" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27326202" sideWeight="0.76053214" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2513369" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960423" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28074867" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27326202" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1866,6 +1316,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1905,7 +1356,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Complete: new PosModel with blind&#10;Complete: import pms statements view and tests&#10;Starting: new AccModel with blind" />
     <MESSAGE value="before remove pos import_app, view_app" />
     <MESSAGE value="after remove front view...&#10;spread io waiting update...&#10;admin pos_app and pms_app done..." />
     <MESSAGE value="complete: trade activity admin" />
@@ -1930,7 +1380,8 @@
     <MESSAGE value="restart again..." />
     <MESSAGE value="date_stat" />
     <MESSAGE value="date_stat done, interface problem..." />
-    <option name="LAST_COMMIT_MESSAGE" value="date_stat done, interface problem..." />
+    <MESSAGE value="new bootstrap design&#10;models page view&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="new bootstrap design&#10;models page view&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1949,20 +1400,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app_pms/test_files/2014-10-21/2014-10-22-AccountStatement.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.749499" vertical-offset="354" max-vertical-offset="3328">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/test_files/2014-11-19/2014-11-19-TradeActivity.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9699399" vertical-offset="192" max-vertical-offset="988">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_pms/test_files/2014-11-15/2014-11-15-TradeActivity.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="1118">
@@ -2068,20 +1505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11871" max-vertical-offset="12740">
-          <caret line="132" column="38" selection-start-line="132" selection-start-column="38" selection-end-line="132" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/app_pms/statement/import_statement.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49880096" vertical-offset="780" max-vertical-offset="4342">
-          <caret line="46" column="10" selection-start-line="38" selection-start-column="4" selection-end-line="46" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/app_stat/date_stat/bootstrap.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06235012" vertical-offset="0" max-vertical-offset="834">
@@ -2145,24 +1568,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/others.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1872">
-          <caret line="0" column="14" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22168088" vertical-offset="0" max-vertical-offset="2340">
           <caret line="7" column="30" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.085714" vertical-offset="0" max-vertical-offset="832">
-          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -2182,13 +1591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/app_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="572">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/app_index2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21822542" vertical-offset="0" max-vertical-offset="834">
@@ -2197,28 +1599,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/change_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2704">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/app_pms/pos_stock_change_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2938">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app_pms/app_acc/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2236" max-vertical-offset="23660">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#28#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2234,7 +1619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.089758344" vertical-offset="0" max-vertical-offset="7878">
           <caret line="15" column="28" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2258,9 +1642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35097814" vertical-offset="345" max-vertical-offset="17030">
           <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2272,21 +1653,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.013398294" vertical-offset="245" max-vertical-offset="3978">
-          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/base/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11967779" vertical-offset="0" max-vertical-offset="869">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2294,43 +1664,116 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6708861" vertical-offset="691" max-vertical-offset="1560">
           <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/base_site.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.013398294" vertical-offset="89" max-vertical-offset="24362">
+        <state vertical-scroll-proportion="640.65717" vertical-offset="22501" max-vertical-offset="24362">
           <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/base/admin.py">
+    <entry file="file://$PROJECT_DIR$/templates/admin/footer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.71702635" vertical-offset="0" max-vertical-offset="834">
+          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/base/models.html">
+    <entry file="file://$PROJECT_DIR$/app_pms/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.685715" vertical-offset="986" max-vertical-offset="1820">
-          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.730725" vertical-offset="11871" max-vertical-offset="12740">
+          <caret line="498" column="0" selection-start-line="498" selection-start-column="0" selection-end-line="498" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/app_pms/statement/import.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66504264" vertical-offset="702" max-vertical-offset="5512">
+          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/app_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34292567" vertical-offset="0" max-vertical-offset="834">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/change_list_results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1144">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/change_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31668696" vertical-offset="0" max-vertical-offset="2704">
+          <caret line="10" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/change_list2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28501827" vertical-offset="780" max-vertical-offset="2834">
+          <caret line="39" column="22" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31912303" vertical-offset="2624" max-vertical-offset="5746">
+          <caret line="111" column="19" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/base/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4315305" vertical-offset="899" max-vertical-offset="1768">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="1.1196778" vertical-offset="587" max-vertical-offset="1716">
+          <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20943613" vertical-offset="0" max-vertical-offset="869">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/change_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38002437" vertical-offset="0" max-vertical-offset="821">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/base/models.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59232616" vertical-offset="260" max-vertical-offset="1820">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="37" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app_pms/app_acc/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27336448" vertical-offset="1040" max-vertical-offset="23608">
+          <caret line="51" column="22" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

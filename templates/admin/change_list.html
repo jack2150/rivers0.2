@@ -1,0 +1,23 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls admin_static admin_list %}
+
+{% block title %}{{ cl.opts.verbose_name_plural|capfirst }}{% endblock %}
+
+{% block breadcrumbs %}
+  <li>
+    <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'admin:base_models' %}">
+      Models
+    </a>
+  </li>
+  <li>
+    {{ cl.opts.verbose_name_plural|capfirst }}
+  </li>
+{% endblock %}
+
+{% block page-header %}{{ cl.opts.verbose_name_plural|capfirst }}{% endblock %}

@@ -1,4 +1,3 @@
-from pprint import pprint
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.contrib.contenttypes.models import ContentType
@@ -12,11 +11,11 @@ def base_models(request):
     :return: render
     """
     custom_name = {
-        'app_pms': 'PMS Models',
-        'app_acc': 'Account Statement Models',
-        'app_pos': 'Position Statement Models',
-        'app_ta': 'Trade Activity Models',
-        'app_stat': 'Daily Statistic Models',
+        'app_pms': 'PMS:Main',
+        'app_acc': 'PMS:Account Statement',
+        'app_pos': 'PMS:Position Statement',
+        'app_ta': 'PMS:Trade Activity',
+        'app_stat': 'STAT:Main',
     }
 
     cls_list = list()
@@ -52,7 +51,8 @@ def base_models(request):
         for key2 in models[key1]:
             models[key1][key2].sort()
 
-    models = [(key, value) for key, value in models.items()]
+    models = [(key, [(k, v, custom_name[k]) for k, v in value.items()])
+              for key, value in models.items()]
     models.sort()
 
     template = 'admin/base/models.html'

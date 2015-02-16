@@ -131,8 +131,8 @@ class PmsImportStatementsForm(forms.Form):
 def statement_import(request, statement_id=0):
     # custom view which should return an HttpResponse
     # return HttpResponse('something')
-    template = 'admin/app_pms/statement/import_statement.html'
-    # template = 'admin/app_pms/statement/old.html'
+    #template = 'admin/app_pms/statement/import_state.html'
+    template = 'admin/app_pms/statement/import.html'
 
     if request.method == 'POST':
         import_statement_form = PmsImportStatementsForm(request.POST, request.FILES)
