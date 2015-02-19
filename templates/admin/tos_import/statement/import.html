@@ -1,0 +1,202 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static %}
+
+{% block title %}Statement Import{% endblock %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'assets/css/datepicker.css' %}"/>
+{% endblock %}
+
+{% block breadcrumbs %}
+  <li>
+    <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    Statement Import
+  </li>
+{% endblock %}
+
+{% block page-header %}Statement Import{% endblock %}
+
+{% block content %}
+  <div class="main-container">
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <form method="post" enctype="multipart/form-data" action="{% url 'admin:statement_import' 0 %}"
+              id="import_statement_form" class="form-horizontal" role="form">
+          {% csrf_token %}
+
+          {% if form.errors %}
+            <div class="alert alert-danger">
+              <button class="close" data-dismiss="alert">×</button>
+              Please correct the error below.
+            </div>
+          {% else %}
+            {% if statement_id %}
+              <div class="alert alert-success">
+                <button class="close" data-dismiss="alert">×</button>
+                All statements was inserted successfully. To view statements data
+                <a href="{% url 'admin:tos_import_statement_change' statement_id %}">click here</a>.
+              </div>
+            {% endif %}
+          {% endif %}
+
+
+
+          <!-- #section:elements.form -->
+          <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="id_date">
+              {{ form.date.label }}
+            </label>
+
+
+            <!-- #section:plugins/date-time.datepicker -->
+            <div class="col-sm-3">
+              <div class="input-group">
+                <input class="form-control date-picker" id="id_date" type="text"
+                       data-date-format="yyyy-mm-dd" name="date"/>
+                <span class="input-group-addon">
+                  <i class="fa fa-calendar bigger-110"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              {{ form.date.help_text }}
+              {% if form.date.errors %}
+                {% for error in form.date.errors %}
+                  <span class="label label-danger">
+                    <i class="ace-icon fa fa-exclamation-triangle bigger-120"></i>
+                    {{ error }}
+                  </span>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="id_account_statement">Account
+              Statement</label>
+
+            <div class="col-sm-4">
+              <input type="file" id="id_account_statement" placeholder="account_statement"
+                     class="col-xs-10 col-sm-5" name="account_statement"/>
+            </div>
+            <div class="col-sm-3">
+              {{ form.account_statement.help_text }}
+              {% if form.account_statement.errors %}
+                {% for error in form.account_statement.errors %}
+                  <span class="label label-danger">
+                    <i class="ace-icon fa fa-exclamation-triangle bigger-120"></i>
+                    {{ error }}
+                  </span>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="id_position_statement">
+              {{ form.position_statement.label }}
+            </label>
+
+            <div class="col-sm-4">
+              <input type="file" id="id_position_statement" placeholder="position_statement"
+                     class="col-xs-10 col-sm-5" name="position_statement"/>
+            </div>
+            <div class="col-sm-3">
+              {{ form.position_statement.help_text }}
+              {% if form.position_statement.errors %}
+                {% for error in form.position_statement.errors %}
+                  <span class="label label-danger">
+                    <i class="ace-icon fa fa-exclamation-triangle bigger-120"></i>
+                    {{ error }}
+                  </span>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="id_trade_activity">
+              {{ form.trade_activity.label }}
+            </label>
+
+            <div class="col-sm-4">
+              <input type="file" id="id_trade_activity" placeholder="trade_activity"
+                     class="col-xs-10 col-sm-5" name="trade_activity"/>
+            </div>
+            <div class="col-sm-3">
+              {{ form.trade_activity.help_text }}
+              {% if form.trade_activity.errors %}
+                {% for error in form.trade_activity.errors %}
+                  <span class="label label-danger">
+                    <i class="ace-icon fa fa-exclamation-triangle bigger-120"></i>
+                    {{ error }}
+                  </span>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+              <button class="btn" type="reset">
+                <i class="ace-icon fa fa-undo bigger-110"></i>
+                Reset
+              </button>
+              &nbsp;&nbsp;&nbsp;
+              <button class="btn btn-info" type="submit">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block extrascript %}
+  $('.date-picker').datepicker({
+    autoclose: true,
+    todayHighlight: true
+  }).next().on(ace.click_event, function(){
+    $(this).prev().focus();
+  });
+
+  $('#id_account_statement').ace_file_input({
+    no_file:'Account Statement ...',
+    btn_choose:'Choose',
+    btn_change:'Change',
+    droppable:false,
+    onchange:null,
+    thumbnail:false
+  });
+
+  $('#id_position_statement').ace_file_input({
+    no_file:'Position Statement ...',
+    btn_choose:'Choose',
+    btn_change:'Change',
+    droppable:false,
+    onchange:null,
+    thumbnail:false
+  });
+
+  $('#id_trade_activity').ace_file_input({
+    no_file:'Trade Activity ...',
+    btn_choose:'Choose',
+    btn_change:'Change',
+    droppable:false,
+    onchange:null,
+    thumbnail:false
+  });
+{% endblock %}

@@ -11,11 +11,11 @@ def base_models(request):
     :return: render
     """
     custom_name = {
-        'app_pms': 'PMS:Main',
-        'app_acc': 'PMS:Account Statement',
-        'app_pos': 'PMS:Position Statement',
-        'app_ta': 'PMS:Trade Activity',
-        'app_stat': 'STAT:Main',
+        'tos_import': 'PMS:Main',
+        'statement_account': 'PMS:Account Statement',
+        'statement_position': 'PMS:Position Statement',
+        'statement_trade': 'PMS:Trade Activity',
+        'stat_simple': 'STAT:Main',
     }
 
     cls_list = list()

@@ -1,0 +1,51 @@
+{% load i18n admin_urls admin_static admin_list static %}
+{% if cl.search_fields %}
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="col-md-3">
+        <form class="form-search" role="search" id="changelist-search" action="" method="get">
+        <div class="input-group">
+
+
+          <input type="text" class="form-control search-query" placeholder="{% trans 'Search' %}"
+                 name="{{ search_var }}" value="{{ cl.query }}" id="searchbar"/>
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-purple btn-sm">
+              <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+              {% trans "Search" %}
+            </button>
+          </span>
+        </div>
+
+        </form>
+      </div>
+    <div class="col-md-7">
+      {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
+      {% block filters %}
+        {% if cl.has_filters %}
+          {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
+        {% endif %}
+      {% endblock %}
+    </div>
+    <div class="col-md-2" style="text-align: right;">
+      {% if show_result_count %}
+        <span class="help-inline">
+          <span class="middle">
+            {% blocktrans count counter=cl.result_count %}{{ counter }} result{% plural %}{{ counter }}
+              results{% endblocktrans %}
+            (<a href="?{% if cl.is_popup %}pop=1{% endif %}">
+            {% blocktrans with full_result_count=cl.full_result_count %}{{ full_result_count }}
+              total{% endblocktrans %}</a>)
+          </span>
+        </span>
+      {% endif %}
+      {% for pair in cl.params.items %}
+        {% ifnotequal pair.0 search_var %}<input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}"/>
+        {% endifnotequal %}
+      {% endfor %}
+    </div>
+    </div>
+  </div>
+
+{% endif %}

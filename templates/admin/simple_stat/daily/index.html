@@ -1,0 +1,239 @@
+{% extends "admin/base_site.html" %}
+{% load static money %}
+
+{% block title %}Day Statistic: {{ date }}{% endblock %}
+
+{% block extrastyle %}
+  <style>
+    .donut_header {
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+{% endblock %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static "morris/morris.js-0.5.1/morris.css" %}">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <ul class="breadcrumb">
+        <li>
+            <a href="{% url 'admin:index' %}">Home</a>
+            <span class="divider">&raquo;</span>
+        </li>
+        <li>
+            <a href="{% url 'admin:app_list' 'stat_simple' %}">App_Stat</a>
+            <span class="divider">&raquo;</span>
+        </li>
+        <li class="active">
+            Day Statistic: {{ date }}
+        </li>
+    </ul>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="row">
+    {% for x in investment_field %}
+      <div class="col-md-2">
+        <h4 class="donut_header">{{ x.name|capfirst }}: {{ x.pl_total|currency }}</h4>
+        <h4 class="donut_header">
+          {{ x.holding }}
+          Position{% if x.holding > 1 %}s{% endif %}
+        </h4>
+        <div id="pl-{{ x.name }}" style="width: 100%; height: 200px;"></div>
+
+        <h5 class="donut_header">Total Order: {{ x.total_order }}</h5>
+      </div>
+
+      <!--suppress JSDuplicatedDeclaration -->
+      <script type="application/javascript">
+        {% if x.profit_holding or x.loss_holding %}
+          Morris.Donut({
+            element: 'pl-{{ x.name }}',
+            data: [
+              {
+                label: "{{ x.profit_total|currency }}",
+                value: {{ x.profit_total|stringformat:"d" }},
+                formatted: '{{ x.profit_holding }} Profit'
+              },
+              {
+                label: "{{ x.loss_total|currency }}",
+                value: {{ x.loss_total|stringformat:"d"|slice:"1:"  }},
+                formatted: '{{ x.loss_holding }} Loss'
+              }
+            ],
+            colors: [
+              '#22cc66',
+              '#ff4444'
+            ],
+            formatter: function (x, data) {
+              return data.formatted;
+            }
+          });
+        {% else %}
+          Morris.Donut({
+            element: 'pl-{{ x.name }}',
+            data: [
+              {label: "Even", value: 0.01, formatted: "No position"},
+            ],
+            colors: [
+              '#e5e5e5'
+            ],
+            formatter: function (x, data) {
+              return data.formatted;
+            }
+          });
+        {% endif %}
+      </script>
+
+    {% endfor %}
+
+    <div class="col-md-2">
+      <h4 class="donut_header">Summary: {{ date_stat.pl_day }}</h4>
+      <h4 class="donut_header">
+        {{ date_stat.total_holding }}
+        Position{% if date_stat.total_holding > 1 %}s{% endif %}
+      </h4>
+
+      <div id="pl-summary" style="width: 100%; height: 200px;"></div>
+
+      <h5 class="donut_header">Total Order: {{ date_stat.total_order }}</h5>
+    </div>
+    <script type="text/javascript">
+      Morris.Donut({
+        element: 'pl-summary',
+        data: [
+          {label: "Even", value: 0.01, formatted: "No position"}
+        ],
+        colors: [
+          '#e5e5e5'
+        ],
+        formatter: function (x, data) {
+          return data.formatted;
+        }
+      });
+    </script>
+  </div>
+
+
+
+<div id="content" class="colM row-fluid">
+<div id="content-main" class="inner-center-column">
+    <table>
+        <tr>
+            <th>PL Day:</th>
+            <td>{{ date_stat.pl_day }}</td>
+        </tr>
+        <tr>
+            <th>PL YTD:</th>
+            <td>{{ date_stat.pl_ytd }}</td>
+        </tr>
+        <tr>
+            <th>Commission Day:</th>
+            <td>{{ date_stat.c_day }}</td>
+        </tr>
+        <tr>
+            <th>Commission YTD:</th>
+            <td>{{ date_stat.c_ytd }}</td>
+        </tr>
+        <tr>
+            <th>Option BP Day:</th>
+            <td>{{ date_stat.option_bp_day }}</td>
+        </tr>
+        <tr>
+            <th>Stock BP Day:</th>
+            <td>{{ date_stat.stock_bp_day }}</td>
+        </tr>
+        <tr>
+            <th>Total Order:</th>
+            <td>{{ date_stat.total_order }}</td>
+        </tr>
+        <tr>
+            <th>Working Order:</th>
+            <td>{{ date_stat.working_order }}</td>
+        </tr>
+        <tr>
+            <th>Filled Order:</th>
+            <td>{{ date_stat.filled_order }}</td>
+        </tr>
+        <tr>
+            <th>Cancelled Order:</th>
+            <td>{{ date_stat.cancelled_order }}</td>
+        </tr>
+    </table>
+
+
+    {% for x in investment_field %}
+        <table>
+            <tr>
+                <th>Investment:</th>
+                <td>{{ x.name }}</td>
+            </tr>
+            <tr>
+                <th>Total Order:</th>
+                <td>{{ x.total_order }}</td>
+            </tr>
+            <tr>
+                <th>Working Order:</th>
+                <td>{{ x.working_order }}</td>
+            </tr>
+            <tr>
+                <th>Filled Order:</th>
+                <td>{{ x.filled_order }}</td>
+            </tr>
+            <tr>
+                <th>Cancelled Order:</th>
+                <td>{{ x.cancelled_order }}</td>
+            </tr>
+            <tr>
+                <th>Holding:</th>
+                <td>{{ x.holding }}</td>
+            </tr>
+            <tr>
+                <th>Profit Holding:</th>
+                <td>{{ x.profit_holding }}</td>
+            </tr>
+            <tr>
+                <th>Loss Holding:</th>
+                <td>{{ x.loss_holding }}</td>
+            </tr>
+            <tr>
+                <th>PL Total:</th>
+                <td>{{ x.pl_total }}</td>
+            </tr>
+            <tr>
+                <th>Profit Total:</th>
+                <td>{{ x.profit_total }}</td>
+            </tr>
+            <tr>
+                <th>Loss Total:</th>
+                <td>{{ x.loss_total }}</td>
+            </tr>
+        </table>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

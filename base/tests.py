@@ -1,5 +1,5 @@
 from pprint import pprint
-from app_pms.classes.test import TestSetUp
+from tos_import.classes.test import TestSetUp
 from base.views import base_models
 
 

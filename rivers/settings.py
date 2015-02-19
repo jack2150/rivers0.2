@@ -30,8 +30,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     # plugin package, django suit and adminplus
     #'suit',
-    'django_admin_bootstrapped',
-    #'grappelli',
+    #'django_admin_bootstrapped',
     'adminplus',
     'widget_tweaks',
 
@@ -39,14 +38,15 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app_pms',
-    'app_pms.app_acc',
-    'app_pms.app_pos',
-    'app_pms.app_ta',
-    'app_stat',
+    'tos_import',
+    'tos_import.statement_account',
+    'tos_import.statement_position',
+    'tos_import.statement_trade',
+    'stat_simple',
     'base',
 
 )

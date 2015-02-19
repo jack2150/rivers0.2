@@ -1,0 +1,18 @@
+{% if show %}
+  <div class="btn-group">
+    {% if back %}
+      <button type="button" class="btn" onclick="window.location.href='{{ back.link }}'">
+        <i class="ace-icon fa fa-angle-double-left"></i>
+        {{ back.title }}
+      </button>
+    {% endif %}
+    {% for choice in choices %}
+        <button type="button" class="btn"
+                onclick="
+                    window.location.href='{% if choice.link %}{{ choice.link }}{% else %}#{% endif %}'
+                    ">
+          {{ choice.title }}
+        </button>
+    {% endfor %}
+  </div>
+{% endif %}

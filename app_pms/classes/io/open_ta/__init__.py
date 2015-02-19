@@ -1,1 +1,0 @@
-from app_pms.classes.io.open_ta.__open_ta import OpenTA

@@ -1,0 +1,15 @@
+{% load admin_list %}
+{% load i18n %}
+{% if pagination_required %}
+    <ul class="pagination" style="margin: 0">
+      {% for i in page_range %}
+        {% if i == "." %}
+          <li>
+            <span>{% paginator_number cl i %}</span>
+          </li>
+        {% else %}
+          <li>{% paginator_number cl i %}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+{% endif %}
