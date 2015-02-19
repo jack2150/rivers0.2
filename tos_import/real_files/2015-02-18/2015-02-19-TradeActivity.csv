@@ -1,0 +1,37 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for <TOTAL> (ALL ACCOUNTS) on 2/19/15 12:50:29
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,1/30/15 03:51:21,FOREX,BUY,+10000,TO OPEN,USD/THB,,,FOREX,31.00,LMT,GTC,32.552,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,2/19/15 07:12:29,FOREX,BUY,+10000,TO OPEN,USD/JPY,,,FOREX,118.7889,118.7889,ROP
+,2/19/15 07:12:29,FOREX,BUY,+10000,TO OPEN,AUD/SGD,,,FOREX,1.0587,1.0587,ROP
+,2/19/15 07:12:29,FOREX,BUY,+10000,TO OPEN,HKD/JPY,,,FOREX,15.3097,15.3097,ROP
+,2/19/15 07:12:28,FOREX,SELL,-10000,TO CLOSE,AUD/SGD,,,FOREX,1.0587,1.0587,RCL
+,2/19/15 07:12:28,FOREX,SELL,-10000,TO CLOSE,HKD/JPY,,,FOREX,15.3097,15.3097,RCL
+,2/19/15 07:12:28,FOREX,SELL,-10000,TO CLOSE,USD/JPY,,,FOREX,118.79,118.79,RCL
+,2/19/15 02:51:20,VERTICAL,BUY,+1,TO OPEN,SPY,APR 15,209,PUT,4.85,2.43,LMT
+,,,SELL,-1,TO OPEN,SPY,APR 15,200,PUT,2.42,DEBIT,
+,2/18/15 23:33:41,VERTICAL,SELL,-6,TO CLOSE,BP,MAR 15,41,CALL,1.59,.58,LMT
+,,,BUY,+6,TO CLOSE,BP,MAR 15,42,CALL,1.01,CREDIT,
+,2/18/15 23:31:38,FOREX,SELL,-10000,TO CLOSE,GBP/USD,,,FOREX,1.5439,1.5439,LMT
+,2/18/15 23:30:14,STOCK,SELL,-200,TO CLOSE,EWU,,,ETF,18.93,18.93,LMT
+,2/18/15 23:30:12,SINGLE,SELL,-10,TO CLOSE,GE,MAR 15,25,CALL,.37,.37,LMT
+,2/18/15 23:29:54,VERTICAL,BUY,+2,TO CLOSE,JPM,MAR 15,55,PUT,.29,.16,LMT
+,,,SELL,-2,TO CLOSE,JPM,MAR 15,52.5,PUT,.13,DEBIT,
+,2/18/15 23:29:42,SINGLE,SELL,-2,TO CLOSE,IBM,MAR 15,165,CALL,1.76,1.76,LMT
+,2/18/15 23:29:29,VERTICAL,BUY,+3,TO CLOSE,SPY,MAR 15,201,PUT,1.43,.28,LMT
+,,,SELL,-3,TO CLOSE,SPY,MAR 15,199,PUT,1.15,DEBIT,
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,2/19/15 02:51:20,VERTICAL,BUY,+1,TO OPEN,SPY,APR 15,209,PUT,2.41,LMT,DAY,CANCELED
+,,,,SELL,-1,TO OPEN,SPY,APR 15,200,PUT,,,,
+,,2/18/15 23:30:43,FOREX,SELL,-10000,TO CLOSE,GBP/USD,,,FOREX,1.5436,LMT,GTC,REJECTED: Limit price must be greater than or equal to 1.5438 (unsupported order characteristic)
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

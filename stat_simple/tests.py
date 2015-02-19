@@ -51,29 +51,35 @@ class TestDateStat(TestSaveData):
         )
         self.statement.save()
 
-        self.items = {'c_day': 93.48,
-                      'c_ytd': 266.82,
+        self.items = {'commission_day': 93.48,
+                      'commission_ytd': 266.82,
                       'cancelled_order': 4,
                       'filled_order': 17,
                       'option_bp_day': 4678.93,
-                      'pl_day': 5029.98,
-                      'pl_ytd': 19552.48,
+                      'holding_pl_open': 325.88,
+                      'holding_pl_day': 5029.98,
+                      'account_pl_day': 5011.65,
+                      'account_pl_ytd': 19552.48,
                       'stock_bp_day': 4357.86,
                       'total_order': 27,
                       'working_order': 6}
 
         self.test_cls = models.DayStat(**self.items)
         self.test_cls.statement = self.statement
-        self.expect_keys = ['total_order',
-                            'c_day',
-                            'cancelled_order',
-                            'stock_bp_day',
-                            'c_ytd',
-                            'filled_order',
-                            'pl_day',
-                            'pl_ytd',
-                            'working_order',
-                            'option_bp_day']
+        self.expect_keys = [
+            'commission_day',
+            'commission_ytd',
+            'cancelled_order',
+            'filled_order',
+            'option_bp_day',
+            'holding_pl_open',
+            'holding_pl_day',
+            'account_pl_day',
+            'account_pl_ytd',
+            'stock_bp_day',
+            'total_order',
+            'working_order'
+        ]
 
 
 class TestDayStatHolding(TestSaveData):
@@ -88,13 +94,14 @@ class TestDayStatHolding(TestSaveData):
         )
         self.statement.save()
 
-        self.items = {'c_day': 93.48,
-                      'c_ytd': 266.82,
+        self.items = {'commission_day': 93.48,
+                      'commission_ytd': 266.82,
                       'cancelled_order': 4,
                       'filled_order': 17,
                       'option_bp_day': 4678.93,
-                      'pl_day': 5029.98,
-                      'pl_ytd': 19552.48,
+                      'holding_pl_open': 325.88,
+                      'holding_pl_day': 5029.98,
+                      'account_pl_ytd': 19552.48,
                       'stock_bp_day': 4357.86,
                       'total_order': 27,
                       'working_order': 6}
@@ -255,8 +262,17 @@ class TestSaveDateStat(TestSetUp):
         Test get date stat
         """
         expected_keys = [
-            'total_holding', 'total_order', 'cancelled_order', 'filled_order', 'working_order',
-            'pl_ytd', 'pl_day', 'c_day', 'c_ytd', 'stock_bp_day', 'option_bp_day'
+            'commission_day',
+            'commission_ytd',
+            'cancelled_order',
+            'filled_order',
+            'option_bp_day',
+            'holding_pl_open',
+            'holding_pl_day',
+            'account_pl_ytd',
+            'stock_bp_day',
+            'total_order',
+            'working_order'
         ]
 
         day_stat = self.day_stat.get_day_stat()

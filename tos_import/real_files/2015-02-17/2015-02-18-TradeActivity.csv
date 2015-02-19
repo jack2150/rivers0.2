@@ -1,0 +1,24 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for <TOTAL> (ALL ACCOUNTS) on 2/18/15 14:41:52
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,1/30/15 03:51:21,FOREX,BUY,+10000,TO OPEN,USD/THB,,,FOREX,31.00,LMT,GTC,32.558,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,2/18/15 07:12:43,FOREX,BUY,+10000,TO OPEN,AUD/SGD,,,FOREX,1.059789,1.059789,ROP
+,2/18/15 07:12:43,FOREX,BUY,+10000,TO OPEN,USD/JPY,,,FOREX,119.25,119.25,ROP
+,2/18/15 07:12:43,FOREX,BUY,+10000,TO OPEN,HKD/JPY,,,FOREX,15.36771,15.36771,ROP
+,2/18/15 07:12:43,FOREX,BUY,+10000,TO OPEN,GBP/USD,,,FOREX,1.535403,1.535403,ROP
+,2/18/15 07:12:42,FOREX,SELL,-10000,TO CLOSE,GBP/USD,,,FOREX,1.5354,1.5354,RCL
+,2/18/15 07:12:42,FOREX,SELL,-10000,TO CLOSE,USD/JPY,,,FOREX,119.25,119.25,RCL
+,2/18/15 07:12:42,FOREX,SELL,-10000,TO CLOSE,AUD/SGD,,,FOREX,1.0598,1.0598,RCL
+,2/18/15 07:12:42,FOREX,SELL,-10000,TO CLOSE,HKD/JPY,,,FOREX,15.3676,15.3676,RCL
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

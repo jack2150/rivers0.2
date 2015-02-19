@@ -9,190 +9,93 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/classes/io/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_acc/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_csv/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_pos/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_ta/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/classes/test/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/statement_trade/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/actions.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/change_list_results.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/date_hierarchy.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/filter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/pagination.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/admin/search_form.html" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_pos\admin.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_pos\models.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_pos\tests.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_pos\views.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_acc\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_csv\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_pos\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_ta\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\test\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_index2.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_pms\app_index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_pms\app_ta\working_order.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_pms\filter.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_pms\pos_stock_change_list.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_stat\date_stat\bootstrap.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_stat\date_stat\index2.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_stat\date_stat\index3.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\base2.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\change_list2.html" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\__init__.py" afterPath="$PROJECT_DIR$/stat_simple/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\admin.py" afterPath="$PROJECT_DIR$/tos_import/admin.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_acc\__init__.py" afterPath="$PROJECT_DIR$/stat_simple/templatetags/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_acc\admin.py" afterPath="$PROJECT_DIR$/tos_import/statement_account/admin.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_acc\models.py" afterPath="$PROJECT_DIR$/tos_import/statement_account/models.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_acc\tests.py" afterPath="$PROJECT_DIR$/tos_import/statement_account/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_acc\views.py" afterPath="$PROJECT_DIR$/stat_simple/views.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_pos\__init__.py" afterPath="$PROJECT_DIR$/stat_simple/templatetags/money.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_ta\__init__.py" afterPath="$PROJECT_DIR$/tos_import/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_ta\admin.py" afterPath="$PROJECT_DIR$/tos_import/statement_trade/admin.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_ta\models.py" afterPath="$PROJECT_DIR$/tos_import/statement_trade/models.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_ta\tests.py" afterPath="$PROJECT_DIR$/tos_import/statement_trade/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\app_ta\views.py" afterPath="$PROJECT_DIR$/tos_import/statement_account/views.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_acc\__open_acc.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_acc/__open_acc.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_acc\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_acc/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_csv\__open_csv.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_csv/__open_csv.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_csv\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_csv/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_pos\__open_pos.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_pos/__open_pos.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_pos\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_pos/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_ta\__open_ta.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_ta/__open_ta.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\io\open_ta\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_ta/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\__identify.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/__identify.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\hedge\__hedge.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/hedge/__hedge.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\hedge\__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/hedge/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\hedge\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/hedge/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\leg_one\__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/leg_one/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\leg_one\__leg_one.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/leg_one/__leg_one.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\leg_one\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/leg_one/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\stock\__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/stock/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\stock\__stock.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/stock/__stock.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\stock\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/stock/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\identify\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/identify/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\__spread.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/__spread.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\hedge\__covered_call.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/hedge/__covered_call.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\hedge\__covered_put.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/hedge/__covered_put.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\hedge\__hedge.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/hedge/__hedge.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\hedge\__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/hedge/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\hedge\__protective_call.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/hedge/__protective_call.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\hedge\__protective_put.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/hedge/__protective_put.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\hedge\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/hedge/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\leg_one\__call_long.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__call_long.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\leg_one\__call_naked.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__call_naked.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\leg_one\__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\leg_one\__leg_one.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__leg_one.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\leg_one\__put_long.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__put_long.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\leg_one\__put_naked.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__put_naked.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\leg_one\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\stock\__context.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/stock/__context.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\stock\__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/stock/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\stock\__long_stock.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/stock/__long_stock.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\stock\__short_stock.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/stock/__short_stock.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\stock\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/stock/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\pos\spread\tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\classes\test\__test.py" afterPath="$PROJECT_DIR$/tos_import/classes/test/__test.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\models.py" afterPath="$PROJECT_DIR$/tos_import/models.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-01-29\2015-01-30-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-01-29/2015-01-30-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-01-29\2015-01-30-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-01-29/2015-01-30-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-01-29\2015-01-30-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-01-29/2015-01-30-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-01-30\2015-01-31-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-01-30/2015-01-31-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-01-30\2015-01-31-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-01-30/2015-01-31-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-01-30\2015-01-31-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-01-30/2015-01-31-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-02\2015-02-03-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-02/2015-02-03-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-02\2015-02-03-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-02/2015-02-03-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-02\2015-02-03-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-02/2015-02-03-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-03\2015-02-04-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-03/2015-02-04-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-03\2015-02-04-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-03/2015-02-04-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-03\2015-02-04-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-03/2015-02-04-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-04\2015-02-05-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-04/2015-02-05-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-04\2015-02-05-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-04/2015-02-05-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-04\2015-02-05-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-04/2015-02-05-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-05\2015-02-06-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-05/2015-02-06-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-05\2015-02-06-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-05/2015-02-06-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-05\2015-02-06-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-05/2015-02-06-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-06\2015-02-07-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-06/2015-02-07-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-06\2015-02-07-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-06/2015-02-07-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-06\2015-02-07-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-06/2015-02-07-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-09\2015-02-10-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-09/2015-02-10-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-09\2015-02-10-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-09/2015-02-10-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-09\2015-02-10-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-09/2015-02-10-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-10\2015-02-11-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-10/2015-02-11-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-10\2015-02-11-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-10/2015-02-11-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-10\2015-02-11-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-10/2015-02-11-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-11\2015-02-12-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-11/2015-02-12-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-11\2015-02-12-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-11/2015-02-12-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-11\2015-02-12-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-11/2015-02-12-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-13\2015-02-14-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-13/2015-02-14-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-13\2015-02-14-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-13/2015-02-14-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\real_files\2015-02-13\2015-02-14-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-13/2015-02-14-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-10-21\2014-10-22-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-10-21/2014-10-22-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-10-21\2014-10-22-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-10-21/2014-10-22-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-10-21\2014-10-22-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-10-21/2014-10-22-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-10-31\2014-10-31-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-10-31/2014-10-31-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-10-31\2014-10-31-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-10-31/2014-10-31-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-10-31\2014-10-31-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-10-31/2014-10-31-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-01\2014-11-01-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-01/2014-11-01-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-01\2014-11-01-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-01/2014-11-01-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-01\2014-11-01-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-01/2014-11-01-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-14\2014-11-14-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-14/2014-11-14-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-14\2014-11-14-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-14/2014-11-14-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-14\2014-11-14-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-14/2014-11-14-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-15\2014-11-15-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-15/2014-11-15-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-15\2014-11-15-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-15/2014-11-15-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-15\2014-11-15-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-15/2014-11-15-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-18\2014-11-18-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-18/2014-11-18-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-18\2014-11-18-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-18/2014-11-18-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-18\2014-11-18-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-18/2014-11-18-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-19\2014-11-19-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-19/2014-11-19-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-19\2014-11-19-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-19/2014-11-19-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-19\2014-11-19-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-19/2014-11-19-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-25\2014-11-25-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-25/2014-11-25-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-25\2014-11-25-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-25/2014-11-25-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\2014-11-25\2014-11-25-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/2014-11-25/2014-11-25-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\__init__.py" afterPath="$PROJECT_DIR$/tos_import/test_files/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\account_statement\2014-07-23-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/account_statement/2014-07-23-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\account_statement\2014-07-24-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/account_statement/2014-07-24-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\account_statement\2014-07-25-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/account_statement/2014-07-25-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\account_statement\2014-07-28-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/account_statement/2014-07-28-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\account_statement\2014-07-29-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/account_statement/2014-07-29-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\account_statement\2014-10-22-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/account_statement/2014-10-22-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\position_statement\2014-08-01-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/position_statement/2014-08-01-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\position_statement\2014-09-06-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/position_statement/2014-09-06-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\position_statement\2014-09-19-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/position_statement/2014-09-19-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\position_statement\2014-10-22-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/position_statement/2014-10-22-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\spreads\2014-03-07-closed.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/spreads/2014-03-07-closed.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\spreads\2014-03-10-stock.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/spreads/2014-03-10-stock.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\spreads\2014-03-11-hedge.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/spreads/2014-03-11-hedge.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\spreads\2014-03-12-one-leg.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/spreads/2014-03-12-one-leg.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\spreads\2014-03-13-two-legs.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/spreads/2014-03-13-two-legs.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\spreads\2014-03-14-three-legs.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/spreads/2014-03-14-three-legs.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\spreads\2014-03-17-four-legs-part-1.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/spreads/2014-03-17-four-legs-part-1.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\trade_activity\2014-09-19-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/trade_activity/2014-09-19-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\trade_activity\2014-10-21-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/trade_activity/2014-10-21-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\test_files\trade_activity\2014-10-22-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/test_files/trade_activity/2014-10-22-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\tests.py" afterPath="$PROJECT_DIR$/tos_import/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_pms\views.py" afterPath="$PROJECT_DIR$/tos_import/views.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_stat\__init__.py" afterPath="$PROJECT_DIR$/tos_import/statement_account/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_stat\admin.py" afterPath="$PROJECT_DIR$/stat_simple/admin.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_stat\models.py" afterPath="$PROJECT_DIR$/stat_simple/models.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_stat\tests.py" afterPath="$PROJECT_DIR$/stat_simple/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\app_stat\views.py" afterPath="$PROJECT_DIR$/tos_import/statement_trade/views.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_pms\statement\import.html" afterPath="$PROJECT_DIR$/templates/admin/tos_import/statement/import.html" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\app_stat\date_stat\index.html" afterPath="$PROJECT_DIR$/templates/admin/simple_stat/daily/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/change_list.html" afterPath="$PROJECT_DIR$/templates/admin/change_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/base/models.html" afterPath="$PROJECT_DIR$/templates/admin/base/models.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/settings.py" afterPath="$PROJECT_DIR$/rivers/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/tests.py" afterPath="$PROJECT_DIR$/base/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/views.py" afterPath="$PROJECT_DIR$/base/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/viz/exemplary/area0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/viz/exemplary/bar0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/viz/exemplary/line0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/viz/exemplary/stacked_bar0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-16/2015-02-17-AccountStatement.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-16/2015-02-17-PositionStatement.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-16/2015-02-17-TradeActivity.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-17/2015-02-18-AccountStatement.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-17/2015-02-18-PositionStatement.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-17/2015-02-18-TradeActivity.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-18/2015-02-19-AccountStatement.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-18/2015-02-19-PositionStatement.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/real_files/2015-02-18/2015-02-19-TradeActivity.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/statement_position/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/_template.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/statement_position/admin.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/area-as-line.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/area.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/area/area_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/grid/auto_grid_lines_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/bar-colors.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/bar-no-axes.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/bar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/bar/bar_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/bower.travis.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/bar/colours.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/commas_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/days.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/decimal-custom-hover.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/diagonal-xlabels-bar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/diagonal-xlabels.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/donut-colors.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/donut-formatter.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/donut.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/donut/donut_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/dst.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/events.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/lib/example.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/lib/example.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/viz/examples.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/goals.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/hover_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/label_series_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/line/line_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/statement_position/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/months-no-smooth.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/lib/morris.area.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/lib/morris.bar.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/lib/morris.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/less/morris.core.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/morris.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/lib/morris.donut.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/lib/morris.grid.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/lib/morris.hover.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/morris.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/lib/morris.line.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/morris.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/negative.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/no-grid.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/non-continuous.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/non-date.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/pad_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/parse_time_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/support/placeholder.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/quarters.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/resize.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/viz/run.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/grid/set_data_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/specs.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/stacked_bars.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/viz/test.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/statement_position/tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/timestamps.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/updating.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/statement_position/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/viz/visual_specs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/weeks.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/spec/lib/grid/y_label_format_spec.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/morris/morris.js-0.5.1/examples/years.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stat_simple/models.py" afterPath="$PROJECT_DIR$/stat_simple/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stat_simple/tests.py" afterPath="$PROJECT_DIR$/stat_simple/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rivers.iws" />
@@ -232,7 +135,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_stock_tests.coverage" NAME="Test: lib.pos.identify.stock.tests Coverage Results" MODIFIED="1411250333587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_test___test.coverage" NAME="Test: lib.test.__test Coverage Results" MODIFIED="1414862193074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__stat_simple_tests_TestSaveDateStat_test_start.coverage" NAME="Test: stat_simple.tests.TestSaveDateStat.test_start Coverage Results" MODIFIED="1424359271445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__stat_simple_tests.coverage" NAME="Test: stat_simple.tests Coverage Results" MODIFIED="1424359636353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__stat_simple_tests.coverage" NAME="Test: stat_simple.tests Coverage Results" MODIFIED="1424362638116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_acc_tests.coverage" NAME="Test: lib.io.open_acc.tests Coverage Results" MODIFIED="1415830659334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_date_stat.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_date_stat Coverage Results" MODIFIED="1422624703968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_classes_io_open_acc_tests.coverage" NAME="Test: app_pms.classes.io.open_acc.tests Coverage Results" MODIFIED="1416369947272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -286,8 +189,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/admin/simple_stat/daily/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.6" vertical-offset="1818" max-vertical-offset="6370">
-              <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+            <state vertical-scroll-proportion="-61.657143" vertical-offset="0" max-vertical-offset="6370">
+              <caret line="83" column="14" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -298,11 +201,9 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stat_simple/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2994" max-vertical-offset="9906">
-              <caret line="130" column="18" selection-start-line="130" selection-start-column="18" selection-end-line="130" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10062">
+              <caret line="0" column="28" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -310,8 +211,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tos_import/statement_position/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75934577" vertical-offset="1612" max-vertical-offset="13026">
-              <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
+            <state vertical-scroll-proportion="1.0327103" vertical-offset="1352" max-vertical-offset="13026">
+              <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -330,9 +231,11 @@
       <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stat_simple/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.470589" vertical-offset="1516" max-vertical-offset="7800">
-              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="8450">
+              <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -414,10 +317,10 @@
         <option value="$PROJECT_DIR$/app_stat/admin.py" />
         <option value="$PROJECT_DIR$/rivers/settings.py" />
         <option value="$PROJECT_DIR$/stat_simple/templatetags/money.py" />
-        <option value="$PROJECT_DIR$/stat_simple/tests.py" />
         <option value="$PROJECT_DIR$/stat_simple/admin.py" />
         <option value="$PROJECT_DIR$/templates/admin/simple_stat/daily/index.html" />
         <option value="$PROJECT_DIR$/stat_simple/models.py" />
+        <option value="$PROJECT_DIR$/stat_simple/tests.py" />
       </list>
     </option>
   </component>
@@ -871,9 +774,7 @@
     <configuration default="false" name="Test: stat_simple.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -1123,6 +1024,32 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="false" name="rivers" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="rivers.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Python\Anaconda\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <configuration default="false" name="Test: app_pms.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="App Pms">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -1299,32 +1226,6 @@
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="rivers" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="rivers.settings" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python\Anaconda\python.exe" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
@@ -1574,15 +1475,15 @@
       <method />
     </configuration>
     <list size="25">
-      <item index="0" class="java.lang.String" itemvalue="Django tests.Test: app_pms.tests" />
-      <item index="1" class="java.lang.String" itemvalue="Django tests.Test: app_pms.app_acc.tests" />
-      <item index="2" class="java.lang.String" itemvalue="Django tests.Test: app_pms.app_pos.tests" />
-      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: app_pms.app_ta.tests" />
-      <item index="4" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_csv.tests" />
-      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_acc.tests" />
-      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_pos.tests" />
-      <item index="7" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_ta.tests" />
-      <item index="8" class="java.lang.String" itemvalue="Django server.rivers" />
+      <item index="0" class="java.lang.String" itemvalue="Django server.rivers" />
+      <item index="1" class="java.lang.String" itemvalue="Django tests.Test: app_pms.tests" />
+      <item index="2" class="java.lang.String" itemvalue="Django tests.Test: app_pms.app_acc.tests" />
+      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: app_pms.app_pos.tests" />
+      <item index="4" class="java.lang.String" itemvalue="Django tests.Test: app_pms.app_ta.tests" />
+      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_csv.tests" />
+      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_acc.tests" />
+      <item index="7" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_pos.tests" />
+      <item index="8" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_ta.tests" />
       <item index="9" class="java.lang.String" itemvalue="Django tests.Test: all" />
       <item index="10" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests" />
       <item index="11" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat" />
@@ -1849,7 +1750,13 @@
       <option name="project" value="LOCAL" />
       <updated>1424103723089</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="new format&#10;new page done&#10;day stat">
+      <created>1424360286395</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1424360286395</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1878,6 +1785,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1891,7 +1799,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2764706" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1937,7 +1844,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="after remove front view...&#10;spread io waiting update...&#10;admin pos_app and pms_app done..." />
     <MESSAGE value="complete: trade activity admin" />
     <MESSAGE value="complete: pos_app admin" />
     <MESSAGE value="before rework acc, pos, ta with futures and forex" />
@@ -1962,7 +1868,8 @@
     <MESSAGE value="date_stat done, interface problem..." />
     <MESSAGE value="new bootstrap design&#10;models page view&#10;" />
     <MESSAGE value="until change_list" />
-    <option name="LAST_COMMIT_MESSAGE" value="until change_list" />
+    <MESSAGE value="new format&#10;new page done&#10;day stat" />
+    <option name="LAST_COMMIT_MESSAGE" value="new format&#10;new page done&#10;day stat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2294,7 +2201,7 @@
         <state vertical-scroll-proportion="0.29919448" vertical-offset="0" max-vertical-offset="869">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2307,30 +2214,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stat_simple/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.470589" vertical-offset="1516" max-vertical-offset="7800">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stat_simple/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="416" max-vertical-offset="1690">
           <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/simple_stat/daily/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.6" vertical-offset="1818" max-vertical-offset="6370">
-          <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2354,20 +2243,38 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/stat_simple/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="8450">
+          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/simple_stat/daily/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-61.657143" vertical-offset="0" max-vertical-offset="6370">
+          <caret line="83" column="14" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/stat_simple/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2994" max-vertical-offset="9906">
-          <caret line="130" column="18" selection-start-line="130" selection-start-column="18" selection-end-line="130" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10062">
+          <caret line="0" column="28" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/statement_position/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75934577" vertical-offset="1612" max-vertical-offset="13026">
-          <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
+        <state vertical-scroll-proportion="1.0327103" vertical-offset="1352" max-vertical-offset="13026">
+          <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
           <folding />
         </state>
       </provider>

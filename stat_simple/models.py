@@ -18,10 +18,14 @@ class DayStat(models.Model):
     filled_order = models.IntegerField(default=0, verbose_name='Filled Order')
     cancelled_order = models.IntegerField(default=0, verbose_name='Cancelled Order')
 
-    pl_ytd = models.DecimalField(verbose_name='P/L YTD', **decimal_field)
-    pl_day = models.DecimalField(verbose_name='P/L Today', **decimal_field)
-    c_day = models.DecimalField(verbose_name='Commission Day', **decimal_field)
-    c_ytd = models.DecimalField(verbose_name='Commission YTD', **decimal_field)
+    account_pl_ytd = models.DecimalField(verbose_name='Account P/L YTD', **decimal_field)
+    account_pl_day = models.DecimalField(verbose_name='Account P/L Day', **decimal_field)
+
+    holding_pl_day = models.DecimalField(verbose_name='Holding P/L Day', **decimal_field)
+    holding_pl_open = models.DecimalField(verbose_name='Holding P/L Open', **decimal_field)
+
+    commission_day = models.DecimalField(verbose_name='Commission Day', **decimal_field)
+    commission_ytd = models.DecimalField(verbose_name='Commission YTD', **decimal_field)
     option_bp_day = models.DecimalField(verbose_name='Option BP', **decimal_field)
     stock_bp_day = models.DecimalField(verbose_name='Stock BP', **decimal_field)
 
@@ -126,10 +130,10 @@ class SaveDayStat(object):
             + self.get_spread()['holding']
         )
 
-        pl_day = 0.0
-        pl_ytd = 50001.00
-        c_day = 0.0
-        c_ytd = 0.0
+        account_pl_day = 0.0
+        account_pl_ytd = 50001.00
+        commission_day = 0.0
+        commission_ytd = 0.0
         option_bp_day = 0.0
         stock_bp_day = 0.0
         acc = AccountSummary.objects.filter(date__lte=self.account_statement.date)
@@ -137,31 +141,33 @@ class SaveDayStat(object):
             acc = acc.order_by('date').reverse()[:2]
 
             # today pl and ytd pl
-            pl_day = float(acc.first().net_liquid_value - acc.last().net_liquid_value)
-            pl_ytd = float(acc.first().net_liquid_value) - pl_ytd
+            account_pl_day = float(acc.first().net_liquid_value - acc.last().net_liquid_value)
+            account_pl_ytd = float(acc.first().net_liquid_value) - account_pl_ytd
 
             # today commission
-            c_day = float(acc.first().commissions_ytd - acc.last().commissions_ytd)
-            c_ytd = float(acc.first().commissions_ytd)
+            commission_day = float(acc.first().commissions_ytd - acc.last().commissions_ytd)
+            commission_ytd = float(acc.first().commissions_ytd)
 
             # bp change
             option_bp_day = float(acc.first().option_buying_power - acc.last().option_buying_power)
             stock_bp_day = float(acc.first().stock_buying_power - acc.last().stock_buying_power)
         elif acc.count() == 1:
-            pl_day = float(acc.first().net_liquid_value) - pl_ytd
-            pl_ytd = float(acc.first().net_liquid_value) - pl_ytd
+            account_pl_day = float(acc.first().net_liquid_value) - account_pl_ytd
+            account_pl_ytd = float(acc.first().net_liquid_value) - account_pl_ytd
 
-            c_day = float(acc.first().commissions_ytd)
-            c_ytd = float(acc.first().commissions_ytd)
+            commission_day = float(acc.first().commissions_ytd)
+            commission_ytd = float(acc.first().commissions_ytd)
 
-            option_bp_day = pl_ytd - float(acc.first().option_buying_power)
-            stock_bp_day = (pl_ytd * 2) - float(acc.first().stock_buying_power)
+            option_bp_day = account_pl_ytd - float(acc.first().option_buying_power)
+            stock_bp_day = (account_pl_ytd * 2) - float(acc.first().stock_buying_power)
 
         return dict(
-            pl_day=pl_day,
-            pl_ytd=pl_ytd,
-            c_day=c_day,
-            c_ytd=c_ytd,
+            holding_pl_open=0.0,
+            holding_pl_day=0.0,
+            account_pl_day=account_pl_day,
+            account_pl_ytd=account_pl_ytd,
+            commission_day=commission_day,
+            commission_ytd=commission_ytd,
             option_bp_day=option_bp_day,
             stock_bp_day=stock_bp_day,
             total_holding=total_holding,
