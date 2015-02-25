@@ -3,43 +3,53 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render
 from stat_simple.models import DayStat, DayStatHolding
 
+
 @staff_member_required
-def date_stat_view(request, date=''):
+def day_stat_view(request, date=''):
     template = 'admin/simple_stat/daily/index.html'
 
-    if date == '':
-        date_stat = DayStat.objects.latest('statement__date')
-        date = date_stat.statement.date.strftime('%Y-%m-%d')
-        today_stat = DayStat.objects.filter(statement__date=date)
+    day_stat_holdings = list()
+    day_stats = DayStat.objects.order_by('statement__date').all()
+    day_stat = None
+    previous_item = None
+    next_item = None
+
+    if date:
+        if day_stats.filter(statement__date=date).count():
+            day_stat = day_stats.get(statement__date=date)
     else:
-        today_stat = DayStat.objects.filter(statement__date=date)
-        if today_stat.count():
-            date_stat = today_stat.first()
-            date = date_stat.statement.date.strftime('%Y-%m-%d')
-        else:
-            date_stat = None
-            date = ''
+        if day_stats.count():
+            day_stat = day_stats.latest('statement__date')
 
-    today_stat = today_stat.first()
-    investments = list()
+    if day_stat:
+        date = day_stat.statement.date.strftime('%Y-%m-%d')
 
-    if date_stat:
         names = ['equity', 'option', 'spread', 'future', 'forex']
         for name in names:
-            item = today_stat.daystatholding_set.filter(name=name).first()
-            investments.append(item)
+            item = day_stat.daystatholding_set.filter(name=name).first()
+            day_stat_holdings.append(item)
+
+        previous_obj = day_stats.filter(statement__date__lt=date).order_by('statement__date').reverse()
+        if previous_obj.exists():
+            previous_item = previous_obj[0].statement.date.strftime('%Y-%m-%d')
+
+        next_obj = day_stats.filter(statement__date__gt=date).order_by('statement__date')
+        if next_obj.exists():
+            next_item = next_obj[0].statement.date.strftime('%Y-%m-%d')
 
     parameters = dict(
         request=request,
-        date_stat=date_stat,
+        day_stat=day_stat,
         stat_field=[
             'name',
             'total_order', 'working_order', 'filled_order', 'cancelled_order',
             'holding', 'profit_count', 'loss_count',
             'pl_total', 'profit_total', 'loss_total',
         ],
-        investment_field=investments,
-        date=date
+        investment_field=day_stat_holdings,
+        date=date,
+        previous=previous_item,
+        next=next_item
     )
 
     return render(request, template, parameters)
@@ -49,11 +59,11 @@ admin.site.register(DayStat)
 admin.site.register(DayStatHolding)
 admin.site.register_view(
     'stat_simple/daily/$',
-    urlname='app_stat_latest',
-    view=date_stat_view
+    urlname='simple_stat_day_stat',
+    view=day_stat_view
 )
 admin.site.register_view(
     'stat_simple/daily/(?P<date>\d{4}-\d{2}-\d{2})/$',
-    urlname='app_stat_latest',
-    view=date_stat_view
+    urlname='simple_stat_day_stat',
+    view=day_stat_view
 )

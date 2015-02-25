@@ -269,6 +269,7 @@ class TestSaveDateStat(TestSetUp):
             'option_bp_day',
             'holding_pl_open',
             'holding_pl_day',
+            'account_pl_day',
             'account_pl_ytd',
             'stock_bp_day',
             'total_order',
@@ -289,9 +290,18 @@ class TestSaveDateStat(TestSetUp):
         :return:
         """
         day_stat_keys = [
-            'total_holding', 'total_order', 'c_day', 'cancelled_order', 'stock_bp_day',
-            'c_ytd', 'filled_order', 'pl_day', 'pl_ytd', 'working_order',
-            'option_bp_day'
+            'commission_day',
+            'commission_ytd',
+            'cancelled_order',
+            'filled_order',
+            'option_bp_day',
+            'holding_pl_open',
+            'holding_pl_day',
+            'account_pl_day',
+            'account_pl_ytd',
+            'stock_bp_day',
+            'total_order',
+            'working_order'
         ]
 
         investment_keys = [

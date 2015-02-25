@@ -108,8 +108,9 @@
 
 <div class="page-content">
 
-<div class="page-header">
-  <h1>{% block page-header %}Index{% endblock %}</h1>
+<div class="page-header" style="padding-bottom: 10px;">
+  <div class="widget-toolbar" style="padding-top: 0;">{% block page-header-tool %}{% endblock %}</div>
+  <h1 style="padding-top: 6px;">{% block page-header %}Index{% endblock %}</h1>
 </div>
 <!-- /.page-header -->
 
@@ -126,8 +127,11 @@
 
 </div>
 
-{% block content %}{% endblock %}
+{% block content %}
+
+{% endblock %}
 <!-- PAGE CONTENT ENDS -->
+
 </div>
 <!-- /.col -->
 </div>
@@ -185,12 +189,18 @@
 <script src="{% static "assets/js/ace/ace.settings-skin.js" %}"></script>
 <script src="{% static "assets/js/ace/ace.widget-on-reload.js" %}"></script>
 <script src="{% static "assets/js/ace/ace.searchbox-autocomplete.js" %}"></script>
-<script src="{% static "assets/js/date-time/bootstrap-datepicker.js" %}"></script>
+
+{% block extra_body_js %}
+  <script src="{% static "assets/js/date-time/bootstrap-datepicker.js" %}"></script>
+  <script src="{% static "assets/js/date-time/bootstrap-timepicker.js" %}"></script>
+{% endblock %}
+
+
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
   jQuery(function ($) {
-    {% block extrascript %}{% endblock %}
+
 
     $('#sidebar2').insertBefore('.page-content');
 
@@ -211,5 +221,6 @@
     }).triggerHandler('settings.ace.two_menu', ['sidebar_fixed', $('#sidebar').hasClass('sidebar-fixed')]);
   });
 </script>
+{% block footer_extra_script %}{% endblock %}
 </body>
 </html>

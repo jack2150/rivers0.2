@@ -1,0 +1,187 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls admin_static admin_modify %}
+
+{% block extrastyle %}
+  <style>
+    .col-sm-7 input {
+      width: 41.666%;
+    }
+
+    .nav-tabs li.active a, .nav-tabs li.active a:focus, .nav-tabs li.active a:hover {
+      box-shadow: 0 0 0 0;
+      border-bottom: double white 1px;
+    }
+
+
+  </style>
+{% endblock %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'assets/css/datepicker.css' %}"/>
+  <link rel="stylesheet" href="{% static "assets/css/bootstrap-timepicker.css" %}"/>
+
+  <!-- page specific plugin styles -->
+  <link rel="stylesheet" href="{% static "assets/css/jquery-ui.custom.css" %}"/>
+  <link rel="stylesheet" href="{% static "assets/css/jquery.gritter.css" %}"/>
+{% endblock %}
+
+{% block breadcrumbs %}
+  <li>
+    <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'admin:base_models' %}">
+      Models
+    </a>
+  </li>
+  <li>
+    {% if has_change_permission %}
+      <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+    {% else %}
+      {{ opts.verbose_name_plural|capfirst }}
+    {% endif %}
+  </li>
+  <li>
+    {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
+  </li>
+{% endblock %}
+
+{% block page-header %}
+  {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
+{% endblock %}
+
+{% block page-header-tool %}
+  {% block object-tools %}
+    <div class="btn-group btn-corner">
+    {% if change %}
+      {% block object-tools-items %}
+        {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+        <a href="{% add_preserved_filters history_url %}" class="historylink">
+          <button class="btn btn-white btn-sm btn-primary">
+            {% trans "History" %}
+          </button>
+        </a>
+        {% if has_absolute_url %}
+          <a href="{% url 'admin:view_on_site' content_type_id original.pk %}"
+             class="viewsitelink">
+            <button class="btn btn-white btn-sm btn-primary">
+              {% trans "View on site" %}
+            </button>
+          </a>
+        {% endif %}
+      {% endblock %}
+    {% endif %}
+    </div>
+  {% endblock %}
+{% endblock %}
+
+{% block content %}
+  {% if errors %}
+    <div class="alert alert-danger">
+      <button class="close" data-dismiss="alert" type="button">
+        <i class="ace-icon fa fa-times"></i>
+      </button>
+      <strong>
+        <i class="ace-icon fa fa-times"></i>
+        Error!
+      </strong>
+      {% if errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}
+        {% trans "Please correct the errors below." %}{% endif %}
+      {{ adminform.form.non_field_errors }}
+      <br>
+    </div>
+  {% endif %}
+
+  <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}
+        action="{{ form_url }}" method="post" class="form-horizontal" role="form"
+        id="{{ opts.model_name }}_form">
+    {% csrf_token %}
+    <!-- above done -->
+
+    <div class="row">
+      <div class="col-xs-12">
+        {% block field_sets %}
+          {% for fieldset in adminform %}
+            {% include "admin/fieldset.html" %}
+          {% endfor %}
+        {% endblock %}
+      </div>
+    </div>
+
+    {% block after_field_sets %}{% endblock %}
+
+    {% block inline_field_sets %}
+      {% if inline_admin_formsets %}
+        <div class="widget-box">
+          <div class="widget-header">
+            <h4 class="widget-title">Related Inline Objects</h4>
+
+            <div class="widget-toolbar">
+              <a data-action="collapse" href="#">
+                <i class="ace-icon fa fa-chevron-up"></i>
+              </a>
+            </div>
+          </div>
+          <div class="widget-body">
+            <div class="widget-main">
+              <div class="row">
+                <div class="col-xs-12">
+                  <!-- #section:elements.tab.option -->
+                  <div class="tabbable">
+                    <ul class="nav nav-tabs">
+                      {% for inline_admin_formset in inline_admin_formsets %}
+                        {% include 'admin/edit_inline/tab-nav.html' %}
+                      {% endfor %}
+                    </ul>
+
+                    <div class="tab-content">
+                      {% for inline_admin_formset in inline_admin_formsets %}
+                        {% include 'admin/edit_inline/tab-content.html' %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+    {% endblock %}
+
+    {% block after_related_objects %}{% endblock %}
+
+    <!-- submit done -->
+    {% block submit_buttons_top %}{% submit_row %}{% endblock %}
+  </form>
+
+
+
+{% endblock %}
+
+{% block footer_extra_script %}
+
+  <script type="text/javascript">
+    jQuery(function ($) {
+      $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+      }).next().on(ace.click_event, function () {
+        $(this).prev().focus();
+      });
+
+      $('#timepicker').timepicker({
+        minuteStep: 1,
+        secondStep: 1,
+        showSeconds: true,
+        showMeridian: false
+      }).next().on(ace.click_event, function () {
+        $(this).prev().focus();
+      });
+    });
+
+  </script>
+{% endblock %}

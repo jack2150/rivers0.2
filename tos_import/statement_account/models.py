@@ -1,6 +1,9 @@
+import locale
 from django.db import models
 from tos_import.classes.io.open_acc import OpenAcc
 from tos_import.models import Underlying, Future, Forex, Statement, SaveAppModel
+
+locale.setlocale(locale.LC_ALL, '')
 
 
 # noinspection PyUnresolvedReferences
@@ -90,15 +93,12 @@ class AccountSummary(models.Model):
         Normal string output for class detail
         :return: str
         """
-        account_statement = '<AccountStatement:{date}> {net_liquid_value}'
+        account_statement = 'AccountStatement {date} {net_liquid_value}'
 
         return account_statement.format(
             date='%s' % self.date,
-            net_liquid_value='%.2f' % self.net_liquid_value,
+            net_liquid_value=locale.currency(self.net_liquid_value, grouping=True),
         )
-
-    class Meta:
-        verbose_name_plural = "Account Statement"
 
 
 class ForexSummary(models.Model, AccountModel):
@@ -149,11 +149,11 @@ class ForexSummary(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<ForexSummary:{date}> {equity}'
+        output = 'ForexSummary {date} {cash}'
 
         return output.format(
             date=self.account_summary.date,
-            equity=self.equity
+            cash=locale.currency(self.cash, grouping=True)
         )
 
 
@@ -195,11 +195,11 @@ class CashBalance(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<CashBalance:{date}> {balance}'
+        output = 'CashBalance {date} {balance}'
 
         return output.format(
             date=self.account_summary.date,
-            balance=self.balance
+            balance=locale.currency(self.balance, grouping=True)
         )
 
 
@@ -258,7 +258,7 @@ class OrderHistory(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<OrderHistory:{date}> {symbol} '
+        output = 'OrderHistory {date} < {symbol} >'
 
         return output.format(
             symbol=self.get_symbol(),
@@ -321,7 +321,7 @@ class TradeHistory(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Trade History:{date}> {symbol} '
+        output = 'Trade History {date} < {symbol} >'
 
         return output.format(
             symbol=self.get_symbol(),
@@ -398,7 +398,7 @@ class ProfitLoss(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<ProfitLoss:{date}> {symbol}'
+        output = 'ProfitLoss {date} < {symbol} >'
 
         return output.format(
             symbol=self.underlying if self.underlying else self.future,
@@ -445,7 +445,7 @@ class HoldingEquity(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Equities:{date}> {symbol}'
+        output = 'HoldingEquity {date} < {symbol} >'
 
         return output.format(
             symbol=self.underlying.symbol,
@@ -499,7 +499,7 @@ class HoldingOption(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Options:{date}> {symbol}'
+        output = 'Options {date} < {symbol} >'
 
         return output.format(
             symbol=self.underlying.symbol,
@@ -554,7 +554,7 @@ class FutureStatement(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<FutureStatement:{date}> {description}'
+        output = 'FutureStatement {date} < {description} >'
 
         return output.format(
             date=self.account_summary.date,
@@ -598,7 +598,7 @@ class HoldingFuture(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<HoldingFuture:{date}> {future}'
+        output = 'HoldingFuture {date} < {future} >'
 
         return output.format(
             date=self.account_summary.date,
@@ -650,11 +650,11 @@ class ForexStatement(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<ForexStatement:{date}> {description}'
+        output = 'ForexStatement {date} {balance}'
 
         return output.format(
             date=self.account_summary.date,
-            description=self.description
+            balance=locale.currency(self.balance, grouping=True)
         )
 
 
@@ -694,7 +694,7 @@ class HoldingForex(models.Model, AccountModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<Holding:{date}> {forex}'
+        output = 'HoldingForex {date} < {forex} >'
 
         return output.format(
             date=self.account_summary.date,

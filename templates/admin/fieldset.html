@@ -1,0 +1,95 @@
+{% load widget_tweaks %}
+
+<fieldset class="module aligned {{ fieldset.classes }}">
+  <div class="widget-box">
+    {% if fieldset.name %}
+    <div class="widget-header">
+      <h4 class="widget-title">{{ fieldset.name }}</h4>
+
+      <div class="widget-toolbar">
+        <a data-action="collapse" href="#">
+          <i class="ace-icon fa fa-chevron-up"></i>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+    <div class="widget-body">
+      <div class="widget-main">
+
+        {% for line in fieldset %}
+          {% for field in line %}
+            <div class="form-group">
+              <div class="errors">
+                {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
+              </div>
+
+              {% if field.is_checkbox %}
+                {{ field.label_tag }}{{ field.field }}
+              {% else %}
+                <label class="col-sm-3 control-label no-padding-right" for="id_{{ field.field.name }}">
+                  {{ field.field.label|capfirst }} :
+                </label>
+
+                <div class="col-sm-9">
+                  {% if field.is_readonly %}
+                    <div style="padding-top: 7px; font-size: 14px;">
+                      {{ field.contents|linebreaksbr }}
+                    </div>
+                  {% else %}
+                    {% if field.field.name == 'date' %}
+                      <div class="input-group" style="width: 41.666%;">
+                        <input class="form-control date-picker" id="id_{{ field.field.name }}" type="text"
+                               data-date-format="yyyy-mm-dd" name="{{ field.field.name }}"
+                               placeholder="Date" value="{{ field.field.value|date:"Y-m-d" }}" />
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar bigger-110"></i>
+                        </span>
+                      </div>
+                    {% elif 'time' in field.field.name %}
+                      <div class="input-group" style="width: 41.666%;">
+                        <input class="form-control date-picker" id="id_{{ field.field.name }}_0" type="text"
+                               data-date-format="yyyy-mm-dd" name="{{ field.field.name }}_0"
+                               placeholder="Date" value="{{ field.field.value|date:"Y-m-d" }}"/>
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar bigger-110"></i>
+                        </span>
+
+                        <input id="timepicker" type="text"
+                               class="form-control" name="{{ field.field.name }}_1"
+                               placeholder="Time" value="{{ field.field.value|date:"H:i:s" }}"
+                               data-date-format="HH:ii:ss"
+                            />
+                        <span class="input-group-addon">
+                          <i class="fa fa-clock-o bigger-110"></i>
+                        </span>
+                      </div>
+                    {% else %}
+                      {{ field.field|add_class:"col-xs-10 col-sm-5" }}
+                    {% endif %}
+
+                    {% if field.field.help_text %}
+                      <span class="help-inline col-xs-12 col-sm-7">
+                        <span class="middle">{{ field.field.help_text|safe }}</span>
+                      </span>
+                    {% endif %}
+                  {% endif %}
+                </div>
+
+              {% endif %}
+
+              {% if fieldset.description %}
+                {{ fieldset.description|safe }}
+              {% endif %}
+
+            </div>
+          {% endfor %}
+        {% endfor %}
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+</fieldset>

@@ -8,7 +8,7 @@ locale.setlocale(locale.LC_ALL, '')
 
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember
-class PositionStatementInline(admin.TabularInline):
+class PositionSummaryInline(admin.TabularInline):
     def link(self, instance):
         url = reverse(
             'admin:%s_%s_change' % (
@@ -31,7 +31,7 @@ class PositionStatementInline(admin.TabularInline):
 
 
 # noinspection PyMethodMayBeStatic
-class PositionStatementInlinePL(PositionStatementInline):
+class PositionSummaryInlinePL(PositionSummaryInline):
     def formatted_pl_open(self, obj):
         return '%+.2f' % obj.pl_open
 
@@ -55,7 +55,7 @@ class PositionStatementInlinePL(PositionStatementInline):
 
 
 # noinspection PyProtectedMember,PyMethodMayBeStatic
-class PositionInstrumentInline(PositionStatementInlinePL):
+class PositionInstrumentInline(PositionSummaryInlinePL):
     """
     Inline Position model inside Position Statement change view
     """
@@ -90,7 +90,7 @@ class PositionInstrumentInline(PositionStatementInlinePL):
 
 
 # noinspection PyProtectedMember,PyMethodMayBeStatic
-class PositionFutureInline(PositionStatementInlinePL):
+class PositionFutureInline(PositionSummaryInlinePL):
     """
     Inline Position model inside Position Statement change view
     """
@@ -126,7 +126,7 @@ class PositionFutureInline(PositionStatementInlinePL):
 
 
 # noinspection PyProtectedMember,PyMethodMayBeStatic
-class PositionForexInline(PositionStatementInlinePL):
+class PositionForexInline(PositionSummaryInlinePL):
     """
     Inline Position model inside Position Statement change view
     """
@@ -162,7 +162,7 @@ class PositionForexInline(PositionStatementInlinePL):
 
 
 # noinspection PyMethodMayBeStatic
-class PositionStatementAdmin(admin.ModelAdmin):
+class PositionSummaryAdmin(admin.ModelAdmin):
     """
     Position Statement admin interface
     """
@@ -229,11 +229,11 @@ class PositionStatementAdmin(admin.ModelAdmin):
         ('Foreign Key', {
             'fields': (
                 'statement',
+                'date'
             )
         }),
         ('Position Statement', {
             'fields': (
-                'date',
                 'cash_sweep', 'available', 'pl_ytd', 'futures_bp', 'bp_adjustment'
             )
         }),
@@ -245,13 +245,13 @@ class PositionStatementAdmin(admin.ModelAdmin):
 
     date_hierarchy = 'date'
 
-    list_per_page = 10
+    list_per_page = 30
 
     def has_add_permission(self, request):
         return False
 
 
-class PositionStockInline(PositionStatementInline):
+class PositionStockInline(PositionSummaryInline):
     """
     Position Stock inline for Position change view
     """
@@ -269,7 +269,7 @@ class PositionStockInline(PositionStatementInline):
     verbose_name_plural = 'Stock'
 
 
-class PositionOptionsInline(PositionStatementInline):
+class PositionOptionsInline(PositionSummaryInline):
     """
     Position Options inline for Position change view
     """
@@ -354,7 +354,7 @@ class PsModelAdmin(admin.ModelAdmin):
     profit_loss.short_description = 'P/L'
     profit_loss.admin_order_field = 'pl_open'
 
-    list_per_page = 10
+    list_per_page = 30
 
     def has_add_permission(self, request):
         return False
@@ -709,7 +709,7 @@ class PositionForexAdmin(PsModelAdmin):
 
     ordering = ('-position_summary__date', 'forex__symbol')
 
-admin.site.register(models.PositionSummary, PositionStatementAdmin)
+admin.site.register(models.PositionSummary, PositionSummaryAdmin)
 admin.site.register(models.PositionInstrument, PositionInstrumentAdmin)
 admin.site.register(models.PositionEquity, PositionEquityAdmin)
 admin.site.register(models.PositionOption, PositionOptionAdmin)

@@ -1,0 +1,38 @@
+{% load i18n admin_urls %}
+<div class="clearfix form-actions">
+  <div class="col-md-offset-3" style="padding-left: 3px;">
+    {% if show_save %}
+      <button class="btn btn-white btn-info btn-bold" type="submit" name="_save">
+        <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>
+        {% trans 'Save' %}
+      </button>
+    {% endif %}
+    {% if show_delete_link %}
+      {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+      <button class="btn btn-white btn-warning btn-bold" type="button"
+              onclick="window.location.href='{% add_preserved_filters delete_url %}'">
+        <i class="ace-icon fa fa-trash-o bigger-120 orange"></i>
+        {% trans "Delete" %}
+      </button>
+    {% endif %}
+    {% if show_save_as_new %}
+      <button class="btn btn-white btn-info btn-bold" type="submit" name="_saveasnew">
+        <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>
+        {% trans 'Save as new' %}
+      </button>
+    {% endif %}
+    {% if show_save_and_add_another %}
+      <button class="btn btn-white btn-info btn-bold" type="submit" name="_addanother">
+        <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>
+        {% trans 'Save and add another' %}
+      </button>
+    {% endif %}
+    {% if show_save_and_continue %}
+      <button class="btn btn-white btn-info btn-bold" type="submit" name="_continue">
+        <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>
+        {% trans 'Save and continue editing' %}
+      </button>
+    {% endif %}
+  </div>
+</div>
+

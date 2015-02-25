@@ -273,11 +273,7 @@ class TaAdmin(admin.ModelAdmin):
 
 class TaForm(ModelForm):
     class Meta:
-        widgets = {
-            'time_placed': SuitSplitDateTimeWidget,
-            'exec_time': SuitSplitDateTimeWidget,
-            'time_cancelled': SuitSplitDateTimeWidget,
-        }
+        pass
 
 
 # noinspection PyMethodMayBeStatic

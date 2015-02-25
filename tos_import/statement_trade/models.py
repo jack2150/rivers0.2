@@ -74,14 +74,11 @@ class TradeSummary(models.Model):
         Normal string output for class detail
         :return: str
         """
-        output = '<Trade Activity> {date}'
+        output = 'TradeActivity {date}'
 
         return output.format(
             date=self.date
         )
-
-    class Meta:
-        verbose_name_plural = "   Trade Activity"
 
 
 class WorkingOrder(models.Model, TaModel):
@@ -135,15 +132,12 @@ class WorkingOrder(models.Model, TaModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<WorkingOrder:{date}> {symbol}'
+        output = 'WorkingOrder {date} < {symbol} >'
 
         return output.format(
             symbol=self.get_symbol(),
             date=self.trade_summary.date
         )
-
-    class Meta:
-        verbose_name_plural = "  Working Orders"
 
 
 class FilledOrder(models.Model, TaModel):
@@ -193,15 +187,12 @@ class FilledOrder(models.Model, TaModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<FilledOrder:{date}> {symbol}'
+        output = 'FilledOrder {date} < {symbol} >'
 
         return output.format(
             symbol=self.get_symbol(),
             date=self.trade_summary.date
         )
-
-    class Meta:
-        verbose_name_plural = " Filled Orders"
 
 
 class CancelledOrder(models.Model, TaModel):
@@ -253,15 +244,12 @@ class CancelledOrder(models.Model, TaModel):
         Normal string output for class detail
         :return: str
         """
-        output = '<CancelledOrder:{date}> {symbol}'
+        output = 'CancelledOrder {date} < {symbol} >'
 
         return output.format(
             symbol=self.get_symbol(),
             date=self.trade_summary.date
         )
-
-    class Meta:
-        verbose_name_plural = "Cancelled Orders"
 
 
 class RollingStrategy(models.Model, TaModel):
@@ -323,7 +311,7 @@ class RollingStrategy(models.Model, TaModel):
         :return: str
         """
         option = '{symbol} {right} {ex_month} {ex_year} {strike_price} {contract}'
-        output = '<RollingStrategy:{date}> {option}'
+        output = 'RollingStrategy {date} < {option} >'
 
         return output.format(
             option=option.format(
@@ -336,9 +324,6 @@ class RollingStrategy(models.Model, TaModel):
             ),
             date=self.trade_summary.date
         )
-
-    class Meta:
-        verbose_name_plural = "Rolling Strategies"
 
 
 class SaveTradeActivity(SaveAppModel):

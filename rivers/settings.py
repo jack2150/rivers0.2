@@ -94,7 +94,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -111,8 +111,9 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
 
-# Django admin suit
+DATE_FORMAT = 'Y-m-d'
 
+# Django admin suit
 SUIT_CONFIG = {
     'ADMIN_NAME': 'Portfolio Management System',
     'HEADER_DATE_FORMAT': 'Y-m-d',  # Saturday, 16th March 2013

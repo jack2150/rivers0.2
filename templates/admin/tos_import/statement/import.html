@@ -165,38 +165,43 @@
 
 {% endblock %}
 
-{% block extrascript %}
-  $('.date-picker').datepicker({
-    autoclose: true,
-    todayHighlight: true
-  }).next().on(ace.click_event, function(){
-    $(this).prev().focus();
-  });
+{% block footer_extra_script %}
+  <script type="text/javascript">
+    jQuery(function ($) {
+      $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+      }).next().on(ace.click_event, function () {
+        $(this).prev().focus();
+      });
 
-  $('#id_account_statement').ace_file_input({
-    no_file:'Account Statement ...',
-    btn_choose:'Choose',
-    btn_change:'Change',
-    droppable:false,
-    onchange:null,
-    thumbnail:false
-  });
+      $('#id_account_statement').ace_file_input({
+        no_file: 'Account Statement ...',
+        btn_choose: 'Choose',
+        btn_change: 'Change',
+        droppable: false,
+        onchange: null,
+        thumbnail: false
+      });
 
-  $('#id_position_statement').ace_file_input({
-    no_file:'Position Statement ...',
-    btn_choose:'Choose',
-    btn_change:'Change',
-    droppable:false,
-    onchange:null,
-    thumbnail:false
-  });
+      $('#id_position_statement').ace_file_input({
+        no_file: 'Position Statement ...',
+        btn_choose: 'Choose',
+        btn_change: 'Change',
+        droppable: false,
+        onchange: null,
+        thumbnail: false
+      });
 
-  $('#id_trade_activity').ace_file_input({
-    no_file:'Trade Activity ...',
-    btn_choose:'Choose',
-    btn_change:'Change',
-    droppable:false,
-    onchange:null,
-    thumbnail:false
-  });
+      $('#id_trade_activity').ace_file_input({
+        no_file: 'Trade Activity ...',
+        btn_choose: 'Choose',
+        btn_change: 'Change',
+        droppable: false,
+        onchange: null,
+        thumbnail: false
+      });
+    })
+  </script>
+
 {% endblock %}

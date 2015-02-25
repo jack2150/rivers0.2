@@ -1,0 +1,6 @@
+<li {% if forloop.first %}class="active"{% endif %}>
+  <a data-toggle="tab" href="#{{ inline_admin_formset.formset.prefix }}-group">
+    {{ inline_admin_formset.opts.verbose_name_plural|capfirst }}
+
+  </a>
+</li>

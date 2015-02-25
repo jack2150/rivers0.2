@@ -335,18 +335,42 @@ class TradeActivityInline(admin.TabularInline):
 
 
 class StatementForm(ModelForm):
+    """
     class Meta:
+
         widgets = {
-            'date': SuitDateWidget(),
-            'account_statement': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
-            'position_statement': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
-            'trade_activity': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
+            #'date': SuitDateWidget(),
+            #'account_statement': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
+            #'position_statement': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
+            #'trade_activity': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
         }
+    """
+
+    date = forms.DateField(
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+    )
+
+    account_statement = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control'})
+    )
+
+    position_statement = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control'})
+    )
+
+    trade_activity = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control'})
+    )
 
 
 # noinspection PyMethodMayBeStatic
 class StatementAdmin(admin.ModelAdmin):
     form = StatementForm
+
+    def formatted_date(self, obj):
+        return obj.date.strftime('%Y-%m-%d')
+
+    formatted_date.short_description = 'Date'
 
     def account_statement_detail(self, obj):
         acc = obj.account_statement
@@ -411,7 +435,7 @@ class StatementAdmin(admin.ModelAdmin):
     trade_activity_detail.short_description = 'TA Detail'
 
     list_display = (
-        'date', 'account_statement_detail',
+        'formatted_date', 'account_statement_detail',
         'position_statement_detail', 'trade_activity_detail'
     )
 
@@ -452,7 +476,7 @@ class StatementAdmin(admin.ModelAdmin):
     trade_activity_link.short_description = 'TA Link'
 
     fieldsets = (
-        ('Date', {
+        ('Import Date', {
             'fields': ('date', )
         }),
         ('Statements', {

@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load static money %}
+{% load static money verbose_name %}
 
 {% block title %}Day Statistic: {{ date }}{% endblock %}
 
@@ -9,216 +9,244 @@
       text-align: center;
       font-weight: bold;
     }
+
+    .grey {
+      color: darkgrey;
+    }
+
+    .light_blue {
+      color: #5090c1;
+    }
   </style>
 {% endblock %}
 
 {% block extrahead %}
   <link rel="stylesheet" href="{% static "morris/morris.js-0.5.1/morris.css" %}">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+  <script src="{% static 'morris/morris.js-0.5.1/jquery.min.js' %}"></script>
+  <script src="{% static 'morris/morris.js-0.5.1/raphael-min.js' %}"></script>
+  <script src="{% static 'morris/morris.js-0.5.1/morris.min.js' %}"></script>
 {% endblock %}
 
 {% block breadcrumbs %}
-    <ul class="breadcrumb">
-        <li>
-            <a href="{% url 'admin:index' %}">Home</a>
-            <span class="divider">&raquo;</span>
-        </li>
-        <li>
-            <a href="{% url 'admin:app_list' 'stat_simple' %}">App_Stat</a>
-            <span class="divider">&raquo;</span>
-        </li>
-        <li class="active">
-            Day Statistic: {{ date }}
-        </li>
-    </ul>
+  <li>
+    <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    Day Stat:{{ date }}
+  </li>
+{% endblock %}
+
+{% block page-header %}
+  Day Stat:{{ date }}
+{% endblock %}
+
+{% block page-header-tool %}
+  <div class="btn-group btn-corner">
+    <button class="btn {% if previous == None %}disabled{% endif %} btn-white btn-sm btn-primary"
+            onclick="window.location.href=
+                '{% if previous %}{% url 'admin:simple_stat_day_stat' previous %}{% else %}#{% endif %}'
+                ">
+      ← Previous
+    </button>
+
+    <button class="btn {% if next == None %}disabled{% endif %} btn-white btn-sm btn-primary"
+            onclick="window.location.href=
+                '{% if next %}{% url 'admin:simple_stat_day_stat' next %}{% else %}#{% endif %}'
+                ">
+      Next →
+    </button>
+  </div>
 {% endblock %}
 
 
 {% block content %}
+  {% if day_stat %}
 
-  <div class="row">
-    {% for x in investment_field %}
-      <div class="col-md-2">
-        <h4 class="donut_header">{{ x.name|capfirst }}: {{ x.pl_total|currency }}</h4>
-        <h4 class="donut_header">
-          {{ x.holding }}
-          Position{% if x.holding > 1 %}s{% endif %}
-        </h4>
-        <div id="pl-{{ x.name }}" style="width: 100%; height: 200px;"></div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="widget-box widget-color-blue2">
+          <div class="widget-header widget-header-flat">
+            <h4 class="widget-title">Net Liquid Value</h4>
+          </div>
+          <div class="widget-body" style="padding: 0 10px;">
+            <table class="table">
+              <tr>
+                <td style="width: 140px;">{% verbose_name day_stat 'account_pl_day' %}</td>
+                <th>{{ day_stat.account_pl_day|currency }}</th>
+              </tr>
+              <tr>
+                <td>{% verbose_name day_stat 'account_pl_ytd' %}</td>
+                <th>{{ day_stat.account_pl_ytd|currency }}</th>
+              </tr>
+              <tr>
+                <td>{% verbose_name day_stat 'commission_day' %}</td>
+                <th>{{ day_stat.commission_day|currency }}</th>
+              </tr>
+              <tr>
+                <td>{% verbose_name day_stat 'commission_ytd' %}</td>
+                <th>{{ day_stat.commission_ytd|currency }}</th>
+              </tr>
+              <tr>
+                <td>{% verbose_name day_stat 'option_bp_day' %}</td>
+                <th>{{ day_stat.option_bp_day|currency }}</th>
+              </tr>
+              <tr>
+                <td>{% verbose_name day_stat 'stock_bp_day' %}</td>
+                <th>{{ day_stat.stock_bp_day|currency }}</th>
+              </tr>
+              <tr>
+                <td>{% verbose_name day_stat 'total_order' %}</td>
+                <th>{{ day_stat.total_order }}</th>
+              </tr>
+              <tr>
+                <td>{% verbose_name day_stat 'working_order' %}</td>
+                <th>{{ day_stat.working_order }}</th>
+              </tr>
+              <tr>
+                <td>{% verbose_name day_stat 'filled_order' %}</td>
+                <th>{{ day_stat.filled_order }}</th>
+              </tr>
+              <tr>
+                <td>{% verbose_name day_stat 'cancelled_order' %}</td>
+                <th>{{ day_stat.cancelled_order }}</th>
+              </tr>
+            </table>
+          </div>
 
-        <h5 class="donut_header">Total Order: {{ x.total_order }}</h5>
+        </div>
       </div>
+      <div class="col-md-8">
+        <div class="row" style="margin-bottom: 20px;">
+          {% for x in investment_field %}
+            <div class="col-md-4">
+              <h4 class="donut_header">{{ x.name|capfirst }}: {{ x.pl_total|currency }}</h4>
+              <h4 class="donut_header grey">
+                {{ x.holding }}
+                Position{% if x.holding > 1 %}s{% endif %}
+              </h4>
 
-      <!--suppress JSDuplicatedDeclaration -->
-      <script type="application/javascript">
-        {% if x.profit_holding or x.loss_holding %}
-          Morris.Donut({
-            element: 'pl-{{ x.name }}',
-            data: [
-              {
-                label: "{{ x.profit_total|currency }}",
-                value: {{ x.profit_total|stringformat:"d" }},
-                formatted: '{{ x.profit_holding }} Profit'
-              },
-              {
-                label: "{{ x.loss_total|currency }}",
-                value: {{ x.loss_total|stringformat:"d"|slice:"1:"  }},
-                formatted: '{{ x.loss_holding }} Loss'
+              <div id="pl-{{ x.name }}" style="width: 100%; height: 180px;"></div>
+
+              <h5 class="donut_header light_blue">Total Order: {{ x.total_order }}</h5>
+            </div>
+
+            <!--suppress JSDuplicatedDeclaration -->
+            <script type="application/javascript">
+              {% if x.profit_holding or x.loss_holding %}
+                Morris.Donut({
+                  element: 'pl-{{ x.name }}',
+                  data: [
+                    {
+                      label: "{{ x.profit_total|currency }}",
+                      value: {{ x.profit_total|stringformat:"d"|default:0 }},
+                      formatted: '{{ x.profit_holding }} Profit'
+                    },
+                    {
+                      label: "{{ x.loss_total|currency }}",
+                      value: {{ x.loss_total|stringformat:"d"|slice:"1:"|default:0  }},
+                      formatted: '{{ x.loss_holding }} Loss'
+                    }
+                  ],
+                  colors: [
+                    '#22cc66',
+                    '#ff4444'
+                  ],
+                  formatter: function (x, data) {
+                    return data.formatted;
+                  }
+                });
+              {% else %}
+                Morris.Donut({
+                  element: 'pl-{{ x.name }}',
+                  data: [
+                    {label: "Even", value: 0.01, formatted: "No position"}
+                  ],
+                  colors: [
+                    '#e5e5e5'
+                  ],
+                  formatter: function (x, data) {
+                    return data.formatted;
+                  }
+                });
+              {% endif %}
+            </script>
+
+          {% endfor %}
+
+          <div class="col-md-4">
+            <h4 class="donut_header">Total: {{ day_stat.holding_pl_open|currency }}</h4>
+            <h4 class="donut_header grey">
+              {{ day_stat.total_holding }}
+              Position{% if day_stat.total_holding > 1 %}s{% endif %}
+            </h4>
+
+            <div id="pl-summary" style="width: 100%; height: 180px;"></div>
+
+            <h5 class="donut_header light_blue">Total Order: {{ day_stat.total_order }}</h5>
+          </div>
+          <script type="text/javascript">
+            Morris.Donut({
+              element: 'pl-summary',
+              data: [
+                {% for holding in investment_field %}
+                  {
+                    label: '{{ holding.name }}',
+                    value: {{ holding.pl_total }},
+                    formatted: '{{ holding.pl_total|currency }}'
+                  },
+                {% endfor %}
+              ],
+              colors: [
+                {% for holding in investment_field %}
+                  {% if holding.pl_total > 0 %}'#22cc66',{% else %}'#ff4444',{% endif %}
+                {% endfor %}
+              ],
+              formatter: function (x, data) {
+                return data.formatted;
               }
-            ],
-            colors: [
-              '#22cc66',
-              '#ff4444'
-            ],
-            formatter: function (x, data) {
-              return data.formatted;
-            }
-          });
-        {% else %}
-          Morris.Donut({
-            element: 'pl-{{ x.name }}',
-            data: [
-              {label: "Even", value: 0.01, formatted: "No position"},
-            ],
-            colors: [
-              '#e5e5e5'
-            ],
-            formatter: function (x, data) {
-              return data.formatted;
-            }
-          });
-        {% endif %}
-      </script>
+            });
+          </script>
+        </div>
 
-    {% endfor %}
-
-    <div class="col-md-2">
-      <h4 class="donut_header">Summary: {{ date_stat.pl_day }}</h4>
-      <h4 class="donut_header">
-        {{ date_stat.total_holding }}
-        Position{% if date_stat.total_holding > 1 %}s{% endif %}
-      </h4>
-
-      <div id="pl-summary" style="width: 100%; height: 200px;"></div>
-
-      <h5 class="donut_header">Total Order: {{ date_stat.total_order }}</h5>
+      </div>
     </div>
+
     <script type="text/javascript">
-      Morris.Donut({
-        element: 'pl-summary',
-        data: [
-          {label: "Even", value: 0.01, formatted: "No position"}
-        ],
-        colors: [
-          '#e5e5e5'
-        ],
-        formatter: function (x, data) {
-          return data.formatted;
+      $(document).keydown(function (e) {
+        switch (e.which) {
+          case 37: // left
+            {% if previous %}
+              $(location).attr('href', '{% url 'admin:simple_stat_day_stat' previous %}');
+            {% endif %}
+            break;
+
+          case 39: // right
+            {% if next %}
+              $(location).attr('href', '{% url 'admin:simple_stat_day_stat' next %}');
+            {% endif %}
+            break;
+
+          default:
+            return; // exit this handler for other keys
         }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
       });
     </script>
-  </div>
+  {% else %}
 
+    <div class="alert alert-warning">
+      <button class="close" data-dismiss="alert" type="button">
+        <i class="ace-icon fa fa-times"></i>
+      </button>
+      <strong>Empty!</strong>
+      No record have import into database yet ...
+      <br>
+    </div>
+  {% endif %}
 
-
-<div id="content" class="colM row-fluid">
-<div id="content-main" class="inner-center-column">
-    <table>
-        <tr>
-            <th>PL Day:</th>
-            <td>{{ date_stat.pl_day }}</td>
-        </tr>
-        <tr>
-            <th>PL YTD:</th>
-            <td>{{ date_stat.pl_ytd }}</td>
-        </tr>
-        <tr>
-            <th>Commission Day:</th>
-            <td>{{ date_stat.c_day }}</td>
-        </tr>
-        <tr>
-            <th>Commission YTD:</th>
-            <td>{{ date_stat.c_ytd }}</td>
-        </tr>
-        <tr>
-            <th>Option BP Day:</th>
-            <td>{{ date_stat.option_bp_day }}</td>
-        </tr>
-        <tr>
-            <th>Stock BP Day:</th>
-            <td>{{ date_stat.stock_bp_day }}</td>
-        </tr>
-        <tr>
-            <th>Total Order:</th>
-            <td>{{ date_stat.total_order }}</td>
-        </tr>
-        <tr>
-            <th>Working Order:</th>
-            <td>{{ date_stat.working_order }}</td>
-        </tr>
-        <tr>
-            <th>Filled Order:</th>
-            <td>{{ date_stat.filled_order }}</td>
-        </tr>
-        <tr>
-            <th>Cancelled Order:</th>
-            <td>{{ date_stat.cancelled_order }}</td>
-        </tr>
-    </table>
-
-
-    {% for x in investment_field %}
-        <table>
-            <tr>
-                <th>Investment:</th>
-                <td>{{ x.name }}</td>
-            </tr>
-            <tr>
-                <th>Total Order:</th>
-                <td>{{ x.total_order }}</td>
-            </tr>
-            <tr>
-                <th>Working Order:</th>
-                <td>{{ x.working_order }}</td>
-            </tr>
-            <tr>
-                <th>Filled Order:</th>
-                <td>{{ x.filled_order }}</td>
-            </tr>
-            <tr>
-                <th>Cancelled Order:</th>
-                <td>{{ x.cancelled_order }}</td>
-            </tr>
-            <tr>
-                <th>Holding:</th>
-                <td>{{ x.holding }}</td>
-            </tr>
-            <tr>
-                <th>Profit Holding:</th>
-                <td>{{ x.profit_holding }}</td>
-            </tr>
-            <tr>
-                <th>Loss Holding:</th>
-                <td>{{ x.loss_holding }}</td>
-            </tr>
-            <tr>
-                <th>PL Total:</th>
-                <td>{{ x.pl_total }}</td>
-            </tr>
-            <tr>
-                <th>Profit Total:</th>
-                <td>{{ x.profit_total }}</td>
-            </tr>
-            <tr>
-                <th>Loss Total:</th>
-                <td>{{ x.loss_total }}</td>
-            </tr>
-        </table>
-    {% endfor %}
-</div>
-</div>
 {% endblock %}
 
 

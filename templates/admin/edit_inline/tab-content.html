@@ -1,0 +1,96 @@
+{% load i18n admin_static admin_modify %}{% load cycle from future %}
+<div id="{{ inline_admin_formset.formset.prefix }}-group"
+     class="tab-pane {% if forloop.first %}in active{% endif %}">
+
+  {{ inline_admin_formset.formset.management_form }}
+  {{ inline_admin_formset.formset.non_form_errors }}
+
+  <table class="table">
+    <tr>
+      <th>Object</th>
+      {% for field in inline_admin_formset.fields %}
+        {% if not field.widget.is_hidden %}
+          <th>
+            {{ field.label|capfirst }}
+
+            {% if field.help_text %}&nbsp;
+              <img src="{% static "admin/img/icon-unknown.gif" %}"
+                   class="help help-tooltip" width="10" height="10"
+                   alt="({{ field.help_text|striptags }})"
+                   title="{{ field.help_text|striptags }}"/>
+            {% endif %}
+          </th>
+        {% endif %}
+      {% endfor %}
+      {% if inline_admin_formset.formset.can_delete %}
+        <th>{% trans "Delete?" %}</th>
+      {% endif %}
+    </tr>
+
+    {% for inline_admin_form in inline_admin_formset %}
+      {% if inline_admin_form.form.non_field_errors %}
+        <tr>
+          <td colspan="{{ inline_admin_form|cell_count }}">
+            {{ inline_admin_form.form.non_field_errors }}
+          </td>
+        </tr>
+      {% endif %}
+      {% if forloop.last == False %}
+        <tr id="{{ inline_admin_formset.formset.prefix }}-{{ forloop.counter0 }}">
+          <td>
+            {% if inline_admin_form.original or inline_admin_form.show_url %}
+              {% if inline_admin_form.original %} {{ inline_admin_form.original }}{% endif %}
+              {% if inline_admin_form.show_url %}
+                <a href="{% url 'admin:view_on_site' inline_admin_form.original_content_type_id inline_admin_form.original.pk %}">
+                  {% trans "View on site" %}
+                </a>
+              {% endif %}
+            {% endif %}
+            {% if inline_admin_form.needs_explicit_pk_field %}
+              {{ inline_admin_form.pk_field.field }}
+            {% endif %}
+
+            {{ inline_admin_form.fk_field.field }}
+
+            {% spaceless %}
+              {% for fieldset in inline_admin_form %}
+                {% for line in fieldset %}
+                  {% for field in line %}
+                    {% if field.is_hidden %} {{ field.field }} {% endif %}
+                  {% endfor %}
+                {% endfor %}
+              {% endfor %}
+            {% endspaceless %}
+          </td>
+
+          {% for fieldset in inline_admin_form %}
+            {% for line in fieldset %}
+              {% for field in line %}
+                <td>
+                  {% if field.is_readonly %}
+                    {{ field.contents|linebreaksbr }}
+                  {% else %}
+                    {{ field.field.errors.as_ul }}
+                    {{ field.field }}
+                  {% endif %}
+                </td>
+              {% endfor %}
+            {% endfor %}
+          {% endfor %}
+
+          {% if inline_admin_formset.formset.can_delete %}
+            <td>
+              {% if inline_admin_form.original %}
+                {{ inline_admin_form.deletion_field.field }}
+              {% endif %}
+            </td>
+          {% endif %}
+        </tr>
+      {% endif %}
+
+    {% endfor %}
+
+  </table>
+
+</div>
+

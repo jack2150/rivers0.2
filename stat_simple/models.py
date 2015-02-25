@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 from django.db.models import Q
 from tos_import.statement_account.models import AccountSummary
@@ -26,8 +27,8 @@ class DayStat(models.Model):
 
     commission_day = models.DecimalField(verbose_name='Commission Day', **decimal_field)
     commission_ytd = models.DecimalField(verbose_name='Commission YTD', **decimal_field)
-    option_bp_day = models.DecimalField(verbose_name='Option BP', **decimal_field)
-    stock_bp_day = models.DecimalField(verbose_name='Stock BP', **decimal_field)
+    option_bp_day = models.DecimalField(verbose_name='Option BP Day', **decimal_field)
+    stock_bp_day = models.DecimalField(verbose_name='Stock BP Day', **decimal_field)
 
     def __unicode__(self):
         """
@@ -118,10 +119,32 @@ class SaveDayStat(object):
         get date stat data from table
         :return: dict
         """
-        working_order = self.working_order.count()
-        filled_order = self.filled_order.count()
-        cancelled_order = self.cancelled_order.count()
+        working_order = (
+            Decimal(self.get_future()['working_order'])
+            + Decimal(self.get_forex()['working_order'])
+            + Decimal(self.get_equity()['working_order'])
+            + Decimal(self.get_option()['working_order'])
+            + Decimal(self.get_spread()['working_order'])
+        )
+
+        filled_order = (
+            Decimal(self.get_future()['filled_order'])
+            + Decimal(self.get_forex()['filled_order'])
+            + Decimal(self.get_equity()['filled_order'])
+            + Decimal(self.get_option()['filled_order'])
+            + Decimal(self.get_spread()['filled_order'])
+        )
+
+        cancelled_order = (
+            Decimal(self.get_future()['cancelled_order'])
+            + Decimal(self.get_forex()['cancelled_order'])
+            + Decimal(self.get_equity()['cancelled_order'])
+            + Decimal(self.get_option()['cancelled_order'])
+            + Decimal(self.get_spread()['cancelled_order'])
+        )
+
         total_order = working_order + filled_order + cancelled_order
+
         total_holding = (
             self.position_forex.exclude(quantity=0).count()
             + self.position_future.exclude(quantity=0).count()
@@ -129,41 +152,57 @@ class SaveDayStat(object):
             + self.get_option()['holding']
             + self.get_spread()['holding']
         )
+        holding_pl_day = (
+            sum([p.pl_day for p in self.position_forex.exclude(quantity=0).all()])
+            + sum([p.pl_day for p in self.position_future.exclude(quantity=0).all()])
+        )
+        # todo: pl_day for all holding
+        # todo: wrong total order, should be 8
+
+        holding_pl_open = (
+            Decimal(self.get_future()['pl_total'])
+            + Decimal(self.get_forex()['pl_total'])
+            + Decimal(self.get_equity()['pl_total'])
+            + Decimal(self.get_option()['pl_total'])
+            + Decimal(self.get_spread()['pl_total'])
+        )
 
         account_pl_day = 0.0
         account_pl_ytd = 50001.00
+
         commission_day = 0.0
         commission_ytd = 0.0
         option_bp_day = 0.0
         stock_bp_day = 0.0
         acc = AccountSummary.objects.filter(date__lte=self.account_statement.date)
+
         if acc.count() >= 2:
-            acc = acc.order_by('date').reverse()[:2]
+            acc = acc.order_by('date').reverse()
 
             # today pl and ytd pl
-            account_pl_day = float(acc.first().net_liquid_value - acc.last().net_liquid_value)
-            account_pl_ytd = float(acc.first().net_liquid_value) - account_pl_ytd
+            account_pl_day = float(acc[0].net_liquid_value - acc[1].net_liquid_value)
+            account_pl_ytd = float(acc[0].net_liquid_value) - account_pl_ytd
 
             # today commission
-            commission_day = float(acc.first().commissions_ytd - acc.last().commissions_ytd)
-            commission_ytd = float(acc.first().commissions_ytd)
+            commission_day = float(acc[0].commissions_ytd - acc[1].commissions_ytd)
+            commission_ytd = float(acc[0].commissions_ytd)
 
             # bp change
-            option_bp_day = float(acc.first().option_buying_power - acc.last().option_buying_power)
-            stock_bp_day = float(acc.first().stock_buying_power - acc.last().stock_buying_power)
+            option_bp_day = float(acc[0].option_buying_power - acc[1].option_buying_power)
+            stock_bp_day = float(acc[0].stock_buying_power - acc[1].stock_buying_power)
         elif acc.count() == 1:
-            account_pl_day = float(acc.first().net_liquid_value) - account_pl_ytd
-            account_pl_ytd = float(acc.first().net_liquid_value) - account_pl_ytd
+            account_pl_day = float(acc[0].net_liquid_value) - account_pl_ytd
+            account_pl_ytd = float(acc[0].net_liquid_value) - account_pl_ytd
 
-            commission_day = float(acc.first().commissions_ytd)
-            commission_ytd = float(acc.first().commissions_ytd)
+            commission_day = float(acc[0].commissions_ytd)
+            commission_ytd = float(acc[0].commissions_ytd)
 
-            option_bp_day = account_pl_ytd - float(acc.first().option_buying_power)
-            stock_bp_day = (account_pl_ytd * 2) - float(acc.first().stock_buying_power)
+            option_bp_day = account_pl_ytd - float(acc[0].option_buying_power)
+            stock_bp_day = (account_pl_ytd * 2) - float(acc[0].stock_buying_power)
 
         return dict(
-            holding_pl_open=0.0,
-            holding_pl_day=0.0,
+            holding_pl_open=holding_pl_open,
+            holding_pl_day=holding_pl_day,
             account_pl_day=account_pl_day,
             account_pl_ytd=account_pl_ytd,
             commission_day=commission_day,
@@ -245,9 +284,9 @@ class SaveDayStat(object):
         profit_total = 0.0
         loss_total = 0.0
 
-        working = self.working_order.filter(contract='STOCK').count()
-        filled = self.filled_order.filter(contract='STOCK').count()
-        cancelled = self.cancelled_order.filter(contract='STOCK').count()
+        working = self.working_order.filter(spread='STOCK').count()
+        filled = self.filled_order.filter(spread='STOCK').count()
+        cancelled = self.cancelled_order.filter(spread='STOCK').count()
         order = working + filled + cancelled
 
         for position_instrument in self.position_instrument.all():

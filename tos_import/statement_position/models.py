@@ -1,6 +1,9 @@
+import locale
 from django.db import models
 from tos_import.classes.io import OpenPos
 from tos_import.models import Underlying, Statement, SaveAppModel, Future, Forex
+
+locale.setlocale(locale.LC_ALL, '')
 
 
 class PositionModel(object):
@@ -58,17 +61,14 @@ class PositionSummary(models.Model):
         Normal string output for class detail
         :return: str
         """
-        position_statement = '<PositionStatement:{date}> {pl_ytd}'
+        position_statement = 'PositionSummary {date} {pl_ytd}'
 
         return '{position_statement}'.format(
             position_statement=position_statement.format(
                 date='%s' % self.date,
-                pl_ytd='%+.2f' % self.pl_ytd,
+                pl_ytd=locale.currency(self.pl_ytd, grouping=True),
             )
         )
-
-    class Meta:
-        verbose_name_plural = "   Position Statements"
 
 
 class PositionInstrument(models.Model, PositionModel):
@@ -113,13 +113,10 @@ class PositionInstrument(models.Model, PositionModel):
         Normal string output for model detail
         :return: str
         """
-        return '<PositionInstrument:{date}> {symbol}'.format(
+        return 'PositionInstrument {date} {symbol}'.format(
             date=self.position_summary.date,
             symbol=self.underlying.symbol
         )
-
-    class Meta:
-        verbose_name_plural = "  Position Instrument"
 
 
 class PositionEquity(models.Model, PositionModel):
@@ -161,13 +158,10 @@ class PositionEquity(models.Model, PositionModel):
         Normal string output for model detail
         :return: str
         """
-        return '<PositionEquity:{date}> {symbol}'.format(
+        return 'PositionEquity {date} < {symbol} >'.format(
             date=self.position_summary.date,
-            symbol=self.underlying.symbol,
+            symbol=self.underlying.symbol
         )
-
-    class Meta:
-        verbose_name_plural = " Position Equity"
 
 
 class PositionOption(models.Model):
@@ -256,7 +250,7 @@ class PositionOption(models.Model):
         """
         option = '{symbol} {right} {special} {ex_month} {ex_year} {strike} {contract}'
 
-        return '<PositionOption:{date}> {option}'.format(
+        return 'PositionOption {date} < {option} >'.format(
             date=self.position_summary.date,
             option=option.format(
                 symbol=self.underlying.symbol,
@@ -268,9 +262,6 @@ class PositionOption(models.Model):
                 contract=self.contract
             )
         )
-
-    class Meta:
-        verbose_name_plural = " Position Option"
 
 
 class PositionFuture(models.Model, PositionModel):
@@ -322,13 +313,10 @@ class PositionFuture(models.Model, PositionModel):
         Normal string output for model detail
         :return: str
         """
-        return '<PositionFuture:{date}> /{symbol}'.format(
+        return 'PositionFuture {date} < /{symbol} >'.format(
             date=self.position_summary.date,
             symbol=self.future.lookup
         )
-
-    class Meta:
-        verbose_name_plural = "Position Futures"
 
 
 class PositionForex(models.Model, PositionModel):
@@ -378,13 +366,10 @@ class PositionForex(models.Model, PositionModel):
         Normal string output for model detail
         :return: str
         """
-        return '<PositionForex:{date}> {symbol}'.format(
+        return 'PositionForex {date} < {symbol} >'.format(
             date=self.position_summary.date,
             symbol=self.forex.symbol
         )
-
-    class Meta:
-        verbose_name_plural = "Position Forex"
 
 
 class SavePositionStatement(SaveAppModel):
