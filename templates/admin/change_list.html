@@ -1,5 +1,6 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_urls admin_static admin_list static %}
+{% load currency_tag admin_list_link %}
 
 {% block title %}{{ cl.opts.verbose_name_plural|capfirst }}{% endblock %}
 
@@ -112,7 +113,43 @@
           </form>
         </div>
 
-      {% block pagination %}{% pagination cl %}{% endblock %}
+      {% block pagination %}
+        {% pagination cl %}
+      {% endblock %}
+
     </div>
   </div>
+
+
+{% endblock %}
+
+{% block footer_extra_script %}
+  <script type="text/javascript">
+    $(document).keydown(function (e) {
+
+      switch (e.which) {
+        case 36: // home
+          $(location).attr('href', '{% first_change_link cl %}');
+          break;
+
+        case 35: // end
+          $(location).attr('href', '{% last_change_link cl %}');
+          break;
+
+        case 37: // left
+          $(location).attr('href', '{% previous_change_link cl %}');
+          break;
+
+        case 39: // right
+          $(location).attr('href', '{% next_change_link cl %}');
+          break;
+
+        default:
+          return; // exit this handler for other keys
+      }
+
+      //alert(e.which);
+      e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
+  </script>
 {% endblock %}

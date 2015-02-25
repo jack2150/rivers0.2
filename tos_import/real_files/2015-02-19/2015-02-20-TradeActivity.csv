@@ -1,0 +1,31 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Today's Trade Activity for <TOTAL> (ALL ACCOUNTS) on 2/20/15 12:10:34
+
+Working Orders
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Mark,Status
+,,1/30/15 03:51:21,FOREX,BUY,+10000,TO OPEN,USD/THB,,,FOREX,31.00,LMT,GTC,32.563,WORKING
+
+Filled Orders
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,2/20/15 07:30:54,FOREX,BUY,+10000,TO OPEN,AUD/SGD,,,FOREX,1.0583,1.0583,ROP
+,2/20/15 07:30:54,FOREX,BUY,+10000,TO OPEN,HKD/JPY,,,FOREX,15.331,15.331,ROP
+,2/20/15 07:30:54,FOREX,BUY,+10000,TO OPEN,USD/JPY,,,FOREX,118.9398,118.9398,ROP
+,2/20/15 07:30:54,FOREX,SELL,-10000,TO OPEN,USD/THB,,,FOREX,32.5341,32.5341,ROP
+,2/20/15 07:30:53,FOREX,SELL,-10000,TO CLOSE,USD/JPY,,,FOREX,118.94,118.94,RCL
+,2/20/15 07:30:53,FOREX,SELL,-10000,TO CLOSE,AUD/SGD,,,FOREX,1.0583,1.0583,RCL
+,2/20/15 07:30:53,FOREX,SELL,-10000,TO CLOSE,HKD/JPY,,,FOREX,15.331,15.331,RCL
+,2/20/15 07:30:53,FOREX,BUY,+10000,TO CLOSE,USD/THB,,,FOREX,32.56,32.56,RCL
+,2/19/15 23:07:12,SINGLE,BUY,+1,TO OPEN,AMZN,APR 15,335,PUT,2.73,2.73,LMT
+,2/19/15 23:06:11,SINGLE,BUY,+1,TO OPEN,CELG,APR 15,125,CALL,3.60,3.60,LMT
+,2/19/15 23:04:36,SINGLE,BUY,+1,TO OPEN,HD,APR 15,115,CALL,2.09,2.09,LMT
+,2/19/15 23:03:04,FOREX,SELL,-10000,TO OPEN,USD/THB,,,FOREX,32.483,32.483,LMT
+,2/19/15 23:02:20,STOCK,BUY,+600,TO OPEN,NGE,,,ETF,8.39,8.39,LMT
+,2/19/15 23:02:05,STOCK,BUY,+400,TO OPEN,GREK,,,ETF,12.75,12.75,LMT
+,2/19/15 23:00:57,FUTURE,BUY,+1,TO OPEN,/NGH5,MAR 15,,FUTURE,2.839,2.839,LMT
+
+Cancelled Orders
+Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+
+Rolling Strategies
+Covered Call Position,New Exp,Call By,Begin (Days),Order Price,Active Time,Move to MKT Time,Status

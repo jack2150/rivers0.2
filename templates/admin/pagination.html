@@ -1,7 +1,13 @@
-{% load admin_list %}
-{% load i18n %}
+{% load admin_list i18n admin_list_link %}
+
 {% if pagination_required %}
     <ul class="pagination" style="margin: 0">
+      <li>
+        <a href="{% first_change_link cl %}">
+          <i class="ace-icon fa fa-angle-double-left"></i>
+        </a>
+      </li>
+
       {% for i in page_range %}
         {% if i == "." %}
           <li>
@@ -11,5 +17,12 @@
           <li>{% paginator_number cl i %}</li>
         {% endif %}
       {% endfor %}
+
+      <li>
+        <a href="{% last_change_link cl %}">
+          <i class="ace-icon fa fa-angle-double-right"></i>
+        </a>
+      </li>
     </ul>
 {% endif %}
+

@@ -1,0 +1,144 @@
+﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+
+Account Statement for <TOTAL> (ALL ACCOUNTS) since 2/19/15 through 2/19/15
+
+Cash Balance
+DATE,TIME,TYPE,REF #,DESCRIPTION,FEES,COMMISSIONS,AMOUNT,BALANCE
+,,,,TOTAL,,,,
+
+Futures Statements
+Trade Date,Exec Date,Exec Time,Type,Ref #,Description,Fees,Commissions,Amount,Balance
+
+Forex Statements
+,Date,Time,Type,Ref #,Description,Commissions,Amount,Amount(USD),Balance
+
+ 
+"Total Cash ($189,756.64)"
+
+
+Account Order History
+Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+
+Account Trade History
+,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+
+Equities
+Symbol,Description,Qty,Trade Price,Mark,Mark Value
+GREK,GLOBAL X FUNDS GREECE 20 ETF,+400,12.75,12.82,"$5,128.00"
+XOM,EXXON MOBIL CORPORATION COM,-100,87.05,89.44,"($8,944.00)"
+USLV,CREDIT SUISSE AG VELOCITY 3X LONG SILVER ETN,+100,24.95,20.40,"$2,040.00"
+PG,PROCTER GAMBLE CO COM,+100,85.74,85.22,"$8,522.00"
+NGE,GLOBAL X FUNDS MSCI NIGERIA ETF,+600,8.39,8.23,"$4,938.00"
+SNDK,SANDISK CORP COM,-100,76.95,82.41,"($8,241.00)"
+,OVERALL TOTALS,,,,"$3,443.00"
+
+Options
+Symbol,Option Code,Exp,Strike,Type,Qty,Trade Price,Mark,Mark Value
+AAPL,AAPL150320C115,MAR 15,115,CALL,-1,6.45,13.75,"($1,375.00)"
+AAPL,AAPL150320C120,MAR 15,120,CALL,+1,3.80,9.175,$917.50
+,,,,,,,,($457.50)
+AMZN,AMZN150417P335,APR 15,335,PUT,+1,2.73,2.761398,$276.14
+,,,,,,,,$276.14
+BABA,BABA150320C95,MAR 15,95,CALL,+1,1.99,.475,$47.50
+,,,,,,,,$47.50
+CELG,CELG150417C125,APR 15,125,CALL,+1,3.60,3.625,$362.50
+,,,,,,,,$362.50
+EBAY,EBAY150320C55,MAR 15,55,CALL,-2,1.33,3.04,($608.00)
+EBAY,EBAY150320C57.5,MAR 15,57.5,CALL,+2,.53,1.36,$272.00
+,,,,,,,,($336.00)
+FB,FB150320P72.5,MAR 15,72.5,PUT,+1,1.54,.325,$32.50
+FB,FB150320P77.5,MAR 15,77.5,PUT,-1,3.70,1.375,($137.50)
+,,,,,,,,($105.00)
+FSLR,FSLR150320P42.5,MAR 15,42.5,PUT,+1,1.81,1.09,$109.00
+FSLR,FSLR150320P47.5,MAR 15,47.5,PUT,-1,3.70,2.815,($281.50)
+,,,,,,,,($172.50)
+GLD,GLD150320C119,MAR 15,119,CALL,+2,4.35,1.065,$213.00
+GLD,GLD150320C122,MAR 15,122,CALL,-2,2.81,.49,($98.00)
+,,,,,,,,$115.00
+HD,HD150417C115,APR 15,115,CALL,+1,2.09,1.545,$154.50
+,,,,,,,,$154.50
+KO,KO150320C42,MAR 15,42,CALL,+3,.78,.67,$201.00
+,,,,,,,,$201.00
+PG,PG150320C87.5,MAR 15,87.5,CALL,-1,1.05,.34,($34.00)
+,,,,,,,,($34.00)
+SNDK,SNDK150320P75,MAR 15,75,PUT,-1,2.74,.54,($54.00)
+,,,,,,,,($54.00)
+SPY,SPY150417P200,APR 15,200,PUT,-1,2.42,2.165,($216.50)
+SPY,SPY150417P209,APR 15,209,PUT,+1,4.85,4.44,$444.00
+,,,,,,,,$227.50
+TSLA,TSLA150320C205,MAR 15,205,CALL,+1,13.95,12.225,"$1,222.50"
+TSLA,TSLA150320C210,MAR 15,210,CALL,-1,11.55,9.275,($927.50)
+,,,,,,,,$295.00
+VXX,VXX150320C37,MAR 15,37,CALL,+1,2.67,.755,$75.50
+,,,,,,,,$75.50
+XOM,XOM150320P85,MAR 15,85,PUT,-1,2.62,.735,($73.50)
+,,,,,,,,($73.50)
+,,,,,,,,$522.14
+
+Futures
+Symbol,Description,SPC,Exp,Qty,Trade Price,Mark,P/L Day
+/6JH5,"Japanese Yen Futures,Mar-2015,ETH",1/12500000,MAR 15,+1,.008389,.008414,$100.00
+/NGH5,"Natural Gas Futures,Mar-2015,ETH",1/10000,MAR 15,+1,2.839,2.814,($200.00)
+/NQH5,"E-mini Nasdaq 100 Index Futures,Mar-2015,ETH",1/20,MAR 15,-1,4153.50,4414.00,($15.00)
+/QMH5,"NYMEX miNY Light Sweet Crude Oil Futures,Mar-2015,ETH",1/500,MAR 15,-1,44.55,51.125,$17.50
+,OVERALL TOTALS,,,,,,($97.50)
+
+Forex
+Symbol,Description,Qty,Trade Price,Mark,FPL
+AUD/SGD,AusDollar/Singapore Dollar Spot ,+10000,1.0583,1.06110,$18.77
+USD/THB,USDollar/Thai Baht ,-10000,32.5341,32.563,($31.91)
+USD/JPY,USDollar/Japanese Yen Spot      ,+10000,118.9398,118.877,($5.95)
+HKD/JPY,HKDollar/Japanese Yen Spot ,+10000,15.331,15.32565,($0.91)
+,OVERALL TOTALS,,,,($20.00)
+
+Profits and Losses 
+Symbol,Description,P/L Open,P/L %,P/L Day,P/L YTD,Margin Req,Mark Value
+/6JH5,"Japanese Yen Futures,Mar-2015,ETH",$312.50,+0.30%,$100.00,$312.50,"$3,300.00",$100.00
+/NGH5,"Natural Gas Futures,Mar-2015,ETH",($250.00),-0.88%,($200.00),"$1,230.00","$4,235.00",($200.00)
+/NQH5,"E-mini Nasdaq 100 Index Futures,Mar-2015,ETH","($5,210.00)",-6.27%,($15.00),"($5,210.00)","$3,960.00",($15.00)
+/QMH5,"NYMEX miNY Light Sweet Crude Oil Futures,Mar-2015,ETH","($3,287.50)",-14.76%,$17.50,"($3,287.50)","$2,695.00",$17.50
+/ZWH5,"Wheat Futures,Mar-2015,ETH",$0.00,0.00%,$0.00,"$1,062.50",$0.00,$0.00
+AAPL,APPLE INC COM,($192.50),-18.78%,$2.50,($192.50),$47.00,($457.50)
+AMZN,AMAZON.COM INC COM,$3.14,+1.15%,$3.14,$3.14,$262.08,$276.14
+BABA,ALIBABA GROUP HLDG LTD ADR,($151.50),-76.13%,($5.50),($151.50),$53.76,$47.50
+BP,BP PLC SPONS ADR,$0.00,0.00%,$0.00,$132.00,$0.00,$0.00
+CELG,CELGENE CORP COM,$2.50,+0.69%,$2.50,$2.50,$339.86,$362.50
+DIS,WALT DISNEY CO COM,$0.00,0.00%,$0.00,$148.00,$0.00,$0.00
+EBAY,EBAY INC COM,($176.00),-47.31%,($46.00),($176.00),$150.00,($336.00)
+EWU,ISHARES TRUST MSCI UNITED KINGDOM ETF,$0.00,0.00%,$0.00,$120.00,$0.00,$0.00
+FB,FACEBOOK INC COM,$111.00,+21.18%,$78.50,$111.00,$344.88,($105.00)
+FSLR,FIRST SOLAR INC COM,$16.50,+2.99%,($1.00),$16.50,$175.32,($172.50)
+GE,GENERAL ELECTRIC CO COM,$0.00,0.00%,$0.00,$170.00,$0.00,$0.00
+GLD,SPDR GOLD TR GOLD SHS ETF,($193.00),-13.48%,($21.00),($193.00),$113.21,$115.00
+GREK,GLOBAL X FUNDS GREECE 20 ETF,$28.00,+0.55%,$28.00,$28.00,$769.20,"$5,128.00"
+HD,HOME DEPOT INC COM,($54.50),-26.08%,($54.50),($54.50),$160.56,$154.50
+IBM,INTL BUSINESS MACHINES COM,$0.00,0.00%,$0.00,$120.00,$0.00,$0.00
+JPM,JP MORGAN CHASE & CO COM,$0.00,0.00%,$0.00,$108.00,$0.00,$0.00
+KO,COCA COLA CO COM,($33.00),-14.10%,$79.50,($33.00),$194.71,$201.00
+NGE,GLOBAL X FUNDS MSCI NIGERIA ETF,($96.00),-1.91%,($96.00),($96.00),$740.70,"$4,938.00"
+PG,PROCTER GAMBLE CO COM,$19.00,+0.22%,($74.00),$19.00,"$1,241.63","$8,488.00"
+RSX,MARKET VECTORS RUSSIA,$0.00,0.00%,$0.00,$245.00,$0.00,$0.00
+SNDK,SANDISK CORP COM,($326.00),-4.09%,($35.50),($326.00),"$1,177.10","($8,295.00)"
+SPY,SPDR TR S&P 500 ETF TR,($15.50),-2.13%,($3.50),$125.50,$196.36,$227.50
+TSLA,TESLA MOTORS INC COM,$55.00,+2.16%,$70.00,$55.00,$500.00,$295.00
+USLV,CREDIT SUISSE AG VELOCITY 3X LONG SILVER ETN,($455.00),-18.24%,($12.00),($455.00),$306.00,"$2,040.00"
+VXX,BARCLAYS BANK PLC IPATH S&P 500 VIX SHORT TERM,($191.50),-71.72%,($21.50),($191.50),$57.50,$75.50
+WFC,WELLS FARGO & CO COM,$0.00,0.00%,$0.00,$110.00,$0.00,$0.00
+XOM,EXXON MOBIL CORPORATION COM,($50.50),-0.56%,$139.00,($50.50),"$1,266.64","($9,017.50)"
+,OVERALL TOTALS,"($10,134.86)",-3.55%,($64.86),"($6,298.36)","$22,286.49","$3,867.64"
+
+Forex Account Summary
+Cash,"$10,457.49"
+UPL,$21.30
+Floating P/L,($20.00)
+Equity,"$10,458.78"
+Margin,"$1,219.44"
+Available Equity,"$9,239.34"
+Risk Level,100.00%
+
+Account Summary
+Net Liquidating Value,"$43,206.55"
+Stock Buying Power,"$21,017.56"
+Option Buying Power,"$21,017.56"
+Commissions YTD,$484.02
+Futures Commissions YTD,$30.07
