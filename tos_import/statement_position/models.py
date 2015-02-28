@@ -422,6 +422,8 @@ class SavePositionStatement(SaveAppModel):
             pos_future.set_dict(future_position)
             pos_future.save()
 
+            print future_position
+
     def save_forex_position(self):
         """
         Save forex position into db

@@ -1,62 +1,133 @@
 from django.contrib import admin
-from django.contrib.admin.views.decorators import staff_member_required
-from django.shortcuts import render
-from stat_simple.models import DayStat, DayStatHolding
+from stat_simple.models import DayStat, DayStatHolding, DayStatOptionGreek
+from stat_simple.views import day_stat_view
 
 
-@staff_member_required
-def day_stat_view(request, date=''):
-    template = 'admin/simple_stat/daily/index.html'
+# noinspection PyMethodMayBeStatic
+class DayStatAdmin(admin.ModelAdmin):
+    def statement_date(self, obj):
+        return obj.statement.date
 
-    day_stat_holdings = list()
-    day_stats = DayStat.objects.order_by('statement__date').all()
-    day_stat = None
-    previous_item = None
-    next_item = None
+    statement_date.short_description = 'Date'
+    statement_date.admin_order_field = 'statement__date'
 
-    if date:
-        if day_stats.filter(statement__date=date).count():
-            day_stat = day_stats.get(statement__date=date)
-    else:
-        if day_stats.count():
-            day_stat = day_stats.latest('statement__date')
-
-    if day_stat:
-        date = day_stat.statement.date.strftime('%Y-%m-%d')
-
-        names = ['equity', 'option', 'spread', 'future', 'forex']
-        for name in names:
-            item = day_stat.daystatholding_set.filter(name=name).first()
-            day_stat_holdings.append(item)
-
-        previous_obj = day_stats.filter(statement__date__lt=date).order_by('statement__date').reverse()
-        if previous_obj.exists():
-            previous_item = previous_obj[0].statement.date.strftime('%Y-%m-%d')
-
-        next_obj = day_stats.filter(statement__date__gt=date).order_by('statement__date')
-        if next_obj.exists():
-            next_item = next_obj[0].statement.date.strftime('%Y-%m-%d')
-
-    parameters = dict(
-        request=request,
-        day_stat=day_stat,
-        stat_field=[
-            'name',
-            'total_order', 'working_order', 'filled_order', 'cancelled_order',
-            'holding', 'profit_count', 'loss_count',
-            'pl_total', 'profit_total', 'loss_total',
-        ],
-        investment_field=day_stat_holdings,
-        date=date,
-        previous=previous_item,
-        next=next_item
+    list_display = (
+        'statement_date',
+        'total_holding_count',
+        'total_order_count',
+        'working_order_count',
+        'filled_order_count',
+        'cancelled_order_count',
+        'account_pl_ytd',
+        'account_pl_day',
+        'holding_pl_day',
+        'holding_pl_open',
+        'commission_day',
+        'commission_ytd',
+        'option_bp_day',
+        'stock_bp_day'
     )
 
-    return render(request, template, parameters)
+    fieldsets = (
+        ('Foreign Key', {
+            'fields': (
+                'statement',
+            )
+        }),
+        ('Primary Fields', {
+            'fields': (
+                'total_holding_count',
+                'total_order_count',
+                'working_order_count',
+                'filled_order_count',
+                'cancelled_order_count',
+                'account_pl_ytd',
+                'account_pl_day',
+                'holding_pl_day',
+                'holding_pl_open',
+                'commission_day',
+                'commission_ytd',
+                'option_bp_day',
+                'stock_bp_day'
+            )
+        })
+    )
+
+    ordering = ('-statement__date', )
+    readonly_fields = ('statement', )
+    search_fields = ('statement__date', )
+    list_per_page = 30
 
 
-admin.site.register(DayStat)
-admin.site.register(DayStatHolding)
+    def has_add_permission(self, request):
+        return False
+
+
+# noinspection PyMethodMayBeStatic
+class DayStatHoldingAdmin(admin.ModelAdmin):
+
+    list_display = (
+        'day_stat', 'name',
+        'total_order_count',
+        'working_order_count',
+        'filled_order_count',
+        'cancelled_order_count',
+        'total_holding_count',
+        'profit_holding_count',
+        'loss_holding_count',
+        'pl_open_sum',
+        'profit_open_sum',
+        'loss_open_sum',
+        'pl_day_sum',
+        'profit_day_sum',
+        'loss_day_sum',
+        'bp_effect_sum'
+    )
+
+    list_filter = (
+        'name',
+    )
+
+    fieldsets = (
+        ('Foreign Key', {
+            'fields': (
+                'day_stat',
+            )
+        }),
+        ('Primary Fields', {
+            'fields': (
+                'name',
+                'total_order_count',
+                'working_order_count',
+                'filled_order_count',
+                'cancelled_order_count',
+                'total_holding_count',
+                'profit_holding_count',
+                'loss_holding_count',
+                'pl_open_sum',
+                'profit_open_sum',
+                'loss_open_sum',
+                'pl_day_sum',
+                'profit_day_sum',
+                'loss_day_sum',
+                'bp_effect_sum'
+            )
+        })
+    )
+
+    ordering = ('-day_stat__statement__date', )
+    readonly_fields = ('day_stat', )
+    list_per_page = 30
+
+    search_fields = ('day_stat__statement__date', 'name')
+
+    def has_add_permission(self, request):
+        return False
+
+
+admin.site.register(DayStat, DayStatAdmin)
+admin.site.register(DayStatHolding, DayStatHoldingAdmin)
+admin.site.register(DayStatOptionGreek)
 admin.site.register_view(
     'stat_simple/daily/$',
     urlname='simple_stat_day_stat',

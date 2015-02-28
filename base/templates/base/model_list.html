@@ -1,0 +1,84 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static dict_lookup %}
+
+{% block title %}Model List{% endblock %}
+
+{% block extrastyle %}
+  <style>
+    .panel-blue .panel-heading {
+      color: #ffffff;
+      font-weight: bold;
+      background-color: #6fb3e0;
+    }
+
+    .panel-blue .toolbar {
+      float: right;
+    }
+
+    .icon-white {
+      color: #ffffff;
+    }
+
+  </style>
+{% endblock %}
+
+
+{% block breadcrumbs %}
+  <li>
+    <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    Model List
+  </li>
+{% endblock %}
+
+{% block page-header %}Model List{% endblock %}
+
+{% block content %}
+  {% for app_parent in app_parent_list %}
+    <div class="main-container">
+      <div class="panel panel-default panel-blue">
+        <div class="panel-heading">
+          {{ app_parent.label }}
+
+          <div class="toolbar">
+            <a data-toggle="collapse" data-parent="#accordion" href="#{{ app_parent.name }}"
+               aria-expanded="true" aria-controls="{{ app_parent.name }}">
+              <i class="ace-icon fa fa-chevron-up icon-white"></i>
+            </a>
+          </div>
+        </div>
+        <div id="{{ app_parent.name }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            {% for app in app_parent.child %}
+              <div class="col-md-4">
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-warning">
+                    {{ app_label_list|get_item:app }}
+                  </li>
+
+                  {% for module in module_list %}
+                    {% if module.app_parent == app_parent.name and module.app == app %}
+                      <a href="{{ module.url }}" class="menu-item list-group-item">
+                        <i class="ace-icon fa fa-table bigger-110 icon-only"></i>
+                        {{ module.app_parent }}: {{ module.app }}: {{ module.name }}
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  {% endfor %}
+
+
+{% endblock %}

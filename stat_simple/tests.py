@@ -51,34 +51,38 @@ class TestDateStat(TestSaveData):
         )
         self.statement.save()
 
-        self.items = {'commission_day': 93.48,
-                      'commission_ytd': 266.82,
-                      'cancelled_order': 4,
-                      'filled_order': 17,
-                      'option_bp_day': 4678.93,
-                      'holding_pl_open': 325.88,
-                      'holding_pl_day': 5029.98,
-                      'account_pl_day': 5011.65,
-                      'account_pl_ytd': 19552.48,
-                      'stock_bp_day': 4357.86,
-                      'total_order': 27,
-                      'working_order': 6}
+        self.items = dict(
+            total_holding_count=20,
+            total_order_count=10,
+            working_order_count=3,
+            filled_order_count=5,
+            cancelled_order_count=2,
+            account_pl_ytd=15654.55,
+            account_pl_day=4412.11,
+            holding_pl_day=4561.41,
+            holding_pl_open=4561.33,
+            commission_day=156.66,
+            commission_ytd=172.66,
+            option_bp_day=13242.33,
+            stock_bp_day=4561.22
+        )
 
         self.test_cls = models.DayStat(**self.items)
         self.test_cls.statement = self.statement
         self.expect_keys = [
+            'total_holding_count',
+            'total_order_count',
+            'working_order_count',
+            'filled_order_count',
+            'cancelled_order_count',
+            'account_pl_ytd',
+            'account_pl_day',
+            'holding_pl_day',
+            'holding_pl_open',
             'commission_day',
             'commission_ytd',
-            'cancelled_order',
-            'filled_order',
             'option_bp_day',
-            'holding_pl_open',
-            'holding_pl_day',
-            'account_pl_day',
-            'account_pl_ytd',
-            'stock_bp_day',
-            'total_order',
-            'working_order'
+            'stock_bp_day'
         ]
 
 
@@ -94,17 +98,21 @@ class TestDayStatHolding(TestSaveData):
         )
         self.statement.save()
 
-        self.items = {'commission_day': 93.48,
-                      'commission_ytd': 266.82,
-                      'cancelled_order': 4,
-                      'filled_order': 17,
-                      'option_bp_day': 4678.93,
-                      'holding_pl_open': 325.88,
-                      'holding_pl_day': 5029.98,
-                      'account_pl_ytd': 19552.48,
-                      'stock_bp_day': 4357.86,
-                      'total_order': 27,
-                      'working_order': 6}
+        self.items = dict(
+            total_holding_count=20,
+            total_order_count=10,
+            working_order_count=3,
+            filled_order_count=5,
+            cancelled_order_count=2,
+            account_pl_ytd=15654.55,
+            account_pl_day=4412.11,
+            holding_pl_day=4561.41,
+            holding_pl_open=4561.33,
+            commission_day=156.66,
+            commission_ytd=172.66,
+            option_bp_day=13242.33,
+            stock_bp_day=4561.22
+        )
 
         self.day_stat = models.DayStat(**self.items)
         self.day_stat.statement = self.statement
@@ -112,24 +120,39 @@ class TestDayStatHolding(TestSaveData):
 
         self.items = dict(
             name='Equity',
-            total_order=5,
-            working_order=3,
-            filled_order=1,
-            cancelled_order=2,
-            holding=10,
-            profit_holding=7,
-            loss_holding=3,
-            pl_total=399.52,
-            profit_total=519.85,
-            loss_total=120.33,
+            total_order_count=5,
+            working_order_count=3,
+            filled_order_count=1,
+            cancelled_order_count=2,
+            total_holding_count=10,
+            profit_holding_count=7,
+            loss_holding_count=3,
+            pl_open_sum=399.52,
+            profit_open_sum=519.85,
+            loss_open_sum=120.33,
+            pl_day_sum=111.60,
+            profit_day_sum=160.60,
+            loss_day_sum=49.00,
+            bp_effect_sum=6000.80
         )
         self.test_cls = models.DayStatHolding(**self.items)
         self.test_cls.day_stat = self.day_stat
         self.expect_keys = [
             'name',
-            'total_order', 'working_order', 'filled_order', 'cancelled_order',
-            'holding', 'profit_holding', 'profit_holding',
-            'pl_total', 'profit_total', 'loss_total'
+            'total_order_count',
+            'working_order_count',
+            'filled_order_count',
+            'cancelled_order_count',
+            'total_holding_count',
+            'profit_holding_count',
+            'loss_holding_count',
+            'pl_open_sum',
+            'profit_open_sum',
+            'loss_open_sum',
+            'pl_day_sum',
+            'profit_day_sum',
+            'loss_day_sum',
+            'bp_effect_sum'
         ]
 
 
@@ -153,9 +176,20 @@ class TestSaveDateStat(TestSetUp):
 
         self.expected_keys = [
             'name',
-            'total_order', 'working_order', 'filled_order', 'cancelled_order',
-            'holding', 'profit_holding', 'loss_holding',
-            'pl_total', 'profit_total', 'loss_total',
+            'total_order_count',
+            'working_order_count',
+            'filled_order_count',
+            'cancelled_order_count',
+            'total_holding_count',
+            'profit_holding_count',
+            'loss_holding_count',
+            'pl_open_sum',
+            'profit_open_sum',
+            'loss_open_sum',
+            'pl_day_sum',
+            'profit_day_sum',
+            'loss_day_sum',
+            'bp_effect_sum'
         ]
 
     def ready_file(self, real_date, file_date):
@@ -199,8 +233,9 @@ class TestSaveDateStat(TestSetUp):
         using set foreign key reference
         """
         future = self.day_stat.get_future()
+
         self.assertEqual(type(future), dict)
-        self.assertEqual(future['name'], 'future')
+        self.assertEqual(future['name'], 'FUTURE')
         for key in self.expected_keys:
             self.assertIn(key, future.keys())
             print '%s: %s' % (key, future[key])
@@ -213,7 +248,7 @@ class TestSaveDateStat(TestSetUp):
         """
         forex = self.day_stat.get_forex()
         self.assertEqual(type(forex), dict)
-        self.assertEqual(forex['name'], 'forex')
+        self.assertEqual(forex['name'], 'FOREX')
         for key in self.expected_keys:
             self.assertIn(key, forex.keys())
             print '%s: %s' % (key, forex[key])
@@ -225,7 +260,7 @@ class TestSaveDateStat(TestSetUp):
         """
         equity = self.day_stat.get_equity()
         self.assertEqual(type(equity), dict)
-        self.assertEqual(equity['name'], 'equity')
+        self.assertEqual(equity['name'], 'EQUITY')
 
         for key in self.expected_keys:
             self.assertIn(key, equity.keys())
@@ -238,7 +273,7 @@ class TestSaveDateStat(TestSetUp):
         """
         option = self.day_stat.get_option()
         self.assertEqual(type(option), dict)
-        self.assertEqual(option['name'], 'option')
+        self.assertEqual(option['name'], 'OPTION')
 
         for key in self.expected_keys:
             self.assertIn(key, option.keys())
@@ -251,7 +286,7 @@ class TestSaveDateStat(TestSetUp):
         """
         spread = self.day_stat.get_spread()
         self.assertEqual(type(spread), dict)
-        self.assertEqual(spread['name'], 'spread')
+        self.assertEqual(spread['name'], 'SPREAD')
 
         for key in self.expected_keys:
             self.assertIn(key, spread.keys())
@@ -262,18 +297,19 @@ class TestSaveDateStat(TestSetUp):
         Test get date stat
         """
         expected_keys = [
+            'total_holding_count',
+            'total_order_count',
+            'working_order_count',
+            'filled_order_count',
+            'cancelled_order_count',
+            'account_pl_ytd',
+            'account_pl_day',
+            'holding_pl_day',
+            'holding_pl_open',
             'commission_day',
             'commission_ytd',
-            'cancelled_order',
-            'filled_order',
             'option_bp_day',
-            'holding_pl_open',
-            'holding_pl_day',
-            'account_pl_day',
-            'account_pl_ytd',
-            'stock_bp_day',
-            'total_order',
-            'working_order'
+            'stock_bp_day'
         ]
 
         day_stat = self.day_stat.get_day_stat()
@@ -290,25 +326,37 @@ class TestSaveDateStat(TestSetUp):
         :return:
         """
         day_stat_keys = [
+            'total_holding_count',
+            'total_order_count',
+            'working_order_count',
+            'filled_order_count',
+            'cancelled_order_count',
+            'account_pl_ytd',
+            'account_pl_day',
+            'holding_pl_day',
+            'holding_pl_open',
             'commission_day',
             'commission_ytd',
-            'cancelled_order',
-            'filled_order',
             'option_bp_day',
-            'holding_pl_open',
-            'holding_pl_day',
-            'account_pl_day',
-            'account_pl_ytd',
-            'stock_bp_day',
-            'total_order',
-            'working_order'
+            'stock_bp_day'
         ]
 
         investment_keys = [
             'name',
-            'total_order', 'working_order', 'filled_order', 'cancelled_order',
-            'holding', 'profit_holding', 'loss_holding',
-            'pl_total', 'profit_total', 'loss_total',
+            'total_order_count',
+            'working_order_count',
+            'filled_order_count',
+            'cancelled_order_count',
+            'total_holding_count',
+            'profit_holding_count',
+            'loss_holding_count',
+            'pl_open_sum',
+            'profit_open_sum',
+            'loss_open_sum',
+            'pl_day_sum',
+            'profit_day_sum',
+            'loss_day_sum',
+            'bp_effect_sum'
         ]
 
         self.assertEqual(models.DayStat.objects.count(), 1 * 3)

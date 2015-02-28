@@ -74,8 +74,6 @@ class FilledOrderInline(TradeActivityInline):
 
     ordering = ('exec_time', 'future', 'forex', 'underlying')
 
-    #suit_classes = 'suit-tab suit-tab-filled_order'
-
 
 # noinspection PyMethodMayBeStatic
 class WorkingOrderInline(TradeActivityInline):
@@ -96,8 +94,6 @@ class WorkingOrderInline(TradeActivityInline):
 
     ordering = ('time_placed', 'future', 'forex', 'underlying')
 
-    #suit_classes = 'suit-tab suit-tab-working_order'
-
 
 # noinspection PyMethodMayBeStatic
 class CancelledOrderInline(TradeActivityInline):
@@ -117,8 +113,6 @@ class CancelledOrderInline(TradeActivityInline):
 
     ordering = ('time_cancelled', 'future', 'forex', 'underlying')
 
-    #suit_classes = 'suit-tab suit-tab-cancelled_order'
-
 
 class RollingStrategyInline(TradeActivityInline):
     model = models.RollingStrategy
@@ -132,8 +126,6 @@ class RollingStrategyInline(TradeActivityInline):
     exclude = ('strategy', 'side', 'right', 'ex_month', 'ex_year', 'strike', 'contract')
 
     ordering = ('active_time_start', 'underlying')
-
-    #suit_classes = 'suit-tab suit-tab-rolling_strategy'
 
 
 # noinspection PyMethodMayBeStatic,PyUnusedLocal
@@ -179,7 +171,6 @@ class TradeActivityAdmin(admin.ModelAdmin):
     date_formatted.short_description = 'Date'
     date_formatted.admin_order_field = 'date'
 
-
     list_display = (
         'date_formatted', 'working_orders', 'filled_orders',
         'cancelled_orders', 'rolling_strategies'
@@ -187,7 +178,6 @@ class TradeActivityAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Trade Activity', {
-            #'classes': ('suit-tab', 'suit-tab-general',),
             'fields': (
                 'statement', 'date'
             )

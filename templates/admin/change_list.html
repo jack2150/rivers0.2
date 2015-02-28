@@ -60,16 +60,18 @@
   <div id="content-main">
     {% block object-tools %}
       {% if has_add_permission %}
-        <ul class="object-tools">
-          {% block object-tools-items %}
-            <li>
+        <div class="row">
+          <div class="col-md-12" style="text-align: right; padding-bottom: 10px;">
+            {% block object-tools-items %}
               {% url cl.opts|admin_urlname:'add' as add_url %}
-              <a href="{% add_preserved_filters add_url is_popup %}" class="addlink">
+              <button class="btn btn-white btn-success btn-bold" type="button"
+                      onclick="window.location.href='{% add_preserved_filters add_url is_popup %}'">
+                <i class="ace-icon fa fa-plus-circle bigger-120 green"></i>
                 {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
-              </a>
-            </li>
-          {% endblock %}
-        </ul>
+              </button>
+            {% endblock %}
+          </div>
+        </div>
       {% endif %}
     {% endblock %}
     {% if cl.formset.errors %}

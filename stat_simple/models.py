@@ -6,6 +6,8 @@ from tos_import.models import Statement
 
 decimal_field = dict(max_digits=10, decimal_places=2, default=0.0)
 
+# todo: option greek, bp_effect
+
 
 class DayStat(models.Model):
     """
@@ -13,11 +15,11 @@ class DayStat(models.Model):
     """
     statement = models.ForeignKey(Statement)
 
-    total_holding = models.IntegerField(default=0, verbose_name='Total Holding')
-    total_order = models.IntegerField(default=0, verbose_name='Total Order')
-    working_order = models.IntegerField(default=0, verbose_name='Working Order')
-    filled_order = models.IntegerField(default=0, verbose_name='Filled Order')
-    cancelled_order = models.IntegerField(default=0, verbose_name='Cancelled Order')
+    total_holding_count = models.IntegerField(default=0, verbose_name='Total Holding')
+    total_order_count = models.IntegerField(default=0, verbose_name='Total Order')
+    working_order_count = models.IntegerField(default=0, verbose_name='Working Order')
+    filled_order_count = models.IntegerField(default=0, verbose_name='Filled Order')
+    cancelled_order_count = models.IntegerField(default=0, verbose_name='Cancelled Order')
 
     account_pl_ytd = models.DecimalField(verbose_name='Account P/L YTD', **decimal_field)
     account_pl_day = models.DecimalField(verbose_name='Account P/L Day', **decimal_field)
@@ -27,15 +29,16 @@ class DayStat(models.Model):
 
     commission_day = models.DecimalField(verbose_name='Commission Day', **decimal_field)
     commission_ytd = models.DecimalField(verbose_name='Commission YTD', **decimal_field)
+
     option_bp_day = models.DecimalField(verbose_name='Option BP Day', **decimal_field)
-    stock_bp_day = models.DecimalField(verbose_name='Stock BP Day', **decimal_field)
+    stock_bp_day = models.DecimalField(verbose_name='Stock BP Days', **decimal_field)
 
     def __unicode__(self):
         """
         Normal string output for class detail
         :return: str
         """
-        return '<DayStat:{date}>'.format(
+        return 'DayStat: {date}'.format(
             date=self.statement.date
         )
 
@@ -48,27 +51,53 @@ class DayStatHolding(models.Model):
     # can be equity, option, spread, future or forex
     name = models.CharField(max_length=250)
 
-    total_order = models.IntegerField(default=0, verbose_name='Total Order')
-    working_order = models.IntegerField(default=0, verbose_name='Working Order')
-    filled_order = models.IntegerField(default=0, verbose_name='Filled Order')
-    cancelled_order = models.IntegerField(default=0, verbose_name='Cancelled Order')
+    total_order_count = models.IntegerField(default=0, verbose_name='Total Order')
+    working_order_count = models.IntegerField(default=0, verbose_name='Working Order')
+    filled_order_count = models.IntegerField(default=0, verbose_name='Filled Order')
+    cancelled_order_count = models.IntegerField(default=0, verbose_name='Cancelled Order')
 
-    holding = models.IntegerField(default=0, verbose_name='Holding')
-    profit_holding = models.IntegerField(default=0, verbose_name='Profit Count')
-    loss_holding = models.IntegerField(default=0, verbose_name='Loss Count')
+    total_holding_count = models.IntegerField(default=0, verbose_name='Holding Count')
+    profit_holding_count = models.IntegerField(default=0, verbose_name='Profit Count')
+    loss_holding_count = models.IntegerField(default=0, verbose_name='Loss Count')
 
-    pl_total = models.DecimalField(verbose_name='Total', **decimal_field)
-    profit_total = models.DecimalField(verbose_name='Profit Total', **decimal_field)
-    loss_total = models.DecimalField(verbose_name='Loss Total', **decimal_field)
+    pl_open_sum = models.DecimalField(verbose_name='PL Open', **decimal_field)
+    profit_open_sum = models.DecimalField(verbose_name='Profit Open', **decimal_field)
+    loss_open_sum = models.DecimalField(verbose_name='Loss Open', **decimal_field)
+
+    pl_day_sum = models.DecimalField(verbose_name='PL Day', **decimal_field)
+    profit_day_sum = models.DecimalField(verbose_name='Profit Day', **decimal_field)
+    loss_day_sum = models.DecimalField(verbose_name='Loss Day', **decimal_field)
+
+    bp_effect_sum = models.DecimalField(verbose_name='BP Effect Sum', **decimal_field)
 
     def __unicode__(self):
         """
         Normal string output for class detail
         :return: str
         """
-        return '<DayStatHolding:{date}>'.format(
+        return 'DayStatHolding: {date}'.format(
             date=self.day_stat.statement.date
         )
+
+
+class DayStatOptionGreek(models.Model):
+    """
+    Used for summarize equity, option and spread greek
+    """
+    day_stat_holding = models.ForeignKey(DayStatHolding)
+
+    delta_sum = models.DecimalField(verbose_name='Delta Sum', **decimal_field)
+    gamma_sum = models.DecimalField(verbose_name='Gamma Sum', **decimal_field)
+    theta_sum = models.DecimalField(verbose_name='Theta Sum', **decimal_field)
+    vega_sum = models.DecimalField(verbose_name='Vega Sum', **decimal_field)
+
+    def __unicode__(self):
+        return 'DayStatOptionGreek: {holding} {date}'.format(
+            holding=self.day_stat_holding.name,
+            date=self.day_stat_holding.day_stat.statement.date
+        )
+
+# todo: until here...
 
 
 class SaveDayStat(object):
@@ -119,52 +148,50 @@ class SaveDayStat(object):
         get date stat data from table
         :return: dict
         """
-        working_order = (
-            Decimal(self.get_future()['working_order'])
-            + Decimal(self.get_forex()['working_order'])
-            + Decimal(self.get_equity()['working_order'])
-            + Decimal(self.get_option()['working_order'])
-            + Decimal(self.get_spread()['working_order'])
+        working_order_count = (
+            Decimal(self.get_future()['working_order_count'])
+            + Decimal(self.get_forex()['working_order_count'])
+            + Decimal(self.get_equity()['working_order_count'])
+            + Decimal(self.get_option()['working_order_count'])
+            + Decimal(self.get_spread()['working_order_count'])
         )
 
-        filled_order = (
-            Decimal(self.get_future()['filled_order'])
-            + Decimal(self.get_forex()['filled_order'])
-            + Decimal(self.get_equity()['filled_order'])
-            + Decimal(self.get_option()['filled_order'])
-            + Decimal(self.get_spread()['filled_order'])
+        filled_order_count = (
+            Decimal(self.get_future()['filled_order_count'])
+            + Decimal(self.get_forex()['filled_order_count'])
+            + Decimal(self.get_equity()['filled_order_count'])
+            + Decimal(self.get_option()['filled_order_count'])
+            + Decimal(self.get_spread()['filled_order_count'])
         )
 
-        cancelled_order = (
-            Decimal(self.get_future()['cancelled_order'])
-            + Decimal(self.get_forex()['cancelled_order'])
-            + Decimal(self.get_equity()['cancelled_order'])
-            + Decimal(self.get_option()['cancelled_order'])
-            + Decimal(self.get_spread()['cancelled_order'])
+        cancelled_order_count = (
+            Decimal(self.get_future()['cancelled_order_count'])
+            + Decimal(self.get_forex()['cancelled_order_count'])
+            + Decimal(self.get_equity()['cancelled_order_count'])
+            + Decimal(self.get_option()['cancelled_order_count'])
+            + Decimal(self.get_spread()['cancelled_order_count'])
         )
 
-        total_order = working_order + filled_order + cancelled_order
+        total_order_count = working_order_count + filled_order_count + cancelled_order_count
 
-        total_holding = (
+        total_holding_count = (
             self.position_forex.exclude(quantity=0).count()
             + self.position_future.exclude(quantity=0).count()
-            + self.get_equity()['holding']
-            + self.get_option()['holding']
-            + self.get_spread()['holding']
+            + self.get_equity()['total_holding_count']
+            + self.get_option()['total_holding_count']
+            + self.get_spread()['total_holding_count']
         )
         holding_pl_day = (
             sum([p.pl_day for p in self.position_forex.exclude(quantity=0).all()])
             + sum([p.pl_day for p in self.position_future.exclude(quantity=0).all()])
         )
-        # todo: pl_day for all holding
-        # todo: wrong total order, should be 8
 
         holding_pl_open = (
-            Decimal(self.get_future()['pl_total'])
-            + Decimal(self.get_forex()['pl_total'])
-            + Decimal(self.get_equity()['pl_total'])
-            + Decimal(self.get_option()['pl_total'])
-            + Decimal(self.get_spread()['pl_total'])
+            Decimal(self.get_future()['pl_open_sum'])
+            + Decimal(self.get_forex()['pl_open_sum'])
+            + Decimal(self.get_equity()['pl_open_sum'])
+            + Decimal(self.get_option()['pl_open_sum'])
+            + Decimal(self.get_spread()['pl_open_sum'])
         )
 
         account_pl_day = 0.0
@@ -201,19 +228,19 @@ class SaveDayStat(object):
             stock_bp_day = (account_pl_ytd * 2) - float(acc[0].stock_buying_power)
 
         return dict(
-            holding_pl_open=holding_pl_open,
-            holding_pl_day=holding_pl_day,
-            account_pl_day=account_pl_day,
+            total_holding_count=total_holding_count,
+            total_order_count=total_order_count,
+            working_order_count=working_order_count,
+            filled_order_count=filled_order_count,
+            cancelled_order_count=cancelled_order_count,
             account_pl_ytd=account_pl_ytd,
+            account_pl_day=account_pl_day,
+            holding_pl_day=holding_pl_day,
+            holding_pl_open=holding_pl_open,
             commission_day=commission_day,
             commission_ytd=commission_ytd,
             option_bp_day=option_bp_day,
-            stock_bp_day=stock_bp_day,
-            total_holding=total_holding,
-            total_order=total_order,
-            working_order=working_order,
-            filled_order=filled_order,
-            cancelled_order=cancelled_order
+            stock_bp_day=stock_bp_day
         )
 
     def get_future(self):
@@ -221,27 +248,45 @@ class SaveDayStat(object):
         get holding future position from table
         :return: int
         """
-        holding = self.position_future.exclude(pl_open=0)
-        profit = self.position_future.filter(pl_open__gt=0)
-        loss = self.position_future.filter(pl_open__lt=0)
+        holding_position = self.position_future.exclude(pl_open=0)
+        profit_position = self.position_future.filter(pl_open__gt=0)
+        loss_position = self.position_future.filter(pl_open__lt=0)
 
-        working = self.working_order.filter(contract='FUTURE').count()
-        filled = self.filled_order.filter(contract='FUTURE').count()
-        cancelled = self.cancelled_order.filter(contract='FUTURE').count()
-        total = working + filled + cancelled
+        working_order_count = self.working_order.filter(contract='FUTURE').count()
+        filled_order_count = self.filled_order.filter(contract='FUTURE').count()
+        cancelled_order_count = self.cancelled_order.filter(contract='FUTURE').count()
+        total_order_count = working_order_count + filled_order_count + cancelled_order_count
+
+        total_holding_count = holding_position.count()
+        profit_holding_count = profit_position.count()
+        loss_holding_count = loss_position.count()
+
+        pl_open_sum = float(sum([p.pl_open for p in holding_position.all()]))
+        profit_open_sum = float(sum([p.pl_open for p in profit_position.all()]))
+        loss_open_sum = float(sum([p.pl_open for p in loss_position.all()]))
+
+        pl_day_sum = float(sum([p.pl_day for p in holding_position.all()]))
+        profit_day_sum = float(sum([p.pl_day for p in profit_position.all()]))
+        loss_day_sum = float(sum([p.pl_day for p in loss_position.all()]))
+
+        bp_effect_sum = float(sum([p.bp_effect for p in holding_position.all()]))
 
         return dict(
-            name='future',
-            total_order=total,
-            working_order=working,
-            filled_order=filled,
-            cancelled_order=cancelled,
-            holding=holding.count(),
-            profit_holding=profit.count(),
-            loss_holding=loss.count(),
-            pl_total=float(sum([p.pl_open for p in holding.all()])),
-            profit_total=float(sum([p.pl_open for p in profit.all()])),
-            loss_total=float(sum([p.pl_open for p in loss.all()]))
+            name='FUTURE',
+            total_order_count=total_order_count,
+            working_order_count=working_order_count,
+            filled_order_count=filled_order_count,
+            cancelled_order_count=cancelled_order_count,
+            total_holding_count=total_holding_count,
+            profit_holding_count=profit_holding_count,
+            loss_holding_count=loss_holding_count,
+            pl_open_sum=pl_open_sum,
+            profit_open_sum=profit_open_sum,
+            loss_open_sum=loss_open_sum,
+            pl_day_sum=pl_day_sum,
+            profit_day_sum=profit_day_sum,
+            loss_day_sum=loss_day_sum,
+            bp_effect_sum=bp_effect_sum
         )
 
     def get_forex(self):
@@ -249,27 +294,45 @@ class SaveDayStat(object):
         get holding forex position from table
         :return: int
         """
-        holding = self.position_forex.exclude(pl_open=0)
-        profit = self.position_forex.filter(pl_open__gt=0)
-        loss = self.position_forex.filter(pl_open__lt=0)
+        holding_position = self.position_forex.exclude(pl_open=0)
+        profit_position = self.position_forex.filter(pl_open__gt=0)
+        loss_position = self.position_forex.filter(pl_open__lt=0)
 
-        working = self.working_order.filter(contract='FOREX').count()
-        filled = self.filled_order.filter(contract='FOREX').count()
-        cancelled = self.cancelled_order.filter(contract='FOREX').count()
-        total = working + filled + cancelled
+        working_order_count = self.working_order.filter(contract='FOREX').count()
+        filled_order_count = self.filled_order.filter(contract='FOREX').count()
+        cancelled_order_count = self.cancelled_order.filter(contract='FOREX').count()
+        total_order_count = working_order_count + filled_order_count + cancelled_order_count
+
+        total_holding_count = holding_position.count()
+        profit_holding_count = profit_position.count()
+        loss_holding_count = loss_position.count()
+
+        pl_open_sum = float(sum([p.pl_open for p in holding_position.all()]))
+        profit_open_sum = float(sum([p.pl_open for p in profit_position.all()]))
+        loss_open_sum = float(sum([p.pl_open for p in loss_position.all()]))
+
+        pl_day_sum = float(sum([p.pl_day for p in holding_position.all()]))
+        profit_day_sum = float(sum([p.pl_day for p in profit_position.all()]))
+        loss_day_sum = float(sum([p.pl_day for p in loss_position.all()]))
+
+        bp_effect_sum = float(sum([p.bp_effect for p in holding_position.all()]))
 
         return dict(
-            name='forex',
-            total_order=total,
-            working_order=working,
-            filled_order=filled,
-            cancelled_order=cancelled,
-            holding=holding.count(),
-            profit_holding=profit.count(),
-            loss_holding=loss.count(),
-            pl_total=float(sum([p.pl_open for p in holding.all()])),
-            profit_total=float(sum([p.pl_open for p in profit.all()])),
-            loss_total=float(sum([p.pl_open for p in loss.all()]))
+            name='FOREX',
+            total_order_count=total_order_count,
+            working_order_count=working_order_count,
+            filled_order_count=filled_order_count,
+            cancelled_order_count=cancelled_order_count,
+            total_holding_count=total_holding_count,
+            profit_holding_count=profit_holding_count,
+            loss_holding_count=loss_holding_count,
+            pl_open_sum=pl_open_sum,
+            profit_open_sum=profit_open_sum,
+            loss_open_sum=loss_open_sum,
+            pl_day_sum=pl_day_sum,
+            profit_day_sum=profit_day_sum,
+            loss_day_sum=loss_day_sum,
+            bp_effect_sum=bp_effect_sum
         )
 
     def get_equity(self):
@@ -277,46 +340,60 @@ class SaveDayStat(object):
         get holding stock position from table
         :return: int
         """
-        holding = 0
-        profit = 0
-        loss = 0
-        total = 0.0
-        profit_total = 0.0
-        loss_total = 0.0
+        total_holding_count = 0
+        profit_holding_count = 0
+        loss_holding_count = 0
+        pl_open_sum = 0.0
+        profit_open_sum = 0.0
+        loss_open_sum = 0.0
+        pl_day_sum = 0.0
+        profit_day_sum = 0.0
+        loss_day_sum = 0.0
+        bp_effect_sum = 0.0
 
-        working = self.working_order.filter(spread='STOCK').count()
-        filled = self.filled_order.filter(spread='STOCK').count()
-        cancelled = self.cancelled_order.filter(spread='STOCK').count()
-        order = working + filled + cancelled
+        working_order_count = self.working_order.filter(spread='STOCK').count()
+        filled_order_count = self.filled_order.filter(spread='STOCK').count()
+        cancelled_order_count = self.cancelled_order.filter(spread='STOCK').count()
+        total_order_count = working_order_count + filled_order_count + cancelled_order_count
 
         for position_instrument in self.position_instrument.all():
             equity = position_instrument.positionequity_set.exclude(quantity=0)
             option = position_instrument.positionoption_set.exclude(quantity=0)
 
             if equity.count() and not option.count():
-                holding += 1
+                total_holding_count += 1
                 pl_open = float(equity.first().pl_open)
-                total += pl_open
+                pl_day = float(equity.first().pl_day)
+                pl_open_sum += pl_open
+                pl_day_sum += pl_day
+
+                bp_effect_sum += float(equity.first().bp_effect)
 
                 if pl_open > 0:
-                    profit += 1
-                    profit_total += pl_open
+                    profit_holding_count += 1
+                    profit_open_sum += pl_open
+                    profit_day_sum += pl_day
                 elif pl_open < 0:
-                    loss += 1
-                    loss_total += pl_open
+                    loss_holding_count += 1
+                    loss_open_sum += pl_open
+                    loss_day_sum += pl_day
 
         return dict(
-            name='equity',
-            total_order=order,
-            working_order=working,
-            filled_order=filled,
-            cancelled_order=cancelled,
-            holding=holding,
-            profit_holding=profit,
-            loss_holding=loss,
-            pl_total=total,
-            profit_total=profit_total,
-            loss_total=loss_total
+            name='EQUITY',
+            total_order_count=total_order_count,
+            working_order_count=working_order_count,
+            filled_order_count=filled_order_count,
+            cancelled_order_count=cancelled_order_count,
+            total_holding_count=total_holding_count,
+            profit_holding_count=profit_holding_count,
+            loss_holding_count=loss_holding_count,
+            pl_open_sum=pl_open_sum,
+            profit_open_sum=profit_open_sum,
+            loss_open_sum=loss_open_sum,
+            pl_day_sum=pl_day_sum,
+            profit_day_sum=profit_day_sum,
+            loss_day_sum=loss_day_sum,
+            bp_effect_sum=bp_effect_sum
         )
 
     def get_option(self):
@@ -324,46 +401,59 @@ class SaveDayStat(object):
         get holding option position from table
         :return: int
         """
-        holding = 0
-        profit = 0
-        loss = 0
-        total = 0.0
-        profit_total = 0.0
-        loss_total = 0.0
+        total_holding_count = 0
+        profit_holding_count = 0
+        loss_holding_count = 0
+        pl_open_sum = 0.0
+        profit_open_sum = 0.0
+        loss_open_sum = 0.0
+        pl_day_sum = 0.0
+        profit_day_sum = 0.0
+        loss_day_sum = 0.0
+        bp_effect_sum = 0.0
 
-        working = self.working_order.filter(spread='SINGLE').count()
-        filled = self.filled_order.filter(spread='SINGLE').count()
-        cancelled = self.cancelled_order.filter(spread='SINGLE').count()
-        order = working + filled + cancelled
+        working_order_count = self.working_order.filter(spread='SINGLE').count()
+        filled_order_count = self.filled_order.filter(spread='SINGLE').count()
+        cancelled_order_count = self.cancelled_order.filter(spread='SINGLE').count()
+        total_order_count = working_order_count + filled_order_count + cancelled_order_count
 
         for position_instrument in self.position_instrument.all():
             equity = position_instrument.positionequity_set.exclude(quantity=0)
             option = position_instrument.positionoption_set.exclude(quantity=0)
 
             if not equity.count() and option.count() == 1:
-                holding += 1
+                total_holding_count += 1
                 pl_open = float(option.first().pl_open)
-                total += pl_open
+                pl_day = float(option.first().pl_day)
+                pl_open_sum += pl_open
+                pl_day_sum += pl_day
+                bp_effect_sum += float(option.first().bp_effect)
 
                 if pl_open > 0:
-                    profit += 1
-                    profit_total += pl_open
+                    profit_holding_count += 1
+                    profit_open_sum += pl_open
+                    profit_day_sum += pl_day
                 elif pl_open < 0:
-                    loss += 1
-                    loss_total += pl_open
+                    loss_holding_count += 1
+                    loss_open_sum += pl_open
+                    loss_day_sum += pl_day
 
         return dict(
-            name='option',
-            total_order=order,
-            working_order=working,
-            filled_order=filled,
-            cancelled_order=cancelled,
-            holding=holding,
-            profit_holding=profit,
-            loss_holding=loss,
-            pl_total=total,
-            profit_total=profit_total,
-            loss_total=loss_total
+            name='OPTION',
+            total_order_count=total_order_count,
+            working_order_count=working_order_count,
+            filled_order_count=filled_order_count,
+            cancelled_order_count=cancelled_order_count,
+            total_holding_count=total_holding_count,
+            profit_holding_count=profit_holding_count,
+            loss_holding_count=loss_holding_count,
+            pl_open_sum=pl_open_sum,
+            profit_open_sum=profit_open_sum,
+            loss_open_sum=loss_open_sum,
+            pl_day_sum=pl_day_sum,
+            profit_day_sum=profit_day_sum,
+            loss_day_sum=loss_day_sum,
+            bp_effect_sum=bp_effect_sum
         )
 
     def get_spread(self):
@@ -371,50 +461,63 @@ class SaveDayStat(object):
         get holding option position from table
         :return: int
         """
-        holding = 0
-        profit = 0
-        loss = 0
-        total = 0.0
-        profit_total = 0.0
-        loss_total = 0.0
+        total_holding_count = 0
+        profit_holding_count = 0
+        loss_holding_count = 0
+        pl_open_sum = 0.0
+        profit_open_sum = 0.0
+        loss_open_sum = 0.0
+        pl_day_sum = 0.0
+        profit_day_sum = 0.0
+        loss_day_sum = 0.0
+        bp_effect_sum = 0.0
 
         exclude_cond = Q(spread='FUTURE') | Q(spread='FOREX') | Q(spread='STOCK') | Q(spread='SINGLE')
 
-        working = len(self.working_order.exclude(exclude_cond)
-                      .values_list('underlying__symbol', flat=True).distinct())
-        filled = len(self.filled_order.exclude(exclude_cond)
-                     .values_list('underlying__symbol', flat=True).distinct())
-        cancelled = len(self.cancelled_order.exclude(exclude_cond)
-                        .values_list('underlying__symbol', flat=True).distinct())
+        working_order_count = len(self.working_order.exclude(exclude_cond)
+                                  .values_list('underlying__symbol', flat=True).distinct())
+        filled_order_count = len(self.filled_order.exclude(exclude_cond)
+                                 .values_list('underlying__symbol', flat=True).distinct())
+        cancelled_order_count = len(self.cancelled_order.exclude(exclude_cond)
+                                    .values_list('underlying__symbol', flat=True).distinct())
 
-        order = working + filled + cancelled
+        total_order_count = working_order_count + filled_order_count + cancelled_order_count
 
         for position_instrument in self.position_instrument.all():
             equity = position_instrument.positionequity_set.exclude(quantity=0)
             option = position_instrument.positionoption_set.exclude(quantity=0)
 
             if equity.count() == 0 and option.count() > 1:
-                holding += 1
+                total_holding_count += 1
                 pl_open = float(position_instrument.pl_open)
-                total += pl_open
+                pl_day = float(position_instrument.pl_day)
+                pl_open_sum += pl_open
+                pl_day_sum += pl_day
+                bp_effect_sum += float(position_instrument.bp_effect)
 
                 if pl_open > 0:
-                    profit += 1
-                    profit_total += pl_open
+                    profit_holding_count += 1
+                    profit_open_sum += pl_open
+                    profit_day_sum += pl_day
                 elif pl_open < 0:
-                    loss += 1
-                    loss_total += pl_open
+                    loss_holding_count += 1
+                    loss_open_sum += pl_open
+                    loss_day_sum += pl_day
 
         return dict(
-            name='spread',
-            total_order=order,
-            working_order=working,
-            filled_order=filled,
-            cancelled_order=cancelled,
-            holding=holding,
-            profit_holding=profit,
-            loss_holding=loss,
-            pl_total=total,
-            profit_total=profit_total,
-            loss_total=loss_total
+            name='SPREAD',
+            total_order_count=total_order_count,
+            working_order_count=working_order_count,
+            filled_order_count=filled_order_count,
+            cancelled_order_count=cancelled_order_count,
+            total_holding_count=total_holding_count,
+            profit_holding_count=profit_holding_count,
+            loss_holding_count=loss_holding_count,
+            pl_open_sum=pl_open_sum,
+            profit_open_sum=profit_open_sum,
+            loss_open_sum=loss_open_sum,
+            pl_day_sum=pl_day_sum,
+            profit_day_sum=profit_day_sum,
+            loss_day_sum=loss_day_sum,
+            bp_effect_sum=bp_effect_sum
         )

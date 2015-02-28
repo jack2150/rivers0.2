@@ -1,6 +1,7 @@
 from glob import glob
 import os
 from tos_import.test_files import *
+from tos_import.real_files import *
 from tos_import.classes.test import TestSetUp
 from tos_import.tests import TestSetUpUnderlying
 from tos_import.statement_position import models
@@ -268,7 +269,9 @@ class TestSavePositionStatement(TestSetUp):
         self.pos_files = glob(test_pos_path + '/*.csv')
 
         self.pos_files = self.pos_files + [
-            os.path.join(test_path, '2014-11-25', '2014-11-25-PositionStatement.csv')
+            #os.path.join(test_path, '2014-11-25', '2014-11-25-PositionStatement.csv'),
+            os.path.join(real_path, '2015-02-27', '2015-02-28-PositionStatement.csv')
+
         ]
 
         pos_file = self.pos_files[0]
@@ -320,7 +323,6 @@ class TestSavePositionStatement(TestSetUp):
 
         for future in models.Future.objects.all():
             print future
-            #pprint(eval(future.json()), width=300)
 
         for pos_future in pos_futures:
             pprint(eval(pos_future.json()), width=300)

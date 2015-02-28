@@ -3,6 +3,7 @@ from glob import glob
 import os
 from pprint import pprint
 from django.utils.timezone import utc
+from tos_import.real_files import real_path
 from tos_import.test_files import *
 from tos_import.classes.io.open_ta import OpenTA
 from tos_import.classes.test import TestSetUp
@@ -388,6 +389,9 @@ class TestSaveTradeActivity(TestSetUp):
         TestSetUp.setUp(self)
 
         self.ta_files = glob(test_ta_path + '/*.csv')
+        self.ta_files = [
+            os.path.join(real_path, '2015-02-27', '2015-02-28-TradeActivity.csv')
+        ]
 
     def ready_account_statement(self):
         """
