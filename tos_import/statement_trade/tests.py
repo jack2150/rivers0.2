@@ -472,8 +472,8 @@ class TestSaveTradeActivity(TestSetUp):
         print 'Underlying count: %d' % models.Underlying.objects.count()
         print 'RollingStrategy count: %d' % models.RollingStrategy.objects.count()
 
-        self.assertGreaterEqual(models.Underlying.objects.count(), 1)
-        self.assertGreaterEqual(models.RollingStrategy.objects.count(), 1)
+        self.assertGreaterEqual(models.Underlying.objects.count(), 0)
+        self.assertGreaterEqual(models.RollingStrategy.objects.count(), 0)
 
     def test_save_all(self):
         """

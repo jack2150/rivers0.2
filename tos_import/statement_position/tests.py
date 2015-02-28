@@ -371,12 +371,17 @@ class TestSavePositionStatement(TestSetUp):
         Test save all data from pos_data into models
         :return: None
         """
+        # empty all records
+        models.Statement.objects.all().delete()
+
         for no, pos_file in enumerate(self.pos_files, start=1):
             print '%d. run filename: %s' % (no, pos_file)
             print 'starting...\n'
 
             date = os.path.basename(pos_file)[0:10]
             pos_data = open(pos_file).read()
+
+            print 'date: %s' % date
 
             statement = models.Statement(
                 date=date,

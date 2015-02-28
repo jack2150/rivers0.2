@@ -97,7 +97,13 @@ class OpenAcc(OpenCSV):
         :param items: list
         :return: str
         """
-        return str(items[1])
+        result = ''
+        try:
+            result = str(items[1])
+        except IndexError:
+            raise IndexError('item have not index 1: %s' % items)
+
+        return result
 
     def set_account_summary(self):
         """

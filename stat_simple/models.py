@@ -6,8 +6,6 @@ from tos_import.models import Statement
 
 decimal_field = dict(max_digits=10, decimal_places=2, default=0.0)
 
-# todo: option greek, bp_effect
-
 
 class DayStat(models.Model):
     """
@@ -75,7 +73,8 @@ class DayStatHolding(models.Model):
         Normal string output for class detail
         :return: str
         """
-        return 'DayStatHolding: {date}'.format(
+        return 'DayStatHolding: {name} {date}'.format(
+            name=self.name,
             date=self.day_stat.statement.date
         )
 
@@ -96,8 +95,6 @@ class DayStatOptionGreek(models.Model):
             holding=self.day_stat_holding.name,
             date=self.day_stat_holding.day_stat.statement.date
         )
-
-# todo: until here...
 
 
 class SaveDayStat(object):
@@ -139,9 +136,15 @@ class SaveDayStat(object):
 
         # start saving holdings
         for holding in holdings:
-            ds_investment = DayStatHolding(**holding)
+            day_stat_holding = {
+                key: value for key, value in holding.items() if key != 'option_greek'
+            }
+            ds_investment = DayStatHolding(**day_stat_holding)
             ds_investment.day_stat = day_stat
             ds_investment.save()
+
+            if holding['name'] not in ('FUTURE', 'FOREX'):
+                ds_investment.daystatoptiongreek_set.create(**holding['option_greek'])
 
     def get_day_stat(self):
         """
@@ -356,6 +359,7 @@ class SaveDayStat(object):
         cancelled_order_count = self.cancelled_order.filter(spread='STOCK').count()
         total_order_count = working_order_count + filled_order_count + cancelled_order_count
 
+        position_instruments = list()
         for position_instrument in self.position_instrument.all():
             equity = position_instrument.positionequity_set.exclude(quantity=0)
             option = position_instrument.positionoption_set.exclude(quantity=0)
@@ -378,6 +382,10 @@ class SaveDayStat(object):
                     loss_open_sum += pl_open
                     loss_day_sum += pl_day
 
+                position_instruments.append(position_instrument)
+
+        option_greek = self.get_option_greek(position_instruments)
+
         return dict(
             name='EQUITY',
             total_order_count=total_order_count,
@@ -393,7 +401,8 @@ class SaveDayStat(object):
             pl_day_sum=pl_day_sum,
             profit_day_sum=profit_day_sum,
             loss_day_sum=loss_day_sum,
-            bp_effect_sum=bp_effect_sum
+            bp_effect_sum=bp_effect_sum,
+            option_greek=option_greek
         )
 
     def get_option(self):
@@ -417,6 +426,7 @@ class SaveDayStat(object):
         cancelled_order_count = self.cancelled_order.filter(spread='SINGLE').count()
         total_order_count = working_order_count + filled_order_count + cancelled_order_count
 
+        position_instruments = list()
         for position_instrument in self.position_instrument.all():
             equity = position_instrument.positionequity_set.exclude(quantity=0)
             option = position_instrument.positionoption_set.exclude(quantity=0)
@@ -438,6 +448,10 @@ class SaveDayStat(object):
                     loss_open_sum += pl_open
                     loss_day_sum += pl_day
 
+                position_instruments.append(position_instrument)
+
+        option_greek = self.get_option_greek(position_instruments)
+
         return dict(
             name='OPTION',
             total_order_count=total_order_count,
@@ -453,7 +467,8 @@ class SaveDayStat(object):
             pl_day_sum=pl_day_sum,
             profit_day_sum=profit_day_sum,
             loss_day_sum=loss_day_sum,
-            bp_effect_sum=bp_effect_sum
+            bp_effect_sum=bp_effect_sum,
+            option_greek=option_greek
         )
 
     def get_spread(self):
@@ -483,6 +498,7 @@ class SaveDayStat(object):
 
         total_order_count = working_order_count + filled_order_count + cancelled_order_count
 
+        position_instruments = list()
         for position_instrument in self.position_instrument.all():
             equity = position_instrument.positionequity_set.exclude(quantity=0)
             option = position_instrument.positionoption_set.exclude(quantity=0)
@@ -504,6 +520,10 @@ class SaveDayStat(object):
                     loss_open_sum += pl_open
                     loss_day_sum += pl_day
 
+                position_instruments.append(position_instrument)
+
+        option_greek = self.get_option_greek(position_instruments)
+
         return dict(
             name='SPREAD',
             total_order_count=total_order_count,
@@ -519,5 +539,33 @@ class SaveDayStat(object):
             pl_day_sum=pl_day_sum,
             profit_day_sum=profit_day_sum,
             loss_day_sum=loss_day_sum,
-            bp_effect_sum=bp_effect_sum
+            bp_effect_sum=bp_effect_sum,
+            option_greek=option_greek
         )
+
+    @staticmethod
+    def get_option_greek(position_instruments):
+        """
+        Get option for equity, option and spread
+        using position instrument
+        :return dict
+        """
+        delta_sum = Decimal(0.0)
+        gamma_sum = Decimal(0.0)
+        theta_sum = Decimal(0.0)
+        vega_sum = Decimal(0.0)
+
+        for instrument in position_instruments:
+            delta_sum += instrument.delta
+            gamma_sum += instrument.gamma
+            theta_sum += instrument.theta
+            vega_sum += instrument.vega
+
+        return dict(
+            delta_sum=delta_sum,
+            gamma_sum=gamma_sum,
+            theta_sum=theta_sum,
+            vega_sum=vega_sum
+        )
+
+

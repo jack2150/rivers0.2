@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 from tos_import.classes.test import TestSetUp
+from tos_import.statement_account.models import SaveAccountStatement
+from tos_import.statement_position.models import SavePositionStatement
 from tos_import.statement_trade.models import *
 from tos_import.test_files import test_path
 from stat_simple import models
@@ -156,6 +158,73 @@ class TestDayStatHolding(TestSaveData):
         ]
 
 
+class TestDayStatOptionGreek(TestSaveData):
+    def setUp(self):
+        TestSaveData.setUp(self)
+
+        self.statement = Statement(
+            date='2014-08-01',
+            account_statement='',
+            position_statement='',
+            trade_activity=''
+        )
+        self.statement.save()
+
+        self.items = dict(
+            total_holding_count=20,
+            total_order_count=10,
+            working_order_count=3,
+            filled_order_count=5,
+            cancelled_order_count=2,
+            account_pl_ytd=15654.55,
+            account_pl_day=4412.11,
+            holding_pl_day=4561.41,
+            holding_pl_open=4561.33,
+            commission_day=156.66,
+            commission_ytd=172.66,
+            option_bp_day=13242.33,
+            stock_bp_day=4561.22
+        )
+
+        self.day_stat = models.DayStat(**self.items)
+        self.day_stat.statement = self.statement
+        self.day_stat.save()
+
+        self.items = dict(
+            name='Equity',
+            total_order_count=5,
+            working_order_count=3,
+            filled_order_count=1,
+            cancelled_order_count=2,
+            total_holding_count=10,
+            profit_holding_count=7,
+            loss_holding_count=3,
+            pl_open_sum=399.52,
+            profit_open_sum=519.85,
+            loss_open_sum=120.33,
+            pl_day_sum=111.60,
+            profit_day_sum=160.60,
+            loss_day_sum=49.00,
+            bp_effect_sum=6000.80
+        )
+        self.day_stat_holding = models.DayStatHolding(**self.items)
+        self.day_stat_holding.day_stat = self.day_stat
+        self.day_stat_holding.save()
+
+        self.items = dict(
+            delta_sum=425.00,
+            gamma_sum=89.13,
+            theta_sum=412.33,
+            vega_sum=123.59
+        )
+
+        self.test_cls = models.DayStatOptionGreek(**self.items)
+        self.test_cls.day_stat_holding = self.day_stat_holding
+        self.expect_keys = [
+            'delta_sum', 'gamma_sum', 'theta_sum', 'vega_sum'
+        ]
+
+
 # noinspection PyMethodOverriding
 class TestSaveDateStat(TestSetUp):
     def setUp(self):
@@ -164,15 +233,15 @@ class TestSaveDateStat(TestSetUp):
         """
         TestSetUp.setUp(self)
 
-        self.ready_file(real_date='2014-11-17', file_date='2014-11-18')
-        self.ready_file(real_date='2014-11-18', file_date='2014-11-19')
-        self.ready_file(real_date='2014-11-24', file_date='2014-11-25')
+        self.ready_file2(real_date='2014-11-17', file_date='2014-11-18')
+        self.ready_file2(real_date='2014-11-18', file_date='2014-11-19')
+        self.ready_file2(real_date='2014-11-24', file_date='2014-11-25')
         self.assertGreaterEqual(Statement.objects.count(), 1)
 
         self.statement = Statement.objects.last()
 
         # create instance now
-        self.day_stat = SaveDayStat(statement=self.statement)
+        self.save_day_stat = SaveDayStat(statement=self.statement)
 
         self.expected_keys = [
             'name',
@@ -227,12 +296,43 @@ class TestSaveDateStat(TestSetUp):
             )
         )
 
+    def ready_file2(self, real_date, file_date):
+        acc_data = open(os.path.join(test_path, file_date, '%s-AccountStatement.csv' % file_date)).read()
+        pos_data = open(os.path.join(test_path, file_date, '%s-PositionStatement.csv' % file_date)).read()
+        ta_data = open(os.path.join(test_path, file_date, '%s-TradeActivity.csv' % file_date)).read()
+
+        statement = Statement()
+        statement.date = real_date
+        statement.account_statement = acc_data
+        statement.position_statement = pos_data
+        statement.trade_activity = ta_data
+        statement.save()
+
+        SaveAccountStatement(
+            date=file_date,
+            statement=statement,
+            file_data=acc_data
+        ).save_all()
+
+        SavePositionStatement(
+            date=file_date,
+            statement=statement,
+            file_data=pos_data
+        ).save_all()
+
+        SaveTradeActivity(
+            date=file_date,
+            statement=statement,
+            file_data=ta_data
+        ).save_all()
+
+
     def test_get_future(self):
         """
         Test get holding future detail from table
         using set foreign key reference
         """
-        future = self.day_stat.get_future()
+        future = self.save_day_stat.get_future()
 
         self.assertEqual(type(future), dict)
         self.assertEqual(future['name'], 'FUTURE')
@@ -246,7 +346,7 @@ class TestSaveDateStat(TestSetUp):
         Test get holding forex detail from table
         using set foreign key reference
         """
-        forex = self.day_stat.get_forex()
+        forex = self.save_day_stat.get_forex()
         self.assertEqual(type(forex), dict)
         self.assertEqual(forex['name'], 'FOREX')
         for key in self.expected_keys:
@@ -258,11 +358,11 @@ class TestSaveDateStat(TestSetUp):
         Test get holding stock detail from table
         using set foreign key reference
         """
-        equity = self.day_stat.get_equity()
+        equity = self.save_day_stat.get_equity()
         self.assertEqual(type(equity), dict)
         self.assertEqual(equity['name'], 'EQUITY')
 
-        for key in self.expected_keys:
+        for key in self.expected_keys + ['option_greek']:
             self.assertIn(key, equity.keys())
             print '%s: %s' % (key, equity[key])
 
@@ -271,11 +371,11 @@ class TestSaveDateStat(TestSetUp):
         Test get holding option detail from table
         using set foreign key reference
         """
-        option = self.day_stat.get_option()
+        option = self.save_day_stat.get_option()
         self.assertEqual(type(option), dict)
         self.assertEqual(option['name'], 'OPTION')
 
-        for key in self.expected_keys:
+        for key in self.expected_keys + ['option_greek']:
             self.assertIn(key, option.keys())
             print '%s: %s' % (key, option[key])
 
@@ -284,13 +384,15 @@ class TestSaveDateStat(TestSetUp):
         Test get holding option detail from table
         using set foreign key reference
         """
-        spread = self.day_stat.get_spread()
+        spread = self.save_day_stat.get_spread()
         self.assertEqual(type(spread), dict)
         self.assertEqual(spread['name'], 'SPREAD')
 
-        for key in self.expected_keys:
+        for key in self.expected_keys + ['option_greek']:
             self.assertIn(key, spread.keys())
             print '%s: %s' % (key, spread[key])
+
+        print models.DayStatOptionGreek.objects.count()
 
     def test_get_day_stat(self):
         """
@@ -312,7 +414,7 @@ class TestSaveDateStat(TestSetUp):
             'stock_bp_day'
         ]
 
-        day_stat = self.day_stat.get_day_stat()
+        day_stat = self.save_day_stat.get_day_stat()
         self.assertEqual(type(day_stat), dict)
 
         for key in expected_keys:
@@ -320,10 +422,26 @@ class TestSaveDateStat(TestSetUp):
             self.assertNotEqual(day_stat[key], 0.0)
             print '%s: %s' % (key, day_stat[key])
 
+    def test_get_option_greek(self):
+        """
+        Test get option greek for equity, option and spread
+        """
+        position_instruments = [p for p in self.save_day_stat.position_instrument.all()]
+
+        print 'run get option greek using position instrument...'
+        option_greek = self.save_day_stat.get_option_greek(position_instruments)
+
+        print 'option greek result:'
+        pprint(option_greek)
+
+        self.assertNotEqual(option_greek['delta_sum'], 0.0)
+        self.assertNotEqual(option_greek['gamma_sum'], 0.0)
+        self.assertNotEqual(option_greek['theta_sum'], 0.0)
+        self.assertNotEqual(option_greek['vega_sum'], 0.0)
+
     def test_start(self):
         """
-
-        :return:
+        Test save all data into day stat models
         """
         day_stat_keys = [
             'total_holding_count',
@@ -359,8 +477,11 @@ class TestSaveDateStat(TestSetUp):
             'bp_effect_sum'
         ]
 
-        self.assertEqual(models.DayStat.objects.count(), 1 * 3)
-        self.assertEqual(models.DayStatHolding.objects.count(), 5 * 3)
+        self.save_day_stat.start()
+
+        self.assertEqual(models.DayStat.objects.count(), 1)
+        self.assertEqual(models.DayStatHolding.objects.count(), 5)
+        self.assertEqual(models.DayStatOptionGreek.objects.count(), 3)
 
         day_stat = models.DayStat.objects.first()
         investments = models.DayStatHolding.objects.all()
@@ -375,3 +496,10 @@ class TestSaveDateStat(TestSetUp):
                 print '%s: %s' % (key, getattr(investment, key))
 
             print ''
+
+        print '\n' + '-' * 80 + '\n\n' + 'option greek:'
+        for option_greek in models.DayStatOptionGreek.objects.all():
+            print option_greek
+            for key in ['delta_sum', 'gamma_sum', 'theta_sum', 'vega_sum']:
+                print '%s: %s' % (key, getattr(option_greek, key))
+            print '\n'

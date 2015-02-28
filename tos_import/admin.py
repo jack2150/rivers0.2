@@ -128,43 +128,44 @@ class PmsImportStatementsForm(forms.Form):
                 error_message = 'All file date must be same.'
                 self._errors['date'] = self.error_class([error_message])
 
-            # save here so django can track error location
-            acc_data = cleaned_data.get("account_statement")
-            acc_data = acc_data.read()
-            pos_data = cleaned_data.get("position_statement")
-            pos_data = pos_data.read()
-            ta_data = cleaned_data.get("trade_activity")
-            ta_data = ta_data.read()
+            if not len(self._errors):
+                # save here so django can track error location
+                acc_data = cleaned_data.get("account_statement")
+                acc_data = acc_data.read()
+                pos_data = cleaned_data.get("position_statement")
+                pos_data = pos_data.read()
+                ta_data = cleaned_data.get("trade_activity")
+                ta_data = ta_data.read()
 
-            statement = Statement()
-            statement.date = file_date
-            statement.account_statement = acc_data
-            statement.position_statement = pos_data
-            statement.trade_activity = ta_data
-            statement.save()
+                statement = Statement()
+                statement.date = file_date
+                statement.account_statement = acc_data
+                statement.position_statement = pos_data
+                statement.trade_activity = ta_data
+                statement.save()
 
-            SaveAccountStatement(
-                date=file_date,
-                statement=statement,
-                file_data=acc_data
-            ).save_all()
+                SaveAccountStatement(
+                    date=file_date,
+                    statement=statement,
+                    file_data=acc_data
+                ).save_all()
 
-            SavePositionStatement(
-                date=file_date,
-                statement=statement,
-                file_data=pos_data
-            ).save_all()
+                SavePositionStatement(
+                    date=file_date,
+                    statement=statement,
+                    file_data=pos_data
+                ).save_all()
 
-            SaveTradeActivity(
-                date=file_date,
-                statement=statement,
-                file_data=ta_data
-            ).save_all()
+                SaveTradeActivity(
+                    date=file_date,
+                    statement=statement,
+                    file_data=ta_data
+                ).save_all()
 
-            SaveDayStat(statement).start()
+                SaveDayStat(statement).start()
 
-            self.cleaned_data['statement_id'] = statement.id
-            self.cleaned_data['statement_name'] = statement.__unicode__()
+                self.cleaned_data['statement_id'] = statement.id
+                self.cleaned_data['statement_name'] = statement.__unicode__()
 
         return cleaned_data
 

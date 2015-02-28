@@ -284,9 +284,18 @@ class TestPmsImportStatementsForm(TestSetUp):
         TestSetUp.setUp(self)
 
         self.date = '2014-11-14'
-        self.account_statement = SimpleUploadedFile('2014-11-15-AccountStatement.csv', 'something')
-        self.position_statement = SimpleUploadedFile('2014-11-15-PositionStatement.csv', 'something')
-        self.trade_activity = SimpleUploadedFile('2014-11-15-TradeActivity.csv', 'something')
+        self.account_statement = SimpleUploadedFile(
+            '2014-11-15-AccountStatement.csv',
+            open(os.path.join(test_path, '2014-11-15', '2014-11-15-AccountStatement.csv')).read()
+        )
+        self.position_statement = SimpleUploadedFile(
+            '2014-11-15-PositionStatement.csv',
+            open(os.path.join(test_path, '2014-11-15', '2014-11-15-PositionStatement.csv')).read()
+        )
+        self.trade_activity = SimpleUploadedFile(
+            '2014-11-15-TradeActivity.csv',
+            open(os.path.join(test_path, '2014-11-15', '2014-11-15-PositionStatement.csv')).read()
+        )
 
         self.value_data = dict(
             date=self.date
@@ -322,6 +331,8 @@ class TestPmsImportStatementsForm(TestSetUp):
         """
         wrong_date = '2014-07-20'
         print 'using wrong file date: %s' % wrong_date
+        print self.file_data
+
         self.pms_form = PmsImportStatementsForm({'date': wrong_date}, self.file_data)
 
         print 'run is_valid()...\n'
@@ -505,17 +516,7 @@ class TestPmsImportStatementView(TestSetUp):
             )
         )
 
-        print 'testing redirect back into import form...'
-        self.assertRedirects(
-            response,
-            reverse('admin:statement_import', kwargs={'statement_id': 1}),
-            status_code=302,
-            target_status_code=200,
-            msg_prefix='',
-        )
-
         print 'check statements is successful insert db...'
-        response = self.client.get(response['location'])
         self.assertTrue(response.context['statement_id'])
         self.assertContains(response, 'All statements was inserted successfully.')
 
