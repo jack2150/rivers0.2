@@ -1,13 +1,17 @@
-from rivers import urls
-from django.contrib.auth.models import User
-from tos_import.test_files import *
-from tos_import.classes.test import TestSetUp
-from tos_import.admin import *
-from tos_import.statement_account.models import *
-from tos_import.statement_position.models import *
-from tos_import.statement_trade.models import *
-from django.core.files.uploadedfile import SimpleUploadedFile
+# noinspection PyUnresolvedReferences
+import rivers.urls
 from pprint import pprint
+from django.contrib.auth.models import User
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.core.urlresolvers import reverse
+from tos_import.files.test_files import *
+from tos_import.classes.test import TestSetUp
+from tos_import.admin import PmsImportStatementsForm
+from tos_import.statement.statement_account.models import *
+from tos_import.statement.statement_position.models import *
+from tos_import.statement.statement_trade.models import *
+import os
+
 
 
 class TestSetUpUnderlying(TestSetUp):
@@ -280,6 +284,7 @@ class TestReadyStatement(TestSetUp):
 
 
 class TestPmsImportStatementsForm(TestSetUp):
+    # noinspection PyUnresolvedReferences
     def setUp(self):
         TestSetUp.setUp(self)
 

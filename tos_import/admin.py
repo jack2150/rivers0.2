@@ -3,20 +3,18 @@ from datetime import datetime
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import FieldError, ValidationError
+from django.core.exceptions import FieldError
 from django.core.urlresolvers import reverse
 from django.forms import ModelForm
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django import forms
-from django.utils.encoding import DjangoUnicodeDecodeError
 from pandas.tseries.offsets import BDay
-from suit.widgets import AutosizedTextarea, SuitDateWidget
-from tos_import.models import Statement, Underlying, Future, Forex
-from tos_import.statement_account.models import SaveAccountStatement, AccountSummary
-from tos_import.statement_position.models import SavePositionStatement, PositionSummary
-from tos_import.statement_trade.models import SaveTradeActivity, TradeSummary
+from suit.widgets import SuitDateWidget
 from django.contrib.admin.models import LogEntry, ADDITION
+from tos_import.models import Statement, Underlying, Future, Forex
+from tos_import.statement.statement_account.models import SaveAccountStatement, AccountSummary
+from tos_import.statement.statement_position.models import SavePositionStatement, PositionSummary
+from tos_import.statement.statement_trade.models import SaveTradeActivity, TradeSummary
 from stat_simple.models import SaveDayStat
 
 
@@ -514,10 +512,10 @@ class StatementAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Statement, StatementAdmin)
-
 admin.site.register(Underlying, UnderlyingAdmin)
 admin.site.register(Future, FutureAdmin)
 admin.site.register(Forex, ForexAdmin)
+
 
 admin.site.register_view(
     'tos_import/statement/import/$',

@@ -1,7 +1,9 @@
 import os
+
 from django.test import TestCase
+
 from tos_import.classes.io.open_pos import OpenPos
-from tos_import.statement_position import models
+from tos_import.statement.statement_position import models
 
 
 class TestSetUp(TestCase):

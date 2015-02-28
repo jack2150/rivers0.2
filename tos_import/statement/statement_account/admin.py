@@ -1,9 +1,11 @@
 import locale
+
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.forms import ModelForm
 from suit.widgets import SuitSplitDateTimeWidget
-from tos_import.statement_account import models
+
+from tos_import.statement.statement_account import models
 
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember

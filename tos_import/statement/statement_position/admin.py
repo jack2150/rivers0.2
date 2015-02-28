@@ -1,8 +1,11 @@
+import locale
+
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.db.models import Q, Count
-from tos_import.statement_position import models
-import locale
+
+from tos_import.statement.statement_position import models
+
 
 locale.setlocale(locale.LC_ALL, '')
 

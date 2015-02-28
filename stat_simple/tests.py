@@ -1,13 +1,15 @@
 import os
 from pprint import pprint
+
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
+
 from tos_import.classes.test import TestSetUp
-from tos_import.statement_account.models import SaveAccountStatement
-from tos_import.statement_position.models import SavePositionStatement
-from tos_import.statement_trade.models import *
-from tos_import.test_files import test_path
+from tos_import.statement.statement_account.models import SaveAccountStatement
+from tos_import.statement.statement_position.models import SavePositionStatement
+from tos_import.statement.statement_trade.models import *
+from tos_import.files.test_files import test_path
 from stat_simple import models
 from stat_simple.models import SaveDayStat
 
@@ -325,7 +327,6 @@ class TestSaveDateStat(TestSetUp):
             statement=statement,
             file_data=ta_data
         ).save_all()
-
 
     def test_get_future(self):
         """

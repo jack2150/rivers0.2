@@ -1,6 +1,7 @@
 from copy import deepcopy
 from pprint import pprint
-from tos_import.test_files import *
+
+from tos_import.files.test_files import *
 from tos_import.classes.test import TestSetUp
 from tos_import.classes.io.open_csv import OpenCSV
 

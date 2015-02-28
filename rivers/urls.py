@@ -4,7 +4,6 @@ from adminplus.sites import AdminSitePlus
 
 admin.site = AdminSitePlus()
 admin.autodiscover()
-admin.site.login_template = 'admin/login.html'
 
 urlpatterns = patterns(
     '',

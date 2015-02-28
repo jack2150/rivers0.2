@@ -3,10 +3,10 @@ from glob import glob
 import os
 from pprint import pprint
 from django.utils.timezone import utc
-from tos_import.test_files import *
-from tos_import.real_files import real_path
+from tos_import.files.test_files import *
+from tos_import.files.real_files import real_path
 from tos_import.classes.test import TestSetUp
-from tos_import.statement_account import models
+from tos_import.statement.statement_account import models
 
 
 class TestAccountStatement(TestSetUp):
@@ -409,8 +409,8 @@ class TestSaveAccountStatement(TestSetUp):
         self.acc_files = glob(os.path.join(test_acc_path, '*.csv'))
 
         self.acc_files = self.acc_files + [
-            #os.path.join(test_path, '2014-11-19', '2014-11-19-AccountStatement.csv'),
-            #os.path.join(test_path, '2014-11-25', '2014-11-25-AccountStatement.csv'),
+            os.path.join(test_path, '2014-11-19', '2014-11-19-AccountStatement.csv'),
+            os.path.join(test_path, '2014-11-25', '2014-11-25-AccountStatement.csv'),
             os.path.join(real_path, '2015-02-27', '2015-02-28-AccountStatement.csv')
         ]
 

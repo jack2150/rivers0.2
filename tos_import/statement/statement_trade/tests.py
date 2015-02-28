@@ -2,12 +2,13 @@ from datetime import datetime
 from glob import glob
 import os
 from pprint import pprint
+# noinspection PyUnresolvedReferences
 from django.utils.timezone import utc
-from tos_import.real_files import real_path
-from tos_import.test_files import *
+from tos_import.files.real_files import real_path
+from tos_import.files.test_files import *
 from tos_import.classes.io.open_ta import OpenTA
 from tos_import.classes.test import TestSetUp
-from tos_import.statement_trade import models
+from tos_import.statement.statement_trade import models
 from tos_import.tests import TestReadyStatement
 
 
@@ -266,6 +267,7 @@ class TestRollingStrategy(TestTradeActivity):
         ]
 
 
+# noinspection PyUnresolvedReferences
 class TestOpenTASaveAll(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
@@ -384,6 +386,7 @@ class TestOpenTASaveAll(TestSetUp):
             print '\n' + '-' * 100
 
 
+# noinspection PyUnresolvedReferences
 class TestSaveTradeActivity(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)

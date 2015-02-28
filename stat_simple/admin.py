@@ -58,7 +58,6 @@ class DayStatAdmin(admin.ModelAdmin):
     search_fields = ('statement__date', )
     list_per_page = 30
 
-
     def has_add_permission(self, request):
         return False
 

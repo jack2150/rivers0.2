@@ -1,8 +1,11 @@
 from decimal import Decimal
+
 from django.db import models
 from django.db.models import Q
-from tos_import.statement_account.models import AccountSummary
+
+from tos_import.statement.statement_account.models import AccountSummary
 from tos_import.models import Statement
+
 
 decimal_field = dict(max_digits=10, decimal_places=2, default=0.0)
 

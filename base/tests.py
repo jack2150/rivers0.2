@@ -9,9 +9,8 @@ from django.core.urlresolvers import reverse
 
 # noinspection PyUnresolvedReferences
 class TestBaseModelListing(TestSetUp):
+    # todo: write better test
     def test123(self):
-
-
         app_parent_label_list = {
             'statement_account': 'tos_import',
             'statement_position': 'tos_import',
@@ -35,7 +34,7 @@ class TestBaseModelListing(TestSetUp):
                     'name': module.__name__,
                     'url': reverse('admin:%s_%s_changelist' % (app.lower(), module.__name__.lower())),
                     'app': app,
-                    'app_label': ' '.join(map(lambda x: x.capitalize(), app.split('_'))),
+                    'app_label': ' '.join(map(lambda label: label.capitalize(), app.split('_'))),
                     'app_parent': app_parent_label
                 }
             )
@@ -47,7 +46,7 @@ class TestBaseModelListing(TestSetUp):
             new_app_parent_list.append(
                 {
                     'name': app_parent,
-                    'label': ' '.join(map(lambda x: x.upper(), app_parent.split('_'))),
+                    'label': ' '.join(map(lambda label: label.upper(), app_parent.split('_'))),
                     'child': set(module['app'] for module in module_list
                                  if module['app_parent'] == app_parent)
                 }
@@ -55,7 +54,7 @@ class TestBaseModelListing(TestSetUp):
 
         app_label_list = dict()
         for app in set(module['app'] for module in module_list):
-            app_label_list[app] = ' '.join(map(lambda x: x.capitalize(), app.split('_')))
+            app_label_list[app] = ' '.join(map(lambda label: label.capitalize(), app.split('_')))
 
         pprint(module_list)
 

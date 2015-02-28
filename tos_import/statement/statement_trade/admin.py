@@ -2,8 +2,8 @@ from django.forms import ModelForm
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.db.models import Count
-from suit.widgets import SuitSplitDateTimeWidget
-from tos_import.statement_trade import models
+
+from tos_import.statement.statement_trade import models
 
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember

@@ -38,14 +38,13 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tos_import',
-    'tos_import.statement_account',
-    'tos_import.statement_position',
-    'tos_import.statement_trade',
+    'tos_import.statement.statement_account',
+    'tos_import.statement.statement_position',
+    'tos_import.statement.statement_trade',
     'stat_simple',
     'base',
 
@@ -112,21 +111,4 @@ TEMPLATE_DIRS = (
 )
 
 DATE_FORMAT = 'Y-m-d'
-
-# Django admin suit
-SUIT_CONFIG = {
-    'ADMIN_NAME': 'Portfolio Management System',
-    'HEADER_DATE_FORMAT': 'Y-m-d',  # Saturday, 16th March 2013
-    'HEADER_TIME_FORMAT': 'H:i',  # 18:42
-
-    'SHOW_REQUIRED_ASTERISK': True,
-    'CONFIRM_UNSAVED_CHANGES': False,
-
-    # Set to empty string if you want to hide search from menu
-    'SEARCH_URL': '',
-
-    'MENU_OPEN_FIRST_CHILD': False,
-
-    # icon demo in http://getbootstrap.com/components/
-}
 

@@ -81,6 +81,8 @@ class LegOneContext(Spread):
             self.status = 'max_loss'
         elif self.is_loss(self.price):
             self.status = 'loss'
+        else:
+            raise ValueError('Invalid update status.')
 
     def json(self):
         """
