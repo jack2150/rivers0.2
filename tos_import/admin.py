@@ -3,14 +3,16 @@ from datetime import datetime
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import FieldError, ValidationError
 from django.core.urlresolvers import reverse
 from django.forms import ModelForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django import forms
+from django.utils.encoding import DjangoUnicodeDecodeError
 from pandas.tseries.offsets import BDay
 from suit.widgets import AutosizedTextarea, SuitDateWidget
-from tos_import import models
+from tos_import.models import Statement, Underlying, Future, Forex
 from tos_import.statement_account.models import SaveAccountStatement, AccountSummary
 from tos_import.statement_position.models import SavePositionStatement, PositionSummary
 from tos_import.statement_trade.models import SaveTradeActivity, TradeSummary
@@ -126,6 +128,46 @@ class PmsImportStatementsForm(forms.Form):
                 error_message = 'All file date must be same.'
                 self._errors['date'] = self.error_class([error_message])
 
+            # save here so django can track error location
+            acc_data = cleaned_data.get("account_statement")
+            acc_data = acc_data.read()
+            pos_data = cleaned_data.get("position_statement")
+            pos_data = pos_data.read()
+            ta_data = cleaned_data.get("trade_activity")
+            ta_data = ta_data.read()
+
+            statement = Statement()
+            statement.date = file_date
+            statement.account_statement = acc_data
+            statement.position_statement = pos_data
+            statement.trade_activity = ta_data
+            statement.save()
+
+            SaveAccountStatement(
+                date=file_date,
+                statement=statement,
+                file_data=acc_data
+            ).save_all()
+
+            SavePositionStatement(
+                date=file_date,
+                statement=statement,
+                file_data=pos_data
+            ).save_all()
+
+            SaveTradeActivity(
+                date=file_date,
+                statement=statement,
+                file_data=ta_data
+            ).save_all()
+
+            SaveDayStat(statement).start()
+
+            self.cleaned_data['statement_id'] = statement.id
+            self.cleaned_data['statement_name'] = statement.__unicode__()
+
+        return cleaned_data
+
 
 @staff_member_required
 def statement_import(request, statement_id=0):
@@ -135,56 +177,23 @@ def statement_import(request, statement_id=0):
     template = 'admin/tos_import/statement/import.html'
 
     if request.method == 'POST':
-        import_statement_form = PmsImportStatementsForm(request.POST, request.FILES)
+        try:
+            import_statement_form = PmsImportStatementsForm(request.POST, request.FILES)
+        except Exception:
+            raise FieldError('Import statement form error.')
+
         if import_statement_form.is_valid():
-            date = request.POST['date']
-            acc_data = request.FILES['account_statement'].read()
-            pos_data = request.FILES['position_statement'].read()
-            ta_data = request.FILES['trade_activity'].read()
-
-            statement = models.Statement(
-                date=date,
-                account_statement=acc_data,
-                position_statement=pos_data,
-                trade_activity=ta_data
-            )
-            statement.save()
-
-            # save acc, pos, ta into db
-            SaveAccountStatement(
-                date=date,
-                statement=statement,
-                file_data=acc_data
-            ).save_all()
-
-            SavePositionStatement(
-                date=date,
-                statement=statement,
-                file_data=pos_data
-            ).save_all()
-
-            SaveTradeActivity(
-                date=date,
-                statement=statement,
-                file_data=ta_data
-            ).save_all()
-
-            # save date stat
-            SaveDayStat(statement).start()
-
             # log import
+
             LogEntry.objects.log_action(
                 user_id=request.user.id,
-                content_type_id=ContentType.objects.get_for_model(models.Statement).id,
-                object_id=statement.id,
-                object_repr=statement.__unicode__(),
+                content_type_id=ContentType.objects.get_for_model(Statement).id,
+                object_id=import_statement_form.cleaned_data['statement_id'],
+                object_repr=import_statement_form.cleaned_data['statement_name'],
                 action_flag=ADDITION
             )
 
-            return HttpResponseRedirect(
-                # reverse('admin:pms_app_statement_change', args=(statements.id,))
-                reverse('admin:statement_import', kwargs=dict(statement_id=statement.id))
-            )
+            statement_id = import_statement_form.cleaned_data['statement_id']
     else:
         import_statement_form = PmsImportStatementsForm()
 
@@ -503,11 +512,11 @@ class StatementAdmin(admin.ModelAdmin):
         return False
 
 
-admin.site.register(models.Statement, StatementAdmin)
+admin.site.register(Statement, StatementAdmin)
 
-admin.site.register(models.Underlying, UnderlyingAdmin)
-admin.site.register(models.Future, FutureAdmin)
-admin.site.register(models.Forex, ForexAdmin)
+admin.site.register(Underlying, UnderlyingAdmin)
+admin.site.register(Future, FutureAdmin)
+admin.site.register(Forex, ForexAdmin)
 
 admin.site.register_view(
     'tos_import/statement/import/$',

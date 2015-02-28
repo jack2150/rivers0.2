@@ -105,7 +105,7 @@ class Statement(models.Model):
     A statement contain all 3 raw files csv data including
     account statement, position statement and trade activity
     """
-    date = models.DateField()
+    date = models.DateField(unique=True)
     account_statement = models.TextField()
     position_statement = models.TextField()
     trade_activity = models.TextField()
