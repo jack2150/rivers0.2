@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% load static currency_tag verbose_name %}
 
-{% block title %}Day Statistic: {{ date }}{% endblock %}
+{% block title %}Simple Stat Day: {{ date }}{% endblock %}
 
 {% block extrastyle %}
   <style>
@@ -48,12 +48,12 @@
     </a>
   </li>
   <li>
-    Day Stat:{{ date }}
+    Simple Stat Day:{{ date }}
   </li>
 {% endblock %}
 
 {% block page-header %}
-  Day Stat:{{ date }}
+  Simple Stat Day:{{ date }}
 {% endblock %}
 
 {% block page-header-tool %}

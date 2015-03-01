@@ -124,16 +124,66 @@ class DayStatHoldingAdmin(admin.ModelAdmin):
         return False
 
 
+# noinspection PyMethodMayBeStatic
+class DayStatOptionGreekAdmin(admin.ModelAdmin):
+    def stat_day_holding_with_date(self, obj):
+        return obj.stat_day_holding.__unicode__().split(': ')[1]
+
+    stat_day_holding_with_date.short_description = 'Stat Day Holding'
+    stat_day_holding_with_date.admin_order_field = 'stat_day_holding__stat_day__statement__date'
+
+    list_display = (
+        'stat_day_holding_with_date',
+        'delta_sum',
+        'gamma_sum',
+        'theta_sum',
+        'vega_sum'
+    )
+
+    list_filter = (
+        'stat_day_holding__name',
+    )
+
+    fieldsets = (
+        ('Foreign Key', {
+            'fields': (
+                'stat_day_holding',
+            )
+        }),
+        ('Primary Fields', {
+            'fields': (
+                'delta_sum',
+                'gamma_sum',
+                'theta_sum',
+                'vega_sum'
+            )
+        })
+    )
+
+    ordering = ('-stat_day_holding__stat_day__statement__date', )
+    readonly_fields = ('stat_day_holding', )
+    list_per_page = 30
+
+    search_fields = (
+        'stat_day_holding__stat_day__statement__date',
+        'stat_day_holding__name'
+    )
+
+    def has_add_permission(self, request):
+        return False
+
+
 admin.site.register(StatDay, DayStatAdmin)
 admin.site.register(StatDayHolding, DayStatHoldingAdmin)
-admin.site.register(StatDayOptionGreek)
+admin.site.register(StatDayOptionGreek, DayStatOptionGreekAdmin)
+
 admin.site.register_view(
-    'stat_simple/daily/$',
+    'simple/stat/day/$',
     urlname='simple_stat_day_view',
     view=simple_stat_day_view
 )
 admin.site.register_view(
-    'stat_simple/daily/(?P<date>\d{4}-\d{2}-\d{2})/$',
+    'simple/stat/day/(?P<date>\d{4}-\d{2}-\d{2})/$',
     urlname='simple_stat_day_view',
     view=simple_stat_day_view
 )
