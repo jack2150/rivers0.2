@@ -8,151 +8,101 @@
     <bookmark url="file://C:/Python/Anaconda/Lib/site-packages/django_admin_bootstrapped" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-25/2015-02-26-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-25/2015-02-26-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-25/2015-02-26-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-26/2015-02-27-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-26/2015-02-27-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-26/2015-02-27-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-27/2015-02-28-AccountStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-27/2015-02-28-PositionStatement.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-27/2015-02-28-TradeActivity.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/statement/statement_position/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/statement/statement_trade/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-01-29\2015-01-30-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-01-29/2015-01-30-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-01-29\2015-01-30-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-01-29/2015-01-30-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-01-29\2015-01-30-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-01-29/2015-01-30-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-01-30\2015-01-31-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-01-30/2015-01-31-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-01-30\2015-01-31-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-01-30/2015-01-31-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-01-30\2015-01-31-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-01-30/2015-01-31-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-02\2015-02-03-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-02/2015-02-03-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-02\2015-02-03-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-02/2015-02-03-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-02\2015-02-03-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-02/2015-02-03-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-03\2015-02-04-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-03/2015-02-04-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-03\2015-02-04-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-03/2015-02-04-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-03\2015-02-04-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-03/2015-02-04-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-04\2015-02-05-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-04/2015-02-05-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-04\2015-02-05-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-04/2015-02-05-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-04\2015-02-05-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-04/2015-02-05-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-05\2015-02-06-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-05/2015-02-06-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-05\2015-02-06-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-05/2015-02-06-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-05\2015-02-06-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-05/2015-02-06-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-06\2015-02-07-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-06/2015-02-07-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-06\2015-02-07-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-06/2015-02-07-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-06\2015-02-07-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-06/2015-02-07-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-09\2015-02-10-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-09/2015-02-10-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-09\2015-02-10-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-09/2015-02-10-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-09\2015-02-10-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-09/2015-02-10-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-10\2015-02-11-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-10/2015-02-11-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-10\2015-02-11-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-10/2015-02-11-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-10\2015-02-11-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-10/2015-02-11-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-11\2015-02-12-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-11/2015-02-12-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-11\2015-02-12-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-11/2015-02-12-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-11\2015-02-12-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-11/2015-02-12-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-13\2015-02-14-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-13/2015-02-14-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-13\2015-02-14-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-13/2015-02-14-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-13\2015-02-14-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-13/2015-02-14-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-16 holiday\2015-02-17-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-16 holiday/2015-02-17-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-16 holiday\2015-02-17-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-16 holiday/2015-02-17-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-16 holiday\2015-02-17-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-16 holiday/2015-02-17-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-17\2015-02-18-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-17/2015-02-18-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-17\2015-02-18-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-17/2015-02-18-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-17\2015-02-18-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-17/2015-02-18-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-18\2015-02-19-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-18/2015-02-19-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-18\2015-02-19-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-18/2015-02-19-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-18\2015-02-19-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-18/2015-02-19-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-19\2015-02-20-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-19/2015-02-20-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-19\2015-02-20-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-19/2015-02-20-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-19\2015-02-20-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-19/2015-02-20-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-20\2015-02-21-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-20/2015-02-21-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-20\2015-02-21-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-20/2015-02-21-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-20\2015-02-21-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-20/2015-02-21-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-23\2015-02-24-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-23/2015-02-24-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-23\2015-02-24-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-23/2015-02-24-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-23\2015-02-24-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-23/2015-02-24-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-24\2015-02-25-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-24/2015-02-25-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-24\2015-02-25-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-24/2015-02-25-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\2015-02-24\2015-02-25-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/real_files/2015-02-24/2015-02-25-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\real_files\__init__.py" afterPath="$PROJECT_DIR$/tos_import/files/real_files/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_account\__init__.py" afterPath="$PROJECT_DIR$/tos_import/files/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_account\admin.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_account/admin.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_account\models.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_account/models.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_account\tests.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_account/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_account\views.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_account/views.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_position\__init__.py" afterPath="$PROJECT_DIR$/tos_import/statement/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_position\admin.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_position/admin.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_position\models.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_position/models.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_position\tests.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_position/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_position\views.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_position/views.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_trade\__init__.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_account/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_trade\admin.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_trade/admin.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_trade\models.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_trade/models.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_trade\tests.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_trade/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\statement_trade\views.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_trade/views.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-10-21\2014-10-22-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-10-21/2014-10-22-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-10-21\2014-10-22-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-10-21/2014-10-22-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-10-21\2014-10-22-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-10-21/2014-10-22-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-10-31\2014-10-31-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-10-31/2014-10-31-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-10-31\2014-10-31-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-10-31/2014-10-31-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-10-31\2014-10-31-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-10-31/2014-10-31-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-01\2014-11-01-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-01/2014-11-01-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-01\2014-11-01-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-01/2014-11-01-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-01\2014-11-01-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-01/2014-11-01-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-14\2014-11-14-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-14/2014-11-14-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-14\2014-11-14-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-14/2014-11-14-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-14\2014-11-14-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-14/2014-11-14-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-15\2014-11-15-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-15/2014-11-15-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-15\2014-11-15-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-15/2014-11-15-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-15\2014-11-15-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-15/2014-11-15-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-18\2014-11-18-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-18/2014-11-18-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-18\2014-11-18-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-18/2014-11-18-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-18\2014-11-18-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-18/2014-11-18-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-19\2014-11-19-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-19/2014-11-19-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-19\2014-11-19-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-19/2014-11-19-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-19\2014-11-19-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-19/2014-11-19-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-25\2014-11-25-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-25/2014-11-25-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-25\2014-11-25-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-25/2014-11-25-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\2014-11-25\2014-11-25-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/2014-11-25/2014-11-25-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\__init__.py" afterPath="$PROJECT_DIR$/tos_import/files/test_files/__init__.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\account_statement\2014-07-23-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/account_statement/2014-07-23-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\account_statement\2014-07-24-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/account_statement/2014-07-24-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\account_statement\2014-07-25-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/account_statement/2014-07-25-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\account_statement\2014-07-28-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/account_statement/2014-07-28-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\account_statement\2014-07-29-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/account_statement/2014-07-29-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\account_statement\2014-10-22-AccountStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/account_statement/2014-10-22-AccountStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\position_statement\2014-08-01-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/position_statement/2014-08-01-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\position_statement\2014-09-06-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/position_statement/2014-09-06-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\position_statement\2014-09-19-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/position_statement/2014-09-19-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\position_statement\2014-10-22-PositionStatement.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/position_statement/2014-10-22-PositionStatement.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\spreads\2014-03-07-closed.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/spreads/2014-03-07-closed.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\spreads\2014-03-10-stock.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/spreads/2014-03-10-stock.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\spreads\2014-03-11-hedge.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/spreads/2014-03-11-hedge.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\spreads\2014-03-12-one-leg.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/spreads/2014-03-12-one-leg.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\spreads\2014-03-13-two-legs.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/spreads/2014-03-13-two-legs.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\spreads\2014-03-14-three-legs.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/spreads/2014-03-14-three-legs.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\spreads\2014-03-17-four-legs-part-1.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/spreads/2014-03-17-four-legs-part-1.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\trade_activity\2014-09-19-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/trade_activity/2014-09-19-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\trade_activity\2014-10-21-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/trade_activity/2014-10-21-TradeActivity.csv" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\test_files\trade_activity\2014-10-22-TradeActivity.csv" afterPath="$PROJECT_DIR$/tos_import/files/test_files/trade_activity/2014-10-22-TradeActivity.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Jack.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Jack.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__leg_one.py" afterPath="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__leg_one.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/classes/test/__test.py" afterPath="$PROJECT_DIR$/tos_import/classes/test/__test.py" />
+    <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="restructure">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/statistic/simple/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\Gruntfile.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\bower.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\bower.travis.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\_template.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\area-as-line.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\area.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\bar-colors.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\bar-no-axes.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\bar.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\days.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\decimal-custom-hover.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\diagonal-xlabels-bar.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\diagonal-xlabels.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\donut-colors.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\donut-formatter.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\donut.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\dst.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\events.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\goals.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\lib\example.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\lib\example.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\months-no-smooth.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\negative.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\no-grid.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\non-continuous.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\non-date.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\quarters.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\resize.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\stacked_bars.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\timestamps.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\updating.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\weeks.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\examples\years.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\less\morris.core.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\lib\morris.area.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\lib\morris.bar.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\lib\morris.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\lib\morris.donut.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\lib\morris.grid.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\lib\morris.hover.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\lib\morris.line.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\morris.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\morris.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\morris.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\raphael-min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\area\area_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\bar\bar_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\bar\colours.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\commas_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\donut\donut_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\grid\auto_grid_lines_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\grid\set_data_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\grid\y_label_format_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\hover_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\label_series_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\line\line_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\pad_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\lib\parse_time_spec.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\specs.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\support\placeholder.coffee" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\viz\examples.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\viz\exemplary\area0.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\viz\exemplary\bar0.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\viz\exemplary\line0.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\viz\exemplary\stacked_bar0.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\viz\run.sh" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\viz\test.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\static\morris\morris.js-0.5.1\spec\viz\visual_specs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\base\models.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\simple_stat\daily\index.html" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\stat_simple\__init__.py" afterPath="$PROJECT_DIR$/statistic/__init__.py" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\stat_simple\admin.py" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/admin.py" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\stat_simple\models.py" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/models.py" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\stat_simple\tests.py" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/tests.py" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\stat_simple\views.py" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/views.py" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\templates\admin\tos_import\statement\import.html" afterPath="$PROJECT_DIR$/tos_import/templates/tos_import/statement_import.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/admin.py" afterPath="$PROJECT_DIR$/base/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stat_simple/admin.py" afterPath="$PROJECT_DIR$/stat_simple/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/admin.py" afterPath="$PROJECT_DIR$/tos_import/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/models.py" afterPath="$PROJECT_DIR$/base/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stat_simple/models.py" afterPath="$PROJECT_DIR$/stat_simple/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/app_index.html" afterPath="$PROJECT_DIR$/templates/admin/app_index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/base.html" afterPath="$PROJECT_DIR$/templates/admin/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/change_form.html" afterPath="$PROJECT_DIR$/templates/admin/change_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/change_list.html" afterPath="$PROJECT_DIR$/templates/admin/change_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/rivers.iml" afterPath="$PROJECT_DIR$/.idea/rivers.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/settings.py" afterPath="$PROJECT_DIR$/rivers/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/tests.py" afterPath="$PROJECT_DIR$/base/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stat_simple/tests.py" afterPath="$PROJECT_DIR$/stat_simple/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/tests.py" afterPath="$PROJECT_DIR$/tos_import/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/classes/io/open_acc/tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_acc/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/classes/io/open_csv/tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_csv/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/classes/io/open_pos/tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_pos/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/classes/io/open_ta/tests.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_ta/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/urls.py" afterPath="$PROJECT_DIR$/rivers/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/templatetags/verbose_name.py" afterPath="$PROJECT_DIR$/tos_import/templatetags/verbose_name.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/views.py" afterPath="$PROJECT_DIR$/base/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/views.py" afterPath="$PROJECT_DIR$/tos_import/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -169,6 +119,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/rivers$Test__statistics_simple_day_stat_tests.coverage" NAME="Test: statistics.simple.day_stat.tests Coverage Results" MODIFIED="1425206911265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_leg_one_tests.coverage" NAME="Test: lib.pos.spread.leg_one.tests Coverage Results" MODIFIED="1411250358836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_ta_tests.coverage" NAME="Test: lib.io.open_ta.tests Coverage Results" MODIFIED="1415833012134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_position_tests_TestSavePositionStatement_test_save_all.coverage" NAME="Test: tos_import.statement_position.tests.TestSavePositionStatement.test_save_all Coverage Results" MODIFIED="1425162291869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -185,7 +136,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_tests_TestStatement.coverage" NAME="Test: tos_import.tests.TestStatement Coverage Results" MODIFIED="1425099930719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_start.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_start Coverage Results" MODIFIED="1422649382100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_forex.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_forex Coverage Results" MODIFIED="1421408264715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__all.coverage" NAME="Test: all Coverage Results" MODIFIED="1425165728864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__all.coverage" NAME="Test: all Coverage Results" MODIFIED="1425206140636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat.coverage" NAME="Test: app_stat.tests.TestSaveDateStat Coverage Results" MODIFIED="1424274038972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_position_tests_TestSavePositionStatement_setUp.coverage" NAME="Test: tos_import.statement_position.tests.TestSavePositionStatement.setUp Coverage Results" MODIFIED="1425037307017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__stat_simple_tests_TestDayStatHolding_setUp.coverage" NAME="Test: stat_simple.tests.TestDayStatHolding.setUp Coverage Results" MODIFIED="1424413969482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -194,6 +145,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__base_tests.coverage" NAME="Test: base.tests Coverage Results" MODIFIED="1425164418420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_statement_position_tests.coverage" NAME="Test: app_pms.statement_position.tests Coverage Results" MODIFIED="1424106710289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_account_tests_TestSaveAccountStatement.coverage" NAME="Test: tos_import.statement_account.tests.TestSaveAccountStatement Coverage Results" MODIFIED="1425095631270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__statistic_simple_stat_day_tests.coverage" NAME="Test: statistic.simple.stat_day.tests Coverage Results" MODIFIED="1425207700088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_forex.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_forex Coverage Results" MODIFIED="1421375639600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_hedge_tests.coverage" NAME="Test: lib.pos.identify.hedge.tests Coverage Results" MODIFIED="1411250314367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_leg_one_tests.coverage" NAME="Test: lib.pos.identify.leg_one.tests Coverage Results" MODIFIED="1411250323455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -238,6 +190,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_statement_trades_tests.coverage" NAME="Test: app_pms.statement_trades.tests Coverage Results" MODIFIED="1424106392163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_classes_io_open_pos2_tests.coverage" NAME="Test: app_pms.classes.io.open_pos2.tests Coverage Results" MODIFIED="1416103985830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_equity.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_equity Coverage Results" MODIFIED="1421536060683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__base_tests_TestBaseModelListing_test_list_admin_model.coverage" NAME="Test: base.tests.TestBaseModelListing.test_list_admin_model Coverage Results" MODIFIED="1425205954272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_tests.coverage" NAME="Test: lib.pos.identify.tests Coverage Results" MODIFIED="1411250291468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_tests2.coverage" NAME="Test: app_pms.tests2 Coverage Results" MODIFIED="1416909350087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_stock.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_stock Coverage Results" MODIFIED="1421360520914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -266,7 +219,75 @@
     <favorites_list name="rivers" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1820">
+              <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.6857142" vertical-offset="0" max-vertical-offset="5382">
+              <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
+              <folding>
+                <element signature="n#block#1;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tos_import/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.7640188" vertical-offset="5722" max-vertical-offset="9178">
+              <caret line="344" column="39" selection-start-line="344" selection-start-column="39" selection-end-line="344" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tos_import/tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="12926" max-vertical-offset="14482">
+              <caret line="514" column="50" selection-start-line="514" selection-start-column="12" selection-end-line="514" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model_list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/base/templates/base/model_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.6" vertical-offset="780" max-vertical-offset="1794">
+              <caret line="51" column="16" selection-start-line="46" selection-start-column="10" selection-end-line="51" selection-end-column="16" />
+              <folding>
+                <element signature="e#1312#2131#0#HTML" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="verbose_name.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tos_import/templatetags/verbose_name.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
+              <caret line="5" column="16" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -284,12 +305,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/admin/fieldset.html" />
-        <option value="$PROJECT_DIR$/templates/admin/edit_inline/tabbable.html" />
-        <option value="$PROJECT_DIR$/templates/admin/edit_inline/tabular.html" />
-        <option value="$PROJECT_DIR$/templates/admin/edit_inline/tab-nav.html" />
-        <option value="$PROJECT_DIR$/templates/admin/edit_inline/tabular2.html" />
-        <option value="$PROJECT_DIR$/templates/admin/edit_inline/tab-content.html" />
         <option value="$PROJECT_DIR$/tos_import/templatetags/urls.py" />
         <option value="$PROJECT_DIR$/base/templatetags/current_url.py" />
         <option value="$PROJECT_DIR$/base/templatetags/money.py" />
@@ -306,35 +321,41 @@
         <option value="$PROJECT_DIR$/tos_import/statement_account/tests.py" />
         <option value="$PROJECT_DIR$/none.py" />
         <option value="$PROJECT_DIR$/base/templates/model_list.html" />
-        <option value="$PROJECT_DIR$/templates/admin/base.html" />
         <option value="$PROJECT_DIR$/base/templatetags/dict_lookup.py" />
         <option value="$PROJECT_DIR$/base/templates/base/model_list.html" />
-        <option value="$PROJECT_DIR$/templates/admin/change_list.html" />
-        <option value="$PROJECT_DIR$/templates/admin/change_form.html" />
-        <option value="$PROJECT_DIR$/base/views.py" />
         <option value="$PROJECT_DIR$/tos_import/models.py" />
         <option value="$PROJECT_DIR$/tos_import/statement_position/models.py" />
         <option value="$PROJECT_DIR$/stat_simple/models.py" />
         <option value="$PROJECT_DIR$/tos_import/statement_trade/tests.py" />
         <option value="$PROJECT_DIR$/tos_import/statement_position/tests.py" />
         <option value="$PROJECT_DIR$/tos_import/classes/io/open_acc/__open_acc.py" />
-        <option value="$PROJECT_DIR$/base/admin.py" />
         <option value="$PROJECT_DIR$/base/models.py" />
-        <option value="$PROJECT_DIR$/base/tests.py" />
         <option value="$PROJECT_DIR$/stat_simple/admin.py" />
         <option value="$PROJECT_DIR$/stat_simple/tests.py" />
         <option value="$PROJECT_DIR$/tos_import/templatetags/verbose_name.py" />
         <option value="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__leg_one.py" />
-        <option value="$PROJECT_DIR$/tos_import/views.py" />
         <option value="$PROJECT_DIR$/tos_import/statement/statement_position/tests.py" />
         <option value="$PROJECT_DIR$/tos_import/statement/statement_trade/admin.py" />
         <option value="$PROJECT_DIR$/tos_import/statement/statement_account/admin.py" />
-        <option value="$PROJECT_DIR$/rivers/settings.py" />
         <option value="$PROJECT_DIR$/rivers/urls.py" />
-        <option value="$PROJECT_DIR$/tos_import/admin.py" />
         <option value="$PROJECT_DIR$/tos_import/statement/statement_trade/tests.py" />
         <option value="$PROJECT_DIR$/tos_import/statement/statement_account/tests.py" />
         <option value="$PROJECT_DIR$/tos_import/tests.py" />
+        <option value="$PROJECT_DIR$/templates/admin/app_index.html" />
+        <option value="$PROJECT_DIR$/base/views.py" />
+        <option value="$PROJECT_DIR$/base/tests.py" />
+        <option value="$PROJECT_DIR$/statistic/simple/stat_day/models.py" />
+        <option value="$PROJECT_DIR$/statistic/simple/stat_day/tests.py" />
+        <option value="$PROJECT_DIR$/rivers/settings.py" />
+        <option value="$PROJECT_DIR$/statistic/simple/stat_day/admin.py" />
+        <option value="$PROJECT_DIR$/base/admin.py" />
+        <option value="$PROJECT_DIR$/templates/admin/change_list.html" />
+        <option value="$PROJECT_DIR$/templates/admin/change_form.html" />
+        <option value="$PROJECT_DIR$/templates/admin/base.html" />
+        <option value="$PROJECT_DIR$/statistic/simple/stat_day/views.py" />
+        <option value="$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html" />
+        <option value="$PROJECT_DIR$/tos_import/admin.py" />
+        <option value="$PROJECT_DIR$/tos_import/views.py" />
       </list>
     </option>
   </component>
@@ -355,6 +376,9 @@
             <id />
           </State>
           <State>
+            <id>Buildout</id>
+          </State>
+          <State>
             <id>Django</id>
           </State>
           <State>
@@ -367,7 +391,22 @@
             <id>JavaScript</id>
           </State>
           <State>
-            <id>Probable bugsJavaScript</id>
+            <id>LESS</id>
+          </State>
+          <State>
+            <id>Puppet</id>
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+          <State>
+            <id>RELAX NG</id>
+          </State>
+          <State>
+            <id>SASS/SCSS</id>
+          </State>
+          <State>
+            <id>SQL</id>
           </State>
           <State>
             <id>XML</id>
@@ -375,7 +414,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>Buildout</id>
+            <id>Python</id>
           </State>
         </selected-state>
       </profile-state>
@@ -407,7 +446,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -454,31 +492,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="statement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tos_import" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statement_trade" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -490,69 +510,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tos_import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statement_position" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tos_import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statement_account" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tos_import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stat_simple" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -584,8 +542,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -609,15 +590,15 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jack\Projects\rivers\tos_import" />
+      <recent name="C:\Users\Jack\Projects\rivers\tos_import\classes\templates\tos_import" />
+      <recent name="C:\Users\Jack\Projects\rivers\statistics\simple\day_stat" />
       <recent name="C:\Users\Jack\Projects\rivers\tos_import\files" />
       <recent name="C:\Users\Jack\Projects\rivers\tos_import\statement" />
-      <recent name="C:\Users\Jack\Projects\rivers\base\templates\base" />
-      <recent name="C:\Users\Jack\Projects\rivers\tos_import" />
-      <recent name="C:\Users\Jack\Projects\rivers" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.rivers">
-    <configuration default="false" name="Test: tos_import.statement.statement_account.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+    <configuration default="false" name="Test: statistics.simple.day_stat.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -630,7 +611,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="rivers" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="tos_import.statement.statement_account.tests" />
+      <option name="TARGET" value="statistics.simple.day_stat.tests" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
@@ -639,7 +620,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Test: tos_import.statement.statement_position.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+    <configuration default="false" name="Test: statistic.simple.stat_day.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -652,77 +633,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="rivers" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="tos_import.statement.statement_position.tests" />
+      <option name="TARGET" value="statistic.simple.stat_day.tests" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: tos_import.statement.statement_trade.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="tos_import.statement.statement_trade.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: tos_import.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="tos_import.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="urls" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rivers" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rivers/urls.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
@@ -938,186 +853,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="Test: app_pms.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="App Pms">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_pms.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_pms.app_acc.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="App Pms">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_pms.app_acc.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_pms.app_pos.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="App Pms">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_pms.app_pos.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_pms.app_ta.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="App Pms">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_pms.app_ta.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="Basic" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="Basic" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_pms.classes.io.open_csv.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="App Pms - IO">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_pms.classes.io.open_csv.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_pms.classes.io.open_acc.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="App Pms - IO">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_pms.classes.io.open_acc.tests.TestOpenAcc" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_pms.classes.io.open_pos.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="App Pms - IO">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_pms.classes.io.open_pos.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_pms.classes.io.open_ta.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" folderName="App Pms - IO">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_pms.classes.io.open_ta.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="rivers" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -1172,285 +907,16 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Test: app_stat.tests" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_stat.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_stat.tests.TestSaveDateStat" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_stat.tests.TestSaveDateStat" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_stat.tests.TestSaveDateStat.test_get_future" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_stat.tests.TestSaveDateStat.test_get_future" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_stat.tests.TestSaveDateStat.test_get_forex" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_stat.tests.TestSaveDateStat.test_get_forex" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_stat.tests.TestSaveDateStat.test_get_equity" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_stat.tests.TestSaveDateStat.test_get_equity" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_stat.tests.TestSaveDateStat.test_get_holding_spread" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_stat.tests.TestSaveDateStat.test_get_holding_spread" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_stat.tests.TestSaveDateStat.test_get_date_stat" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_stat.tests.TestSaveDateStat.test_get_date_stat" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_stat.tests.TestSaveDateStat.test_start" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_stat.tests.TestSaveDateStat.test_start" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: app_stat.tests.TestDateStat.setUp" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="app_stat.tests.TestDateStat.setUp" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: base.tests.TestBaseModelList.test_model_listing" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="base.tests.TestBaseModelList.test_model_listing" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: stat_simple.tests" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="stat_simple.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <list size="26">
-      <item index="0" class="java.lang.String" itemvalue="Django tests.Test: app_pms.tests" />
-      <item index="1" class="java.lang.String" itemvalue="Django tests.Test: app_pms.app_acc.tests" />
-      <item index="2" class="java.lang.String" itemvalue="Django tests.Test: app_pms.app_pos.tests" />
-      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: app_pms.app_ta.tests" />
-      <item index="4" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_csv.tests" />
-      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_acc.tests" />
-      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_pos.tests" />
-      <item index="7" class="java.lang.String" itemvalue="Django tests.Test: app_pms.classes.io.open_ta.tests" />
-      <item index="8" class="java.lang.String" itemvalue="Django server.rivers" />
-      <item index="9" class="java.lang.String" itemvalue="Django tests.Test: all" />
-      <item index="10" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests" />
-      <item index="11" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat" />
-      <item index="12" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat.test_get_future" />
-      <item index="13" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat.test_get_forex" />
-      <item index="14" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat.test_get_equity" />
-      <item index="15" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat.test_get_holding_spread" />
-      <item index="16" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat.test_get_date_stat" />
-      <item index="17" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestSaveDateStat.test_start" />
-      <item index="18" class="java.lang.String" itemvalue="Django tests.Test: app_stat.tests.TestDateStat.setUp" />
-      <item index="19" class="java.lang.String" itemvalue="Django tests.Test: base.tests.TestBaseModelList.test_model_listing" />
-      <item index="20" class="java.lang.String" itemvalue="Django tests.Test: stat_simple.tests" />
-      <item index="21" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_account.tests" />
-      <item index="22" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_position.tests" />
-      <item index="23" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_trade.tests" />
-      <item index="24" class="java.lang.String" itemvalue="Django tests.Test: tos_import.tests" />
-      <item index="25" class="java.lang.String" itemvalue="Python.urls" />
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Django server.rivers" />
+      <item index="1" class="java.lang.String" itemvalue="Django tests.Test: all" />
+      <item index="2" class="java.lang.String" itemvalue="Django tests.Test: statistics.simple.day_stat.tests" />
+      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: statistic.simple.stat_day.tests" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_trade.tests" />
-        <item index="1" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_position.tests" />
-        <item index="2" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_account.tests" />
-        <item index="3" class="java.lang.String" itemvalue="Django tests.Test: tos_import.tests" />
-        <item index="4" class="java.lang.String" itemvalue="Python.urls" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Django tests.Test: statistic.simple.stat_day.tests" />
+        <item index="1" class="java.lang.String" itemvalue="Django tests.Test: statistics.simple.day_stat.tests" />
       </list>
     </recent_temporary>
   </component>
@@ -1735,7 +1201,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425163414830</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="restructure">
+      <created>1425165841370</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1425165841370</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1760,7 +1232,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1770,10 +1242,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51773834" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2989305" sideWeight="0.76053214" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3064171" sideWeight="0.76053214" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2513369" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960423" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29144385" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2989305" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1781,7 +1254,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1793,18 +1265,18 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51773834" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29144385" sideWeight="0.76053214" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3064171" sideWeight="0.76053214" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2513369" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960423" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29144385" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2989305" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1823,7 +1295,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="open ta and open pos support future forex" />
     <MESSAGE value="open pos..." />
     <MESSAGE value="open pos future forex more columns..." />
     <MESSAGE value="re-start admin... with future and forex" />
@@ -1848,7 +1319,8 @@
     <MESSAGE value="new model list" />
     <MESSAGE value="statement import bug fix" />
     <MESSAGE value="day stat option greek" />
-    <option name="LAST_COMMIT_MESSAGE" value="day stat option greek" />
+    <MESSAGE value="restructure" />
+    <option name="LAST_COMMIT_MESSAGE" value="restructure" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1858,63 +1330,11 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="18" />
+      <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/db/models/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19976635" vertical-offset="9969" max-vertical-offset="26572">
-          <caret line="416" column="0" selection-start-line="416" selection-start-column="0" selection-end-line="416" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stat_simple/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.058824" vertical-offset="428" max-vertical-offset="1560">
-          <caret line="28" column="20" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/files/test_files/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/classes/io/open_pos/__open_pos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2013809" vertical-offset="6689" max-vertical-offset="9776">
-          <caret line="264" column="45" selection-start-line="264" selection-start-column="24" selection-end-line="264" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/files/real_files/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.089758344" vertical-offset="0" max-vertical-offset="869">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/base_site.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.031668697" vertical-offset="0" max-vertical-offset="821">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.8" vertical-offset="2585" max-vertical-offset="5746">
-          <caret line="118" column="28" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/templatetags/currency_tag.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
@@ -1926,34 +1346,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17951669" vertical-offset="0" max-vertical-offset="869">
           <caret line="6" column="12" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/base/models.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.685715" vertical-offset="180" max-vertical-offset="1014">
-          <caret line="61" column="16" selection-start-line="58" selection-start-column="12" selection-end-line="61" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/change_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21193667" vertical-offset="1048" max-vertical-offset="4212">
-          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/change_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24360536" vertical-offset="736" max-vertical-offset="4992">
-          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/base/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8204833" vertical-offset="1159" max-vertical-offset="2028">
-          <caret line="72" column="48" selection-start-line="72" selection-start-column="48" selection-end-line="72" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1977,13 +1369,6 @@
         <state vertical-scroll-proportion="0.3084112" vertical-offset="10734" max-vertical-offset="12610">
           <caret line="426" column="35" selection-start-line="426" selection-start-column="35" selection-end-line="426" selection-end-column="35" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stat_simple/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.089758344" vertical-offset="0" max-vertical-offset="14898">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2025,52 +1410,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/base/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <caret line="0" column="22" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/base/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="509">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/base/templates/base/model_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20097442" vertical-offset="1213" max-vertical-offset="2314">
-          <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stat_simple/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1339" max-vertical-offset="3718">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/templatetags/verbose_name.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__leg_one.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1727" max-vertical-offset="3224">
           <caret line="82" column="16" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2085,20 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14959724" vertical-offset="0" max-vertical-offset="8658">
           <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/base/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45273632" vertical-offset="0" max-vertical-offset="1794">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stat_simple/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7583548" vertical-offset="69" max-vertical-offset="13286">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2127,6 +1457,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23935558" vertical-offset="0" max-vertical-offset="18876">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2134,6 +1467,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12714">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2141,6 +1475,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="23790">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2172,14 +1507,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rivers/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59838897" vertical-offset="494" max-vertical-offset="3120">
-          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.65822786" vertical-offset="2340" max-vertical-offset="6396">
@@ -2188,22 +1515,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59161675" vertical-offset="0" max-vertical-offset="13910">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rivers/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14959724" vertical-offset="0" max-vertical-offset="869">
           <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2213,7 +1530,7 @@
         <state vertical-scroll-proportion="0.32911393" vertical-offset="26" max-vertical-offset="13936">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2223,7 +1540,7 @@
         <state vertical-scroll-proportion="0.060747664" vertical-offset="208" max-vertical-offset="11102">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2236,11 +1553,181 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/classes/pos/identify/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7905639" vertical-offset="1809" max-vertical-offset="2678">
+          <caret line="98" column="14" selection-start-line="98" selection-start-column="14" selection-end-line="98" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/app_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49880096" vertical-offset="0" max-vertical-offset="834">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/app_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5611511" vertical-offset="0" max-vertical-offset="834">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="509">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58112776" vertical-offset="769" max-vertical-offset="1898">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2704">
+          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.529563" vertical-offset="5880" max-vertical-offset="13260">
+          <caret line="264" column="36" selection-start-line="264" selection-start-column="36" selection-end-line="264" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rivers/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34177214" vertical-offset="665" max-vertical-offset="3198">
+          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2901" max-vertical-offset="3770">
+          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/change_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3142858" vertical-offset="1036" max-vertical-offset="4212">
+          <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="364">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/change_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35496184" vertical-offset="724" max-vertical-offset="4992">
+          <caret line="35" column="42" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/templatetags/verbose_name.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="3444" max-vertical-offset="14924">
+          <caret line="149" column="52" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.25334957" vertical-offset="520" max-vertical-offset="5772">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1820">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/templates/base/model_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.6" vertical-offset="780" max-vertical-offset="1794">
+          <caret line="51" column="16" selection-start-line="46" selection-start-column="10" selection-end-line="51" selection-end-column="16" />
+          <folding>
+            <element signature="e#1312#2131#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6857142" vertical-offset="0" max-vertical-offset="5382">
+          <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
+          <folding>
+            <element signature="n#block#1;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18224299" vertical-offset="0" max-vertical-offset="14768">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="12926" max-vertical-offset="14482">
+          <caret line="514" column="50" selection-start-line="514" selection-start-column="12" selection-end-line="514" selection-end-column="50" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9766355" vertical-offset="3772" max-vertical-offset="5408">
+          <caret line="80" column="22" selection-start-line="80" selection-start-column="22" selection-end-line="80" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.7640188" vertical-offset="5722" max-vertical-offset="9178">
+          <caret line="344" column="39" selection-start-line="344" selection-start-column="39" selection-end-line="344" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -46,6 +46,24 @@
 		<![endif]-->
 
 
+  <!--[if !IE]> -->
+  <script type="text/javascript">
+    window.jQuery || document.write("<script src='{% static "assets/js/jquery.js" %}'>" + "<" + "/script>");
+  </script>
+
+  <!-- <![endif]-->
+
+  <!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='{% static "assets/js/jquery1x.js" %}'>"+"<"+"/script>");
+</script>
+<![endif]-->
+  <script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script src='{% static "assets/js/jquery.mobile.custom.js" %}'>" + "<" + "/script>");
+  </script>
+  <script src="{% static "assets/js/bootstrap.js" %}"></script>
+
+
   {% block extrahead %}{% endblock %}
   {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE"/>{% endblock %}
 </head>
@@ -136,23 +154,6 @@
 <!-- /.main-container -->
 
 <!-- basic scripts -->
-
-<!--[if !IE]> -->
-<script type="text/javascript">
-  window.jQuery || document.write("<script src='{% static "assets/js/jquery.js" %}'>" + "<" + "/script>");
-</script>
-
-<!-- <![endif]-->
-
-<!--[if IE]>
-<script type="text/javascript">
- window.jQuery || document.write("<script src='{% static "assets/js/jquery1x.js" %}'>"+"<"+"/script>");
-</script>
-<![endif]-->
-<script type="text/javascript">
-  if ('ontouchstart' in document.documentElement) document.write("<script src='{% static "assets/js/jquery.mobile.custom.js" %}'>" + "<" + "/script>");
-</script>
-<script src="{% static "assets/js/bootstrap.js" %}"></script>
 
 <!-- page specific plugin scripts -->
 

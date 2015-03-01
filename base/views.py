@@ -8,14 +8,10 @@ from django.contrib import admin
 
 
 # noinspection PyProtectedMember
-def list_all_model(request):
+def base_model_list(request):
     """
-    app_parent_list = [
-        {'index': 'tos_import', 'label': 'Tos Import'},
-        {'index': 'stat_simple', 'label': 'Stat Simple'}
-    ]
+    List all model for admin site
     """
-
     app_parent_label_list = {
         'statement_account': 'tos_import',
         'statement_position': 'tos_import',

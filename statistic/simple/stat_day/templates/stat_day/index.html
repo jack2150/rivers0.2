@@ -1,0 +1,308 @@
+{% extends "admin/base_site.html" %}
+{% load static currency_tag verbose_name %}
+
+{% block title %}Day Statistic: {{ date }}{% endblock %}
+
+{% block extrastyle %}
+  <style>
+    .semi_circle {
+      min-width: 110%;
+      height: 240px;
+      max-width: 110%;
+      margin: 0 auto;
+    }
+
+    .stat_day_table td, .stat_day_table th {
+      text-align: center;
+    }
+
+    .warning2 {
+      background-color: #fce17e;
+    }
+
+    .stat_day_header {
+      background-color: #6fb3e0;
+      color: #ffffff;
+    }
+
+    .toolbar {
+      float: right;
+    }
+
+    .icon-black {
+      color: #000000;
+    }
+
+  </style>
+{% endblock %}
+
+{% block extrahead %}
+  <script src="{% static 'highcharts-4.1.3/js/highcharts.js' %}"></script>
+{% endblock %}
+
+{% block breadcrumbs %}
+  <li>
+    <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    Day Stat:{{ date }}
+  </li>
+{% endblock %}
+
+{% block page-header %}
+  Day Stat:{{ date }}
+{% endblock %}
+
+{% block page-header-tool %}
+  <div class="btn-group btn-corner">
+    <button class="btn {% if previous == None %}disabled{% endif %} btn-white btn-sm btn-primary"
+            onclick="window.location.href=
+                '{% if previous %}{% url 'admin:simple_stat_day_view' previous %}{% else %}#{% endif %}'
+                ">
+      ← Previous
+    </button>
+
+    <button class="btn {% if next == None %}disabled{% endif %} btn-white btn-sm btn-primary"
+            onclick="window.location.href=
+                '{% if next %}{% url 'admin:simple_stat_day_view' next %}{% else %}#{% endif %}'
+                ">
+      Next →
+    </button>
+  </div>
+{% endblock %}
+
+
+{% block content %}
+  {% if stat_day %}
+    {% for stat_day_holding, option_greek in stat_day_holdings %}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <b>{{ stat_day_holding.name }}</b>
+            <div class="toolbar">
+              <a data-toggle="collapse" data-parent="#accordion" href="#{{ stat_day_holding.name }}">
+                <i class="ace-icon fa fa-chevron-up icon-black"></i>
+              </a>
+            </div>
+          </div>
+          <div id="{{ stat_day_holding.name }}" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="col-xs-6">
+                  <div id="container-{{ stat_day_holding.name }}-count" class="semi_circle"></div>
+                </div>
+                <div class="col-xs-6">
+                  <div id="container-{{ stat_day_holding.name }}-pl-open" class="semi_circle"></div>
+                </div>
+              </div>
+              <div class="col-xs-8">
+                <table class="table stat_day_table">
+                  <tr class="stat_day_header">
+                    <th>{% verbose_name stat_day_holding 'total_order_count' %}</th>
+                    <th>{% verbose_name stat_day_holding 'working_order_count' %}</th>
+                    <th>{% verbose_name stat_day_holding 'filled_order_count' %}</th>
+                    <th>{% verbose_name stat_day_holding 'cancelled_order_count' %}</th>
+
+                    <th>{% verbose_name stat_day_holding 'total_holding_count' %}</th>
+                    <th>{% verbose_name stat_day_holding 'profit_holding_count' %}</th>
+                    <th>{% verbose_name stat_day_holding 'loss_holding_count' %}</th>
+                  </tr>
+                  <tr>
+                    <td>{{ stat_day_holding.total_order_count }}</td>
+                    <td>{{ stat_day_holding.working_order_count }}</td>
+                    <td>{{ stat_day_holding.filled_order_count }}</td>
+                    <td>{{ stat_day_holding.cancelled_order_count }}</td>
+
+                    <td>{{ stat_day_holding.total_holding_count }}</td>
+                    <td>{{ stat_day_holding.profit_holding_count }}</td>
+                    <td>{{ stat_day_holding.loss_holding_count }}</td>
+                  </tr>
+
+                  <tr class="stat_day_header">
+                    <th>{% verbose_name stat_day_holding 'pl_open_sum' %}</th>
+                    <th>{% verbose_name stat_day_holding 'profit_open_sum' %}</th>
+                    <th>{% verbose_name stat_day_holding 'loss_open_sum' %}</th>
+
+                    <th>{% verbose_name stat_day_holding 'pl_day_sum' %}</th>
+                    <th>{% verbose_name stat_day_holding 'profit_day_sum' %}</th>
+                    <th>{% verbose_name stat_day_holding 'loss_day_sum' %}</th>
+
+                    <th>{% verbose_name stat_day_holding 'bp_effect_sum' %}</th>
+                  </tr>
+                  <tr>
+                    <td>{{ stat_day_holding.pl_open_sum|currency }}</td>
+                    <td>{{ stat_day_holding.profit_open_sum|currency }}</td>
+                    <td>{{ stat_day_holding.loss_open_sum|currency }}</td>
+
+                    <td>{{ stat_day_holding.pl_day_sum|currency }}</td>
+                    <td>{{ stat_day_holding.profit_day_sum|currency }}</td>
+                    <td>{{ stat_day_holding.loss_day_sum|currency }}</td>
+
+                    <td>{{ stat_day_holding.bp_effect_sum|currency }}</td>
+                  </tr>
+                </table>
+                {% if option_greek %}
+                  <div class="col-xs-8 col-xs-offset-2">
+                    <table class="table stat_day_table">
+                      <tr class="warning2">
+                        <th>{% verbose_name option_greek 'delta_sum' %}</th>
+                        <th>{% verbose_name option_greek 'gamma_sum' %}</th>
+                        <th>{% verbose_name option_greek 'theta_sum' %}</th>
+                        <th>{% verbose_name option_greek 'vega_sum' %}</th>
+                      </tr>
+                      <tr class="warning">
+                        <td>{{ option_greek.delta_sum|currency }}</td>
+                        <td>{{ option_greek.gamma_sum|currency }}</td>
+                        <td>{{ option_greek.theta_sum|currency }}</td>
+                        <td>{{ option_greek.vega_sum|currency }}</td>
+                      </tr>
+                    </table>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+      <script type="text/javascript">
+        function semi_circle_donut(container_id, title_text, profit, loss) {
+          return $(container_id).highcharts({
+            credits: {
+              enabled: false
+            },
+            exporting: {
+              enabled: false
+            },
+            //colors: ["#90ee7e", "#f45b5b"],
+            chart: {
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false,
+              marginTop: 30
+            },
+            title: {
+              text: title_text
+            },
+            tooltip: {
+              pointFormat: '{point.percentage:.1f}%: <b>{point.y}</b>'
+            },
+            plotOptions: {
+              pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                  enabled: true,
+                  distance: -38,
+                  format: '{point.name}<br>{point.percentage:.1f}%',
+                  style: {
+                    fontWeight: 'bold',
+                    color: 'white',
+                    textShadow: '0px 1px 2px black'
+                  }
+                }
+              },
+              series: {
+                animation: false
+              }
+            },
+            series: [{
+              type: 'pie',
+              name: title_text,
+              //innerSize: '50%',
+              data: [
+                ['Profit', profit],
+                ['Loss', Math.abs(loss)]
+              ]
+            }]
+          });
+        }
+
+        $(function () {
+          semi_circle_donut(
+              "#container-{{ stat_day_holding.name }}-count",
+              'PL Count',
+              parseFloat('{{ stat_day_holding.profit_holding_count|default:0.0 }}'),
+              parseFloat('{{ stat_day_holding.loss_holding_count|default:0.0 }}')
+          );
+
+          semi_circle_donut(
+              "#container-{{ stat_day_holding.name }}-pl-open",
+              'PL Open',
+              parseFloat('{{ stat_day_holding.profit_open_sum|default:0.0 }}'),
+              parseFloat('{{ stat_day_holding.loss_open_sum|default:0.0 }}')
+          );
+        });
+
+        $(function () {
+
+          $(document).ready(function () {
+
+            // Build the chart
+
+          });
+
+        });
+      </script>
+
+
+    {% endfor %}
+    <script type="text/javascript">
+      $(document).keydown(function (e) {
+        switch (e.which) {
+          case 37: // left
+          {% if previous %}
+            $(location).attr('href', '{% url 'admin:simple_stat_day_view' previous %}');
+          {% endif %}
+            break;
+
+          case 39: // right
+          {% if next %}
+            $(location).attr('href', '{% url 'admin:simple_stat_day_view' next %}');
+          {% endif %}
+            break;
+
+          default:
+            return; // exit this handler for other keys
+        }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
+      });
+    </script>
+  {% else %}
+    <div class="alert alert-warning">
+      <button class="close" data-dismiss="alert" type="button">
+        <i class="ace-icon fa fa-times"></i>
+      </button>
+      <strong>Empty!</strong>
+      No record have import into database yet ...
+      <br>
+    </div>
+  {% endif %}
+  </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

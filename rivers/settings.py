@@ -41,11 +41,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'tos_import',
     'tos_import.statement.statement_account',
     'tos_import.statement.statement_position',
     'tos_import.statement.statement_trade',
-    'stat_simple',
+
+    'statistic.simple.stat_day',
+
     'base',
 
 )

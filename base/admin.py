@@ -5,6 +5,6 @@ from base.views import *
 
 admin.site.register_view(
     'base/model_list/$',
-    urlname='list_all_model_view',
-    view=list_all_model
+    urlname='base_model_list',
+    view=base_model_list
 )

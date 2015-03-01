@@ -1,63 +1,98 @@
+import os
 from pprint import pprint
-from django.contrib.contenttypes.models import ContentType
-from django.db.models.base import ModelBase
-from tos_import.classes.test import TestSetUp
-from rivers.urls import *
-from django.contrib import admin
+
+from django.contrib.auth.models import User
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 
+from statistic.simple.stat_day.models import *
+from tos_import.classes.test import TestSetUp
+from tos_import.files.test_files import test_path
 
-# noinspection PyUnresolvedReferences
+
 class TestBaseModelListing(TestSetUp):
-    # todo: write better test
-    def test123(self):
-        app_parent_label_list = {
-            'statement_account': 'tos_import',
-            'statement_position': 'tos_import',
-            'statement_trade': 'tos_import',
-        }
-
-        module_list = list()
-
-        for item in admin.site._registry:
-            module = item
-            """:type : ModelBase"""
-
-            app = str(module._meta.app_label)
-            try:
-                app_parent_label = app_parent_label_list[app]
-            except KeyError:
-                app_parent_label = app
-
-            module_list.append(
-                {
-                    'name': module.__name__,
-                    'url': reverse('admin:%s_%s_changelist' % (app.lower(), module.__name__.lower())),
-                    'app': app,
-                    'app_label': ' '.join(map(lambda label: label.capitalize(), app.split('_'))),
-                    'app_parent': app_parent_label
-                }
+    def ready_file(self, real_date, file_date):
+        if not User.objects.exists():
+            self.user = User.objects.create_superuser(
+                username='jack',
+                email='a@b.com',
+                password='pass'
             )
 
-        app_parent_list = set(module['app_parent'] for module in module_list)
+        self.date = real_date
 
-        new_app_parent_list = list()
+        self.account_statement_file = SimpleUploadedFile(
+            '%s-AccountStatement.csv' % file_date,
+            open(os.path.join(test_path, file_date, '%s-AccountStatement.csv' % file_date)).read()
+        )
+        self.position_statement_file = SimpleUploadedFile(
+            '%s-PositionStatement.csv' % file_date,
+            open(os.path.join(test_path, file_date, '%s-PositionStatement.csv' % file_date)).read()
+        )
+        self.trade_activity_file = SimpleUploadedFile(
+            '%s-TradeActivity.csv' % file_date,
+            open(os.path.join(test_path, file_date, '%s-TradeActivity.csv' % file_date)).read()
+        )
+
+        self.client.login(username='jack', password='pass')
+
+        self.client.post(
+            path=reverse('admin:statement_import'),
+            data=dict(
+                date=self.date,
+                account_statement=self.account_statement_file,
+                position_statement=self.position_statement_file,
+                trade_activity=self.trade_activity_file
+            )
+        )
+
+    def test_list_admin_model(self):
+        self.ready_file(real_date='2014-11-17', file_date='2014-11-18')
+        self.ready_file(real_date='2014-11-18', file_date='2014-11-19')
+
+        print 'DayStat object count: %d' % StatDay.objects.count()
+        print 'DayStatHolding object count: %d' % StatDayHolding.objects.count()
+        print 'DayStatOptionGreek object count: %d' % StatDayOptionGreek.objects.count()
+
+        response = self.client.get(reverse('admin:admin_base_model_list'))
+
+        print 'running url: %s' % reverse('admin:admin_base_model_list')
+        print 'response status code: %d\n' % response.status_code
+
+        app_parent_list = response.context['app_parent_list']
+        print 'app_parent_list parameters:'
+        pprint(app_parent_list, width=100)
+        self.assertEqual(type(app_parent_list), list)
+        self.assertGreaterEqual(len(app_parent_list), 0)
+        expected_key = ['name', 'label', 'child']
+        print 'Expected Key: %s' % expected_key
         for app_parent in app_parent_list:
-            new_app_parent_list.append(
-                {
-                    'name': app_parent,
-                    'label': ' '.join(map(lambda label: label.upper(), app_parent.split('_'))),
-                    'child': set(module['app'] for module in module_list
-                                 if module['app_parent'] == app_parent)
-                }
-            )
+            for key in app_parent.keys():
+                self.assertIn(key, expected_key)
+        print '\n'
 
-        app_label_list = dict()
-        for app in set(module['app'] for module in module_list):
-            app_label_list[app] = ' '.join(map(lambda label: label.capitalize(), app.split('_')))
+        app_label_list = response.context['app_label_list']
+        print 'app_label_list parameters:'
+        pprint(app_label_list, width=100)
+        self.assertEqual(type(app_label_list), dict)
+        self.assertGreaterEqual(len(app_label_list), 0)
+        print 'App label Key: %s' % app_label_list.keys()
+        print '\n'
 
-        pprint(module_list)
+        module_list = response.context['module_list']
+        print 'module_list parameters:'
+        pprint(module_list, width=100)
+        self.assertEqual(type(module_list), list)
+        self.assertGreaterEqual(len(module_list), 0)
+        expected_key = ['name', 'url', 'app', 'app_label', 'app_parent']
+        print 'Expected Key: %s' % expected_key
+        for module in module_list:
+            for key in module.keys():
+                self.assertIn(key, expected_key)
+        print '\n'
 
-        for x in app_parent_list:
-            print x
+
+
+
+
 
