@@ -1,6 +1,5 @@
 import os
 from datetime import datetime
-
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
@@ -12,18 +11,13 @@ from django import forms
 from pandas.tseries.offsets import BDay
 from suit.widgets import SuitDateWidget
 from django.contrib.admin.models import LogEntry, ADDITION
-
 from tos_import.models import Statement, Underlying, Future, Forex
 from tos_import.statement.statement_account.models import SaveAccountStatement, AccountSummary
 from tos_import.statement.statement_position.models import SavePositionStatement, PositionSummary
 from tos_import.statement.statement_trade.models import SaveTradeActivity, TradeSummary
-from statistic.simple.stat_day.models import SaveDayStat
-
-
-
-
+from statistic.simple.stat_day.models import SaveStatDay
 # noinspection PyMethodMayBeStatic
-from tos_import.views import statement_import
+from tos_import.views import statement_import, statement_import_all
 
 
 class UnderlyingAdmin(admin.ModelAdmin):
@@ -93,6 +87,7 @@ class AccountStatementInline(admin.TabularInline):
             (instance._meta.app_label, instance._meta.module_name),
             args=(instance.id,)
         )
+
         return '<a href="%s">View Position Statement</a>' % pos_url
 
     account_statement_link.allow_tags = True
@@ -345,4 +340,10 @@ admin.site.register_view(
     'tos_import/statement/import/(?P<statement_id>\d+)/$',
     urlname='statement_import',
     view=statement_import
+)
+
+admin.site.register_view(
+    'tos_import/statement/import/all/$',
+    urlname='statement_import_all',
+    view=statement_import_all
 )

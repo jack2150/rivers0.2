@@ -9,7 +9,7 @@ from tos_import.statement.statement_position.models import SavePositionStatement
 from tos_import.statement.statement_trade.models import *
 from tos_import.files.test_files import test_path
 from statistic.simple.stat_day import models
-from statistic.simple.stat_day.models import SaveDayStat
+from statistic.simple.stat_day.models import SaveStatDay
 
 
 class TestSaveData(TestSetUp):
@@ -241,7 +241,7 @@ class TestSaveDateStat(TestSetUp):
         self.statement = Statement.objects.last()
 
         # create instance now
-        self.save_day_stat = SaveDayStat(statement=self.statement)
+        self.save_day_stat = SaveStatDay(statement=self.statement)
 
         self.expected_keys = [
             'name',

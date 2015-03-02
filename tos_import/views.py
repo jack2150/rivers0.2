@@ -1,18 +1,23 @@
 from datetime import datetime
+import glob
 import os
 from django import forms
-from django.contrib import admin
 from django.contrib.admin.models import LogEntry, ADDITION
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import FieldError
+from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from pandas.tseries.offsets import BDay
-from statistic.simple.stat_day.models import SaveDayStat
+from rivers.settings import BASE_DIR
+from statistic.simple.stat_day.models import SaveStatDay
 from tos_import.models import Statement
 from tos_import.statement.statement_account.models import SaveAccountStatement
 from tos_import.statement.statement_position.models import SavePositionStatement
 from tos_import.statement.statement_trade.models import SaveTradeActivity
+
+
+import_path = '%s/tos_import/files/real_files/' % BASE_DIR
 
 
 class AccountStatementFile(forms.FileField):
@@ -154,7 +159,7 @@ class PmsImportStatementsForm(forms.Form):
                     file_data=ta_data
                 ).save_all()
 
-                SaveDayStat(statement).start()
+                SaveStatDay(statement).start()
 
                 self.cleaned_data['statement_id'] = statement.id
                 self.cleaned_data['statement_name'] = statement.__unicode__()
@@ -198,5 +203,145 @@ def statement_import(request, statement_id=0):
     return render(request, template, parameters)
 
 
+@staff_member_required
+def statement_import_all(request):
+    """
+    import all statements in real_path folder
+    :param request: request
+    :return: render
+    """
+    template = 'tos_import/statement_import_all.html'
+    real_files_folder = glob.glob('%s/*' % import_path)
 
+    imported_logs = list()
+    error_logs = list()
+    for folder in real_files_folder:
+        if os.path.isdir(folder):
+            real_date = os.path.basename(folder)
 
+            try:
+                datetime.strptime(real_date, '%Y-%m-%d')
+            except ValueError:
+                error_logs.append(
+                    {
+                        'path': folder,
+                        'date': real_date.split(' ')[0],
+                        'note': real_date.split(' ')[1],
+                        'error': 'Invalid filename'
+                    }
+                )
+            else:
+                # only import error free folder
+                # get file inside and get date
+                # skip date exist in db
+                if not Statement.objects.filter(date=real_date).exists():
+                    statement = glob.glob('%s/*.csv' % folder)[0]
+                    file_date = os.path.basename(statement)[0:10]
+
+                    acc_data = open(os.path.join(
+                        folder, '%s-AccountStatement.csv' % file_date)
+                    ).read()
+                    pos_data = open(os.path.join(
+                        folder, '%s-PositionStatement.csv' % file_date)
+                    ).read()
+                    ta_data = open(os.path.join(
+                        folder, '%s-TradeActivity.csv' % file_date)
+                    ).read()
+
+                    statement = Statement()
+                    statement.date = real_date
+                    statement.account_statement = acc_data
+                    statement.position_statement = pos_data
+                    statement.trade_activity = ta_data
+                    statement.save()
+
+                    SaveAccountStatement(
+                        date=file_date,
+                        statement=statement,
+                        file_data=acc_data
+                    ).save_all()
+
+                    SavePositionStatement(
+                        date=file_date,
+                        statement=statement,
+                        file_data=pos_data
+                    ).save_all()
+
+                    SaveTradeActivity(
+                        date=file_date,
+                        statement=statement,
+                        file_data=ta_data
+                    ).save_all()
+
+                    # save stat day
+                    SaveStatDay(statement).start()
+
+                    # display imported log
+                    account_summary = statement.accountsummary_set.first()
+                    """:type: AccountSummary"""
+
+                    position_summary = statement.positionsummary_set.first()
+                    """:type: PositionSummary"""
+
+                    trade_summary = statement.tradesummary_set.first()
+                    """:type: TradeSummary"""
+
+                    imported_logs.append({
+                        'statement': {
+                            'id': statement.id,
+                            'change_url': reverse(
+                                'admin:tos_import_statement_change',
+                                args={statement.id}),
+                            'delete_url': reverse(
+                                'admin:tos_import_statement_delete',
+                                args={statement.id}),
+                            'date': statement.date
+                        },
+                        'account_statement': {
+                            'id': account_summary.id,
+                            'change_url': reverse(
+                                'admin:statement_account_accountsummary_change',
+                                args={account_summary.id}),
+                            'delete_url': reverse(
+                                'admin:statement_account_accountsummary_delete',
+                                args={account_summary.id}),
+                        },
+                        'position_statement': {
+                            'id': position_summary.id,
+                            'change_url': reverse(
+                                'admin:statement_position_positionsummary_change',
+                                args={position_summary.id}),
+                            'delete_url': reverse(
+                                'admin:statement_position_positionsummary_delete',
+                                args={position_summary.id}),
+                        },
+                        'trade_activity': {
+                            'id': trade_summary.id,
+                            'change_url': reverse(
+                                'admin:statement_trade_tradesummary_change',
+                                args={trade_summary.id}),
+                            'delete_url': reverse(
+                                'admin:statement_trade_tradesummary_delete',
+                                args={trade_summary.id}),
+                        },
+                    })
+
+                    # log entry
+                    LogEntry.objects.log_action(
+                        user_id=request.user.id,
+                        content_type_id=ContentType.objects.get_for_model(Statement).id,
+                        object_id=statement.id,
+                        object_repr=statement.__unicode__(),
+                        action_flag=ADDITION
+                    )
+
+    parameters = dict(
+        real_files_folder=real_files_folder,
+        imported_logs=imported_logs,
+        error_logs=error_logs
+    )
+
+    # testing page view, delete all after done...
+    # Statement.objects.all().delete()
+
+    return render(request, template, parameters)

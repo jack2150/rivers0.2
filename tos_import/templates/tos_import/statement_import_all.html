@@ -1,0 +1,215 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static title_split dict_lookup %}
+
+{% block title %}Statement Import All{% endblock %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'assets/css/datepicker.css' %}"/>
+{% endblock %}
+
+{% block extrastyle %}
+  <style>
+    .white-backgroud {
+      background-color: #ffffff;
+    }
+
+    .black {
+      color: #000000;
+    }
+
+    .dd2-content:hover {
+      background-color: #ffffe0;
+    }
+
+    .margin-bot10 {
+      margin-bottom: 10px;
+    }
+  </style>
+{% endblock %}
+
+{% block breadcrumbs %}
+  <li>
+    <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    Statement Import All
+  </li>
+{% endblock %}
+
+{% block page-header %}Statement Import All{% endblock %}
+
+{% block content %}
+  <div class="main-container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-xs-6">
+        {% if imported_logs %}
+          <div class="panel panel-default">
+            <div class="panel-heading">Success Import</div>
+            <div class="panel-body">
+              <div class="dd">
+                <ol class="dd-list">
+                  {% for imported_log in imported_logs %}
+                    <li class="dd-item dd2-item collapseAll" data-id="15">
+                      <div class="dd-handle dd2-handle">
+                        <i class="normal-icon ace-icon fa fa-table black bigger-130"></i>
+
+                        <i class="drag-icon ace-icon fa fa-arrows bigger-125"></i>
+                      </div>
+                      <div class="dd2-content white-backgroud">
+                        STATEMENT: &lt;Id="{{ imported_log.statement.id }}",
+                        Date="{{ imported_log.statement.date }}"&gt
+
+                        <div class="pull-right action-buttons">
+                          <a class="blue" href="{{ imported_log.statement.change_url }}">
+                            <i class="ace-icon fa fa-pencil bigger-130"></i>
+                          </a>
+
+                          <a class="red" href="{{ imported_log.statement.delete_url }}">
+                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                          </a>
+                        </div>
+                      </div>
+
+                      <ol class="dd-list">
+                        <li class="dd-item dd2-item" data-id="16">
+                          <div class="dd-handle dd2-handle">
+                            <i class="normal-icon ace-icon fa fa-file-text-o green bigger-130"></i>
+
+                            <i class="drag-icon ace-icon fa fa-arrows bigger-125"></i>
+                          </div>
+                          <div class="dd2-content white-backgroud">
+                            ACCOUNT STATEMENT &lt;Id="{{ imported_log.account_statement.id }}"&gt
+                            <div class="pull-right action-buttons">
+                              <a class="blue" href="{{ imported_log.account_statement.change_url }}">
+                                <i class="ace-icon fa fa-pencil bigger-130"></i>
+                              </a>
+
+                              <a class="red" href="{{ imported_log.account_statement.delete_url }}">
+                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+
+                        <li class="dd-item dd2-item dd-colored" data-id="17">
+                          <div class="dd-handle dd2-handle btn-info">
+                            <i class="normal-icon ace-icon fa fa-file-text-o blue bigger-130"></i>
+
+                            <i class="drag-icon ace-icon fa fa-arrows bigger-125"></i>
+                          </div>
+                          <div class="dd2-content white-backgroud">
+                            POSITION STATEMENT &lt;Id="{{ imported_log.account_statement.id }}"&gt
+
+                            <div class="pull-right action-buttons">
+                              <a class="blue" href="{{ imported_log.account_statement.change_url }}">
+                                <i class="ace-icon fa fa-pencil bigger-130"></i>
+                              </a>
+
+                              <a class="red" href="{{ imported_log.account_statement.delete_url }}">
+                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+
+                        <li class="dd-item dd2-item" data-id="18">
+                          <div class="dd-handle dd2-handle">
+                            <i class="normal-icon ace-icon fa fa-file-text-o orange bigger-130"></i>
+
+                            <i class="drag-icon ace-icon fa fa-arrows bigger-125"></i>
+                          </div>
+                          <div class="dd2-content white-backgroud">
+                            TRADE ACTIVITY &lt;Id="{{ imported_log.account_statement.id }}"&gt
+
+                            <div class="pull-right action-buttons">
+                              <a class="blue" href="{{ imported_log.account_statement.change_url }}">
+                                <i class="ace-icon fa fa-pencil bigger-130"></i>
+                              </a>
+
+                              <a class="red" href="{{ imported_log.account_statement.delete_url }}">
+                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </li>
+                      </ol>
+                    </li>
+                  {% endfor %}
+                </ol>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="alert alert-warning">
+            <i class="ace-icon fa fa-exclamation-triangle "></i>
+            Nothing to import!
+          </div>
+        {% endif %}
+
+        </div>
+
+        <div class="col-xs-4">
+          {% if error_logs %}
+            <div class="panel panel-default">
+              <div class="panel-heading">Fail Import</div>
+              <div class="panel-body">
+                {% for error_log in error_logs %}
+                  <span class="label label-danger label-white middle margin-bot10">
+                    Error: {{ error_log.date }} {{ error_log.error }} "{{ error_log.note }}"
+                  </span>
+                {% endfor %}
+              </div>
+            </div>
+          {% else %}
+            <div class="alert alert-success">
+              <i class="ace-icon fa fa-check"></i>
+              No error found!
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="col-xs-2">
+          <button id="statement_changelist" class="btn btn-success">
+            <i class="ace-icon fa fa-check"></i>
+            Statement Changelist
+          </button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block footer_extra_script %}
+  <!-- page specific plugin scripts -->
+  <script src="{% static "assets/js/jquery.nestable.js" %}"></script>
+
+  <!--suppress JSJQueryEfficiency -->
+  <script type="text/javascript">
+    jQuery(function ($) {
+
+      $('.dd').nestable();
+
+      $('.dd-handle a').on('mousedown', function (e) {
+        e.stopPropagation();
+      });
+
+      $('[data-rel="tooltip"]').tooltip();
+
+      $('.dd').nestable('collapseAll');
+
+      $("#statement_changelist").click(function () {
+        window.location.href = "{% url 'admin:tos_import_statement_changelist' %}";
+      });
+    });
+
+
+  </script>
+{% endblock %}

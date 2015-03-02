@@ -100,7 +100,7 @@ class StatDayOptionGreek(models.Model):
         )
 
 
-class SaveDayStat(object):
+class SaveStatDay(object):
     def __init__(self, statement):
         """
         Get data from database table and

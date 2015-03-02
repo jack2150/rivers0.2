@@ -6,12 +6,11 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 from tos_import.files.test_files import *
 from tos_import.classes.test import TestSetUp
-from tos_import.admin import PmsImportStatementsForm
 from tos_import.statement.statement_account.models import *
 from tos_import.statement.statement_position.models import *
 from tos_import.statement.statement_trade.models import *
 import os
-
+from tos_import.views import statement_import_all, PmsImportStatementsForm
 
 
 class TestSetUpUnderlying(TestSetUp):
@@ -560,3 +559,54 @@ class TestPmsImportStatementView(TestSetUp):
         print 'FilledOrder count: %d' % FilledOrder.objects.count()
         print 'CancelledOrder count: %d' % CancelledOrder.objects.count()
         print 'RollingStrategy count: %d\n' % RollingStrategy.objects.count()
+
+
+class TestStatementImportAll(TestSetUp):
+    def setUp(self):
+        TestSetUp.setUp(self)
+
+        self.user = User.objects.create_superuser(
+            username='jack',
+            email='a@b.com',
+            password='pass'
+        )
+
+    def test_statement_import_all(self):
+        print 'login as superuser...'
+        self.client.login(username='jack', password='pass')
+
+        response = self.client.get(reverse('admin:statement_import_all'))
+
+        #print response
+
+        print Statement.objects.count()
+        print response.context['imported_log']
+
+        # todo: write better test
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

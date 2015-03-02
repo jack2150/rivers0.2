@@ -1,1 +1,1 @@
-from tos_import.classes.test.__test import TestSetUp, TestReadyUp
+from tos_import.classes.test.__test import TestSetUp, TestReadyUp, TestReadyFile
