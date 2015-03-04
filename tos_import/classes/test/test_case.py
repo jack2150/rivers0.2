@@ -1,9 +1,9 @@
 from datetime import datetime
 import glob
 import os
-from pprint import pprint
+from django.core.management import call_command
 
-from django.test import TestCase
+from django.test import TestCase, SimpleTestCase
 
 from tos_import.classes.io.open_pos import OpenPos
 from tos_import.files.real_files import real_path
@@ -14,7 +14,7 @@ from tos_import.statement.statement_position.models import SavePositionStatement
 from tos_import.statement.statement_trade.models import SaveTradeActivity
 
 
-class TestSetUp(TestCase):
+class TestSetUp(SimpleTestCase):
     def setUp(self):
         """
         ready up all variables and test class
@@ -30,7 +30,23 @@ class TestSetUp(TestCase):
         print '\n' + '=' * 100 + '\n\n'
 
 
-class TestReadyUp(TestCase):
+class TestSetUpDB(TestCase):
+    def setUp(self):
+        """
+        ready up all variables and test class
+        """
+        print '=' * 100
+        print "<%s> currently run: %s" % (self.__class__.__name__, self._testMethodName)
+        print '-' * 100 + '\n'
+
+    def tearDown(self):
+        """
+        remove variables after test
+        """
+        print '\n' + '=' * 100 + '\n\n'
+
+
+class TestReadyUp(SimpleTestCase):
     def setUp(self):
         """
         ready up all variables and test class
@@ -106,7 +122,8 @@ class TestReadyUp(TestCase):
 
         for fname in test_fname:
             date = fname[:10]
-            path = os.path.join(FILES['position_statement'], 'tests', fname)
+            #path = os.path.join(FILES['position_statement'], 'tests', fname)
+            path = ''
             self.ready_fname(date=date, path=path)
 
         position_statement_count = models.PositionSummary.objects.count()
@@ -197,6 +214,16 @@ class TestReadyFile(TestSetUp):
                         file_date=file_date
                     )
 
+
+class SetUpTestDB(TestSetUp):
+    @classmethod
+    def setUpClass(cls):
+        if not Statement.objects.exists():
+            call_command('loaddata', 'test_db.json')
+
+            print '=' * 100
+            print "setUpClass! Imported statement count: %d" % Statement.objects.count()
+            print '-' * 100 + '\n'
 
 
 

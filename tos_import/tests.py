@@ -5,17 +5,17 @@ from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 from tos_import.files.test_files import *
-from tos_import.classes.test import TestSetUp
+from tos_import.classes.test import TestSetUpDB
 from tos_import.statement.statement_account.models import *
 from tos_import.statement.statement_position.models import *
 from tos_import.statement.statement_trade.models import *
 import os
-from tos_import.views import statement_import_all, PmsImportStatementsForm
+from tos_import.views import PmsImportStatementsForm
 
 
-class TestSetUpUnderlying(TestSetUp):
+class TestSetUpUnderlying(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.underlying = Underlying(
             symbol='SPX',
@@ -24,9 +24,9 @@ class TestSetUpUnderlying(TestSetUp):
         self.underlying.save()
 
 
-class TestUnderlying(TestSetUp):
+class TestUnderlying(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.underlying = Underlying(
             symbol='SPX',
@@ -60,9 +60,9 @@ class TestUnderlying(TestSetUp):
             self.assertIn(key, ('symbol', 'company'))
 
 
-class TestFuture(TestSetUp):
+class TestFuture(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.future = Future(
             lookup='ES',
@@ -103,9 +103,9 @@ class TestFuture(TestSetUp):
             ))
 
 
-class TestForex(TestSetUp):
+class TestForex(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.forex = Forex(
             symbol='GBP/JPY',
@@ -141,9 +141,9 @@ class TestForex(TestSetUp):
             ))
 
 
-class TestStatement(TestSetUp):
+class TestStatement(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.statement = Statement(
             date='2014-11-14',
@@ -169,9 +169,9 @@ class TestStatement(TestSetUp):
         self.assertTrue(self.statement.id)
 
 
-class TestSaveAppModel(TestSetUp):
+class TestSaveAppModel(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.save_app_model = SaveAppModel(
             date='2014-11-14',
@@ -269,9 +269,9 @@ class TestSaveAppModel(TestSetUp):
         )
 
 
-class TestReadyStatement(TestSetUp):
+class TestReadyStatement(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.statement = Statement(
             date='2014-11-14',
@@ -282,10 +282,10 @@ class TestReadyStatement(TestSetUp):
         self.statement.save()
 
 
-class TestPmsImportStatementsForm(TestSetUp):
+class TestPmsImportStatementsForm(TestSetUpDB):
     # noinspection PyUnresolvedReferences
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.date = '2014-11-14'
         self.account_statement = SimpleUploadedFile(
@@ -476,9 +476,9 @@ class TestPmsImportStatementsForm(TestSetUp):
 
 
 # noinspection PyUnresolvedReferences
-class TestPmsImportStatementView(TestSetUp):
+class TestPmsImportStatementView(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.user = User.objects.create_superuser(
             username='jack',
@@ -561,9 +561,9 @@ class TestPmsImportStatementView(TestSetUp):
         print 'RollingStrategy count: %d\n' % RollingStrategy.objects.count()
 
 
-class TestStatementImportAll(TestSetUp):
+class TestStatementImportAll(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.user = User.objects.create_superuser(
             username='jack',
@@ -580,7 +580,7 @@ class TestStatementImportAll(TestSetUp):
         #print response
 
         print Statement.objects.count()
-        print response.context['imported_log']
+        print response.context['imported_logs']
 
         # todo: write better test
 

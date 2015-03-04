@@ -3,7 +3,7 @@ from pprint import pprint
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
-from tos_import.classes.test import TestSetUp
+from tos_import.classes.test import TestSetUpDB
 from tos_import.statement.statement_account.models import SaveAccountStatement
 from tos_import.statement.statement_position.models import SavePositionStatement
 from tos_import.statement.statement_trade.models import *
@@ -12,9 +12,9 @@ from statistic.simple.stat_day import models
 from statistic.simple.stat_day.models import SaveStatDay
 
 
-class TestSaveData(TestSetUp):
+class TestSaveData(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.items = {}
         self.test_cls = None
@@ -226,12 +226,12 @@ class TestStatDayOptionGreek(TestSaveData):
 
 
 # noinspection PyMethodOverriding
-class TestSaveDateStat(TestSetUp):
+class TestSaveDateStat(TestSetUpDB):
     def setUp(self):
         """
         open three file and save it into table then get data
         """
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.ready_file2(real_date='2014-11-17', file_date='2014-11-18')
         self.ready_file2(real_date='2014-11-18', file_date='2014-11-19')

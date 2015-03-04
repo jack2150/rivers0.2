@@ -54,9 +54,9 @@ class TestBaseModelListing(TestSetUp):
         print 'DayStatHolding object count: %d' % StatDayHolding.objects.count()
         print 'DayStatOptionGreek object count: %d' % StatDayOptionGreek.objects.count()
 
-        response = self.client.get(reverse('admin:admin_base_model_list'))
+        response = self.client.get(reverse('admin:base_model_list'))
 
-        print 'running url: %s' % reverse('admin:admin_base_model_list')
+        print 'running url: %s' % reverse('admin:base_model_list')
         print 'response status code: %d\n' % response.status_code
 
         app_parent_list = response.context['app_parent_list']

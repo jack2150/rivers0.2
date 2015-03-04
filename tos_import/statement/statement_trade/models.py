@@ -100,7 +100,7 @@ class WorkingOrder(models.Model, TaModel):
     order = models.CharField(max_length=20, verbose_name="Order")
     tif = models.CharField(max_length=20, verbose_name="TIF")
     mark = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark")
-    status = models.CharField(max_length=20, verbose_name="Status")
+    status = models.CharField(max_length=200, verbose_name="Status")
 
     def json(self):
         """
@@ -213,7 +213,7 @@ class CancelledOrder(models.Model, TaModel):
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Price")
     order = models.CharField(max_length=20, verbose_name="Order")
     tif = models.CharField(max_length=20, verbose_name="TIF")
-    status = models.CharField(max_length=20, verbose_name="Status")
+    status = models.CharField(max_length=200, verbose_name="Status")
 
     def json(self):
         """
@@ -275,7 +275,7 @@ class RollingStrategy(models.Model, TaModel):
     active_time_end = models.TimeField(verbose_name="Active Time End")
     move_to_market_time_start = models.TimeField(verbose_name="Move Market Time Start")
     move_to_market_time_end = models.TimeField(verbose_name="Move Market Time End")
-    status = models.CharField(max_length=20, verbose_name="Status")
+    status = models.CharField(max_length=200, verbose_name="Status")
 
     def json(self):
         """

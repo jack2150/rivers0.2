@@ -7,7 +7,7 @@ from django.utils.timezone import utc
 from tos_import.files.real_files import real_path
 from tos_import.files.test_files import *
 from tos_import.classes.io.open_ta import OpenTA
-from tos_import.classes.test import TestSetUp
+from tos_import.classes.test import TestSetUp, TestSetUpDB
 from tos_import.statement.statement_trade import models
 from tos_import.tests import TestReadyStatement
 
@@ -387,9 +387,9 @@ class TestOpenTASaveAll(TestSetUp):
 
 
 # noinspection PyUnresolvedReferences
-class TestSaveTradeActivity(TestSetUp):
+class TestSaveTradeActivity(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.ta_files = glob(test_ta_path + '/*.csv')
         self.ta_files = [

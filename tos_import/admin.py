@@ -1,22 +1,11 @@
-import os
-from datetime import datetime
 from django.contrib import admin
-from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import FieldError
 from django.core.urlresolvers import reverse
 from django.forms import ModelForm
-from django.shortcuts import render
 from django import forms
-from pandas.tseries.offsets import BDay
-from suit.widgets import SuitDateWidget
-from django.contrib.admin.models import LogEntry, ADDITION
 from tos_import.models import Statement, Underlying, Future, Forex
-from tos_import.statement.statement_account.models import SaveAccountStatement, AccountSummary
-from tos_import.statement.statement_position.models import SavePositionStatement, PositionSummary
-from tos_import.statement.statement_trade.models import SaveTradeActivity, TradeSummary
-from statistic.simple.stat_day.models import SaveStatDay
-# noinspection PyMethodMayBeStatic
+from tos_import.statement.statement_account.models import AccountSummary
+from tos_import.statement.statement_position.models import PositionSummary
+from tos_import.statement.statement_trade.models import TradeSummary
 from tos_import.views import statement_import, statement_import_all
 
 
@@ -158,17 +147,6 @@ class TradeActivityInline(admin.TabularInline):
 
 
 class StatementForm(ModelForm):
-    """
-    class Meta:
-
-        widgets = {
-            #'date': SuitDateWidget(),
-            #'account_statement': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
-            #'position_statement': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
-            #'trade_activity': AutosizedTextarea(attrs={'rows': 10, 'style': 'width:95%'}),
-        }
-    """
-
     date = forms.DateField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
     )

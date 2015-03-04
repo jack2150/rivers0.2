@@ -5,13 +5,13 @@ from pprint import pprint
 from django.utils.timezone import utc
 from tos_import.files.test_files import *
 from tos_import.files.real_files import real_path
-from tos_import.classes.test import TestSetUp
+from tos_import.classes.test import TestSetUpDB
 from tos_import.statement.statement_account import models
 
 
-class TestAccountStatement(TestSetUp):
+class TestAccountStatement(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.date = '2014-07-24'
         self.items = {
@@ -402,9 +402,9 @@ class TestHoldingForex(TestAccountStatement):
 
 
 # noinspection PyUnresolvedReferences
-class TestSaveAccountStatement(TestSetUp):
+class TestSaveAccountStatement(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.acc_files = glob(os.path.join(test_acc_path, '*.csv'))
 

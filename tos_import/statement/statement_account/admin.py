@@ -3,7 +3,6 @@ import locale
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.forms import ModelForm
-from suit.widgets import SuitSplitDateTimeWidget
 
 from tos_import.statement.statement_account import models
 
@@ -63,8 +62,6 @@ class ProfitLossInline(AccountSummaryInline):
     )
     exclude = ('underlying', 'future')
 
-    suit_classes = 'suit-tab suit-tab-profit_loss'
-
 
 # noinspection PyMethodMayBeStatic
 class OrderHistoryInline(AccountSummaryInline):
@@ -80,8 +77,6 @@ class OrderHistoryInline(AccountSummaryInline):
         'side', 'price', 'expire_date', 'tif', 'strike', 'order', 'spread'
     )
     exclude = ('underlying', 'future', 'forex', 'status', 'time_placed')
-
-    suit_classes = 'suit-tab suit-tab-trade'
 
 
 # noinspection PyMethodMayBeStatic
@@ -99,8 +94,6 @@ class TradeHistoryInline(AccountSummaryInline):
     )
     exclude = ('underlying', 'future', 'forex', 'status', 'execute_time')
 
-    suit_classes = 'suit-tab suit-tab-trade'
-
 
 class CashBalanceInline(AccountSummaryInline):
     model = models.CashBalance
@@ -110,8 +103,6 @@ class CashBalanceInline(AccountSummaryInline):
         'fees', 'commissions', 'amount', 'balance'
     )
 
-    suit_classes = 'suit-tab suit-tab-balance'
-
 
 class ForexStatementInline(AccountSummaryInline):
     model = models.ForexStatement
@@ -120,8 +111,6 @@ class ForexStatementInline(AccountSummaryInline):
         'time', 'contract', 'ref_no', 'description',
         'commissions', 'amount', 'amount_usd', 'balance'
     )
-
-    suit_classes = 'suit-tab suit-tab-forex'
 
 
 # noinspection PyProtectedMember
@@ -143,8 +132,6 @@ class HoldingForexInline(AccountSummaryInline):
     )
     exclude = ('forex', )
 
-    suit_classes = 'suit-tab suit-tab-forex'
-
 
 class ForexSummaryInline(AccountSummaryInline):
     model = models.ForexSummary
@@ -154,8 +141,6 @@ class ForexSummaryInline(AccountSummaryInline):
         'available_equity', 'risk_level'
     )
 
-    suit_classes = 'suit-tab suit-tab-forex'
-
 
 class FutureStatementInline(AccountSummaryInline):
     model = models.FutureStatement
@@ -164,8 +149,6 @@ class FutureStatementInline(AccountSummaryInline):
         'execute_date', 'execute_time', 'contract',
         'ref_no', 'description', 'fee', 'commission', 'amount', 'balance'
     )
-
-    suit_classes = 'suit-tab suit-tab-future'
 
 
 # noinspection PyProtectedMember
@@ -191,8 +174,6 @@ class HoldingFutureInline(AccountSummaryInline):
     )
     exclude = ('future', )
 
-    suit_classes = 'suit-tab suit-tab-future'
-
 
 # noinspection PyProtectedMember
 class HoldingEquityInline(AccountSummaryInline):
@@ -213,8 +194,6 @@ class HoldingEquityInline(AccountSummaryInline):
         'symbol', 'description', 'quantity', 'trade_price', 'mark', 'mark_value'
     )
     exclude = ('underlying', )
-
-    suit_classes = 'suit-tab suit-tab-holding'
 
 
 # noinspection PyProtectedMember
@@ -237,8 +216,6 @@ class HoldingOptionInline(AccountSummaryInline):
         'contract', 'quantity', 'trade_price', 'mark', 'mark_value'
     )
     exclude = ('underlying', )
-
-    suit_classes = 'suit-tab suit-tab-holding'
 
 
 # noinspection PyMethodMayBeStatic
@@ -291,11 +268,9 @@ class AccountSummaryAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'classes': ('wide', 'suit-tab', 'suit-tab-account'),
             'fields': ('statement', 'date')
         }),
         ('Account Statement', {
-            'classes': ('wide', 'suit-tab', 'suit-tab-account'),
             'fields': (
                 'net_liquid_value', 'stock_buying_power', 'option_buying_power',
                 'commissions_ytd', 'futures_commissions_ytd'
@@ -311,16 +286,6 @@ class AccountSummaryAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return False
-
-    suit_form_tabs = (
-        ('account', 'Account'),
-        ('balance', 'Balance'),
-        ('trade', 'Trades'),
-        ('profit_loss', 'P/L'),
-        ('holding', 'Holdings'),
-        ('forex', 'Forex'),
-        ('future', 'Futures'),
-    )
 
 
 # noinspection PyMethodMayBeStatic
@@ -406,18 +371,8 @@ class OrderTradeAdmin(AccountStatementForeignAdmin):
     symbol.allow_tags = True
 
 
-class AccForm(ModelForm):
-    class Meta:
-        widgets = {
-            'time_placed': SuitSplitDateTimeWidget,
-            'execute_time': SuitSplitDateTimeWidget,
-        }
-
-
 # noinspection PyMethodMayBeStatic
 class OrderHistoryAdmin(OrderTradeAdmin):
-    form = AccForm
-
     def custom_status(self, obj):
         return obj.status.split(':')[0] if ':' in obj.status else obj.status
 
@@ -462,8 +417,6 @@ class OrderHistoryAdmin(OrderTradeAdmin):
 
 # noinspection PyMethodMayBeStatic
 class TradeHistoryAdmin(OrderTradeAdmin):
-    form = AccForm
-
     list_display = (
         'account_summary_date', 'symbol',
         'execute_time', 'spread', 'side', 'quantity', 'pos_effect',

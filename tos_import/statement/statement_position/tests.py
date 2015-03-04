@@ -4,7 +4,7 @@ from pprint import pprint
 
 from tos_import.files.test_files import *
 from tos_import.files.real_files import *
-from tos_import.classes.test import TestSetUp
+from tos_import.classes.test import TestSetUp, TestSetUpDB
 from tos_import.tests import TestSetUpUnderlying
 from tos_import.statement.statement_position import models
 
@@ -263,9 +263,9 @@ class TestPositionForex(TestPositionStatement):
 
 
 # noinspection PyUnresolvedReferences
-class TestSavePositionStatement(TestSetUp):
+class TestSavePositionStatement(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         self.pos_files = glob(test_pos_path + '/*.csv')
 

@@ -1,25 +1,634 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://C:/Python/Anaconda/Lib/site-packages/django" />
-    <bookmark url="file://C:/Python/Anaconda/Lib/site-packages/suit" />
-    <bookmark url="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin" />
-    <bookmark url="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates" />
-    <bookmark url="file://C:/Python/Anaconda/Lib/site-packages/django_admin_bootstrapped" />
+    <bookmark url="file://C:/Anaconda/Lib/site-packages/django/contrib/admin" />
+    <bookmark url="file://C:/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/templates/tos_import/statement_import_all.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tos_import/templatetags/title_split.py" />
+    <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="speed up some test...">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/AbstractPool$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/AbstractPool$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/AbstractPool.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/AbstractPool.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/BlockingQueuePool.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/BlockingQueuePool.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/com/highcharts/export/filter/CorsFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/com/highcharts/export/filter/CorsFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/com/highcharts/export/filter/CorsFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/com/highcharts/export/filter/CorsFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/com/highcharts/export/controller/ExportController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/com/highcharts/export/controller/ExportController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/com/highcharts/export/controller/ExportController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/com/highcharts/export/controller/ExportController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/resources/Highcharts-icon-160px.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/resources/Highcharts-icon-160px.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/resources/Highcharts-icon-160px.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/resources/Highcharts-icon-160px.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/Highcharts.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/Highstock.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/util/MimeType.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/util/MimeType.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/com/highcharts/export/service/MonitorService.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/com/highcharts/export/service/MonitorService.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/com/highcharts/export/service/MonitorService.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/com/highcharts/export/service/MonitorService.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/ObjectFactory.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/ObjectFactory.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/ObjectPool.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/ObjectPool.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/PoolException.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/PoolException.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/com/highcharts/export/interceptor/RequestInterceptor.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/com/highcharts/export/interceptor/RequestInterceptor.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/com/highcharts/export/interceptor/RequestInterceptor.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/com/highcharts/export/interceptor/RequestInterceptor.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/converter/SVGConverter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/converter/SVGConverter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/converter/SVGConverterException.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/converter/SVGConverterException.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/server/Server$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/server/Server$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/server/Server.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/server/Server.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/ServerObjectFactory$PortStatus.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/ServerObjectFactory$PortStatus.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/ServerObjectFactory.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/pool/ServerObjectFactory.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/server/ServerState.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/server/ServerState.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/util/TempDir.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/util/TempDir.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/server/TimeOut.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/com/highcharts/export/server/TimeOut.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/com/highcharts/export/controller/ZeroRequestParameterException.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/com/highcharts/export/controller/ZeroRequestParameterException.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/com/highcharts/export/controller/ZeroRequestParameterException.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/com/highcharts/export/controller/ZeroRequestParameterException.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/antisamy-1.4.3.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/antisamy-1.4.3.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/aopalliance-1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/aopalliance-1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/apple-touch-icon-114x114.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/apple-touch-icon-114x114.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/apple-touch-icon-120x120.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/apple-touch-icon-120x120.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/apple-touch-icon-144x144.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/apple-touch-icon-144x144.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/apple-touch-icon-152x152.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/apple-touch-icon-152x152.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/apple-touch-icon-180x180.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/apple-touch-icon-180x180.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/apple-touch-icon-57x57.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/apple-touch-icon-57x57.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/apple-touch-icon-60x60.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/apple-touch-icon-60x60.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/apple-touch-icon-72x72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/apple-touch-icon-72x72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/apple-touch-icon-76x76.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/apple-touch-icon-76x76.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/batik-css-1.7.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/batik-css-1.7.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/batik-ext-1.7.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/batik-ext-1.7.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/batik-util-1.7.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/batik-util-1.7.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/bsh-core-2.0b4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/bsh-core-2.0b4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-beanutils-1.7.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-beanutils-1.7.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-beanutils-core-1.7.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-beanutils-core-1.7.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-codec-1.9.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-codec-1.9.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-collections-3.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-collections-3.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-configuration-1.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-configuration-1.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-digester-1.8.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-digester-1.8.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-fileupload-1.2.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-fileupload-1.2.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-httpclient-3.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-httpclient-3.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-io-2.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-io-2.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-lang-2.6.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-lang-2.6.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-logging-1.1.3.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/commons-logging-1.1.3.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/esapi-2.1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/esapi-2.1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/favicon-160x160.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/favicon-160x160.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/favicon-16x16.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/favicon-16x16.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/favicon-192x192.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/favicon-192x192.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/favicon-32x32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/favicon-32x32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/favicon-96x96.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/favicon-96x96.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/fonts/fontawesome-webfont.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/gson-2.2.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/gson-2.2.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/highcharts-export-convert-2.1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/highcharts-export-convert-2.1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/highcharts-export-convert.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/highcharts-export-convert.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web.war" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web.war" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/jsoup-1.8.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/jsoup-1.8.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/log4j-1.2.17.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/log4j-1.2.17.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/graphics/meteogram-symbols-30px.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/graphics/meteogram-symbols-30px.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/nekohtml-1.9.12.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/nekohtml-1.9.12.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/graphics/skies.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/graphics/skies.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/graphics/snow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/graphics/snow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/splash.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/splash.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-aop-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-aop-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-beans-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-beans-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-context-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-context-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-core-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-core-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-expression-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-expression-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-web-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-web-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-webmvc-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/spring-webmvc-4.1.2.RELEASE.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/images/sprite.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/images/sprite.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/standard-1.1.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/standard-1.1.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/graphics/sun.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/graphics/sun.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/gfx/vml-radial-gradient.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/gfx/vml-radial-gradient.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/xalan-2.7.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/xalan-2.7.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/xercesImpl-2.8.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/xercesImpl-2.8.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/xml-apis-1.3.03.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/xml-apis-1.3.03.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/xml-apis-ext-1.3.04.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/xml-apis-ext-1.3.04.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/xom-1.2.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/lib/xom-1.2.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/AbstractPool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/AbstractPool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/BlockingQueuePool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/BlockingQueuePool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/java/com/highcharts/export/filter/CorsFilter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/java/com/highcharts/export/filter/CorsFilter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/resources/ESAPI.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/ESAPI.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/ESAPI.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/resources/ESAPI.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/ESAPI.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/ESAPI.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/java/com/highcharts/export/controller/ExportController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/java/com/highcharts/export/controller/ExportController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/util/MimeType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/util/MimeType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/java/com/highcharts/export/service/MonitorService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/java/com/highcharts/export/service/MonitorService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/ObjectFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/ObjectFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/ObjectPool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/ObjectPool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/PoolException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/PoolException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/java/com/highcharts/export/interceptor/RequestInterceptor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/java/com/highcharts/export/interceptor/RequestInterceptor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/converter/SVGConverter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/converter/SVGConverter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/converter/SVGConverterException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/converter/SVGConverterException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/server/Server.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/server/Server.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/ServerObjectFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/pool/ServerObjectFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/server/ServerState.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/server/ServerState.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/util/TempDir.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/util/TempDir.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/server/TimeOut.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/java/com/highcharts/export/server/TimeOut.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/java/com/highcharts/export/controller/ZeroRequestParameterException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/java/com/highcharts/export/controller/ZeroRequestParameterException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/admin.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/app-convert.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/app-convert.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/spring/app-convert.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/spring/app-convert.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/app-convert.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/app-convert.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/spring/app-convert.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/spring/app-convert.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/broken-axis.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/broken-axis.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/broken-axis.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/broken-axis.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/broken-axis.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/broken-axis.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/broken-axis.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/broken-axis.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/jspf/callback.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/jspf/callback.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/jspf/callback.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/jspf/callback.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/canvas-tools.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/canvas-tools.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/canvas-tools.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/canvas-tools.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/resources/js/codemirror-compressed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/resources/js/codemirror-compressed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/resources/js/codemirror-compressed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/resources/js/codemirror-compressed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/resources/css/codemirror.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/resources/css/codemirror.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/resources/css/codemirror.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/resources/css/codemirror.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/jspf/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/jspf/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/jspf/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/jspf/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/META-INF/context.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/META-INF/context.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/META-INF/context.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/META-INF/context.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/themes/dark-blue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/themes/dark-blue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/themes/dark-green.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/themes/dark-green.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/themes/dark-unica.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/themes/dark-unica.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/data.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/data.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/resources/css/demo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/resources/css/demo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/resources/css/demo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/resources/css/demo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/pages/demo.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/pages/demo.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/pages/demo.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/pages/demo.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/tmp/jsp/org/apache/jsp/WEB_002dINF/pages/demo_jsp.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/tmp/jsp/org/apache/jsp/WEB_002dINF/pages/demo_jsp.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/drilldown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/drilldown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/drilldown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/drilldown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/drilldown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/drilldown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/drilldown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/drilldown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/drilldown.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/drilldown.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/pages/error.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/pages/error.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/pages/error.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/pages/error.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/tmp/jsp/org/apache/jsp/WEB_002dINF/pages/error_jsp.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/tmp/jsp/org/apache/jsp/WEB_002dINF/pages/error_jsp.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/spring/export-servlet.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/spring/export-servlet.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/spring/export-servlet.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/spring/export-servlet.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/exporting.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/exporting.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/exporting.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/exporting.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/css/font-awesome.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/css/font-awesome.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/funnel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/funnel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/funnel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/funnel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/funnel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/funnel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/funnel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/funnel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/funnel.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/funnel.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/themes/gray.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/themes/gray.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/themes/grid-light.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/themes/grid-light.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/themes/grid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/themes/grid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/heatmap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/heatmap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/heatmap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/heatmap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/heatmap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/heatmap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/heatmap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/heatmap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/heatmap.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/heatmap.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/highcharts-3d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/highcharts-3d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/highcharts-3d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/highcharts-3d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/highcharts-3d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/highcharts-3d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/highcharts-3d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/highcharts-3d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/highcharts-3d.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/highcharts-3d.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/highcharts-convert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/highcharts-convert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/highcharts-convert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/highcharts-convert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/highcharts-convert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/highcharts-convert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/highcharts-more.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/highcharts-more.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/highcharts-more.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/highcharts-more.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/highcharts-more.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/highcharts-more.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/highcharts-more.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/highcharts-more.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/highcharts-more.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/highcharts-more.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/highcharts.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/highcharts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/highcharts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/highcharts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/highcharts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/highcharts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/highcharts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/highcharts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/highcharts.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/highstock-all.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/highstock.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/highstock.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/highstock.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/highstock.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/highstock.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/highstock.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/highstock.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/3d-column-interactive/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/3d-column-null-values/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/3d-column-stacking-grouping/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/3d-pie/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/3d-pie-donut/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/3d-scatter-draggable/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/area-basic/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/area-inverted/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/area-missing/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/area-negative/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/area-stacked/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/area-stacked-percent/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/arearange/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/arearange-line/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/areaspline/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/bar-basic/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/bar-negative-stack/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/bar-stacked/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/box-plot/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/bubble/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/bubble-3d/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/column-basic/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/column-drilldown/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/column-negative/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/column-parsed/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/column-placement/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/column-rotated-labels/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/column-stacked/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/column-stacked-and-grouped/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/column-stacked-percent/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/columnrange/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/combo/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/combo-dual-axes/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/combo-meteogram/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/combo-multi-axes/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/combo-regression/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/combo-timeline/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/dynamic-click-to-add/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/dynamic-master-detail/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/dynamic-update/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/error-bar/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/funnel/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/gauge-clock/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/gauge-dual/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/gauge-solid/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/gauge-speedometer/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/gauge-vu-meter/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/heatmap/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/heatmap-canvas/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/line-ajax/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/line-basic/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/line-labels/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/line-log-axis/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/line-time-series/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/pie-basic/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/pie-donut/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/pie-drilldown/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/pie-gradient/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/pie-legend/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/pie-monochrome/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/pie-semi-circle/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/polar/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/polar-spider/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/polar-wind-rose/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/polygon/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/pyramid/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/renderer/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/scatter/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/sparkline/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/spline-inverted/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/spline-irregular-time/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/spline-plot-bands/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/spline-symbols/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/treemap-coloraxis/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/treemap-large-dataset/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/treemap-with-levels/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/examples/waterfall/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/area/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/arearange/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/areaspline/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/areasplinerange/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/basic-line/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/candlestick/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/candlestick-and-volume/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/column/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/columnrange/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/compare/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/data-grouping/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/dynamic-update/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/flags-general/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/flags-placement/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/flags-shapes/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/intraday-area/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/intraday-breaks/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/intraday-candlestick/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/lazy-loading/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/line-markers/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/markers-only/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/navigator-disabled/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/ohlc/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/scrollbar-disabled/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/spline/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/step-line/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/styled-scrollbar/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/yaxis-plotbands/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/yaxis-plotlines/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/examples/yaxis-reversed/index.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/php/php-batik/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/php/php-batik/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/resources/js/jquery-1.11.0.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/resources/js/jquery-1.11.0.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/resources/js/jquery-1.11.0.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/resources/js/jquery-1.11.0.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/js/jquery-1.9.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/js/jquery-1.9.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/css/jquery-ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/css/jquery-ui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/js/jquery-ui.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/js/jquery-ui.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/jquery.1.9.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/jquery.1.9.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/jquery.1.9.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/jquery.1.9.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/jquery.1.9.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/jquery.1.9.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/jspf/lexl.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/jspf/lexl.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/jspf/lexl.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/jspf/lexl.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/resources/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/resources/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/classes/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/classes/log4j.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/map.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/map.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/map.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/map.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/map.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/map.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/no-data-to-display.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/no-data-to-display.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/no-data-to-display.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/no-data-to-display.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/no-data-to-display.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/no-data-to-display.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/no-data-to-display.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/no-data-to-display.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/no-data-to-display.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/no-data-to-display.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/maven-archiver/pom.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/maven-archiver/pom.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/maven-archiver/pom.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/maven-archiver/pom.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/css/ref.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/css/ref.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/api/js/ref.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/api/js/ref.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/themes/sand-signika.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/themes/sand-signika.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/themes/skies.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/themes/skies.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/solid-gauge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/solid-gauge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/solid-gauge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/solid-gauge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/solid-gauge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/solid-gauge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/solid-gauge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/solid-gauge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/solid-gauge.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/solid-gauge.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/spring/spring-context.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/spring/spring-context.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/spring/spring-context.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/spring/spring-context.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/spring-convert.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/spring-convert.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/spring-convert.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/spring-convert.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/adapters/standalone-framework.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/adapters/standalone-framework.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/adapters/standalone-framework.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/adapters/standalone-framework.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/treemap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/treemap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/phantomjs/treemap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/treemap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/src/main/resources/phantomjs/treemap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-convert/target/classes/phantomjs/treemap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/phantomjs/treemap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/treemap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/js/modules/treemap.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/js/modules/treemap.src.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/tmp/upload__64bb0635_14bc5e9b111__8000_00000937.tmp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/tmp/upload__64bb0635_14bc5e9b111__8000_00000937.tmp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/tmp/upload__64bb0635_14bc5e9b111__8000_00000958.tmp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/tmp/upload__64bb0635_14bc5e9b111__8000_00000958.tmp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/web.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highcharts-4.1.3/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/web.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/src/main/webapp/WEB-INF/web.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/highstock-2.1.2/exporting-server/java/highcharts-export/highcharts-export-web/target/highcharts-export-web/WEB-INF/web.xml" />
+      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\tos_import\classes\test\__test.py" afterPath="$PROJECT_DIR$/tos_import/classes/test/test_case.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/classes/test/__init__.py" afterPath="$PROJECT_DIR$/tos_import/classes/test/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/classes/test/__test.py" afterPath="$PROJECT_DIR$/tos_import/classes/test/__test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistic/simple/stat_day/admin.py" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/admin.py" afterPath="$PROJECT_DIR$/tos_import/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/templatetags/dict_lookup.py" afterPath="$PROJECT_DIR$/base/templatetags/dict_lookup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistic/simple/stat_day/models.py" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/statement/statement_account/admin.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_account/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/statement/statement_trade/admin.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_trade/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/statement/statement_trade/models.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_trade/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/rivers.iml" afterPath="$PROJECT_DIR$/.idea/rivers.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/settings.py" afterPath="$PROJECT_DIR$/rivers/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/tests.py" afterPath="$PROJECT_DIR$/base/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistic/simple/stat_day/tests.py" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/tests.py" afterPath="$PROJECT_DIR$/tos_import/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/views.py" afterPath="$PROJECT_DIR$/tos_import/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/statement/statement_account/tests.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_account/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/statement/statement_position/tests.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_position/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/statement/statement_trade/tests.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_trade/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rivers.iws" />
@@ -52,7 +661,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_tests_TestStatement.coverage" NAME="Test: tos_import.tests.TestStatement Coverage Results" MODIFIED="1425099930719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_start.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_start Coverage Results" MODIFIED="1422649382100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_forex.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_forex Coverage Results" MODIFIED="1421408264715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__all.coverage" NAME="Test: all Coverage Results" MODIFIED="1425206140636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__all.coverage" NAME="Test: all Coverage Results" MODIFIED="1425440511645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat.coverage" NAME="Test: app_stat.tests.TestSaveDateStat Coverage Results" MODIFIED="1424274038972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_position_tests_TestSavePositionStatement_setUp.coverage" NAME="Test: tos_import.statement_position.tests.TestSavePositionStatement.setUp Coverage Results" MODIFIED="1425037307017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__stat_simple_tests_TestDayStatHolding_setUp.coverage" NAME="Test: stat_simple.tests.TestDayStatHolding.setUp Coverage Results" MODIFIED="1424413969482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -61,7 +670,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__base_tests.coverage" NAME="Test: base.tests Coverage Results" MODIFIED="1425164418420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_statement_position_tests.coverage" NAME="Test: app_pms.statement_position.tests Coverage Results" MODIFIED="1424106710289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_account_tests_TestSaveAccountStatement.coverage" NAME="Test: tos_import.statement_account.tests.TestSaveAccountStatement Coverage Results" MODIFIED="1425095631270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__statistic_simple_stat_day_tests.coverage" NAME="Test: statistic.simple.stat_day.tests Coverage Results" MODIFIED="1425207700088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__statistic_simple_stat_day_tests.coverage" NAME="Test: statistic.simple.stat_day.tests Coverage Results" MODIFIED="1425440154674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_forex.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_forex Coverage Results" MODIFIED="1421375639600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_hedge_tests.coverage" NAME="Test: lib.pos.identify.hedge.tests Coverage Results" MODIFIED="1411250314367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_leg_one_tests.coverage" NAME="Test: lib.pos.identify.leg_one.tests Coverage Results" MODIFIED="1411250323455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -70,12 +679,14 @@
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests.coverage" NAME="Test: app_stat.tests Coverage Results" MODIFIED="1425081784494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_tests_TestSetUpUnderlying_setUp.coverage" NAME="Test: tos_import.tests.TestSetUpUnderlying.setUp Coverage Results" MODIFIED="1425164600806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_stock_tests.coverage" NAME="Test: lib.pos.identify.stock.tests Coverage Results" MODIFIED="1411250333587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestSavePosition_setUpClass.coverage" NAME="Test: position.tests.TestSavePosition.setUpClass Coverage Results" MODIFIED="1425338858461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_test___test.coverage" NAME="Test: lib.test.__test Coverage Results" MODIFIED="1414862193074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__stat_simple_tests_TestDayStatOptionGreek.coverage" NAME="Test: stat_simple.tests.TestDayStatOptionGreek Coverage Results" MODIFIED="1425158269423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__stat_simple_tests_TestSaveDateStat_test_start.coverage" NAME="Test: stat_simple.tests.TestSaveDateStat.test_start Coverage Results" MODIFIED="1425161481851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_account_tests_TestHoldingForex.coverage" NAME="Test: tos_import.statement.statement_account.tests.TestHoldingForex Coverage Results" MODIFIED="1425164547055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__tos_import_tests.coverage" NAME="Test: tos_import.tests Coverage Results" MODIFIED="1425244703608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__tos_import_tests.coverage" NAME="Test: tos_import.tests Coverage Results" MODIFIED="1425440298376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__stat_simple_tests.coverage" NAME="Test: stat_simple.tests Coverage Results" MODIFIED="1425164426414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_position_tests_TestPositionForex.coverage" NAME="Test: tos_import.statement.statement_position.tests.TestPositionForex Coverage Results" MODIFIED="1425440413633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_acc_tests.coverage" NAME="Test: lib.io.open_acc.tests Coverage Results" MODIFIED="1415830659334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_date_stat.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_date_stat Coverage Results" MODIFIED="1422624703968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_classes_io_open_acc_tests.coverage" NAME="Test: app_pms.classes.io.open_acc.tests Coverage Results" MODIFIED="1416369947272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -91,6 +702,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_tests_TestPmsImportStatementsForm_test_clean_for_same_date.coverage" NAME="Test: tos_import.tests.TestPmsImportStatementsForm.test_clean_for_same_date Coverage Results" MODIFIED="1425162761538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_statement_position_tests_TestPositionStatement_setUp.coverage" NAME="Test: app_pms.statement_position.tests.TestPositionStatement.setUp Coverage Results" MODIFIED="1424106705309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_tests_TestStatementImportAll.coverage" NAME="Test: tos_import.tests.TestStatementImportAll Coverage Results" MODIFIED="1425246907165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestSavePosition_test_start.coverage" NAME="Test: position.tests.TestSavePosition.test_start Coverage Results" MODIFIED="1425420867596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_classes_io_open_ta_tests.coverage" NAME="Test: app_pms.classes.io.open_ta.tests Coverage Results" MODIFIED="1416264130378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_statement_account_tests.coverage" NAME="Test: app_pms.statement_account.tests Coverage Results" MODIFIED="1424106010685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_trade_tests_TestSaveTradeActivity.coverage" NAME="Test: tos_import.statement_trade.tests.TestSaveTradeActivity Coverage Results" MODIFIED="1425095610712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -99,7 +711,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__position_tests.coverage" NAME="Test: position.tests Coverage Results" MODIFIED="1425244225183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_app_stat_day_tests.coverage" NAME="Test: app_pms.app_stat_day.tests Coverage Results" MODIFIED="1421190156738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_tests.coverage" NAME="Test: lib.pos.spread.tests Coverage Results" MODIFIED="1411250344143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_trade_tests.coverage" NAME="Test: tos_import.statement.statement_trade.tests Coverage Results" MODIFIED="1425165720798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_trade_tests.coverage" NAME="Test: tos_import.statement.statement_trade.tests Coverage Results" MODIFIED="1425440504275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__base_app_tests.coverage" NAME="Test: base_app.tests Coverage Results" MODIFIED="1411251891478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__pms_app_tests.coverage" NAME="Test: pms_app.tests Coverage Results" MODIFIED="1415744833734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__pms_app_pos_app_import_app_tests.coverage" NAME="Test: pms_app.pos_app.import_app.tests Coverage Results" MODIFIED="1411250494706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -111,13 +723,15 @@
     <SUITE FILE_PATH="coverage/rivers$Test__base_tests_TestBaseModelListing_test_list_admin_model.coverage" NAME="Test: base.tests.TestBaseModelListing.test_list_admin_model Coverage Results" MODIFIED="1425205954272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_tests.coverage" NAME="Test: lib.pos.identify.tests Coverage Results" MODIFIED="1411250291468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_tests2.coverage" NAME="Test: app_pms.tests2 Coverage Results" MODIFIED="1416909350087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestSavePosition_test_123.coverage" NAME="Test: position.tests.TestSavePosition.test_123 Coverage Results" MODIFIED="1425439141304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_stock.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_stock Coverage Results" MODIFIED="1421360520914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_tests.coverage" NAME="Test: app_pms.tests Coverage Results" MODIFIED="1424104874581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_position_tests.coverage" NAME="Test: tos_import.statement.statement_position.tests Coverage Results" MODIFIED="1425165701018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_position_tests.coverage" NAME="Test: tos_import.statement.statement_position.tests Coverage Results" MODIFIED="1425440434925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_future.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_future Coverage Results" MODIFIED="1421375511391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_account_tests.coverage" NAME="Test: tos_import.statement.statement_account.tests Coverage Results" MODIFIED="1425165693701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_account_tests.coverage" NAME="Test: tos_import.statement.statement_account.tests Coverage Results" MODIFIED="1425440199475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__pms_app_spr_app_tests.coverage" NAME="Test: pms_app.spr_app.tests Coverage Results" MODIFIED="1411252268368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__base_tests_TestBaseModelList_test_model_listing.coverage" NAME="Test: base.tests.TestBaseModelList.test_model_listing Coverage Results" MODIFIED="1423906104013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestSavePosition.coverage" NAME="Test: position.tests.TestSavePosition Coverage Results" MODIFIED="1425439855957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_spread.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_spread Coverage Results" MODIFIED="1422296110877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_app_acc_tests.coverage" NAME="Test: app_pms.app_acc.tests Coverage Results" MODIFIED="1423878187996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_hedge_tests.coverage" NAME="Test: lib.pos.spread.hedge.tests Coverage Results" MODIFIED="1411250353610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -140,12 +754,18 @@
         <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="Django default" />
+        <option name="myItemId" value="Django SQLite" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
         <option name="myItemId" value="" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
   </component>
@@ -154,43 +774,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
-    <favorites_list name="rivers" />
+    <favorites_list name="rivers">
+      <favorite_root url="file://$PROJECT_DIR$/fixtures/00initial_data.json" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+    </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tos_import/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5258918" vertical-offset="1560" max-vertical-offset="9178">
-              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="statement_import_all.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tos_import/templates/tos_import/statement_import_all.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4576" max-vertical-offset="5720">
-              <caret line="176" column="48" selection-start-line="176" selection-start-column="48" selection-end-line="176" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5538" max-vertical-offset="5772">
-              <caret line="213" column="28" selection-start-line="213" selection-start-column="9" selection-end-line="213" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -208,9 +797,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tos_import/templatetags/money.py" />
-        <option value="$PROJECT_DIR$/tos_import/templatetags/currency_tag.py" />
-        <option value="$PROJECT_DIR$/tos_import/templatetags/page_link.py" />
         <option value="$PROJECT_DIR$/tos_import/templatetags/admin_list_link.py" />
         <option value="$PROJECT_DIR$/templates/admin/pagination.html" />
         <option value="$PROJECT_DIR$/tos_import/statement_trade/admin.py" />
@@ -230,35 +816,38 @@
         <option value="$PROJECT_DIR$/stat_simple/tests.py" />
         <option value="$PROJECT_DIR$/tos_import/templatetags/verbose_name.py" />
         <option value="$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__leg_one.py" />
-        <option value="$PROJECT_DIR$/tos_import/statement/statement_position/tests.py" />
-        <option value="$PROJECT_DIR$/tos_import/statement/statement_trade/admin.py" />
-        <option value="$PROJECT_DIR$/tos_import/statement/statement_account/admin.py" />
         <option value="$PROJECT_DIR$/rivers/urls.py" />
-        <option value="$PROJECT_DIR$/tos_import/statement/statement_trade/tests.py" />
-        <option value="$PROJECT_DIR$/tos_import/statement/statement_account/tests.py" />
         <option value="$PROJECT_DIR$/templates/admin/app_index.html" />
         <option value="$PROJECT_DIR$/base/views.py" />
-        <option value="$PROJECT_DIR$/base/tests.py" />
         <option value="$PROJECT_DIR$/statistic/simple/stat_day/models.py" />
-        <option value="$PROJECT_DIR$/statistic/simple/stat_day/tests.py" />
         <option value="$PROJECT_DIR$/base/admin.py" />
         <option value="$PROJECT_DIR$/templates/admin/change_list.html" />
         <option value="$PROJECT_DIR$/templates/admin/change_form.html" />
         <option value="$PROJECT_DIR$/templates/admin/base.html" />
         <option value="$PROJECT_DIR$/statistic/simple/stat_day/views.py" />
         <option value="$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html" />
-        <option value="$PROJECT_DIR$/statistic/simple/stat_day/admin.py" />
-        <option value="$PROJECT_DIR$/tos_import/classes/test/__init__.py" />
-        <option value="$PROJECT_DIR$/position/tests.py" />
-        <option value="$PROJECT_DIR$/tos_import/classes/test/__test.py" />
         <option value="$PROJECT_DIR$/base/templatetags/dict_lookup.py" />
         <option value="$PROJECT_DIR$/base/templates/base/model_list.html" />
         <option value="$PROJECT_DIR$/tos_import/templatetags/title_split.py" />
-        <option value="$PROJECT_DIR$/tos_import/tests.py" />
-        <option value="$PROJECT_DIR$/rivers/settings.py" />
-        <option value="$PROJECT_DIR$/tos_import/admin.py" />
         <option value="$PROJECT_DIR$/tos_import/templates/tos_import/statement_import_all.html" />
+        <option value="$PROJECT_DIR$/tos_import/statement/statement_trade/models.py" />
+        <option value="$PROJECT_DIR$/tos_import/statement/statement_trade/admin.py" />
+        <option value="$PROJECT_DIR$/tos_import/statement/statement_account/admin.py" />
+        <option value="$PROJECT_DIR$/tos_import/admin.py" />
+        <option value="$PROJECT_DIR$/statistic/simple/stat_day/admin.py" />
+        <option value="$PROJECT_DIR$/tos_import/custom/settings.py" />
         <option value="$PROJECT_DIR$/tos_import/views.py" />
+        <option value="$PROJECT_DIR$/rivers/settings.py" />
+        <option value="$PROJECT_DIR$/base/tests.py" />
+        <option value="$PROJECT_DIR$/tos_import/classes/test/__test.py" />
+        <option value="$PROJECT_DIR$/position/tests.py" />
+        <option value="$PROJECT_DIR$/tos_import/classes/test/__init__.py" />
+        <option value="$PROJECT_DIR$/statistic/simple/stat_day/tests.py" />
+        <option value="$PROJECT_DIR$/tos_import/classes/test/test_case.py" />
+        <option value="$PROJECT_DIR$/tos_import/statement/statement_account/tests.py" />
+        <option value="$PROJECT_DIR$/tos_import/tests.py" />
+        <option value="$PROJECT_DIR$/tos_import/statement/statement_position/tests.py" />
+        <option value="$PROJECT_DIR$/tos_import/statement/statement_trade/tests.py" />
       </list>
     </option>
   </component>
@@ -286,6 +875,9 @@
           </State>
           <State>
             <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>Google App Engine (Python)</id>
           </State>
           <State>
             <id>HTML</id>
@@ -378,21 +970,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tos_import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
+              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -404,8 +982,8 @@
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ace_template" />
-    <property name="options.lastSelected" value="Errors" />
+    <property name="last_opened_file_path" value="C:/Anaconda/python.exe" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="options.splitter.main.proportions" value="0.2975" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -416,41 +994,22 @@
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
-      <console-settings />
+      <console-settings module-name="rivers" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="rivers" />
+      </console-settings>
     </option>
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jack\Projects\rivers\fixtures" />
       <recent name="C:\Users\Jack\Projects\rivers\tos_import" />
       <recent name="C:\Users\Jack\Projects\rivers\tos_import\classes\templates\tos_import" />
       <recent name="C:\Users\Jack\Projects\rivers\statistics\simple\day_stat" />
       <recent name="C:\Users\Jack\Projects\rivers\tos_import\files" />
-      <recent name="C:\Users\Jack\Projects\rivers\tos_import\statement" />
     </key>
   </component>
-  <component name="RunManager" selected="Django server.Rivers">
-    <configuration default="false" name="Test: statistics.simple.day_stat.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="statistics.simple.day_stat.tests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Django tests.Test: all">
     <configuration default="false" name="Test: statistic.simple.stat_day.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -465,6 +1024,94 @@
       <module name="rivers" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="TARGET" value="statistic.simple.stat_day.tests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test: tos_import.statement.statement_account.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="tos_import.statement.statement_account.tests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test: tos_import.statement.statement_position.tests.TestPositionForex" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="tos_import.statement.statement_position.tests.TestPositionForex" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test: tos_import.statement.statement_position.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="tos_import.statement.statement_position.tests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test: tos_import.statement.statement_trade.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="tos_import.statement.statement_trade.tests" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
@@ -694,18 +1341,18 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="rivers.settings" />
+        <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Python\Anaconda\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="rivers" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
-      <option name="host" value="" />
+      <option name="host" value="localhost" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
@@ -810,25 +1457,31 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="7">
+    <list size="10">
       <item index="0" class="java.lang.String" itemvalue="Django server.Rivers" />
       <item index="1" class="java.lang.String" itemvalue="Django tests.Test: position.tests" />
       <item index="2" class="java.lang.String" itemvalue="Django tests.Test: tos_import.tests" />
       <item index="3" class="java.lang.String" itemvalue="Django tests.Test: all" />
       <item index="4" class="java.lang.String" itemvalue="Django tests.Test: tos_import.tests.TestStatementImportAll" />
-      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: statistics.simple.day_stat.tests" />
-      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: statistic.simple.stat_day.tests" />
+      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: statistic.simple.stat_day.tests" />
+      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_account.tests" />
+      <item index="7" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_position.tests.TestPositionForex" />
+      <item index="8" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_position.tests" />
+      <item index="9" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_trade.tests" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Django tests.Test: statistic.simple.stat_day.tests" />
-        <item index="1" class="java.lang.String" itemvalue="Django tests.Test: statistics.simple.day_stat.tests" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_trade.tests" />
+        <item index="1" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_position.tests" />
+        <item index="2" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_position.tests.TestPositionForex" />
+        <item index="3" class="java.lang.String" itemvalue="Django tests.Test: tos_import.statement.statement_account.tests" />
+        <item index="4" class="java.lang.String" itemvalue="Django tests.Test: statistic.simple.stat_day.tests" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\Jack\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -1125,10 +1778,16 @@
       <option name="project" value="LOCAL" />
       <updated>1425239935830</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="import statement all...">
+      <created>1425338065773</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1425338065773</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
-  <component name="TodoView" selected-index="0">
+  <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
       <are-packages-shown value="false" />
       <are-modules-shown value="false" />
@@ -1150,29 +1809,29 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28074867" sideWeight="0.76053214" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51773834" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3106952" sideWeight="0.76053214" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2513369" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919786" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2989305" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3106952" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51773834" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1188,11 +1847,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51773834" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31016043" sideWeight="0.76053214" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3106952" sideWeight="0.76053214" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2513369" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960423" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919786" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2989305" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1213,8 +1872,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="re-start admin... with future and forex" />
-    <MESSAGE value="fix datetime bug..." />
     <MESSAGE value="before use many to many field" />
     <MESSAGE value="ta admin, pos admin done..." />
     <MESSAGE value="acc admin done..." />
@@ -1238,7 +1895,9 @@
     <MESSAGE value="restructure" />
     <MESSAGE value="restructure2&#10;stat day page&#10;use highcharts" />
     <MESSAGE value="final option greek admin...&#10;next position obj" />
-    <option name="LAST_COMMIT_MESSAGE" value="final option greek admin...&#10;next position obj" />
+    <MESSAGE value="import statement all..." />
+    <MESSAGE value="speed up some test..." />
+    <option name="LAST_COMMIT_MESSAGE" value="speed up some test..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1248,64 +1907,15 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tos_import/statement/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/classes/io/open_pos/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14959724" vertical-offset="0" max-vertical-offset="8658">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rivers/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/django_test_manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36214954" vertical-offset="2498" max-vertical-offset="3354">
-          <caret line="113" column="41" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_position/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_position/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23935558" vertical-offset="0" max-vertical-offset="18876">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_trade/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12714">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_account/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="23790">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1337,45 +1947,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rivers/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14959724" vertical-offset="0" max-vertical-offset="869">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_trade/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32911393" vertical-offset="26" max-vertical-offset="13936">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_position/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.060747664" vertical-offset="208" max-vertical-offset="11102">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_account/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.091121495" vertical-offset="0" max-vertical-offset="17056">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/classes/pos/identify/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7905639" vertical-offset="1809" max-vertical-offset="2678">
           <caret line="98" column="14" selection-start-line="98" selection-start-column="14" selection-end-line="98" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python/Anaconda/Lib/site-packages/django/contrib/admin/templates/admin/app_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49880096" vertical-offset="0" max-vertical-offset="834">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1393,24 +1968,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/base/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2704">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/change_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.3142858" vertical-offset="1036" max-vertical-offset="4212">
           <caret line="47" column="42" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/base/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="364">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1425,7 +1986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="3444" max-vertical-offset="14924">
           <caret line="149" column="52" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1443,62 +2003,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5385501" vertical-offset="4160" max-vertical-offset="5070">
-          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/classes/test/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="80" selection-start-line="0" selection-start-column="80" selection-end-line="0" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82009345" vertical-offset="6812" max-vertical-offset="12974">
-          <caret line="300" column="29" selection-start-line="300" selection-start-column="29" selection-end-line="300" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="572">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="559">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/classes/test/__test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41887227" vertical-offset="3042" max-vertical-offset="6292">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="164" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_account/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33256617" vertical-offset="16871" max-vertical-offset="23660">
           <caret line="660" column="6" selection-start-line="660" selection-start-column="6" selection-end-line="660" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#13#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.817757" vertical-offset="288" max-vertical-offset="1144">
-          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1506,9 +2014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0011682243" vertical-offset="1613" max-vertical-offset="12688">
           <caret line="62" column="1" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#13#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1548,36 +2053,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/2fefeba5/46b2ad17-d06b-45b9-925f-26e5e29633bf/..django_admin_log">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="156">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rivers/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3118527" vertical-offset="3083" max-vertical-offset="3952">
-          <caret line="129" column="17" selection-start-line="129" selection-start-column="17" selection-end-line="129" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85046726" vertical-offset="14456" max-vertical-offset="16068">
-          <caret line="584" column="33" selection-start-line="584" selection-start-column="33" selection-end-line="584" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/base/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.107019566" vertical-offset="1029" max-vertical-offset="1898">
-          <caret line="37" column="54" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="54" />
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="156">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1588,26 +2071,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.253165" vertical-offset="5460" max-vertical-offset="9204">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.97196263" vertical-offset="2080" max-vertical-offset="6396">
-          <caret line="112" column="26" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5538" max-vertical-offset="5772">
+        <state vertical-scroll-proportion="0.71498173" vertical-offset="4951" max-vertical-offset="5772">
           <caret line="213" column="28" selection-start-line="213" selection-start-column="9" selection-end-line="213" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1615,16 +2082,230 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4576" max-vertical-offset="5720">
           <caret line="176" column="48" selection-start-line="176" selection-start-column="48" selection-end-line="176" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fixtures/00initial_data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="559">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="572">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_trade/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="10816">
+          <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#28#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_trade/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33216783" vertical-offset="4776" max-vertical-offset="12376">
+          <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_account/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7867133" vertical-offset="10678" max-vertical-offset="22750">
+          <caret line="428" column="4" selection-start-line="428" selection-start-column="4" selection-end-line="428" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#13#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rivers/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41887227" vertical-offset="0" max-vertical-offset="869">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#51#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.41887227" vertical-offset="520" max-vertical-offset="8632">
+          <caret line="6" column="58" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6283084" vertical-offset="1300" max-vertical-offset="5174">
+          <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda/Lib/site-packages/django/test/runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5618" max-vertical-offset="7514">
+          <caret line="228" column="17" selection-start-line="228" selection-start-column="17" selection-end-line="228" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda/Lib/site-packages/django/db/backends/creation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.78354204" vertical-offset="8966" max-vertical-offset="12610">
+          <caret line="338" column="36" selection-start-line="338" selection-start-column="36" selection-end-line="338" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda/Lib/site-packages/django/contrib/gis/db/backends/spatialite/creation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61214954" vertical-offset="360" max-vertical-offset="3380">
+          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda/Lib/site-packages/django/test/simple.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4579977" vertical-offset="5556" max-vertical-offset="6448">
+          <caret line="240" column="41" selection-start-line="240" selection-start-column="41" selection-end-line="240" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5258918" vertical-offset="1560" max-vertical-offset="9178">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.24299066" vertical-offset="0" max-vertical-offset="9178">
+          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.107019566" vertical-offset="1029" max-vertical-offset="1898">
+          <caret line="37" column="54" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17951669" vertical-offset="0" max-vertical-offset="869">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21403913" vertical-offset="1322" max-vertical-offset="2704">
+          <caret line="58" column="64" selection-start-line="58" selection-start-column="64" selection-end-line="58" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60747665" vertical-offset="2340" max-vertical-offset="6396">
+          <caret line="110" column="18" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0471807" vertical-offset="0" max-vertical-offset="1482">
+          <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rivers/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34177214" vertical-offset="2667" max-vertical-offset="4030">
+          <caret line="114" column="1" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2161215" vertical-offset="101" max-vertical-offset="13260">
+          <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_account/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06683805" vertical-offset="0" max-vertical-offset="16848">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/classes/test/test_case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65822786" vertical-offset="260" max-vertical-offset="6994">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="17" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/classes/test/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="156">
+          <caret line="0" column="70" selection-start-line="0" selection-start-column="70" selection-end-line="0" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_trade/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.24299066" vertical-offset="520" max-vertical-offset="13858">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_position/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9707944" vertical-offset="6553" max-vertical-offset="11102">
+          <caret line="284" column="33" selection-start-line="284" selection-start-column="33" selection-end-line="284" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0630841" vertical-offset="0" max-vertical-offset="16068">
+          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+          <folding>
+            <element signature="e#38#56#0" expanded="true" />
           </folding>
         </state>
       </provider>

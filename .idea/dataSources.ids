@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source source="LOCAL" name="Django default" uuid="46b2ad17-d06b-45b9-925f-26e5e29633bf">
-    <database-info product="SQLite" version="3.7.6.3" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
-    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
+  <data-source name="Django SQLite" uuid="46b2ad17-d06b-45b9-925f-26e5e29633bf">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
     <schema name="" catalog=""/>
     <table name="app_acc_accountstatement" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
@@ -652,6 +651,705 @@
       <column name="expire_date" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="session_key"/>
       <index name="django_session_b7b81f0c" unique="true" columns="expire_date"/>
+    </table>
+  </data-source>
+  <data-source name="Django MYSQL" uuid="70a4b853-887d-4f5c-b73b-19872b2f33bb">
+    <database-info product="MySQL" version="5.6.23-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="rivers"/>
+    <table name="auth_group" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="group_id_refs_id_f4b32aac" table="auth_group_permissions" schema="" catalog="rivers" columns="group_id"/>
+      <exported-key name="group_id_refs_id_274b862c" table="auth_user_groups" schema="" catalog="rivers" columns="group_id"/>
+      <index name="name" unique="true" columns="name"/>
+    </table>
+    <table name="auth_group_permissions" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="permission_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="group_id_refs_id_f4b32aac" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="permission_id_refs_id_6ba0f519" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="group_id" unique="true" columns="permission_id"/>
+      <index name="auth_group_permissions_5f412f9a" unique="false" columns="group_id"/>
+      <index name="auth_group_permissions_83d7f98b" unique="false" columns="permission_id"/>
+    </table>
+    <table name="auth_permission" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="content_type_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="codename" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="content_type_id_refs_id_d043b34a" columns="content_type_id" ref-table="django_content_type" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="permission_id_refs_id_6ba0f519" table="auth_group_permissions" schema="" catalog="rivers" columns="permission_id"/>
+      <exported-key name="permission_id_refs_id_35d9ac25" table="auth_user_user_permissions" schema="" catalog="rivers" columns="permission_id"/>
+      <index name="content_type_id" unique="true" columns="codename"/>
+      <index name="auth_permission_37ef4eb4" unique="false" columns="content_type_id"/>
+    </table>
+    <table name="auth_user" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="password" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_login" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="is_superuser" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="username" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="first_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="75" scale="0" nullable="false" jdbcType="12"/>
+      <column name="is_staff" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="is_active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="date_joined" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="user_id_refs_id_40c41112" table="auth_user_groups" schema="" catalog="rivers" columns="user_id"/>
+      <exported-key name="user_id_refs_id_4dc23c39" table="auth_user_user_permissions" schema="" catalog="rivers" columns="user_id"/>
+      <exported-key name="user_id_refs_id_c0d12874" table="django_admin_log" schema="" catalog="rivers" columns="user_id"/>
+      <index name="username" unique="true" columns="username"/>
+    </table>
+    <table name="auth_user_groups" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="group_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="group_id_refs_id_274b862c" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="user_id_refs_id_40c41112" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="user_id" unique="true" columns="group_id"/>
+      <index name="auth_user_groups_5f412f9a" unique="false" columns="group_id"/>
+      <index name="auth_user_groups_6340c63c" unique="false" columns="user_id"/>
+    </table>
+    <table name="auth_user_user_permissions" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="permission_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="permission_id_refs_id_35d9ac25" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="user_id_refs_id_4dc23c39" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="user_id" unique="true" columns="permission_id"/>
+      <index name="auth_user_user_permissions_6340c63c" unique="false" columns="user_id"/>
+      <index name="auth_user_user_permissions_83d7f98b" unique="false" columns="permission_id"/>
+    </table>
+    <table name="django_admin_log" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="action_time" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="content_type_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="object_id" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="object_repr" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="action_flag" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5"/>
+      <column name="change_message" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="content_type_id_refs_id_93d2d1f8" columns="content_type_id" ref-table="django_content_type" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="user_id_refs_id_c0d12874" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="django_admin_log_37ef4eb4" unique="false" columns="content_type_id"/>
+      <index name="django_admin_log_6340c63c" unique="false" columns="user_id"/>
+    </table>
+    <table name="django_content_type" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="app_label" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="model" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="content_type_id_refs_id_d043b34a" table="auth_permission" schema="" catalog="rivers" columns="content_type_id"/>
+      <exported-key name="content_type_id_refs_id_93d2d1f8" table="django_admin_log" schema="" catalog="rivers" columns="content_type_id"/>
+      <index name="app_label" unique="true" columns="app_label,model"/>
+    </table>
+    <table name="django_session" schema="" catalog="rivers" type="TABLE">
+      <column name="session_key" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="session_data" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="expire_date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="session_key"/>
+      <index name="django_session_b7b81f0c" unique="false" columns="expire_date"/>
+    </table>
+    <table name="stat_day_statday" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="statement_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="total_holding_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="total_order_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="working_order_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="filled_order_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cancelled_order_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="account_pl_ytd" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="account_pl_day" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="holding_pl_day" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="holding_pl_open" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="commission_day" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="commission_ytd" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="option_bp_day" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="stock_bp_day" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="statement_id_refs_id_a6c7945a" columns="statement_id" ref-table="tos_import_statement" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="stat_day_id_refs_id_4806d6c0" table="stat_day_statdayholding" schema="" catalog="rivers" columns="stat_day_id"/>
+      <index name="stat_day_statday_9775495e" unique="false" columns="statement_id"/>
+    </table>
+    <table name="stat_day_statdayholding" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="stat_day_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
+      <column name="total_order_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="working_order_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="filled_order_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cancelled_order_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="total_holding_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="profit_holding_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="loss_holding_count" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pl_open_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="profit_open_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="loss_open_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_day_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="profit_day_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="loss_day_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="bp_effect_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="stat_day_id_refs_id_4806d6c0" columns="stat_day_id" ref-table="stat_day_statday" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="stat_day_holding_id_refs_id_8c4a73fc" table="stat_day_statdayoptiongreek" schema="" catalog="rivers" columns="stat_day_holding_id"/>
+      <index name="stat_day_statdayholding_9408e215" unique="false" columns="stat_day_id"/>
+    </table>
+    <table name="stat_day_statdayoptiongreek" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="stat_day_holding_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="delta_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="gamma_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="theta_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="vega_sum" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="stat_day_holding_id_refs_id_8c4a73fc" columns="stat_day_holding_id" ref-table="stat_day_statdayholding" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="stat_day_statdayoptiongreek_daf7a5b7" unique="false" columns="stat_day_holding_id"/>
+    </table>
+    <table name="statement_account_accountsummary" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="statement_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="net_liquid_value" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="stock_buying_power" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="option_buying_power" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="commissions_ytd" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="futures_commissions_ytd" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="statement_id_refs_id_9ca5a930" columns="statement_id" ref-table="tos_import_statement" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="account_summary_id_refs_id_30c1e33f" table="statement_account_cashbalance" schema="" catalog="rivers" columns="account_summary_id"/>
+      <exported-key name="account_summary_id_refs_id_7abf63a7" table="statement_account_forexstatement" schema="" catalog="rivers" columns="account_summary_id"/>
+      <exported-key name="account_summary_id_refs_id_c7970d49" table="statement_account_forexsummary" schema="" catalog="rivers" columns="account_summary_id"/>
+      <exported-key name="account_summary_id_refs_id_983f05be" table="statement_account_futurestatement" schema="" catalog="rivers" columns="account_summary_id"/>
+      <exported-key name="account_summary_id_refs_id_cf90d9e8" table="statement_account_holdingequity" schema="" catalog="rivers" columns="account_summary_id"/>
+      <exported-key name="account_summary_id_refs_id_a6f723c4" table="statement_account_holdingforex" schema="" catalog="rivers" columns="account_summary_id"/>
+      <exported-key name="account_summary_id_refs_id_1af861e1" table="statement_account_holdingfuture" schema="" catalog="rivers" columns="account_summary_id"/>
+      <exported-key name="account_summary_id_refs_id_f43e9e35" table="statement_account_holdingoption" schema="" catalog="rivers" columns="account_summary_id"/>
+      <exported-key name="account_summary_id_refs_id_57840c2f" table="statement_account_orderhistory" schema="" catalog="rivers" columns="account_summary_id"/>
+      <exported-key name="account_summary_id_refs_id_f7f8ef19" table="statement_account_profitloss" schema="" catalog="rivers" columns="account_summary_id"/>
+      <exported-key name="account_summary_id_refs_id_587a8f36" table="statement_account_tradehistory" schema="" catalog="rivers" columns="account_summary_id"/>
+      <index name="date" unique="true" columns="date"/>
+      <index name="statement_account_accountsummary_9775495e" unique="false" columns="statement_id"/>
+    </table>
+    <table name="statement_account_cashbalance" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="time" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="contract" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ref_no" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="fees" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="commissions" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="amount" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="balance" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_30c1e33f" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_cashbalance_0f49e691" unique="false" columns="account_summary_id"/>
+    </table>
+    <table name="statement_account_forexstatement" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="time" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="contract" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ref_no" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="commissions" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="amount" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="amount_usd" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="balance" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_7abf63a7" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_forexstatement_0f49e691" unique="false" columns="account_summary_id"/>
+    </table>
+    <table name="statement_account_forexsummary" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cash" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="upl" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="floating" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="equity" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="margin" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="available_equity" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="risk_level" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_c7970d49" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_forexsummary_0f49e691" unique="false" columns="account_summary_id"/>
+    </table>
+    <table name="statement_account_futurestatement" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="execute_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="execute_time" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="contract" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ref_no" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="fee" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="commission" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="amount" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="balance" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_983f05be" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_futurestatement_0f49e691" unique="false" columns="account_summary_id"/>
+    </table>
+    <table name="statement_account_holdingequity" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <column name="mark_value" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_cf90d9e8" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_2733903e" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_holdingequity_0f49e691" unique="false" columns="account_summary_id"/>
+      <index name="statement_account_holdingequity_9d0f24d9" unique="false" columns="underlying_id"/>
+    </table>
+    <table name="statement_account_holdingforex" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="forex_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="fpl" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="quantity" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_a6f723c4" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="forex_id_refs_id_f2b07218" columns="forex_id" ref-table="tos_import_forex" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_holdingforex_0f49e691" unique="false" columns="account_summary_id"/>
+      <index name="statement_account_holdingforex_f2104221" unique="false" columns="forex_id"/>
+    </table>
+    <table name="statement_account_holdingfuture" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="future_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_1af861e1" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="future_id_refs_id_61a1c1e7" columns="future_id" ref-table="tos_import_future" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_holdingfuture_0f49e691" unique="false" columns="account_summary_id"/>
+      <index name="statement_account_holdingfuture_661bf18b" unique="false" columns="future_id"/>
+    </table>
+    <table name="statement_account_holdingoption" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="option_code" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="strike" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="contract" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <column name="mark_value" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_f43e9e35" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_43a2bc2a" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_holdingoption_0f49e691" unique="false" columns="account_summary_id"/>
+      <index name="statement_account_holdingoption_9d0f24d9" unique="false" columns="underlying_id"/>
+    </table>
+    <table name="statement_account_orderhistory" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="forex_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="status" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pos_effect" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <column name="contract" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="side" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="time_placed" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="spread" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strike" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <column name="tif" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="order" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_57840c2f" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="forex_id_refs_id_7afac1e8" columns="forex_id" ref-table="tos_import_forex" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="future_id_refs_id_9a946eab" columns="future_id" ref-table="tos_import_future" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_01110fbc" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_orderhistory_0f49e691" unique="false" columns="account_summary_id"/>
+      <index name="statement_account_orderhistory_661bf18b" unique="false" columns="future_id"/>
+      <index name="statement_account_orderhistory_9d0f24d9" unique="false" columns="underlying_id"/>
+      <index name="statement_account_orderhistory_f2104221" unique="false" columns="forex_id"/>
+    </table>
+    <table name="statement_account_profitloss" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_pct" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_ytd" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="margin_req" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark_value" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_f7f8ef19" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="future_id_refs_id_90107e6a" columns="future_id" ref-table="tos_import_future" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_690d4cd2" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_profitloss_0f49e691" unique="false" columns="account_summary_id"/>
+      <index name="statement_account_profitloss_661bf18b" unique="false" columns="future_id"/>
+      <index name="statement_account_profitloss_9d0f24d9" unique="false" columns="underlying_id"/>
+    </table>
+    <table name="statement_account_tradehistory" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="forex_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="execute_time" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="spread" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="side" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pos_effect" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strike" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <column name="contract" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <column name="net_price" sqlType="DECIMAL" precision="8" scale="2" nullable="true" jdbcType="3"/>
+      <column name="order_type" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_summary_id_refs_id_587a8f36" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="forex_id_refs_id_45735265" columns="forex_id" ref-table="tos_import_forex" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="future_id_refs_id_fb99c7d2" columns="future_id" ref-table="tos_import_future" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_8cd6b51d" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_account_tradehistory_0f49e691" unique="false" columns="account_summary_id"/>
+      <index name="statement_account_tradehistory_661bf18b" unique="false" columns="future_id"/>
+      <index name="statement_account_tradehistory_9d0f24d9" unique="false" columns="underlying_id"/>
+      <index name="statement_account_tradehistory_f2104221" unique="false" columns="forex_id"/>
+    </table>
+    <table name="statement_position_positionequity" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="position_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="instrument_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark_change" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pct_change" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="bp_effect" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="instrument_id_refs_id_9039d04c" columns="instrument_id" ref-table="statement_position_positioninstrument" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="position_summary_id_refs_id_87ff47ff" columns="position_summary_id" ref-table="statement_position_positionsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_189db781" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_position_positionequity_62a4f5e1" unique="false" columns="position_summary_id"/>
+      <index name="statement_position_positionequity_9d0f24d9" unique="false" columns="underlying_id"/>
+      <index name="statement_position_positionequity_ce1084cd" unique="false" columns="instrument_id"/>
+    </table>
+    <table name="statement_position_positionforex" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="position_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="forex_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark_change" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pct_change" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="bp_effect" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="forex_id_refs_id_f3ca2554" columns="forex_id" ref-table="tos_import_forex" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="position_summary_id_refs_id_6c8f65e8" columns="position_summary_id" ref-table="statement_position_positionsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_position_positionforex_62a4f5e1" unique="false" columns="position_summary_id"/>
+      <index name="statement_position_positionforex_f2104221" unique="false" columns="forex_id"/>
+    </table>
+    <table name="statement_position_positionfuture" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="position_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="future_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="days" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark_change" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pct_change" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="bp_effect" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="future_id_refs_id_7c554fd9" columns="future_id" ref-table="tos_import_future" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="position_summary_id_refs_id_5c7c9241" columns="position_summary_id" ref-table="statement_position_positionsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_position_positionfuture_62a4f5e1" unique="false" columns="position_summary_id"/>
+      <index name="statement_position_positionfuture_661bf18b" unique="false" columns="future_id"/>
+    </table>
+    <table name="statement_position_positioninstrument" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="position_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="delta" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="gamma" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="theta" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="vega" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pct_change" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="bp_effect" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="position_summary_id_refs_id_7cb34f43" columns="position_summary_id" ref-table="statement_position_positionsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_c780c956" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="instrument_id_refs_id_9039d04c" table="statement_position_positionequity" schema="" catalog="rivers" columns="instrument_id"/>
+      <exported-key name="instrument_id_refs_id_892a898c" table="statement_position_positionoption" schema="" catalog="rivers" columns="instrument_id"/>
+      <index name="statement_position_positioninstrument_62a4f5e1" unique="false" columns="position_summary_id"/>
+      <index name="statement_position_positioninstrument_9d0f24d9" unique="false" columns="underlying_id"/>
+    </table>
+    <table name="statement_position_positionoption" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="position_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="instrument_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="right" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="special" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ex_month" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ex_year" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="strike" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="contract" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="days" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="trade_price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="mark_change" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="delta" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="gamma" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="theta" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="vega" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pct_change" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_open" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_day" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="bp_effect" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="instrument_id_refs_id_892a898c" columns="instrument_id" ref-table="statement_position_positioninstrument" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="position_summary_id_refs_id_689cb8b6" columns="position_summary_id" ref-table="statement_position_positionsummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_f6d784cd" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_position_positionoption_62a4f5e1" unique="false" columns="position_summary_id"/>
+      <index name="statement_position_positionoption_9d0f24d9" unique="false" columns="underlying_id"/>
+      <index name="statement_position_positionoption_ce1084cd" unique="false" columns="instrument_id"/>
+    </table>
+    <table name="statement_position_positionsummary" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="statement_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="cash_sweep" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="pl_ytd" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="futures_bp" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="bp_adjustment" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <column name="available" sqlType="DECIMAL" precision="10" scale="2" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="statement_id_refs_id_aaa54bf0" columns="statement_id" ref-table="tos_import_statement" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="position_summary_id_refs_id_87ff47ff" table="statement_position_positionequity" schema="" catalog="rivers" columns="position_summary_id"/>
+      <exported-key name="position_summary_id_refs_id_6c8f65e8" table="statement_position_positionforex" schema="" catalog="rivers" columns="position_summary_id"/>
+      <exported-key name="position_summary_id_refs_id_5c7c9241" table="statement_position_positionfuture" schema="" catalog="rivers" columns="position_summary_id"/>
+      <exported-key name="position_summary_id_refs_id_7cb34f43" table="statement_position_positioninstrument" schema="" catalog="rivers" columns="position_summary_id"/>
+      <exported-key name="position_summary_id_refs_id_689cb8b6" table="statement_position_positionoption" schema="" catalog="rivers" columns="position_summary_id"/>
+      <index name="date" unique="true" columns="date"/>
+      <index name="statement_position_positionsummary_9775495e" unique="false" columns="statement_id"/>
+    </table>
+    <table name="statement_trade_cancelledorder" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="trade_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="forex_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="time_cancelled" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="spread" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="side" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pos_effect" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strike" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="contract" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="order" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tif" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="forex_id_refs_id_71773608" columns="forex_id" ref-table="tos_import_forex" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="future_id_refs_id_43249380" columns="future_id" ref-table="tos_import_future" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="trade_summary_id_refs_id_fefb9c51" columns="trade_summary_id" ref-table="statement_trade_tradesummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_331d4cb1" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_trade_cancelledorder_661bf18b" unique="false" columns="future_id"/>
+      <index name="statement_trade_cancelledorder_9d0f24d9" unique="false" columns="underlying_id"/>
+      <index name="statement_trade_cancelledorder_eb4e82ac" unique="false" columns="trade_summary_id"/>
+      <index name="statement_trade_cancelledorder_f2104221" unique="false" columns="forex_id"/>
+    </table>
+    <table name="statement_trade_filledorder" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="trade_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="forex_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="exec_time" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="spread" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="side" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pos_effect" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strike" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="contract" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="net_price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="order" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="forex_id_refs_id_a2ad7b56" columns="forex_id" ref-table="tos_import_forex" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="future_id_refs_id_204b4ffc" columns="future_id" ref-table="tos_import_future" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="trade_summary_id_refs_id_379f8481" columns="trade_summary_id" ref-table="statement_trade_tradesummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_7f7fe493" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_trade_filledorder_661bf18b" unique="false" columns="future_id"/>
+      <index name="statement_trade_filledorder_9d0f24d9" unique="false" columns="underlying_id"/>
+      <index name="statement_trade_filledorder_eb4e82ac" unique="false" columns="trade_summary_id"/>
+      <index name="statement_trade_filledorder_f2104221" unique="false" columns="forex_id"/>
+    </table>
+    <table name="statement_trade_rollingstrategy" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="trade_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="strategy" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="side" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="right" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ex_month" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ex_year" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="strike" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="contract" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="new_expire_date" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="call_by" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="days_begin" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="order_price" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="active_time_start" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="active_time_end" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="move_to_market_time_start" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="move_to_market_time_end" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="status" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="trade_summary_id_refs_id_4258be57" columns="trade_summary_id" ref-table="statement_trade_tradesummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_c18bf3d6" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_trade_rollingstrategy_9d0f24d9" unique="false" columns="underlying_id"/>
+      <index name="statement_trade_rollingstrategy_eb4e82ac" unique="false" columns="trade_summary_id"/>
+    </table>
+    <table name="statement_trade_tradesummary" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="statement_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="statement_id_refs_id_6a18db8b" columns="statement_id" ref-table="tos_import_statement" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="trade_summary_id_refs_id_fefb9c51" table="statement_trade_cancelledorder" schema="" catalog="rivers" columns="trade_summary_id"/>
+      <exported-key name="trade_summary_id_refs_id_379f8481" table="statement_trade_filledorder" schema="" catalog="rivers" columns="trade_summary_id"/>
+      <exported-key name="trade_summary_id_refs_id_4258be57" table="statement_trade_rollingstrategy" schema="" catalog="rivers" columns="trade_summary_id"/>
+      <exported-key name="trade_summary_id_refs_id_282bd052" table="statement_trade_workingorder" schema="" catalog="rivers" columns="trade_summary_id"/>
+      <index name="date" unique="true" columns="date"/>
+      <index name="statement_trade_tradesummary_9775495e" unique="false" columns="statement_id"/>
+    </table>
+    <table name="statement_trade_workingorder" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="trade_summary_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="underlying_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="future_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="forex_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="time_placed" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="spread" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="side" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="quantity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pos_effect" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="strike" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="contract" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="order" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="tif" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="mark" sqlType="DECIMAL" precision="8" scale="2" nullable="false" jdbcType="3"/>
+      <column name="status" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="forex_id_refs_id_302c4063" columns="forex_id" ref-table="tos_import_forex" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="future_id_refs_id_b8cc3cd8" columns="future_id" ref-table="tos_import_future" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="trade_summary_id_refs_id_282bd052" columns="trade_summary_id" ref-table="statement_trade_tradesummary" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="underlying_id_refs_id_22e7e2cb" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="rivers" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="statement_trade_workingorder_661bf18b" unique="false" columns="future_id"/>
+      <index name="statement_trade_workingorder_9d0f24d9" unique="false" columns="underlying_id"/>
+      <index name="statement_trade_workingorder_eb4e82ac" unique="false" columns="trade_summary_id"/>
+      <index name="statement_trade_workingorder_f2104221" unique="false" columns="forex_id"/>
+    </table>
+    <table name="tos_import_forex" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="symbol" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="forex_id_refs_id_f2b07218" table="statement_account_holdingforex" schema="" catalog="rivers" columns="forex_id"/>
+      <exported-key name="forex_id_refs_id_7afac1e8" table="statement_account_orderhistory" schema="" catalog="rivers" columns="forex_id"/>
+      <exported-key name="forex_id_refs_id_45735265" table="statement_account_tradehistory" schema="" catalog="rivers" columns="forex_id"/>
+      <exported-key name="forex_id_refs_id_f3ca2554" table="statement_position_positionforex" schema="" catalog="rivers" columns="forex_id"/>
+      <exported-key name="forex_id_refs_id_71773608" table="statement_trade_cancelledorder" schema="" catalog="rivers" columns="forex_id"/>
+      <exported-key name="forex_id_refs_id_a2ad7b56" table="statement_trade_filledorder" schema="" catalog="rivers" columns="forex_id"/>
+      <exported-key name="forex_id_refs_id_302c4063" table="statement_trade_workingorder" schema="" catalog="rivers" columns="forex_id"/>
+    </table>
+    <table name="tos_import_future" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="symbol" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lookup" sqlType="VARCHAR" precision="2" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="expire_date" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="session" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="spc" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="future_id_refs_id_61a1c1e7" table="statement_account_holdingfuture" schema="" catalog="rivers" columns="future_id"/>
+      <exported-key name="future_id_refs_id_9a946eab" table="statement_account_orderhistory" schema="" catalog="rivers" columns="future_id"/>
+      <exported-key name="future_id_refs_id_90107e6a" table="statement_account_profitloss" schema="" catalog="rivers" columns="future_id"/>
+      <exported-key name="future_id_refs_id_fb99c7d2" table="statement_account_tradehistory" schema="" catalog="rivers" columns="future_id"/>
+      <exported-key name="future_id_refs_id_7c554fd9" table="statement_position_positionfuture" schema="" catalog="rivers" columns="future_id"/>
+      <exported-key name="future_id_refs_id_43249380" table="statement_trade_cancelledorder" schema="" catalog="rivers" columns="future_id"/>
+      <exported-key name="future_id_refs_id_204b4ffc" table="statement_trade_filledorder" schema="" catalog="rivers" columns="future_id"/>
+      <exported-key name="future_id_refs_id_b8cc3cd8" table="statement_trade_workingorder" schema="" catalog="rivers" columns="future_id"/>
+    </table>
+    <table name="tos_import_statement" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="account_statement" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="position_statement" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="trade_activity" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="statement_id_refs_id_a6c7945a" table="stat_day_statday" schema="" catalog="rivers" columns="statement_id"/>
+      <exported-key name="statement_id_refs_id_9ca5a930" table="statement_account_accountsummary" schema="" catalog="rivers" columns="statement_id"/>
+      <exported-key name="statement_id_refs_id_aaa54bf0" table="statement_position_positionsummary" schema="" catalog="rivers" columns="statement_id"/>
+      <exported-key name="statement_id_refs_id_6a18db8b" table="statement_trade_tradesummary" schema="" catalog="rivers" columns="statement_id"/>
+      <index name="date" unique="true" columns="date"/>
+    </table>
+    <table name="tos_import_underlying" schema="" catalog="rivers" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="symbol" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="company" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="underlying_id_refs_id_2733903e" table="statement_account_holdingequity" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_43a2bc2a" table="statement_account_holdingoption" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_01110fbc" table="statement_account_orderhistory" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_690d4cd2" table="statement_account_profitloss" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_8cd6b51d" table="statement_account_tradehistory" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_189db781" table="statement_position_positionequity" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_c780c956" table="statement_position_positioninstrument" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_f6d784cd" table="statement_position_positionoption" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_331d4cb1" table="statement_trade_cancelledorder" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_7f7fe493" table="statement_trade_filledorder" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_c18bf3d6" table="statement_trade_rollingstrategy" schema="" catalog="rivers" columns="underlying_id"/>
+      <exported-key name="underlying_id_refs_id_22e7e2cb" table="statement_trade_workingorder" schema="" catalog="rivers" columns="underlying_id"/>
     </table>
   </data-source>
 </component>

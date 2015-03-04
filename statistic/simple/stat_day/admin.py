@@ -64,9 +64,15 @@ class DayStatAdmin(admin.ModelAdmin):
 
 # noinspection PyMethodMayBeStatic
 class DayStatHoldingAdmin(admin.ModelAdmin):
+    def statement_date(self, obj):
+        return obj.stat_day.statement.date
+
+    statement_date.short_description = 'Date'
+    statement_date.admin_order_field = 'statement__date'
 
     list_display = (
-        'stat_day', 'name',
+        'statement_date',
+        'name',
         'total_order_count',
         'working_order_count',
         'filled_order_count',

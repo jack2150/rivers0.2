@@ -17,7 +17,7 @@
       <excludeFolder url="file://$MODULE_DIR$/static/highstock-2.1.2" />
       <excludeFolder url="file://$MODULE_DIR$/static/morris" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 2.7.8 (C:\Anaconda\python.exe)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="raphael" level="application" />

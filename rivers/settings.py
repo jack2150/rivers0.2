@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -30,7 +29,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     # plugin package, django suit and adminplus
     #'suit',
-    #'django_admin_bootstrapped',
+    'django_admin_bootstrapped',
     'adminplus',
     'widget_tweaks',
 
@@ -42,14 +41,18 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # base app
+    'base',
+
+    # tos import
     'tos_import',
     'tos_import.statement.statement_account',
     'tos_import.statement.statement_position',
     'tos_import.statement.statement_trade',
 
+    # statistic
     'statistic.simple.stat_day',
 
-    'base',
 
 )
 
@@ -83,9 +86,35 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
     }
 }
+"""
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'rivers',
+        'USER': 'root',
+        'PASSWORD': 'qwer1234',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'CONN_MAX_AGE': 600
+    },
+    'slave': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'rivers',
+        'USER': 'root',
+        'PASSWORD': 'qwer1234',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'TEST_MIRROR': 'default'
+    }
+"""
+
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+)
+
+# TEST_RUNNER = None
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -115,33 +144,6 @@ TEMPLATE_DIRS = (
 
 DATE_FORMAT = 'Y-m-d'
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'formatters': {
-        'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
-    },
-    'handlers': {
-        'null': {
-            'level': 'DEBUG',
-            'class': 'django.utils.log.NullHandler',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple'
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['null'],
-            'propagate': True,
-            'level': 'INFO',
-        },
-    }
-}
+FIXTURE_DIRS = (
+    os.path.join(BASE_DIR, 'fixtures'),
+)

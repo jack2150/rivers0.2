@@ -195,19 +195,6 @@ class TradeActivityAdmin(admin.ModelAdmin):
 
     list_per_page = 20
 
-    suit_form_tabs = (
-        ('general', 'General'),
-        ('working_order', 'Working Order'),
-        ('filled_order', 'Filled Order'),
-        ('cancelled_order', 'Cancelled Order'),
-        ('rolling_strategy', 'Rolling Strategy'),
-    )
-
-    # Read about form includes in next section
-    suit_form_includes = (
-        ('admin/tos_import/statement_trade/working_order.html', 'middle', 'cities'),
-    )
-
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember
 class TaAdmin(admin.ModelAdmin):
