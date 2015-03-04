@@ -476,8 +476,11 @@ class SavePositionStatement(SaveAppModel):
     def save_all(self):
         """
         Save all data into position models
+        :rtype : int
         """
         self.save_position_statement()
         self.save_equity_option_position()
         self.save_future_position()
         self.save_forex_position()
+
+        return self.position_statement.id

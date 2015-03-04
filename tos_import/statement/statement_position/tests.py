@@ -397,7 +397,10 @@ class TestSavePositionStatement(TestSetUpDB):
                 statement=statement,
                 file_data=pos_data
             )
-            save_pos.save_all()
+            position_summary_id = save_pos.save_all()
+
+            print 'Position summary id: %d' % position_summary_id
+            self.assertTrue(position_summary_id)
 
             print 'Underlying count: %d' % models.Underlying.objects.count()
             print 'statement count: %d' % models.Statement.objects.count()

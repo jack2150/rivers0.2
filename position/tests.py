@@ -1,5 +1,5 @@
 from django.test import SimpleTestCase
-from tos_import.classes.test.__test import SetUpTestDB, TestSetUp
+from tos_import.classes.test import TestSetUp, TestSetUpDB
 from tos_import.models import Statement
 
 
@@ -47,5 +47,3 @@ class TestSavePosition(SimpleTestCase):
     def test_222(self):
         print Statement.objects.count()
 
-
-# todo: try fixtures and master/slave, very slow, try other sql option

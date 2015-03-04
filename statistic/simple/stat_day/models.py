@@ -120,9 +120,10 @@ class SaveStatDay(object):
         self.filled_order = self.trade_activity.filledorder_set
         self.cancelled_order = self.trade_activity.cancelledorder_set
 
-    def start(self):
+    def save_all(self):
         """
         get all then save it into database
+        :rtype : int
         """
         holdings = [
             self.get_equity(),
@@ -148,6 +149,8 @@ class SaveStatDay(object):
 
             if holding['name'] not in ('FUTURE', 'FOREX'):
                 ds_investment.statdayoptiongreek_set.create(**holding['option_greek'])
+
+        return day_stat.id
 
     def get_day_stat(self):
         """

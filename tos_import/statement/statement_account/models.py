@@ -884,6 +884,7 @@ class SaveAccountStatement(SaveAppModel):
     def save_all(self):
         """
         Save all data into position models
+        :rtype : int
         """
         self.save_account_summary()
 
@@ -902,3 +903,5 @@ class SaveAccountStatement(SaveAppModel):
 
         self.save_history(save_cls=OrderHistory, save_data=self.order_history)
         self.save_history(save_cls=TradeHistory, save_data=self.trade_history)
+
+        return self.account_statement.id

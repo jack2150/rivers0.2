@@ -86,29 +86,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
-    }
-}
-"""
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rivers',
-        'USER': 'root',
-        'PASSWORD': 'qwer1234',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'CONN_MAX_AGE': 600
+        'NAME': os.path.join(BASE_DIR, 'default.db'),
     },
     'slave': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rivers',
-        'USER': 'root',
-        'PASSWORD': 'qwer1234',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'TEST_MIRROR': 'default'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'test.db'),
     }
-"""
+}
+
 
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.MD5PasswordHasher',

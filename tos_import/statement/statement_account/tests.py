@@ -609,7 +609,10 @@ class TestSaveAccountStatement(TestSetUpDB):
                 statement=statement,
                 file_data=acc_data
             )
-            save_acc.save_all()
+            account_summary_id = save_acc.save_all()
+
+            print 'Account summary id: %d' % account_summary_id
+            self.assertTrue(account_summary_id)
 
             print 'Statement count: %d' % models.Statement.objects.count()
             print 'AccountStatement count: %d' % models.AccountSummary.objects.count()

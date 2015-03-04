@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 from tos_import.files.test_files import *
-from tos_import.classes.test import TestSetUpDB
+from tos_import.classes.test import TestSetUpDB, TestSetUp
 from tos_import.statement.statement_account.models import *
 from tos_import.statement.statement_position.models import *
 from tos_import.statement.statement_trade.models import *
@@ -563,7 +563,7 @@ class TestPmsImportStatementView(TestSetUpDB):
 
 class TestStatementImportAll(TestSetUpDB):
     def setUp(self):
-        TestSetUpDB.setUp(self)
+        TestSetUpDB .setUp(self)
 
         self.user = User.objects.create_superuser(
             username='jack',
@@ -577,36 +577,43 @@ class TestStatementImportAll(TestSetUpDB):
 
         response = self.client.get(reverse('admin:statement_import_all'))
 
-        #print response
+        imported_logs = response.context['imported_logs']
+        error_logs = response.context['error_logs']
 
-        print Statement.objects.count()
-        print response.context['imported_logs']
+        expected_imported_key = [
+            'statement', 'account_statement', 'position_statement', 'trade_activity'
+        ]
+        expected_statement_key = [
+            'id', 'change_url', 'delete_url', 'date'
+        ]
 
-        # todo: write better test
+        print 'imported logs:'
+        pprint(imported_logs)
 
+        print '\n' + 'error logs: '
+        pprint(error_logs)
 
+        self.assertEqual(type(imported_logs), list)
+        self.assertGreaterEqual(len(imported_logs), 0)
 
+        for log in imported_logs:
+            self.assertEqual(type(log), dict)
 
+            for key in log.keys():
+                self.assertIn(key, expected_imported_key)
 
+                for key2 in log[key].keys():
+                    self.assertIn(key2, expected_statement_key)
 
+        expected_error_key = [
+            'path', 'note', 'date', 'error'
+        ]
+        self.assertEqual(type(error_logs), list)
+        for log in error_logs:
+            for key in log.keys():
+                self.assertIn(key, expected_error_key)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        self.assertGreaterEqual(Statement.objects.count(), 0)
+        self.assertGreaterEqual(AccountSummary.objects.count(), 0)
+        self.assertGreaterEqual(PositionSummary.objects.count(), 0)
+        self.assertGreaterEqual(TradeSummary.objects.count(), 0)

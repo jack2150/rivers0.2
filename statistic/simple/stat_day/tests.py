@@ -476,7 +476,9 @@ class TestSaveDateStat(TestSetUpDB):
             'bp_effect_sum'
         ]
 
-        self.save_day_stat.start()
+        stat_day_id = self.save_day_stat.save_all()
+        print 'Stat day id: %d' % stat_day_id
+        self.assertTrue(stat_day_id)
 
         self.assertEqual(models.StatDay.objects.count(), 1)
         self.assertEqual(models.StatDayHolding.objects.count(), 5)

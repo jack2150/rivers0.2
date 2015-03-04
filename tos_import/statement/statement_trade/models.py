@@ -401,6 +401,7 @@ class SaveTradeActivity(SaveAppModel):
     def save_all(self):
         """
         Save all data into position models
+        :rtype : int
         """
         self.save_trade_activity()
 
@@ -408,3 +409,5 @@ class SaveTradeActivity(SaveAppModel):
         self.save_single(save_cls=FilledOrder, save_data=self.filled_order)
         self.save_single(save_cls=CancelledOrder, save_data=self.cancelled_order)
         self.save_rolling_strategy()
+
+        return self.trade_activity.id

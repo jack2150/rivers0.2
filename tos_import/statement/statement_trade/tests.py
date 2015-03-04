@@ -503,7 +503,10 @@ class TestSaveTradeActivity(TestSetUpDB):
                 statement=statement,
                 file_data=ta_data
             )
-            save_ta.save_all()
+            trade_activity_id = save_ta.save_all()
+
+            print 'Trade activity id: %d' % trade_activity_id
+            self.assertTrue(trade_activity_id)
 
             print 'Statement count: %d' % models.Statement.objects.count()
             print 'TradeActivity count: %d' % models.TradeSummary.objects.count()

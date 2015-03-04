@@ -159,7 +159,7 @@ class PmsImportStatementsForm(forms.Form):
                     file_data=ta_data
                 ).save_all()
 
-                SaveStatDay(statement).start()
+                SaveStatDay(statement).save_all()
 
                 self.cleaned_data['statement_id'] = statement.id
                 self.cleaned_data['statement_name'] = statement.__unicode__()
@@ -255,36 +255,26 @@ def statement_import_all(request):
                     statement.trade_activity = ta_data
                     statement.save()
 
-                    SaveAccountStatement(
+                    account_summary_id = SaveAccountStatement(
                         date=file_date,
                         statement=statement,
                         file_data=acc_data
                     ).save_all()
 
-                    SavePositionStatement(
+                    position_summary_id = SavePositionStatement(
                         date=file_date,
                         statement=statement,
                         file_data=pos_data
                     ).save_all()
 
-                    SaveTradeActivity(
+                    trade_summary_id = SaveTradeActivity(
                         date=file_date,
                         statement=statement,
                         file_data=ta_data
                     ).save_all()
 
                     # save stat day
-                    SaveStatDay(statement).start()
-
-                    # display imported log
-                    account_summary = statement.accountsummary_set.first()
-                    """:type: AccountSummary"""
-
-                    position_summary = statement.positionsummary_set.first()
-                    """:type: PositionSummary"""
-
-                    trade_summary = statement.tradesummary_set.first()
-                    """:type: TradeSummary"""
+                    SaveStatDay(statement).save_all()
 
                     imported_logs.append({
                         'statement': {
@@ -298,31 +288,31 @@ def statement_import_all(request):
                             'date': statement.date
                         },
                         'account_statement': {
-                            'id': account_summary.id,
+                            'id': account_summary_id,
                             'change_url': reverse(
                                 'admin:statement_account_accountsummary_change',
-                                args={account_summary.id}),
+                                args={account_summary_id}),
                             'delete_url': reverse(
                                 'admin:statement_account_accountsummary_delete',
-                                args={account_summary.id}),
+                                args={account_summary_id}),
                         },
                         'position_statement': {
-                            'id': position_summary.id,
+                            'id': position_summary_id,
                             'change_url': reverse(
                                 'admin:statement_position_positionsummary_change',
-                                args={position_summary.id}),
+                                args={position_summary_id}),
                             'delete_url': reverse(
                                 'admin:statement_position_positionsummary_delete',
-                                args={position_summary.id}),
+                                args={position_summary_id}),
                         },
                         'trade_activity': {
-                            'id': trade_summary.id,
+                            'id': trade_summary_id,
                             'change_url': reverse(
                                 'admin:statement_trade_tradesummary_change',
-                                args={trade_summary.id}),
+                                args={trade_summary_id}),
                             'delete_url': reverse(
                                 'admin:statement_trade_tradesummary_delete',
-                                args={trade_summary.id}),
+                                args={trade_summary_id}),
                         },
                     })
 
@@ -336,7 +326,6 @@ def statement_import_all(request):
                     )
 
     parameters = dict(
-        real_files_folder=real_files_folder,
         imported_logs=imported_logs,
         error_logs=error_logs
     )
