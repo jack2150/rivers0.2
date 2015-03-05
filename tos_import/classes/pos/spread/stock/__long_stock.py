@@ -1,4 +1,4 @@
-from lib.pos.spread.stock import StockContext
+from tos_import.classes.pos.spread.stock import StockContext
 
 
 class StockLong(StockContext):

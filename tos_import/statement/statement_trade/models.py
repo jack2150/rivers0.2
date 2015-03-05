@@ -1,4 +1,5 @@
 from django.db import models
+from position.models import PositionSet
 from tos_import.classes.io.open_ta import OpenTA
 from tos_import.models import Underlying, Future, Forex, Statement, SaveAppModel
 
@@ -158,6 +159,9 @@ class FilledOrder(models.Model, TaModel):
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Price")
     net_price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Net Price")
     order = models.CharField(max_length=20, verbose_name="Order")
+
+    # for position set
+    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
 
     def json(self):
         """

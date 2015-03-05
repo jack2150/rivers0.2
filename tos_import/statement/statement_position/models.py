@@ -1,5 +1,6 @@
 import locale
 from django.db import models
+from position.models import PositionSet
 from tos_import.classes.io import OpenPos
 from tos_import.models import Underlying, Statement, SaveAppModel, Future, Forex
 
@@ -83,6 +84,9 @@ class PositionInstrument(models.Model, PositionModel):
     pl_open = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Open")
     pl_day = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="PL Day")
     bp_effect = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="BP Effect")
+
+    # for position set
+    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
 
     def json(self):
         """

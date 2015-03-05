@@ -16,6 +16,7 @@ from tos_import.statement.statement_trade.models import SaveTradeActivity
 
 class TestSetUp(SimpleTestCase):
     def setUp(self):
+        SimpleTestCase.__init__(self)
         """
         ready up all variables and test class
         """
@@ -27,6 +28,7 @@ class TestSetUp(SimpleTestCase):
         """
         remove variables after test
         """
+        SimpleTestCase.tearDown(self)
         print '\n' + '=' * 100 + '\n\n'
 
 
@@ -35,6 +37,7 @@ class TestSetUpDB(TestCase):
         """
         ready up all variables and test class
         """
+        TestCase.setUp(self)
         print '=' * 100
         print "<%s> currently run: %s" % (self.__class__.__name__, self._testMethodName)
         print '-' * 100 + '\n'
@@ -43,6 +46,7 @@ class TestSetUpDB(TestCase):
         """
         remove variables after test
         """
+        TestCase.tearDown(self)
         print '\n' + '=' * 100 + '\n\n'
 
 
@@ -134,9 +138,9 @@ class TestReadyUp(SimpleTestCase):
               % (position_statement_count, position_count)
 
 
-class TestReadyFile(TestSetUp):
+class TestReadyFile(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
     @classmethod
     def ready_real_file(cls, path, real_date, file_date):
