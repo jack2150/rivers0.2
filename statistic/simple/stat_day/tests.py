@@ -391,7 +391,18 @@ class TestSaveDateStat(TestSetUpDB):
             self.assertIn(key, spread.keys())
             print '%s: %s' % (key, spread[key])
 
-        print models.StatDayOptionGreek.objects.count()
+    def test_get_holding_hedge(self):
+        """
+        Test get holding option detail from table
+        using set foreign key reference
+        """
+        spread = self.save_day_stat.get_hedge()
+        self.assertEqual(type(spread), dict)
+        self.assertEqual(spread['name'], 'HEDGE')
+
+        for key in self.expected_keys + ['option_greek']:
+            self.assertIn(key, spread.keys())
+            print '%s: %s' % (key, spread[key])
 
     def test_get_day_stat(self):
         """
@@ -481,8 +492,8 @@ class TestSaveDateStat(TestSetUpDB):
         self.assertTrue(stat_day_id)
 
         self.assertEqual(models.StatDay.objects.count(), 1)
-        self.assertEqual(models.StatDayHolding.objects.count(), 5)
-        self.assertEqual(models.StatDayOptionGreek.objects.count(), 3)
+        self.assertEqual(models.StatDayHolding.objects.count(), 6)
+        self.assertEqual(models.StatDayOptionGreek.objects.count(), 4)
 
         stat_day = models.StatDay.objects.first()
         stat_day_holding = models.StatDayHolding.objects.all()

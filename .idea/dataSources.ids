@@ -88,35 +88,32 @@
       <primary-key columns="session_key"/>
       <index name="django_session_b7b81f0c" unique="true" columns="expire_date"/>
     </table>
-    <table name="position_set_breakeven" schema="" catalog="" type="TABLE">
+    <table name="position_breakeven" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="condition" sqlType="VARCHAR(2)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
-      <exported-key name="#FAKE_position_set_positioncontext_5" table="position_set_positioncontext" schema="" catalog="" columns="break_even_id"/>
-      <exported-key name="#FAKE_position_set_positioncontexts_break_even_1" table="position_set_positioncontexts_break_even" schema="" catalog="" columns="breakeven_id"/>
+      <exported-key name="#FAKE_position_positioncontext_5" table="position_positioncontext" schema="" catalog="" columns="break_even_id"/>
     </table>
-    <table name="position_set_maxloss" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <column name="condition" sqlType="VARCHAR(2)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="limit" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="amount" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
-      <primary-key columns="id"/>
-      <exported-key name="#FAKE_position_set_positioncontext_1" table="position_set_positioncontext" schema="" catalog="" columns="max_loss_id"/>
-      <exported-key name="#FAKE_position_set_positioncontexts_max_loss_1" table="position_set_positioncontexts_max_loss" schema="" catalog="" columns="maxloss_id"/>
-    </table>
-    <table name="position_set_maxprofit" schema="" catalog="" type="TABLE">
+    <table name="position_maxloss" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="condition" sqlType="VARCHAR(2)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="limit" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="amount" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <primary-key columns="id"/>
-      <exported-key name="#FAKE_position_set_positioncontext_2" table="position_set_positioncontext" schema="" catalog="" columns="max_profit_id"/>
-      <exported-key name="#FAKE_position_set_positioncontexts_max_profit_1" table="position_set_positioncontexts_max_profit" schema="" catalog="" columns="maxprofit_id"/>
+      <exported-key name="#FAKE_position_positioncontext_1" table="position_positioncontext" schema="" catalog="" columns="max_loss_id"/>
     </table>
-    <table name="position_set_positioncontext" schema="" catalog="" type="TABLE">
+    <table name="position_maxprofit" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="condition" sqlType="VARCHAR(2)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="limit" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="amount" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_position_positioncontext_2" table="position_positioncontext" schema="" catalog="" columns="max_profit_id"/>
+    </table>
+    <table name="position_positioncontext" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="break_even_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <column name="start_profit_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
@@ -124,64 +121,19 @@
       <column name="max_profit_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <column name="max_loss_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_position_set_positioncontext_1" columns="max_loss_id" ref-table="position_set_maxloss" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_position_set_positioncontext_2" columns="max_profit_id" ref-table="position_set_maxprofit" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_position_set_positioncontext_3" columns="start_loss_id" ref-table="position_set_startloss" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_position_set_positioncontext_4" columns="start_profit_id" ref-table="position_set_startprofit" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_position_set_positioncontext_5" columns="break_even_id" ref-table="position_set_breakeven" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <exported-key name="#FAKE_position_set_positionset_2" table="position_set_positionset" schema="" catalog="" columns="context_id"/>
+      <foreign-key name="#FAKE_position_positioncontext_1" columns="max_loss_id" ref-table="position_maxloss" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_position_positioncontext_2" columns="max_profit_id" ref-table="position_maxprofit" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_position_positioncontext_3" columns="start_loss_id" ref-table="position_startloss" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_position_positioncontext_4" columns="start_profit_id" ref-table="position_startprofit" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_position_positioncontext_5" columns="break_even_id" ref-table="position_breakeven" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_position_positionset_2" table="position_positionset" schema="" catalog="" columns="context_id"/>
     </table>
-    <table name="position_set_positioncontexts" schema="" catalog="" type="TABLE">
+    <table name="position_positioncontexts" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
-      <exported-key name="#FAKE_position_set_positionset_1" table="position_set_positionset" schema="" catalog="" columns="contexts_id"/>
+      <exported-key name="#FAKE_position_positionset_1" table="position_positionset" schema="" catalog="" columns="contexts_id"/>
     </table>
-    <table name="position_set_positioncontexts_break_even" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="positioncontexts_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="breakeven_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <primary-key columns="id"/>
-      <foreign-key name="#FAKE_position_set_positioncontexts_break_even_1" columns="breakeven_id" ref-table="position_set_breakeven" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="position_set_positioncontexts_break_even_e9438290" unique="true" columns="breakeven_id"/>
-      <index name="position_set_positioncontexts_break_even_b602a592" unique="true" columns="positioncontexts_id"/>
-    </table>
-    <table name="position_set_positioncontexts_max_loss" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="positioncontexts_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="maxloss_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <primary-key columns="id"/>
-      <foreign-key name="#FAKE_position_set_positioncontexts_max_loss_1" columns="maxloss_id" ref-table="position_set_maxloss" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="position_set_positioncontexts_max_loss_1b8ef0f6" unique="true" columns="maxloss_id"/>
-      <index name="position_set_positioncontexts_max_loss_b602a592" unique="true" columns="positioncontexts_id"/>
-    </table>
-    <table name="position_set_positioncontexts_max_profit" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="positioncontexts_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="maxprofit_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <primary-key columns="id"/>
-      <foreign-key name="#FAKE_position_set_positioncontexts_max_profit_1" columns="maxprofit_id" ref-table="position_set_maxprofit" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="position_set_positioncontexts_max_profit_43d9f64b" unique="true" columns="maxprofit_id"/>
-      <index name="position_set_positioncontexts_max_profit_b602a592" unique="true" columns="positioncontexts_id"/>
-    </table>
-    <table name="position_set_positioncontexts_start_loss" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="positioncontexts_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="startloss_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <primary-key columns="id"/>
-      <foreign-key name="#FAKE_position_set_positioncontexts_start_loss_1" columns="startloss_id" ref-table="position_set_startloss" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="position_set_positioncontexts_start_loss_981595ee" unique="true" columns="startloss_id"/>
-      <index name="position_set_positioncontexts_start_loss_b602a592" unique="true" columns="positioncontexts_id"/>
-    </table>
-    <table name="position_set_positioncontexts_start_profit" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="positioncontexts_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="startprofit_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <primary-key columns="id"/>
-      <foreign-key name="#FAKE_position_set_positioncontexts_start_profit_1" columns="startprofit_id" ref-table="position_set_startprofit" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="position_set_positioncontexts_start_profit_7a00d8bb" unique="true" columns="startprofit_id"/>
-      <index name="position_set_positioncontexts_start_profit_b602a592" unique="true" columns="positioncontexts_id"/>
-    </table>
-    <table name="position_set_positionset" schema="" catalog="" type="TABLE">
+    <table name="position_positionset" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="spread" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
@@ -189,26 +141,24 @@
       <column name="context_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <column name="contexts_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_position_set_positionset_1" columns="contexts_id" ref-table="position_set_positioncontexts" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_position_set_positionset_2" columns="context_id" ref-table="position_set_positioncontext" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_position_set_positionset_3" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="position_set_positionset_9d0f24d9" unique="true" columns="underlying_id"/>
+      <foreign-key name="#FAKE_position_positionset_1" columns="contexts_id" ref-table="position_positioncontexts" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_position_positionset_2" columns="context_id" ref-table="position_positioncontext" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_position_positionset_3" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="position_positionset_9d0f24d9" unique="true" columns="underlying_id"/>
     </table>
-    <table name="position_set_startloss" schema="" catalog="" type="TABLE">
+    <table name="position_startloss" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="condition" sqlType="VARCHAR(2)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
-      <exported-key name="#FAKE_position_set_positioncontext_3" table="position_set_positioncontext" schema="" catalog="" columns="start_loss_id"/>
-      <exported-key name="#FAKE_position_set_positioncontexts_start_loss_1" table="position_set_positioncontexts_start_loss" schema="" catalog="" columns="startloss_id"/>
+      <exported-key name="#FAKE_position_positioncontext_3" table="position_positioncontext" schema="" catalog="" columns="start_loss_id"/>
     </table>
-    <table name="position_set_startprofit" schema="" catalog="" type="TABLE">
+    <table name="position_startprofit" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="condition" sqlType="VARCHAR(2)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
-      <exported-key name="#FAKE_position_set_positioncontext_4" table="position_set_positioncontext" schema="" catalog="" columns="start_profit_id"/>
-      <exported-key name="#FAKE_position_set_positioncontexts_start_profit_1" table="position_set_positioncontexts_start_profit" schema="" catalog="" columns="startprofit_id"/>
+      <exported-key name="#FAKE_position_positioncontext_4" table="position_positioncontext" schema="" catalog="" columns="start_profit_id"/>
     </table>
     <table name="stat_day_statday" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
@@ -448,10 +398,12 @@
       <column name="pl_ytd" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="margin_req" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="mark_value" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="true" jdbcType="6"/>
+      <column name="position_set_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_statement_account_profitloss_1" columns="future_id" ref-table="tos_import_future" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_statement_account_profitloss_2" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_statement_account_profitloss_3" columns="account_summary_id" ref-table="statement_account_accountsummary" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="statement_account_profitloss_3a5cdec0" unique="true" columns="position_set_id"/>
       <index name="statement_account_profitloss_661bf18b" unique="true" columns="future_id"/>
       <index name="statement_account_profitloss_9d0f24d9" unique="true" columns="underlying_id"/>
       <index name="statement_account_profitloss_0f49e691" unique="true" columns="account_summary_id"/>
@@ -553,11 +505,13 @@
       <column name="pl_open" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="pl_day" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="bp_effect" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="position_set_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_statement_position_positioninstrument_1" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_statement_position_positioninstrument_2" columns="position_summary_id" ref-table="statement_position_positionsummary" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <exported-key name="#FAKE_statement_position_positionequity_1" table="statement_position_positionequity" schema="" catalog="" columns="instrument_id"/>
       <exported-key name="#FAKE_statement_position_positionoption_1" table="statement_position_positionoption" schema="" catalog="" columns="instrument_id"/>
+      <index name="statement_position_positioninstrument_3a5cdec0" unique="true" columns="position_set_id"/>
       <index name="statement_position_positioninstrument_9d0f24d9" unique="true" columns="underlying_id"/>
       <index name="statement_position_positioninstrument_62a4f5e1" unique="true" columns="position_summary_id"/>
     </table>
@@ -656,11 +610,13 @@
       <column name="price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="net_price" sqlType="DECIMAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
       <column name="order" sqlType="VARCHAR(20)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="position_set_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_statement_trade_filledorder_1" columns="forex_id" ref-table="tos_import_forex" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_statement_trade_filledorder_2" columns="future_id" ref-table="tos_import_future" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_statement_trade_filledorder_3" columns="underlying_id" ref-table="tos_import_underlying" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_statement_trade_filledorder_4" columns="trade_summary_id" ref-table="statement_trade_tradesummary" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="statement_trade_filledorder_3a5cdec0" unique="true" columns="position_set_id"/>
       <index name="statement_trade_filledorder_f2104221" unique="true" columns="forex_id"/>
       <index name="statement_trade_filledorder_661bf18b" unique="true" columns="future_id"/>
       <index name="statement_trade_filledorder_9d0f24d9" unique="true" columns="underlying_id"/>
@@ -781,7 +737,7 @@
       <column name="symbol" sqlType="VARCHAR(10)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="company" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
       <primary-key columns="id"/>
-      <exported-key name="#FAKE_position_set_positionset_3" table="position_set_positionset" schema="" catalog="" columns="underlying_id"/>
+      <exported-key name="#FAKE_position_positionset_3" table="position_positionset" schema="" catalog="" columns="underlying_id"/>
       <exported-key name="#FAKE_statement_account_holdingequity_1" table="statement_account_holdingequity" schema="" catalog="" columns="underlying_id"/>
       <exported-key name="#FAKE_statement_account_holdingoption_1" table="statement_account_holdingoption" schema="" catalog="" columns="underlying_id"/>
       <exported-key name="#FAKE_statement_account_orderhistory_3" table="statement_account_orderhistory" schema="" catalog="" columns="underlying_id"/>

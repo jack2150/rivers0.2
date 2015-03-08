@@ -98,7 +98,7 @@ class PmsImportStatementsForm(forms.Form):
 
         if not len(self._errors):
             # no error found for field
-            file_date = cleaned_data.get("date").strftime('%Y-%m-%d')
+            real_date = cleaned_data.get("date").strftime('%Y-%m-%d')
 
             acc_date = datetime.strptime(
                 cleaned_data.get("account_statement").name[:10], '%Y-%m-%d'
@@ -118,8 +118,8 @@ class PmsImportStatementsForm(forms.Form):
             ta_date = ta_date.strftime('%Y-%m-%d')
 
             if acc_date == pos_date == ta_date:
-                if file_date != acc_date:
-                    error_message = 'All date must have (-1 BDay, %s != %s).' % (file_date, acc_date)
+                if real_date != acc_date:
+                    error_message = 'All date must have (-1 BDay, %s != %s).' % (real_date, acc_date)
                     self._errors['date'] = self.error_class([error_message])
             else:
                 error_message = 'All file date must be same.'
@@ -135,26 +135,26 @@ class PmsImportStatementsForm(forms.Form):
                 ta_data = ta_data.read()
 
                 statement = Statement()
-                statement.date = file_date
+                statement.date = real_date
                 statement.account_statement = acc_data
                 statement.position_statement = pos_data
                 statement.trade_activity = ta_data
                 statement.save()
 
                 SaveAccountStatement(
-                    date=file_date,
+                    date=real_date,
                     statement=statement,
                     file_data=acc_data
                 ).save_all()
 
                 SavePositionStatement(
-                    date=file_date,
+                    date=real_date,
                     statement=statement,
                     file_data=pos_data
                 ).save_all()
 
                 SaveTradeActivity(
-                    date=file_date,
+                    date=real_date,
                     statement=statement,
                     file_data=ta_data
                 ).save_all()
@@ -256,19 +256,19 @@ def statement_import_all(request):
                     statement.save()
 
                     account_summary_id = SaveAccountStatement(
-                        date=file_date,
+                        date=real_date,
                         statement=statement,
                         file_data=acc_data
                     ).save_all()
 
                     position_summary_id = SavePositionStatement(
-                        date=file_date,
+                        date=real_date,
                         statement=statement,
                         file_data=pos_data
                     ).save_all()
 
                     trade_summary_id = SaveTradeActivity(
-                        date=file_date,
+                        date=real_date,
                         statement=statement,
                         file_data=ta_data
                     ).save_all()

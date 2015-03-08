@@ -27,7 +27,7 @@ def simple_stat_day_view(request, date=''):
         date = stat_day.statement.date.strftime('%Y-%m-%d')
 
         # get stat holding
-        names = ['SPREAD', 'OPTION', 'EQUITY', 'FUTURE', 'FOREX']
+        names = ['SPREAD', 'OPTION', 'HEDGE', 'EQUITY', 'FUTURE', 'FOREX']
         for name in names:
             stat_day_holding = stat_day.statdayholding_set.filter(name=name).first()
 
@@ -37,13 +37,6 @@ def simple_stat_day_view(request, date=''):
                 option_greek = None
 
             stat_day_holdings.append((stat_day_holding, option_greek))
-
-
-
-
-
-
-
 
         # page navigator
         previous_obj = stat_days.filter(statement__date__lt=date).order_by('statement__date').reverse()

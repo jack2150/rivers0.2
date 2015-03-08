@@ -130,7 +130,8 @@ class SaveStatDay(object):
             self.get_option(),
             self.get_spread(),
             self.get_future(),
-            self.get_forex()
+            self.get_forex(),
+            self.get_hedge()
         ]
 
         # first save daily
@@ -493,7 +494,9 @@ class SaveStatDay(object):
         loss_day_sum = 0.0
         bp_effect_sum = 0.0
 
-        exclude_cond = Q(spread='FUTURE') | Q(spread='FOREX') | Q(spread='STOCK') | Q(spread='SINGLE')
+        exclude_cond = Q(
+            spread='FUTURE') | Q(spread='FOREX') | Q(spread='STOCK') \
+                       | Q(spread='SINGLE') | Q(spread='COVERED')
 
         working_order_count = len(self.working_order.exclude(exclude_cond)
                                   .values_list('underlying__symbol', flat=True).distinct())
@@ -532,6 +535,76 @@ class SaveStatDay(object):
 
         return dict(
             name='SPREAD',
+            total_order_count=total_order_count,
+            working_order_count=working_order_count,
+            filled_order_count=filled_order_count,
+            cancelled_order_count=cancelled_order_count,
+            total_holding_count=total_holding_count,
+            profit_holding_count=profit_holding_count,
+            loss_holding_count=loss_holding_count,
+            pl_open_sum=pl_open_sum,
+            profit_open_sum=profit_open_sum,
+            loss_open_sum=loss_open_sum,
+            pl_day_sum=pl_day_sum,
+            profit_day_sum=profit_day_sum,
+            loss_day_sum=loss_day_sum,
+            bp_effect_sum=bp_effect_sum,
+            option_greek=option_greek
+        )
+
+    def get_hedge(self):
+        """
+        get holding option position from table
+        :return: int
+        """
+        total_holding_count = 0
+        profit_holding_count = 0
+        loss_holding_count = 0
+        pl_open_sum = 0.0
+        profit_open_sum = 0.0
+        loss_open_sum = 0.0
+        pl_day_sum = 0.0
+        profit_day_sum = 0.0
+        loss_day_sum = 0.0
+        bp_effect_sum = 0.0
+
+        working_order_count = len(self.working_order.filter(spread='COVERED')
+                                  .values_list('underlying__symbol', flat=True).distinct())
+        filled_order_count = len(self.filled_order.filter(spread='COVERED')
+                                 .values_list('underlying__symbol', flat=True).distinct())
+        cancelled_order_count = len(self.cancelled_order.filter(spread='COVERED')
+                                    .values_list('underlying__symbol', flat=True).distinct())
+
+        total_order_count = working_order_count + filled_order_count + cancelled_order_count
+
+        position_instruments = list()
+        for position_instrument in self.position_instrument.all():
+            equity = position_instrument.positionequity_set.exclude(quantity=0)
+            option = position_instrument.positionoption_set.exclude(quantity=0)
+
+            if equity.count() == 1 and option.count() == 1:
+                total_holding_count += 1
+                pl_open = float(position_instrument.pl_open)
+                pl_day = float(position_instrument.pl_day)
+                pl_open_sum += pl_open
+                pl_day_sum += pl_day
+                bp_effect_sum += float(position_instrument.bp_effect)
+
+                if pl_open > 0:
+                    profit_holding_count += 1
+                    profit_open_sum += pl_open
+                    profit_day_sum += pl_day
+                elif pl_open < 0:
+                    loss_holding_count += 1
+                    loss_open_sum += pl_open
+                    loss_day_sum += pl_day
+
+                position_instruments.append(position_instrument)
+
+        option_greek = self.get_option_greek(position_instruments)
+
+        return dict(
+            name='HEDGE',
             total_order_count=total_order_count,
             working_order_count=working_order_count,
             filled_order_count=filled_order_count,
