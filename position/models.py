@@ -116,12 +116,33 @@ class PositionContext(models.Model):
         Explain this model
         :rtype : str
         """
+        break_even = '{price}{condition}'.format(
+            price=locale.currency(self.break_even.price, grouping=True),
+            condition=self.break_even.condition
+        )
+        start_profit = '{price}{condition}'.format(
+            price=locale.currency(self.start_profit.price, grouping=True),
+            condition=self.start_profit.condition
+        )
+        start_loss = '{price}{condition}'.format(
+            price=locale.currency(self.start_loss.price, grouping=True),
+            condition=self.start_loss.condition
+        )
+        max_profit = '{price}{condition}'.format(
+            price=locale.currency(self.max_profit.price, grouping=True),
+            condition=self.max_profit.condition
+        )
+        max_loss = '{price}{condition}'.format(
+            price=locale.currency(self.max_loss.price, grouping=True),
+            condition=self.max_loss.condition
+        )
+
         return 'PositionContext [{max_loss}:{start_loss}:{break_even}:{start_profit}:{max_profit})'.format(
-            max_loss=locale.currency(self.max_loss.price, grouping=True),
-            start_loss=locale.currency(self.start_loss.price, grouping=True),
-            break_even=locale.currency(self.break_even.price, grouping=True),
-            start_profit=locale.currency(self.start_profit.price, grouping=True),
-            max_profit=locale.currency(self.max_profit.price, grouping=True)
+            max_loss=max_loss,
+            start_loss=start_loss,
+            break_even=break_even,
+            start_profit=start_profit,
+            max_profit=max_profit
         )
 
 

@@ -9,6 +9,40 @@ from tos_import.statement.statement_trade.models import TradeSummary
 from tos_import.statement.statement_trade.models import FilledOrder
 
 
+def create_filled_order(trade_summary, spread, contract,
+                        underlying=None, future=None, forex=None,
+                        side=0, quantity=0, strike=0.0):
+    """
+    Create filled order that use for testing, can be stock or option
+    :param trade_summary: TradeSummary
+    :param underlying: Underlying
+    :param spread: str
+    :param contract: str
+    :param side: str ('BUY', 'SELl')
+    :param quantity: int
+    """
+    filled_order = FilledOrder(
+        trade_summary=trade_summary,
+        underlying=underlying,
+        future=future,
+        forex=forex,
+        exec_time=timezone.now(),
+        spread=spread,
+        side=side,
+        quantity=quantity,
+        pos_effect='TO OPEN',
+        expire_date=None,
+        strike=strike,
+        contract=contract,
+        price=14.31,
+        net_price=14.31,
+        order='LMT'
+    )
+    filled_order.save()
+
+    return filled_order
+
+
 class TestUnitSetUp(TestCase):
     """
     Using unittest not django test
@@ -20,20 +54,6 @@ class TestUnitSetUp(TestCase):
         print '=' * 100
         print "<%s> currently run: %s" % (self.__class__.__name__, self._testMethodName)
         print '-' * 100 + '\n'
-
-    def tearDown(self):
-        """
-        remove variables after test
-        """
-        print '\n' + '=' * 100 + '\n\n'
-
-
-class TestSpread(TestUnitSetUp):
-    def setUp(self):
-        """
-        prepare inserted filled order that ready for use
-        """
-        TestUnitSetUp.setUp(self)
 
         self.spread = None
 
@@ -49,6 +69,8 @@ class TestSpread(TestUnitSetUp):
         self.contracts = list()
 
         self.filled_order = None
+
+        self.create_filled_order = create_filled_order
 
         # noinspection PyBroadException
         try:
@@ -101,12 +123,12 @@ class TestSpread(TestUnitSetUp):
             self.future = Future.objects.get(symbol='NGX5')
             self.forex = Forex.objects.get(symbol='USD/OJY')
 
-    # noinspection PyBroadException
     def tearDown(self):
         """
-        Remove filled order that previous add
+        remove variables after test
         """
-        TestUnitSetUp.tearDown(self)
+        print '\n' + '=' * 100 + '\n\n'
+
         # noinspection PyBroadException
         print '-' * 80
         print 'remove statement, trade_summary, underlying...'
@@ -123,39 +145,8 @@ class TestSpread(TestUnitSetUp):
             Future.objects.filter(symbol='NGX5').delete()
             Forex.objects.filter(symbol='USD/OJY').delete()
 
-    def create_filled_order(self, trade_summary, spread, contract,
-                            underlying=None, future=None, forex=None,
-                            side=0, quantity=0, strike=0.0):
-        """
-        Create filled order that use for testing, can be stock or option
-        :param trade_summary: TradeSummary
-        :param underlying: Underlying
-        :param spread: str
-        :param contract: str
-        :param side: str ('BUY', 'SELl')
-        :param quantity: int
-        """
-        filled_order = FilledOrder(
-            trade_summary=trade_summary,
-            underlying=underlying,
-            future=future,
-            forex=forex,
-            exec_time=timezone.now(),
-            spread=spread,
-            side=side,
-            quantity=quantity,
-            pos_effect='TO OPEN',
-            expire_date=None,
-            strike=strike,
-            contract=contract,
-            price=14.31,
-            net_price=14.31,
-            order='LMT'
-        )
-        filled_order.save()
 
-        return filled_order
-
+class TestSpread(TestUnitSetUp):
     def get_object_test(self, test_method, spread, underlying=None, future=None, forex=None):
         """
         Method use for testing get underlying, future and forex
@@ -790,40 +781,36 @@ class TestSpread(TestUnitSetUp):
 
         # todo: until here...
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    def test_get_options_spread(self):
+    def test_four_leg_options_spread(self):
         """
-        Test get more than one leg option spread
+        Test get 2 legs option spread
         """
-        spread = 'VERTICAL'
+        self.spreads = ['BUTTERFLY', '~BUTTERFLY']
 
-        self.contracts = ['FOREX', 'FOREX']
+        self.three_legs = {
+            'BUTTERFLY': [
+                {
+                    'option1': {'contract': 'CALL', 'side': 'SELL', 'quantity': -1, 'strike': 55},
+                    'option2': {'contract': 'CALL', 'side': 'BUY', 'quantity': 2, 'strike': 57.5},
+                    'option3': {'contract': 'CALL', 'side': 'SELL', 'quantity': -1, 'strike': 60},
+                    'result': 'SHORT_CALL_BUTTERFLY'
+                },
+            ]
+        }
 
-        self.sides = ['BUY', 'SELL']
+        # todo: next tos down, wait until tos online...
 
-        self.quantities = [1, -22]
 
-        self.results = ['LONG_FOREX', 'SHORT_FOREX']
 
-        for key, contract in enumerate(self.contracts):
-            pass
 
-        # todo: until here...
+
+
+
+
+
+
+
+
 
 
 

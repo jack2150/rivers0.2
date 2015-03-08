@@ -406,33 +406,16 @@ class Spread(object):
     def get_four_leg_options_spread(self):
         """
         Check 4 options spread using filled order data
-        only contain condor or iron condor that is long or short, balance or unbalance
-
+        only contain condor or iron condor that is long or short, balance or unbalance, iron butterfly
         :return: str
         """
+        # todo: double calendar
+
+
+
 
 
         return 1
-
-    def get_options_spread(self):
-        """
-        Check how many leg on this option and use its method
-        :return: str
-        """
-        option_legs = len(self.filled_orders)
-
-        if option_legs == 2:
-            spread = self.get_two_leg_options_spread()
-        elif option_legs == 3:
-            spread = self.get_three_leg_options_spread()
-        elif option_legs == 4:
-            spread = self.get_four_leg_options_spread()
-        else:
-            spread = 'CUSTOM'
-
-        return spread
-
-
 
     def get_spread(self):
         """
@@ -455,18 +438,15 @@ class Spread(object):
             spread = self.get_forex_spread()
         else:
             # the hard part, spread type
-            spread = 'SPREAD'
-
-
-
-
-
-
-
-
-
-
-
+            option_legs = len(self.filled_orders)
+            if option_legs == 2:
+                spread = self.get_two_leg_options_spread()
+            elif option_legs == 3:
+                spread = self.get_three_leg_options_spread()
+            elif option_legs == 4:
+                spread = self.get_four_leg_options_spread()
+            else:
+                spread = 'CUSTOM'
 
         return spread
 
