@@ -116,11 +116,11 @@ class PositionContext(models.Model):
         Explain this model
         :rtype : str
         """
-        break_even = '{price}{condition}'.format(
+        break_even = '{price}{condition}P'.format(
             price=locale.currency(self.break_even.price, grouping=True),
             condition=self.break_even.condition
         )
-        start_profit = '{price}{condition}'.format(
+        start_profit = '{condition}{price}'.format(
             price=locale.currency(self.start_profit.price, grouping=True),
             condition=self.start_profit.condition
         )
@@ -128,7 +128,7 @@ class PositionContext(models.Model):
             price=locale.currency(self.start_loss.price, grouping=True),
             condition=self.start_loss.condition
         )
-        max_profit = '{price}{condition}'.format(
+        max_profit = '{condition}{price}'.format(
             price=locale.currency(self.max_profit.price, grouping=True),
             condition=self.max_profit.condition
         )

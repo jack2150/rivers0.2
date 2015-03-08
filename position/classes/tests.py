@@ -11,7 +11,8 @@ from tos_import.statement.statement_trade.models import FilledOrder
 
 def create_filled_order(trade_summary, spread, contract,
                         underlying=None, future=None, forex=None,
-                        side=0, quantity=0, strike=0.0):
+                        side=0, quantity=0, strike=0.0,
+                        price=14.31, net_price=14.31):
     """
     Create filled order that use for testing, can be stock or option
     :param trade_summary: TradeSummary
@@ -34,8 +35,8 @@ def create_filled_order(trade_summary, spread, contract,
         expire_date=None,
         strike=strike,
         contract=contract,
-        price=14.31,
-        net_price=14.31,
+        price=price,
+        net_price=net_price,
         order='LMT'
     )
     filled_order.save()
