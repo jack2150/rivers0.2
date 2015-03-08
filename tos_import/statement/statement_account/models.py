@@ -106,25 +106,25 @@ class ForexSummary(models.Model, AccountModel):
     account_summary = models.ForeignKey(AccountSummary)
 
     cash = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Cash'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Cash'
     )
     upl = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Unrealized P/L'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Unrealized P/L'
     )
     floating = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Floating'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Floating'
     )
     equity = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Equity'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Equity'
     )
     margin = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Margin'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Margin'
     )
     available_equity = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Available Equity'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Available Equity'
     )
     risk_level = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Risk Level'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Risk Level'
     )
 
     def json(self):
@@ -521,16 +521,16 @@ class FutureStatement(models.Model, AccountModel):
     description = models.CharField(max_length=255, verbose_name='Description')
 
     fee = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Fee'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Fee'
     )
     commission = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Commission'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Commission'
     )
     amount = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Amount'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Amount'
     )
     balance = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Balance'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Balance'
     )
 
     def json(self):
@@ -572,13 +572,13 @@ class HoldingFuture(models.Model, AccountModel):
 
     quantity = models.IntegerField(default=0, verbose_name='Quantity')
     trade_price = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Trade Price'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Trade Price'
     )
     mark = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Mark'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Mark'
     )
     pl_day = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='P/L Day'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='P/L Day'
     )
 
     def json(self):
@@ -618,16 +618,16 @@ class ForexStatement(models.Model, AccountModel):
     ref_no = models.CharField(max_length=200, verbose_name='Ref No')
     description = models.CharField(max_length=200, verbose_name='Description')
     commissions = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Commissions'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Commissions'
     )
     amount = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Amount'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Amount'
     )
     amount_usd = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Amount USD'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Amount USD'
     )
     balance = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Balance'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Balance'
     )
 
     def json(self):
@@ -667,14 +667,14 @@ class HoldingForex(models.Model, AccountModel):
     forex = models.ForeignKey(Forex)
 
     fpl = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Floating P/L'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Floating P/L'
     )
     mark = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Mark'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Mark'
     )
-    quantity = models.FloatField(default=0.0, verbose_name='Quantity')
+    quantity = models.IntegerField(default=0, verbose_name='Quantity')
     trade_price = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Trade Price'
+        max_digits=12, decimal_places=6, default=0.0, verbose_name='Trade Price'
     )
 
     def json(self):

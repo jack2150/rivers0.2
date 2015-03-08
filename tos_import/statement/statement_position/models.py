@@ -275,22 +275,22 @@ class PositionFuture(models.Model, PositionModel):
     quantity = models.IntegerField(default=0, verbose_name='Qty')
     days = models.IntegerField(default=0, verbose_name='Days')
     trade_price = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="Trade Price"
     )
     mark = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="Mark"
     )
     mark_change = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Chg"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="Mark Chg"
     )
     pct_change = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="% Change"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="% Change"
     )
     pl_open = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="P/L Open"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="P/L Open"
     )
     pl_day = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="P/L Day"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="P/L Day"
     )
     bp_effect = models.DecimalField(
         max_digits=8, decimal_places=2, default=0.0, verbose_name="BP Effect"
@@ -329,25 +329,25 @@ class PositionForex(models.Model, PositionModel):
 
     quantity = models.IntegerField(default=0, verbose_name='Qty')
     trade_price = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="Trade Price"
     )
     mark = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="Mark"
     )
     mark_change = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark Chg"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="Mark Chg"
     )
     pct_change = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="% Change"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="% Change"
     )
     pl_open = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="P/L Open"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="P/L Open"
     )
     pl_day = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="P/L Day"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="P/L Day"
     )
     bp_effect = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name="BP Effect"
+        max_digits=12, decimal_places=6, default=0.0, verbose_name="BP Effect"
     )
 
     def json(self):

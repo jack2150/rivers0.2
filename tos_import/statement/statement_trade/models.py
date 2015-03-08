@@ -97,10 +97,10 @@ class WorkingOrder(models.Model, TaModel):
     expire_date = models.CharField(max_length=20, verbose_name="Expire Date", null=True, blank=True)
     strike = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Strike")
     contract = models.CharField(max_length=20, verbose_name="Contract")
-    price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Price")
+    price = models.DecimalField(max_digits=12, decimal_places=6, default=0.0, verbose_name="Price")
     order = models.CharField(max_length=20, verbose_name="Order")
     tif = models.CharField(max_length=20, verbose_name="TIF")
-    mark = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Mark")
+    mark = models.DecimalField(max_digits=12, decimal_places=6, default=0.0, verbose_name="Mark")
     status = models.CharField(max_length=200, verbose_name="Status")
 
     def json(self):
@@ -156,8 +156,8 @@ class FilledOrder(models.Model, TaModel):
     expire_date = models.CharField(max_length=20, verbose_name="Expire Date", null=True, blank=True)
     strike = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Strike")
     contract = models.CharField(max_length=20, verbose_name="Contract")
-    price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Price")
-    net_price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Net Price")
+    price = models.DecimalField(max_digits=12, decimal_places=6, default=0.0, verbose_name="Price")
+    net_price = models.DecimalField(max_digits=12, decimal_places=6, default=0.0, verbose_name="Net Price")
     order = models.CharField(max_length=20, verbose_name="Order")
 
     # for position set
@@ -214,7 +214,7 @@ class CancelledOrder(models.Model, TaModel):
     expire_date = models.CharField(max_length=20, verbose_name="Expire Date", null=True, blank=True)
     strike = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Strike")
     contract = models.CharField(max_length=20, verbose_name="Contract")
-    price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Price")
+    price = models.DecimalField(max_digits=12, decimal_places=6, default=0.0, verbose_name="Price")
     order = models.CharField(max_length=20, verbose_name="Order")
     tif = models.CharField(max_length=20, verbose_name="TIF")
     status = models.CharField(max_length=200, verbose_name="Status")

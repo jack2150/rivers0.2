@@ -1,10 +1,11 @@
+from fractions import Fraction
 from django.db.models.query import QuerySet
 from position.models import *
 # noinspection PyUnresolvedReferences
 from tos_import.statement.statement_trade.models import FilledOrder
 
 
-class ContextLongStock(object):
+class ContextLongFuture(object):
     def __init__(self, filled_orders):
         """
         :param filled_orders: QuerySet
@@ -46,11 +47,12 @@ class ContextLongStock(object):
         self.start_loss.save()
 
         # assume as 100%
+        spc = float(Fraction(self.filled_order.future.spc))
         self.max_profit = MaxProfit(
             price=self.filled_order.price * 2,
             condition='==',
             limit=False,
-            amount=self.filled_order.price * self.filled_order.quantity * 1
+            amount=float(self.filled_order.price * self.filled_order.quantity) / spc
         )
         self.max_profit.save()
 
@@ -58,7 +60,7 @@ class ContextLongStock(object):
             price=self.filled_order.price * 0,
             condition='==',
             limit=True,
-            amount=self.filled_order.price * self.filled_order.quantity * -1
+            amount=float(self.filled_order.price * self.filled_order.quantity) / -spc
         )
         self.max_loss.save()
 
@@ -74,7 +76,7 @@ class ContextLongStock(object):
         return self.position_context
 
 
-class ContextShortStock(object):
+class ContextShortFuture(object):
     def __init__(self, filled_orders):
         """
         :param filled_orders: QuerySet
@@ -116,11 +118,12 @@ class ContextShortStock(object):
         self.start_loss.save()
 
         # assume as 100%
+        spc = float(Fraction(self.filled_order.future.spc))
         self.max_profit = MaxProfit(
-            price=0.0,
+            price=self.filled_order.price * 0,
             condition='==',
             limit=True,
-            amount=self.filled_order.price * self.filled_order.quantity * 1
+            amount=float(self.filled_order.price * self.filled_order.quantity) / -spc
         )
         self.max_profit.save()
 
@@ -128,9 +131,10 @@ class ContextShortStock(object):
             price=self.filled_order.price * 2,
             condition='==',
             limit=False,
-            amount=self.filled_order.price * self.filled_order.quantity * -1
+            amount=float(self.filled_order.price * self.filled_order.quantity) / spc
         )
         self.max_loss.save()
+
 
         self.position_context = PositionContext(
             break_even=self.break_even,
@@ -142,3 +146,22 @@ class ContextShortStock(object):
         self.position_context.save()
 
         return self.position_context
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

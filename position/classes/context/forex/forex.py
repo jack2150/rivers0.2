@@ -1,10 +1,12 @@
+# todo: pips calculation = (1/10000 / 120.87) * 10000
+from decimal import Decimal
 from django.db.models.query import QuerySet
 from position.models import *
 # noinspection PyUnresolvedReferences
 from tos_import.statement.statement_trade.models import FilledOrder
 
 
-class ContextLongStock(object):
+class ContextLongForex(object):
     def __init__(self, filled_orders):
         """
         :param filled_orders: QuerySet
@@ -45,20 +47,29 @@ class ContextLongStock(object):
         )
         self.start_loss.save()
 
-        # assume as 100%
+        # assume as +50%
         self.max_profit = MaxProfit(
-            price=self.filled_order.price * 2,
-            condition='==',
+            price=self.filled_order.price * Decimal(1.5),
+            condition='>=',
             limit=False,
-            amount=self.filled_order.price * self.filled_order.quantity * 1
+            amount=(
+                ((self.filled_order.price * Decimal(1.5) * self.filled_order.quantity)
+                 - (self.filled_order.price * self.filled_order.quantity))
+                / (self.filled_order.price * Decimal(1.5))
+            )
         )
         self.max_profit.save()
 
+        # assume as -50%
         self.max_loss = MaxLoss(
-            price=self.filled_order.price * 0,
-            condition='==',
+            price=self.filled_order.price * Decimal(0.5),
+            condition='<=',
             limit=True,
-            amount=self.filled_order.price * self.filled_order.quantity * -1
+            amount=(
+                ((self.filled_order.price * Decimal(0.5) * self.filled_order.quantity)
+                 - (self.filled_order.price * self.filled_order.quantity))
+                / (self.filled_order.price * Decimal(0.5))
+            )
         )
         self.max_loss.save()
 
@@ -74,7 +85,7 @@ class ContextLongStock(object):
         return self.position_context
 
 
-class ContextShortStock(object):
+class ContextShortForex(object):
     def __init__(self, filled_orders):
         """
         :param filled_orders: QuerySet
@@ -115,20 +126,29 @@ class ContextShortStock(object):
         )
         self.start_loss.save()
 
-        # assume as 100%
+        # assume as -50%
         self.max_profit = MaxProfit(
-            price=0.0,
-            condition='==',
+            price=self.filled_order.price * Decimal(0.5),
+            condition='<=',
             limit=True,
-            amount=self.filled_order.price * self.filled_order.quantity * 1
+            amount=(
+                ((self.filled_order.price * Decimal(0.5) * self.filled_order.quantity)
+                 - (self.filled_order.price * self.filled_order.quantity))
+                / (self.filled_order.price * Decimal(0.5))
+            )
         )
         self.max_profit.save()
 
+        # assume as +50%
         self.max_loss = MaxLoss(
-            price=self.filled_order.price * 2,
-            condition='==',
+            price=self.filled_order.price * Decimal(1.5),
+            condition='>=',
             limit=False,
-            amount=self.filled_order.price * self.filled_order.quantity * -1
+            amount=(
+                ((self.filled_order.price * Decimal(1.5) * self.filled_order.quantity)
+                 - (self.filled_order.price * self.filled_order.quantity))
+                / (self.filled_order.price * Decimal(1.5))
+            )
         )
         self.max_loss.save()
 
@@ -142,3 +162,21 @@ class ContextShortStock(object):
         self.position_context.save()
 
         return self.position_context
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

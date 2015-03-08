@@ -99,9 +99,10 @@ class TestUnitSetUp(TestCase):
             self.underlying.save()
 
             self.future = Future(
-                symbol='NGX5',
-                lookup='NG',
-                description='NATURAL GAS FUTURES'
+                symbol='ZWH5',
+                lookup='ZW',
+                description='WHEAT FUTURE',
+                spc='1/50'
             )
             self.future.save()
 
@@ -114,6 +115,8 @@ class TestUnitSetUp(TestCase):
             print 'using statement: %s' % self.statement
             print 'using trade summary: %s' % self.trade_summary
             print 'using underlying: %s' % self.underlying
+            print 'using future: %s' % self.future
+            print 'using forex: %s' % self.forex
             print '-' * 80
         except Exception:
             print 'Statement, trade_summary, underlying already exists...'
