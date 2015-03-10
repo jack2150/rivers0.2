@@ -6,13 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abad7927-9aed-4174-be11-41b5cd2ff7b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/spread/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/spread/tests.py" />
-      <change type="MOVED" beforePath="C:\Users\Jack\Projects\rivers\position\classes\spread.py" afterPath="$PROJECT_DIR$/position/classes/spread/spread.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/__init__.py" afterPath="$PROJECT_DIR$/position/classes/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/context/forex/forex.py" afterPath="$PROJECT_DIR$/position/classes/context/forex/forex.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/tests.py" afterPath="$PROJECT_DIR$/position/classes/tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/context/hedge/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/context/hedge/hedge.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/context/hedge/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rivers.iws" />
@@ -31,6 +27,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestPositionSetContext.coverage" NAME="Test: position.tests.TestPositionSetContext Coverage Results" MODIFIED="1425566601074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_ta_tests.coverage" NAME="Test: lib.io.open_ta.tests Coverage Results" MODIFIED="1415833012134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestSpread_test_get_name.coverage" NAME="Unittest TestSpread.test_get_name Coverage Results" MODIFIED="1425665459219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes" />
+    <SUITE FILE_PATH="coverage/rivers$Unittest_TestContextProtectiveCall_test_create_context__1_.coverage" NAME="Unittest TestContextProtectiveCall.test_create_context (1) Coverage Results" MODIFIED="1425958591884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/hedge" />
     <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestContextLongFuture.coverage" NAME="Unittests in TestContextLongFuture Coverage Results" MODIFIED="1425842831309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/future" />
     <SUITE FILE_PATH="coverage/rivers$tests.coverage" NAME="tests Coverage Results" MODIFIED="1425441897072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/class" />
     <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestContextShortStock.coverage" NAME="Unittests in TestContextShortStock Coverage Results" MODIFIED="1425843106459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/future" />
@@ -56,18 +53,21 @@
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_account_tests_TestHoldingForex.coverage" NAME="Test: tos_import.statement.statement_account.tests.TestHoldingForex Coverage Results" MODIFIED="1425164547055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1425442060985" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestUnitSetUp__1_.coverage" NAME="Unittests in TestUnitSetUp (1) Coverage Results" MODIFIED="1425493858868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes" />
+    <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestContextCoveredCall.coverage" NAME="Unittests in TestContextCoveredCall Coverage Results" MODIFIED="1425957826326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/hedge" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestSpread_test_save_all.coverage" NAME="Unittest TestSpread.test_save_all Coverage Results" MODIFIED="1425783771266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_io_open_acc_tests.coverage" NAME="Test: lib.io.open_acc.tests Coverage Results" MODIFIED="1415830659334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_classes_io_open_acc_tests.coverage" NAME="Test: app_pms.classes.io.open_acc.tests Coverage Results" MODIFIED="1416369947272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_app_stat_day_tests_TestAppStatDay_setUp.coverage" NAME="Test: app_pms.app_stat_day.tests.TestAppStatDay.setUp Coverage Results" MODIFIED="1420402068366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_future.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_future Coverage Results" MODIFIED="1421375835225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__stat_simple_tests_TestSaveDateStat_test_get_option_greek.coverage" NAME="Test: stat_simple.tests.TestSaveDateStat.test_get_option_greek Coverage Results" MODIFIED="1425160487968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Unittest_TestContextCoveredPut_test_create_context.coverage" NAME="Unittest TestContextCoveredPut.test_create_context Coverage Results" MODIFIED="1425958569945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/hedge" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_stock_tests.coverage" NAME="Test: lib.pos.spread.stock.tests Coverage Results" MODIFIED="1411250363783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestSpread_test_get_forex_spread.coverage" NAME="Unittest TestSpread.test_get_forex_spread Coverage Results" MODIFIED="1425670208326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes" />
-    <SUITE FILE_PATH="coverage/rivers$Unittests_in_tests__1_.coverage" NAME="Unittests in tests (1) Coverage Results" MODIFIED="1425845215686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/future" />
+    <SUITE FILE_PATH="coverage/rivers$Unittests_in_tests__1_.coverage" NAME="Unittests in tests (1) Coverage Results" MODIFIED="1425960825856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/hedge" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_statement_position_tests_TestPositionStatement_setUp.coverage" NAME="Test: app_pms.statement_position.tests.TestPositionStatement.setUp Coverage Results" MODIFIED="1424106705309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_tests_TestStatementImportAll.coverage" NAME="Test: tos_import.tests.TestStatementImportAll Coverage Results" MODIFIED="1425455519724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_trade_tests_TestSaveTradeActivity.coverage" NAME="Test: tos_import.statement_trade.tests.TestSaveTradeActivity Coverage Results" MODIFIED="1425095610712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestContextProtectiveCall.coverage" NAME="Unittests in TestContextProtectiveCall Coverage Results" MODIFIED="1425957957147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/hedge" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_tests_TestIdentify_is_methods.coverage" NAME="Test: lib.pos.identify.tests.TestIdentify.is_methods Coverage Results" MODIFIED="1411250278067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__stat_simple_tests_TestSaveDateStat_test_get_day_stat.coverage" NAME="Test: stat_simple.tests.TestSaveDateStat.test_get_day_stat Coverage Results" MODIFIED="1424366184159" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_tests.coverage" NAME="Test: position.tests Coverage Results" MODIFIED="1425576424171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -81,10 +81,12 @@
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_tests.coverage" NAME="Test: app_pms.tests Coverage Results" MODIFIED="1424104874581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_position_tests.coverage" NAME="Test: tos_import.statement.statement_position.tests Coverage Results" MODIFIED="1425440434925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_spread_tests.coverage" NAME="Test: position_spread.tests Coverage Results" MODIFIED="1425574206653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Unittest_TestContextProtectiveCall_test_create_context.coverage" NAME="Unittest TestContextProtectiveCall.test_create_context Coverage Results" MODIFIED="1425959425368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/hedge" />
     <SUITE FILE_PATH="coverage/rivers$Test__tos_import_statement_statement_account_tests.coverage" NAME="Test: tos_import.statement.statement_account.tests Coverage Results" MODIFIED="1425574799186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__pms_app_spr_app_tests.coverage" NAME="Test: pms_app.spr_app.tests Coverage Results" MODIFIED="1411252268368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestSpread_test_get_forex.coverage" NAME="Unittest TestSpread.test_get_forex Coverage Results" MODIFIED="1425664798783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestSpread_test_three_leg_options_spread.coverage" NAME="Unittest TestSpread.test_three_leg_options_spread Coverage Results" MODIFIED="1425773726356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes" />
+    <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestContextProtectivePut.coverage" NAME="Unittests in TestContextProtectivePut Coverage Results" MODIFIED="1425960798531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/hedge" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_holding_spread.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_holding_spread Coverage Results" MODIFIED="1422296110877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_app_acc_tests.coverage" NAME="Test: app_pms.app_acc.tests Coverage Results" MODIFIED="1423878187996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_spread_hedge_tests.coverage" NAME="Test: lib.pos.spread.hedge.tests Coverage Results" MODIFIED="1411250353610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -158,6 +160,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_statement_trades_tests.coverage" NAME="Test: app_pms.statement_trades.tests Coverage Results" MODIFIED="1424106392163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestContextShortStock__1_.coverage" NAME="Unittests in TestContextShortStock (1) Coverage Results" MODIFIED="1425850543613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/forex" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_stat_tests_TestSaveDateStat_test_get_equity.coverage" NAME="Test: app_stat.tests.TestSaveDateStat.test_get_equity Coverage Results" MODIFIED="1421536060683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Unittest_TestContextCoveredCall_test_create_context.coverage" NAME="Unittest TestContextCoveredCall.test_create_context Coverage Results" MODIFIED="1425959274996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/context/hedge" />
     <SUITE FILE_PATH="coverage/rivers$Test__lib_pos_identify_tests.coverage" NAME="Test: lib.pos.identify.tests Coverage Results" MODIFIED="1411250291468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__app_pms_tests2.coverage" NAME="Test: app_pms.tests2 Coverage Results" MODIFIED="1416909350087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestSavePosition_test_123.coverage" NAME="Test: position.tests.TestSavePosition.test_123 Coverage Results" MODIFIED="1425495075876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -221,8 +224,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tos_import/custom/settings.py" />
-        <option value="$PROJECT_DIR$/base/tests.py" />
         <option value="$PROJECT_DIR$/tos_import/classes/test/__test.py" />
         <option value="$PROJECT_DIR$/tos_import/classes/test/__init__.py" />
         <option value="$PROJECT_DIR$/tos_import/templates/tos_import/statement_import_all.html" />
@@ -272,6 +273,8 @@
         <option value="$PROJECT_DIR$/position/classes/context/forex/forex.py" />
         <option value="$PROJECT_DIR$/position/classes/spread/spread.py" />
         <option value="$PROJECT_DIR$/position/classes/spread/tests.py" />
+        <option value="$PROJECT_DIR$/position/classes/context/hedge/hedge.py" />
+        <option value="$PROJECT_DIR$/position/classes/context/hedge/tests.py" />
       </list>
     </option>
   </component>
@@ -437,6 +440,80 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="position" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="context" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="position" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="context" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="option" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="position" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="context" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hedge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -476,19 +553,94 @@
       <recent name="C:\Users\Jack\Projects\rivers\statistics\simple\day_stat" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in tests (3)">
-    <configuration default="false" name="Unittests in tests (3)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Unittests in tests (1)">
+    <configuration default="false" name="Unittest TestContextProtectiveCall.test_create_context" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/classes/spread" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/classes/context/hedge" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="rivers" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/classes/spread/tests.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/classes/context/hedge/tests.py" />
+      <option name="CLASS_NAME" value="TestContextProtectiveCall" />
+      <option name="METHOD_NAME" value="test_create_context" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestContextProtectiveCall.test_create_context (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/classes/context/hedge" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/classes/context/hedge/tests.py" />
+      <option name="CLASS_NAME" value="TestContextProtectiveCall" />
+      <option name="METHOD_NAME" value="test_create_context" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestContextCoveredCall.test_create_context" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/classes/context/hedge" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/classes/context/hedge/tests.py" />
+      <option name="CLASS_NAME" value="TestContextCoveredCall" />
+      <option name="METHOD_NAME" value="test_create_context" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in tests (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/classes/context/hedge" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/classes/context/hedge/tests.py" />
       <option name="CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
@@ -502,72 +654,22 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in TestContextLongForex" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittests in TestContextProtectivePut" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/classes/context/forex" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/classes/context/hedge" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="rivers" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/classes/context/forex/tests.py" />
-      <option name="CLASS_NAME" value="TestContextLongForex" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/classes/context/hedge/tests.py" />
+      <option name="CLASS_NAME" value="TestContextProtectivePut" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_CLASS" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in TestContextShortStock (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/classes/context/forex" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/classes/context/forex/tests.py" />
-      <option name="CLASS_NAME" value="TestContextShortStock" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in tests (2)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/classes/context/forex" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/classes/context/forex/tests.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -966,7 +1068,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="11">
+    <list size="12">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestSpread.test_four_leg_options_spread" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
       <item index="2" class="java.lang.String" itemvalue="Django server.Rivers" />
@@ -974,17 +1076,19 @@
       <item index="4" class="java.lang.String" itemvalue="Django tests.Test: statistic.simple.stat_day.tests.TestSaveDateStat.test_get_holding_hedge" />
       <item index="5" class="java.lang.String" itemvalue="Django tests.Test: statistic.simple.stat_day.tests.TestSaveDateStat.test_get_holding_spread" />
       <item index="6" class="java.lang.String" itemvalue="Django tests.Test: statistic.simple.stat_day.tests" />
-      <item index="7" class="java.lang.String" itemvalue="Python tests.Unittests in tests (3)" />
-      <item index="8" class="java.lang.String" itemvalue="Python tests.Unittests in TestContextLongForex" />
-      <item index="9" class="java.lang.String" itemvalue="Python tests.Unittests in TestContextShortStock (1)" />
-      <item index="10" class="java.lang.String" itemvalue="Python tests.Unittests in tests (2)" />
+      <item index="7" class="java.lang.String" itemvalue="Python tests.Unittest TestContextProtectiveCall.test_create_context" />
+      <item index="8" class="java.lang.String" itemvalue="Python tests.Unittest TestContextProtectiveCall.test_create_context (1)" />
+      <item index="9" class="java.lang.String" itemvalue="Python tests.Unittest TestContextCoveredCall.test_create_context" />
+      <item index="10" class="java.lang.String" itemvalue="Python tests.Unittests in tests (1)" />
+      <item index="11" class="java.lang.String" itemvalue="Python tests.Unittests in TestContextProtectivePut" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in tests (3)" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in tests (2)" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in TestContextLongForex" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestContextShortStock (1)" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in tests (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestContextProtectivePut" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestContextProtectiveCall.test_create_context" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestContextCoveredCall.test_create_context" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestContextProtectiveCall.test_create_context (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -998,12 +1102,6 @@
       <created>1411248675319</created>
       <option name="number" value="Default" />
       <updated>1411248675319</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Complete: TA models, OpenIO">
-      <created>1413945407020</created>
-      <option name="number" value="00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1413945407020</updated>
     </task>
     <task id="LOCAL-00010" summary="Complete: new PosModel with blind&#10;Complete: import pms statements view and tests&#10;Starting: new AccModel with blind">
       <created>1414538480375</created>
@@ -1293,7 +1391,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425850711132</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="spread...">
+      <created>1425951972356</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1425951972356</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1322,6 +1426,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1335,7 +1440,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2919786" sideWeight="0.23946784" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1382,7 +1486,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="import ready...&#10;start building useful functional" />
     <MESSAGE value="restart again..." />
     <MESSAGE value="date_stat" />
     <MESSAGE value="date_stat done, interface problem..." />
@@ -1407,7 +1510,8 @@
     <MESSAGE value="3 legs... long stock context..." />
     <MESSAGE value="single option context" />
     <MESSAGE value="future, forex context..." />
-    <option name="LAST_COMMIT_MESSAGE" value="future, forex context..." />
+    <MESSAGE value="spread..." />
+    <option name="LAST_COMMIT_MESSAGE" value="spread..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1417,25 +1521,11 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="27" />
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tos_import/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4487917" vertical-offset="0" max-vertical-offset="8632">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/classes/test/test_case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32911393" vertical-offset="0" max-vertical-offset="7098">
-          <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
@@ -1583,13 +1673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/context/option/option.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15186916" vertical-offset="0" max-vertical-offset="7592">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/classes/pos/spread/leg_one/__call_long.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.29919448" vertical-offset="260" max-vertical-offset="1456">
@@ -1601,13 +1684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.59838897" vertical-offset="0" max-vertical-offset="1040">
           <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/context/option/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4435" max-vertical-offset="5408">
-          <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1754,16 +1830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/spread/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="22356" max-vertical-offset="25714">
-          <caret line="821" column="42" selection-start-line="821" selection-start-column="42" selection-end-line="821" selection-end-column="42" />
-          <folding>
-            <element signature="e#38#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/position/classes/context/forex/forex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4810">
@@ -1777,7 +1843,7 @@
         <state vertical-scroll-proportion="0.21864212" vertical-offset="12056" max-vertical-offset="13936">
           <caret line="471" column="0" selection-start-line="471" selection-start-column="0" selection-end-line="471" selection-end-column="0" />
           <folding>
-            <element signature="e#38#81#0" expanded="true" />
+            <element signature="e#38#81#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1787,6 +1853,59 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="156">
           <caret line="0" column="52" selection-start-line="0" selection-start-column="52" selection-end-line="0" selection-end-column="52" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/context/option/option.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5824">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+            <element signature="e#217#2312#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/context/option/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5330">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding>
+            <element signature="e#171#3040#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/spread/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.3738317" vertical-offset="13000" max-vertical-offset="25714">
+          <caret line="644" column="16" selection-start-line="644" selection-start-column="16" selection-end-line="652" selection-end-column="17" />
+          <folding>
+            <element signature="e#38#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/context/hedge/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35903338" vertical-offset="0" max-vertical-offset="9932">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/context/hedge/hedge.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36214954" vertical-offset="3824" max-vertical-offset="4680">
+          <caret line="313" column="23" selection-start-line="313" selection-start-column="23" selection-end-line="313" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#248#2761#0" expanded="false" />
+            <element signature="e#2805#5318#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
