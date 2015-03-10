@@ -1,4 +1,3 @@
-# todo: pips calculation = (1/10000 / 120.87) * 10000
 from decimal import Decimal
 from django.db.models.query import QuerySet
 from position.models import *

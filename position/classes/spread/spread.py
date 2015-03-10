@@ -409,13 +409,93 @@ class Spread(object):
         only contain condor or iron condor that is long or short, balance or unbalance, iron butterfly
         :return: str
         """
-        # todo: double calendar
 
+        spread = 'CUSTOM'
 
+        # order of quantity in tos is 1-2-1 and strike call low to high, put high to low
+        fs = self.filled_orders
 
+        strikes = [float(f.strike) for f in self.filled_orders]
+        max_strike_index = strikes.index(max(strikes))
+        min_strike_index = strikes.index(min(strikes))
 
+        sorted_strikes = sorted([float(f.strike) for f in self.filled_orders], reverse=True)
+        strike_range1 = sorted_strikes[0] - sorted_strikes[1]
+        strike_range2 = sorted_strikes[2] - sorted_strikes[3]
 
-        return 1
+        if sum([True for f in fs if f.spread == 'CONDOR']) == 4:
+            if sum([True for f in fs if f.contract == 'CALL']) == 4:
+                if fs[max_strike_index].side == fs[min_strike_index].side == 'BUY':
+                    if strike_range1 == strike_range2:
+                        spread = 'LONG_CALL_CONDOR'
+                    else:
+                        spread = 'LONG_BROKEN_WING_CALL_CONDOR'
+                else:
+                    if strike_range1 == strike_range2:
+                        spread = 'SHORT_CALL_CONDOR'
+                    else:
+                        spread = 'SHORT_BROKEN_WING_CALL_CONDOR'
+            elif sum([True for f in fs if f.contract == 'PUT']) == 4:
+                if fs[max_strike_index].side == fs[min_strike_index].side == 'BUY':
+                    if strike_range1 == strike_range2:
+                        spread = 'LONG_PUT_CONDOR'
+                    else:
+                        spread = 'LONG_BROKEN_WING_PUT_CONDOR'
+                else:
+                    if strike_range1 == strike_range2:
+                        spread = 'SHORT_PUT_CONDOR'
+                    else:
+                        spread = 'SHORT_BROKEN_WING_PUT_CONDOR'
+        elif sum([True for f in fs if f.spread == '~CONDOR']) == 4:
+            if sum([True for f in fs if f.contract == 'CALL']) == 4:
+                if fs[max_strike_index].side == fs[min_strike_index].side == 'BUY':
+                    if strike_range1 == strike_range2:
+                        spread = 'LONG_UNBALANCE_CALL_CONDOR'
+                    else:
+                        spread = 'LONG_UNBALANCE_BROKEN_WING_CALL_CONDOR'
+                else:
+                    if strike_range1 == strike_range2:
+                        spread = 'SHORT_UNBALANCE_CALL_CONDOR'
+                    else:
+                        spread = 'SHORT_UNBALANCE_BROKEN_WING_CALL_CONDOR'
+            elif sum([True for f in fs if f.contract == 'PUT']) == 4:
+                if fs[max_strike_index].side == fs[min_strike_index].side == 'BUY':
+                    if strike_range1 == strike_range2:
+                        spread = 'LONG_UNBALANCE_PUT_CONDOR'
+                    else:
+                        spread = 'LONG_UNBALANCE_BROKEN_WING_PUT_CONDOR'
+                else:
+                    if strike_range1 == strike_range2:
+                        spread = 'SHORT_UNBALANCE_PUT_CONDOR'
+                    else:
+                        spread = 'SHORT_UNBALANCE_BROKEN_WING_PUT_CONDOR'
+
+        elif sum([True for f in fs if f.spread == 'IRON CONDOR']) == 4:
+            if fs[max_strike_index].side == fs[min_strike_index].side == 'BUY':
+                if strike_range1 == strike_range2:
+                    spread = 'LONG_IRON_CONDOR'
+                else:
+                    spread = 'LONG_BROKEN_WING_IRON_CONDOR'
+            else:
+                if strike_range1 == strike_range2:
+                    spread = 'SHORT_IRON_CONDOR'
+                else:
+                    spread = 'SHORT_BROKEN_WING_IRON_CONDOR'
+
+        elif sum([True for f in fs if f.spread == '~IRON CONDOR']) == 4:
+            if fs[max_strike_index].side == fs[min_strike_index].side == 'BUY':
+                if strike_range1 == strike_range2:
+                    spread = 'LONG_UNBALANCE_IRON_CONDOR'
+                else:
+                    spread = 'LONG_UNBALANCE_BROKEN_WING_IRON_CONDOR'
+            else:
+                if strike_range1 == strike_range2:
+                    spread = 'SHORT_UNBALANCE_IRON_CONDOR'
+                else:
+                    spread = 'SHORT_UNBALANCE_BROKEN_WING_IRON_CONDOR'
+
+        # todo: double calendar, diagonal, strangle/straddle swap
+        return spread
 
     def get_spread(self):
         """
@@ -426,6 +506,7 @@ class Spread(object):
             raise ValueError('Set spread name before run get_spread method.')
 
         # start analyses spread
+        spread = 'CUSTOM'
         if self.name == 'EQUITY':
             spread = self.get_equity_spread()
         elif self.name == 'HEDGE':
@@ -445,14 +526,5 @@ class Spread(object):
                 spread = self.get_three_leg_options_spread()
             elif option_legs == 4:
                 spread = self.get_four_leg_options_spread()
-            else:
-                spread = 'CUSTOM'
 
         return spread
-
-
-# todo: cont... test all
-# todo: get spread,,, and need all test
-
-
-
