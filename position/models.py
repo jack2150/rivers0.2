@@ -1,4 +1,5 @@
 import locale
+from django.contrib.contenttypes import generic
 from django.db import models
 from tos_import.models import Underlying
 
@@ -103,13 +104,23 @@ class PositionContext(models.Model):
     """
     A position profit loss contain mainly 5 sub class
     """
-    break_even = models.OneToOneField(BreakEven, verbose_name='Break Even', null=True, default=None, blank=True)
+    break_even = models.OneToOneField(
+        BreakEven, verbose_name='Break Even', null=True, default=None, blank=True
+    )
 
-    start_profit = models.OneToOneField(StartProfit, verbose_name='Start Profit', null=True, default=None, blank=True)
-    start_loss = models.OneToOneField(StartLoss, verbose_name='Start Loss', null=True, default=None, blank=True)
+    start_profit = models.OneToOneField(
+        StartProfit, verbose_name='Start Profit', null=True, default=None, blank=True
+    )
+    start_loss = models.OneToOneField(
+        StartLoss, verbose_name='Start Loss', null=True, default=None, blank=True
+    )
 
-    max_profit = models.OneToOneField(MaxProfit, verbose_name='Max Profit', null=True, default=None, blank=True)
-    max_loss = models.OneToOneField(MaxLoss, verbose_name='Max Loss', null=True, default=None, blank=True)
+    max_profit = models.OneToOneField(
+        MaxProfit, verbose_name='Max Profit', null=True, default=None, blank=True
+    )
+    max_loss = models.OneToOneField(
+        MaxLoss, verbose_name='Max Loss', null=True, default=None, blank=True
+    )
 
     def __unicode__(self):
         """
@@ -160,7 +171,8 @@ class PositionContexts(models.Model):
     max_profit = models.ManyToManyField(MaxProfit, verbose_name='Max Profit A', null=True, default=None, blank=True)
     max_loss = models.ManyToManyField(MaxLoss, verbose_name='Max Loss A', null=True, default=None, blank=True)
     """
-    pass
+    left = models.ForeignKey(PositionContext, related_name='position_context_left')
+    right = models.ForeignKey(PositionContext, related_name='position_context_right')
 
 
 class PositionSet(models.Model):

@@ -164,6 +164,54 @@ class TestPositionContext(TestPositionPL):
             print '\n'
 
 
+class TestPositionContexts(TestPositionPL):
+    def test_save(self):
+        self.ready_context()
+
+        for item1, item2 in zip(self.items[0::2], self.items[1::2]):
+            print 'item:'
+            pprint(item1)
+            pprint(item2)
+            print ''
+
+            position_context1 = PositionContext(
+                break_even=item1['break_even'],
+                start_profit=item1['start_profit'],
+                start_loss=item1['start_loss'],
+                max_profit=item1['max_profit'],
+                max_loss=item1['max_loss']
+            )
+            position_context1.save()
+
+            position_context2 = PositionContext(
+                break_even=item2['break_even'],
+                start_profit=item2['start_profit'],
+                start_loss=item2['start_loss'],
+                max_profit=item2['max_profit'],
+                max_loss=item2['max_loss']
+            )
+            position_context2.save()
+
+            position_contexts = PositionContexts(
+                left=position_context1,
+                right=position_context2,
+            )
+            position_contexts.save()
+
+            print 'saved object:'
+            print position_contexts.left.__unicode__()
+            print position_contexts.right.__unicode__()
+            self.assertTrue(position_context1.id)
+
+            self.assertEqual(type(position_context1.break_even), BreakEven)
+            self.assertEqual(type(position_context1.start_profit), StartProfit)
+            self.assertEqual(type(position_context1.start_loss), StartLoss)
+            self.assertEqual(type(position_context1.max_profit), MaxProfit)
+            self.assertEqual(type(position_context1.max_loss), MaxLoss)
+
+            print '\n'
+
+
 class TestPositionSet(TestPositionPL, TestReadyFile):
     def setUp(self):
         TestPositionPL.setUp(self)

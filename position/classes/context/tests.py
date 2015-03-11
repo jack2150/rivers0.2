@@ -1,48 +1,10 @@
-from django.utils import timezone
-# noinspection PyUnresolvedReferences
-import position.classes.ready_django
-from unittest import TestCase
+from django.test import TestCase
+from position.classes.tests import create_filled_order
 from tos_import.models import Statement, Underlying, Future, Forex
 from tos_import.statement.statement_trade.models import TradeSummary
-from tos_import.statement.statement_trade.models import FilledOrder
 
 
-def create_filled_order(trade_summary, spread, contract,
-                        underlying=None, future=None, forex=None,
-                        side=0, quantity=0, strike=0.0,
-                        price=14.31, net_price=14.31):
-    """
-    Create filled order that use for testing, can be stock or option
-    :param trade_summary: TradeSummary
-    :param underlying: Underlying
-    :param spread: str
-    :param contract: str
-    :param side: str ('BUY', 'SELl')
-    :param quantity: int
-    """
-    filled_order = FilledOrder(
-        trade_summary=trade_summary,
-        underlying=underlying,
-        future=future,
-        forex=forex,
-        exec_time=timezone.now(),
-        spread=spread,
-        side=side,
-        quantity=quantity,
-        pos_effect='TO OPEN',
-        expire_date=None,
-        strike=strike,
-        contract=contract,
-        price=price,
-        net_price=net_price,
-        order='LMT'
-    )
-    filled_order.save()
-
-    return filled_order
-
-
-class TestUnitSetUp(TestCase):
+class TestUnitSetUpDB(TestCase):
     """
     Using unittest not django test
     """
@@ -146,28 +108,5 @@ class TestUnitSetUp(TestCase):
             Underlying.objects.filter(symbol='UNG1').delete()
             Future.objects.filter(symbol='NGX5').delete()
             Forex.objects.filter(symbol='USD/OJY').delete()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
