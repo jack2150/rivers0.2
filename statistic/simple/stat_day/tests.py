@@ -3,7 +3,7 @@ from pprint import pprint
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
-from tos_import.classes.test import TestSetUpDB
+from tos_import.classes.tests import TestSetUpDB
 from tos_import.statement.statement_account.models import SaveAccountStatement
 from tos_import.statement.statement_position.models import SavePositionStatement
 from tos_import.statement.statement_trade.models import *

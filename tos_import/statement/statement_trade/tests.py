@@ -7,7 +7,7 @@ from django.utils.timezone import utc
 from tos_import.files.real_files import real_path
 from tos_import.files.test_files import *
 from tos_import.classes.io.open_ta import OpenTA
-from tos_import.classes.test import TestSetUp, TestSetUpDB
+from tos_import.classes.tests import TestSetUp, TestSetUpDB
 from tos_import.statement.statement_trade import models
 from tos_import.tests import TestReadyStatement
 

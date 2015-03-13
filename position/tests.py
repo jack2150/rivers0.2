@@ -1,7 +1,7 @@
 from pprint import pprint
 from django.db.models import Q
 from position.models import *
-from tos_import.classes.test import TestSetUpDB, TestReadyFile
+from tos_import.classes.tests import TestSetUpDB, TestReadyFile
 from tos_import.files.real_files import real_path
 from tos_import.models import Statement
 from tos_import.statement.statement_account.models import AccountSummary, ProfitLoss

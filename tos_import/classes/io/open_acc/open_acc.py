@@ -454,6 +454,7 @@ class OpenAcc(OpenCSV):
     def set_profit_loss(self):
         """
         Set profits and losses into class property
+        drop empty profit loss records
         :return: None
 
         self.set_values(

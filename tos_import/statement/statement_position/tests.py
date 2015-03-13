@@ -4,7 +4,7 @@ from pprint import pprint
 
 from tos_import.files.test_files import *
 from tos_import.files.real_files import *
-from tos_import.classes.test import TestSetUp, TestSetUpDB
+from tos_import.classes.tests import TestSetUpDB
 from tos_import.tests import TestSetUpUnderlying
 from tos_import.statement.statement_position import models
 

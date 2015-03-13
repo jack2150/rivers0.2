@@ -787,33 +787,41 @@ class SaveAccountStatement(SaveAppModel):
         Custom save for profit loss table
         including either underlying or future
         :param save_data: list of dict
+
+        pl_open = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='PL Open')
+        pl_pct = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='PL Pct')
+        pl_day = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='PL Day')
+        pl_ytd = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='PL YTD')
+        margin_req = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='Margin Req')
+        mark_value
         """
         for data in save_data:
-            future = None
-            underlying = None
+            if sum([True for d in data.values() if d == 0.0]) != 6:
+                future = None
+                underlying = None
 
-            if '/' in data['symbol']:
-                future = self.get_future(
-                    symbol=data['symbol'],
-                    lookup=data['description']['lookup'],
-                    description=data['description']['description'],
-                    expire_date=data['description']['expire_date'],
-                    session=data['description']['session']
+                if '/' in data['symbol']:
+                    future = self.get_future(
+                        symbol=data['symbol'],
+                        lookup=data['description']['lookup'],
+                        description=data['description']['description'],
+                        expire_date=data['description']['expire_date'],
+                        session=data['description']['session']
+                    )
+                else:
+                    underlying = self.get_underlying(
+                        symbol=data['symbol'],
+                        company=data['description']
+                    )
+
+                profit_loss = ProfitLoss(
+                    account_summary=self.account_statement,
+                    underlying=underlying,
+                    future=future
                 )
-            else:
-                underlying = self.get_underlying(
-                    symbol=data['symbol'],
-                    company=data['description']
-                )
+                profit_loss.set_dict(data)
 
-            profit_loss = ProfitLoss(
-                account_summary=self.account_statement,
-                underlying=underlying,
-                future=future
-            )
-            profit_loss.set_dict(data)
-
-            profit_loss.save()
+                profit_loss.save()
 
     def save_holding_future(self, save_data):
         """

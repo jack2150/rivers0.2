@@ -1,11 +1,12 @@
 # noinspection PyUnresolvedReferences
+from unittest import skip
 import rivers.urls
 from pprint import pprint
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 from tos_import.files.test_files import *
-from tos_import.classes.test import TestSetUpDB, TestSetUp
+from tos_import.classes.tests import TestSetUpDB, TestSetUp
 from tos_import.statement.statement_account.models import *
 from tos_import.statement.statement_position.models import *
 from tos_import.statement.statement_trade.models import *
@@ -571,6 +572,7 @@ class TestStatementImportAll(TestSetUpDB):
             password='pass'
         )
 
+    @skip('Only test when needed.')
     def test_statement_import_all(self):
         print 'login as superuser...'
         self.client.login(username='jack', password='pass')

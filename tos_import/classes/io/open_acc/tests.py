@@ -1,9 +1,8 @@
 from glob import glob
 import os
 from pprint import pprint
-
 from tos_import.files.test_files import *
-from tos_import.classes.test import TestSetUp
+from tos_import.classes.tests import TestSetUp
 from tos_import.classes.io.open_acc import OpenAcc
 
 
@@ -75,7 +74,6 @@ class TestOpenAcc(TestSetUp):
         forex_summary = self.open_acc.forex_summary
 
         pprint(forex_summary)
-
 
     def test_convert_date(self):
         """
@@ -336,9 +334,6 @@ class TestOpenAcc(TestSetUp):
             self.assertEqual(len(result), 12)
 
             pprint(result['holding_future'], width=400)
-
-
-            #pprint(result, width=600)
 
             for key in result.keys():
                 if key == 'account_summary' or key == 'forex_summary':

@@ -5,7 +5,7 @@ from pprint import pprint
 from django.utils.timezone import utc
 from tos_import.files.test_files import *
 from tos_import.files.real_files import real_path
-from tos_import.classes.test import TestSetUpDB
+from tos_import.classes.tests import TestSetUpDB
 from tos_import.statement.statement_account import models
 
 
@@ -514,8 +514,8 @@ class TestSaveAccountStatement(TestSetUpDB):
         self.assertGreaterEqual(models.Future.objects.count(), 1)
         self.assertGreaterEqual(models.ProfitLoss.objects.count(), 1)
 
-        for future in models.Future.objects.all():
-            pprint(future.json(), width=300)
+        for profit_loss in models.ProfitLoss.objects.all():
+            pprint(profit_loss, width=300)
 
     def test_save_holding_forex(self):
         """

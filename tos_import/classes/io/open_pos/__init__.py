@@ -1,1 +1,1 @@
-from tos_import.classes.io.open_pos.__open_pos import OpenPos
+from tos_import.classes.io.open_pos.open_pos import OpenPos

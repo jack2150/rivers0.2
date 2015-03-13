@@ -6,7 +6,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 
 from statistic.simple.stat_day.models import *
-from tos_import.classes.test import TestSetUp
+from tos_import.classes.tests import TestSetUp
 from tos_import.files.test_files import test_path
 
 

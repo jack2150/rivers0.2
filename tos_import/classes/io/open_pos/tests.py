@@ -3,7 +3,7 @@ from glob import glob
 from pprint import pprint
 
 from tos_import.files.test_files import test_pos_path, test_path
-from tos_import.classes.test import TestSetUp
+from tos_import.classes.tests import TestSetUp
 from tos_import.classes.io.open_pos import OpenPos
 
 
