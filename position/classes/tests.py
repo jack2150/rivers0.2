@@ -43,6 +43,23 @@ def create_filled_order(trade_summary, spread, contract,
 
 
 class TestUnitSetUp(TestCase):
+    def setUp(self):
+        """
+        ready up all variables and test class
+        """
+
+        print '=' * 100
+        print "<%s> currently run: %s" % (self.__class__.__name__, self._testMethodName)
+        print '-' * 100 + '\n'
+
+    def tearDown(self):
+        """
+        remove variables after test
+        """
+        print '\n' + '=' * 100 + '\n\n'
+
+
+class TestUnitSetUpPrepare(TestUnitSetUp):
     """
     Using unittest not django test
     """
@@ -50,9 +67,7 @@ class TestUnitSetUp(TestCase):
         """
         ready up all variables and test class
         """
-        print '=' * 100
-        print "<%s> currently run: %s" % (self.__class__.__name__, self._testMethodName)
-        print '-' * 100 + '\n'
+        TestUnitSetUp.setUp(self)
 
         self.spread = None
 
@@ -130,7 +145,7 @@ class TestUnitSetUp(TestCase):
         """
         remove variables after test
         """
-        print '\n' + '=' * 100 + '\n\n'
+        TestUnitSetUp.tearDown(self)
 
         print '-' * 80
         print 'remove statement, trade_summary, underlying...'

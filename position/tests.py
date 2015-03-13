@@ -1,12 +1,15 @@
+# noinspection PyUnresolvedReferences
+import position.classes.ready_django
+from django.core.exceptions import ObjectDoesNotExist
 from pprint import pprint
-from django.db.models import Q
+from position.classes.tests import TestUnitSetUp
 from position.models import *
 from tos_import.classes.tests import TestSetUpDB, TestReadyFile
 from tos_import.files.real_files import real_path
 from tos_import.models import Statement
 from tos_import.statement.statement_account.models import AccountSummary, ProfitLoss
 from tos_import.statement.statement_position.models import PositionSummary, PositionInstrument
-from tos_import.statement.statement_trade.models import FilledOrder
+from tos_import.statement.statement_trade.models import TradeSummary, FilledOrder
 
 
 class TestContext(TestSetUpDB):
@@ -313,3 +316,89 @@ class TestPositionSet(TestPositionPL, TestReadyFile):
         self.assertTrue(position_set.filledorder_set.exists())
         self.assertTrue(position_set.positioninstrument_set.exists())
         self.assertTrue(position_set.positioninstrument_set.exists())
+
+
+class TestSavePositionSet(TestUnitSetUp):
+    def setUp(self):
+        TestUnitSetUp.setUp(self)
+
+        try:
+            trade_summary = TradeSummary.objects.get(date='2015-01-29')
+            filled_orders = FilledOrder.objects.filter(trade_summary=trade_summary).all()
+        except ObjectDoesNotExist:
+            self.skipTest("Please use 'Unittest' for existing db testing.\n")
+            raise ObjectDoesNotExist()
+
+        self.save_pos_set = SavePositionSet(
+            filled_orders=filled_orders
+        )
+
+    def test_get_underlying_symbols(self):
+        """
+        Test get underlying symbols from filled orders
+        """
+        underlying_symbols = self.save_pos_set.get_underlying_symbols()
+
+        print 'Underlying symbol:'
+        print underlying_symbols
+        self.assertEqual(type(underlying_symbols), list)
+        self.assertGreaterEqual(len(underlying_symbols), 1)
+
+        for symbol in underlying_symbols:
+            self.assertTrue(Underlying.objects.filter(symbol=symbol).exists())
+
+    def test_get_future_symbols(self):
+        """
+        Test get underlying symbols from filled orders
+        """
+        future_symbols = self.save_pos_set.get_future_symbols()
+
+        print 'Underlying symbol:'
+        print future_symbols
+        self.assertEqual(type(future_symbols), list)
+        self.assertGreaterEqual(len(future_symbols), 1)
+
+        for symbol in future_symbols:
+            self.assertTrue(Future.objects.filter(symbol=symbol).exists())
+
+    def test_get_forex_symbols(self):
+        """
+        Test get underlying symbols from filled orders
+        """
+        forex_symbols = self.save_pos_set.get_forex_symbols()
+
+        print 'Underlying symbol:'
+        print forex_symbols
+        self.assertEqual(type(forex_symbols), list)
+        self.assertGreaterEqual(len(forex_symbols), 1)
+
+        for symbol in forex_symbols:
+            self.assertTrue(Forex.objects.filter(symbol=symbol).exists())
+
+    def test_save_underlying_position_set(self):
+        """
+        Test save underlying position set into db
+        """
+        self.save_pos_set.save_underlying_position_set()
+
+        # todo: unable to import
+
+
+
+    def test_start(self):
+        self.save_pos_set.start()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

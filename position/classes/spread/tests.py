@@ -4,13 +4,13 @@ import position.classes.ready_django
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from position.classes.spread.spread import Spread
-from position.classes.tests import TestUnitSetUp
+from position.classes.tests import TestUnitSetUpPrepare
 from tos_import.models import Statement
 from tos_import.statement.statement_trade.models import TradeSummary
 from tos_import.statement.statement_trade.models import FilledOrder
 
 
-class TestSpread(TestUnitSetUp):
+class TestSpread(TestUnitSetUpPrepare):
     def get_object_test(self, test_method, spread, underlying=None, future=None, forex=None):
         """
         Method use for testing get underlying, future and forex
@@ -916,7 +916,7 @@ class TestSpread(TestUnitSetUp):
                     
                 print '-' * 80
 
-    def test_save_all(self):
+    def test_get_spread(self):
         """
         Test save position using data in db
         can use production database or another database for test
@@ -941,9 +941,9 @@ class TestSpread(TestUnitSetUp):
         forex_symbols = [symbol for symbol in forex_symbols if symbol]  # drop none
 
         print 'Underlying...'
-        for future_symbol in underlying_symbols:
+        for underlying_symbol in underlying_symbols:
             open_filled_orders = filled_order_manager.filter(
-                Q(underlying__symbol=future_symbol) & Q(pos_effect='TO OPEN')
+                Q(underlying__symbol=underlying_symbol) & Q(pos_effect='TO OPEN')
             )
             if open_filled_orders.exists():
                 self.spread = Spread(filled_orders=open_filled_orders)
