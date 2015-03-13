@@ -1,5 +1,7 @@
 # noinspection PyUnresolvedReferences
+import unittest
 import position.classes.ready_django
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from position.classes.spread.spread import Spread
 from position.classes.tests import TestUnitSetUp
@@ -919,7 +921,12 @@ class TestSpread(TestUnitSetUp):
         Test save position using data in db
         can use production database or another database for test
         """
-        statement = Statement.objects.get(date='2015-01-29')
+        try:
+            statement = Statement.objects.get(date='2015-01-29')
+        except ObjectDoesNotExist:
+            self.skipTest("Please use 'Unittest' for testing.\n")
+            raise ObjectDoesNotExist()
+
         trade_summary = TradeSummary.objects.filter(statement=statement).first()
         filled_order_manager = FilledOrder.objects.filter(trade_summary=trade_summary)
         underlying_symbols = filled_order_manager.values_list('underlying__symbol', flat=True).distinct()

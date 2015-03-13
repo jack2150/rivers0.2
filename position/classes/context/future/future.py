@@ -1,3 +1,4 @@
+from decimal import Decimal
 from fractions import Fraction
 from django.db.models.query import QuerySet
 from position.models import *
@@ -6,14 +7,14 @@ from tos_import.statement.statement_trade.models import FilledOrder
 
 
 class ContextLongFuture(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, price_range=0.2):
         """
         :param filled_orders: QuerySet
         """
         if type(filled_orders) is not QuerySet:
             raise TypeError('Parameter is not QuerySet of <FilledOrder> object type.')
 
-        self.filled_order = filled_orders[0]
+        self.future_order = filled_orders[0]
         """:type : FilledOrder"""
 
         self.position_context = None
@@ -23,44 +24,51 @@ class ContextLongFuture(object):
         self.max_profit = None
         self.max_loss = None
 
+        self.price_range = price_range
+
     def create_context(self):
         """
         Create a context model object and that save all data
         :return: PositionContext
         """
         self.break_even = BreakEven(
-            price=self.filled_order.price,
+            price=self.future_order.price,
             condition='=='
         )
         self.break_even.save()
 
         self.start_profit = StartProfit(
-            price=self.filled_order.price,
+            price=self.future_order.price,
             condition='>'
         )
         self.start_profit.save()
 
         self.start_loss = StartLoss(
-            price=self.filled_order.price,
+            price=self.future_order.price,
             condition='<'
         )
         self.start_loss.save()
 
-        # assume as 100%
-        spc = float(Fraction(self.filled_order.future.spc))
+        spc = Decimal(float(Fraction(self.future_order.future.spc)))
         self.max_profit = MaxProfit(
-            price=self.filled_order.price * 2,
+            price=self.future_order.price * Decimal(1 + self.price_range),
             condition='==',
             limit=False,
-            amount=float(self.filled_order.price * self.filled_order.quantity) / spc
+            amount=(
+                (self.future_order.price * Decimal(self.price_range)
+                 * self.future_order.quantity) / spc
+            )
         )
         self.max_profit.save()
 
         self.max_loss = MaxLoss(
-            price=self.filled_order.price * 0,
+            price=self.future_order.price * Decimal(1 - self.price_range),
             condition='==',
             limit=True,
-            amount=float(self.filled_order.price * self.filled_order.quantity) / -spc
+            amount=(
+                (self.future_order.price * Decimal(self.price_range)
+                 * self.future_order.quantity) / -spc
+            )
         )
         self.max_loss.save()
 
@@ -77,14 +85,14 @@ class ContextLongFuture(object):
 
 
 class ContextShortFuture(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, price_range=0.2):
         """
         :param filled_orders: QuerySet
         """
         if type(filled_orders) is not QuerySet:
             raise TypeError('Parameter is not QuerySet of <FilledOrder> object type.')
 
-        self.filled_order = filled_orders[0]
+        self.future_order = filled_orders[0]
         """:type : FilledOrder"""
 
         self.position_context = None
@@ -94,44 +102,52 @@ class ContextShortFuture(object):
         self.max_profit = None
         self.max_loss = None
 
+        self.price_range = price_range
+
     def create_context(self):
         """
         Create a context model object and that save all data
         :return: PositionContext
         """
         self.break_even = BreakEven(
-            price=self.filled_order.price,
+            price=self.future_order.price,
             condition='=='
         )
         self.break_even.save()
 
         self.start_profit = StartProfit(
-            price=self.filled_order.price,
+            price=self.future_order.price,
             condition='<'
         )
         self.start_profit.save()
 
         self.start_loss = StartLoss(
-            price=self.filled_order.price,
+            price=self.future_order.price,
             condition='>'
         )
         self.start_loss.save()
 
         # assume as 100%
-        spc = float(Fraction(self.filled_order.future.spc))
+        spc = Decimal(float(Fraction(self.future_order.future.spc)))
         self.max_profit = MaxProfit(
-            price=self.filled_order.price * 0,
+            price=self.future_order.price * Decimal(1 - self.price_range),
             condition='==',
             limit=True,
-            amount=float(self.filled_order.price * self.filled_order.quantity) / -spc
+            amount=(
+                (self.future_order.price * Decimal(self.price_range)
+                 * self.future_order.quantity) / -spc
+            )
         )
         self.max_profit.save()
 
         self.max_loss = MaxLoss(
-            price=self.filled_order.price * 2,
+            price=self.future_order.price * Decimal(1 + self.price_range),
             condition='==',
             limit=False,
-            amount=float(self.filled_order.price * self.filled_order.quantity) / spc
+            amount=(
+                (self.future_order.price * Decimal(self.price_range)
+                 * self.future_order.quantity) / spc
+            )
         )
         self.max_loss.save()
 

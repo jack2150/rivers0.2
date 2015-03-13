@@ -16,7 +16,7 @@ from tos_import.statement.statement_trade.models import SaveTradeActivity
 
 class TestSetUp(SimpleTestCase):
     def setUp(self):
-        SimpleTestCase.__init__(self)
+        SimpleTestCase.setUp(self)
         """
         ready up all variables and test class
         """

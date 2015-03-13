@@ -227,7 +227,6 @@ class TestContextNakedCall(TestUnitSetUpDB):
         print self.position_context.max_loss
 
 
-# todo: add value test
 class TestContextLongPut(TestUnitSetUpDB):
     def setUp(self):
         TestUnitSetUpDB.setUp(self)

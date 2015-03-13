@@ -1,1 +1,0 @@
-from lib.pos.identify.hedge.__hedge import HedgeIdentify

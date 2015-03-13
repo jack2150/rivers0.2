@@ -4,8 +4,6 @@ from position.models import *
 # noinspection PyUnresolvedReferences
 from tos_import.statement.statement_trade.models import FilledOrder
 
-# todo: update all context using django test
-
 
 class ContextLongStraddle(object):
     def __init__(self, filled_orders, contract_right=100, price_range=0.2):

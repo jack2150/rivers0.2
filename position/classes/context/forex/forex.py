@@ -6,7 +6,7 @@ from tos_import.statement.statement_trade.models import FilledOrder
 
 
 class ContextLongForex(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, price_range=0.2):
         """
         :param filled_orders: QuerySet
         """
@@ -22,6 +22,8 @@ class ContextLongForex(object):
         self.start_loss = None
         self.max_profit = None
         self.max_loss = None
+
+        self.price_range = price_range
 
     def create_context(self):
         """
@@ -46,28 +48,28 @@ class ContextLongForex(object):
         )
         self.start_loss.save()
 
-        # assume as +50%
+        profit_price = self.filled_order.price * Decimal(1 + self.price_range)
         self.max_profit = MaxProfit(
-            price=self.filled_order.price * Decimal(1.5),
+            price=profit_price,
             condition='>=',
             limit=False,
             amount=(
-                ((self.filled_order.price * Decimal(1.5) * self.filled_order.quantity)
+                ((profit_price * self.filled_order.quantity)
                  - (self.filled_order.price * self.filled_order.quantity))
-                / (self.filled_order.price * Decimal(1.5))
+                / profit_price
             )
         )
         self.max_profit.save()
 
-        # assume as -50%
+        loss_price = self.filled_order.price * Decimal(1 - self.price_range)
         self.max_loss = MaxLoss(
-            price=self.filled_order.price * Decimal(0.5),
+            price=loss_price,
             condition='<=',
             limit=True,
             amount=(
-                ((self.filled_order.price * Decimal(0.5) * self.filled_order.quantity)
+                ((loss_price * self.filled_order.quantity)
                  - (self.filled_order.price * self.filled_order.quantity))
-                / (self.filled_order.price * Decimal(0.5))
+                / loss_price
             )
         )
         self.max_loss.save()
@@ -85,7 +87,7 @@ class ContextLongForex(object):
 
 
 class ContextShortForex(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, price_range=0.2):
         """
         :param filled_orders: QuerySet
         """
@@ -101,6 +103,8 @@ class ContextShortForex(object):
         self.start_loss = None
         self.max_profit = None
         self.max_loss = None
+
+        self.price_range = price_range
 
     def create_context(self):
         """
@@ -125,28 +129,28 @@ class ContextShortForex(object):
         )
         self.start_loss.save()
 
-        # assume as -50%
+        profit_price = self.filled_order.price * Decimal(1 - self.price_range)
         self.max_profit = MaxProfit(
-            price=self.filled_order.price * Decimal(0.5),
+            price=profit_price,
             condition='<=',
             limit=True,
             amount=(
-                ((self.filled_order.price * Decimal(0.5) * self.filled_order.quantity)
+                ((profit_price * self.filled_order.quantity)
                  - (self.filled_order.price * self.filled_order.quantity))
-                / (self.filled_order.price * Decimal(0.5))
+                / profit_price
             )
         )
         self.max_profit.save()
 
-        # assume as +50%
+        loss_price = self.filled_order.price * Decimal(1 + self.price_range)
         self.max_loss = MaxLoss(
-            price=self.filled_order.price * Decimal(1.5),
+            price=loss_price,
             condition='>=',
             limit=False,
             amount=(
-                ((self.filled_order.price * Decimal(1.5) * self.filled_order.quantity)
+                ((loss_price * self.filled_order.quantity)
                  - (self.filled_order.price * self.filled_order.quantity))
-                / (self.filled_order.price * Decimal(1.5))
+                / loss_price
             )
         )
         self.max_loss.save()
