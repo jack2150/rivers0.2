@@ -29,7 +29,7 @@ class TestUnitSetUpDB(TestCase):
         self.quantities = list()
         self.contracts = list()
 
-        self.filled_order = None
+        self.option_order = None
 
         self.create_filled_order = create_filled_order
 
@@ -72,12 +72,14 @@ class TestUnitSetUpDB(TestCase):
             )
             self.forex.save()
 
+            """
             print 'using statement: %s' % self.statement
             print 'using trade summary: %s' % self.trade_summary
             print 'using underlying: %s' % self.underlying
             print 'using future: %s' % self.future
             print 'using forex: %s' % self.forex
             print '-' * 80
+            """
         except Exception:
             print 'Statement, trade_summary, underlying already exists...'
 

@@ -5,7 +5,7 @@ from tos_import.statement.statement_trade.models import FilledOrder
 
 
 class ContextLongCall(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, contract_right=100, price_multiply=10):
         """
         :param filled_orders: QuerySet
         """
@@ -21,6 +21,9 @@ class ContextLongCall(object):
         self.start_loss = None
         self.max_profit = None
         self.max_loss = None
+
+        self.contract_right = contract_right
+        self.price_multiply = price_multiply
 
     def create_context(self):
         """
@@ -51,7 +54,8 @@ class ContextLongCall(object):
             price=self.filled_order.strike + (self.filled_order.price * 10),
             condition='>=',
             limit=False,
-            amount=self.filled_order.price * self.filled_order.quantity * 10 * 100
+            amount=(self.filled_order.price * self.filled_order.quantity
+                    * self.price_multiply * self.contract_right)
         )
         self.max_profit.save()
 
@@ -59,7 +63,8 @@ class ContextLongCall(object):
             price=self.filled_order.strike,
             condition='<=',
             limit=True,
-            amount=self.filled_order.price * self.filled_order.quantity * -100  # no mini
+            amount=(self.filled_order.price * self.filled_order.quantity
+                    * self.contract_right * -1)  # no mini
         )
         self.max_loss.save()
 
@@ -76,7 +81,7 @@ class ContextLongCall(object):
 
 
 class ContextNakedCall(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, contract_right=100, price_multiply=10):
         """
         :param filled_orders: QuerySet
         """
@@ -92,6 +97,9 @@ class ContextNakedCall(object):
         self.start_loss = None
         self.max_profit = None
         self.max_loss = None
+
+        self.contract_right = contract_right
+        self.price_multiply = price_multiply
 
     def create_context(self):
         """
@@ -120,16 +128,18 @@ class ContextNakedCall(object):
             price=self.filled_order.strike,
             condition='<=',
             limit=True,
-            amount=self.filled_order.price * self.filled_order.quantity * 100  # no mini
+            amount=(self.filled_order.price * self.filled_order.quantity
+                    * self.contract_right * -1)
         )
         self.max_profit.save()
 
         # assume as 10x
         self.max_loss = MaxLoss(
-            price=self.filled_order.strike + (self.filled_order.price * 10),
+            price=self.filled_order.strike + (self.filled_order.price * self.price_multiply),
             condition='>=',
             limit=False,
-            amount=self.filled_order.price * self.filled_order.quantity * 10 * 100
+            amount=(self.filled_order.price * self.filled_order.quantity
+                    * self.price_multiply * self.contract_right)
         )
         self.max_loss.save()
 
@@ -146,14 +156,14 @@ class ContextNakedCall(object):
 
 
 class ContextLongPut(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, contract_right=100, price_multiply=10):
         """
         :param filled_orders: QuerySet
         """
         if type(filled_orders) is not QuerySet:
             raise TypeError('Parameter is not QuerySet of <FilledOrder> object type.')
 
-        self.filled_order = filled_orders[0]
+        self.option_order = filled_orders[0]
         """:type : FilledOrder"""
 
         self.position_context = None
@@ -163,6 +173,9 @@ class ContextLongPut(object):
         self.max_profit = None
         self.max_loss = None
 
+        self.contract_right = contract_right
+        self.price_multiply = price_multiply
+
     def create_context(self):
         """
         Create a context model object and that save all data
@@ -170,37 +183,38 @@ class ContextLongPut(object):
         """
 
         self.break_even = BreakEven(
-            price=self.filled_order.strike - self.filled_order.price,
+            price=self.option_order.strike - self.option_order.price,
             condition='=='
         )
         self.break_even.save()
 
         self.start_profit = StartProfit(
-            price=self.filled_order.strike - self.filled_order.price,
+            price=self.option_order.strike - self.option_order.price,
             condition='<'
         )
         self.start_profit.save()
 
         self.start_loss = StartLoss(
-            price=self.filled_order.strike - self.filled_order.price,
+            price=self.option_order.strike - self.option_order.price,
             condition='>'
         )
         self.start_loss.save()
 
-        # assume as 10x
         self.max_profit = MaxProfit(
-            price=self.filled_order.price * 0,
+            price=self.option_order.strike - (self.option_order.price * self.price_multiply),
             condition='==',
             limit=True,
-            amount=(self.filled_order.strike - self.filled_order.price) * self.filled_order.quantity * 100
+            amount=((self.break_even.price -
+                    (self.option_order.strike - (self.option_order.price * self.price_multiply)))
+                    * self.option_order.quantity * self.contract_right)
         )
         self.max_profit.save()
 
         self.max_loss = MaxLoss(
-            price=self.filled_order.strike,
+            price=self.option_order.strike,
             condition='>=',
             limit=True,
-            amount=self.filled_order.price * self.filled_order.quantity * -100  # no mini
+            amount=(self.option_order.price * self.option_order.quantity * self.contract_right * -1)
         )
         self.max_loss.save()
 
@@ -217,14 +231,14 @@ class ContextLongPut(object):
 
 
 class ContextNakedPut(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, contract_right=100, price_multiply=10):
         """
         :param filled_orders: QuerySet
         """
         if type(filled_orders) is not QuerySet:
             raise TypeError('Parameter is not QuerySet of <FilledOrder> object type.')
 
-        self.filled_order = filled_orders[0]
+        self.option_order = filled_orders[0]
         """:type : FilledOrder"""
 
         self.position_context = None
@@ -234,6 +248,9 @@ class ContextNakedPut(object):
         self.max_profit = None
         self.max_loss = None
 
+        self.contract_right = contract_right
+        self.price_multiply = price_multiply
+
     def create_context(self):
         """
         Create a context model object and that save all data
@@ -241,37 +258,40 @@ class ContextNakedPut(object):
         """
 
         self.break_even = BreakEven(
-            price=self.filled_order.strike - self.filled_order.price,
+            price=self.option_order.strike - self.option_order.price,
             condition='=='
         )
         self.break_even.save()
 
         self.start_profit = StartProfit(
-            price=self.filled_order.strike - self.filled_order.price,
+            price=self.option_order.strike - self.option_order.price,
             condition='>'
         )
         self.start_profit.save()
 
         self.start_loss = StartLoss(
-            price=self.filled_order.strike - self.filled_order.price,
+            price=self.option_order.strike - self.option_order.price,
             condition='<'
         )
         self.start_loss.save()
 
         # assume as 10x
         self.max_profit = MaxProfit(
-            price=self.filled_order.strike,
+            price=self.option_order.strike,
             condition='>=',
             limit=True,
-            amount=self.filled_order.price * self.filled_order.quantity * -100
+            amount=(self.option_order.price * self.option_order.quantity
+                    * self.contract_right * -1)
         )
         self.max_profit.save()
 
         self.max_loss = MaxLoss(
-            price=self.filled_order.price * 0,
-            condition='==',
+            price=self.option_order.strike - (self.option_order.price * self.price_multiply),
+            condition='<=',
             limit=True,
-            amount=(self.filled_order.strike - self.filled_order.price) * self.filled_order.quantity * 100
+            amount=((self.break_even.price -
+                     (self.option_order.strike - (self.option_order.price * self.price_multiply)))
+                    * self.option_order.quantity * self.contract_right)
         )
         self.max_loss.save()
 

@@ -6,7 +6,7 @@ from tos_import.statement.statement_trade.models import FilledOrder
 
 
 class ContextCoveredCall(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, price_range=0.2):
         """
         :param filled_orders: QuerySet
         """
@@ -29,6 +29,8 @@ class ContextCoveredCall(object):
         self.start_loss = None
         self.max_profit = None
         self.max_loss = None
+
+        self.price_range = price_range
 
     def create_context(self):
         """
@@ -58,18 +60,21 @@ class ContextCoveredCall(object):
             price=self.option_order.strike,
             condition='>=',
             limit=True,
-            amount=((self.option_order.strike - self.stock_order.price + self.option_order.price)
-                    * self.stock_order.quantity)
+            amount=(
+                (self.option_order.strike - self.stock_order.price + self.option_order.price)
+                * self.stock_order.quantity
+            )
         )
         self.max_profit.save()
 
-        # assume 50%
         self.max_loss = MaxLoss(
-            price=(self.stock_order.price * Decimal(0.5)),
+            price=(self.stock_order.price * Decimal(1 - self.price_range)),
             condition='<=',
             limit=True,
-            amount=((self.stock_order.price - self.option_order.price) -
-                    (self.stock_order.price * Decimal(0.5))) * -self.stock_order.quantity
+            amount=(
+                (self.break_even.price - (self.stock_order.price * Decimal(1 - self.price_range)))
+                * self.stock_order.quantity * -1
+            )
         )
         self.max_loss.save()
 
@@ -86,7 +91,7 @@ class ContextCoveredCall(object):
 
 
 class ContextProtectiveCall(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, price_range=0.2):
         """
         :param filled_orders: QuerySet
         """
@@ -110,6 +115,8 @@ class ContextProtectiveCall(object):
         self.max_profit = None
         self.max_loss = None
 
+        self.price_range = price_range
+
     def create_context(self):
         """
         Create a context model object and that save all data
@@ -136,11 +143,13 @@ class ContextProtectiveCall(object):
 
         # assume 50%
         self.max_profit = MaxProfit(
-            price=(self.stock_order.price * Decimal(0.5)),
+            price=(self.stock_order.price * Decimal(1 - self.price_range)),
             condition='<=',
             limit=True,
-            amount=((self.stock_order.price - self.option_order.price) -
-                    (self.stock_order.price * Decimal(0.5))) * self.stock_order.quantity
+            amount=(
+                (self.break_even.price - (self.stock_order.price * Decimal(1 - self.price_range)))
+                * self.stock_order.quantity
+            )
         )
         self.max_profit.save()
 
@@ -148,8 +157,10 @@ class ContextProtectiveCall(object):
             price=self.option_order.strike,
             condition='>=',
             limit=True,
-            amount=((self.option_order.strike - self.stock_order.price + self.option_order.price)
-                    * -self.stock_order.quantity)
+            amount=(
+                (self.option_order.strike - self.stock_order.price + self.option_order.price)
+                * self.stock_order.quantity * -1
+            )
         )
         self.max_loss.save()
 
@@ -166,7 +177,7 @@ class ContextProtectiveCall(object):
 
 
 class ContextCoveredPut(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, price_range=0.2):
         """
         :param filled_orders: QuerySet
         """
@@ -189,6 +200,8 @@ class ContextCoveredPut(object):
         self.start_loss = None
         self.max_profit = None
         self.max_loss = None
+
+        self.price_range = price_range
 
     def create_context(self):
         """
@@ -218,19 +231,22 @@ class ContextCoveredPut(object):
             price=self.option_order.strike,
             condition='<=',
             limit=True,
-            amount=((self.option_order.strike - self.stock_order.price - self.option_order.price)
-                    * self.stock_order.quantity)
+            amount=(
+                (self.option_order.strike - self.stock_order.price - self.option_order.price)
+                * self.stock_order.quantity
+            )
         )
         self.max_profit.save()
 
-        # assume 50%
         self.max_loss = MaxLoss(
-            price=self.stock_order.price * Decimal(1.5),
+            price=self.stock_order.price * Decimal(1 + self.price_range),
             condition='>=',
             limit=False,
-            amount=((self.stock_order.price + self.option_order.price)
-                    - (self.stock_order.price * Decimal(0.5))
-                    - self.option_order.price) * self.stock_order.quantity
+            amount=(
+                (self.break_even.price -
+                 (self.stock_order.price * Decimal(1 + self.price_range)))
+                * self.stock_order.quantity * -1
+            )
         )
         self.max_loss.save()
 
@@ -247,7 +263,7 @@ class ContextCoveredPut(object):
 
 
 class ContextProtectivePut(object):
-    def __init__(self, filled_orders):
+    def __init__(self, filled_orders, price_range=0.2):
         """
         :param filled_orders: QuerySet
         """
@@ -270,6 +286,8 @@ class ContextProtectivePut(object):
         self.start_loss = None
         self.max_profit = None
         self.max_loss = None
+
+        self.price_range = price_range
 
     def create_context(self):
         """
@@ -296,22 +314,25 @@ class ContextProtectivePut(object):
         self.start_loss.save()
 
         self.max_profit = MaxProfit(
-            price=self.stock_order.price * Decimal(1.5),
-            condition='>=',
-            limit=False,
-            amount=((self.stock_order.price + self.option_order.price)
-                    - (self.stock_order.price * Decimal(0.5))
-                    - self.option_order.price) * -self.stock_order.quantity,
+            price=self.stock_order.price * Decimal(1 - self.price_range),
+            condition='<=',
+            limit=True,
+            amount=(
+                ((self.stock_order.price * Decimal(1 - self.price_range)) -
+                 self.break_even.price)
+                * self.stock_order.quantity
+            )
         )
         self.max_profit.save()
 
-        # assume 50%
         self.max_loss = MaxLoss(
             price=self.option_order.strike,
-            condition='<=',
+            condition='>=',
             limit=True,
-            amount=((self.option_order.strike - self.stock_order.price - self.option_order.price)
-                    * -self.stock_order.quantity)
+            amount=(
+                (self.option_order.strike - self.stock_order.price - self.option_order.price)
+                * self.stock_order.quantity * -1
+            )
         )
         self.max_loss.save()
 

@@ -13,14 +13,17 @@ class BreakEven(models.Model):
     """
     price = models.DecimalField(verbose_name='Price', **decimal_field)
     condition = models.CharField(max_length=2, verbose_name='Condition')  # <, <=, >, >=, ==
+    amount = models.DecimalField(null=True, blank=True, verbose_name='Amount', **decimal_field)
 
     def __unicode__(self):
         """
         Explain this model
         :rtype : str
         """
-        return 'BreakEven when price %s %s' % (
-            self.condition, locale.currency(self.price, grouping=True)
+        return 'BreakEven when price {condition} {price} (amount: {amount})'.format(
+            condition=self.condition,
+            price=locale.currency(self.price, grouping=True),
+            amount=locale.currency(self.amount, grouping=True)
         )
 
 

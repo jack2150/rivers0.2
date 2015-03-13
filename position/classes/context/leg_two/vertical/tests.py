@@ -58,8 +58,9 @@ class TestContextLongCallVertical(TestUnitSetUpDB):
         Position context
         """
         self.assertTrue(self.position_context.id)
+        print self.position_context
 
-    def test_left_break_even(self):
+    def test_break_even(self):
         """
         Left side break even
         """
@@ -68,7 +69,7 @@ class TestContextLongCallVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.break_even.condition, '==')
         print self.position_context.break_even
 
-    def test_left_start_profit(self):
+    def test_start_profit(self):
         """
         Left side start profit
         """
@@ -77,7 +78,7 @@ class TestContextLongCallVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.start_profit.condition, '>')
         print self.position_context.start_profit
 
-    def test_left_start_loss(self):
+    def test_start_loss(self):
         """
         Left side start loss
         """
@@ -86,7 +87,7 @@ class TestContextLongCallVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.start_loss.condition, '<')
         print self.position_context.start_loss
 
-    def test_left_max_profit(self):
+    def test_max_profit(self):
         """
         Left side max profit
         """
@@ -98,7 +99,7 @@ class TestContextLongCallVertical(TestUnitSetUpDB):
         self.assertEqual(float(self.position_context.max_profit.amount), 336.00)
         print self.position_context.max_profit
 
-    def test_left_max_loss(self):
+    def test_max_loss(self):
         """
         Left side max profit
         """
@@ -181,7 +182,7 @@ class TestContextShortCallVertical(TestUnitSetUpDB):
         """
         self.assertTrue(self.position_context.id)
 
-    def test_left_break_even(self):
+    def test_break_even(self):
         """
         Left side break even
         """
@@ -190,7 +191,7 @@ class TestContextShortCallVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.break_even.condition, '==')
         print self.position_context.break_even
 
-    def test_left_start_profit(self):
+    def test_start_profit(self):
         """
         Left side start profit
         """
@@ -199,7 +200,7 @@ class TestContextShortCallVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.start_profit.condition, '<')
         print self.position_context.start_profit
 
-    def test_left_start_loss(self):
+    def test_start_loss(self):
         """
         Left side start loss
         """
@@ -208,7 +209,7 @@ class TestContextShortCallVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.start_loss.condition, '>')
         print self.position_context.start_loss
 
-    def test_left_max_profit(self):
+    def test_max_profit(self):
         """
         Left side max profit
         """
@@ -220,7 +221,7 @@ class TestContextShortCallVertical(TestUnitSetUpDB):
         self.assertEqual(float(self.position_context.max_profit.amount), 245)
         print self.position_context.max_profit
 
-    def test_left_max_loss(self):
+    def test_max_loss(self):
         """
         Left side max profit
         """
@@ -303,7 +304,7 @@ class TestContextLongPutVertical(TestUnitSetUpDB):
         """
         self.assertTrue(self.position_context.id)
 
-    def test_left_break_even(self):
+    def test_break_even(self):
         """
         Left side break even
         """
@@ -312,7 +313,7 @@ class TestContextLongPutVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.break_even.condition, '==')
         print self.position_context.break_even
 
-    def test_left_start_profit(self):
+    def test_start_profit(self):
         """
         Left side start profit
         """
@@ -321,7 +322,7 @@ class TestContextLongPutVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.start_profit.condition, '<')
         print self.position_context.start_profit
 
-    def test_left_start_loss(self):
+    def test_start_loss(self):
         """
         Left side start loss
         """
@@ -330,7 +331,7 @@ class TestContextLongPutVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.start_loss.condition, '>')
         print self.position_context.start_loss
 
-    def test_left_max_profit(self):
+    def test_max_profit(self):
         """
         Left side max profit
         """
@@ -342,7 +343,7 @@ class TestContextLongPutVertical(TestUnitSetUpDB):
         self.assertEqual(float(self.position_context.max_profit.amount), 45)
         print self.position_context.max_profit
 
-    def test_left_max_loss(self):
+    def test_max_loss(self):
         """
         Left side max profit
         """
@@ -425,7 +426,7 @@ class TestContextShortPutVertical(TestUnitSetUpDB):
         """
         self.assertTrue(self.position_context.id)
 
-    def test_left_break_even(self):
+    def test_break_even(self):
         """
         Left side break even
         """
@@ -434,7 +435,7 @@ class TestContextShortPutVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.break_even.condition, '==')
         print self.position_context.break_even
 
-    def test_left_start_profit(self):
+    def test_start_profit(self):
         """
         Left side start profit
         """
@@ -443,7 +444,7 @@ class TestContextShortPutVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.start_profit.condition, '>')
         print self.position_context.start_profit
 
-    def test_left_start_loss(self):
+    def test_start_loss(self):
         """
         Left side start loss
         """
@@ -452,7 +453,7 @@ class TestContextShortPutVertical(TestUnitSetUpDB):
         self.assertEqual(self.position_context.start_loss.condition, '<')
         print self.position_context.start_loss
 
-    def test_left_max_profit(self):
+    def test_max_profit(self):
         """
         Left side max profit
         """
@@ -464,7 +465,7 @@ class TestContextShortPutVertical(TestUnitSetUpDB):
         self.assertEqual(float(self.position_context.max_profit.amount), 126)
         print self.position_context.max_profit
 
-    def test_left_max_loss(self):
+    def test_max_loss(self):
         """
         Left side max profit
         """
