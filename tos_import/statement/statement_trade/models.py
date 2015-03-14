@@ -1,7 +1,7 @@
 from django.db import models
-from position.models import PositionSet
 from tos_import.classes.io.open_ta import OpenTA
 from tos_import.models import Underlying, Future, Forex, Statement, SaveAppModel
+from position.models import PositionSet  # todo: maybe here
 
 
 class TaModel(object):

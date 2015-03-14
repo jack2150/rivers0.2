@@ -1,5 +1,4 @@
 # noinspection PyUnresolvedReferences
-import unittest
 import position.classes.ready_django
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q

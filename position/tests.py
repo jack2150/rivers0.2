@@ -1,15 +1,18 @@
 # noinspection PyUnresolvedReferences
 import position.classes.ready_django
+from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 from pprint import pprint
 from position.classes.tests import TestUnitSetUp
 from position.models import *
+from position.views import SavePositionSet
 from tos_import.classes.tests import TestSetUpDB, TestReadyFile
 from tos_import.files.real_files import real_path
 from tos_import.models import Statement
 from tos_import.statement.statement_account.models import AccountSummary, ProfitLoss
 from tos_import.statement.statement_position.models import PositionSummary, PositionInstrument
 from tos_import.statement.statement_trade.models import TradeSummary, FilledOrder
+
 
 
 class TestContext(TestSetUpDB):
