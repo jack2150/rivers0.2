@@ -196,6 +196,7 @@ class PositionSet(models.Model):
     # name and spread
     name = models.CharField(max_length=100, verbose_name='Name')  # equity, option...
     spread = models.CharField(max_length=100, verbose_name='Spread')  # long stock, naked call...
+    status = models.CharField(max_length=5, verbose_name='Status', default='Open')  # open or close
 
     # underlying
     underlying = models.ForeignKey(Underlying, null=True, blank=True, default=None)
@@ -206,13 +207,31 @@ class PositionSet(models.Model):
     context = models.OneToOneField(PositionContext, null=True, blank=True, default=None)
     contexts = models.OneToOneField(PositionContexts, null=True, blank=True, default=None)
 
+    def get_symbol(self):
+        """
+        Get either one symbol from model
+        underlying or future or forex
+        :return: str
+        """
+        if self.future:
+            if self.future.symbol:
+                symbol = self.future.symbol
+            else:
+                symbol = '/%s' % self.future.lookup
+        elif self.forex:
+            symbol = self.forex.symbol
+        else:
+            symbol = self.underlying.symbol
+
+        return symbol
+
     def __unicode__(self):
         """
         Explain this model
         :rtype : str
         """
         return 'PositionSet: < {symbol} > {name}.{spread}'.format(
-            symbol=self.underlying.symbol,
+            symbol=self.get_symbol(),
             name=self.name,
             spread=self.spread
         )

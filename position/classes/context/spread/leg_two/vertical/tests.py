@@ -1,5 +1,5 @@
 from position.classes.context.tests import *
-from position.classes.context.leg_two.vertical.vertical import *
+from position.classes.context.spread.leg_two.vertical.vertical import *
 
 
 class TestContextLongCallVertical(TestUnitSetUpDB):

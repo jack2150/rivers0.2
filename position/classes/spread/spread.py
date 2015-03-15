@@ -85,7 +85,7 @@ class Spread(object):
 
         return forex
 
-    def get_name(self):
+    def get_name(self, module=False, lower=False):
         """
         determine name of the spread, all filled orders record must same
         :rtype : str
@@ -114,6 +114,22 @@ class Spread(object):
             name = 'FOREX'
         else:
             name = 'SPREAD'
+            if module:
+                option_legs = len(self.filled_orders)
+                strategy_name = self.filled_orders[0].spread.lower()
+                if option_legs == 2:
+                    name += '.LEG_TWO.' + strategy_name
+                elif option_legs == 3:
+                    name += '.LEG_THREE.' + strategy_name
+                elif option_legs == 4:
+                    name += '.LEG_FOUR' + strategy_name
+
+        # set class name variable
+        self.name = name
+
+        # return name str
+        if lower:
+            name = name.lower()
 
         return name
 
@@ -527,4 +543,20 @@ class Spread(object):
             elif option_legs == 4:
                 spread = self.get_four_leg_options_spread()
 
+        # set class spread variable
+        self.spread = spread
+
+        # return spread str
         return spread
+
+    def get_spread_module(self):
+        """
+        Test get spread module name
+        :rtype : str
+        """
+        if self.spread == '':
+            self.get_spread()
+
+        return ''.join(map(
+            lambda s: s.lower().capitalize(), self.spread.split('_')
+        ))

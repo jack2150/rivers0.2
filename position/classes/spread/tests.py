@@ -987,3 +987,46 @@ class TestSpread(TestUnitSetUpPrepare):
                 print 'Name: %s' % self.spread.name
                 print 'Spread: %s' % self.spread.get_spread()
                 print ''
+
+    def test_get_spread_module(self):
+        """
+        Test get spread module name using get_spread result
+        """
+        self.filled_order = self.create_filled_order(
+            trade_summary=self.trade_summary,
+            underlying=self.underlying,
+            future=self.future,
+            forex=self.forex,
+            spread='STOCK',
+            contract='ETF',
+            side='BUY',
+            quantity=1
+        )
+
+        filled_orders = FilledOrder.objects.filter(underlying=self.underlying).all()
+
+        self.spread = Spread(filled_orders=filled_orders)
+
+        self.spreads = [
+            'SHORT_FUTURE', 'SHORT_CALL_BACKRATIO', 'LONG_PUT_VERTICAL',
+            'SHORT_PUT_UNBALANCE_BUTTERFLY', 'LONG_BROKEN_WING_CALL_CONDOR'
+        ]
+        self.results = [
+            'ShortFuture', 'ShortCallBackratio', 'LongPutVertical',
+            'ShortPutUnbalanceButterfly', 'LongBrokenWingCallCondor'
+        ]
+
+        for spread, expect in zip(self.spreads, self.results):
+            self.spread.spread = spread
+
+            result = self.spread.get_spread_module()
+
+            print 'spread name: %s' % spread
+            print 'result module: %s' % result
+            print '.' * 60
+
+            self.assertEqual(result, expect)
+
+
+
+

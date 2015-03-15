@@ -1,5 +1,5 @@
 from position.classes.context.tests import *
-from position.classes.context.leg_two.straddle.straddle import *
+from position.classes.context.spread.leg_two.straddle.straddle import *
 
 
 class TestContextLongStraddle(TestUnitSetUpDB):

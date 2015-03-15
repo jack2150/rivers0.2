@@ -296,6 +296,8 @@ class PositionFuture(models.Model, PositionModel):
         max_digits=8, decimal_places=2, default=0.0, verbose_name="BP Effect"
     )
 
+    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
+
     def json(self):
         output = '{'
         output += '"symbol": "/%s", ' % self.future.lookup
@@ -349,6 +351,8 @@ class PositionForex(models.Model, PositionModel):
     bp_effect = models.DecimalField(
         max_digits=12, decimal_places=6, default=0.0, verbose_name="BP Effect"
     )
+
+    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
 
     def json(self):
         output = '{'
@@ -410,38 +414,40 @@ class SavePositionStatement(SaveAppModel):
         Save future position into db
         """
         for future_position in self.future_position:
-            future = self.get_future(
-                lookup=future_position['lookup'],
-                symbol=future_position['symbol'],
-                description=future_position['description'],
-                expire_date=future_position['expire_date'],
-                session=future_position['session'],
-                spc=future_position['spc']
-            )
+            if sum([True for d in future_position.values() if d == 0.0]) < 5:
+                future = self.get_future(
+                    lookup=future_position['lookup'],
+                    symbol=future_position['symbol'],
+                    description=future_position['description'],
+                    expire_date=future_position['expire_date'],
+                    session=future_position['session'],
+                    spc=future_position['spc']
+                )
 
-            pos_future = PositionFuture(
-                position_summary=self.position_statement,
-                future=future
-            )
-            pos_future.set_dict(future_position)
-            pos_future.save()
+                pos_future = PositionFuture(
+                    position_summary=self.position_statement,
+                    future=future
+                )
+                pos_future.set_dict(future_position)
+                pos_future.save()
 
     def save_forex_position(self):
         """
         Save forex position into db
         """
         for forex_position in self.forex_position:
-            forex = self.get_forex(
-                symbol=forex_position['symbol'],
-                description=forex_position['description'],
-            )
+            if sum([True for d in forex_position.values() if d == 0.0]) < 4:
+                forex = self.get_forex(
+                    symbol=forex_position['symbol'],
+                    description=forex_position['description'],
+                )
 
-            pos_forex = PositionForex(
-                position_summary=self.position_statement,
-                forex=forex
-            )
-            pos_forex.set_dict(forex_position)
-            pos_forex.save()
+                pos_forex = PositionForex(
+                    position_summary=self.position_statement,
+                    forex=forex
+                )
+                pos_forex.set_dict(forex_position)
+                pos_forex.save()
 
     def save_equity_option_position(self):
         """

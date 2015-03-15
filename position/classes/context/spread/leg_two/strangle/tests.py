@@ -1,5 +1,5 @@
 from position.classes.context.tests import *
-from position.classes.context.leg_two.strangle.strangle import *
+from position.classes.context.spread.leg_two.strangle.strangle import *
 
 
 class TestContextLongStrangle(TestUnitSetUpDB):
