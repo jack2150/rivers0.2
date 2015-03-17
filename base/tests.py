@@ -13,7 +13,7 @@ from tos_import.files.test_files import test_path
 class TestBaseModelListing(TestSetUp):
     def ready_file(self, real_date, file_date):
         if not User.objects.exists():
-            self.user = User.objects.create_superuser(
+            User.objects.create_superuser(
                 username='jack',
                 email='a@b.com',
                 password='pass'
@@ -46,10 +46,14 @@ class TestBaseModelListing(TestSetUp):
             )
         )
 
-    def test_list_admin_model(self):
+    def test_base_model_list(self):
+        """
+        Test list all admin models
+        """
         self.ready_file(real_date='2014-11-17', file_date='2014-11-18')
         self.ready_file(real_date='2014-11-18', file_date='2014-11-19')
 
+        print 'Statement count: %d' % Statement.objects.count()
         print 'DayStat object count: %d' % StatDay.objects.count()
         print 'DayStatHolding object count: %d' % StatDayHolding.objects.count()
         print 'DayStatOptionGreek object count: %d' % StatDayOptionGreek.objects.count()

@@ -1,6 +1,7 @@
 from position.classes.context.tests import TestUnitSetUpDB
 from position.classes.tests import create_filled_order
 from position.classes.context.option.option import *
+from tos_import.statement.statement_trade.models import FilledOrder
 
 
 class TestContextLongCall(TestUnitSetUpDB):

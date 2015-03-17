@@ -248,15 +248,8 @@ class TaAdmin(admin.ModelAdmin):
         return False
 
 
-class TaForm(ModelForm):
-    class Meta:
-        pass
-
-
 # noinspection PyMethodMayBeStatic
 class WorkingOrderAdmin(TaAdmin):
-    form = TaForm
-
     def order_time(self, obj):
         return obj.time_placed.strftime('%H:%M')
 
@@ -296,8 +289,6 @@ class WorkingOrderAdmin(TaAdmin):
 
 # noinspection PyMethodMayBeStatic
 class FilledOrderAdmin(TaAdmin):
-    form = TaForm
-
     def order_time(self, obj):
         return obj.exec_time.strftime('%H:%M')
 
@@ -313,9 +304,17 @@ class FilledOrderAdmin(TaAdmin):
         'trade_summary__date', 'spread', 'side', 'contract', 'pos_effect', 'order'
     )
 
+    readonly_fields = TaAdmin.readonly_fields + ('position_set', )
+
     fieldsets = (
         ('Foreign Key', {
-            'fields': ('trade_summary', 'underlying', 'future', 'forex')
+            'fields': (
+                'trade_summary',
+                'underlying',
+                'future',
+                'forex',
+                'position_set'
+            )
         }),
         ('Filled Order', {
             'fields': (
@@ -359,8 +358,6 @@ class CustomStatusFilter(admin.SimpleListFilter):
 
 # noinspection PyMethodMayBeStatic
 class CancelledOrderAdmin(TaAdmin):
-    form = TaForm
-
     def order_time(self, obj):
         return obj.time_cancelled.strftime('%H:%M')
 

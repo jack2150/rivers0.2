@@ -1,6 +1,5 @@
 # noinspection PyUnresolvedReferences
 from django.db.models.query import QuerySet
-from tos_import.statement.statement_trade.models import FilledOrder
 
 
 class Spread(object):
@@ -16,10 +15,6 @@ class Spread(object):
         """
         if type(filled_orders) is not QuerySet:
             raise TypeError('Parameter is not QuerySet of <FilledOrder> object type.')
-
-        for filled_order in filled_orders:
-            if type(filled_order) is not FilledOrder:
-                raise TypeError('Parameter item is <FilledOrder> object type.')
 
         self.filled_orders = filled_orders
         """:type : list of FilledOrder"""
@@ -122,7 +117,7 @@ class Spread(object):
                 elif option_legs == 3:
                     name += '.LEG_THREE.' + strategy_name
                 elif option_legs == 4:
-                    name += '.LEG_FOUR' + strategy_name
+                    name += '.LEG_FOUR.' + strategy_name
 
         # set class name variable
         self.name = name

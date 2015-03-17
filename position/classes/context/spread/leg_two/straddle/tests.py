@@ -1,5 +1,6 @@
 from position.classes.context.tests import *
 from position.classes.context.spread.leg_two.straddle.straddle import *
+from tos_import.statement.statement_trade.models import FilledOrder
 
 
 class TestContextLongStraddle(TestUnitSetUpDB):

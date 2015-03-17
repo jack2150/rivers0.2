@@ -44,6 +44,9 @@ INSTALLED_APPS = (
     # base app
     'base',
 
+    # position
+    'position',
+
     # tos import
     'tos_import',
     'tos_import.statement.statement_account',
@@ -53,8 +56,7 @@ INSTALLED_APPS = (
     # statistic
     'statistic.simple.stat_day',
 
-    # position
-    'position',
+
 
 
 )

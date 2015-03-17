@@ -8,7 +8,7 @@ from tos_import.files.real_files import real_path
 from tos_import.models import Statement
 from tos_import.statement.statement_account.models import AccountSummary, ProfitLoss
 from tos_import.statement.statement_position.models import PositionSummary, PositionInstrument
-from tos_import.statement.statement_trade.models import TradeSummary, FilledOrder
+from tos_import.statement.statement_trade.models import FilledOrder
 
 
 class TestContext(TestSetUpDB):
@@ -315,7 +315,6 @@ class TestPositionSet(TestPositionPL, TestReadyFile):
         self.assertTrue(position_set.filledorder_set.exists())
         self.assertTrue(position_set.positioninstrument_set.exists())
         self.assertTrue(position_set.positioninstrument_set.exists())
-
 
 
 

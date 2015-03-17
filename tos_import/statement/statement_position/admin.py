@@ -457,7 +457,7 @@ class PositionInstrumentAdmin(PsModelAdmin):
     fieldsets = (
         ('Foreign Key', {
             'fields': (
-                ('position_summary', 'underlying')
+                ('position_summary', 'underlying', 'position_set')
             )
         }),
         ('Instrument', {
@@ -468,7 +468,7 @@ class PositionInstrumentAdmin(PsModelAdmin):
         }),
     )
 
-    readonly_fields = ('position_summary', 'underlying')
+    readonly_fields = ('position_summary', 'underlying', 'position_set')
 
     search_fields = (
         'position_summary__date', 'underlying__symbol', 'underlying__company'
@@ -646,7 +646,7 @@ class PositionFutureAdmin(PsModelAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'fields': ('position_summary', 'future')
+            'fields': ('position_summary', 'future', 'position_set')
         }),
         ('Detail', {
             'fields': (
@@ -656,9 +656,7 @@ class PositionFutureAdmin(PsModelAdmin):
         }),
     )
 
-    readonly_fields = (
-        'position_summary', 'future'
-    )
+    readonly_fields = ('position_summary', 'future', 'position_set')
     ordering = ('-position_summary__date', 'future__symbol')
 
 
@@ -696,7 +694,7 @@ class PositionForexAdmin(PsModelAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'fields': ('position_summary', 'forex')
+            'fields': ('position_summary', 'forex', 'position_set')
         }),
         ('Position Forex', {
             'fields': (
@@ -706,9 +704,7 @@ class PositionForexAdmin(PsModelAdmin):
         }),
     )
 
-    readonly_fields = (
-        'position_summary', 'forex'
-    )
+    readonly_fields = ('position_summary', 'forex', 'position_set')
 
     ordering = ('-position_summary__date', 'forex__symbol')
 

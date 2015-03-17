@@ -1,6 +1,5 @@
 import locale
 from django.db import models
-from position.models import PositionSet
 from tos_import.classes.io.open_acc import OpenAcc
 from tos_import.models import Underlying, Future, Forex, Statement, SaveAppModel
 
@@ -348,7 +347,7 @@ class ProfitLoss(models.Model, AccountModel):
     )
 
     # for position set
-    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
+    position_set = models.ForeignKey('position.PositionSet', null=True, blank=True, default=None)
 
     def get_symbol(self):
         """

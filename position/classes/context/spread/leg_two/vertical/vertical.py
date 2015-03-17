@@ -1,7 +1,5 @@
 from django.db.models.query import QuerySet
 from position.models import *
-# noinspection PyUnresolvedReferences
-from tos_import.statement.statement_trade.models import FilledOrder
 
 
 class ContextLongCallVertical(object):

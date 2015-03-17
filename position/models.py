@@ -1,6 +1,8 @@
 import locale
 from django.db import models
+from position.manager.manager import PositionSetManager
 from tos_import.models import Underlying, Future, Forex
+
 
 locale.setlocale(locale.LC_ALL, '')
 decimal_field = dict(max_digits=10, decimal_places=2, default=0.0)
@@ -196,7 +198,7 @@ class PositionSet(models.Model):
     # name and spread
     name = models.CharField(max_length=100, verbose_name='Name')  # equity, option...
     spread = models.CharField(max_length=100, verbose_name='Spread')  # long stock, naked call...
-    status = models.CharField(max_length=5, verbose_name='Status', default='Open')  # open or close
+    status = models.CharField(max_length=5, verbose_name='Status', default='OPEN')  # open or close
 
     # underlying
     underlying = models.ForeignKey(Underlying, null=True, blank=True, default=None)
@@ -206,6 +208,32 @@ class PositionSet(models.Model):
     # max profit, max loss and others
     context = models.OneToOneField(PositionContext, null=True, blank=True, default=None)
     contexts = models.OneToOneField(PositionContexts, null=True, blank=True, default=None)
+
+    def __init__(self, *args, **kwargs):
+        #super(PositionSet, self).__init__(self, *args, **kwargs)
+        models.Model.__init__(self, *args, **kwargs)
+
+        self.manager = PositionSetManager(self)
+
+    """
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        #Assign manager set filled orders data into position_set
+
+        if self.manager.filled_orders:
+            self.name = self.manager.position_set.name
+            self.spread = self.manager.position_set.spread
+            self.status = self.manager.position_set.status
+            self.underlying = self.manager.position_set.underlying
+            self.future = self.manager.position_set.future
+            self.forex = self.manager.position_set.forex
+            self.context = self.manager.position_set.context
+            self.contexts = self.manager.position_set.contexts
+
+
+        models.Model.save(self, force_insert=False, force_update=False, using=None,
+                          update_fields=None)
+    """
 
     def get_symbol(self):
         """

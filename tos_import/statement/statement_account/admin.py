@@ -1,9 +1,6 @@
 import locale
-
 from django.contrib import admin
 from django.core.urlresolvers import reverse
-from django.forms import ModelForm
-
 from tos_import.statement.statement_account import models
 
 
@@ -514,7 +511,7 @@ class ProfitLossAdmin(AccountStatementForeignAdmin):
 
     fieldsets = (
         ('Foreign Key', {
-            'fields': ('account_summary', 'underlying', 'future')
+            'fields': ('account_summary', 'underlying', 'future', 'position_set')
         }),
         ('Profit Loss', {
             'fields': (
@@ -523,7 +520,7 @@ class ProfitLossAdmin(AccountStatementForeignAdmin):
         })
     )
 
-    readonly_fields = ('account_summary', 'underlying', 'future')
+    readonly_fields = ('account_summary', 'underlying', 'future', 'position_set')
 
 
 # noinspection PyMethodMayBeStatic

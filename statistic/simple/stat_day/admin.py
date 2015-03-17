@@ -2,7 +2,7 @@ from django.contrib import admin
 from statistic.simple.stat_day.models import StatDay, StatDayHolding, StatDayOptionGreek
 from statistic.simple.stat_day.views import simple_stat_day_view
 
-
+# todo: admin inline
 # noinspection PyMethodMayBeStatic
 class DayStatAdmin(admin.ModelAdmin):
     def statement_date(self, obj):

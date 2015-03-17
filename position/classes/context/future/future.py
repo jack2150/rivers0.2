@@ -2,8 +2,6 @@ from decimal import Decimal
 from fractions import Fraction
 from django.db.models.query import QuerySet
 from position.models import *
-# noinspection PyUnresolvedReferences
-from tos_import.statement.statement_trade.models import FilledOrder
 
 
 class ContextLongFuture(object):
@@ -150,7 +148,6 @@ class ContextShortFuture(object):
             )
         )
         self.max_loss.save()
-
 
         self.position_context = PositionContext(
             break_even=self.break_even,
