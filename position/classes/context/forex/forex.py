@@ -14,7 +14,6 @@ class ContextLongForex(object):
         self.filled_order = filled_orders[0]
         """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -32,19 +31,16 @@ class ContextLongForex(object):
             price=self.filled_order.price,
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.filled_order.price,
             condition='>'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.filled_order.price,
             condition='<'
         )
-        self.start_loss.save()
 
         profit_price = self.filled_order.price * Decimal(1 + self.price_range)
         self.max_profit = MaxProfit(
@@ -57,7 +53,6 @@ class ContextLongForex(object):
                 / profit_price
             )
         )
-        self.max_profit.save()
 
         loss_price = self.filled_order.price * Decimal(1 - self.price_range)
         self.max_loss = MaxLoss(
@@ -70,18 +65,14 @@ class ContextLongForex(object):
                 / loss_price
             )
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
 
 
 class ContextShortForex(object):
@@ -95,7 +86,6 @@ class ContextShortForex(object):
         self.filled_order = filled_orders[0]
         """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -113,19 +103,16 @@ class ContextShortForex(object):
             price=self.filled_order.price,
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.filled_order.price,
             condition='<'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.filled_order.price,
             condition='>'
         )
-        self.start_loss.save()
 
         profit_price = self.filled_order.price * Decimal(1 - self.price_range)
         self.max_profit = MaxProfit(
@@ -138,7 +125,6 @@ class ContextShortForex(object):
                 / profit_price
             )
         )
-        self.max_profit.save()
 
         loss_price = self.filled_order.price * Decimal(1 + self.price_range)
         self.max_loss = MaxLoss(
@@ -151,18 +137,14 @@ class ContextShortForex(object):
                 / loss_price
             )
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
 
 
 

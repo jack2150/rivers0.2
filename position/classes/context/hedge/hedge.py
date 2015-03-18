@@ -21,7 +21,6 @@ class ContextCoveredCall(object):
                 self.option_order = filled_order
                 """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -35,24 +34,20 @@ class ContextCoveredCall(object):
         Create a context model object and that save all data
         :return: PositionContext
         """
-
         self.break_even = BreakEven(
             price=self.stock_order.price - self.option_order.price,
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.stock_order.price - self.option_order.price,
             condition='>'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.stock_order.price - self.option_order.price,
             condition='<'
         )
-        self.start_loss.save()
 
         self.max_profit = MaxProfit(
             price=self.option_order.strike,
@@ -63,7 +58,6 @@ class ContextCoveredCall(object):
                 * self.stock_order.quantity
             )
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=(self.stock_order.price * Decimal(1 - self.price_range)),
@@ -74,18 +68,14 @@ class ContextCoveredCall(object):
                 * self.stock_order.quantity * -1
             )
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
 
 
 class ContextProtectiveCall(object):
@@ -106,7 +96,6 @@ class ContextProtectiveCall(object):
                 self.option_order = filled_order
                 """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -125,19 +114,16 @@ class ContextProtectiveCall(object):
             price=self.stock_order.price - self.option_order.price,
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.stock_order.price - self.option_order.price,
             condition='<'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.stock_order.price - self.option_order.price,
             condition='>'
         )
-        self.start_loss.save()
 
         # assume 50%
         self.max_profit = MaxProfit(
@@ -149,7 +135,6 @@ class ContextProtectiveCall(object):
                 * self.stock_order.quantity
             )
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.option_order.strike,
@@ -160,18 +145,14 @@ class ContextProtectiveCall(object):
                 * self.stock_order.quantity * -1
             )
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
 
 
 class ContextCoveredPut(object):
@@ -192,7 +173,6 @@ class ContextCoveredPut(object):
                 self.option_order = filled_order
                 """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -206,24 +186,20 @@ class ContextCoveredPut(object):
         Create a context model object and that save all data
         :return: PositionContext
         """
-
         self.break_even = BreakEven(
             price=self.stock_order.price + self.option_order.price,
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.stock_order.price + self.option_order.price,
             condition='<'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.stock_order.price + self.option_order.price,
             condition='>'
         )
-        self.start_loss.save()
 
         self.max_profit = MaxProfit(
             price=self.option_order.strike,
@@ -234,7 +210,6 @@ class ContextCoveredPut(object):
                 * self.stock_order.quantity
             )
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.stock_order.price * Decimal(1 + self.price_range),
@@ -246,18 +221,14 @@ class ContextCoveredPut(object):
                 * self.stock_order.quantity * -1
             )
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
 
 
 class ContextProtectivePut(object):
@@ -278,7 +249,6 @@ class ContextProtectivePut(object):
                 self.option_order = filled_order
                 """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -297,19 +267,16 @@ class ContextProtectivePut(object):
             price=self.stock_order.price + self.option_order.price,
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.stock_order.price + self.option_order.price,
             condition='>'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.stock_order.price + self.option_order.price,
             condition='<'
         )
-        self.start_loss.save()
 
         self.max_profit = MaxProfit(
             price=self.stock_order.price * Decimal(1 - self.price_range),
@@ -321,7 +288,6 @@ class ContextProtectivePut(object):
                 * self.stock_order.quantity
             )
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.option_order.strike,
@@ -332,16 +298,11 @@ class ContextProtectivePut(object):
                 * self.stock_order.quantity * -1
             )
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
-

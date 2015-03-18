@@ -84,150 +84,40 @@ class TestMaxLoss(TestContext):
         self.cls = MaxLoss
 
 
-class TestPositionPL(TestContext):
+class TestPositionSet(TestContext, TestReadyFile):
     def setUp(self):
         TestContext.setUp(self)
 
         self.items = list()
 
-    def ready_context(self):
-        for key in range(5):
-            break_even = BreakEven(
-                price=self.prices[key],
-                condition=self.conditions[key]
-            )
-            break_even.save()
-
-            start_profit = StartProfit(
-                price=self.prices[key],
-                condition=self.conditions[key]
-            )
-            start_profit.save()
-
-            start_loss = StartLoss(
-                price=self.prices[key],
-                condition=self.conditions[key]
-            )
-            start_loss.save()
-
-            max_profit = MaxProfit(
-                price=self.prices[key],
-                condition=self.conditions[key],
-                limit=self.limits[key],
-                amount=self.amounts[key]
-            )
-            max_profit.save()
-
-            max_loss = MaxLoss(
-                price=self.prices[key],
-                condition=self.conditions[key],
-                limit=self.limits[key],
-                amount=self.amounts[key]
-            )
-            max_loss.save()
-
-            self.items.append(dict(
-                break_even=break_even,
-                start_profit=start_profit,
-                start_loss=start_loss,
-                max_profit=max_profit,
-                max_loss=max_loss,
-            ))
-
-
-class TestPositionContext(TestPositionPL):
-    def test_save(self):
-        self.ready_context()
-
-        for item in self.items:
-            print 'item:'
-            pprint(item)
-            print ''
-
-            position_context = PositionContext(
-                break_even=item['break_even'],
-                start_profit=item['start_profit'],
-                start_loss=item['start_loss'],
-                max_profit=item['max_profit'],
-                max_loss=item['max_loss']
-            )
-            position_context.save()
-
-            print 'saved object:'
-            print position_context
-            self.assertTrue(position_context.id)
-
-            self.assertEqual(type(position_context.break_even), BreakEven)
-            self.assertEqual(type(position_context.start_profit), StartProfit)
-            self.assertEqual(type(position_context.start_loss), StartLoss)
-            self.assertEqual(type(position_context.max_profit), MaxProfit)
-            self.assertEqual(type(position_context.max_loss), MaxLoss)
-
-            print '\n'
-
-
-class TestPositionContexts(TestPositionPL):
-    def test_save(self):
-        self.ready_context()
-
-        for item1, item2 in zip(self.items[0::2], self.items[1::2]):
-            print 'item:'
-            pprint(item1)
-            pprint(item2)
-            print ''
-
-            position_context1 = PositionContext(
-                break_even=item1['break_even'],
-                start_profit=item1['start_profit'],
-                start_loss=item1['start_loss'],
-                max_profit=item1['max_profit'],
-                max_loss=item1['max_loss']
-            )
-            position_context1.save()
-
-            position_context2 = PositionContext(
-                break_even=item2['break_even'],
-                start_profit=item2['start_profit'],
-                start_loss=item2['start_loss'],
-                max_profit=item2['max_profit'],
-                max_loss=item2['max_loss']
-            )
-            position_context2.save()
-
-            position_contexts = PositionContexts(
-                left=position_context1,
-                right=position_context2,
-            )
-            position_contexts.save()
-
-            print 'saved object:'
-            print position_contexts.left.__unicode__()
-            print position_contexts.right.__unicode__()
-            self.assertTrue(position_context1.id)
-
-            self.assertEqual(type(position_context1.break_even), BreakEven)
-            self.assertEqual(type(position_context1.start_profit), StartProfit)
-            self.assertEqual(type(position_context1.start_loss), StartLoss)
-            self.assertEqual(type(position_context1.max_profit), MaxProfit)
-            self.assertEqual(type(position_context1.max_loss), MaxLoss)
-
-            print '\n'
-
-
-class TestPositionSet(TestPositionPL, TestReadyFile):
-    def setUp(self):
-        TestPositionPL.setUp(self)
-
-        self.ready_context()
-
-        self.position_context = PositionContext(
-            break_even=self.items[0]['break_even'],
-            start_profit=self.items[1]['start_profit'],
-            start_loss=self.items[2]['start_loss'],
-            max_profit=self.items[3]['max_profit'],
-            max_loss=self.items[4]['max_loss']
+        self.break_even = BreakEven(
+            price=self.prices[0],
+            condition=self.conditions[0]
         )
-        self.position_context.save()
+
+        self.start_profit = StartProfit(
+            price=self.prices[0],
+            condition=self.conditions[0]
+        )
+
+        self.start_loss = StartLoss(
+            price=self.prices[0],
+            condition=self.conditions[0]
+        )
+
+        self.max_profit = MaxProfit(
+            price=self.prices[0],
+            condition=self.conditions[0],
+            limit=self.limits[0],
+            amount=self.amounts[0]
+        )
+
+        self.max_loss = MaxLoss(
+            price=self.prices[0],
+            condition=self.conditions[0],
+            limit=self.limits[0],
+            amount=self.amounts[0]
+        )
 
         self.names = ['EQUITY', 'OPTION', 'SPREAD', 'FUTURE', 'FOREX']
         self.spreads = ['LONG STOCK', 'LONG PUT', 'BULL CALL VERTICAL', 'NGQ3', 'USD/CAD']
@@ -285,15 +175,41 @@ class TestPositionSet(TestPositionPL, TestReadyFile):
             underlying=self.underlying,
             name=self.name,
             spread=self.spread,
-            context=self.position_context
         )
         position_set.save()
+
+        # don't save context, save position_set before add
+        position_set.breakeven_set.add(self.break_even)
+        position_set.startprofit_set.add(self.start_profit)
+        position_set.startloss_set.add(self.start_loss)
+        position_set.maxprofit_set.add(self.max_profit)
+        position_set.maxloss_set.add(self.max_loss)
+
         self.assertTrue(position_set.id)
         self.assertEqual(PositionSet.objects.count(), 1)
 
+        print BreakEven.objects.all()
+        self.assertTrue(BreakEven.objects.count())
+        self.assertTrue(BreakEven.objects.filter(position_set=position_set).exists())
+
+        print StartProfit.objects.all()
+        self.assertTrue(StartProfit.objects.count())
+        self.assertTrue(StartProfit.objects.filter(position_set=position_set).exists())
+
+        print StartLoss.objects.all()
+        self.assertTrue(StartLoss.objects.count())
+        self.assertTrue(StartLoss.objects.filter(position_set=position_set).exists())
+
+        print MaxProfit.objects.all()
+        self.assertTrue(MaxProfit.objects.count())
+        self.assertTrue(MaxProfit.objects.filter(position_set=position_set).exists())
+
+        print MaxLoss.objects.all()
+        self.assertTrue(MaxLoss.objects.count())
+        self.assertTrue(MaxLoss.objects.filter(position_set=position_set).exists())
+
         print 'run save...\n'
         print position_set
-        print position_set.context
 
         self.filled_order.position_set = position_set
         self.filled_order.save()

@@ -46,7 +46,13 @@ class TestContextLongCallVertical(TestUnitSetUpDB):
             filled_orders=filled_orders,
             contract_right=self.contract_right
         )
-        self.position_context = self.long_call_vertical.create_context()
+        contexts = self.long_call_vertical.create_context()
+
+        self.break_evens = contexts['break_evens']
+        self.start_profits = contexts['start_profits']
+        self.start_losses = contexts['start_losses']
+        self.max_profits = contexts['max_profits']
+        self.max_losses = contexts['max_losses']
 
     def tearDown(self):
         TestUnitSetUpDB.tearDown(self)
@@ -54,76 +60,72 @@ class TestContextLongCallVertical(TestUnitSetUpDB):
         self.buy_order.delete()
         self.sell_order.delete()
 
-    def test_position_context(self):
-        """
-        Position context
-        """
-        self.assertTrue(self.position_context.id)
-        print self.position_context
-
     def test_break_even(self):
         """
         Left side break even
         """
-        self.assertTrue(self.position_context.break_even.id)
-        self.assertEqual(float(self.position_context.break_even.price), 81.64)
-        self.assertEqual(self.position_context.break_even.condition, '==')
-        print self.position_context.break_even
+        for break_even in self.break_evens:
+            print break_even
+            self.assertFalse(break_even.id)
+            self.assertEqual(float(break_even.price), 81.64)
+            self.assertEqual(break_even.condition, '==')
 
     def test_start_profit(self):
         """
         Left side start profit
         """
-        self.assertTrue(self.position_context.start_profit.id)
-        self.assertEqual(float(self.position_context.start_profit.price), 81.64)
-        self.assertEqual(self.position_context.start_profit.condition, '>')
-        print self.position_context.start_profit
+        for start_profit in self.start_profits:
+            print start_profit
+            self.assertFalse(start_profit.id)
+            self.assertEqual(float(start_profit.price), 81.64)
+            self.assertEqual(start_profit.condition, '>')
 
     def test_start_loss(self):
         """
         Left side start loss
         """
-        self.assertTrue(self.position_context.start_loss.id)
-        self.assertEqual(float(self.position_context.start_loss.price), 81.64)
-        self.assertEqual(self.position_context.start_loss.condition, '<')
-        print self.position_context.start_loss
+        for start_loss in self.start_losses:
+            print start_loss
+            self.assertFalse(start_loss.id)
+            self.assertEqual(float(start_loss.price), 81.64)
+            self.assertEqual(start_loss.condition, '<')
 
     def test_max_profit(self):
         """
         Left side max profit
         """
-        self.assertTrue(self.position_context.max_profit.id)
-        self.assertEqual(self.position_context.max_profit.price,
-                         self.sell_order.strike)
-        self.assertEqual(self.position_context.max_profit.condition, '>=')
-        self.assertTrue(self.position_context.max_profit.limit)
-        self.assertEqual(float(self.position_context.max_profit.amount), 336.00)
-        print self.position_context.max_profit
+        for max_profit in self.max_profits:
+            print max_profit
+            self.assertFalse(max_profit.id)
+            self.assertEqual(max_profit.price,
+                             self.sell_order.strike)
+            self.assertEqual(max_profit.condition, '>=')
+            self.assertTrue(max_profit.limit)
+            self.assertEqual(float(max_profit.amount), 336.00)
 
     def test_max_loss(self):
         """
         Left side max profit
         """
-        self.assertTrue(self.position_context.max_loss.id)
-        self.assertEqual(self.position_context.max_loss.price,
-                         self.buy_order.strike)
-        self.assertEqual(self.position_context.max_loss.condition, '<=')
-        self.assertTrue(self.position_context.max_loss.limit)
-        self.assertEqual(float(self.position_context.max_loss.amount), -164.00)
-        print self.position_context.max_loss
+        for max_loss in self.max_losses:
+            print max_loss
+            self.assertFalse(max_loss.id)
+            self.assertEqual(max_loss.price,
+                             self.buy_order.strike)
+            self.assertEqual(max_loss.condition, '<=')
+            self.assertTrue(max_loss.limit)
+            self.assertEqual(float(max_loss.amount), -164.00)
 
     def test_output(self):
         """
         Output all contexts
         """
         print 'position context...'
-        print self.position_context
-        print '.' * 60
-        print self.position_context.break_even
-        print self.position_context.start_profit
-        print self.position_context.start_loss
-        print self.position_context.max_profit
-        print self.position_context.max_loss
+        print self.break_evens
+        print self.start_profits
+        print self.start_losses
+        print self.max_profits
+        print self.max_losses
 
 
 class TestContextShortCallVertical(TestUnitSetUpDB):
@@ -169,7 +171,14 @@ class TestContextShortCallVertical(TestUnitSetUpDB):
             filled_orders=filled_orders,
             contract_right=self.contract_right
         )
-        self.position_context = self.short_call_vertical.create_context()
+
+        contexts = self.short_call_vertical.create_context()
+
+        self.break_evens = contexts['break_evens']
+        self.start_profits = contexts['start_profits']
+        self.start_losses = contexts['start_losses']
+        self.max_profits = contexts['max_profits']
+        self.max_losses = contexts['max_losses']
 
     def tearDown(self):
         TestUnitSetUpDB.tearDown(self)
@@ -177,75 +186,72 @@ class TestContextShortCallVertical(TestUnitSetUpDB):
         self.buy_order.delete()
         self.sell_order.delete()
 
-    def test_position_context(self):
-        """
-        Position context
-        """
-        self.assertTrue(self.position_context.id)
-
     def test_break_even(self):
         """
         Left side break even
         """
-        self.assertTrue(self.position_context.break_even.id)
-        self.assertEqual(float(self.position_context.break_even.price), 77.55)
-        self.assertEqual(self.position_context.break_even.condition, '==')
-        print self.position_context.break_even
+        for break_even in self.break_evens:
+            print break_even
+            self.assertFalse(break_even.id)
+            self.assertEqual(float(break_even.price), 77.55)
+            self.assertEqual(break_even.condition, '==')
 
     def test_start_profit(self):
         """
         Left side start profit
         """
-        self.assertTrue(self.position_context.start_profit.id)
-        self.assertEqual(float(self.position_context.start_profit.price), 77.55)
-        self.assertEqual(self.position_context.start_profit.condition, '<')
-        print self.position_context.start_profit
+        for start_profit in self.start_profits:
+            print start_profit
+            self.assertFalse(start_profit.id)
+            self.assertEqual(float(start_profit.price), 77.55)
+            self.assertEqual(start_profit.condition, '<')
 
     def test_start_loss(self):
         """
         Left side start loss
         """
-        self.assertTrue(self.position_context.start_loss.id)
-        self.assertEqual(float(self.position_context.start_loss.price), 77.55)
-        self.assertEqual(self.position_context.start_loss.condition, '>')
-        print self.position_context.start_loss
+        for start_loss in self.start_losses:
+            print start_loss
+            self.assertFalse(start_loss.id)
+            self.assertEqual(float(start_loss.price), 77.55)
+            self.assertEqual(start_loss.condition, '>')
 
     def test_max_profit(self):
         """
         Left side max profit
         """
-        self.assertTrue(self.position_context.max_profit.id)
-        self.assertEqual(self.position_context.max_profit.price,
-                         self.sell_order.strike)
-        self.assertEqual(self.position_context.max_profit.condition, '<=')
-        self.assertTrue(self.position_context.max_profit.limit)
-        self.assertEqual(float(self.position_context.max_profit.amount), 245)
-        print self.position_context.max_profit
+        for max_profit in self.max_profits:
+            print max_profit
+            self.assertFalse(max_profit.id)
+            self.assertEqual(max_profit.price,
+                             self.sell_order.strike)
+            self.assertEqual(max_profit.condition, '<=')
+            self.assertTrue(max_profit.limit)
+            self.assertEqual(float(max_profit.amount), 245)
 
     def test_max_loss(self):
         """
         Left side max profit
         """
-        self.assertTrue(self.position_context.max_loss.id)
-        self.assertEqual(self.position_context.max_loss.price,
-                         self.buy_order.strike)
-        self.assertEqual(self.position_context.max_loss.condition, '>=')
-        self.assertTrue(self.position_context.max_loss.limit)
-        self.assertEqual(float(self.position_context.max_loss.amount), -255)
-        print self.position_context.max_loss
+        for max_loss in self.max_losses:
+            print max_loss
+            self.assertFalse(max_loss.id)
+            self.assertEqual(max_loss.price,
+                             self.buy_order.strike)
+            self.assertEqual(max_loss.condition, '>=')
+            self.assertTrue(max_loss.limit)
+            self.assertEqual(float(max_loss.amount), -255)
 
     def test_output(self):
         """
         Output all contexts
         """
         print 'position context...'
-        print self.position_context
-        print '.' * 60
-        print self.position_context.break_even
-        print self.position_context.start_profit
-        print self.position_context.start_loss
-        print self.position_context.max_profit
-        print self.position_context.max_loss
+        print self.break_evens
+        print self.start_profits
+        print self.start_losses
+        print self.max_profits
+        print self.max_losses
 
 
 class TestContextLongPutVertical(TestUnitSetUpDB):
@@ -291,7 +297,14 @@ class TestContextLongPutVertical(TestUnitSetUpDB):
             filled_orders=filled_orders,
             contract_right=self.contract_right
         )
-        self.position_context = self.short_call_vertical.create_context()
+
+        contexts = self.short_call_vertical.create_context()
+
+        self.break_evens = contexts['break_evens']
+        self.start_profits = contexts['start_profits']
+        self.start_losses = contexts['start_losses']
+        self.max_profits = contexts['max_profits']
+        self.max_losses = contexts['max_losses']
 
     def tearDown(self):
         TestUnitSetUpDB.tearDown(self)
@@ -299,75 +312,72 @@ class TestContextLongPutVertical(TestUnitSetUpDB):
         self.buy_order.delete()
         self.sell_order.delete()
 
-    def test_position_context(self):
-        """
-        Position context
-        """
-        self.assertTrue(self.position_context.id)
-
     def test_break_even(self):
         """
-        Left side break even
+        Left side br eak even
         """
-        self.assertTrue(self.position_context.break_even.id)
-        self.assertEqual(float(self.position_context.break_even.price), 25.45)
-        self.assertEqual(self.position_context.break_even.condition, '==')
-        print self.position_context.break_even
+        for break_even in self.break_evens:
+            print break_even
+            self.assertFalse(break_even.id)
+            self.assertEqual(float(break_even.price), 25.45)
+            self.assertEqual(break_even.condition, '==')
 
     def test_start_profit(self):
         """
         Left side start profit
         """
-        self.assertTrue(self.position_context.start_profit.id)
-        self.assertEqual(float(self.position_context.start_profit.price), 25.45)
-        self.assertEqual(self.position_context.start_profit.condition, '<')
-        print self.position_context.start_profit
+        for start_profit in self.start_profits:
+            print start_profit
+            self.assertFalse(start_profit.id)
+            self.assertEqual(float(start_profit.price), 25.45)
+            self.assertEqual(start_profit.condition, '<')
 
     def test_start_loss(self):
         """
         Left side start loss
         """
-        self.assertTrue(self.position_context.start_loss.id)
-        self.assertEqual(float(self.position_context.start_loss.price), 25.45)
-        self.assertEqual(self.position_context.start_loss.condition, '>')
-        print self.position_context.start_loss
+        for start_loss in self.start_losses:
+            print start_loss
+            self.assertFalse(start_loss.id)
+            self.assertEqual(float(start_loss.price), 25.45)
+            self.assertEqual(start_loss.condition, '>')
 
     def test_max_profit(self):
         """
         Left side max profit
         """
-        self.assertTrue(self.position_context.max_profit.id)
-        self.assertEqual(self.position_context.max_profit.price,
-                         self.sell_order.strike)
-        self.assertEqual(self.position_context.max_profit.condition, '<=')
-        self.assertTrue(self.position_context.max_profit.limit)
-        self.assertEqual(float(self.position_context.max_profit.amount), 45)
-        print self.position_context.max_profit
+        for max_profit in self.max_profits:
+            print max_profit
+            self.assertFalse(max_profit.id)
+            self.assertEqual(max_profit.price,
+                             self.sell_order.strike)
+            self.assertEqual(max_profit.condition, '<=')
+            self.assertTrue(max_profit.limit)
+            self.assertEqual(float(max_profit.amount), 45)
 
     def test_max_loss(self):
         """
         Left side max profit
         """
-        self.assertTrue(self.position_context.max_loss.id)
-        self.assertEqual(self.position_context.max_loss.price,
-                         self.buy_order.strike)
-        self.assertEqual(self.position_context.max_loss.condition, '>=')
-        self.assertTrue(self.position_context.max_loss.limit)
-        self.assertEqual(float(self.position_context.max_loss.amount), -55)
-        print self.position_context.max_loss
+        for max_loss in self.max_losses:
+            print max_loss
+            self.assertFalse(max_loss.id)
+            self.assertEqual(max_loss.price,
+                             self.buy_order.strike)
+            self.assertEqual(max_loss.condition, '>=')
+            self.assertTrue(max_loss.limit)
+            self.assertEqual(float(max_loss.amount), -55)
 
     def test_output(self):
         """
         Output all contexts
         """
         print 'position context...'
-        print self.position_context
-        print '.' * 60
-        print self.position_context.break_even
-        print self.position_context.start_profit
-        print self.position_context.start_loss
-        print self.position_context.max_profit
-        print self.position_context.max_loss
+        print self.break_evens
+        print self.start_profits
+        print self.start_losses
+        print self.max_profits
+        print self.max_losses
 
 
 class TestContextShortPutVertical(TestUnitSetUpDB):
@@ -413,7 +423,14 @@ class TestContextShortPutVertical(TestUnitSetUpDB):
             filled_orders=filled_orders,
             contract_right=self.contract_right
         )
-        self.position_context = self.short_call_vertical.create_context()
+
+        contexts = self.short_call_vertical.create_context()
+
+        self.break_evens = contexts['break_evens']
+        self.start_profits = contexts['start_profits']
+        self.start_losses = contexts['start_losses']
+        self.max_profits = contexts['max_profits']
+        self.max_losses = contexts['max_losses']
 
     def tearDown(self):
         TestUnitSetUpDB.tearDown(self)
@@ -421,72 +438,69 @@ class TestContextShortPutVertical(TestUnitSetUpDB):
         self.buy_order.delete()
         self.sell_order.delete()
 
-    def test_position_context(self):
-        """
-        Position context
-        """
-        self.assertTrue(self.position_context.id)
-
     def test_break_even(self):
         """
         Left side break even
         """
-        self.assertTrue(self.position_context.break_even.id)
-        self.assertEqual(float(self.position_context.break_even.price), 25.74)
-        self.assertEqual(self.position_context.break_even.condition, '==')
-        print self.position_context.break_even
+        for break_even in self.break_evens:
+            print break_even
+            self.assertFalse(break_even.id)
+            self.assertEqual(float(break_even.price), 25.74)
+            self.assertEqual(break_even.condition, '==')
 
     def test_start_profit(self):
         """
         Left side start profit
         """
-        self.assertTrue(self.position_context.start_profit.id)
-        self.assertEqual(float(self.position_context.start_profit.price), 25.74)
-        self.assertEqual(self.position_context.start_profit.condition, '>')
-        print self.position_context.start_profit
+        for start_profit in self.start_profits:
+            print start_profit
+            self.assertFalse(start_profit.id)
+            self.assertEqual(float(start_profit.price), 25.74)
+            self.assertEqual(start_profit.condition, '>')
 
     def test_start_loss(self):
         """
         Left side start loss
         """
-        self.assertTrue(self.position_context.start_loss.id)
-        self.assertEqual(float(self.position_context.start_loss.price), 25.74)
-        self.assertEqual(self.position_context.start_loss.condition, '<')
-        print self.position_context.start_loss
+        for start_loss in self.start_losses:
+            print start_loss
+            self.assertFalse(start_loss.id)
+            self.assertEqual(float(start_loss.price), 25.74)
+            self.assertEqual(start_loss.condition, '<')
 
     def test_max_profit(self):
         """
         Left side max profit
         """
-        self.assertTrue(self.position_context.max_profit.id)
-        self.assertEqual(self.position_context.max_profit.price,
-                         self.sell_order.strike)
-        self.assertEqual(self.position_context.max_profit.condition, '<=')
-        self.assertTrue(self.position_context.max_profit.limit)
-        self.assertEqual(float(self.position_context.max_profit.amount), 126)
-        print self.position_context.max_profit
+        for max_profit in self.max_profits:
+            print max_profit
+            self.assertFalse(max_profit.id)
+            self.assertEqual(max_profit.price,
+                             self.sell_order.strike)
+            self.assertEqual(max_profit.condition, '<=')
+            self.assertTrue(max_profit.limit)
+            self.assertEqual(float(max_profit.amount), 126)
 
     def test_max_loss(self):
         """
         Left side max profit
         """
-        self.assertTrue(self.position_context.max_loss.id)
-        self.assertEqual(self.position_context.max_loss.price,
-                         self.buy_order.strike)
-        self.assertEqual(self.position_context.max_loss.condition, '>=')
-        self.assertTrue(self.position_context.max_loss.limit)
-        self.assertEqual(float(self.position_context.max_loss.amount), -74)
-        print self.position_context.max_loss
+        for max_loss in self.max_losses:
+            print max_loss
+            self.assertFalse(max_loss.id)
+            self.assertEqual(max_loss.price,
+                             self.buy_order.strike)
+            self.assertEqual(max_loss.condition, '>=')
+            self.assertTrue(max_loss.limit)
+            self.assertEqual(float(max_loss.amount), -74)
 
     def test_output(self):
         """
         Output all contexts
         """
         print 'position context...'
-        print self.position_context
-        print '.' * 60
-        print self.position_context.break_even
-        print self.position_context.start_profit
-        print self.position_context.start_loss
-        print self.position_context.max_profit
-        print self.position_context.max_loss
+        print self.break_evens
+        print self.start_profits
+        print self.start_losses
+        print self.max_profits
+        print self.max_losses

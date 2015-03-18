@@ -15,7 +15,6 @@ class ContextLongFuture(object):
         self.future_order = filled_orders[0]
         """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -33,19 +32,16 @@ class ContextLongFuture(object):
             price=self.future_order.price,
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.future_order.price,
             condition='>'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.future_order.price,
             condition='<'
         )
-        self.start_loss.save()
 
         spc = Decimal(float(Fraction(self.future_order.future.spc)))
         self.max_profit = MaxProfit(
@@ -57,7 +53,6 @@ class ContextLongFuture(object):
                  * self.future_order.quantity) / spc
             )
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.future_order.price * Decimal(1 - self.price_range),
@@ -68,18 +63,14 @@ class ContextLongFuture(object):
                  * self.future_order.quantity) / -spc
             )
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
 
 
 class ContextShortFuture(object):
@@ -93,7 +84,6 @@ class ContextShortFuture(object):
         self.future_order = filled_orders[0]
         """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -111,19 +101,16 @@ class ContextShortFuture(object):
             price=self.future_order.price,
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.future_order.price,
             condition='<'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.future_order.price,
             condition='>'
         )
-        self.start_loss.save()
 
         # assume as 100%
         spc = Decimal(float(Fraction(self.future_order.future.spc)))
@@ -136,7 +123,6 @@ class ContextShortFuture(object):
                  * self.future_order.quantity) / -spc
             )
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.future_order.price * Decimal(1 + self.price_range),
@@ -147,18 +133,14 @@ class ContextShortFuture(object):
                  * self.future_order.quantity) / spc
             )
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
 
 
 

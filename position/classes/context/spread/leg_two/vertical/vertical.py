@@ -19,7 +19,6 @@ class ContextLongCallVertical(object):
                 self.sell_order = filled_order
                 """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -38,19 +37,16 @@ class ContextLongCallVertical(object):
             price=self.buy_order.strike + (self.buy_order.price - self.sell_order.price),
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.buy_order.strike + (self.buy_order.price - self.sell_order.price),
             condition='>'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.buy_order.strike + (self.buy_order.price - self.sell_order.price),
             condition='<'
         )
-        self.start_loss.save()
 
         # assume as 10x
         self.max_profit = MaxProfit(
@@ -60,7 +56,6 @@ class ContextLongCallVertical(object):
             amount=((self.sell_order.strike - self.break_even.price)
                     * self.buy_order.quantity * self.contract_right)
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.buy_order.strike,
@@ -69,18 +64,14 @@ class ContextLongCallVertical(object):
             amount=((self.buy_order.strike - self.break_even.price)
                     * self.buy_order.quantity * self.contract_right)
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
 
 
 class ContextShortCallVertical(object):
@@ -100,7 +91,6 @@ class ContextShortCallVertical(object):
                 self.sell_order = filled_order
                 """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -119,19 +109,16 @@ class ContextShortCallVertical(object):
             price=self.buy_order.strike - (self.sell_order.price - self.buy_order.price),
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.buy_order.strike - (self.sell_order.price - self.buy_order.price),
             condition='<'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.buy_order.strike - (self.sell_order.price - self.buy_order.price),
             condition='>'
         )
-        self.start_loss.save()
 
         self.max_profit = MaxProfit(
             price=self.sell_order.strike,
@@ -140,7 +127,6 @@ class ContextShortCallVertical(object):
             amount=((self.buy_order.strike - self.break_even.price)
                     * self.buy_order.quantity * self.contract_right)
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.buy_order.strike,
@@ -149,18 +135,14 @@ class ContextShortCallVertical(object):
             amount=((self.sell_order.strike - self.break_even.price)
                     * self.buy_order.quantity * self.contract_right)
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
 
 
 class ContextLongPutVertical(object):
@@ -180,7 +162,6 @@ class ContextLongPutVertical(object):
                 self.sell_order = filled_order
                 """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -199,19 +180,16 @@ class ContextLongPutVertical(object):
             price=self.buy_order.strike - (self.buy_order.price - self.sell_order.price),
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.buy_order.strike - (self.buy_order.price - self.sell_order.price),
             condition='<'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.buy_order.strike - (self.buy_order.price - self.sell_order.price),
             condition='>'
         )
-        self.start_loss.save()
 
         self.max_profit = MaxProfit(
             price=self.sell_order.strike,
@@ -220,7 +198,6 @@ class ContextLongPutVertical(object):
             amount=((self.break_even.price - self.sell_order.strike)
                     * self.buy_order.quantity * self.contract_right)
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.buy_order.strike,
@@ -229,18 +206,14 @@ class ContextLongPutVertical(object):
             amount=((self.buy_order.strike - self.break_even.price)
                     * self.buy_order.quantity * self.contract_right * -1)
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context
 
 
 class ContextShortPutVertical(object):
@@ -260,7 +233,6 @@ class ContextShortPutVertical(object):
                 self.sell_order = filled_order
                 """:type : FilledOrder"""
 
-        self.position_context = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -279,19 +251,16 @@ class ContextShortPutVertical(object):
             price=self.sell_order.strike + (self.buy_order.price - self.sell_order.price),
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.sell_order.strike + (self.buy_order.price - self.sell_order.price),
             condition='>'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.sell_order.strike + (self.buy_order.price - self.sell_order.price),
             condition='<'
         )
-        self.start_loss.save()
 
         self.max_profit = MaxProfit(
             price=self.sell_order.strike,
@@ -300,7 +269,6 @@ class ContextShortPutVertical(object):
             amount=((self.break_even.price - self.sell_order.strike)
                     * self.buy_order.quantity * self.contract_right * -1)
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.buy_order.strike,
@@ -309,15 +277,11 @@ class ContextShortPutVertical(object):
             amount=((self.buy_order.strike - self.break_even.price)
                     * self.buy_order.quantity * self.contract_right)
         )
-        self.max_loss.save()
 
-        self.position_context = PositionContext(
-            break_even=self.break_even,
-            start_profit=self.start_profit,
-            start_loss=self.start_loss,
-            max_profit=self.max_profit,
-            max_loss=self.max_loss
+        return dict(
+            break_evens=[self.break_even],
+            start_profits=[self.start_profit],
+            start_losses=[self.start_loss],
+            max_profits=[self.max_profit],
+            max_losses=[self.max_loss]
         )
-        self.position_context.save()
-
-        return self.position_context

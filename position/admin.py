@@ -79,35 +79,9 @@ class MaxLossAdmin(SubContextAdmin):
     list_per_page = 30
 
 
-class PositionContextAdmin(SubContextAdmin):
-    list_display = (
-        'context',
-        'break_even',
-        'start_profit',
-        'start_loss',
-        'max_profit',
-        'max_loss'
-    )
-
-    fieldsets = (
-        ('Primary Field', {
-            'fields': (
-                'break_even',
-                'start_profit',
-                'start_loss',
-                'max_profit',
-                'max_loss'
-            )
-        }),
-    )
-
-    list_per_page = 30
-
 admin.site.register(BreakEven, BreakEvenAdmin)
 admin.site.register(StartProfit, StartProfitAdmin)
 admin.site.register(StartLoss, StartLossAdmin)
 admin.site.register(MaxProfit, MaxProfitAdmin)
 admin.site.register(MaxLoss, MaxLossAdmin)
-admin.site.register(PositionContext, PositionContextAdmin)
-admin.site.register(PositionContexts)
 admin.site.register(PositionSet)

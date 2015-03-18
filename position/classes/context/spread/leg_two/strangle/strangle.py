@@ -21,9 +21,6 @@ class ContextLongStrangle(object):
                 self.put_order = filled_order
                 """:type : FilledOrder"""
 
-        self.left_context = None
-        self.right_context = None
-        self.position_contexts = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -42,13 +39,16 @@ class ContextLongStrangle(object):
         2 max profit, 1 max loss, 2 break even, 2 start profit, 2 start loss,
         :return: PositionContexts
         """
-        self.position_contexts = PositionContexts(
-            left=self.create_left_context(),  # put
-            right=self.create_right_context()  # call
-        )
-        self.position_contexts.save()
+        left_context = self.create_left_context()
+        right_context = self.create_right_context()
 
-        return self.position_contexts
+        return dict(
+            break_evens=[left_context['break_even'], right_context['break_even']],
+            start_profits=[left_context['start_profit'], right_context['start_profit']],
+            start_losses=[left_context['start_loss'], right_context['start_loss']],
+            max_profits=[left_context['max_profit'], right_context['max_profit']],
+            max_losses=[left_context['max_loss'], right_context['max_loss']]
+        )
 
     def create_left_context(self):
         """
@@ -59,19 +59,16 @@ class ContextLongStrangle(object):
             price=self.put_order.strike - (self.call_order.price + self.put_order.price),
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.put_order.strike - (self.call_order.price + self.put_order.price),
             condition='<'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.put_order.strike - (self.call_order.price + self.put_order.price),
             condition='>'
         )
-        self.start_loss.save()
 
         # assume as breakeven -20%
         self.max_profit = MaxProfit(
@@ -81,7 +78,6 @@ class ContextLongStrangle(object):
             amount=(((self.break_even.price * Decimal(1 - self.price_range))
                      - self.break_even.price) * Decimal(self.contract_right) * -1)
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.put_order.strike,
@@ -90,18 +86,14 @@ class ContextLongStrangle(object):
             amount=((self.call_order.price + self.put_order.price)
                     * self.put_order.quantity * Decimal(-self.contract_right))
         )
-        self.max_loss.save()
 
-        self.left_context = PositionContext(
+        return dict(
             break_even=self.break_even,
             start_profit=self.start_profit,
             start_loss=self.start_loss,
             max_profit=self.max_profit,
             max_loss=self.max_loss
         )
-        self.left_context.save()
-
-        return self.left_context
 
     def create_right_context(self):
         """
@@ -112,19 +104,16 @@ class ContextLongStrangle(object):
             price=self.call_order.strike + (self.call_order.price + self.put_order.price),
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.call_order.strike + (self.call_order.price + self.put_order.price),
             condition='>'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.call_order.strike + (self.call_order.price + self.put_order.price),
             condition='<'
         )
-        self.start_loss.save()
 
         # assume as 10x
         self.max_profit = MaxProfit(
@@ -134,7 +123,6 @@ class ContextLongStrangle(object):
             amount=(((self.break_even.price * Decimal(1 + self.price_range))
                      - self.break_even.price) * Decimal(self.contract_right))
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.call_order.strike,
@@ -143,18 +131,14 @@ class ContextLongStrangle(object):
             amount=((self.call_order.price + self.put_order.price)
                     * self.put_order.quantity * Decimal(self.contract_right) * -1)
         )
-        self.max_loss.save()
 
-        self.right_context = PositionContext(
+        return dict(
             break_even=self.break_even,
             start_profit=self.start_profit,
             start_loss=self.start_loss,
             max_profit=self.max_profit,
             max_loss=self.max_loss
         )
-        self.right_context.save()
-
-        return self.right_context
 
 
 class ContextShortStrangle(object):
@@ -175,9 +159,6 @@ class ContextShortStrangle(object):
                 self.put_order = filled_order
                 """:type : FilledOrder"""
 
-        self.left_context = None
-        self.right_context = None
-        self.position_contexts = None
         self.break_even = None
         self.start_profit = None
         self.start_loss = None
@@ -196,13 +177,16 @@ class ContextShortStrangle(object):
         2 max profit, 1 max loss, 2 break even, 2 start profit, 2 start loss,
         :return: PositionContexts
         """
-        self.position_contexts = PositionContexts(
-            left=self.create_left_context(),  # put
-            right=self.create_right_context()  # call
-        )
-        self.position_contexts.save()
+        left_context = self.create_left_context()
+        right_context = self.create_right_context()
 
-        return self.position_contexts
+        return dict(
+            break_evens=[left_context['break_even'], right_context['break_even']],
+            start_profits=[left_context['start_profit'], right_context['start_profit']],
+            start_losses=[left_context['start_loss'], right_context['start_loss']],
+            max_profits=[left_context['max_profit'], right_context['max_profit']],
+            max_losses=[left_context['max_loss'], right_context['max_loss']]
+        )
 
     def create_left_context(self):
         """
@@ -213,19 +197,16 @@ class ContextShortStrangle(object):
             price=self.put_order.strike - (self.call_order.price + self.put_order.price),
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.put_order.strike - (self.call_order.price + self.put_order.price),
             condition='>'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.put_order.strike - (self.call_order.price + self.put_order.price),
             condition='<'
         )
-        self.start_loss.save()
 
         # assume as breakeven -20%
         self.max_profit = MaxProfit(
@@ -236,7 +217,6 @@ class ContextShortStrangle(object):
                     * self.put_order.quantity * Decimal(self.contract_right) * -1)
 
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.break_even.price * Decimal(1 - self.price_range),
@@ -245,18 +225,14 @@ class ContextShortStrangle(object):
             amount=(((self.break_even.price * Decimal(1 - self.price_range))
                      - self.break_even.price) * Decimal(self.contract_right))
         )
-        self.max_loss.save()
 
-        self.left_context = PositionContext(
+        return dict(
             break_even=self.break_even,
             start_profit=self.start_profit,
             start_loss=self.start_loss,
             max_profit=self.max_profit,
             max_loss=self.max_loss
         )
-        self.left_context.save()
-
-        return self.left_context
 
     def create_right_context(self):
         """
@@ -267,19 +243,16 @@ class ContextShortStrangle(object):
             price=self.call_order.strike + (self.call_order.price + self.put_order.price),
             condition='=='
         )
-        self.break_even.save()
 
         self.start_profit = StartProfit(
             price=self.call_order.strike + (self.call_order.price + self.put_order.price),
             condition='<'
         )
-        self.start_profit.save()
 
         self.start_loss = StartLoss(
             price=self.call_order.strike + (self.call_order.price + self.put_order.price),
             condition='>'
         )
-        self.start_loss.save()
 
         # assume as 10x
         self.max_profit = MaxProfit(
@@ -289,7 +262,6 @@ class ContextShortStrangle(object):
             amount=((self.call_order.price + self.put_order.price)
                     * self.put_order.quantity * Decimal(self.contract_right) * -1)
         )
-        self.max_profit.save()
 
         self.max_loss = MaxLoss(
             price=self.break_even.price * Decimal(1 + self.price_range),
@@ -298,15 +270,11 @@ class ContextShortStrangle(object):
             amount=(((self.break_even.price * Decimal(1 + self.price_range))
                      - self.break_even.price) * Decimal(self.contract_right) * -1)
         )
-        self.max_loss.save()
 
-        self.right_context = PositionContext(
+        return dict(
             break_even=self.break_even,
             start_profit=self.start_profit,
             start_loss=self.start_loss,
             max_profit=self.max_profit,
             max_loss=self.max_loss
         )
-        self.right_context.save()
-
-        return self.right_context
