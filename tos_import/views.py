@@ -9,12 +9,13 @@ from django.core.exceptions import FieldError
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from pandas.tseries.offsets import BDay
+from position.position_set.controller import PositionSetController
 from rivers.settings import BASE_DIR
 from statistic.simple.stat_day.models import SaveStatDay
 from tos_import.models import Statement
 from tos_import.statement.statement_account.models import SaveAccountStatement
 from tos_import.statement.statement_position.models import SavePositionStatement
-from tos_import.statement.statement_trade.models import SaveTradeActivity
+from tos_import.statement.statement_trade.models import SaveTradeActivity, FilledOrder
 
 
 import_path = '%s/tos_import/files/real_files/' % BASE_DIR
@@ -161,6 +162,8 @@ class PmsImportStatementsForm(forms.Form):
 
                 SaveStatDay(statement).save_all()
 
+                # todo: here
+
                 self.cleaned_data['statement_id'] = statement.id
                 self.cleaned_data['statement_name'] = statement.__unicode__()
 
@@ -275,6 +278,13 @@ def statement_import_all(request):
 
                     # save stat day
                     SaveStatDay(statement).save_all()
+
+                    # todo: here
+                    filled_orders = FilledOrder.objects.filter(trade_summary__id=trade_summary_id)
+                    controller = PositionSetController(filled_orders)
+                    controller.close_position_sets()
+                    controller.create_position_sets()
+                    controller.batch_update_foreign_keys()
 
                     imported_logs.append({
                         'statement': {

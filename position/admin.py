@@ -196,12 +196,10 @@ class MaxLossInline(PositionSetInline):
 # noinspection PyMethodMayBeStatic,PyProtectedMember
 class PositionSetAdmin(SubPositionAdmin):
     inlines = (
-        FilledOrderInline,
+        ProfitLossInline, FilledOrderInline,
         PositionInstrumentInline, PositionFutureInline, PositionForexInline,
-        ProfitLossInline,
         BreakEvenInline, StartProfitInline, StartLossInline,
         MaxProfitInline, MaxLossInline,
-
     )
 
     def position(self, obj):
@@ -240,9 +238,6 @@ class PositionSetAdmin(SubPositionAdmin):
 
     list_per_page = 30
 
-
-# todo: inline read only position_set on statements
-# todo: profit invalid foreign key on position set
 
 admin.site.register(BreakEven, BreakEvenAdmin)
 admin.site.register(StartProfit, StartProfitAdmin)

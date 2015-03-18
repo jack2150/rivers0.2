@@ -72,6 +72,7 @@ class PositionSetController(object):
                 position_sets = PositionSet.objects.filter(query)
 
                 if position_sets.exists():
+
                     position_set = position_sets.first()
                     """:type: PositionSet"""
 

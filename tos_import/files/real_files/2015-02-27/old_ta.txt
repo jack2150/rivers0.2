@@ -1,4 +1,4 @@
-﻿This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
+This document was exported from the paperMoney® platform which provides a simulated trading environment. All data contained herein is for educational and entertainment purposes only. TD Ameritrade its subsidiaries and/or affiliates are not responsible for the accuracy of any of these exported data.
 
 Today's Trade Activity for <TOTAL> (ALL ACCOUNTS) on 2/28/15 06:52:33
 
@@ -8,12 +8,20 @@ Notes,,Time Placed,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,
 
 Filled Orders
 ,Exec Time,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,Price,Net Price,Order Type
+,2/28/15 03:19:08,FUT CALENDAR,BUY,+1,TO OPEN,/6JM5,JUN 15,,FUTURE,.008368,.000012,MKT
+,,,SELL,-1,TO CLOSE,/6JH5,MAR 15,,FUTURE,.008356,DEBIT,
+,2/28/15 03:18:10,FUT CALENDAR,SELL,-1,TO OPEN,/NQM5,JUN 15,,FUTURE,4439.75,-6.50,LMT
+,,,BUY,+1,TO CLOSE,/NQH5,MAR 15,,FUTURE,4446.25,DEBIT,
 ,2/28/15 03:15:30,FUTURE,BUY,+1,TO OPEN,/QMQ5,AUG 15,,FUTURE,55.925,55.925,LMT
 ,2/28/15 03:09:20,SINGLE,SELL,-3,TO CLOSE,KO,MAR 15,42,CALL,1.59,1.59,LMT
 ,2/28/15 03:08:56,STOCK,SELL,-4,TO CLOSE,GOOG,,,STOCK,560.91,560.91,LMT
 
 Cancelled Orders
 Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
+,,2/28/15 03:19:08,FUT CALENDAR,BUY,+1,TO OPEN,/6JM5,JUN 15,,FUTURE,.00001,LMT,DAY,CANCELED
+,,,,SELL,-1,TO CLOSE,/6JH5,MAR 15,,FUTURE,,,,
+,,2/28/15 03:17:41,FUT CALENDAR,SELL,-1,TO CLOSE,/NGH5,MAR 15,,FUTURE,,MKT,DAY,EXPIRED
+,,,,BUY,+1,TO OPEN,/NGJ5,APR 15,,FUTURE,,,,
 ,,2/28/15 03:16:31,FUTURE,SELL,-1,TO CLOSE,/NGH5,MAR 15,,FUTURE,2.875,LMT,DAY,EXPIRED
 ,,2/28/15 03:14:12,FUTURE,SELL,-1,TO CLOSE,/NGH5,MAR 15,,FUTURE,2.875,LMT,DAY,EXPIRED
 ,,2/28/15 03:13:56,FUTURE,SELL,-1,TO CLOSE,/NGH5,MAR 15,,FUTURE,2.875,LMT,DAY,EXPIRED

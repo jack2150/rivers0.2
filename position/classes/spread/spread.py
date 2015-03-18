@@ -154,11 +154,11 @@ class Spread(object):
             'long_stock': {
                 'long_call': 'CUSTOM',
                 'short_call': 'COVERED_CALL',
-                'long_put': 'PROTECT_PUT',
+                'long_put': 'PROTECTIVE_PUT',
                 'short_put': 'CUSTOM',
             },
             'short_stock': {
-                'long_call': 'PROTECT_CALL',
+                'long_call': 'PROTECTIVE_CALL',
                 'short_call': 'CUSTOM',
                 'long_put': 'CUSTOM',
                 'short_put': 'COVERED_PUT',

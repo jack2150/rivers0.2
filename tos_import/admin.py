@@ -20,7 +20,7 @@ class UnderlyingAdmin(admin.ModelAdmin):
 
     search_fields = ('symbol', 'company')
 
-    list_per_page = 20
+    list_per_page = 30
     ordering = ('symbol', )
 
     def has_add_permission(self, request):
@@ -39,7 +39,7 @@ class FutureAdmin(admin.ModelAdmin):
 
     search_fields = ('lookup', 'symbol', 'description', 'expire_date', 'session', 'spc')
 
-    list_per_page = 20
+    list_per_page = 30
     ordering = ('lookup', 'symbol')
 
     def has_add_permission(self, request):
@@ -58,7 +58,7 @@ class ForexAdmin(admin.ModelAdmin):
 
     search_fields = ('symbol', 'description')
 
-    list_per_page = 20
+    list_per_page = 30
     ordering = ('symbol', )
 
     def has_add_permission(self, request):
@@ -296,7 +296,7 @@ class StatementAdmin(admin.ModelAdmin):
         'position_statement_link', 'trade_activity_link'
     )
 
-    list_per_page = 5
+    list_per_page = 10
     ordering = ('-date', )
     date_hierarchy = 'date'
 

@@ -199,7 +199,7 @@ class TradeActivityAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
-    list_per_page = 20
+    list_per_page = 30
 
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember

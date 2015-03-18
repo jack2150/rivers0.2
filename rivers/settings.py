@@ -133,3 +133,27 @@ DATE_FORMAT = 'Y-m-d'
 FIXTURE_DIRS = (
     os.path.join(BASE_DIR, 'fixtures'),
 )
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file_debug': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '%s/debug.log' % BASE_DIR,
+        },
+        'file_error': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': '%s/debug.log' % BASE_DIR,
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['file_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
