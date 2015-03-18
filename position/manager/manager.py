@@ -45,6 +45,7 @@ class PositionSetManager(object):
         future = filled_order.future
         forex = filled_order.forex
 
+        # todo: save before add?
         context = class_obj(
             filled_orders=filled_orders
         ).create_context()

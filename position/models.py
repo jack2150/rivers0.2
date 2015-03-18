@@ -21,7 +21,7 @@ class BreakEven(models.Model):
         Explain this model
         :rtype : str
         """
-        return 'BreakEven when price {condition} {price} (amount: {amount})'.format(
+        return 'BreakEven: P {condition} {price}, amount={amount}'.format(
             condition=self.condition,
             price=locale.currency(self.price, grouping=True),
             amount=locale.currency(self.amount, grouping=True)
@@ -40,8 +40,9 @@ class StartProfit(models.Model):
         Explain this model
         :rtype : str
         """
-        return 'StartProfit when price %s %s' % (
-            self.condition, locale.currency(self.price, grouping=True)
+        return 'StartProfit: P {condition} {price}'.format(
+            condition=self.condition,
+            price=locale.currency(self.price, grouping=True)
         )
 
 
@@ -57,8 +58,9 @@ class StartLoss(models.Model):
         Explain this model
         :rtype : str
         """
-        return 'StartLoss when price %s %s' % (
-            self.condition, locale.currency(self.price, grouping=True)
+        return 'StartLoss: P {condition} {price}'.format(
+            condition=self.condition,
+            price=locale.currency(self.price, grouping=True)
         )
 
 
@@ -76,10 +78,11 @@ class MaxProfit(models.Model):
         Explain this model
         :rtype : str
         """
-        return 'MaxProfit when price %s %s (limit: %s, amount: %s)' % (
-            self.condition, locale.currency(self.price, grouping=True),
-            self.limit, locale.currency(self.amount, grouping=True),
-
+        return 'MaxProfit: P {condition} {price}, limit={limit}, amount={amount}'.format(
+            condition=self.condition,
+            price=locale.currency(self.price, grouping=True),
+            limit=self.limit,
+            amount=locale.currency(self.amount, grouping=True)
         )
 
 
@@ -97,10 +100,11 @@ class MaxLoss(models.Model):
         Explain this model
         :rtype : str
         """
-        return 'MaxLoss when price %s %s (limit: %s, amount: %s)' % (
-            self.condition, locale.currency(self.price, grouping=True),
-            self.limit, locale.currency(self.amount, grouping=True),
-
+        return 'MaxLoss: P {condition} {price}, limit={limit}, amount={amount}'.format(
+            condition=self.condition,
+            price=locale.currency(self.price, grouping=True),
+            limit=self.limit,
+            amount=locale.currency(self.amount, grouping=True)
         )
 
 
@@ -152,7 +156,7 @@ class PositionContext(models.Model):
             condition=self.max_loss.condition
         )
 
-        return 'PositionContext [{max_loss}:{start_loss}:{break_even}:{start_profit}:{max_profit})'.format(
+        return 'PositionContext: [{max_loss}:{start_loss}:{break_even}:{start_profit}:{max_profit})'.format(
             max_loss=max_loss,
             start_loss=start_loss,
             break_even=break_even,
@@ -214,26 +218,6 @@ class PositionSet(models.Model):
         models.Model.__init__(self, *args, **kwargs)
 
         self.manager = PositionSetManager(self)
-
-    """
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        #Assign manager set filled orders data into position_set
-
-        if self.manager.filled_orders:
-            self.name = self.manager.position_set.name
-            self.spread = self.manager.position_set.spread
-            self.status = self.manager.position_set.status
-            self.underlying = self.manager.position_set.underlying
-            self.future = self.manager.position_set.future
-            self.forex = self.manager.position_set.forex
-            self.context = self.manager.position_set.context
-            self.contexts = self.manager.position_set.contexts
-
-
-        models.Model.save(self, force_insert=False, force_update=False, using=None,
-                          update_fields=None)
-    """
 
     def get_symbol(self):
         """

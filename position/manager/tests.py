@@ -68,19 +68,19 @@ class TestPositionSetCls(TestUnitSetUp):
             self.position_set.profitloss_set.update(position_set=None)
 
             if self.position_set.id:
-                if self.manager.position_set.context:
+                if self.position_set.context:
                     for item in items:
-                        getattr(self.manager.position_set.context, item).delete()
+                        getattr(self.position_set.context, item).delete()
 
-                    self.manager.position_set.context.delete()
-                elif self.manager.position_set.contexts:
+                    self.position_set.context.delete()
+                elif self.position_set.contexts:
                     for item in items:
-                        getattr(self.manager.position_set.contexts.left, item).delete()
-                        getattr(self.manager.position_set.contexts.right, item).delete()
+                        getattr(self.position_set.contexts.left, item).delete()
+                        getattr(self.position_set.contexts.right, item).delete()
 
-                    self.manager.position_set.contexts.left.delete()
-                    self.manager.position_set.contexts.right.delete()
-                    self.manager.position_set.contexts.delete()
+                    self.position_set.contexts.left.delete()
+                    self.position_set.contexts.right.delete()
+                    self.position_set.contexts.delete()
 
             if self.position_set.id:
                 self.position_set.delete()
@@ -270,6 +270,9 @@ class TestFilledOrderManager(TestPositionSetCls):
 
         # clean up
         for position_set in self.position_sets:
+            self.position_set = position_set
+            TestPositionSetCls.tearDown(self)
+
             position_set.filledorder_set.update(position_set=None)
             position_set.positioninstrument_set.update(position_set=None)
             position_set.positionfuture_set.update(position_set=None)

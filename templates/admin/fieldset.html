@@ -24,7 +24,15 @@
               </div>
 
               {% if field.is_checkbox %}
-                {{ field.label_tag }}{{ field.field }}
+                <label class="col-sm-3 control-label no-padding-right" for="id_{{ field.field.name }}">
+                  {{ field.field.label|capfirst }} :
+                </label>
+                <div class="col-sm-9">
+                  <label style="padding-top: 4px">
+                    {{ field.field|add_class:'ace input-lg' }}
+                    <span class="lbl"> </span>
+                  </label>
+                </div>
               {% else %}
                 <label class="col-sm-3 control-label no-padding-right" for="id_{{ field.field.name }}">
                   {{ field.field.label|capfirst }} :

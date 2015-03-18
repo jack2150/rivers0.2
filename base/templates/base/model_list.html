@@ -8,7 +8,8 @@
     .panel-blue .panel-heading {
       color: #ffffff;
       font-weight: bold;
-      background-color: #6fb3e0;
+      /*background-color: #6fb3e0;*/
+      background-color: #438eb9;
     }
 
     .panel-blue .toolbar {
@@ -17,6 +18,12 @@
 
     .icon-white {
       color: #ffffff;
+    }
+
+    .app_label_name {
+      border-left: solid 3px grey;
+      font-weight: bold;
+      background-color: #f8f8ff;
     }
 
   </style>
@@ -54,10 +61,10 @@
         <div id="{{ app_parent.name }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body">
             {% for app in app_parent.child %}
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-warning">
-                    {{ app_label_list|get_item:app }}
+                  <li class="list-group-item app_label_name">
+                    {{ app_label_list|get_item:app|upper }}
                   </li>
 
                   {% for module in module_list %}

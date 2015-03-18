@@ -22,8 +22,9 @@ def base_model_list(request):
 
     for item in admin.site._registry:
         module = item
-        """:type : ModelBase"""
+        """:type: ModelBase"""
 
+        # noinspection PyUnresolvedReferences
         app = str(module._meta.app_label)
         try:
             app_parent_label = app_parent_label_list[app]
@@ -50,8 +51,10 @@ def base_model_list(request):
             {
                 'name': app_parent,
                 'label': ' '.join(map(lambda x: x.upper(), app_parent.split('_'))),
-                'child': set(module['app'] for module in module_list
-                             if module['app_parent'] == app_parent)
+                'child': sorted(set(
+                    module['app'] for module in module_list
+                    if module['app_parent'] == app_parent
+                ))
             }
         )
 
@@ -61,9 +64,9 @@ def base_model_list(request):
 
     template = 'base/model_list.html'
     parameters = {
-        'app_parent_list': new_app_parent_list,
+        'app_parent_list': new_app_parent_list,  # sorted(new_app_parent_list)
         'app_label_list': app_label_list,
-        'module_list': module_list
+        'module_list': sorted(module_list)
     }
 
     return render(request, template, parameters)
