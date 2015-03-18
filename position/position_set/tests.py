@@ -3,9 +3,9 @@ import position.classes.ready_django
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from position.classes.tests import TestUnitSetUp
-from position.manager.manager import PositionSetManager
-from position.manager.controller import PositionSetController
-from position.models import PositionSet, PositionContext
+from position.position_set.manager import PositionSetManager
+from position.position_set.controller import PositionSetController
+from position.models import PositionSet, StartProfit
 from tos_import.models import Underlying
 from tos_import.statement.statement_trade.models import FilledOrder
 
@@ -55,8 +55,6 @@ class TestPositionSetCls(TestUnitSetUp):
         """
         TestUnitSetUp.tearDown(self)
 
-        items = ['break_even', 'start_profit', 'start_loss', 'max_profit', 'max_loss']
-
         if self.position_set is not None:
             self.position_set = self.position_set
             """:type: PositionSet"""
@@ -68,21 +66,6 @@ class TestPositionSetCls(TestUnitSetUp):
             self.position_set.profitloss_set.update(position_set=None)
 
             if self.position_set.id:
-                if self.position_set.context:
-                    for item in items:
-                        getattr(self.position_set.context, item).delete()
-
-                    self.position_set.context.delete()
-                elif self.position_set.contexts:
-                    for item in items:
-                        getattr(self.position_set.contexts.left, item).delete()
-                        getattr(self.position_set.contexts.right, item).delete()
-
-                    self.position_set.contexts.left.delete()
-                    self.position_set.contexts.right.delete()
-                    self.position_set.contexts.delete()
-
-            if self.position_set.id:
                 self.position_set.delete()
 
 
@@ -91,6 +74,25 @@ class TestPositionSetManager(TestPositionSetCls):
         TestPositionSetCls.setUp(self)
 
         self.ready_position_set(symbol='AAPL', investment='underlying')
+
+    def test_context_item_adds(self):
+        """
+        Test add foreign key items
+        """
+        start_profit = StartProfit(price=1.11, condition='>')
+        self.manager.contexts = dict(start_profits=[start_profit])
+        print 'start_profit: %s' % start_profit
+        self.assertFalse(start_profit.id)
+
+        self.manager.context_item_adds(
+            name='start_profits', fk_set='startprofit_set'
+        )
+
+        print 'start_profit id: %d' % start_profit.id
+        print 'position_set id %s' % self.manager.position_set.id
+        self.assertTrue(start_profit.id)
+        self.assertEqual(start_profit.position_set, self.manager.position_set)
+        self.assertFalse(self.manager.position_set.id)
 
     def test_get_filled_orders(self):
         """
@@ -128,9 +130,11 @@ class TestPositionSetManager(TestPositionSetCls):
         self.assertEqual(self.manager.position_set.status, 'OPEN')
         self.assertEqual(type(self.manager.position_set.status), str)
 
-        print self.manager.position_set.context
-        self.assertTrue(self.manager.position_set.context.id)
-        self.assertEqual(type(self.manager.position_set.context), PositionContext)
+        self.assertFalse(self.position_set.breakeven_set.exists())
+        self.assertFalse(self.position_set.startprofit_set.exists())
+        self.assertFalse(self.position_set.startloss_set.exists())
+        self.assertFalse(self.position_set.maxprofit_set.exists())
+        self.assertFalse(self.position_set.maxloss_set.exists())
 
     def test_set_then_save(self):
         """
@@ -149,9 +153,19 @@ class TestPositionSetManager(TestPositionSetCls):
         print 'position_set underlying: %s' % self.position_set.underlying
         print 'position_set name: %s' % self.position_set.name
         print 'position_set spread: %s' % self.position_set.spread
-        print 'position_set context: %s' % self.position_set.context
+
+        print 'position_set breakeven_set: %s' % self.position_set.breakeven_set.all()
+        print 'position_set startprofit_set: %s' % self.position_set.startprofit_set.all()
+        print 'position_set startloss_set: %s' % self.position_set.startloss_set.all()
+        print 'position_set maxprofit_set: %s' % self.position_set.maxprofit_set.all()
+        print 'position_set maxloss_set: %s' % self.position_set.maxloss_set.all()
 
         self.assertTrue(self.position_set.id)
+        self.assertTrue(self.position_set.breakeven_set.exists())
+        self.assertTrue(self.position_set.startprofit_set.exists())
+        self.assertTrue(self.position_set.startloss_set.exists())
+        self.assertTrue(self.position_set.maxprofit_set.exists())
+        self.assertTrue(self.position_set.maxloss_set.exists())
 
     def test_update_fk_filled_orders(self):
         """
@@ -248,7 +262,7 @@ class TestPositionSetManager(TestPositionSetCls):
             self.assertEqual(position_forex.position_set, self.position_set)
 
 
-class TestFilledOrderManager(TestPositionSetCls):
+class TestPositionSetController(TestPositionSetCls):
     def setUp(self):
         TestPositionSetCls.setUp(self)
 
@@ -270,9 +284,6 @@ class TestFilledOrderManager(TestPositionSetCls):
 
         # clean up
         for position_set in self.position_sets:
-            self.position_set = position_set
-            TestPositionSetCls.tearDown(self)
-
             position_set.filledorder_set.update(position_set=None)
             position_set.positioninstrument_set.update(position_set=None)
             position_set.positionfuture_set.update(position_set=None)
@@ -304,7 +315,7 @@ class TestFilledOrderManager(TestPositionSetCls):
         for position_set in self.position_sets:
             position_set = position_set
             """:type: PositionSet"""
-            print '> %s' % position_set
+            print '> id: %d - %s' % (position_set.id, position_set)
 
             self.assertEqual(type(position_set), PositionSet)
 

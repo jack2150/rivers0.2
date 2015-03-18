@@ -381,5 +381,3 @@ class TestContextShortStraddle(TestUnitSetUpDB):
         print self.left_start_loss, self.right_start_loss
         print self.left_max_profit, self.right_max_profit
         print self.left_max_loss, self.right_max_loss
-
-

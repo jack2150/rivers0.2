@@ -20,6 +20,24 @@ class PositionSetManager(object):
         self._filled_orders = list()
         """:type: QuerySet"""
 
+        self.contexts = dict(
+            break_evens=list(),
+            start_profits=list(),
+            start_losses=list(),
+            max_profits=list(),
+            max_losses=list()
+        )
+
+    def context_item_adds(self, name, fk_set):
+        """
+        Add position_set foreign key items
+        :param name: str
+        :param fk_set: str
+        :return: PositionSet
+        """
+        for item in self.contexts[name]:
+            getattr(self.position_set, fk_set).add(item)
+
     def set_filled_orders(self, filled_orders):
         """
         Input a filled_orders then process it
@@ -35,9 +53,6 @@ class PositionSetManager(object):
             '%s.%s' % (self.context_path, spread.get_name(module=True, lower=True))
         )
 
-        class_name = 'Context%s' % spread.get_spread_module()
-        class_obj = getattr(context_module, class_name)
-
         filled_order = self._filled_orders[0]
         """:type: FilledOrder"""
 
@@ -45,22 +60,18 @@ class PositionSetManager(object):
         future = filled_order.future
         forex = filled_order.forex
 
-        # todo: save before add?
-        context = class_obj(
-            filled_orders=filled_orders
-        ).create_context()
-
+        # primary field
         self.position_set.name = spread.get_name()
         self.position_set.spread = spread.get_spread()
         self.position_set.status = 'OPEN'
         self.position_set.underlying = underlying
         self.position_set.future = future
         self.position_set.forex = forex
-        # context or contexts
-        if context.__class__.__name__ is 'PositionContext':
-            self.position_set.context = context
-        elif context.__class__.__name__ is 'PositionContexts':
-            self.position_set.contexts = context
+
+        # foreign key context items
+        class_name = 'Context%s' % spread.get_spread_module()
+        class_obj = getattr(context_module, class_name)
+        self.contexts = class_obj(filled_orders=filled_orders).create_context()
 
     def get_filled_orders(self):
         """
@@ -130,12 +141,6 @@ class PositionSetManager(object):
         if query:
             profits_losses = ProfitLoss.objects.filter(query).filter(account_summary_query)
             profits_losses.update(position_set=self.position_set)
-            """
-            if profits_losses.exists():
-                for profit_loss in profits_losses:
-                    profit_loss.position_set = self.position_set
-                    profit_loss.save()
-            """
 
         return dict(
             filled_orders=self.filled_orders,

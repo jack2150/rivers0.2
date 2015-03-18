@@ -87,7 +87,6 @@ class TestContextCoveredCall(TestUnitSetUpDB):
             self.assertEqual(float(start_profit.price), 83.3)
             self.assertEqual(start_profit.condition, '>')
 
-
     def test_start_loss(self):
         """
         Left side start loss

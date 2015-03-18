@@ -1,6 +1,6 @@
 import locale
 from django.db import models
-from position.manager.manager import PositionSetManager
+from position.position_set.manager import PositionSetManager
 from tos_import.models import Underlying, Future, Forex
 
 
@@ -39,6 +39,21 @@ class PositionSet(models.Model):
         models.Model.__init__(self, *args, **kwargs)
 
         self.manager = PositionSetManager(self)
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        models.Model.save(
+            self, force_insert=force_insert, force_update=force_update, using=using,
+            update_fields=update_fields
+        )
+
+        # run save then add foreign key items
+        if self.manager.filled_orders:
+            self.manager.context_item_adds('break_evens', 'breakeven_set')
+            self.manager.context_item_adds('start_losses', 'startloss_set')
+            self.manager.context_item_adds('start_profits', 'startprofit_set')
+            self.manager.context_item_adds('max_profits', 'maxprofit_set')
+            self.manager.context_item_adds('max_losses', 'maxloss_set')
 
     def get_symbol(self):
         """

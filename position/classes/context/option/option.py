@@ -68,6 +68,7 @@ class ContextLongCall(object):
             max_losses=[self.max_loss]
         )
 
+
 class ContextNakedCall(object):
     def __init__(self, filled_orders, contract_right=100, price_multiply=10):
         """
