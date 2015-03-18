@@ -65,6 +65,12 @@ class FilledOrderInline(TradeActivityInline):
     order_time.short_description = 'Time'
     order_time.admin_order_field = 'exec_time'
 
+    fields = (
+        'symbol', 'order_time', 'spread', 'side',
+        'quantity', 'pos_effect', 'expire_date', 'strike', 'contract',
+        'price', 'net_price', 'order', 'link'
+    )
+
     readonly_fields = (
         'symbol', 'order_time', 'spread', 'side',
         'quantity', 'pos_effect', 'expire_date', 'strike', 'contract',

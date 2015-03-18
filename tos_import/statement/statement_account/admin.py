@@ -52,7 +52,10 @@ class AccountSummaryInline(admin.TabularInline):
 
 class ProfitLossInline(AccountSummaryInline):
     model = models.ProfitLoss
-
+    fields = (
+        'symbol', 'description', 'pl_open', 'pl_pct',
+        'pl_day', 'pl_ytd', 'margin_req', 'mark_value'
+    )
     readonly_fields = (
         'symbol', 'description', 'pl_open', 'pl_pct',
         'pl_day', 'pl_ytd', 'margin_req', 'mark_value'

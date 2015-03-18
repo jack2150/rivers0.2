@@ -48,7 +48,7 @@ class PositionSet(models.Model):
         )
 
         # run save then add foreign key items
-        if self.manager.filled_orders:
+        if self.manager.filled_orders and self.status == 'OPEN':
             self.manager.context_item_adds('break_evens', 'breakeven_set')
             self.manager.context_item_adds('start_losses', 'startloss_set')
             self.manager.context_item_adds('start_profits', 'startprofit_set')
@@ -78,7 +78,8 @@ class PositionSet(models.Model):
         Explain this model
         :rtype : str
         """
-        return 'PositionSet: < {symbol} > {name}.{spread}'.format(
+        return 'PositionSet Id.{id}: < {symbol} > {name}.{spread}'.format(
+            id=self.id,
             symbol=self.get_symbol(),
             name=self.name,
             spread=self.spread

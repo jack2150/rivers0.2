@@ -44,8 +44,6 @@ INSTALLED_APPS = (
     # base app
     'base',
 
-
-
     # tos import
     'tos_import',
     'tos_import.statement.statement_account',
@@ -93,7 +91,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'default.db'),
+        'NAME': os.path.join(BASE_DIR, '__test__.db'),
     }
 }
 
