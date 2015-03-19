@@ -19,10 +19,12 @@ class PositionSetController(object):
 
         self.position_sets = list()
 
-        self.open_orders = self.filled_orders.filter(pos_effect='TO OPEN')
+        self.open_orders = self.filled_orders.filter(
+            pos_effect='TO OPEN'
+        ).exclude(Q(order='ROC') | Q(order='RCL') | Q(order='ROP'))  # no forex daily adjust
         self.close_orders = self.filled_orders.filter(
             Q(pos_effect='TO CLOSE')
-        ).exclude(Q(order='ROC') | Q(order='RCL'))  # no forex daily adjust
+        ).exclude(Q(order='ROC') | Q(order='RCL') | Q(order='ROP'))  # no forex daily adjust
 
         # get distinct symbols
         underlyings = [Q(underlying=obj) for obj in self.filled_orders.values_list(

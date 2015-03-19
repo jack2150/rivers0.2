@@ -154,7 +154,7 @@ class PmsImportStatementsForm(forms.Form):
                     file_data=pos_data
                 ).save_all()
 
-                SaveTradeActivity(
+                trade_summary_id = SaveTradeActivity(
                     date=real_date,
                     statement=statement,
                     file_data=ta_data
@@ -162,7 +162,12 @@ class PmsImportStatementsForm(forms.Form):
 
                 SaveStatDay(statement).save_all()
 
-                # todo: here
+                # create or update position_set
+                filled_orders = FilledOrder.objects.filter(trade_summary__id=trade_summary_id)
+                controller = PositionSetController(filled_orders)
+                controller.close_position_sets()
+                controller.create_position_sets()
+                controller.batch_update_foreign_keys()
 
                 self.cleaned_data['statement_id'] = statement.id
                 self.cleaned_data['statement_name'] = statement.__unicode__()
@@ -279,7 +284,7 @@ def statement_import_all(request):
                     # save stat day
                     SaveStatDay(statement).save_all()
 
-                    # todo: here
+                    # create or update position_set
                     filled_orders = FilledOrder.objects.filter(trade_summary__id=trade_summary_id)
                     controller = PositionSetController(filled_orders)
                     controller.close_position_sets()

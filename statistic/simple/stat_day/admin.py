@@ -1,10 +1,66 @@
 from django.contrib import admin
+from django.core.urlresolvers import reverse
 from statistic.simple.stat_day.models import StatDay, StatDayHolding, StatDayOptionGreek
 from statistic.simple.stat_day.views import simple_stat_day_view
 
-# todo: admin inline
+
+# noinspection PyMethodMayBeStatic,PyProtectedMember
+class DayStatInline(admin.TabularInline):
+    def link(self, instance):
+        pos_url = reverse(
+            'admin:%s_%s_change' %
+            (instance._meta.app_label, instance._meta.module_name),
+            args=(instance.id,)
+        )
+        return '<a href="%s">View</a>' % pos_url
+
+    link.allow_tags = True
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    extra = 0
+
+
+class StatDayHoldingInline(DayStatInline):
+    model = StatDayHolding
+
+    readonly_fields = (
+        'total_order_count',
+        'working_order_count',
+        'filled_order_count',
+        'cancelled_order_count',
+        'total_holding_count',
+        'profit_holding_count',
+        'loss_holding_count',
+        'pl_open_sum',
+        'profit_open_sum',
+        'loss_open_sum',
+        'pl_day_sum',
+        'profit_day_sum',
+        'loss_day_sum',
+        'bp_effect_sum',
+        'link'
+    )
+
+    exclude = ('name', )
+
+
+class StatDayOptionGreekInline(DayStatInline):
+    model = StatDayOptionGreek
+
+    readonly_fields = (
+        'delta_sum', 'gamma_sum', 'theta_sum', 'vega_sum', 'link'
+    )
+
+
 # noinspection PyMethodMayBeStatic
 class DayStatAdmin(admin.ModelAdmin):
+    inlines = (StatDayHoldingInline, )
+
     def statement_date(self, obj):
         return obj.statement.date
 
@@ -64,6 +120,8 @@ class DayStatAdmin(admin.ModelAdmin):
 
 # noinspection PyMethodMayBeStatic
 class DayStatHoldingAdmin(admin.ModelAdmin):
+    inlines = (StatDayOptionGreekInline, )
+
     def statement_date(self, obj):
         return obj.stat_day.statement.date
 

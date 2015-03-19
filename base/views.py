@@ -26,22 +26,23 @@ def base_model_list(request):
 
         # noinspection PyUnresolvedReferences
         app = str(module._meta.app_label)
-        try:
-            app_parent_label = app_parent_label_list[app]
-        except KeyError:
-            app_parent_label = app
+        if app.lower() != 'auth':
+            try:
+                app_parent_label = app_parent_label_list[app]
+            except KeyError:
+                app_parent_label = app
 
-        name = str(module.__name__)
+            name = str(module.__name__)
 
-        module_list.append(
-            {
-                'name': name,
-                'url': reverse('admin:%s_%s_changelist' % (app.lower(), name.lower())),
-                'app': app,
-                'app_label': ' '.join(map(lambda x: x.capitalize(), app.split('_'))),
-                'app_parent': app_parent_label
-            }
-        )
+            module_list.append(
+                {
+                    'name': name,
+                    'url': reverse('admin:%s_%s_changelist' % (app.lower(), name.lower())),
+                    'app': app,
+                    'app_label': ' '.join(map(lambda x: x.capitalize(), app.split('_'))),
+                    'app_parent': app_parent_label
+                }
+            )
 
     app_parent_list = set(module['app_parent'] for module in module_list)
 
@@ -64,7 +65,7 @@ def base_model_list(request):
 
     template = 'base/model_list.html'
     parameters = {
-        'app_parent_list': new_app_parent_list,  # sorted(new_app_parent_list)
+        'app_parent_list': sorted(new_app_parent_list, reverse=False),
         'app_label_list': app_label_list,
         'module_list': sorted(module_list)
     }
