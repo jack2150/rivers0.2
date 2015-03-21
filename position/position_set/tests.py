@@ -34,7 +34,7 @@ class TestPositionSetCls(TestUnitSetUp):
             self.position_set = PositionSet()
             self.manager = PositionSetManager(self.position_set)
         else:
-            self.skipTest("Please use 'Unittest' for testing existing db testing.\n")
+            self.skipTest("Please use 'Unittest' for testing  existing db testing.\n")
             raise ObjectDoesNotExist()
 
     def setUp(self):
@@ -293,7 +293,7 @@ class TestPositionSetController(TestPositionSetCls):
             position_set.delete()
 
         #PositionSet.objects.all().delete()
-        self.assertFalse(PositionSet.objects.count(), msg='Please reset db.')
+        #self.assertFalse(PositionSet.objects.count(), msg='Please reset db.')
 
     def test_init_set_queries(self):
         """
@@ -389,26 +389,3 @@ class TestPositionSetController(TestPositionSetCls):
                 self.assertEqual(position_set.positionforex_set.count(), 2)
 
             print '.' * 60
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

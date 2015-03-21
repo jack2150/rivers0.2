@@ -188,8 +188,8 @@ class TestSpread(TestUnitSetUpPrepare):
         ]
 
         self.results = [
-            'CUSTOM', 'PROTECT_PUT', 'COVERED_CALL', 'CUSTOM',
-            'PROTECT_CALL', 'CUSTOM', 'CUSTOM', 'COVERED_PUT'
+            'CUSTOM', 'PROTECTIVE_PUT', 'COVERED_CALL', 'CUSTOM',
+            'PROTECTIVE_CALL', 'CUSTOM', 'CUSTOM', 'COVERED_PUT'
         ]
 
         for key, (stock, option) in enumerate(self.contracts):
@@ -1028,6 +1028,3 @@ class TestGetSpread(TestUnitSetUpPrepare):
                 print 'Name: %s' % self.spread.name
                 print 'Spread: %s' % self.spread.get_spread()
                 print ''
-
-
-

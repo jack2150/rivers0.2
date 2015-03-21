@@ -233,6 +233,117 @@ class TestPositionSet(TestContext, TestReadyFile):
         self.assertTrue(position_set.positioninstrument_set.exists())
 
 
+class TestPositionStage(TestSetUpDB):
+    def setUp(self):
+        TestSetUpDB.setUp(self)
+
+        underlying = Underlying(
+            symbol='AAPL',
+            company='Apple Inc.'
+        )
+        underlying.save()
+
+        self.position_set = PositionSet(
+            name='EQUITY',
+            spread='LONG_STOCK',
+            status='OPEN',
+            underlying=underlying
+        )
+        self.position_set.save()
+
+        self.stage = PositionStage()
+        self.stage.stage_name = 'PROFIT'
+        self.stage.stage_expression = '127.85 < {price}'
+
+        self.stage.price_a = 127.85
+        self.stage.amount_a = 0.0
+
+        self.stage.left_status = 'decreasing'
+        self.stage.left_expression = '{price_a} < {new_price} < {old_price}'
+        self.stage.right_status = 'profiting'
+        self.stage.right_expression = '{price_a} < {old_price} < {new_price}'
+        self.stage.position_set = self.position_set
+
+    def test_save(self):
+        """
+        Test save position stage
+        """
+        self.stage.save()
+        print 'saved...'
+
+        print '.' * 60
+        print 'position_stage: %s' % self.stage
+        print 'position_stage id: %d' % self.stage.id
+        print 'status_name: %s' % self.stage.stage_name
+        print 'status_expression: %s' % self.stage.stage_expression
+        print 'position_set: %s' % self.stage.position_set
+        print '.' * 60
+        print 'price_a: %s' % self.stage.price_a
+        print 'amount_a: %s' % self.stage.amount_a
+        print '.' * 60
+        print 'left_status: %s' % self.stage.left_status
+        print 'left_expression: %s' % self.stage.left_expression
+        print 'right_status: %s' % self.stage.right_status
+        print 'right_expression: %s' % self.stage.right_expression
+
+        self.assertTrue(self.stage.id)
+        self.assertEqual(self.stage.position_set, self.position_set)
+
+    def test_in_stage(self):
+        """
+        Test price is in current stage
+        """
+        self.stage.save()
+
+        current_price = 130.0
+        print 'using current_price: %.2f' % current_price
+        result = self.stage.in_stage(price=current_price)
+        print 'eval result: %s' % result
+        self.assertTrue(result)
+
+        print '.' * 60
+
+        current_price = 125.0
+        print 'using current_price: %.2f' % current_price
+        result = self.stage.in_stage(price=current_price)
+        print 'eval result: %s' % result
+        self.assertFalse(result)
+
+    def test_get_status(self):
+        """
+        Test stage eval method that return left or right status
+        """
+        self.stage.save()
+
+        new_price = 130.00
+        old_price = 135.00
+        print 'using new_price: %.2f, old_price: %.2f' % (new_price, old_price)
+        result = self.stage.get_status(new_price=new_price, old_price=old_price)
+        print 'eval result: %s' % result
+        self.assertEqual(result, 'decreasing')
+
+        print '.' * 60
+
+        new_price = 140.00
+        old_price = 135.00
+        print 'using new_price: %.2f, old_price: %.2f' % (new_price, old_price)
+        result = self.stage.get_status(new_price=new_price, old_price=old_price)
+        print 'eval result: %s' % result
+        self.assertEqual(result, 'profiting')
+
+        print '.' * 60
+
+        new_price = 130.00
+        old_price = 130.00
+        print 'using new_price: %.2f, old_price: %.2f' % (new_price, old_price)
+        result = self.stage.get_status(new_price=new_price, old_price=old_price)
+        print 'eval result: %s' % result
+        self.assertEqual(result, 'unknown')
+
+
+
+
+
 
 
 

@@ -1,0 +1,1 @@
+from short_call_vertical import StageShortCallVertical

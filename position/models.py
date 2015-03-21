@@ -196,7 +196,90 @@ class MaxLoss(models.Model):
         )
 
 
+class PositionStage(models.Model):
+    """
+    A stage is a condition that use for compare old and new price
+    also tell what is current status that explain price movement
+    -----------------------------------
+    max_profit: vanishing, guaranteeing
+    profit: decreasing, profiting
+    breakeven...
+    loss: recovering, losing
+    max_loss: easing, worst
+    -----------------------------------
+    """
+    stage_name = models.CharField(max_length=20)
+    stage_expression = models.CharField(max_length=100)
 
+    price_a = models.DecimalField(**decimal_field)
+    amount_a = models.DecimalField(**decimal_field)
+    price_b = models.DecimalField(null=True, blank=True, **decimal_field)
+    amount_b = models.DecimalField(null=True, blank=True, **decimal_field)
+
+    left_expression = models.CharField(max_length=100, null=True, blank=True, default='')
+    left_status = models.CharField(max_length=100, null=True, blank=True, default='')
+    right_expression = models.CharField(max_length=100, null=True, blank=True, default='')
+    right_status = models.CharField(max_length=100, null=True, blank=True, default='')
+
+    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
+
+    def in_stage(self, price):
+        """
+        Check price in current stage
+        :param price: float
+        :return: boolean
+        """
+        return eval(
+            self.stage_expression.format(price=price)
+        )
+
+    def get_status(self, new_price, old_price):
+        """
+        Use eval to determine left or right condition and return status
+        :param new_price: float
+        :param old_price: float
+        :return: str
+        """
+        left_result = False
+        if self.left_status:
+            left_result = eval(
+                self.left_expression.format(
+                    price_a=self.price_a,
+                    price_b=self.price_b,
+                    new_price=new_price,
+                    old_price=old_price,
+                )
+            )
+
+        right_result = False
+        if self.right_status:
+            right_result = eval(
+                self.right_expression.format(
+                    price_a=self.price_a,
+                    price_b=self.price_b,
+                    new_price=new_price,
+                    old_price=old_price,
+                )
+            )
+
+        if left_result:
+            result = self.left_status
+        elif right_result:
+            result = self.right_status
+        else:
+            result = 'unknown'
+
+        return result
+
+    def __unicode__(self):
+        """
+        Explain this model
+        :rtype : str
+        """
+        return 'Stage: {status} "{expression}"'.format(
+            status=self.stage_name,
+            expression=self.stage_expression
+        )
 
 
 
