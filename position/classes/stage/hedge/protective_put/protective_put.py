@@ -66,9 +66,9 @@ class StageProtectivePut(object):
         )
 
         max_loss_stage.left_status = 'easing'
-        max_loss_stage.left_expression = '{old_price} < {new_price} < {price_a}'
+        max_loss_stage.left_expression = '{old_price} < {new_price} <= {price_a}'
         max_loss_stage.right_status = 'worst'
-        max_loss_stage.right_expression = '{new_price} < {old_price} < {price_a}'
+        max_loss_stage.right_expression = '{new_price} < {old_price} <= {price_a}'
 
         return max_loss_stage
 

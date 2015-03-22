@@ -99,9 +99,9 @@ class TestStageLongCallVertical(TestUnitSetUpStage):
         self.assertEqual(float(max_profit_stage.price_a), 85.0)
         self.assertEqual(float(max_profit_stage.amount_a), 336.0)
         self.assertEqual(max_profit_stage.left_status, 'vanishing')
-        self.assertEqual(max_profit_stage.left_expression, '{price_a} < {new_price} < {old_price}')
+        self.assertEqual(max_profit_stage.left_expression, '{price_a} <= {new_price} < {old_price}')
         self.assertEqual(max_profit_stage.right_status, 'guaranteeing')
-        self.assertEqual(max_profit_stage.right_expression, '{price_a} < {old_price} < {new_price}')
+        self.assertEqual(max_profit_stage.right_expression, '{price_a} <= {old_price} < {new_price}')
 
     def test_create_max_loss_stage(self):
         """
@@ -126,9 +126,9 @@ class TestStageLongCallVertical(TestUnitSetUpStage):
         self.assertEqual(float(max_loss_stage.price_a), 80.0)
         self.assertEqual(float(max_loss_stage.amount_a), 164.0)
         self.assertEqual(max_loss_stage.left_status, 'easing')
-        self.assertEqual(max_loss_stage.left_expression, '{old_price} < {new_price} < {price_a}')
+        self.assertEqual(max_loss_stage.left_expression, '{old_price} < {new_price} <= {price_a}')
         self.assertEqual(max_loss_stage.right_status, 'worst')
-        self.assertEqual(max_loss_stage.right_expression, '{new_price} < {old_price} < {price_a}')
+        self.assertEqual(max_loss_stage.right_expression, '{new_price} < {old_price} <= {price_a}')
 
     def test_create_profit_stage(self):
         """

@@ -66,9 +66,9 @@ class StageLongPutVertical(object):
         )
 
         max_profit_stage.left_status = 'vanishing'
-        max_profit_stage.left_expression = '{old_price} < {new_price} < {price_a}'
+        max_profit_stage.left_expression = '{old_price} < {new_price} <= {price_a}'
         max_profit_stage.right_status = 'guaranteeing'
-        max_profit_stage.right_expression = '{new_price} < {old_price} < {price_a}'
+        max_profit_stage.right_expression = '{new_price} < {old_price} <= {price_a}'
 
         return max_profit_stage
 
@@ -89,9 +89,9 @@ class StageLongPutVertical(object):
         )
 
         max_loss_stage.left_status = 'easing'
-        max_loss_stage.left_expression = '{price_a} < {new_price} < {old_price}'
+        max_loss_stage.left_expression = '{price_a} <= {new_price} < {old_price}'
         max_loss_stage.right_status = 'worst'
-        max_loss_stage.right_expression = '{price_a} < {old_price} < {new_price}'
+        max_loss_stage.right_expression = '{price_a} <= {old_price} < {new_price}'
 
         return max_loss_stage
 

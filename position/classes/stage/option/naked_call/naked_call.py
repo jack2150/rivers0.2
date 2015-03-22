@@ -2,23 +2,18 @@ from django.db.models.query import QuerySet
 from position.models import PositionStage
 
 
-class StageCoveredPut(object):
-    def __init__(self, filled_orders):
+class StageNakedCall(object):
+    def __init__(self, filled_orders, contract_right=100):
         """
         :param filled_orders: QuerySet
         """
         if type(filled_orders) is not QuerySet:
             raise TypeError('Parameter is not QuerySet of <FilledOrder> object type.')
 
-        self.stock_order = None
-        self.option_order = None
-        for filled_order in filled_orders:
-            if filled_order.contract == 'STOCK':
-                self.stock_order = filled_order
-                """:type : FilledOrder"""
-            elif filled_order.contract == 'PUT':
-                self.option_order = filled_order
-                """:type : FilledOrder"""
+        self.call_order = filled_orders[0]
+        """:type : FilledOrder"""
+
+        self.contract_right = contract_right
 
     def create_stages(self):
         """
@@ -40,37 +35,38 @@ class StageCoveredPut(object):
         even_stage = PositionStage()
 
         even_stage.stage_name = 'EVEN'
-        even_stage.stage_expression = '%.2f == {price}' % float(
-            self.option_order.net_price
+        even_stage.stage_expression = '%.2f == {price}' % (
+            float(self.call_order.strike + self.call_order.price)
         )
 
-        even_stage.price_a = self.option_order.net_price
+        even_stage.price_a = self.call_order.strike + self.call_order.price
         even_stage.amount_a = 0.0
 
         return even_stage
 
     def create_max_profit_stage(self):
         """
-        Create profit stage using filled orders data
+        Create max loss stage using filled orders data
         :return: PositionStage
         """
-        max_profit_stage = PositionStage()
+        max_loss_stage = PositionStage()
 
-        max_profit_stage.stage_name = 'MAX_PROFIT'
-        max_profit_stage.stage_expression = '{price} <= %.2f' % self.option_order.strike
-
-        max_profit_stage.price_a = self.option_order.strike
-        max_profit_stage.amount_a = (
-            (self.option_order.net_price - self.option_order.strike)
-            * self.stock_order.quantity * -1
+        max_loss_stage.stage_name = 'MAX_PROFIT'
+        max_loss_stage.stage_expression = '{price} <= %.2f' % (
+            float(self.call_order.strike)
         )
 
-        max_profit_stage.left_status = 'vanishing'
-        max_profit_stage.left_expression = '{old_price} < {new_price} <= {price_a}'
-        max_profit_stage.right_status = 'guaranteeing'
-        max_profit_stage.right_expression = '{new_price} < {old_price} <= {price_a}'
+        max_loss_stage.price_a = self.call_order.strike
+        max_loss_stage.amount_a = (
+            self.call_order.price * self.call_order.quantity * self.contract_right * -1
+        )
 
-        return max_profit_stage
+        max_loss_stage.left_status = 'vanishing'
+        max_loss_stage.left_expression = '{old_price} < {new_price} <= {price_a}'
+        max_loss_stage.right_status = 'guaranteeing'
+        max_loss_stage.right_expression = '{new_price} < {old_price} <= {price_a}'
+
+        return max_loss_stage
 
     def create_profit_stage(self):
         """
@@ -81,16 +77,15 @@ class StageCoveredPut(object):
 
         profit_stage.stage_name = 'PROFIT'
         profit_stage.stage_expression = '%.2f < {price} < %.2f' % (
-            float(self.option_order.strike),
-            float(self.option_order.net_price)
+            float(self.call_order.strike),
+            float(self.call_order.strike + self.call_order.price)
         )
 
-        profit_stage.price_a = self.option_order.strike
+        profit_stage.price_a = self.call_order.strike
         profit_stage.amount_a = (
-            (self.option_order.net_price - self.option_order.strike)
-            * self.stock_order.quantity * -1
+            self.call_order.price * self.call_order.quantity * self.contract_right * -1
         )
-        profit_stage.price_b = self.option_order.net_price
+        profit_stage.price_b = self.call_order.strike + self.call_order.price
         profit_stage.amount_b = 0.0
 
         profit_stage.left_status = 'decreasing'
@@ -109,10 +104,10 @@ class StageCoveredPut(object):
 
         loss_stage.stage_name = 'LOSS'
         loss_stage.stage_expression = '%.2f < {price}' % (
-            float(self.option_order.net_price)
+            float(self.call_order.strike + self.call_order.price)
         )
 
-        loss_stage.price_a = self.option_order.net_price
+        loss_stage.price_a = self.call_order.strike + self.call_order.price
         loss_stage.amount_a = 0.0
 
         loss_stage.left_status = 'recovering'

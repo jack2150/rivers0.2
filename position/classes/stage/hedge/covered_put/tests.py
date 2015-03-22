@@ -94,9 +94,9 @@ class TestStageCoveredPut(TestUnitSetUpStage):
         self.assertEqual(float(max_profit_stage.price_a), 55.0)
         self.assertEqual(float(max_profit_stage.amount_a), 199.0)
         self.assertEqual(max_profit_stage.left_status, 'vanishing')
-        self.assertEqual(max_profit_stage.left_expression, '{old_price} < {new_price} < {price_a}')
+        self.assertEqual(max_profit_stage.left_expression, '{old_price} < {new_price} <= {price_a}')
         self.assertEqual(max_profit_stage.right_status, 'guaranteeing')
-        self.assertEqual(max_profit_stage.right_expression, '{new_price} < {old_price} < {price_a}')
+        self.assertEqual(max_profit_stage.right_expression, '{new_price} < {old_price} <= {price_a}')
 
     def test_create_profit_stage(self):
         """

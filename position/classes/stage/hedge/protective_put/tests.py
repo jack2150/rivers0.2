@@ -94,9 +94,9 @@ class TestStageProtectivePut(TestUnitSetUpStage):
         self.assertEqual(float(max_loss_stage.price_a), 55.0)
         self.assertEqual(float(max_loss_stage.amount_a), -199.0)
         self.assertEqual(max_loss_stage.left_status, 'easing')
-        self.assertEqual(max_loss_stage.left_expression, '{old_price} < {new_price} < {price_a}')
+        self.assertEqual(max_loss_stage.left_expression, '{old_price} < {new_price} <= {price_a}')
         self.assertEqual(max_loss_stage.right_status, 'worst')
-        self.assertEqual(max_loss_stage.right_expression, '{new_price} < {old_price} < {price_a}')
+        self.assertEqual(max_loss_stage.right_expression, '{new_price} < {old_price} <= {price_a}')
 
     def test_create_loss_stage(self):
         """
