@@ -10,24 +10,12 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/static/assets" />
-      <excludeFolder url="file://$MODULE_DIR$/static/highcharts-4.1.3" />
-      <excludeFolder url="file://$MODULE_DIR$/static/highstock-2.1.2" />
-      <excludeFolder url="file://$MODULE_DIR$/static/morris" />
-    </content>
-    <orderEntry type="jdk" jdkName="Python 2.7.8 (C:\Anaconda\python.exe)" jdkType="Python SDK" />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jquery" level="application" />
-    <orderEntry type="library" name="raphael" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/templates" />
-      </list>
-    </option>
   </component>
 </module>
 

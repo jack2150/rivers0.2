@@ -34,11 +34,11 @@ class TestStageLongCall(TestUnitSetUpStage):
         """
         even_stage = self.long_call.create_even_stage()
 
-        print 'profit_stage: %s' % even_stage
+        print 'current_stage: %s' % even_stage
         print 'stage_name: %s' % even_stage.stage_name
         print 'stage_expression: %s' % even_stage.stage_expression
-        print 'price_a: %s' % even_stage.price_a
-        print 'amount_a: %s' % even_stage.amount_a
+        print 'price_a: %.2f' % even_stage.price_a
+        print 'amount_a: %.2f' % even_stage.amount_a
         print 'left_status: %s' % even_stage.left_status
         print 'left_expression: %s' % even_stage.left_expression
         print 'right_status: %s' % even_stage.right_status
@@ -61,11 +61,11 @@ class TestStageLongCall(TestUnitSetUpStage):
         """
         max_loss = self.long_call.create_max_loss_stage()
 
-        print 'profit_stage: %s' % max_loss
+        print 'current_stage: %s' % max_loss
         print 'stage_name: %s' % max_loss.stage_name
         print 'stage_expression: %s' % max_loss.stage_expression
-        print 'price_a: %s' % max_loss.price_a
-        print 'amount_a: %s' % max_loss.amount_a
+        print 'price_a: %.2f' % max_loss.price_a
+        print 'amount_a: %.2f' % max_loss.amount_a
         print 'left_status: %s' % max_loss.left_status
         print 'left_expression: %s' % max_loss.left_expression
         print 'right_status: %s' % max_loss.right_status
@@ -88,11 +88,11 @@ class TestStageLongCall(TestUnitSetUpStage):
         """
         profit_stage = self.long_call.create_profit_stage()
 
-        print 'profit_stage: %s' % profit_stage
+        print 'current_stage: %s' % profit_stage
         print 'stage_name: %s' % profit_stage.stage_name
         print 'stage_expression: %s' % profit_stage.stage_expression
-        print 'price_a: %s' % profit_stage.price_a
-        print 'amount_a: %s' % profit_stage.amount_a
+        print 'price_a: %.2f' % profit_stage.price_a
+        print 'amount_a: %.2f' % profit_stage.amount_a
         print 'left_status: %s' % profit_stage.left_status
         print 'left_expression: %s' % profit_stage.left_expression
         print 'right_status: %s' % profit_stage.right_status
@@ -115,11 +115,11 @@ class TestStageLongCall(TestUnitSetUpStage):
         """
         loss_stage = self.long_call.create_loss_stage()
 
-        print 'profit_stage: %s' % loss_stage
+        print 'current_stage: %s' % loss_stage
         print 'stage_name: %s' % loss_stage.stage_name
         print 'stage_expression: %s' % loss_stage.stage_expression
-        print 'price_a: %s' % loss_stage.price_a
-        print 'amount_a: %s' % loss_stage.amount_a
+        print 'price_a: %.2f' % loss_stage.price_a
+        print 'amount_a: %.2f' % loss_stage.amount_a
         print 'left_status: %s' % loss_stage.left_status
         print 'left_expression: %s' % loss_stage.left_expression
         print 'right_status: %s' % loss_stage.right_status

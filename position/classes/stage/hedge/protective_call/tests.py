@@ -53,8 +53,8 @@ class TestStageProtectiveCall(TestUnitSetUpStage):
         print 'current_stage: %s' % even_stage
         print 'stage_name: %s' % even_stage.stage_name
         print 'stage_expression: %s' % even_stage.stage_expression
-        print 'price_a: %s' % even_stage.price_a
-        print 'amount_a: %s' % even_stage.amount_a
+        print 'price_a: %.2f' % even_stage.price_a
+        print 'amount_a: %.2f' % even_stage.amount_a
         print 'left_status: %s' % even_stage.left_status
         print 'left_expression: %s' % even_stage.left_expression
         print 'right_status: %s' % even_stage.right_status
@@ -80,8 +80,8 @@ class TestStageProtectiveCall(TestUnitSetUpStage):
         print 'current_stage: %s' % max_loss_stage
         print 'stage_name: %s' % max_loss_stage.stage_name
         print 'stage_expression: %s' % max_loss_stage.stage_expression
-        print 'price_a: %s' % max_loss_stage.price_a
-        print 'amount_a: %s' % max_loss_stage.amount_a
+        print 'price_a: %.2f' % max_loss_stage.price_a
+        print 'amount_a: %.2f' % max_loss_stage.amount_a
         print 'left_status: %s' % max_loss_stage.left_status
         print 'left_expression: %s' % max_loss_stage.left_expression
         print 'right_status: %s' % max_loss_stage.right_status
@@ -107,8 +107,8 @@ class TestStageProtectiveCall(TestUnitSetUpStage):
         print 'current_stage: %s' % profit_stage
         print 'stage_name: %s' % profit_stage.stage_name
         print 'stage_expression: %s' % profit_stage.stage_expression
-        print 'price_a: %s' % profit_stage.price_a
-        print 'amount_a: %s' % profit_stage.amount_a
+        print 'price_a: %.2f' % profit_stage.price_a
+        print 'amount_a: %.2f' % profit_stage.amount_a
         print 'left_status: %s' % profit_stage.left_status
         print 'left_expression: %s' % profit_stage.left_expression
         print 'right_status: %s' % profit_stage.right_status
@@ -136,8 +136,8 @@ class TestStageProtectiveCall(TestUnitSetUpStage):
         print 'current_stage: %s' % profit_stage
         print 'stage_name: %s' % profit_stage.stage_name
         print 'stage_expression: %s' % profit_stage.stage_expression
-        print 'price_a: %s' % profit_stage.price_a
-        print 'amount_a: %s' % profit_stage.amount_a
+        print 'price_a: %.2f' % profit_stage.price_a
+        print 'amount_a: %.2f' % profit_stage.amount_a
         print 'left_status: %s' % profit_stage.left_status
         print 'left_expression: %s' % profit_stage.left_expression
         print 'right_status: %s' % profit_stage.right_status
