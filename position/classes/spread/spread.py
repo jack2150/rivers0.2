@@ -2,6 +2,7 @@
 from django.db.models.query import QuerySet
 
 
+# todo: credit or debit, probability of profit (pop-pol, 70%-30%)
 class Spread(object):
     """
     primary use to identify spread type and return name and spread

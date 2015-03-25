@@ -32,7 +32,7 @@ class StageLongCallBackratio(object):
         Create stage using filled_orders
         :return: list of PositionStage
         """
-        if self.buy_order.net_price <= 0:
+        if self.buy_order.net_price < 0:
             result = [
                 self.create_profit_stage1(),
                 self.create_even_stage1(),
@@ -43,7 +43,7 @@ class StageLongCallBackratio(object):
                 self.create_profit_stage2(),
                 self.create_max_profit_stage()
             ]
-        else:
+        elif self.buy_order.net_price > 0:
             result = [
                 self.create_profit_stage1(),
                 self.create_even_stage1(),
@@ -51,6 +51,15 @@ class StageLongCallBackratio(object):
                 self.create_max_loss_stage1(),
                 self.create_loss_stage2(),
                 self.create_max_loss_stage2(),
+            ]
+        else:
+            result = [
+                self.create_profit_stage1(),
+                self.create_even_stage1(),
+                self.create_loss_stage1(),
+                self.create_max_loss_stage1(),
+                self.create_loss_stage2(),
+                self.create_even_stage2()
             ]
 
         return result
@@ -79,9 +88,14 @@ class StageLongCallBackratio(object):
         """
         even_stage = PositionStage()
 
+        condition = '=='
+        if self.buy_order.net_price == 0.0:
+            condition = '<='
+
         even_stage.stage_name = 'EVEN'
-        even_stage.stage_expression = '%.2f == {price}' % (
-            float(self.buy_order.strike - self.max_loss_price)
+        even_stage.stage_expression = '%.2f %s {price}' % (
+            float(self.buy_order.strike - self.max_loss_price),
+            condition
         )
 
         even_stage.price_a = self.buy_order.strike - self.max_loss_price
