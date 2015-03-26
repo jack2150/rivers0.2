@@ -24,6 +24,14 @@ class Spread(object):
         self.name = ''  # ['EQUITY', 'HEDGE', 'OPTION', 'SPREAD', 'FUTURE', 'FOREX']
         self.spread = ''
 
+        # effect
+        self.account = ''  # credit or debit
+        self.probability = {
+            'Profit': 0.0,  # all in percentage, 0.7351
+            'Even': 0.0,
+            'Loss': 0.0
+        }
+
     def get_underlying(self):
         """
         get underlying object from filled orders

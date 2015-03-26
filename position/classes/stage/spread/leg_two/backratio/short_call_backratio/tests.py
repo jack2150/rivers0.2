@@ -741,7 +741,7 @@ class TestStageLongCallBackratio2(TestUnitSetUpStage):
         self.check_get_status(profit_stage, new_price=173, old_price=174, expect='profiting')
         self.check_get_status(profit_stage, new_price=172, old_price=172, expect='unknown')
 
-    def test_loss_in_stage11(self):
+    def test_loss_in_stage1(self):
         """
         Test even in stage method
         """
@@ -752,7 +752,7 @@ class TestStageLongCallBackratio2(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=177, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=175, expect=False)
 
-    def test_loss_get_status11(self):
+    def test_loss_get_status1(self):
         """
         Test even get status method
         """
