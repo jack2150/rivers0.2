@@ -1,2 +1,2 @@
-from long_forex.long_forex import StageLongForex
-from short_forex.short_forex import StageShortForex
+from long_forex import StageLongForex
+from short_forex import StageShortForex

@@ -1,5 +1,5 @@
 from long_call import StageLongCall
-from position.classes.stage import TestUnitSetUpStage
+from position.classes.stage.tests import TestUnitSetUpStage
 from position.classes.tests import create_filled_order
 from position.models import PositionStage
 from tos_import.statement.statement_trade.models import FilledOrder
@@ -34,53 +34,57 @@ class TestStageLongCall(TestUnitSetUpStage):
         """
         even_stage = self.long_call.create_even_stage()
 
-        print 'current_stage: %s' % even_stage
-        print 'stage_name: %s' % even_stage.stage_name
-        print 'stage_expression: %s' % even_stage.stage_expression
-        print 'price_a: %.2f' % even_stage.price_a
-        print 'amount_a: %.2f' % even_stage.amount_a
-        print 'left_status: %s' % even_stage.left_status
-        print 'left_expression: %s' % even_stage.left_expression
-        print 'right_status: %s' % even_stage.right_status
-        print 'right_expression: %s' % even_stage.right_expression
+        self.method_test_create_stage(
+            stage=even_stage,
+            name='EVEN',
+            expression='58.95 == {price}',
+            detail={
+                'price_a': 58.95,
+                'amount_a': 0.0,
+                'price_b': 0.0,
+                'amount_b': 0.0,
+                'left_status': '',
+                'left_expression': '',
+                'right_status': '',
+                'right_expression': '',
+            }
+        )
 
-        self.assertEqual(type(even_stage), PositionStage)
-        self.assertFalse(even_stage.id)
-        self.assertEqual(even_stage.stage_name, 'EVEN')
-        self.assertEqual(even_stage.stage_expression, '58.95 == {price}')
-        self.assertEqual(float(even_stage.price_a), 58.95)
-        self.assertEqual(float(even_stage.amount_a), 0.0)
-        self.assertEqual(even_stage.left_status, '')
-        self.assertEqual(even_stage.left_expression, '')
-        self.assertEqual(even_stage.right_status, '')
-        self.assertEqual(even_stage.right_expression, '')
+        self.check_in_stage(stage_cls=even_stage, price=58.95, expect=True)
+        self.check_in_stage(stage_cls=even_stage, price=60.1, expect=False)
+
+        self.check_get_status(
+            stage_cls=even_stage, new_price=58.95, old_price=58.95, expect='unknown'
+        )
 
     def test_create_max_loss_stage(self):
         """
         Create loss stage using filled orders data
         """
-        max_loss = self.long_call.create_max_loss_stage()
+        max_loss_stage = self.long_call.create_max_loss_stage()
 
-        print 'current_stage: %s' % max_loss
-        print 'stage_name: %s' % max_loss.stage_name
-        print 'stage_expression: %s' % max_loss.stage_expression
-        print 'price_a: %.2f' % max_loss.price_a
-        print 'amount_a: %.2f' % max_loss.amount_a
-        print 'left_status: %s' % max_loss.left_status
-        print 'left_expression: %s' % max_loss.left_expression
-        print 'right_status: %s' % max_loss.right_status
-        print 'right_expression: %s' % max_loss.right_expression
+        self.method_test_create_stage(
+            stage=max_loss_stage,
+            name='MAX_LOSS',
+            expression='{price} <= 58.00',
+            detail={
+                'price_a': 58.00,
+                'amount_a': -190.0,
+                'price_b': 0.0,
+                'amount_b': 0.0,
+                'left_status': 'easing',
+                'left_expression': '{old_price} < {new_price} <= {price_a}',
+                'right_status': 'worst',
+                'right_expression': '{new_price} < {old_price} <= {price_a}',
+            }
+        )
 
-        self.assertEqual(type(max_loss), PositionStage)
-        self.assertFalse(max_loss.id)
-        self.assertEqual(max_loss.stage_name, 'MAX_LOSS')
-        self.assertEqual(max_loss.stage_expression, '{price} <= 58.00')
-        self.assertEqual(float(max_loss.price_a), 58.00)
-        self.assertEqual(float(max_loss.amount_a), -190.0)
-        self.assertEqual(max_loss.left_status, 'easing')
-        self.assertEqual(max_loss.left_expression, '{old_price} < {new_price} <= {price_a}')
-        self.assertEqual(max_loss.right_status, 'worst')
-        self.assertEqual(max_loss.right_expression, '{new_price} < {old_price} <= {price_a}')
+        self.check_in_stage(stage_cls=max_loss_stage, price=55.3, expect=True)
+        self.check_in_stage(stage_cls=max_loss_stage, price=58.95, expect=False)
+
+        self.check_get_status(max_loss_stage, new_price=54, old_price=53, expect='easing')
+        self.check_get_status(max_loss_stage, new_price=52.5, old_price=53.5, expect='worst')
+        self.check_get_status(max_loss_stage, new_price=52.2, old_price=52.2, expect='unknown')
 
     def test_create_profit_stage(self):
         """
@@ -88,26 +92,28 @@ class TestStageLongCall(TestUnitSetUpStage):
         """
         profit_stage = self.long_call.create_profit_stage()
 
-        print 'current_stage: %s' % profit_stage
-        print 'stage_name: %s' % profit_stage.stage_name
-        print 'stage_expression: %s' % profit_stage.stage_expression
-        print 'price_a: %.2f' % profit_stage.price_a
-        print 'amount_a: %.2f' % profit_stage.amount_a
-        print 'left_status: %s' % profit_stage.left_status
-        print 'left_expression: %s' % profit_stage.left_expression
-        print 'right_status: %s' % profit_stage.right_status
-        print 'right_expression: %s' % profit_stage.right_expression
+        self.method_test_create_stage(
+            stage=profit_stage,
+            name='PROFIT',
+            expression='58.95 < {price}',
+            detail={
+                'price_a': 58.95,
+                'amount_a': 0.0,
+                'price_b': 0.0,
+                'amount_b': 0.0,
+                'left_status': 'decreasing',
+                'left_expression': '{price_a} < {new_price} < {old_price}',
+                'right_status': 'profiting',
+                'right_expression': '{price_a} < {old_price} < {new_price}',
+            }
+        )
 
-        self.assertEqual(type(profit_stage), PositionStage)
-        self.assertFalse(profit_stage.id)
-        self.assertEqual(profit_stage.stage_name, 'PROFIT')
-        self.assertEqual(profit_stage.stage_expression, '58.95 < {price}')
-        self.assertEqual(float(profit_stage.price_a), 58.95)
-        self.assertEqual(float(profit_stage.amount_a), 0.0)
-        self.assertEqual(profit_stage.left_status, 'decreasing')
-        self.assertEqual(profit_stage.left_expression, '{price_a} < {new_price} < {old_price}')
-        self.assertEqual(profit_stage.right_status, 'profiting')
-        self.assertEqual(profit_stage.right_expression, '{price_a} < {old_price} < {new_price}')
+        self.check_in_stage(stage_cls=profit_stage, price=62.54, expect=True)
+        self.check_in_stage(stage_cls=profit_stage, price=58.95, expect=False)
+
+        self.check_get_status(profit_stage, new_price=61.44, old_price=63.1, expect='decreasing')
+        self.check_get_status(profit_stage, new_price=63.9, old_price=61, expect='profiting')
+        self.check_get_status(profit_stage, new_price=62.2, old_price=62.2, expect='unknown')
 
     def test_create_loss_stage(self):
         """
@@ -115,117 +121,25 @@ class TestStageLongCall(TestUnitSetUpStage):
         """
         loss_stage = self.long_call.create_loss_stage()
 
-        print 'current_stage: %s' % loss_stage
-        print 'stage_name: %s' % loss_stage.stage_name
-        print 'stage_expression: %s' % loss_stage.stage_expression
-        print 'price_a: %.2f' % loss_stage.price_a
-        print 'amount_a: %.2f' % loss_stage.amount_a
-        print 'left_status: %s' % loss_stage.left_status
-        print 'left_expression: %s' % loss_stage.left_expression
-        print 'right_status: %s' % loss_stage.right_status
-        print 'right_expression: %s' % loss_stage.right_expression
-
-        self.assertEqual(type(loss_stage), PositionStage)
-        self.assertFalse(loss_stage.id)
-        self.assertEqual(loss_stage.stage_name, 'LOSS')
-        self.assertEqual(loss_stage.stage_expression, '58.00 < {price} < 58.95')
-        self.assertEqual(float(loss_stage.price_a), 58.00)
-        self.assertEqual(float(loss_stage.amount_a), -190.00)
-        self.assertEqual(float(loss_stage.price_b), 58.95)
-        self.assertEqual(float(loss_stage.amount_b), 0.0)
-        self.assertEqual(loss_stage.left_status, 'recovering')
-        self.assertEqual(loss_stage.left_expression, '{price_a} < {old_price} < {new_price} < {price_b}')
-        self.assertEqual(loss_stage.right_status, 'losing')
-        self.assertEqual(loss_stage.right_expression, '{price_a} < {new_price} < {old_price} < {price_b}')
-
-    def test_even_in_stage(self):
-        """
-        Test even in stage method
-        """
-        even_stage = self.long_call.create_even_stage()
-
-        print even_stage
-        print '.' * 60
-        self.check_in_stage(stage_cls=even_stage, price=58.95, expect=True)
-        self.check_in_stage(stage_cls=even_stage, price=60.1, expect=False)
-
-    def test_even_get_status(self):
-        """
-        Test even get status method
-        """
-        even_stage = self.long_call.create_even_stage()
-
-        print even_stage
-        print '.' * 60
-        self.check_get_status(
-            stage_cls=even_stage, new_price=58.95, old_price=58.95, expect='unknown'
+        self.method_test_create_stage(
+            stage=loss_stage,
+            name='LOSS',
+            expression='58.00 < {price} < 58.95',
+            detail={
+                'price_a': 58.00,
+                'amount_a': -190.00,
+                'price_b': 58.95,
+                'amount_b': 0.0,
+                'left_status': 'recovering',
+                'left_expression': '{price_a} < {old_price} < {new_price} < {price_b}',
+                'right_status': 'losing',
+                'right_expression': '{price_a} < {new_price} < {old_price} < {price_b}',
+            }
         )
 
-    def test_max_loss_in_stage(self):
-        """
-        Test max loss in stage method
-        """
-        max_loss_stage = self.long_call.create_max_loss_stage()
-
-        print max_loss_stage
-        print '.' * 60
-        self.check_in_stage(stage_cls=max_loss_stage, price=55.3, expect=True)
-        self.check_in_stage(stage_cls=max_loss_stage, price=58.95, expect=False)
-
-    def test_max_loss_get_status(self):
-        """
-        Test even get status method
-        """
-        max_loss_stage = self.long_call.create_max_loss_stage()
-
-        print max_loss_stage
-        print '.' * 60
-        self.check_get_status(max_loss_stage, new_price=54, old_price=53, expect='easing')
-        self.check_get_status(max_loss_stage, new_price=52.5, old_price=53.5, expect='worst')
-        self.check_get_status(max_loss_stage, new_price=52.2, old_price=52.2, expect='unknown')
-
-    def test_profit_in_stage(self):
-        """
-        Test even in stage method
-        """
-        profit_stage = self.long_call.create_profit_stage()
-
-        print profit_stage
-        print '.' * 60
-        self.check_in_stage(stage_cls=profit_stage, price=62.54, expect=True)
-        self.check_in_stage(stage_cls=profit_stage, price=58.95, expect=False)
-
-    def test_profit_get_status(self):
-        """
-        Test even get status method
-        """
-        profit_stage = self.long_call.create_profit_stage()
-
-        print profit_stage
-        print '.' * 60
-        self.check_get_status(profit_stage, new_price=61.44, old_price=63.1, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=63.9, old_price=61, expect='profiting')
-        self.check_get_status(profit_stage, new_price=62.2, old_price=62.2, expect='unknown')
-
-    def test_loss_in_stage(self):
-        """
-        Test even in stage method
-        """
-        loss_stage = self.long_call.create_loss_stage()
-
-        print loss_stage
-        print '.' * 60
         self.check_in_stage(stage_cls=loss_stage, price=58.94, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=62.3, expect=False)
 
-    def test_loss_get_status(self):
-        """
-        Test even get status method
-        """
-        loss_stage = self.long_call.create_loss_stage()
-
-        print loss_stage
-        print '.' * 60
         self.check_get_status(loss_stage, new_price=58.5, old_price=58.4, expect='recovering')
         self.check_get_status(loss_stage, new_price=58.5, old_price=58.6, expect='losing')
         self.check_get_status(loss_stage, new_price=58.5, old_price=58.5, expect='unknown')

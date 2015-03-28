@@ -685,5 +685,3 @@ class TestStageShortPutBackratio3(TestUnitSetUpStage):
         for stage in stages:
             print stage
             self.assertEqual(type(stage), PositionStage)
-
-        # todo: wrong back ratio net price

@@ -126,7 +126,6 @@ class StageShortCallVertical(object):
 
         return profit_stage
 
-    # todo: until here
     def create_loss_stage(self):
         """
         Create loss stage using filled orders data

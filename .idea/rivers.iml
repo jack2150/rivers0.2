@@ -10,7 +10,11 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/static/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/static/highcharts-4.1.3" />
+      <excludeFolder url="file://$MODULE_DIR$/static/highstock-2.1.2" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

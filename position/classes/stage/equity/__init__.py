@@ -1,2 +1,2 @@
-from long_stock.long_stock import StageLongStock
-from short_stock.short_stock import StageShortStock
+from long_stock import StageLongStock
+from short_stock import StageShortStock
