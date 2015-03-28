@@ -22,9 +22,15 @@ class StageShortCallBackratio(object):
 
         self.contract_right = contract_right
 
+        # set net price
+        if self.buy_order.net_price:
+            self.net_price = self.buy_order.net_price
+        else:
+            self.net_price = self.sell_order.net_price
+
         # max loss amount
         self.max_profit_price = (
-            self.sell_order.strike - self.buy_order.strike - self.sell_order.net_price
+            self.sell_order.strike - self.buy_order.strike - self.net_price
         )
 
     def create_stages(self):
@@ -32,7 +38,7 @@ class StageShortCallBackratio(object):
         Create stage using filled_orders
         :return: list of PositionStage
         """
-        if self.sell_order.net_price > 0:
+        if self.net_price > 0:
             result = [
                 self.create_loss_stage1(),
                 self.create_even_stage1(),
@@ -43,7 +49,7 @@ class StageShortCallBackratio(object):
                 self.create_loss_stage2(),
                 self.create_max_loss_stage1(),
             ]
-        elif self.sell_order.net_price < 0:
+        elif self.net_price < 0:
             result = [
                 self.create_loss_stage1(),
                 self.create_even_stage1(),
@@ -89,7 +95,7 @@ class StageShortCallBackratio(object):
         even_stage = PositionStage()
 
         condition = '=='
-        if self.sell_order.net_price == 0.0:
+        if self.net_price == 0.0:
             condition = '<='
 
         even_stage.stage_name = 'EVEN'
@@ -178,13 +184,13 @@ class StageShortCallBackratio(object):
         """
         profit_stage = PositionStage()
 
-        if self.sell_order.net_price > 0:
+        if self.net_price > 0:
             loss_price = self.sell_order.strike - self.max_profit_price
             loss_amount = 0.0
         else:
             loss_price = self.buy_order.strike
             loss_amount = (
-                self.sell_order.net_price * self.buy_order.quantity * self.contract_right * -1
+                self.net_price * self.buy_order.quantity * self.contract_right * -1
             )
 
         profit_stage.stage_name = 'PROFIT'
@@ -222,7 +228,7 @@ class StageShortCallBackratio(object):
 
         profit_stage.price_a = self.buy_order.strike
         profit_stage.amount_a = (
-            self.sell_order.net_price * self.contract_right * -1
+            self.net_price * self.contract_right * -1
         )
         profit_stage.price_b = self.sell_order.strike - self.max_profit_price
         profit_stage.amount_b = 0.0
@@ -248,7 +254,7 @@ class StageShortCallBackratio(object):
 
         max_loss_stage.price_a = self.buy_order.strike
         max_loss_stage.amount_a = (
-            self.sell_order.net_price * self.contract_right * -1
+            self.net_price * self.contract_right * -1
         )
 
         max_loss_stage.left_status = 'easing'
@@ -272,7 +278,7 @@ class StageShortCallBackratio(object):
 
         profit_stage.price_a = self.buy_order.strike
         profit_stage.amount_a = (
-            self.sell_order.net_price * self.contract_right * -1
+            self.net_price * self.contract_right * -1
         )
 
         profit_stage.left_status = 'vanishing'

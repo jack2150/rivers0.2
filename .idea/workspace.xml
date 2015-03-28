@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="602f9b56-60be-46d9-ae24-0e1e170de7cf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/spread/spread.py" afterPath="$PROJECT_DIR$/position/classes/spread/spread.py" />
+    <list default="true" id="602f9b56-60be-46d9-ae24-0e1e170de7cf" name="Default" comment="all">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/long_put_backratio.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/short_put_backratio.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/stage/tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/__init__.py" afterPath="$PROJECT_DIR$/position/classes/stage/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/long_call_backratio.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/long_call_backratio.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/short_call_backratio.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/short_call_backratio.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -20,8 +26,89 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests Coverage Results" MODIFIED="1427327715344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_profit_stage1 Coverage Results" MODIFIED="1427543904036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_loss_in_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_loss_in_stage1 Coverage Results" MODIFIED="1427454228084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427466027932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests Coverage Results" MODIFIED="1427542260207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_stages Coverage Results" MODIFIED="1427541771862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_profit_stage1 Coverage Results" MODIFIED="1427466340061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_profit_stage1 Coverage Results" MODIFIED="1427467622432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_loss_stage2 Coverage Results" MODIFIED="1427457084618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_max_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_max_profit_stage1 Coverage Results" MODIFIED="1427539233463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1 Coverage Results" MODIFIED="1427544283642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_even_in_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_even_in_stage1 Coverage Results" MODIFIED="1427454085610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_profiting_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_profiting_stage2 Coverage Results" MODIFIED="1427538228811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_loss_stage1 Coverage Results" MODIFIED="1427466406203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1 Coverage Results" MODIFIED="1427539852530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_loss_stage1 Coverage Results" MODIFIED="1427543962005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_max_loss_in_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_max_loss_in_stage1 Coverage Results" MODIFIED="1427454112713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_loss_stage2 Coverage Results" MODIFIED="1427466448047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_max_profit_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_max_profit_stage Coverage Results" MODIFIED="1427544129451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_max_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_max_profit_stage2 Coverage Results" MODIFIED="1427538488193" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_stages Coverage Results" MODIFIED="1427454587329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_max_loss_stage Coverage Results" MODIFIED="1427543860040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_max_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_max_profit_stage1 Coverage Results" MODIFIED="1427540058957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_max_loss_in_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_max_loss_in_stage2 Coverage Results" MODIFIED="1427454369303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_even_stage1 Coverage Results" MODIFIED="1427465940030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1 Coverage Results" MODIFIED="1427467458092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests Coverage Results" MODIFIED="1427553650258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427456837926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_stages Coverage Results" MODIFIED="1427467049047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_even_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_even_stage2 Coverage Results" MODIFIED="1427540023458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_profit_stage1 Coverage Results" MODIFIED="1427456888067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_max_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_max_loss_stage2 Coverage Results" MODIFIED="1427457032028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio3_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_profit_stage1 Coverage Results" MODIFIED="1427553646459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_even_stage1 Coverage Results" MODIFIED="1427543558924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_max_loss_get_status2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_max_loss_get_status2 Coverage Results" MODIFIED="1427454363264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_stages Coverage Results" MODIFIED="1427467771752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_max_loss_stage Coverage Results" MODIFIED="1427539841661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_loss_get_status1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_loss_get_status1 Coverage Results" MODIFIED="1427454269019" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_loss_stage2 Coverage Results" MODIFIED="1427544014883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_setUp.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.setUp Coverage Results" MODIFIED="1427468681920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_profit_stage2 Coverage Results" MODIFIED="1427539389221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_max_loss_stage Coverage Results" MODIFIED="1427453407917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_profit_stage2 Coverage Results" MODIFIED="1427466718029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio1 Coverage Results" MODIFIED="1427553242551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__All.coverage" NAME="Test: All Coverage Results" MODIFIED="1427327658785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_even_stage1 Coverage Results" MODIFIED="1427469841077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_loss_stage1 Coverage Results" MODIFIED="1427457125756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_even_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_even_stage2 Coverage Results" MODIFIED="1427467451412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio3.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio3 Coverage Results" MODIFIED="1427552466999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_profit_stage1 Coverage Results" MODIFIED="1427539339742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests Coverage Results" MODIFIED="1427553683743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_stages Coverage Results" MODIFIED="1427539944952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_stages Coverage Results" MODIFIED="1427538520944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_profit_get_status1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_profit_get_status1 Coverage Results" MODIFIED="1427454324084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_loss_stage2 Coverage Results" MODIFIED="1427539663511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_loss_stage1 Coverage Results" MODIFIED="1427539480194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_loss_stage1 Coverage Results" MODIFIED="1427540203397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_even_stage1 Coverage Results" MODIFIED="1427467322329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_profit_in_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_profit_in_stage1 Coverage Results" MODIFIED="1427454298135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests Coverage Results" MODIFIED="1427553711039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427467527499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_even_stage1 Coverage Results" MODIFIED="1427540010931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_profitng_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_profitng_stage2 Coverage Results" MODIFIED="1427487139895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio2 Coverage Results" MODIFIED="1427553253413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_profit_stage1 Coverage Results" MODIFIED="1427539108917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongCallBackratio1_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongCallBackratio1.test_create_even_stage1 Coverage Results" MODIFIED="1427443659332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_loss_stage1 Coverage Results" MODIFIED="1427467693574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$short_put_backratio.coverage" NAME="short_put_backratio Coverage Results" MODIFIED="1427487135766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_loss_stage1 Coverage Results" MODIFIED="1427470021835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_profit_stage1 Coverage Results" MODIFIED="1427541718263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_even_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_even_stage2 Coverage Results" MODIFIED="1427465970038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_max_profit_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_max_profit_stage Coverage Results" MODIFIED="1427466995492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_max_loss_get_status1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_max_loss_get_status1 Coverage Results" MODIFIED="1427454115346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_profit_stage2 Coverage Results" MODIFIED="1427544066088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio2 Coverage Results" MODIFIED="1427552157762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_even_stage1 Coverage Results" MODIFIED="1427539115485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio3_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_stages Coverage Results" MODIFIED="1427553542572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_even_get_status1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_even_get_status1 Coverage Results" MODIFIED="1427454083409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$long_put_backratio.coverage" NAME="long_put_backratio Coverage Results" MODIFIED="1427467716792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_even_stage1 Coverage Results" MODIFIED="1427456782492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio2_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio2.test_create_even_stage1 Coverage Results" MODIFIED="1427551698402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio3_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_loss_stage1 Coverage Results" MODIFIED="1427553622632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio3_test_create_even_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio3.test_create_even_stage2 Coverage Results" MODIFIED="1427552463587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_even_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_even_stage2 Coverage Results" MODIFIED="1427543582844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -34,28 +121,7 @@
     <favorites_list name="rivers" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="spread.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/position/classes/spread/spread.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="14846">
-              <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tests.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41958043" vertical-offset="124" max-vertical-offset="29328">
-              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -69,8 +135,18 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/debug.log" />
-        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/tests.py" />
         <option value="$PROJECT_DIR$/position/classes/spread/spread.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/__init__.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/__init__.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/tests.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/tests.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/short_put_backratio.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/long_put_backratio.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/short_call_backratio.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/long_call_backratio.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/tests.py" />
+        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/tests.py" />
       </list>
     </option>
   </component>
@@ -87,8 +163,8 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="1" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
   </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
@@ -196,6 +272,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="stage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spread" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="position" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spread" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leg_two" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="position" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="spread" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -212,8 +344,40 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/workspace.xml" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Confirmation" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Jack/Projects/rivers/position/classes/stage/spread/leg_two/backratio/short_put_backratio/short_put_backratio.py" />
   </component>
-  <component name="RunManager" selected="Django tests.Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests">
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
+  </component>
+  <component name="RunManager" selected="Django tests.Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests">
+    <configuration default="false" name="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_loss_stage1" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_loss_stage1" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <configuration default="false" name="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -228,6 +392,72 @@
       <module name="rivers" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="TARGET" value="position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_profit_stage1" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_profit_stage1" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests" />
       <option name="SETTINGS_FILE" value="" />
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
@@ -460,14 +690,22 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Django server.rivers" />
       <item index="1" class="java.lang.String" itemvalue="Django tests.Test: All" />
-      <item index="2" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests" />
+      <item index="2" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_loss_stage1" />
+      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests" />
+      <item index="4" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_profit_stage1" />
+      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests" />
+      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests" />
+        <item index="1" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests" />
+        <item index="2" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests" />
+        <item index="3" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_profit_stage1" />
+        <item index="4" class="java.lang.String" itemvalue="Django tests.Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_loss_stage1" />
       </list>
     </recent_temporary>
   </component>
@@ -481,30 +719,36 @@
       <created>1427326319595</created>
       <updated>1427326319595</updated>
     </task>
+    <task id="LOCAL-00001" summary="all">
+      <created>1427386281799</created>
+      <updated>1427386281799</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292683" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2529412" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27860963" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42128602" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42128602" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -522,43 +766,318 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="all" />
+    <option name="LAST_COMMIT_MESSAGE" value="all" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/position/classes/spread/spread.py">
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="14846">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="18824">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/debug.log">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4602">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="7020" max-vertical-offset="25116">
+          <caret line="284" column="18" selection-start-line="284" selection-start-column="18" selection-end-line="284" selection-end-column="18" />
+          <folding>
+            <element signature="e#341#10480#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="338" max-vertical-offset="29432">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/long_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7306" max-vertical-offset="7488">
+          <caret line="281" column="31" selection-start-line="258" selection-start-column="0" selection-end-line="281" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="18356" max-vertical-offset="18824">
+          <caret line="706" column="89" selection-start-line="677" selection-start-column="0" selection-end-line="706" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/short_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="7644">
+          <caret line="53" column="32" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="16707" max-vertical-offset="17784">
+          <caret line="668" column="76" selection-start-line="668" selection-start-column="76" selection-end-line="668" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/long_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7488">
+          <caret line="172" column="0" selection-start-line="172" selection-start-column="0" selection-end-line="206" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5917" max-vertical-offset="18824">
+          <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/short_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3369" max-vertical-offset="4966">
+          <caret line="139" column="30" selection-start-line="139" selection-start-column="30" selection-end-line="139" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4186" max-vertical-offset="5200">
+          <caret line="161" column="43" selection-start-line="161" selection-start-column="43" selection-end-line="161" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/long_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4472" max-vertical-offset="7488">
+          <caret line="172" column="0" selection-start-line="172" selection-start-column="0" selection-end-line="206" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5917" max-vertical-offset="18824">
+          <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/short_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3632" max-vertical-offset="5018">
+          <caret line="163" column="41" selection-start-line="163" selection-start-column="41" selection-end-line="163" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4331" max-vertical-offset="5200">
+          <caret line="175" column="34" selection-start-line="175" selection-start-column="34" selection-end-line="175" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/long_call_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="754" max-vertical-offset="7488">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="64" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="29926">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/long_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5434" max-vertical-offset="5746">
+          <caret line="209" column="45" selection-start-line="209" selection-start-column="45" selection-end-line="209" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8335" max-vertical-offset="10244">
+          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/long_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1274">
+          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1055" max-vertical-offset="1924">
+          <caret line="53" column="52" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/long_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="546" max-vertical-offset="1924">
+          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/long_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="884">
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="1924">
+          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/position/classes/spread/spread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="14846">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/spread/spread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59838897" vertical-offset="260" max-vertical-offset="14846">
           <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/short_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2413793" vertical-offset="421" max-vertical-offset="7930">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="28" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/long_put_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.17951669" vertical-offset="780" max-vertical-offset="7644">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/short_call_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5684695" vertical-offset="234" max-vertical-offset="7644">
+          <caret line="28" column="54" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/long_call_backratio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2853855" vertical-offset="454" max-vertical-offset="7644">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2520138" vertical-offset="1185" max-vertical-offset="2054">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41958043" vertical-offset="124" max-vertical-offset="29328">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.35903338" vertical-offset="4160" max-vertical-offset="18798">
+          <caret line="172" column="30" selection-start-line="172" selection-start-column="30" selection-end-line="172" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.059838895" vertical-offset="0" max-vertical-offset="11804">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#341#10480#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10633947" vertical-offset="0" max-vertical-offset="18720">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.11967779" vertical-offset="260" max-vertical-offset="18044">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

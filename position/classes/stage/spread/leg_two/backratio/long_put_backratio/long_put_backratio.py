@@ -2,7 +2,7 @@ from django.db.models.query import QuerySet
 from position.models import PositionStage
 
 
-class StageLongCallBackratio(object):
+class StageLongPutBackratio(object):
     def __init__(self, filled_orders, contract_right=100):
         """
         :param filled_orders: QuerySet
@@ -30,7 +30,7 @@ class StageLongCallBackratio(object):
 
         # max loss amount
         self.max_loss_price = (
-            self.buy_order.strike - self.sell_order.strike + self.net_price
+            self.buy_order.strike - self.sell_order.strike - self.net_price
         )
 
     def create_stages(self):
@@ -40,32 +40,31 @@ class StageLongCallBackratio(object):
         """
         if self.net_price < 0:
             result = [
-                self.create_profit_stage1(),
-                self.create_even_stage1(),
-                self.create_loss_stage1(),
-                self.create_max_loss_stage1(),
-                self.create_loss_stage2(),
-                self.create_even_stage2(),
+                self.create_max_profit_stage(),
                 self.create_profit_stage2(),
-                self.create_max_profit_stage()
+                self.create_loss_stage2(),
+                self.create_max_loss_stage1(),
+                self.create_loss_stage1(),
+                self.create_even_stage1(),
+                self.create_profit_stage1()
             ]
         elif self.net_price > 0:
             result = [
-                self.create_profit_stage1(),
-                self.create_even_stage1(),
-                self.create_loss_stage1(),
-                self.create_max_loss_stage1(),
-                self.create_loss_stage2(),
                 self.create_max_loss_stage2(),
+                self.create_loss_stage2(),
+                self.create_max_loss_stage1(),
+                self.create_loss_stage1(),
+                self.create_even_stage1(),
+                self.create_profit_stage1()
             ]
         else:
             result = [
-                self.create_profit_stage1(),
-                self.create_even_stage1(),
-                self.create_loss_stage1(),
-                self.create_max_loss_stage1(),
+                self.create_even_stage2(),
                 self.create_loss_stage2(),
-                self.create_even_stage2()
+                self.create_max_loss_stage1(),
+                self.create_loss_stage1(),
+                self.create_even_stage1(),
+                self.create_profit_stage1()
             ]
 
         return result
@@ -123,10 +122,32 @@ class StageLongCallBackratio(object):
 
         max_loss_stage.price_a = self.buy_order.strike
         max_loss_stage.amount_a = (
-            self.max_loss_price * self.sell_order.quantity * self.contract_right
+            self.max_loss_price * self.sell_order.quantity * self.contract_right * -1
         )
 
         return max_loss_stage
+
+    def create_profit_stage1(self):
+        """
+        Create profit stage using filled orders data
+        :return: PositionStage
+        """
+        profit_stage = PositionStage()
+
+        profit_stage.stage_name = 'PROFIT'
+        profit_stage.stage_expression = '{price} < %.2f' % (
+            float(self.buy_order.strike + self.max_loss_price),
+        )
+
+        profit_stage.price_a = self.buy_order.strike + self.max_loss_price
+        profit_stage.amount_a = 0.0
+
+        profit_stage.left_status = 'decreasing'
+        profit_stage.left_expression = '{old_price} < {new_price} < {price_a}'
+        profit_stage.right_status = 'profiting'
+        profit_stage.right_expression = '{new_price} < {old_price} < {price_a}'
+
+        return profit_stage
 
     def create_loss_stage1(self):
         """
@@ -137,45 +158,23 @@ class StageLongCallBackratio(object):
 
         loss_stage.stage_name = 'LOSS'
         loss_stage.stage_expression = '%.2f < {price} < %.2f' % (
+            float(self.buy_order.strike + self.max_loss_price),
             float(self.buy_order.strike),
-            float(self.buy_order.strike + self.max_loss_price)
         )
 
-        loss_stage.price_a = self.buy_order.strike
-        loss_stage.amount_a = (
-            self.max_loss_price * self.sell_order.quantity * self.contract_right
+        loss_stage.price_a = self.buy_order.strike + self.max_loss_price
+        loss_stage.amount_a = 0.0
+        loss_stage.price_b = self.buy_order.strike
+        loss_stage.amount_b = (
+            self.max_loss_price * self.sell_order.quantity * self.contract_right * -1
         )
-        loss_stage.price_b = self.buy_order.strike + self.max_loss_price
-        loss_stage.amount_b = 0.0
 
         loss_stage.left_status = 'recovering'
-        loss_stage.left_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
+        loss_stage.left_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
         loss_stage.right_status = 'losing'
-        loss_stage.right_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
+        loss_stage.right_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
 
         return loss_stage
-
-    def create_profit_stage1(self):
-        """
-        Create profit stage using filled orders data
-        :return: PositionStage
-        """
-        profit_stage = PositionStage()
-
-        profit_stage.stage_name = 'PROFIT'
-        profit_stage.stage_expression = '%.2f < {price}' % (
-            float(self.buy_order.strike + self.max_loss_price),
-        )
-
-        profit_stage.price_a = self.buy_order.strike + self.max_loss_price
-        profit_stage.amount_a = 0.0
-
-        profit_stage.left_status = 'decreasing'
-        profit_stage.left_expression = '{price_a} < {new_price} < {old_price}'
-        profit_stage.right_status = 'profiting'
-        profit_stage.right_expression = '{price_a} < {old_price} < {new_price}'
-
-        return profit_stage
 
     def create_loss_stage2(self):
         """
@@ -195,23 +194,47 @@ class StageLongCallBackratio(object):
 
         loss_stage.stage_name = 'LOSS'
         loss_stage.stage_expression = '%.2f < {price} < %.2f' % (
-            float(loss_price),
             float(self.buy_order.strike),
+            float(loss_price),
         )
 
-        loss_stage.price_a = loss_price
-        loss_stage.amount_a = loss_amount
-        loss_stage.price_b = self.buy_order.strike
-        loss_stage.amount_b = (
-            self.max_loss_price * self.sell_order.quantity * self.contract_right
+        loss_stage.price_a = self.buy_order.strike
+        loss_stage.amount_a = (
+            self.max_loss_price * self.sell_order.quantity * self.contract_right * -1
         )
+        loss_stage.price_b = loss_price
+        loss_stage.amount_b = loss_amount
 
         loss_stage.left_status = 'recovering'
-        loss_stage.left_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
+        loss_stage.left_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
         loss_stage.right_status = 'losing'
-        loss_stage.right_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
+        loss_stage.right_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
 
         return loss_stage
+
+    def create_max_loss_stage2(self):
+        """
+        Create max loss stage using filled orders data
+        :return: PositionStage
+        """
+        max_loss_stage = PositionStage()
+
+        max_loss_stage.stage_name = 'MAX_LOSS'
+        max_loss_stage.stage_expression = '%.2f <= {price}' % (
+            float(self.sell_order.strike)
+        )
+
+        max_loss_stage.price_a = self.sell_order.strike
+        max_loss_stage.amount_a = (
+            self.net_price * self.contract_right * -1
+        )
+
+        max_loss_stage.left_status = 'easing'
+        max_loss_stage.left_expression = '{price_a} <= {new_price} < {old_price}'
+        max_loss_stage.right_status = 'worst'
+        max_loss_stage.right_expression = '{price_a} <= {old_price} < {new_price}'
+
+        return max_loss_stage
 
     def create_profit_stage2(self):
         """
@@ -222,21 +245,21 @@ class StageLongCallBackratio(object):
 
         profit_stage.stage_name = 'PROFIT'
         profit_stage.stage_expression = '%.2f < {price} < %.2f' % (
+            float(self.buy_order.strike - self.max_loss_price),
             float(self.sell_order.strike),
-            float(self.buy_order.strike - self.max_loss_price)
         )
 
-        profit_stage.price_a = self.sell_order.strike
-        profit_stage.amount_a = (
+        profit_stage.price_a = self.buy_order.strike - self.max_loss_price
+        profit_stage.amount_a = 0.0
+        profit_stage.price_b = self.sell_order.strike
+        profit_stage.amount_b = (
             self.net_price * self.contract_right * -1
         )
-        profit_stage.price_b = self.buy_order.strike - self.max_loss_price
-        profit_stage.amount_b = 0.0
 
         profit_stage.left_status = 'decreasing'
-        profit_stage.left_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
+        profit_stage.left_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
         profit_stage.right_status = 'profiting'
-        profit_stage.right_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
+        profit_stage.right_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
 
         return profit_stage
 
@@ -248,7 +271,7 @@ class StageLongCallBackratio(object):
         max_profit_stage = PositionStage()
 
         max_profit_stage.stage_name = 'MAX_PROFIT'
-        max_profit_stage.stage_expression = '{price} <= %.2f' % (
+        max_profit_stage.stage_expression = '%.2f <= {price}' % (
             float(self.sell_order.strike)
         )
 
@@ -258,32 +281,8 @@ class StageLongCallBackratio(object):
         )
 
         max_profit_stage.left_status = 'vanishing'
-        max_profit_stage.left_expression = '{old_price} < {new_price} < {price_a}'
+        max_profit_stage.left_expression = '{price_a} < {new_price} < {old_price}'
         max_profit_stage.right_status = 'guaranteeing'
-        max_profit_stage.right_expression = '{new_price} < {old_price} < {price_a}'
+        max_profit_stage.right_expression = '{price_a} < {old_price} < {new_price}'
 
         return max_profit_stage
-
-    def create_max_loss_stage2(self):
-        """
-        Create max loss stage using filled orders data
-        :return: PositionStage
-        """
-        max_loss_stage = PositionStage()
-
-        max_loss_stage.stage_name = 'MAX_LOSS'
-        max_loss_stage.stage_expression = '{price} <= %.2f' % (
-            float(self.sell_order.strike)
-        )
-
-        max_loss_stage.price_a = self.sell_order.strike
-        max_loss_stage.amount_a = (
-            self.net_price * self.contract_right * -1
-        )
-
-        max_loss_stage.left_status = 'easing'
-        max_loss_stage.left_expression = '{old_price} < {new_price} <= {price_a}'
-        max_loss_stage.right_status = 'worst'
-        max_loss_stage.right_expression = '{new_price} < {old_price} <= {price_a}'
-
-        return max_loss_stage
