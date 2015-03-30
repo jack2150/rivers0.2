@@ -1,8 +1,14 @@
 from importlib import import_module
 from django.db.models import Q
-from position.classes.spread.spread import Spread
+from position.classes.spread import Spread
 from tos_import.statement.statement_account.models import ProfitLoss
 from tos_import.statement.statement_position.models import PositionInstrument, PositionFuture, PositionForex
+
+# import the logging library
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 
 class PositionSetManager(object):
@@ -59,12 +65,13 @@ class PositionSetManager(object):
         self.position_set.forex = forex
 
         # position stages
-        stage_module = import_module(
-            '%s.%s' % (self.stage_path, spread.get_name(module=True, lower=True))
-        )
-        class_name = 'Stage%s' % spread.get_spread_module()
-        class_obj = getattr(stage_module, class_name)
-        self.stages = class_obj(filled_orders=filled_orders).create_stages()
+        if spread.get_spread() != 'CUSTOM':
+            stage_module = import_module(
+                '%s.%s' % (self.stage_path, spread.get_name(module=True, lower=True))
+            )
+            class_name = 'Stage%s' % spread.get_spread_module()
+            class_obj = getattr(stage_module, class_name)
+            self.stages = class_obj(filled_orders=filled_orders).create_stages()
 
     def get_filled_orders(self):
         """
