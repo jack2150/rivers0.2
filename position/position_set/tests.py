@@ -34,7 +34,7 @@ class TestPositionSetCls(TestUnitSetUp):
             self.position_set = PositionSet()
             self.manager = PositionSetManager(self.position_set)
         else:
-            self.skipTest("Please use 'Unittest' for testing  existing db testing.\n")
+            self.skipTest("Use 'Unittest' for testing  existing db testing (Empty PositionSet).\n")
             raise ObjectDoesNotExist()
 
     def setUp(self):
@@ -111,12 +111,6 @@ class TestPositionSetManager(TestPositionSetCls):
         self.assertEqual(self.manager.position_set.status, 'OPEN')
         self.assertEqual(type(self.manager.position_set.status), str)
 
-        self.assertFalse(self.position_set.breakeven_set.exists())
-        self.assertFalse(self.position_set.startprofit_set.exists())
-        self.assertFalse(self.position_set.startloss_set.exists())
-        self.assertFalse(self.position_set.maxprofit_set.exists())
-        self.assertFalse(self.position_set.maxloss_set.exists())
-
     def test_set_then_save(self):
         """
         Test after set filled_orders, save position_set
@@ -135,18 +129,7 @@ class TestPositionSetManager(TestPositionSetCls):
         print 'position_set name: %s' % self.position_set.name
         print 'position_set spread: %s' % self.position_set.spread
 
-        print 'position_set breakeven_set: %s' % self.position_set.breakeven_set.all()
-        print 'position_set startprofit_set: %s' % self.position_set.startprofit_set.all()
-        print 'position_set startloss_set: %s' % self.position_set.startloss_set.all()
-        print 'position_set maxprofit_set: %s' % self.position_set.maxprofit_set.all()
-        print 'position_set maxloss_set: %s' % self.position_set.maxloss_set.all()
-
         self.assertTrue(self.position_set.id)
-        self.assertTrue(self.position_set.breakeven_set.exists())
-        self.assertTrue(self.position_set.startprofit_set.exists())
-        self.assertTrue(self.position_set.startloss_set.exists())
-        self.assertTrue(self.position_set.maxprofit_set.exists())
-        self.assertTrue(self.position_set.maxloss_set.exists())
 
     def test_update_fk_filled_orders(self):
         """

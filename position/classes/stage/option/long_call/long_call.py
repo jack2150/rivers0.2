@@ -1,6 +1,5 @@
 from django.db.models.query import QuerySet
 from position.classes.stage.stage import Stage
-from position.models import PositionStage
 
 
 class StageLongCall(Stage):

@@ -285,10 +285,6 @@ class TestStageLongCallBackratio1(TestUnitSetUpStage):
 
 
 class TestStageLongCallBackratio2(TestUnitSetUpStage):
-    """
-    ,,3/23/15 03:57:38,BACKRATIO,SELL,-1,TO OPEN,SYMBOL,JUN 15,43,CALL,-.58,LMT,DAY,-.58,WORKING
-    ,,,,BUY,+2,TO OPEN,MSFT,JUN 15,46,CALL,,,,,
-    """
     def setUp(self):
         TestUnitSetUpStage.setUp(self)
 

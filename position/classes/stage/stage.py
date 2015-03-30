@@ -31,6 +31,10 @@ class Stage(object):
     price_range_higher = '{price_a} < {old_price} < {new_price} < {price_b}'
     price_range_lower = '{price_a} < {new_price} < {old_price} < {price_b}'
 
+    e_price_range = '{price_a} <= {current_price} <= {price_b}'
+    e_price_range_higher = '{price_a} <= {old_price} < {new_price} <= {price_b}'
+    e_price_range_lower = '{price_a} <= {new_price} < {old_price} <= {price_b}'
+
     @staticmethod
     def EvenStage():
         """
