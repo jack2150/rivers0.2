@@ -1018,7 +1018,7 @@ class TestSpread(TestUnitSetUpPrepare):
         self.method_test_get_probability(spread='FUTURE', expect=expect)
         self.method_test_get_probability(spread='FOREX', expect=expect)
 
-    # todo: the hard part, unable to do it... skip build spread view
+    # todo: the hard part, unable to do it... skip build spread view...
 
 
 class TestGetSpread(TestUnitSetUpPrepare):
