@@ -1,7 +1,6 @@
 # noinspection PyUnresolvedReferences
 import position.classes.ready_django
 from django.db.models import Q
-from pprint import pprint
 from position.models import *
 from tos_import.classes.tests import TestSetUpDB, TestReadyFile
 from tos_import.files.real_files import real_path
@@ -22,102 +21,12 @@ class TestContext(TestSetUpDB):
 
         self.cls = None
 
-    def test_save(self):
-        if self.cls:
-            for key in range(5):
-                if self.cls in [MaxProfit, MaxLoss]:
-                    items = dict(
-                        price=self.prices[key],
-                        condition=self.conditions[key],
-                        limit=self.limits[key],
-                        amount=self.amounts[key]
-                    )
-                else:
-                    items = dict(
-                        price=self.prices[key],
-                        condition=self.conditions[key]
-                    )
-
-                test_cls = self.cls(**items)
-                test_cls.save()
-                print '%s saved...' % self.cls.__name__
-
-                self.assertTrue(test_cls.id)
-                self.assertEqual(test_cls.price, self.prices[key])
-                self.assertEqual(test_cls.condition, self.conditions[key])
-
-                print test_cls.__unicode__() + '\n'
-
-
-class TestBreakEven(TestContext):
-    def setUp(self):
-        TestContext.setUp(self)
-
-        self.cls = BreakEven
-
-
-class TestStartProfit(TestContext):
-    def setUp(self):
-        TestContext.setUp(self)
-
-        self.cls = StartProfit
-
-
-class TestStartLoss(TestContext):
-    def setUp(self):
-        TestContext.setUp(self)
-
-        self.cls = StartLoss
-
-
-class TestMaxProfit(TestContext):
-    def setUp(self):
-        TestContext.setUp(self)
-
-        self.cls = MaxProfit
-
-
-class TestMaxLoss(TestContext):
-    def setUp(self):
-        TestContext.setUp(self)
-
-        self.cls = MaxLoss
-
 
 class TestPositionSet(TestContext, TestReadyFile):
     def setUp(self):
         TestContext.setUp(self)
 
         self.items = list()
-
-        self.break_even = BreakEven(
-            price=self.prices[0],
-            condition=self.conditions[0]
-        )
-
-        self.start_profit = StartProfit(
-            price=self.prices[0],
-            condition=self.conditions[0]
-        )
-
-        self.start_loss = StartLoss(
-            price=self.prices[0],
-            condition=self.conditions[0]
-        )
-
-        self.max_profit = MaxProfit(
-            price=self.prices[0],
-            condition=self.conditions[0],
-            limit=self.limits[0],
-            amount=self.amounts[0]
-        )
-
-        self.max_loss = MaxLoss(
-            price=self.prices[0],
-            condition=self.conditions[0],
-            limit=self.limits[0],
-            amount=self.amounts[0]
-        )
 
         self.names = ['EQUITY', 'OPTION', 'SPREAD', 'FUTURE', 'FOREX']
         self.spreads = ['LONG STOCK', 'LONG PUT', 'BULL CALL VERTICAL', 'NGQ3', 'USD/CAD']
@@ -178,35 +87,8 @@ class TestPositionSet(TestContext, TestReadyFile):
         )
         position_set.save()
 
-        # don't save context, save position_set before add
-        position_set.breakeven_set.add(self.break_even)
-        position_set.startprofit_set.add(self.start_profit)
-        position_set.startloss_set.add(self.start_loss)
-        position_set.maxprofit_set.add(self.max_profit)
-        position_set.maxloss_set.add(self.max_loss)
-
         self.assertTrue(position_set.id)
         self.assertEqual(PositionSet.objects.count(), 1)
-
-        print BreakEven.objects.all()
-        self.assertTrue(BreakEven.objects.count())
-        self.assertTrue(BreakEven.objects.filter(position_set=position_set).exists())
-
-        print StartProfit.objects.all()
-        self.assertTrue(StartProfit.objects.count())
-        self.assertTrue(StartProfit.objects.filter(position_set=position_set).exists())
-
-        print StartLoss.objects.all()
-        self.assertTrue(StartLoss.objects.count())
-        self.assertTrue(StartLoss.objects.filter(position_set=position_set).exists())
-
-        print MaxProfit.objects.all()
-        self.assertTrue(MaxProfit.objects.count())
-        self.assertTrue(MaxProfit.objects.filter(position_set=position_set).exists())
-
-        print MaxLoss.objects.all()
-        self.assertTrue(MaxLoss.objects.count())
-        self.assertTrue(MaxLoss.objects.filter(position_set=position_set).exists())
 
         print 'run save...\n'
         print position_set
@@ -297,7 +179,7 @@ class TestPositionStage(TestSetUpDB):
 
         current_price = 130.0
         print 'using current_price: %.2f' % current_price
-        result = self.stage.in_stage(price=current_price)
+        result = self.stage.in_stage(current_price=current_price)
         print 'eval result: %s' % result
         self.assertTrue(result)
 
@@ -305,7 +187,7 @@ class TestPositionStage(TestSetUpDB):
 
         current_price = 125.0
         print 'using current_price: %.2f' % current_price
-        result = self.stage.in_stage(price=current_price)
+        result = self.stage.in_stage(current_price=current_price)
         print 'eval result: %s' % result
         self.assertFalse(result)
 

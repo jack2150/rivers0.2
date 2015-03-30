@@ -5,7 +5,7 @@ from django.db.models import Q
 from position.classes.tests import TestUnitSetUp
 from position.position_set.manager import PositionSetManager
 from position.position_set.controller import PositionSetController
-from position.models import PositionSet, StartProfit
+from position.models import PositionSet
 from tos_import.models import Underlying
 from tos_import.statement.statement_trade.models import FilledOrder
 
@@ -74,25 +74,6 @@ class TestPositionSetManager(TestPositionSetCls):
         TestPositionSetCls.setUp(self)
 
         self.ready_position_set(symbol='AAPL', investment='underlying')
-
-    def test_context_item_adds(self):
-        """
-        Test add foreign key items
-        """
-        start_profit = StartProfit(price=1.11, condition='>')
-        self.manager.contexts = dict(start_profits=[start_profit])
-        print 'start_profit: %s' % start_profit
-        self.assertFalse(start_profit.id)
-
-        self.manager.context_item_adds(
-            name='start_profits', fk_set='startprofit_set'
-        )
-
-        print 'start_profit id: %d' % start_profit.id
-        print 'position_set id %s' % self.manager.position_set.id
-        self.assertTrue(start_profit.id)
-        self.assertEqual(start_profit.position_set, self.manager.position_set)
-        self.assertFalse(self.manager.position_set.id)
 
     def test_get_filled_orders(self):
         """

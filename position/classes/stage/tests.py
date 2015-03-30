@@ -1,4 +1,4 @@
-from position.classes.context.tests import TestUnitSetUpDB
+from position.classes.tests import TestUnitSetUpDB
 from position.models import PositionStage
 
 
@@ -51,7 +51,7 @@ class TestUnitSetUpStage(TestUnitSetUpDB):
         print '.' * 60
         print 'check in_stage...'
         print 'using current_price: %.2f' % price
-        result = stage_cls.in_stage(price=price)
+        result = stage_cls.in_stage(current_price=price)
         print 'eval result: %s' % result
         self.assertEqual(result, expect)
         print '.' * 60

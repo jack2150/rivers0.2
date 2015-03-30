@@ -137,6 +137,60 @@ class Spread(object):
 
         return name
 
+    def get_account(self):
+        """
+        Get spread is credit or debit
+        :return: str
+        """
+        net_price = 0.0
+        for filled_order in self.filled_orders:
+            if filled_order.net_price:
+                net_price = filled_order.net_price
+
+        if net_price > 0:
+            account = 'DEBIT'
+        elif net_price < 0:
+            account = 'CREDIT'
+        else:
+            account = 'BALANCE'
+
+        return account
+
+    def get_probability(self):
+        """
+        Get spread probability of (profit, even, loss)
+        :return: dict of str
+        """
+        spread = ''
+        for filled_order in self.filled_orders:
+            if spread == '':
+                spread = filled_order.spread
+            else:
+                if spread != filled_order.spread:
+                    raise ValueError(
+                        'Different name on filled_orders %s != %s' % (
+                            spread, filled_order.spread
+                        )
+                    )
+
+        probability = dict(
+            profit=0.5,
+            even=0,
+            loss=0.5,
+            name='EVEN'
+        )
+
+        if spread == 'COVERED':
+            name = 'HEDGE'
+        elif spread == 'SINGLE':
+            name = 'OPTION'
+        else:
+            name = 'SPREAD'
+
+        return probability
+
+    # todo: get iv, then calculate probability...
+
     def get_equity_spread(self):
         """
         Check equity spread using only quantity
@@ -150,6 +204,7 @@ class Spread(object):
             spread = 'SHORT_STOCK'
         else:
             spread = 'CUSTOM'
+
         return spread
 
     def get_hedge_spread(self):
@@ -207,6 +262,7 @@ class Spread(object):
             spread = hedges[stock['name']][option['name']]
         else:
             spread = 'CUSTOM'
+
         return spread
 
     def get_option_spread(self):
@@ -222,6 +278,7 @@ class Spread(object):
             spread = 'NAKED_%s' % filled_order.contract.upper()
         else:
             spread = 'CUSTOM'
+
         return spread
 
     def get_future_spread(self):

@@ -1,17 +1,13 @@
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from position.models import *
+from tos_import.statement.statement_account.admin import ProfitLossInline
+from tos_import.statement.statement_position.admin import \
+    PositionInstrumentInline, PositionForexInline, PositionFutureInline
+from tos_import.statement.statement_trade.admin import FilledOrderInline
 
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember
-from tos_import.statement.statement_account.admin import AccountSummaryInline, ProfitLossInline
-from tos_import.statement.statement_account.models import ProfitLoss
-from tos_import.statement.statement_position.admin import PositionInstrumentInline, PositionForexInline, \
-    PositionFutureInline
-from tos_import.statement.statement_trade.admin import TradeActivityInline, FilledOrderInline
-from tos_import.statement.statement_trade.models import FilledOrder
-
-
 class SubPositionAdmin(admin.ModelAdmin):
     def symbol(self, obj):
         if obj.underlying:
@@ -70,82 +66,43 @@ class SubContextAdmin(SubPositionAdmin):
     readonly_fields = ('position_set', )
 
 
-class BreakEvenAdmin(SubContextAdmin):
-    list_display = ('position_set', 'context', 'price', 'condition', 'amount')
+# noinspection PyMethodMayBeStatic
+class PositionStageAdmin(SubContextAdmin):
+    def position(self, obj):
+        return str(obj.position_set).split(':')[1]
+
+    position.admin_order_field = 'id'
+
+    list_display = (
+        'position',
+        'stage_name', 'stage_expression',
+        'price_a', 'amount_a',
+        'price_b', 'amount_b',
+        # 'left_status', 'left_expression',
+        #'right_status', 'right_expression',
+    )
 
     fieldsets = (
         ('Foreign Key', {
             'fields': ('position_set', )
         }),
         ('Primary Field', {
-            'fields': ('price', 'condition', 'amount')
+            'fields': (
+                'stage_name', 'stage_expression',
+                'price_a', 'amount_a',
+                'price_b', 'amount_b',
+                'left_status', 'left_expression',
+                'right_status', 'right_expression',
+            )
         }),
     )
 
-    search_fields = SubContextAdmin.search_fields + ('price', 'condition', 'amount')
-
-    list_per_page = 30
-
-
-class StartProfitAdmin(SubContextAdmin):
-    list_display = ('position_set', 'context', 'price', 'condition')
-
-    fieldsets = (
-        ('Foreign Key', {
-            'fields': ('position_set', )
-        }),
-        ('Primary Field', {
-            'fields': ('price', 'condition')
-        }),
+    list_filter = SubContextAdmin.list_filter + (
+        'stage_name',
     )
 
-    search_fields = SubContextAdmin.search_fields + ('price', 'condition')
-
-    list_per_page = 30
-
-
-class StartLossAdmin(SubContextAdmin):
-    list_display = ('position_set', 'context', 'price', 'condition')
-
-    fieldsets = (
-        ('Foreign Key', {
-            'fields': ('position_set', )
-        }),
-        ('Primary Field', {
-            'fields': ('price', 'condition')
-        }),
-    )
-
-    search_fields = SubContextAdmin.search_fields + ('price', 'condition')
-
-    list_per_page = 30
-
-
-class MaxProfitAdmin(SubContextAdmin):
-    list_display = ('position_set', 'context', 'price', 'condition', 'limit', 'amount')
-
-    fieldsets = (
-        ('Foreign Key', {
-            'fields': ('position_set', )
-        }),
-        ('Primary Field', {
-            'fields': ('price', 'condition', 'limit', 'amount')
-        }),
-    )
-
-    list_per_page = 30
-
-
-class MaxLossAdmin(SubContextAdmin):
-    list_display = ('position_set', 'context', 'price', 'condition', 'limit', 'amount')
-
-    fieldsets = (
-        ('Foreign Key', {
-            'fields': ('position_set', )
-        }),
-        ('Primary Field', {
-            'fields': ('price', 'condition', 'limit', 'amount')
-        }),
+    search_fields = SubContextAdmin.search_fields + (
+        'stage_name',
     )
 
     list_per_page = 30
@@ -158,48 +115,27 @@ class PositionSetInline(admin.TabularInline):
     extra = 0
 
 
-class BreakEvenInline(PositionSetInline):
-    model = BreakEven
-    readonly_fields = (
-        'price', 'condition', 'amount'
+class PositionStageInline(PositionSetInline):
+    model = PositionStage
+    fields = (
+        'stage_name', 'stage_expression',
+        'price_a', 'amount_a',
+        'price_b', 'amount_b',
     )
 
-
-class StartProfitInline(PositionSetInline):
-    model = StartProfit
     readonly_fields = (
-        'price', 'condition'
-    )
-
-
-class StartLossInline(PositionSetInline):
-    model = StartLoss
-    readonly_fields = (
-        'price', 'condition'
-    )
-
-
-class MaxProfitInline(PositionSetInline):
-    model = MaxProfit
-    readonly_fields = (
-        'price', 'condition', 'limit', 'amount'
-    )
-
-
-class MaxLossInline(PositionSetInline):
-    model = MaxLoss
-    readonly_fields = (
-        'price', 'condition', 'limit', 'amount'
+        'stage_name', 'stage_expression',
+        'price_a', 'amount_a',
+        'price_b', 'amount_b',
     )
 
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember
 class PositionSetAdmin(SubPositionAdmin):
     inlines = (
+        PositionStageInline,
         ProfitLossInline, FilledOrderInline,
         PositionInstrumentInline, PositionFutureInline, PositionForexInline,
-        BreakEvenInline, StartProfitInline, StartLossInline,
-        MaxProfitInline, MaxLossInline,
     )
 
     def position(self, obj):
@@ -239,9 +175,5 @@ class PositionSetAdmin(SubPositionAdmin):
     list_per_page = 30
 
 
-admin.site.register(BreakEven, BreakEvenAdmin)
-admin.site.register(StartProfit, StartProfitAdmin)
-admin.site.register(StartLoss, StartLossAdmin)
-admin.site.register(MaxProfit, MaxProfitAdmin)
-admin.site.register(MaxLoss, MaxLossAdmin)
 admin.site.register(PositionSet, PositionSetAdmin)
+admin.site.register(PositionStage, PositionStageAdmin)

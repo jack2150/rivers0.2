@@ -49,11 +49,8 @@ class PositionSet(models.Model):
 
         # run save then add foreign key items
         if self.manager.filled_orders and self.status == 'OPEN':
-            self.manager.context_item_adds('break_evens', 'breakeven_set')
-            self.manager.context_item_adds('start_losses', 'startloss_set')
-            self.manager.context_item_adds('start_profits', 'startprofit_set')
-            self.manager.context_item_adds('max_profits', 'maxprofit_set')
-            self.manager.context_item_adds('max_losses', 'maxloss_set')
+            for stage in self.manager.stages:
+                getattr(self, 'positionstage_set').add(stage)
 
     def get_symbol(self):
         """
@@ -86,116 +83,6 @@ class PositionSet(models.Model):
         )
 
 
-class BreakEven(models.Model):
-    """
-    A break even for a position only have price and condition
-    """
-    price = models.DecimalField(verbose_name='Price', **decimal_field)
-    condition = models.CharField(max_length=2, verbose_name='Condition')  # <, <=, >, >=, ==
-    amount = models.DecimalField(null=True, blank=True, verbose_name='Amount', **decimal_field)
-
-    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
-
-    def __unicode__(self):
-        """
-        Explain this model
-        :rtype : str
-        """
-        return 'BreakEven: P {condition} {price}, amount={amount}'.format(
-            condition=self.condition,
-            price=locale.currency(self.price, grouping=True),
-            amount=locale.currency(self.amount, grouping=True)
-        )
-
-
-class StartProfit(models.Model):
-    """
-    A position will be start profit after it reach it price and condition
-    """
-    price = models.DecimalField(verbose_name='Price', **decimal_field)
-    condition = models.CharField(max_length=2, verbose_name='Condition')  # <, <=, >, >=, ==
-
-    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
-
-    def __unicode__(self):
-        """
-        Explain this model
-        :rtype : str
-        """
-        return 'StartProfit: P {condition} {price}'.format(
-            condition=self.condition,
-            price=locale.currency(self.price, grouping=True)
-        )
-
-
-class StartLoss(models.Model):
-    """
-    A position will be start loss after it reach it certain price and condition
-    """
-    price = models.DecimalField(verbose_name='Price', **decimal_field)
-    condition = models.CharField(max_length=2, verbose_name='Condition')  # <, <=, >, >=, ==
-
-    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
-
-    def __unicode__(self):
-        """
-        Explain this model
-        :rtype : str
-        """
-        return 'StartLoss: P {condition} {price}'.format(
-            condition=self.condition,
-            price=locale.currency(self.price, grouping=True)
-        )
-
-
-class MaxProfit(models.Model):
-    """
-    A position reach max profit when it reach certain price and condition
-    """
-    price = models.DecimalField(verbose_name='Price', **decimal_field)
-    condition = models.CharField(max_length=2, verbose_name='Condition')  # <, <=, >, >=, ==
-    limit = models.BooleanField(verbose_name='Limit')  # true or false
-    amount = models.DecimalField(verbose_name='Amount', **decimal_field)
-
-    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
-
-    def __unicode__(self):
-        """
-        Explain this model
-        :rtype : str
-        """
-        return 'MaxProfit: P {condition} {price}, limit={limit}, amount={amount}'.format(
-            condition=self.condition,
-            price=locale.currency(self.price, grouping=True),
-            limit=self.limit,
-            amount=locale.currency(self.amount, grouping=True)
-        )
-
-
-class MaxLoss(models.Model):
-    """
-    A position reach max profit when it reach certain price and condition
-    """
-    price = models.DecimalField(verbose_name='Price', **decimal_field)
-    condition = models.CharField(max_length=2, verbose_name='Condition')  # <, <=, >, >=, ==
-    limit = models.BooleanField(verbose_name='Limit')  # true or false
-    amount = models.DecimalField(verbose_name='Amount', **decimal_field)
-
-    position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
-
-    def __unicode__(self):
-        """
-        Explain this model
-        :rtype : str
-        """
-        return 'MaxLoss: P {condition} {price}, limit={limit}, amount={amount}'.format(
-            condition=self.condition,
-            price=locale.currency(self.price, grouping=True),
-            limit=self.limit,
-            amount=locale.currency(self.amount, grouping=True)
-        )
-
-
 class PositionStage(models.Model):
     """
     A stage is a condition that use for compare old and new price
@@ -208,29 +95,33 @@ class PositionStage(models.Model):
     max_loss: easing, worst
     -----------------------------------
     """
-    stage_name = models.CharField(max_length=20)
-    stage_expression = models.CharField(max_length=100)
+    stage_name = models.CharField(max_length=20, verbose_name='Name')
+    stage_expression = models.CharField(max_length=100, verbose_name='Expression')
 
-    price_a = models.DecimalField(**decimal_field)
-    amount_a = models.DecimalField(**decimal_field)
-    price_b = models.DecimalField(null=True, blank=True, **decimal_field)
-    amount_b = models.DecimalField(null=True, blank=True, **decimal_field)
+    price_a = models.DecimalField(verbose_name='Price_A', **decimal_field)
+    amount_a = models.DecimalField(verbose_name='Amount_B', **decimal_field)
+    price_b = models.DecimalField(null=True, blank=True, verbose_name='Price_B', **decimal_field)
+    amount_b = models.DecimalField(null=True, blank=True, verbose_name='Amount_B', **decimal_field)
 
-    left_expression = models.CharField(max_length=100, null=True, blank=True, default='')
-    left_status = models.CharField(max_length=100, null=True, blank=True, default='')
-    right_expression = models.CharField(max_length=100, null=True, blank=True, default='')
-    right_status = models.CharField(max_length=100, null=True, blank=True, default='')
+    left_expression = models.CharField(max_length=100, null=True, blank=True, default='', verbose_name='Left Expr')
+    left_status = models.CharField(max_length=100, null=True, blank=True, default='', verbose_name='Left Status')
+    right_expression = models.CharField(max_length=100, null=True, blank=True, default='', verbose_name='Right Expr')
+    right_status = models.CharField(max_length=100, null=True, blank=True, default='', verbose_name='Right Status')
 
     position_set = models.ForeignKey(PositionSet, null=True, blank=True, default=None)
 
-    def in_stage(self, price):
+    def in_stage(self, current_price):
         """
         Check price in current stage
-        :param price: float
+        :param current_price: float
         :return: boolean
         """
         return eval(
-            self.stage_expression.format(price=price)
+            self.stage_expression.format(
+                current_price=current_price,
+                price_a=self.price_a,
+                price_b=self.price_b
+            )
         )
 
     def get_status(self, new_price, old_price):
