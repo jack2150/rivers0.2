@@ -368,17 +368,20 @@ class SaveStatDay(object):
 
         position_instruments = list()
         for position_instrument in self.position_instrument.all():
-            equity = position_instrument.positionequity_set.exclude(quantity=0)
+            position_instrument = position_instrument
+            """:type: PositionInstrument"""
+
+            equity = position_instrument.positionequity
             option = position_instrument.positionoption_set.exclude(quantity=0)
 
-            if equity.count() and not option.count():
+            if equity.quantity != 0 and not option.count():
                 total_holding_count += 1
-                pl_open = float(equity.first().pl_open)
-                pl_day = float(equity.first().pl_day)
+                pl_open = float(equity.pl_open)
+                pl_day = float(equity.pl_day)
                 pl_open_sum += pl_open
                 pl_day_sum += pl_day
 
-                bp_effect_sum += float(equity.first().bp_effect)
+                bp_effect_sum += float(equity.bp_effect)
 
                 if pl_open > 0:
                     profit_holding_count += 1
@@ -435,10 +438,10 @@ class SaveStatDay(object):
 
         position_instruments = list()
         for position_instrument in self.position_instrument.all():
-            equity = position_instrument.positionequity_set.exclude(quantity=0)
+            equity = position_instrument.positionequity
             option = position_instrument.positionoption_set.exclude(quantity=0)
 
-            if not equity.count() and option.count() == 1:
+            if equity.quantity == 0 and option.count() == 1:
                 total_holding_count += 1
                 pl_open = float(option.first().pl_open)
                 pl_day = float(option.first().pl_day)
@@ -509,10 +512,10 @@ class SaveStatDay(object):
 
         position_instruments = list()
         for position_instrument in self.position_instrument.all():
-            equity = position_instrument.positionequity_set.exclude(quantity=0)
+            equity = position_instrument.positionequity
             option = position_instrument.positionoption_set.exclude(quantity=0)
 
-            if equity.count() == 0 and option.count() > 1:
+            if equity.quantity == 0 and option.count() > 1:
                 total_holding_count += 1
                 pl_open = float(position_instrument.pl_open)
                 pl_day = float(position_instrument.pl_day)
@@ -579,10 +582,10 @@ class SaveStatDay(object):
 
         position_instruments = list()
         for position_instrument in self.position_instrument.all():
-            equity = position_instrument.positionequity_set.exclude(quantity=0)
+            equity = position_instrument.positionequity
             option = position_instrument.positionoption_set.exclude(quantity=0)
 
-            if equity.count() == 1 and option.count() == 1:
+            if equity.quantity != 0 and option.count() == 1:
                 total_holding_count += 1
                 pl_open = float(position_instrument.pl_open)
                 pl_day = float(position_instrument.pl_day)

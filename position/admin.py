@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from position.models import *
+from position.views import spread_view
 from tos_import.statement.statement_account.admin import ProfitLossInline
 from tos_import.statement.statement_position.admin import \
     PositionInstrumentInline, PositionForexInline, PositionFutureInline
@@ -177,3 +178,13 @@ class PositionSetAdmin(SubPositionAdmin):
 
 admin.site.register(PositionSet, PositionSetAdmin)
 admin.site.register(PositionStage, PositionStageAdmin)
+admin.site.register_view(
+    'position/spread/$',
+    urlname='position_set_spread_view',
+    view=spread_view
+)
+admin.site.register_view(
+    'position/spread/(?P<date>\d{4}-\d{2}-\d{2})/$',
+    urlname='position_set_spread_view',
+    view=spread_view
+)

@@ -1,0 +1,47 @@
+{% extends "admin/base_site.html" %}
+{% load static currency_tag verbose_name %}
+
+{% block title %}Position spreads: {{ date }}{% endblock %}
+
+{% block breadcrumbs %}
+  <li>
+    <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    Position spreads: {{ date }}
+  </li>
+{% endblock %}
+
+{% block page-header %}
+  Position spreads: {{ date }}
+{% endblock %}
+
+{% block page-header-tool %}
+
+{% endblock %}
+
+
+{% block content %}
+  <table class="table">
+  {% for position_instrument in position_instruments %}
+    <tr>
+      <td>{{ position_instrument.underlying.symbol }}</td>
+      <td>current_price</td>
+      <td>{{ position_instrument.pl_open|currency }}</td>
+      <td>{{ position_instrument.pl_day|currency }}</td>
+      <td>{{ position_instrument.position_set.name }}</td>
+      <td>{{ position_instrument.position_set.spread }}</td>
+      <td>current_stage</td>
+      <td>current_status</td>
+
+    </tr>
+  {% endfor %}
+  </table>
+  <hr>
+  <div>{{ position_futures }}</div>
+  <hr>
+  <div>{{ position_forexs }}</div>
+{% endblock %}

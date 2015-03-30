@@ -181,7 +181,7 @@ class PositionSummaryAdmin(admin.ModelAdmin):
         return obj.positioninstrument_set.count()
 
     def equities(self, obj):
-        return obj.positionequity_set.count()
+        return 1 if obj.positionequity else 0
 
     def options(self, obj):
         return obj.positionoption_set.count()
@@ -442,7 +442,7 @@ class PositionInstrumentAdmin(PsModelAdmin):
     inlines = (PositionStockInline, PositionOptionsInline)
 
     def equity(self, obj):
-        return obj.positionequity_set.exclude(quantity=0).count()
+        return 1 if obj.positionequity.quantity != 0 else 0
 
     def options(self, obj):
         return obj.positionoption_set.exclude(quantity=0).count()

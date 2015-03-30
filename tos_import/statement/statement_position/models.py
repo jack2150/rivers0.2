@@ -125,7 +125,7 @@ class PositionInstrument(models.Model, PositionModel):
 class PositionEquity(models.Model, PositionModel):
     position_summary = models.ForeignKey(PositionSummary)
     underlying = models.ForeignKey(Underlying)
-    instrument = models.ForeignKey(PositionInstrument)
+    instrument = models.OneToOneField(PositionInstrument)
 
     quantity = models.IntegerField(default=0, verbose_name="Qty")
     trade_price = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name="Trade Price")
