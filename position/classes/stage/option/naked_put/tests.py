@@ -37,7 +37,7 @@ class TestStageNakedPut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='39.26 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 39.26,
                 'amount_a': 0.0,
@@ -66,7 +66,7 @@ class TestStageNakedPut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_profit_stage,
             name='MAX_PROFIT',
-            expression='40.00 <= {price}',
+            expression='{price_a} <= {current_price}',
             detail={
                 'price_a': 40.0,
                 'amount_a': 74.0,
@@ -95,7 +95,7 @@ class TestStageNakedPut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='39.26 < {price} < 40.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 39.26,
                 'amount_a': 0.0,
@@ -124,7 +124,7 @@ class TestStageNakedPut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='{price} < 39.26',
+            expression='{current_price} < {price_a}',
             detail={
                 'price_a': 39.26,
                 'amount_a': 0.0,

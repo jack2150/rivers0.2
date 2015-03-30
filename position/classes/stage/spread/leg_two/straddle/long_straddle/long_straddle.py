@@ -3,7 +3,7 @@ from position.classes.stage.stage import Stage
 from position.models import PositionStage
 
 
-class StageLongStrangle(Stage):
+class StageLongStraddle(Stage):
     def __init__(self, filled_orders, contract_right=100):
         """
         :param filled_orders: QuerySet
@@ -26,11 +26,6 @@ class StageLongStrangle(Stage):
         else:
             self.net_price = self.put_order.net_price
 
-        # mid price
-        self.center_price = round(self.put_order.strike + (
-            (self.call_order.strike - self.put_order.strike) / 2
-        ), 2)
-
         self.contract_right = contract_right
 
     def create_stages(self):
@@ -42,8 +37,7 @@ class StageLongStrangle(Stage):
             self.create_profit_stage1(),
             self.create_even_stage1(),
             self.create_loss_stage1(),
-            self.create_max_loss_stage1(),
-            self.create_max_loss_stage2(),
+            self.create_max_loss_stage(),
             self.create_loss_stage2(),
             self.create_even_stage2(),
             self.create_profit_stage2()
@@ -152,48 +146,22 @@ class StageLongStrangle(Stage):
 
         return loss_stage
 
-    def create_max_loss_stage1(self):
+    def create_max_loss_stage(self):
         """
         Create profit stage using filled orders data
         :return: PositionStage
         """
         max_loss_stage = self.MaxLossStage()
 
-        max_loss_stage.stage_expression = '{price_a} <= {current_price} <= {price_b}'
+        max_loss_stage.stage_expression = '{price_a} == {current_price}'
 
-        max_loss_stage.price_a = self.center_price
+        max_loss_stage.price_a = self.call_order.strike
         max_loss_stage.amount_a = (
             self.net_price * self.call_order.quantity * self.contract_right * -1
         )
-        max_loss_stage.price_b = self.call_order.strike
-        max_loss_stage.amount_b = (
-            self.net_price * self.call_order.quantity * self.contract_right * -1
-        )
 
-        max_loss_stage.left_expression = '{price_a} <= {old_price} < {new_price} <= {price_b}'
-        max_loss_stage.right_expression = '{price_a} <= {new_price} < {old_price} <= {price_b}'
+        max_loss_stage.left_status = ''
+        max_loss_stage.right_status = ''
 
         return max_loss_stage
 
-    def create_max_loss_stage2(self):
-        """
-        Create profit stage using filled orders data
-        :return: PositionStage
-        """
-        max_loss_stage = self.MaxLossStage()
-
-        max_loss_stage.stage_expression = '{price_a} <= {current_price} <= {price_b}'
-
-        max_loss_stage.price_a = self.put_order.strike
-        max_loss_stage.amount_a = (
-            self.net_price * self.call_order.quantity * self.contract_right * -1
-        )
-        max_loss_stage.price_b = self.center_price
-        max_loss_stage.amount_b = (
-            self.net_price * self.call_order.quantity * self.contract_right * -1
-        )
-
-        max_loss_stage.left_expression = '{price_a} <= {new_price} < {old_price} <= {price_b}'
-        max_loss_stage.right_expression = '{price_a} <= {old_price} < {new_price} <= {price_b}'
-
-        return max_loss_stage

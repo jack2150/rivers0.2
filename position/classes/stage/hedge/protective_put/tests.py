@@ -53,7 +53,7 @@ class TestStageProtectivePut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='56.99 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 56.99,
                 'amount_a': 0.0,
@@ -82,7 +82,7 @@ class TestStageProtectivePut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='{price} <= 55.00',
+            expression='{current_price} <= {price_a}',
             detail={
                 'price_a': 55.0,
                 'amount_a': -199.0,
@@ -111,7 +111,7 @@ class TestStageProtectivePut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='55.00 < {price} < 56.99',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 55.0,
                 'amount_a': -199.0,
@@ -140,7 +140,7 @@ class TestStageProtectivePut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='56.99 < {price}',
+            expression='{price_a} < {current_price}',
             detail={
                 'price_a': 56.99,
                 'amount_a': 0.0,

@@ -1,8 +1,9 @@
 from django.db.models.query import QuerySet
+from position.classes.stage.stage import Stage
 from position.models import PositionStage
 
 
-class StageShortPutBackratio(object):
+class StageShortPutBackratio(Stage):
     def __init__(self, filled_orders, contract_right=100):
         """
         :param filled_orders: QuerySet
@@ -32,23 +33,6 @@ class StageShortPutBackratio(object):
         self.max_profit_price = (
             self.sell_order.strike - self.buy_order.strike + self.net_price
         )
-
-    def create_even_stage1(self):
-        """
-        Create even stage using filled orders data
-        :return: PositionStage
-        """
-        even_stage = PositionStage()
-
-        even_stage.stage_name = 'EVEN'
-        even_stage.stage_expression = '%.2f == {price}' % (
-            float(self.sell_order.strike + self.max_profit_price)
-        )
-
-        even_stage.price_a = self.sell_order.strike + self.max_profit_price
-        even_stage.amount_a = 0.0
-
-        return even_stage
 
     def create_stages(self):
         """
@@ -86,25 +70,31 @@ class StageShortPutBackratio(object):
 
         return result
 
+    def create_even_stage1(self):
+        """
+        Create even stage using filled orders data
+        :return: PositionStage
+        """
+        even_stage = self.EvenStage()
+
+        even_stage.stage_expression = self.e_price
+        even_stage.price_a = self.sell_order.strike + self.max_profit_price
+
+        return even_stage
+
     def create_even_stage2(self):
         """
         Create even stage using filled orders data
         :return: PositionStage
         """
-        even_stage = PositionStage()
+        even_stage = self.EvenStage()
 
-        condition = '=='
         if self.net_price == 0.0:
-            condition = '<='
-
-        even_stage.stage_name = 'EVEN'
-        even_stage.stage_expression = '%.2f %s {price}' % (
-            float(self.sell_order.strike - self.max_profit_price),
-            condition
-        )
+            even_stage.stage_expression = self.gte_price
+        else:
+            even_stage.stage_expression = self.e_price
 
         even_stage.price_a = self.sell_order.strike - self.max_profit_price
-        even_stage.amount_a = 0.0
 
         return even_stage
 
@@ -113,17 +103,17 @@ class StageShortPutBackratio(object):
         Create max profit stage using filled orders data
         :return: PositionStage
         """
-        max_profit_stage = PositionStage()
+        max_profit_stage = self.MaxProfitStage()
 
-        max_profit_stage.stage_name = 'MAX_PROFIT'
-        max_profit_stage.stage_expression = '%.2f == {price}' % (
-            float(self.sell_order.strike)
-        )
+        max_profit_stage.stage_expression = self.e_price
 
         max_profit_stage.price_a = self.sell_order.strike
         max_profit_stage.amount_a = (
             self.max_profit_price * self.buy_order.quantity * self.contract_right * -1
         )
+
+        max_profit_stage.left_status = ''
+        max_profit_stage.right_status = ''
 
         return max_profit_stage
 
@@ -132,20 +122,14 @@ class StageShortPutBackratio(object):
         Create loss stage using filled orders data
         :return: PositionStage
         """
-        loss_stage = PositionStage()
+        loss_stage = self.LossStage()
 
-        loss_stage.stage_name = 'LOSS'
-        loss_stage.stage_expression = '{price} < %.2f' % (
-            float(self.sell_order.strike + self.max_profit_price),
-        )
+        loss_stage.stage_expression = self.lt_price
 
         loss_stage.price_a = self.sell_order.strike + self.max_profit_price
-        loss_stage.amount_a = 0.0
 
-        loss_stage.left_status = 'recovering'
-        loss_stage.left_expression = '{old_price} < {new_price} < {price_a}'
-        loss_stage.right_status = 'losing'
-        loss_stage.right_expression = '{new_price} < {old_price} < {price_a}'
+        loss_stage.left_expression = self.lt_price_higher
+        loss_stage.right_expression = self.lt_price_lower
 
         return loss_stage
 
@@ -154,13 +138,9 @@ class StageShortPutBackratio(object):
         Create profit stage using filled orders data
         :return: PositionStage
         """
-        loss_stage = PositionStage()
+        loss_stage = self.ProfitStage()
 
-        loss_stage.stage_name = 'PROFIT'
-        loss_stage.stage_expression = '%.2f < {price} < %.2f' % (
-            float(self.sell_order.strike + self.max_profit_price),
-            float(self.sell_order.strike),
-        )
+        loss_stage.stage_expression = self.price_range
 
         loss_stage.price_a = self.sell_order.strike + self.max_profit_price
         loss_stage.amount_a = 0.0
@@ -169,10 +149,8 @@ class StageShortPutBackratio(object):
             self.max_profit_price * self.buy_order.quantity * self.contract_right * -1
         )
 
-        loss_stage.left_status = 'decreasing'
-        loss_stage.left_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
-        loss_stage.right_status = 'profiting'
-        loss_stage.right_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
+        loss_stage.left_expression = self.price_range_lower
+        loss_stage.right_expression = self.price_range_higher
 
         return loss_stage
 
@@ -181,7 +159,7 @@ class StageShortPutBackratio(object):
         Create profit stage using filled orders data
         :return: PositionStage
         """
-        loss_stage = PositionStage()
+        loss_stage = self.ProfitStage()
 
         if self.net_price < 0:
             loss_price = self.buy_order.strike
@@ -192,11 +170,7 @@ class StageShortPutBackratio(object):
             loss_price = self.sell_order.strike - self.max_profit_price
             loss_amount = 0.0
 
-        loss_stage.stage_name = 'PROFIT'
-        loss_stage.stage_expression = '%.2f < {price} < %.2f' % (
-            float(self.sell_order.strike),
-            float(loss_price),
-        )
+        loss_stage.stage_expression = self.price_range
 
         loss_stage.price_a = self.sell_order.strike
         loss_stage.amount_a = (
@@ -205,10 +179,8 @@ class StageShortPutBackratio(object):
         loss_stage.price_b = loss_price
         loss_stage.amount_b = loss_amount
 
-        loss_stage.left_status = 'decreasing'
-        loss_stage.left_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
-        loss_stage.right_status = 'profiting'
-        loss_stage.right_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
+        loss_stage.left_expression = self.price_range_higher
+        loss_stage.right_expression = self.price_range_lower
 
         return loss_stage
 
@@ -217,22 +189,17 @@ class StageShortPutBackratio(object):
         Create max profit stage using filled orders data
         :return: PositionStage
         """
-        max_profit_stage = PositionStage()
+        max_profit_stage = self.MaxProfitStage()
 
-        max_profit_stage.stage_name = 'MAX_PROFIT'
-        max_profit_stage.stage_expression = '%.2f <= {price}' % (
-            float(self.buy_order.strike)
-        )
+        max_profit_stage.stage_expression = self.gte_price
 
         max_profit_stage.price_a = self.buy_order.strike
         max_profit_stage.amount_a = (
             self.net_price * self.contract_right * -1
         )
 
-        max_profit_stage.left_status = 'vanishing'
-        max_profit_stage.left_expression = '{price_a} <= {new_price} < {old_price}'
-        max_profit_stage.right_status = 'guaranteeing'
-        max_profit_stage.right_expression = '{price_a} <= {old_price} < {new_price}'
+        max_profit_stage.left_expression = self.gte_price_lower
+        max_profit_stage.right_expression = self.gte_price_higher
 
         return max_profit_stage
 
@@ -241,13 +208,9 @@ class StageShortPutBackratio(object):
         Create loss stage using filled orders data
         :return: PositionStage
         """
-        loss_stage = PositionStage()
+        loss_stage = self.LossStage()
 
-        loss_stage.stage_name = 'LOSS'
-        loss_stage.stage_expression = '%.2f < {price} < %.2f' % (
-            float(self.sell_order.strike - self.max_profit_price),
-            float(self.buy_order.strike),
-        )
+        loss_stage.stage_expression = self.price_range
 
         loss_stage.price_a = self.sell_order.strike - self.max_profit_price
         loss_stage.amount_a = 0.0
@@ -256,10 +219,8 @@ class StageShortPutBackratio(object):
             self.net_price * self.contract_right * -1
         )
 
-        loss_stage.left_status = 'recovering'
-        loss_stage.left_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
-        loss_stage.right_status = 'losing'
-        loss_stage.right_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
+        loss_stage.left_expression = self.price_range_lower
+        loss_stage.right_expression = self.price_range_higher
 
         return loss_stage
 
@@ -268,32 +229,16 @@ class StageShortPutBackratio(object):
         Create max loss stage using filled orders data
         :return: PositionStage
         """
-        max_loss_stage = PositionStage()
+        max_loss_stage = self.MaxLossStage()
 
-        max_loss_stage.stage_name = 'MAX_LOSS'
-        max_loss_stage.stage_expression = '%.2f <= {price}' % (
-            float(self.buy_order.strike)
-        )
+        max_loss_stage.stage_expression = self.gte_price
 
         max_loss_stage.price_a = self.buy_order.strike
         max_loss_stage.amount_a = (
             self.net_price * self.contract_right * -1
         )
 
-        max_loss_stage.left_status = 'easing'
-        max_loss_stage.left_expression = '{price_a} < {new_price} < {old_price}'
-        max_loss_stage.right_status = 'worst'
-        max_loss_stage.right_expression = '{price_a} < {old_price} < {new_price}'
+        max_loss_stage.left_expression = self.gte_price_lower
+        max_loss_stage.right_expression = self.gte_price_higher
 
         return max_loss_stage
-
-
-
-
-
-
-
-
-
-
-

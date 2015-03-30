@@ -53,7 +53,7 @@ class TestStageCoveredCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='83.30 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 83.30,
                 'amount_a': 0.0,
@@ -82,7 +82,7 @@ class TestStageCoveredCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_profit_stage,
             name='MAX_PROFIT',
-            expression='85.00 <= {price}',
+            expression='{price_a} <= {current_price}',
             detail={
                 'price_a': 85.0,
                 'amount_a': 170.00,
@@ -111,7 +111,7 @@ class TestStageCoveredCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='83.30 < {price} < 85.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 83.30,
                 'amount_a': 0.0,
@@ -140,7 +140,7 @@ class TestStageCoveredCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='{price} < 83.30',
+            expression='{current_price} < {price_a}',
             detail={
                 'price_a': 83.3,
                 'amount_a': 0.0,

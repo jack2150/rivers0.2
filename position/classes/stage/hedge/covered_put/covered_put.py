@@ -1,8 +1,9 @@
 from django.db.models.query import QuerySet
+from position.classes.stage.stage import Stage
 from position.models import PositionStage
 
 
-class StageCoveredPut(object):
+class StageCoveredPut(Stage):
     def __init__(self, filled_orders):
         """
         :param filled_orders: QuerySet
@@ -37,15 +38,10 @@ class StageCoveredPut(object):
         Create even stage using filled orders data
         :return: PositionStage
         """
-        even_stage = PositionStage()
+        even_stage = self.EvenStage()
 
-        even_stage.stage_name = 'EVEN'
-        even_stage.stage_expression = '%.2f == {price}' % float(
-            self.option_order.net_price
-        )
-
+        even_stage.stage_expression = self.e_price
         even_stage.price_a = self.option_order.net_price
-        even_stage.amount_a = 0.0
 
         return even_stage
 
@@ -54,10 +50,9 @@ class StageCoveredPut(object):
         Create profit stage using filled orders data
         :return: PositionStage
         """
-        max_profit_stage = PositionStage()
+        max_profit_stage = self.MaxProfitStage()
 
-        max_profit_stage.stage_name = 'MAX_PROFIT'
-        max_profit_stage.stage_expression = '{price} <= %.2f' % self.option_order.strike
+        max_profit_stage.stage_expression = self.lte_price
 
         max_profit_stage.price_a = self.option_order.strike
         max_profit_stage.amount_a = (
@@ -65,10 +60,8 @@ class StageCoveredPut(object):
             * self.stock_order.quantity * -1
         )
 
-        max_profit_stage.left_status = 'vanishing'
-        max_profit_stage.left_expression = '{old_price} < {new_price} <= {price_a}'
-        max_profit_stage.right_status = 'guaranteeing'
-        max_profit_stage.right_expression = '{new_price} < {old_price} <= {price_a}'
+        max_profit_stage.left_expression = self.lte_price_higher
+        max_profit_stage.right_expression = self.lte_price_lower
 
         return max_profit_stage
 
@@ -77,13 +70,9 @@ class StageCoveredPut(object):
         Create profit stage using filled orders data
         :return: PositionStage
         """
-        profit_stage = PositionStage()
+        profit_stage = self.ProfitStage()
 
-        profit_stage.stage_name = 'PROFIT'
-        profit_stage.stage_expression = '%.2f < {price} < %.2f' % (
-            float(self.option_order.strike),
-            float(self.option_order.net_price)
-        )
+        profit_stage.stage_expression = self.price_range
 
         profit_stage.price_a = self.option_order.strike
         profit_stage.amount_a = (
@@ -93,10 +82,8 @@ class StageCoveredPut(object):
         profit_stage.price_b = self.option_order.net_price
         profit_stage.amount_b = 0.0
 
-        profit_stage.left_status = 'decreasing'
-        profit_stage.left_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
-        profit_stage.right_status = 'profiting'
-        profit_stage.right_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
+        profit_stage.left_expression = self.price_range_higher
+        profit_stage.right_expression = self.price_range_lower
 
         return profit_stage
 
@@ -105,19 +92,14 @@ class StageCoveredPut(object):
         Create loss stage using filled orders data
         :return: PositionStage
         """
-        loss_stage = PositionStage()
+        loss_stage = self.LossStage()
 
-        loss_stage.stage_name = 'LOSS'
-        loss_stage.stage_expression = '%.2f < {price}' % (
-            float(self.option_order.net_price)
-        )
+        loss_stage.stage_expression = self.gt_price
 
         loss_stage.price_a = self.option_order.net_price
         loss_stage.amount_a = 0.0
 
-        loss_stage.left_status = 'recovering'
-        loss_stage.left_expression = '{price_a} < {new_price} < {old_price}'
-        loss_stage.right_status = 'losing'
-        loss_stage.right_expression = '{price_a} < {old_price} < {new_price}'
+        loss_stage.left_expression = self.gt_price_lower
+        loss_stage.right_expression = self.gt_price_higher
 
         return loss_stage

@@ -49,7 +49,7 @@ class TestStageLongPutBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='113.25 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 113.25,
                 'amount_a': 0.0,
@@ -79,7 +79,7 @@ class TestStageLongPutBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='120.00 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 120.0,
                 'amount_a': -675.0,
@@ -107,7 +107,7 @@ class TestStageLongPutBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='{price} < 113.25',
+            expression='{current_price} < {price_a}',
             detail={
                 'price_a': 113.25,
                 'amount_a': 0.0,
@@ -137,7 +137,7 @@ class TestStageLongPutBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='113.25 < {price} < 120.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 113.25,
                 'amount_a': 0.0,
@@ -168,7 +168,7 @@ class TestStageLongPutBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='120.00 < {price} < 125.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 120.00,
                 'amount_a': -675.0,
@@ -198,7 +198,7 @@ class TestStageLongPutBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='125.00 <= {price}',
+            expression='{price_a} <= {current_price}',
             detail={
                 'price_a': 125.0,
                 'amount_a': -175.0,
@@ -275,7 +275,7 @@ class TestStageLongPutBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='16.20 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 16.20,
                 'amount_a': 0.0,
@@ -305,7 +305,7 @@ class TestStageLongPutBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='19.80 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 19.80,
                 'amount_a': 0.0,
@@ -335,7 +335,7 @@ class TestStageLongPutBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='18.00 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 18.0,
                 'amount_a': -180.0,
@@ -365,7 +365,7 @@ class TestStageLongPutBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='{price} < 16.20',
+            expression='{current_price} < {price_a}',
             detail={
                 'price_a': 16.2,
                 'amount_a': 0.0,
@@ -395,7 +395,7 @@ class TestStageLongPutBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='16.20 < {price} < 18.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 16.2,
                 'amount_a': 0.0,
@@ -425,7 +425,7 @@ class TestStageLongPutBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='18.00 < {price} < 19.80',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 18.00,
                 'amount_a': -180.0,
@@ -455,7 +455,7 @@ class TestStageLongPutBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='19.80 < {price} < 20.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 19.8,
                 'amount_a': 0.0,
@@ -485,16 +485,16 @@ class TestStageLongPutBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_profit_stage,
             name='MAX_PROFIT',
-            expression='20.00 <= {price}',
+            expression='{price_a} <= {current_price}',
             detail={
                 'price_a': 20.0,
                 'amount_a': 20.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
                 'left_status': 'vanishing',
-                'left_expression': '{price_a} < {new_price} < {old_price}',
+                'left_expression': '{price_a} <= {new_price} < {old_price}',
                 'right_status': 'guaranteeing',
-                'right_expression': '{price_a} < {old_price} < {new_price}',
+                'right_expression': '{price_a} <= {old_price} < {new_price}',
             }
         )
 
@@ -564,7 +564,7 @@ class TestStageLongPutBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='330.00 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 330.00,
                 'amount_a': 0.0,
@@ -594,7 +594,7 @@ class TestStageLongPutBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='380.00 <= {price}',
+            expression='{price_a} <= {current_price}',
             detail={
                 'price_a': 380.00,
                 'amount_a': 0.0,
@@ -624,7 +624,7 @@ class TestStageLongPutBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='355.00 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 355.0,
                 'amount_a': -2500.0,
@@ -654,7 +654,7 @@ class TestStageLongPutBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='{price} < 330.00',
+            expression='{current_price} < {price_a}',
             detail={
                 'price_a': 330.0,
                 'amount_a': 0.0,
@@ -684,7 +684,7 @@ class TestStageLongPutBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='330.00 < {price} < 355.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 330.0,
                 'amount_a': 0.0,

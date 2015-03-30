@@ -32,7 +32,7 @@ class TestStageLongStock(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='374.24 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 374.24,
                 'amount_a': 0.0,
@@ -61,7 +61,7 @@ class TestStageLongStock(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='374.24 < {price}',
+            expression='{price_a} < {current_price}',
             detail={
                 'price_a': 374.24,
                 'amount_a': 0.0,
@@ -90,7 +90,7 @@ class TestStageLongStock(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='{price} < 374.24',
+            expression='{current_price} < {price_a}',
             detail={
                 'price_a': 374.24,
                 'amount_a': 0.0,

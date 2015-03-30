@@ -50,7 +50,7 @@ class TestStageLongCallBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='48.42 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 48.42,
                 'amount_a': 0.0,
@@ -79,7 +79,7 @@ class TestStageLongCallBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='43.58 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 43.58,
                 'amount_a': 0.0,
@@ -108,7 +108,7 @@ class TestStageLongCallBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='46.00 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 46.00,
                 'amount_a': -242.0,
@@ -126,35 +126,6 @@ class TestStageLongCallBackratio1(TestUnitSetUpStage):
 
         self.check_get_status(max_loss_stage, new_price=46.6, old_price=46.6, expect='unknown')
 
-    def test_create_profit_stage1(self):
-        """
-        Create profit stage using filled orders data
-        """
-        profit_stage = self.long_call_backratio.create_profit_stage1()
-
-        self.method_test_create_stage(
-            stage=profit_stage,
-            name='PROFIT',
-            expression='48.42 < {price}',
-            detail={
-                'price_a': 48.42,
-                'amount_a': 0.0,
-                'price_b': 0.0,
-                'amount_b': 0.0,
-                'left_status': 'decreasing',
-                'left_expression': '{price_a} < {new_price} < {old_price}',
-                'right_status': 'profiting',
-                'right_expression': '{price_a} < {old_price} < {new_price}',
-            }
-        )
-
-        self.check_in_stage(stage_cls=profit_stage, price=48.5, expect=True)
-        self.check_in_stage(stage_cls=profit_stage, price=47.5, expect=False)
-
-        self.check_get_status(profit_stage, new_price=49.5, old_price=50, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=49, old_price=48.5, expect='profiting')
-        self.check_get_status(profit_stage, new_price=49, old_price=49, expect='unknown')
-
     def test_create_loss_stage1(self):
         """
         Create loss stage using filled orders data
@@ -164,7 +135,7 @@ class TestStageLongCallBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='46.00 < {price} < 48.42',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 46.0,
                 'amount_a': -242.0,
@@ -184,6 +155,35 @@ class TestStageLongCallBackratio1(TestUnitSetUpStage):
         self.check_get_status(loss_stage, new_price=46.5, old_price=47.7, expect='losing')
         self.check_get_status(loss_stage, new_price=46.5, old_price=46.5, expect='unknown')
 
+    def test_create_profit_stage1(self):
+        """
+        Create profit stage using filled orders data
+        """
+        profit_stage = self.long_call_backratio.create_profit_stage1()
+
+        self.method_test_create_stage(
+            stage=profit_stage,
+            name='PROFIT',
+            expression='{price_a} < {current_price}',
+            detail={
+                'price_a': 48.42,
+                'amount_a': 0.0,
+                'price_b': 0.0,
+                'amount_b': 0.0,
+                'left_status': 'decreasing',
+                'left_expression': '{price_a} < {new_price} < {old_price}',
+                'right_status': 'profiting',
+                'right_expression': '{price_a} < {old_price} < {new_price}',
+            }
+        )
+
+        self.check_in_stage(stage_cls=profit_stage, price=48.5, expect=True)
+        self.check_in_stage(stage_cls=profit_stage, price=47.5, expect=False)
+
+        self.check_get_status(profit_stage, new_price=49.5, old_price=50, expect='decreasing')
+        self.check_get_status(profit_stage, new_price=49, old_price=48.5, expect='profiting')
+        self.check_get_status(profit_stage, new_price=49, old_price=49, expect='unknown')
+
     def test_create_loss_stage2(self):
         """
         Create loss stage using filled orders data
@@ -193,7 +193,7 @@ class TestStageLongCallBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='43.58 < {price} < 46.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 43.58,
                 'amount_a': 0.0,
@@ -222,7 +222,7 @@ class TestStageLongCallBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='43.00 < {price} < 43.58',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 43.0,
                 'amount_a': 58.0,
@@ -251,16 +251,16 @@ class TestStageLongCallBackratio1(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_profit_stage,
             name='MAX_PROFIT',
-            expression='{price} <= 43.00',
+            expression='{current_price} <= {price_a}',
             detail={
                 'price_a': 43.0,
                 'amount_a': 58.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
                 'left_status': 'vanishing',
-                'left_expression': '{old_price} < {new_price} < {price_a}',
+                'left_expression': '{old_price} < {new_price} <= {price_a}',
                 'right_status': 'guaranteeing',
-                'right_expression': '{new_price} < {old_price} < {price_a}',
+                'right_expression': '{new_price} < {old_price} <= {price_a}',
             }
         )
 
@@ -333,7 +333,7 @@ class TestStageLongCallBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='176.00 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 176.0,
                 'amount_a': 0.0,
@@ -362,7 +362,7 @@ class TestStageLongCallBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='170.00 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 170.0,
                 'amount_a': -600.0,
@@ -389,7 +389,7 @@ class TestStageLongCallBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='170.00 < {price} < 176.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 170.0,
                 'amount_a': -600.0,
@@ -418,7 +418,7 @@ class TestStageLongCallBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='165.00 < {price} < 170.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 165.00,
                 'amount_a': -100.0,
@@ -447,7 +447,7 @@ class TestStageLongCallBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='{price} <= 165.00',
+            expression='{current_price} <= {price_a}',
             detail={
                 'price_a': 165.0,
                 'amount_a': -100.0,
@@ -474,7 +474,7 @@ class TestStageLongCallBackratio2(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='176.00 < {price}',
+            expression='{price_a} < {current_price}',
             detail={
                 'price_a': 176.0,
                 'amount_a': 0.0,
@@ -552,7 +552,7 @@ class TestStageLongCallBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='77.50 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 77.5,
                 'amount_a': 0.0,
@@ -581,7 +581,7 @@ class TestStageLongCallBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='72.50 <= {price}',
+            expression='{price_a} <= {current_price}',
             detail={
                 'price_a': 72.5,
                 'amount_a': 0.0,
@@ -610,7 +610,7 @@ class TestStageLongCallBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='75.00 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 75.0,
                 'amount_a': -250.0,
@@ -637,7 +637,7 @@ class TestStageLongCallBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='75.00 < {price} < 77.50',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 75.0,
                 'amount_a': -250.0,
@@ -666,7 +666,7 @@ class TestStageLongCallBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='72.50 < {price} < 75.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 72.5,
                 'amount_a': 0.0,
@@ -695,7 +695,7 @@ class TestStageLongCallBackratio3(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='77.50 < {price}',
+            expression='{price_a} < {current_price}',
             detail={
                 'price_a': 77.5,
                 'amount_a': 0.0,

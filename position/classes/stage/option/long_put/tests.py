@@ -37,7 +37,7 @@ class TestStageLongPut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='121.07 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 121.07,
                 'amount_a': 0.0,
@@ -66,7 +66,7 @@ class TestStageLongPut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='125.00 <= {price}',
+            expression='{price_a} <= {current_price}',
             detail={
                 'price_a': 125.00,
                 'amount_a': -393.0,
@@ -95,7 +95,7 @@ class TestStageLongPut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='{price} < 121.07',
+            expression='{current_price} < {price_a}',
             detail={
                 'price_a': 121.07,
                 'amount_a': 0.0,
@@ -124,7 +124,7 @@ class TestStageLongPut(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='121.07 < {price} < 125.00',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 121.07,
                 'amount_a': 0.0,

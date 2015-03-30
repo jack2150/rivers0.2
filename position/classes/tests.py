@@ -1,7 +1,8 @@
 # noinspection PyUnresolvedReferences
 import position.classes.ready_django
 from django.utils import timezone
-from unittest import TestCase
+import unittest
+from django.test import TestCase
 from tos_import.models import Statement, Underlying, Future, Forex
 from tos_import.statement.statement_trade.models import TradeSummary
 from tos_import.statement.statement_trade.models import FilledOrder
@@ -42,7 +43,7 @@ def create_filled_order(trade_summary, spread, contract,
     return filled_order
 
 
-class TestUnitSetUp(TestCase):
+class TestUnitSetUp(unittest.TestCase):
     def setUp(self):
         """
         ready up all variables and test class
@@ -167,7 +168,6 @@ class TestUnitSetUpDB(TestCase):
     """
     Using unittest not django test
     """
-
     def setUp(self):
         """
         ready up all variables and test class

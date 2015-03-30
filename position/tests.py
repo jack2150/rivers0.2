@@ -135,7 +135,7 @@ class TestPositionStage(TestSetUpDB):
 
         self.stage = PositionStage()
         self.stage.stage_name = 'PROFIT'
-        self.stage.stage_expression = '127.85 < {price}'
+        self.stage.stage_expression = '{price_a} < {current_price}'
 
         self.stage.price_a = 127.85
         self.stage.amount_a = 0.0

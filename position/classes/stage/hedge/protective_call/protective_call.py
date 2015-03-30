@@ -1,8 +1,9 @@
 from django.db.models.query import QuerySet
+from position.classes.stage.stage import Stage
 from position.models import PositionStage
 
 
-class StageProtectiveCall(object):
+class StageProtectiveCall(Stage):
     def __init__(self, filled_orders):
         """
         :param filled_orders: QuerySet
@@ -37,15 +38,10 @@ class StageProtectiveCall(object):
         Create even stage using filled orders data
         :return: PositionStage
         """
-        even_stage = PositionStage()
+        even_stage = self.EvenStage()
 
-        even_stage.stage_name = 'EVEN'
-        even_stage.stage_expression = '%.2f == {price}' % float(
-            self.stock_order.price - self.option_order.price
-        )
-
+        even_stage.stage_expression = self.e_price
         even_stage.price_a = self.stock_order.price - self.option_order.price
-        even_stage.amount_a = 0.0
 
         return even_stage
 
@@ -54,10 +50,9 @@ class StageProtectiveCall(object):
         Create profit stage using filled orders data
         :return: PositionStage
         """
-        max_profit_stage = PositionStage()
+        max_profit_stage = self.MaxLossStage()
 
-        max_profit_stage.stage_name = 'MAX_LOSS'
-        max_profit_stage.stage_expression = '%.2f <= {price}' % self.option_order.strike
+        max_profit_stage.stage_expression = self.gte_price
 
         max_profit_stage.price_a = self.option_order.strike
         max_profit_stage.amount_a = (
@@ -65,10 +60,8 @@ class StageProtectiveCall(object):
             * self.stock_order.quantity
         )
 
-        max_profit_stage.left_status = 'easing'
-        max_profit_stage.left_expression = '{price_a} <= {new_price} < {old_price}'
-        max_profit_stage.right_status = 'worst'
-        max_profit_stage.right_expression = '{price_a} <= {old_price} < {new_price}'
+        max_profit_stage.left_expression = self.gte_price_lower
+        max_profit_stage.right_expression = self.gte_price_higher
 
         return max_profit_stage
 
@@ -77,13 +70,9 @@ class StageProtectiveCall(object):
         Create loss stage using filled orders data
         :return: PositionStage
         """
-        profit_stage = PositionStage()
+        profit_stage = self.LossStage()
 
-        profit_stage.stage_name = 'LOSS'
-        profit_stage.stage_expression = '%.2f < {price} < %.2f' % (
-            float(self.stock_order.price - self.option_order.price),
-            float(self.option_order.strike)
-        )
+        profit_stage.stage_expression = self.price_range
 
         profit_stage.price_a = self.stock_order.price - self.option_order.price
         profit_stage.amount_a = 0.0
@@ -93,10 +82,8 @@ class StageProtectiveCall(object):
             * self.stock_order.quantity
         )
 
-        profit_stage.left_status = 'recovering'
-        profit_stage.left_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
-        profit_stage.right_status = 'losing'
-        profit_stage.right_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
+        profit_stage.left_expression = self.price_range_lower
+        profit_stage.right_expression = self.price_range_higher
 
         return profit_stage
 
@@ -105,19 +92,14 @@ class StageProtectiveCall(object):
         Create profit stage using filled orders data
         :return: PositionStage
         """
-        loss_stage = PositionStage()
+        loss_stage = self.ProfitStage()
 
-        loss_stage.stage_name = 'PROFIT'
-        loss_stage.stage_expression = '{price} < %.2f' % (
-            float(self.stock_order.price - self.option_order.price)
-        )
+        loss_stage.stage_expression = self.lt_price
 
         loss_stage.price_a = self.stock_order.price - self.option_order.price
         loss_stage.amount_a = 0.0
 
-        loss_stage.left_status = 'decreasing'
-        loss_stage.left_expression = '{old_price} < {new_price} < {price_a}'
-        loss_stage.right_status = 'profiting'
-        loss_stage.right_expression = '{new_price} < {old_price} < {price_a}'
+        loss_stage.left_expression = self.lt_price_higher
+        loss_stage.right_expression = self.lt_price_lower
 
         return loss_stage

@@ -33,7 +33,7 @@ class TestStageShortFuture(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='484.25 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 484.25,
                 'amount_a': 0.0,
@@ -62,7 +62,7 @@ class TestStageShortFuture(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='{price} < 484.25',
+            expression='{current_price} < {price_a}',
             detail={
                 'price_a': 484.25,
                 'amount_a': 0.0,
@@ -91,7 +91,7 @@ class TestStageShortFuture(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='484.25 < {price}',
+            expression='{price_a} < {current_price}',
             detail={
                 'price_a': 484.25,
                 'amount_a': 0.0,

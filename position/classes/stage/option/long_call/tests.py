@@ -37,7 +37,7 @@ class TestStageLongCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='58.95 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 58.95,
                 'amount_a': 0.0,
@@ -66,7 +66,7 @@ class TestStageLongCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_loss_stage,
             name='MAX_LOSS',
-            expression='{price} <= 58.00',
+            expression='{current_price} <= {price_a}',
             detail={
                 'price_a': 58.00,
                 'amount_a': -190.0,
@@ -95,7 +95,7 @@ class TestStageLongCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='58.95 < {price}',
+            expression='{price_a} < {current_price}',
             detail={
                 'price_a': 58.95,
                 'amount_a': 0.0,
@@ -124,7 +124,7 @@ class TestStageLongCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='58.00 < {price} < 58.95',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 58.00,
                 'amount_a': -190.00,

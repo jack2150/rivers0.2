@@ -169,12 +169,9 @@ class PositionStage(models.Model):
         """
         return 'Stage: {status} "{expression}"'.format(
             status=self.stage_name,
-            expression=self.stage_expression
+            expression=self.stage_expression.format(
+                current_price='price',
+                price_a=self.price_a,
+                price_b=self.price_b
+            )
         )
-
-
-
-
-
-
-

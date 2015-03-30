@@ -1,8 +1,9 @@
 from django.db.models.query import QuerySet
+from position.classes.stage.stage import Stage
 from position.models import PositionStage
 
 
-class StageProtectivePut(object):
+class StageProtectivePut(Stage):
     def __init__(self, filled_orders):
         """
         :param filled_orders: QuerySet
@@ -37,15 +38,10 @@ class StageProtectivePut(object):
         Create even stage using filled orders data
         :return: PositionStage
         """
-        even_stage = PositionStage()
+        even_stage = self.EvenStage()
 
-        even_stage.stage_name = 'EVEN'
-        even_stage.stage_expression = '%.2f == {price}' % float(
-            self.option_order.net_price
-        )
-
+        even_stage.stage_expression = self.e_price
         even_stage.price_a = self.option_order.net_price
-        even_stage.amount_a = 0.0
 
         return even_stage
 
@@ -54,10 +50,9 @@ class StageProtectivePut(object):
         Create max loss stage using filled orders data
         :return: PositionStage
         """
-        max_loss_stage = PositionStage()
+        max_loss_stage = self.MaxLossStage()
 
-        max_loss_stage.stage_name = 'MAX_LOSS'
-        max_loss_stage.stage_expression = '{price} <= %.2f' % self.option_order.strike
+        max_loss_stage.stage_expression = self.lte_price
 
         max_loss_stage.price_a = self.option_order.strike
         max_loss_stage.amount_a = (
@@ -65,10 +60,8 @@ class StageProtectivePut(object):
             * self.stock_order.quantity * -1
         )
 
-        max_loss_stage.left_status = 'easing'
-        max_loss_stage.left_expression = '{old_price} < {new_price} <= {price_a}'
-        max_loss_stage.right_status = 'worst'
-        max_loss_stage.right_expression = '{new_price} < {old_price} <= {price_a}'
+        max_loss_stage.left_expression = self.lte_price_higher
+        max_loss_stage.right_expression = self.lte_price_lower
 
         return max_loss_stage
 
@@ -77,13 +70,9 @@ class StageProtectivePut(object):
         Create profit stage using filled orders data
         :return: PositionStage
         """
-        loss_stage = PositionStage()
+        loss_stage = self.LossStage()
 
-        loss_stage.stage_name = 'LOSS'
-        loss_stage.stage_expression = '%.2f < {price} < %.2f' % (
-            float(self.option_order.strike),
-            float(self.option_order.net_price)
-        )
+        loss_stage.stage_expression = self.price_range
 
         loss_stage.price_a = self.option_order.strike
         loss_stage.amount_a = (
@@ -93,10 +82,8 @@ class StageProtectivePut(object):
         loss_stage.price_b = self.option_order.net_price
         loss_stage.amount_b = 0.0
 
-        loss_stage.left_status = 'recovering'
-        loss_stage.left_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
-        loss_stage.right_status = 'losing'
-        loss_stage.right_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
+        loss_stage.left_expression = self.price_range_higher
+        loss_stage.right_expression = self.price_range_lower
 
         return loss_stage
 
@@ -105,19 +92,14 @@ class StageProtectivePut(object):
         Create loss stage using filled orders data
         :return: PositionStage
         """
-        loss_stage = PositionStage()
+        loss_stage = self.ProfitStage()
 
-        loss_stage.stage_name = 'PROFIT'
-        loss_stage.stage_expression = '%.2f < {price}' % (
-            float(self.option_order.net_price)
-        )
+        loss_stage.stage_expression = self.gt_price
 
         loss_stage.price_a = self.option_order.net_price
         loss_stage.amount_a = 0.0
 
-        loss_stage.left_status = 'decreasing'
-        loss_stage.left_expression = '{price_a} < {new_price} < {old_price}'
-        loss_stage.right_status = 'profiting'
-        loss_stage.right_expression = '{price_a} < {old_price} < {new_price}'
+        loss_stage.left_expression = self.gt_price_lower
+        loss_stage.right_expression = self.gt_price_higher
 
         return loss_stage

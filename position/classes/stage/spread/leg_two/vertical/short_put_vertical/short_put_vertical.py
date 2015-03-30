@@ -1,8 +1,9 @@
 from django.db.models.query import QuerySet
+from position.classes.stage.stage import Stage
 from position.models import PositionStage
 
 
-class StageShortPutVertical(object):
+class StageShortPutVertical(Stage):
     def __init__(self, filled_orders, contract_right=100):
         """
         :param filled_orders: QuerySet
@@ -39,12 +40,10 @@ class StageShortPutVertical(object):
         Create even stage using filled orders data
         :return: PositionStage
         """
-        even_stage = PositionStage()
+        even_stage = self.EvenStage()
 
-        even_stage.stage_name = 'EVEN'
         even_stage.price_a = self.sell_order.strike + self.buy_order.price - self.sell_order.price
-        even_stage.stage_expression = '%.2f == {price}' % (float(even_stage.price_a))
-        even_stage.amount_a = 0.0
+        even_stage.stage_expression = self.e_price
 
         return even_stage
 
@@ -53,10 +52,9 @@ class StageShortPutVertical(object):
         Create max profit stage using filled orders data
         :return: PositionStage
         """
-        max_profit_stage = PositionStage()
+        max_profit_stage = self.MaxProfitStage()
 
-        max_profit_stage.stage_name = 'MAX_PROFIT'
-        max_profit_stage.stage_expression = '%.2f <= {price}' % self.sell_order.strike
+        max_profit_stage.stage_expression = self.gte_price
 
         max_profit_stage.price_a = self.sell_order.strike
         max_profit_stage.amount_a = (
@@ -64,10 +62,8 @@ class StageShortPutVertical(object):
             * self.contract_right * self.sell_order.quantity
         )
 
-        max_profit_stage.left_status = 'vanishing'
-        max_profit_stage.left_expression = '{price_a} <= {new_price} < {old_price}'
-        max_profit_stage.right_status = 'guaranteeing'
-        max_profit_stage.right_expression = '{price_a} <= {old_price} < {new_price}'
+        max_profit_stage.left_expression = self.gte_price_lower
+        max_profit_stage.right_expression = self.gte_price_higher
 
         return max_profit_stage
 
@@ -76,10 +72,9 @@ class StageShortPutVertical(object):
         Create max loss stage using filled orders data
         :return: PositionStage
         """
-        max_loss_stage = PositionStage()
+        max_loss_stage = self.MaxLossStage()
 
-        max_loss_stage.stage_name = 'MAX_LOSS'
-        max_loss_stage.stage_expression = '{price} <= %.2f' % self.buy_order.strike
+        max_loss_stage.stage_expression = self.lte_price
 
         max_loss_stage.price_a = self.buy_order.strike
         max_loss_stage.amount_a = (
@@ -88,10 +83,8 @@ class StageShortPutVertical(object):
             * self.contract_right * self.sell_order.quantity
         )
 
-        max_loss_stage.left_status = 'easing'
-        max_loss_stage.left_expression = '{old_price} < {new_price} <= {price_a}'
-        max_loss_stage.right_status = 'worst'
-        max_loss_stage.right_expression = '{new_price} < {old_price} <= {price_a}'
+        max_loss_stage.left_expression = self.lte_price_higher
+        max_loss_stage.right_expression = self.lte_price_lower
 
         return max_loss_stage
 
@@ -100,13 +93,9 @@ class StageShortPutVertical(object):
         Create profit stage using filled orders data
         :return: PositionStage
         """
-        profit_stage = PositionStage()
+        profit_stage = self.ProfitStage()
 
-        profit_stage.stage_name = 'PROFIT'
-        profit_stage.stage_expression = '%.2f < {price} < %.2f' % (
-            float(self.sell_order.strike + self.buy_order.price - self.sell_order.price),
-            float(self.sell_order.strike)
-        )
+        profit_stage.stage_expression = self.price_range
 
         profit_stage.price_a = self.sell_order.strike + self.buy_order.price - self.sell_order.price
         profit_stage.amount_a = 0.0
@@ -116,10 +105,8 @@ class StageShortPutVertical(object):
             * self.contract_right * self.sell_order.quantity
         )
 
-        profit_stage.left_status = 'decreasing'
-        profit_stage.left_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
-        profit_stage.right_status = 'profiting'
-        profit_stage.right_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
+        profit_stage.left_expression = self.price_range_lower
+        profit_stage.right_expression = self.price_range_higher
 
         return profit_stage
 
@@ -128,13 +115,9 @@ class StageShortPutVertical(object):
         Create loss stage using filled orders data
         :return: PositionStage
         """
-        loss_stage = PositionStage()
+        loss_stage = self.LossStage()
 
-        loss_stage.stage_name = 'LOSS'
-        loss_stage.stage_expression = '%.2f < {price} < %.2f' % (
-            float(self.buy_order.strike),
-            float(self.sell_order.strike + self.buy_order.price - self.sell_order.price),
-        )
+        loss_stage.stage_expression = self.price_range
 
         loss_stage.price_a = self.buy_order.strike
         loss_stage.amount_a = (
@@ -145,9 +128,7 @@ class StageShortPutVertical(object):
         loss_stage.price_b = self.sell_order.strike + self.buy_order.price - self.sell_order.price
         loss_stage.amount_b = 0.0
 
-        loss_stage.left_status = 'recovering'
-        loss_stage.left_expression = '{price_a} < {old_price} < {new_price} < {price_b}'
-        loss_stage.right_status = 'losing'
-        loss_stage.right_expression = '{price_a} < {new_price} < {old_price} < {price_b}'
+        loss_stage.left_expression = self.price_range_higher
+        loss_stage.right_expression = self.price_range_lower
 
         return loss_stage

@@ -5,7 +5,7 @@ from position.models import PositionStage
 from tos_import.statement.statement_trade.models import FilledOrder
 
 
-class TestStageLongCall(TestUnitSetUpStage):
+class TestStageNakedCall(TestUnitSetUpStage):
     def setUp(self):
         TestUnitSetUpStage.setUp(self)
 
@@ -37,7 +37,7 @@ class TestStageLongCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=even_stage,
             name='EVEN',
-            expression='68.95 == {price}',
+            expression='{price_a} == {current_price}',
             detail={
                 'price_a': 68.95,
                 'amount_a': 0.0,
@@ -66,7 +66,7 @@ class TestStageLongCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=max_profit_stage,
             name='MAX_PROFIT',
-            expression='{price} <= 66.00',
+            expression='{current_price} <= {price_a}',
             detail={
                 'price_a': 66.00,
                 'amount_a': 295.0,
@@ -95,7 +95,7 @@ class TestStageLongCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=profit_stage,
             name='PROFIT',
-            expression='66.00 < {price} < 68.95',
+            expression='{price_a} < {current_price} < {price_b}',
             detail={
                 'price_a': 66.0,
                 'amount_a': 295.0,
@@ -124,7 +124,7 @@ class TestStageLongCall(TestUnitSetUpStage):
         self.method_test_create_stage(
             stage=loss_stage,
             name='LOSS',
-            expression='68.95 < {price}',
+            expression='{price_a} < {current_price}',
             detail={
                 'price_a': 68.95,
                 'amount_a': 0.0,
