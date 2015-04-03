@@ -48,6 +48,8 @@ class PositionSetManager(object):
 
         # start spread analysis
         spread = Spread(filled_orders=filled_orders)
+        spread.get_name()
+        spread.get_spread()
 
         filled_order = self._filled_orders[0]
         """:type: FilledOrder"""
@@ -57,9 +59,14 @@ class PositionSetManager(object):
         forex = filled_order.forex
 
         # primary field
-        self.position_set.name = spread.get_name()
-        self.position_set.spread = spread.get_spread()
+        if self.position_set.name == '':
+            self.position_set.name = spread.name
+
+        if self.position_set.spread == '':
+            self.position_set.spread = spread.spread
+
         self.position_set.status = 'OPEN'
+
         self.position_set.underlying = underlying
         self.position_set.future = future
         self.position_set.forex = forex

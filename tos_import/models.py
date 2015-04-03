@@ -5,7 +5,7 @@ class Underlying(models.Model):
     """
     A position contains 1 instrument, 1 stock and multiple options
     """
-    symbol = models.CharField(max_length=10, help_text='Underlying stock symbol.')
+    symbol = models.CharField(max_length=10, help_text='Underlying stock symbol.', verbose_name='Symbol')
     company = models.CharField(max_length=100, null=True, blank=True, help_text='Stock company name.')
 
     def json(self):

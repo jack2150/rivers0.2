@@ -66,7 +66,7 @@ class TestStageShortCombo1(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=203.54, expect=True)
         self.check_in_stage(stage_cls=even_stage, price=204, expect=False)
 
-        self.check_get_status(even_stage, new_price=203.54, old_price=203.54, expect='unknown')
+        self.check_get_status(even_stage, new_price=203.54, old_price=203.54, expect='UNKNOWN')
 
     def test_create_max_loss_stage(self):
         """
@@ -83,9 +83,9 @@ class TestStageShortCombo1(TestUnitSetUpStage):
                 'amount_a': -46.0,
                 'price_b': 211.0,
                 'amount_b': -46.0,
-                'left_status': 'easing',
+                'left_status': 'EASING',
                 'left_expression': '{price_a} <= {new_price} < {old_price} <= {price_b}',
-                'right_status': 'worst',
+                'right_status': 'WORST',
                 'right_expression': '{price_a} <= {old_price} < {new_price} <= {price_b}',
             }
         )
@@ -93,9 +93,9 @@ class TestStageShortCombo1(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=max_loss_stage, price=207, expect=True)
         self.check_in_stage(stage_cls=max_loss_stage, price=203, expect=False)
 
-        self.check_get_status(max_loss_stage, new_price=204, old_price=206, expect='easing')
-        self.check_get_status(max_loss_stage, new_price=208, old_price=206, expect='worst')
-        self.check_get_status(max_loss_stage, new_price=206, old_price=206, expect='unknown')
+        self.check_get_status(max_loss_stage, new_price=204, old_price=206, expect='EASING')
+        self.check_get_status(max_loss_stage, new_price=208, old_price=206, expect='WORST')
+        self.check_get_status(max_loss_stage, new_price=206, old_price=206, expect='UNKNOWN')
 
     def test_create_loss_stage1(self):
         """
@@ -112,9 +112,9 @@ class TestStageShortCombo1(TestUnitSetUpStage):
                 'amount_a': -46.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {new_price} < {old_price}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {old_price} < {new_price}',
             }
         )
@@ -122,9 +122,9 @@ class TestStageShortCombo1(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=212, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=210, expect=False)
 
-        self.check_get_status(loss_stage, new_price=212, old_price=214, expect='recovering')
-        self.check_get_status(loss_stage, new_price=216, old_price=214, expect='losing')
-        self.check_get_status(loss_stage, new_price=215, old_price=215, expect='unknown')
+        self.check_get_status(loss_stage, new_price=212, old_price=214, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=216, old_price=214, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=215, old_price=215, expect='UNKNOWN')
 
     def test_create_loss_stage2(self):
         """
@@ -141,9 +141,9 @@ class TestStageShortCombo1(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 204.0,
                 'amount_b': 46.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {new_price} < {old_price} < {price_b}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {old_price} < {new_price} < {price_b}',
             }
         )
@@ -151,9 +151,9 @@ class TestStageShortCombo1(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=203.8, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=204.1, expect=False)
 
-        self.check_get_status(loss_stage, new_price=203.6, old_price=203.8, expect='recovering')
-        self.check_get_status(loss_stage, new_price=203.9, old_price=203.7, expect='losing')
-        self.check_get_status(loss_stage, new_price=203.8, old_price=203.8, expect='unknown')
+        self.check_get_status(loss_stage, new_price=203.6, old_price=203.8, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=203.9, old_price=203.7, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=203.8, old_price=203.8, expect='UNKNOWN')
 
     def test_create_profit_stage2(self):
         """
@@ -170,9 +170,9 @@ class TestStageShortCombo1(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{old_price} < {new_price} < {price_a}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{new_price} < {old_price} < {price_a}',
             }
         )
@@ -180,9 +180,9 @@ class TestStageShortCombo1(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=203, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=205, expect=False)
 
-        self.check_get_status(profit_stage, new_price=202, old_price=201, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=201, old_price=202, expect='profiting')
-        self.check_get_status(profit_stage, new_price=202, old_price=202, expect='unknown')
+        self.check_get_status(profit_stage, new_price=202, old_price=201, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=201, old_price=202, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=202, old_price=202, expect='UNKNOWN')
 
     def test_create_stages(self):
         """
@@ -258,7 +258,7 @@ class TestStageShortCombo2(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=209.34, expect=True)
         self.check_in_stage(stage_cls=even_stage, price=209, expect=False)
 
-        self.check_get_status(even_stage, new_price=209.34, old_price=209.34, expect='unknown')
+        self.check_get_status(even_stage, new_price=209.34, old_price=209.34, expect='UNKNOWN')
 
     def test_create_max_profit_stage(self):
         """
@@ -275,9 +275,9 @@ class TestStageShortCombo2(TestUnitSetUpStage):
                 'amount_a': 34.0,
                 'price_b': 209,
                 'amount_b': 34.0,
-                'left_status': 'vanishing',
+                'left_status': 'VANISHING',
                 'left_expression': '{price_a} <= {old_price} < {new_price} <= {price_b}',
-                'right_status': 'guaranteeing',
+                'right_status': 'GUARANTEEING',
                 'right_expression': '{price_a} <= {new_price} < {old_price} <= {price_b}',
             }
         )
@@ -285,9 +285,9 @@ class TestStageShortCombo2(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=max_profit_stage, price=207, expect=True)
         self.check_in_stage(stage_cls=max_profit_stage, price=203, expect=False)
 
-        self.check_get_status(max_profit_stage, new_price=208, old_price=206, expect='vanishing')
-        self.check_get_status(max_profit_stage, new_price=204, old_price=206, expect='guaranteeing')
-        self.check_get_status(max_profit_stage, new_price=206, old_price=206, expect='unknown')
+        self.check_get_status(max_profit_stage, new_price=208, old_price=206, expect='VANISHING')
+        self.check_get_status(max_profit_stage, new_price=204, old_price=206, expect='GUARANTEEING')
+        self.check_get_status(max_profit_stage, new_price=206, old_price=206, expect='UNKNOWN')
 
     def test_create_loss_stage1(self):
         """
@@ -304,9 +304,9 @@ class TestStageShortCombo2(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {new_price} < {old_price}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {old_price} < {new_price}',
             }
         )
@@ -314,9 +314,9 @@ class TestStageShortCombo2(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=211, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=209, expect=False)
 
-        self.check_get_status(loss_stage, new_price=212, old_price=214, expect='recovering')
-        self.check_get_status(loss_stage, new_price=216, old_price=214, expect='losing')
-        self.check_get_status(loss_stage, new_price=215, old_price=215, expect='unknown')
+        self.check_get_status(loss_stage, new_price=212, old_price=214, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=216, old_price=214, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=215, old_price=215, expect='UNKNOWN')
 
     def test_create_profit_stage1(self):
         """
@@ -333,9 +333,9 @@ class TestStageShortCombo2(TestUnitSetUpStage):
                 'amount_a': -34.0,
                 'price_b': 209.34,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{price_a} < {old_price} < {new_price} < {price_b}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{price_a} < {new_price} < {old_price} < {price_b}',
             }
         )
@@ -343,9 +343,9 @@ class TestStageShortCombo2(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=209.2, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=209.5, expect=False)
 
-        self.check_get_status(profit_stage, new_price=209.3, old_price=209.1, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=209.2, old_price=209.3, expect='profiting')
-        self.check_get_status(profit_stage, new_price=209.2, old_price=209.2, expect='unknown')
+        self.check_get_status(profit_stage, new_price=209.3, old_price=209.1, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=209.2, old_price=209.3, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=209.2, old_price=209.2, expect='UNKNOWN')
 
     def test_create_profit_stage2(self):
         """
@@ -362,9 +362,9 @@ class TestStageShortCombo2(TestUnitSetUpStage):
                 'amount_a': -34.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{old_price} < {new_price} < {price_a}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{new_price} < {old_price} < {price_a}',
             }
         )
@@ -372,9 +372,9 @@ class TestStageShortCombo2(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=203, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=205, expect=False)
 
-        self.check_get_status(profit_stage, new_price=203, old_price=201, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=201, old_price=202, expect='profiting')
-        self.check_get_status(profit_stage, new_price=202, old_price=202, expect='unknown')
+        self.check_get_status(profit_stage, new_price=203, old_price=201, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=201, old_price=202, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=202, old_price=202, expect='UNKNOWN')
 
     def test_create_stages(self):
         """
@@ -440,9 +440,9 @@ class TestStageShortCombo3(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 210.0,
                 'amount_b': 0.0,
-                'left_status': 'losing',
+                'left_status': 'LOSING',
                 'left_expression': '{price_a} <= {new_price} < {old_price} <= {price_b}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{price_a} <= {old_price} < {new_price} <= {price_b}',
             }
         )
@@ -450,9 +450,9 @@ class TestStageShortCombo3(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=206, expect=True)
         self.check_in_stage(stage_cls=even_stage, price=202, expect=False)
 
-        self.check_get_status(even_stage, new_price=208, old_price=206, expect='profiting')
-        self.check_get_status(even_stage, new_price=204, old_price=206, expect='losing')
-        self.check_get_status(even_stage, new_price=205, old_price=205, expect='unknown')
+        self.check_get_status(even_stage, new_price=208, old_price=206, expect='PROFITING')
+        self.check_get_status(even_stage, new_price=204, old_price=206, expect='LOSING')
+        self.check_get_status(even_stage, new_price=205, old_price=205, expect='UNKNOWN')
 
     def test_create_loss_stage1(self):
         """
@@ -469,9 +469,9 @@ class TestStageShortCombo3(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {new_price} < {old_price}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {old_price} < {new_price}',
             }
         )
@@ -479,9 +479,9 @@ class TestStageShortCombo3(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=211, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=210, expect=False)
 
-        self.check_get_status(loss_stage, new_price=212, old_price=214, expect='recovering')
-        self.check_get_status(loss_stage, new_price=216, old_price=214, expect='losing')
-        self.check_get_status(loss_stage, new_price=215, old_price=215, expect='unknown')
+        self.check_get_status(loss_stage, new_price=212, old_price=214, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=216, old_price=214, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=215, old_price=215, expect='UNKNOWN')
 
     def test_create_profit_stage2(self):
         """
@@ -498,9 +498,9 @@ class TestStageShortCombo3(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{old_price} < {new_price} < {price_a}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{new_price} < {old_price} < {price_a}',
             }
         )
@@ -508,9 +508,9 @@ class TestStageShortCombo3(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=202, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=205, expect=False)
 
-        self.check_get_status(profit_stage, new_price=202, old_price=201, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=201, old_price=202, expect='profiting')
-        self.check_get_status(profit_stage, new_price=202, old_price=202, expect='unknown')
+        self.check_get_status(profit_stage, new_price=202, old_price=201, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=201, old_price=202, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=202, old_price=202, expect='UNKNOWN')
 
     def test_create_stages(self):
         """

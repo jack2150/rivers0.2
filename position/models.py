@@ -70,6 +70,27 @@ class PositionSet(models.Model):
 
         return symbol
 
+    def get_stage(self, price):
+        """
+        Get current stage for this position set
+        loop all stages then determine
+        :return: PositionStage
+        """
+        for position_stage in self.positionstage_set.all():
+            if position_stage.in_stage(current_price=price):
+                return position_stage
+
+    def current_status(self, new_price, old_price):
+        """
+        Get current stage status for this position set
+        :param new_price: float
+        :param old_price: float
+        :return: str
+        """
+        return self.get_stage(price=new_price).get_status(
+            new_price=new_price, old_price=old_price
+        )
+
     def __unicode__(self):
         """
         Explain this model
@@ -158,7 +179,7 @@ class PositionStage(models.Model):
         elif right_result:
             result = self.right_status
         else:
-            result = 'unknown'
+            result = 'UNKNOWN'
 
         return result
 

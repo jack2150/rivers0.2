@@ -77,9 +77,9 @@ class StageLongCombo(Stage):
             even_stage.price_a = self.put_order.strike
             even_stage.price_b = self.call_order.strike
 
-            even_stage.left_status = 'losing'
+            even_stage.left_status = 'LOSING'
             even_stage.left_expression = self.e_price_range_lower
-            even_stage.right_status = 'profiting'
+            even_stage.right_status = 'PROFITING'
             even_stage.right_expression = self.e_price_range_higher
 
         return even_stage

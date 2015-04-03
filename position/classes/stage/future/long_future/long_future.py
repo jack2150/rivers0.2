@@ -15,7 +15,10 @@ class StageLongFuture(Stage):
         self.future_order = filled_orders[0]
         """:type : FilledOrder"""
 
-        self.spc = Decimal(float(Fraction(self.future_order.future.spc)))
+        try:
+            self.spc = Decimal(float(Fraction(self.future_order.future.spc)))
+        except ValueError:
+            self.spc = Decimal(eval(self.future_order.future.spc))
 
     def create_stages(self):
         """

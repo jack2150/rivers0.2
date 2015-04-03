@@ -54,7 +54,7 @@ class TestStageLongPut(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=123, expect=False)
 
         self.check_get_status(
-            stage_cls=even_stage, new_price=121.07, old_price=121.07, expect='unknown'
+            stage_cls=even_stage, new_price=121.07, old_price=121.07, expect='UNKNOWN'
         )
 
     def test_create_max_loss_stage(self):
@@ -72,9 +72,9 @@ class TestStageLongPut(TestUnitSetUpStage):
                 'amount_a': -393.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'easing',
+                'left_status': 'EASING',
                 'left_expression': '{price_a} <= {new_price} < {old_price}',
-                'right_status': 'worst',
+                'right_status': 'WORST',
                 'right_expression': '{price_a} <= {old_price} < {new_price}',
             }
         )
@@ -82,9 +82,9 @@ class TestStageLongPut(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=max_loss_stage, price=126, expect=True)
         self.check_in_stage(stage_cls=max_loss_stage, price=124.6, expect=False)
 
-        self.check_get_status(max_loss_stage, new_price=126, old_price=127, expect='easing')
-        self.check_get_status(max_loss_stage, new_price=128, old_price=127, expect='worst')
-        self.check_get_status(max_loss_stage, new_price=126, old_price=126, expect='unknown')
+        self.check_get_status(max_loss_stage, new_price=126, old_price=127, expect='EASING')
+        self.check_get_status(max_loss_stage, new_price=128, old_price=127, expect='WORST')
+        self.check_get_status(max_loss_stage, new_price=126, old_price=126, expect='UNKNOWN')
 
     def test_create_profit_stage(self):
         """
@@ -101,9 +101,9 @@ class TestStageLongPut(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{old_price} < {new_price} < {price_a}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{new_price} < {old_price} < {price_a}',
             }
         )
@@ -111,9 +111,9 @@ class TestStageLongPut(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=120.5, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=123.5, expect=False)
 
-        self.check_get_status(profit_stage, new_price=119.5, old_price=118.5, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=115, old_price=118, expect='profiting')
-        self.check_get_status(profit_stage, new_price=119.5, old_price=119.5, expect='unknown')
+        self.check_get_status(profit_stage, new_price=119.5, old_price=118.5, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=115, old_price=118, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=119.5, old_price=119.5, expect='UNKNOWN')
 
     def test_create_loss_stage(self):
         """
@@ -130,9 +130,9 @@ class TestStageLongPut(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 125.0,
                 'amount_b': -393.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {new_price} < {old_price} < {price_b}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {old_price} < {new_price} < {price_b}',
             }
         )
@@ -140,9 +140,9 @@ class TestStageLongPut(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=124.3, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=126.7, expect=False)
 
-        self.check_get_status(loss_stage, new_price=122.5, old_price=123, expect='recovering')
-        self.check_get_status(loss_stage, new_price=123.5, old_price=123, expect='losing')
-        self.check_get_status(loss_stage, new_price=123, old_price=123, expect='unknown')
+        self.check_get_status(loss_stage, new_price=122.5, old_price=123, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=123.5, old_price=123, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=123, old_price=123, expect='UNKNOWN')
 
     def test_create_stages(self):
         """

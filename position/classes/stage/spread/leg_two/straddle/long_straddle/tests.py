@@ -74,7 +74,7 @@ class TestStageLongStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=125, expect=False)
 
         self.check_get_status(
-            stage_cls=even_stage, new_price=124.65, old_price=124.65, expect='unknown'
+            stage_cls=even_stage, new_price=124.65, old_price=124.65, expect='UNKNOWN'
         )
 
     def test_create_even_stage2(self):
@@ -103,7 +103,7 @@ class TestStageLongStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=116, expect=False)
 
         self.check_get_status(
-            stage_cls=even_stage, new_price=115.35, old_price=115.35, expect='unknown'
+            stage_cls=even_stage, new_price=115.35, old_price=115.35, expect='UNKNOWN'
         )
 
     def test_create_profit_stage1(self):
@@ -121,9 +121,9 @@ class TestStageLongStraddle(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{price_a} < {new_price} < {old_price}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{price_a} < {old_price} < {new_price}',
             }
         )
@@ -131,9 +131,9 @@ class TestStageLongStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=125, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=124, expect=False)
 
-        self.check_get_status(profit_stage, new_price=125, old_price=126, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=129, old_price=126, expect='profiting')
-        self.check_get_status(profit_stage, new_price=126, old_price=126, expect='unknown')
+        self.check_get_status(profit_stage, new_price=125, old_price=126, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=129, old_price=126, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=126, old_price=126, expect='UNKNOWN')
 
     def test_create_profit_stage2(self):
         """
@@ -150,9 +150,9 @@ class TestStageLongStraddle(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{old_price} < {new_price} < {price_a}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{new_price} < {old_price} < {price_a}',
             }
         )
@@ -160,9 +160,9 @@ class TestStageLongStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=114, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=116, expect=False)
 
-        self.check_get_status(profit_stage, new_price=113, old_price=112, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=111, old_price=113, expect='profiting')
-        self.check_get_status(profit_stage, new_price=113, old_price=113, expect='unknown')
+        self.check_get_status(profit_stage, new_price=113, old_price=112, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=111, old_price=113, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=113, old_price=113, expect='UNKNOWN')
 
     def test_create_loss_stage1(self):
         """
@@ -179,9 +179,9 @@ class TestStageLongStraddle(TestUnitSetUpStage):
                 'amount_a': -465.0,
                 'price_b': 124.65,
                 'amount_b': 0.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {old_price} < {new_price} < {price_b}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {new_price} < {old_price} < {price_b}',
             }
         )
@@ -189,9 +189,9 @@ class TestStageLongStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=123, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=125, expect=False)
 
-        self.check_get_status(loss_stage, new_price=124, old_price=122, expect='recovering')
-        self.check_get_status(loss_stage, new_price=122, old_price=123, expect='losing')
-        self.check_get_status(loss_stage, new_price=123, old_price=123, expect='unknown')
+        self.check_get_status(loss_stage, new_price=124, old_price=122, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=122, old_price=123, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=123, old_price=123, expect='UNKNOWN')
 
     def test_create_loss_stage2(self):
         """
@@ -208,9 +208,9 @@ class TestStageLongStraddle(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 120.0,
                 'amount_b': -465.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {new_price} < {old_price} < {price_b}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {old_price} < {new_price} < {price_b}',
             }
         )
@@ -218,9 +218,9 @@ class TestStageLongStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=118, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=114, expect=False)
 
-        self.check_get_status(loss_stage, new_price=116, old_price=118, expect='recovering')
-        self.check_get_status(loss_stage, new_price=119, old_price=117, expect='losing')
-        self.check_get_status(loss_stage, new_price=117, old_price=117, expect='unknown')
+        self.check_get_status(loss_stage, new_price=116, old_price=118, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=119, old_price=117, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=117, old_price=117, expect='UNKNOWN')
 
     def test_create_max_loss_stage1(self):
         """
@@ -247,7 +247,7 @@ class TestStageLongStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=max_loss_stage, price=120, expect=True)
         self.check_in_stage(stage_cls=max_loss_stage, price=119, expect=False)
 
-        self.check_get_status(max_loss_stage, new_price=120, old_price=120, expect='unknown')
+        self.check_get_status(max_loss_stage, new_price=120, old_price=120, expect='UNKNOWN')
 
     def test_create_stages(self):
         """

@@ -1,7 +1,48 @@
 {% extends "admin/base_site.html" %}
-{% load static currency_tag verbose_name %}
+{% load static currency_tag verbose_name position_set %}
 
 {% block title %}Position spreads: {{ date }}{% endblock %}
+
+{% block extrahead %}
+  <!-- DataTables -->
+  <script type="text/javascript" charset="utf8" src="
+    {% static 'datatables-1.10.5/media/js/jquery.dataTables.js' %}"></script>
+
+  <!-- Currency -->
+  <script type="text/javascript" src="{% static 'assets/js/autoNumeric.js' %}"></script>
+{% endblock %}
+
+{% block extrastyle %}
+  <style>
+    label {
+      margin-right: 4px;
+    }
+
+    thead tr th {
+      color: #337ab7;
+    }
+
+    thead tr th:hover {
+      text-decoration: underline;
+    }
+
+    .fix_width {
+      width: 20px;
+    }
+
+    .purple2, .purple2:hover {
+      color: #6d638c;
+    }
+
+    .green2, .green2:hover {
+      color: #2e8965;
+    }
+
+    .spread-fast-action {
+      padding-top: 2px;
+    }
+  </style>
+{% endblock %}
 
 {% block breadcrumbs %}
   <li>
@@ -20,28 +61,228 @@
 {% endblock %}
 
 {% block page-header-tool %}
+  <script type="text/javascript">
+  function go_to_previous_page() {
+    $(location).attr('href', '{% if previous %}{% url 'admin:position_set_spread_view' previous %}{% endif %}');
+  }
 
+  function go_to_next_page() {
+    $(location).attr('href', '{% if next %}{% url 'admin:position_set_spread_view' next %}{% endif %}');
+  }
+  </script>
+
+  <div class="btn-group btn-corner">
+    <button class="btn {% if previous == None %}disabled{% endif %} btn-white btn-sm btn-primary"
+            onclick="go_to_previous_page()">
+      ← Previous
+    </button>
+
+    <button class="btn {% if next == None %}disabled{% endif %} btn-white btn-sm btn-primary"
+            onclick="go_to_next_page()">
+      Next →
+    </button>
+  </div>
 {% endblock %}
 
-
 {% block content %}
-  <table class="table">
-  {% for position_instrument in position_instruments %}
-    <tr>
-      <td>{{ position_instrument.underlying.symbol }}</td>
-      <td>current_price</td>
-      <td>{{ position_instrument.pl_open|currency }}</td>
-      <td>{{ position_instrument.pl_day|currency }}</td>
-      <td>{{ position_instrument.position_set.name }}</td>
-      <td>{{ position_instrument.position_set.spread }}</td>
-      <td>current_stage</td>
-      <td>current_status</td>
+<div id="content-main">
+  {% include 'position/spread/instruments.html' %}
+</div>
+{% endblock %}
 
-    </tr>
-  {% endfor %}
-  </table>
-  <hr>
-  <div>{{ position_futures }}</div>
-  <hr>
-  <div>{{ position_forexs }}</div>
+{% block footer_extra_script %}
+  <script type="text/javascript">
+    function render_spread(data) {
+      var icon = '';
+      switch (data) {
+        case 'EQUITY':
+          icon = 'fa-line-chart';
+          break;
+        case 'FUTURE':
+          icon = 'glyphicons-cargo';
+          break;
+        case 'FOREX':
+          icon = 'fa-money';
+          break;
+        case 'HEDGE':
+          icon = 'fa-area-chart';
+          break;
+        case 'OPTION':
+          icon = 'fa-file-text-o';
+          break;
+        case 'SPREAD':
+          icon = 'fa-arrows-alt';
+          break;
+        default:
+          icon = 'fa-question';
+          break;
+      }
+
+      return '<i class="fix_width ace-icon fa ' + icon
+          + ' icon-only" title="' + data + '"></i> ' + data;
+    }
+
+    function render_stage(data) {
+      var label = '';
+      var icon = '';
+      switch (data) {
+        case 'MAX_PROFIT':
+          label = 'label-info';
+          icon = 'fa-thumbs-up';
+          break;
+        case 'PROFIT':
+          label = 'label-success';
+          icon = 'fa-check-square';
+          break;
+        case 'EVEN':
+          label = '';
+          icon = 'fa-question-circle';
+          break;
+        case 'LOSS':
+          label = 'label-warning';
+          icon = 'fa-exclamation-triangle';
+          break;
+        case 'MAX_LOSS':
+          label = 'label-danger';
+          icon = 'fa-times-circle';
+          break;
+      }
+
+      return '<span class="label ' + label + '"><i class="ace-icon fa '
+          + icon + '"></i> ' + data + '</span>';
+    }
+
+    function render_status(data) {
+      var label = '';
+      switch (data) {
+        case 'VANISHING':
+        case 'DECREASING':
+        case 'LOSING':
+        case 'WORST':
+          label = 'label-warning';
+          break;
+        case 'GUARANTEEING':
+        case 'PROFITING':
+        case 'RECOVERING':
+        case 'EASING':
+          label = 'label-success ';
+          break;
+      }
+
+      return '<span class="label ' + label + '  label-white middle">' + data + '</span>';
+    }
+
+    function render_currency(data) {
+      return parseFloat(data).toFixed(2)
+    }
+
+    function render_price_move(data) {
+      return (Math.sign(data) > 0 ? '+' : '') + parseFloat(data).toFixed(2)
+    }
+
+    function render_strategy(data) {
+      return '<i>' + data + '</i>';
+    }
+
+    function column_filter(section_id, columns) {
+      $('#' + section_id).DataTable({
+
+        paging: false,
+
+        "columnDefs": [
+          { "targets": 1, "render": render_currency},
+          { "targets": 2, "render": render_currency},
+          { "targets": 3, "render": render_currency},
+          { "targets": 4, "render": render_price_move},
+          { "targets": 5, "render": render_price_move},
+          { "targets": 7, "render": render_strategy},
+          { "targets": 6, "render": render_spread},
+          { "targets": 8, "render": render_stage},
+          { "targets": 9, "render": render_status},
+          { "targets": 10, "orderable": false },
+        ],
+
+        initComplete: function () {
+          var api = this.api();
+
+          api.columns().indexes().flatten().each(function (i) {
+            var column = api.column(i);
+            var header_text = $(column.header()).text();
+
+            if (columns.indexOf(header_text) > -1) {
+              var label = $('<label></label>').appendTo('#position_instruments_filters');
+
+              var select = $(
+                      '<select class="form-control auto-width search-filter">' +
+                      '<option value="">' + header_text + '</option>' +
+                      '<option value="">---</option></select>'
+              )
+                  .appendTo(label)
+                  .on('change', function () {
+                    var val = $.fn.dataTable.util.escapeRegex(
+                        $(this).val()
+                    );
+
+                    // todo: error filter
+                    //column.search(val0 ? '^' + val + '$' : '', true, false)
+                    //    .draw();
+                    if (header_text == 'Spread' || header_text == 'Stage') {
+                      column.search(val ? ' ' + val + '$' : '', true, false).draw();
+                    }
+                    else {
+                      column.search(val ? '^' + val + '$' : '', true, false).draw();
+                    }
+
+
+                  });
+
+              column.data().unique().sort().each(function (d, j) {
+                select.append('<option value="' + d + '">' + d + '</option>')
+              });
+            }
+          });
+        }
+      });
+
+      // search field in top
+      var filter_field = $('#position_instruments_filter');
+      $(filter_field).find('input').addClass('form-control search-query')
+          .attr("placeholder", "Search")
+          .appendTo("#position_instruments_search_box");
+      $(filter_field).hide();
+
+      var showing_field = $('#position_instruments_info');
+      $(showing_field).appendTo("#position_instruments_footer");
+
+    }
+
+    column_filter(
+        'position_instruments',
+        ['Symbol', 'Spread', 'Strategy', 'Stage', 'Status']
+    );
+
+    // next or previous page
+    $(document).keydown(function (e) {
+      switch (e.which) {
+        case 37: // left
+          {% if previous %}
+          go_to_previous_page();
+          {% endif %}
+          break;
+
+        case 39: // right
+          {% if next %}
+          go_to_next_page();
+          {% endif %}
+          break;
+
+        default:
+          return; // exit this handler for other keys
+      }
+      e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
+
+    // focus search
+    $("#position_instruments_filter").focus();
+  </script>
 {% endblock %}

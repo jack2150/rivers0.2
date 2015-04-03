@@ -10,26 +10,11 @@ from tos_import.statement.statement_position.models import PositionSummary, Posi
 from tos_import.statement.statement_trade.models import FilledOrder
 
 
-class TestContext(TestSetUpDB):
+class TestPositionSet(TestReadyFile):
     def setUp(self):
-        TestSetUpDB.setUp(self)
-
-        self.prices = [12.5, 20.7, 33.94, 8.71, 114.81]
-        self.conditions = ['>', '<', '==', '<=', '>=']
-        self.amounts = [139.00, 2267.49, 339.47, 71.66, 10088.83]
-        self.limits = [True, False, True, True, False]
-
-        self.cls = None
-
-
-class TestPositionSet(TestContext, TestReadyFile):
-    def setUp(self):
-        TestContext.setUp(self)
+        TestReadyFile.setUp(self)
 
         self.items = list()
-
-        self.names = ['EQUITY', 'OPTION', 'SPREAD', 'FUTURE', 'FOREX']
-        self.spreads = ['LONG STOCK', 'LONG PUT', 'BULL CALL VERTICAL', 'NGQ3', 'USD/CAD']
 
         self.real_date = '2015-01-29'
         self.file_date = '2015-01-30'
@@ -113,6 +98,56 @@ class TestPositionSet(TestContext, TestReadyFile):
         self.assertTrue(position_set.filledorder_set.exists())
         self.assertTrue(position_set.positioninstrument_set.exists())
         self.assertTrue(position_set.positioninstrument_set.exists())
+
+    def method_test_current_stage(self, position_set, price, expect):
+        """
+        Use for test current stage result
+        :param position_set: PositionSet
+        :param price: float
+        :param expect: str
+        """
+        result = position_set.get_stage(price=price).stage_name
+        self.assertEqual(result, expect)
+        print 'using price: %.2f, result: %s, expect: %s' % (price, result, expect)
+
+    def test_current_stage(self):
+        """
+        Test get current stage for this position set
+        """
+        position_set = PositionSet(
+            underlying=self.underlying,
+            name=self.name,
+            spread=self.spread,
+        )
+        position_set.save()
+        self.position_instrument.position_set = position_set
+        self.position_instrument.save()
+
+        print 'using filled_order net_price: %.2f' % self.filled_order.net_price
+
+        position_set.positionstage_set.create(
+            stage_name='PROFIT',
+            stage_expression='{price_a} < {current_price}',
+            price_a=14.93
+        )
+        position_set.positionstage_set.create(
+            stage_name='EVEN',
+            stage_expression='{price_a} == {current_price}',
+            price_a=14.93
+        )
+        position_set.positionstage_set.create(
+            stage_name='LOSS',
+            stage_expression='{current_price} < {price_a}',
+            price_a=14.93
+        )
+
+        print 'position_stage list:'
+        for position_stage in position_set.positionstage_set.all():
+            print position_stage
+
+        self.method_test_current_stage(position_set, 14.93, 'EVEN')
+        self.method_test_current_stage(position_set, 15.5, 'PROFIT')
+        self.method_test_current_stage(position_set, 13.8, 'LOSS')
 
 
 class TestPositionStage(TestSetUpDB):
@@ -220,7 +255,8 @@ class TestPositionStage(TestSetUpDB):
         print 'using new_price: %.2f, old_price: %.2f' % (new_price, old_price)
         result = self.stage.get_status(new_price=new_price, old_price=old_price)
         print 'eval result: %s' % result
-        self.assertEqual(result, 'unknown')
+        self.assertEqual(result, 'UNKNOWN')
+
 
 
 

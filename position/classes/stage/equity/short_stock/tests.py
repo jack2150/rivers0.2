@@ -49,7 +49,7 @@ class TestStageShortStock(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=120, expect=False)
 
         self.check_get_status(
-            stage_cls=even_stage, new_price=133.33, old_price=133.33, expect='unknown'
+            stage_cls=even_stage, new_price=133.33, old_price=133.33, expect='UNKNOWN'
         )
 
     def test_create_profit_stage(self):
@@ -67,9 +67,9 @@ class TestStageShortStock(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{old_price} < {new_price} < {price_a}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{new_price} < {old_price} < {price_a}',
             }
         )
@@ -77,9 +77,9 @@ class TestStageShortStock(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=124.5, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=127.84, expect=False)
 
-        self.check_get_status(profit_stage, new_price=124.21, old_price=122.76, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=121.63, old_price=122.76, expect='profiting')
-        self.check_get_status(profit_stage, new_price=120.8, old_price=120.8, expect='unknown')
+        self.check_get_status(profit_stage, new_price=124.21, old_price=122.76, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=121.63, old_price=122.76, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=120.8, old_price=120.8, expect='UNKNOWN')
 
     def test_create_loss_stage(self):
         """
@@ -96,9 +96,9 @@ class TestStageShortStock(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {new_price} < {old_price}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {old_price} < {new_price}',
             }
         )
@@ -106,9 +106,9 @@ class TestStageShortStock(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=131.9, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=120.8, expect=False)
 
-        self.check_get_status(loss_stage, new_price=131.7, old_price=133.85, expect='recovering')
-        self.check_get_status(loss_stage, new_price=140, old_price=133.85, expect='losing')
-        self.check_get_status(loss_stage, new_price=132.4, old_price=132.4, expect='unknown')
+        self.check_get_status(loss_stage, new_price=131.7, old_price=133.85, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=140, old_price=133.85, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=132.4, old_price=132.4, expect='UNKNOWN')
 
     def test_create_stages(self):
         """

@@ -1,0 +1,74 @@
+{% load currency_tag verbose_name position_set %}
+
+<div class="panel panel-default">
+  <div class="panel-heading" id="position_instruments_heading">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="input-group">
+          <span id="position_instruments_search_box"></span>
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-purple btn-sm">
+                <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+                Search
+              </button>
+            </span>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div id="position_instruments_filters"></div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+  <table id="position_instruments" class="table table-striped">
+  {% for position_instrument in position_instruments %}
+    {% if forloop.first %}
+      <thead class="padding-bottom-4" style="height: 40px;">
+      <tr>
+        <th>{% verbose_name position_instrument.underlying 'symbol' %}</th>
+        <th>Last</th>
+        <th>{% verbose_name position_instrument.positionequity 'mark' %}</th>
+        <th>{% verbose_name position_instrument.positionequity 'mark_change' %}</th>
+        <th>{% verbose_name position_instrument.positionequity 'pl_open' %}</th>
+        <th>{% verbose_name position_instrument.positionequity 'pl_day' %}</th>
+        <th>Spread</th>
+        <th>Strategy</th>
+        <th>Stage</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+      </thead>
+    {% endif %}
+    <tr>
+      <td>{{ position_instrument.underlying.symbol }}</td>
+      <td>{% get_old_price position_instrument.positionequity %}</td>
+      <td>{{ position_instrument.positionequity.mark }}</td>
+      <td>{{ position_instrument.positionequity.mark_change }}</td>
+      <td>{{ position_instrument.pl_open }}</td>
+      <td>{{ position_instrument.pl_day }}</td>
+      <td>{{ position_instrument.position_set.name }}</td>
+      <td>{{ position_instrument.position_set.spread }}</td>
+      <td>
+        {% stage position_instrument.position_set position_instrument.positionequity.mark %}
+      </td>
+      <td>
+        {% status position_instrument.position_set position_instrument.positionequity %}
+      </td>
+      <td>
+        <div class="pull-right action-buttons spread-fast-action">
+          <a class="green2" href="#" title="Fast Decision">
+            <i class="ace-icon fa fa-random bigger-120"></i>
+          </a>
+          <a class="purple2" href="#" title="Profiler">
+            <i class="ace-icon fa fa-tachometer bigger-130"></i>
+          </a>
+        </div>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+  <div class="panel-footer" id="position_instruments_footer">
+  </div>
+</div>
+
+

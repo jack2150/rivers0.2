@@ -74,7 +74,7 @@ class TestStageShortStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=55, expect=False)
 
         self.check_get_status(
-            stage_cls=even_stage, new_price=55.69, old_price=55.69, expect='unknown'
+            stage_cls=even_stage, new_price=55.69, old_price=55.69, expect='UNKNOWN'
         )
 
     def test_create_even_stage2(self):
@@ -103,7 +103,7 @@ class TestStageShortStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=53, expect=False)
 
         self.check_get_status(
-            stage_cls=even_stage, new_price=52.31, old_price=52.31, expect='unknown'
+            stage_cls=even_stage, new_price=52.31, old_price=52.31, expect='UNKNOWN'
         )
 
     def test_create_loss_stage1(self):
@@ -121,9 +121,9 @@ class TestStageShortStraddle(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {new_price} < {old_price}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {old_price} < {new_price}',
             }
         )
@@ -131,9 +131,9 @@ class TestStageShortStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=57, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=55, expect=False)
 
-        self.check_get_status(loss_stage, new_price=57, old_price=58, expect='recovering')
-        self.check_get_status(loss_stage, new_price=59, old_price=58, expect='losing')
-        self.check_get_status(loss_stage, new_price=57, old_price=57, expect='unknown')
+        self.check_get_status(loss_stage, new_price=57, old_price=58, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=59, old_price=58, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=57, old_price=57, expect='UNKNOWN')
 
     def test_create_loss_stage2(self):
         """
@@ -150,9 +150,9 @@ class TestStageShortStraddle(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{old_price} < {new_price} < {price_a}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{new_price} < {old_price} < {price_a}',
             }
         )
@@ -160,9 +160,9 @@ class TestStageShortStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=50, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=53, expect=False)
 
-        self.check_get_status(loss_stage, new_price=51.5, old_price=50, expect='recovering')
-        self.check_get_status(loss_stage, new_price=49.9, old_price=50, expect='losing')
-        self.check_get_status(loss_stage, new_price=50.5, old_price=50.5, expect='unknown')
+        self.check_get_status(loss_stage, new_price=51.5, old_price=50, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=49.9, old_price=50, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=50.5, old_price=50.5, expect='UNKNOWN')
 
     def test_create_profit_stage1(self):
         """
@@ -179,9 +179,9 @@ class TestStageShortStraddle(TestUnitSetUpStage):
                 'amount_a': 169.0,
                 'price_b': 55.69,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{price_a} < {old_price} < {new_price} < {price_b}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{price_a} < {new_price} < {old_price} < {price_b}',
             }
         )
@@ -189,9 +189,9 @@ class TestStageShortStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=55, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=56, expect=False)
 
-        self.check_get_status(profit_stage, new_price=55.2, old_price=55, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=54.3, old_price=54.5, expect='profiting')
-        self.check_get_status(profit_stage, new_price=54, old_price=54, expect='unknown')
+        self.check_get_status(profit_stage, new_price=55.2, old_price=55, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=54.3, old_price=54.5, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=54, old_price=54, expect='UNKNOWN')
 
     def test_create_profit_stage2(self):
         """
@@ -208,9 +208,9 @@ class TestStageShortStraddle(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 54.0,
                 'amount_b': 169.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{price_a} < {new_price} < {old_price} < {price_b}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{price_a} < {old_price} < {new_price} < {price_b}',
             }
         )
@@ -218,9 +218,9 @@ class TestStageShortStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=53, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=51, expect=False)
 
-        self.check_get_status(profit_stage, new_price=52.8, old_price=53.5, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=53.5, old_price=53, expect='profiting')
-        self.check_get_status(profit_stage, new_price=53, old_price=53, expect='unknown')
+        self.check_get_status(profit_stage, new_price=52.8, old_price=53.5, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=53.5, old_price=53, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=53, old_price=53, expect='UNKNOWN')
 
     def test_create_max_profit_stage1(self):
         """
@@ -247,7 +247,7 @@ class TestStageShortStraddle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=max_profit_stage, price=54.0, expect=True)
         self.check_in_stage(stage_cls=max_profit_stage, price=55, expect=False)
 
-        self.check_get_status(max_profit_stage, new_price=54, old_price=54, expect='unknown')
+        self.check_get_status(max_profit_stage, new_price=54, old_price=54, expect='UNKNOWN')
 
     def test_create_stages(self):
         """

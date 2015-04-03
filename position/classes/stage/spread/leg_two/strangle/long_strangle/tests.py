@@ -74,7 +74,7 @@ class TestStageLongStrangle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=87, expect=False)
 
         self.check_get_status(
-            stage_cls=even_stage, new_price=87.55, old_price=87.55, expect='unknown'
+            stage_cls=even_stage, new_price=87.55, old_price=87.55, expect='UNKNOWN'
         )
 
     def test_create_even_stage2(self):
@@ -103,7 +103,7 @@ class TestStageLongStrangle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=even_stage, price=77.5, expect=False)
 
         self.check_get_status(
-            stage_cls=even_stage, new_price=77.45, old_price=77.45, expect='unknown'
+            stage_cls=even_stage, new_price=77.45, old_price=77.45, expect='UNKNOWN'
         )
 
     def test_create_profit_stage1(self):
@@ -121,9 +121,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{price_a} < {new_price} < {old_price}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{price_a} < {old_price} < {new_price}',
             }
         )
@@ -131,9 +131,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=88, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=87, expect=False)
 
-        self.check_get_status(profit_stage, new_price=89, old_price=90, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=89, old_price=88, expect='profiting')
-        self.check_get_status(profit_stage, new_price=88, old_price=88, expect='unknown')
+        self.check_get_status(profit_stage, new_price=89, old_price=90, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=89, old_price=88, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=88, old_price=88, expect='UNKNOWN')
 
     def test_create_profit_stage2(self):
         """
@@ -150,9 +150,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 0.0,
                 'amount_b': 0.0,
-                'left_status': 'decreasing',
+                'left_status': 'DECREASING',
                 'left_expression': '{old_price} < {new_price} < {price_a}',
-                'right_status': 'profiting',
+                'right_status': 'PROFITING',
                 'right_expression': '{new_price} < {old_price} < {price_a}',
             }
         )
@@ -160,9 +160,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=profit_stage, price=76, expect=True)
         self.check_in_stage(stage_cls=profit_stage, price=78, expect=False)
 
-        self.check_get_status(profit_stage, new_price=77.3, old_price=76, expect='decreasing')
-        self.check_get_status(profit_stage, new_price=76, old_price=77, expect='profiting')
-        self.check_get_status(profit_stage, new_price=76, old_price=76, expect='unknown')
+        self.check_get_status(profit_stage, new_price=77.3, old_price=76, expect='DECREASING')
+        self.check_get_status(profit_stage, new_price=76, old_price=77, expect='PROFITING')
+        self.check_get_status(profit_stage, new_price=76, old_price=76, expect='UNKNOWN')
 
     def test_create_loss_stage1(self):
         """
@@ -179,9 +179,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
                 'amount_a': -255.0,
                 'price_b': 87.55,
                 'amount_b': 0.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {old_price} < {new_price} < {price_b}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {new_price} < {old_price} < {price_b}',
             }
         )
@@ -189,9 +189,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=86, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=88, expect=False)
 
-        self.check_get_status(loss_stage, new_price=86.5, old_price=85.5, expect='recovering')
-        self.check_get_status(loss_stage, new_price=85.5, old_price=86, expect='losing')
-        self.check_get_status(loss_stage, new_price=86, old_price=86, expect='unknown')
+        self.check_get_status(loss_stage, new_price=86.5, old_price=85.5, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=85.5, old_price=86, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=86, old_price=86, expect='UNKNOWN')
 
     def test_create_loss_stage2(self):
         """
@@ -208,9 +208,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
                 'amount_a': 0.0,
                 'price_b': 80.0,
                 'amount_b': -255.0,
-                'left_status': 'recovering',
+                'left_status': 'RECOVERING',
                 'left_expression': '{price_a} < {new_price} < {old_price} < {price_b}',
-                'right_status': 'losing',
+                'right_status': 'LOSING',
                 'right_expression': '{price_a} < {old_price} < {new_price} < {price_b}',
             }
         )
@@ -218,9 +218,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=loss_stage, price=78, expect=True)
         self.check_in_stage(stage_cls=loss_stage, price=76, expect=False)
 
-        self.check_get_status(loss_stage, new_price=78, old_price=79, expect='recovering')
-        self.check_get_status(loss_stage, new_price=79.5, old_price=79, expect='losing')
-        self.check_get_status(loss_stage, new_price=78, old_price=78, expect='unknown')
+        self.check_get_status(loss_stage, new_price=78, old_price=79, expect='RECOVERING')
+        self.check_get_status(loss_stage, new_price=79.5, old_price=79, expect='LOSING')
+        self.check_get_status(loss_stage, new_price=78, old_price=78, expect='UNKNOWN')
 
     def test_create_max_loss_stage1(self):
         """
@@ -237,9 +237,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
                 'amount_a': -255.0,
                 'price_b': 85.0,
                 'amount_b': -255.0,
-                'left_status': 'easing',
+                'left_status': 'EASING',
                 'left_expression': '{price_a} <= {old_price} < {new_price} <= {price_b}',
-                'right_status': 'worst',
+                'right_status': 'WORST',
                 'right_expression': '{price_a} <= {new_price} < {old_price} <= {price_b}',
             }
         )
@@ -247,9 +247,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=max_loss_stage, price=83, expect=True)
         self.check_in_stage(stage_cls=max_loss_stage, price=85.5, expect=False)
 
-        self.check_get_status(max_loss_stage, new_price=84, old_price=83.5, expect='easing')
-        self.check_get_status(max_loss_stage, new_price=82.8, old_price=83.5, expect='worst')
-        self.check_get_status(max_loss_stage, new_price=83, old_price=83, expect='unknown')
+        self.check_get_status(max_loss_stage, new_price=84, old_price=83.5, expect='EASING')
+        self.check_get_status(max_loss_stage, new_price=82.8, old_price=83.5, expect='WORST')
+        self.check_get_status(max_loss_stage, new_price=83, old_price=83, expect='UNKNOWN')
 
     def test_create_max_loss_stage2(self):
         """
@@ -266,9 +266,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
                 'amount_a': -255.0,
                 'price_b': 82.5,
                 'amount_b': -255.0,
-                'left_status': 'easing',
+                'left_status': 'EASING',
                 'left_expression': '{price_a} <= {new_price} < {old_price} <= {price_b}',
-                'right_status': 'worst',
+                'right_status': 'WORST',
                 'right_expression': '{price_a} <= {old_price} < {new_price} <= {price_b}',
             }
         )
@@ -276,9 +276,9 @@ class TestStageLongStrangle(TestUnitSetUpStage):
         self.check_in_stage(stage_cls=max_loss_stage, price=81, expect=True)
         self.check_in_stage(stage_cls=max_loss_stage, price=83, expect=False)
 
-        self.check_get_status(max_loss_stage, new_price=80.6, old_price=82, expect='easing')
-        self.check_get_status(max_loss_stage, new_price=82.3, old_price=81, expect='worst')
-        self.check_get_status(max_loss_stage, new_price=81, old_price=81, expect='unknown')
+        self.check_get_status(max_loss_stage, new_price=80.6, old_price=82, expect='EASING')
+        self.check_get_status(max_loss_stage, new_price=82.3, old_price=81, expect='WORST')
+        self.check_get_status(max_loss_stage, new_price=81, old_price=81, expect='UNKNOWN')
 
     def test_create_stages(self):
         """

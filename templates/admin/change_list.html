@@ -86,11 +86,7 @@
         <div class="panel panel-default">
           {% if cl.search_fields %}
           <div class="panel-heading">
-            <div class="row">
-              <div class="col-md-12">
-                {% block search %}{% search_form cl %}{% endblock %}
-              </div>
-            </div>
+            {% block search %}{% search_form cl %}{% endblock %}
           </div>
           {% endif %}
 

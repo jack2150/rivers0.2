@@ -116,9 +116,14 @@ class SaveStatDay(object):
         self.position_forex = self.position_statement.positionforex_set
         self.position_instrument = self.position_statement.positioninstrument_set
 
-        self.working_order = self.trade_activity.workingorder_set
-        self.filled_order = self.trade_activity.filledorder_set
-        self.cancelled_order = self.trade_activity.cancelledorder_set
+        if self.trade_activity is not None:
+            self.working_order = self.trade_activity.workingorder_set
+            self.filled_order = self.trade_activity.filledorder_set
+            self.cancelled_order = self.trade_activity.cancelledorder_set
+        else:
+            self.working_order = None
+            self.filled_order = None
+            self.cancelled_order = None
 
     def save_all(self):
         """
@@ -262,10 +267,16 @@ class SaveStatDay(object):
         profit_position = self.position_future.filter(pl_open__gt=0)
         loss_position = self.position_future.filter(pl_open__lt=0)
 
-        working_order_count = self.working_order.filter(contract='FUTURE').count()
-        filled_order_count = self.filled_order.filter(contract='FUTURE').count()
-        cancelled_order_count = self.cancelled_order.filter(contract='FUTURE').count()
-        total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        try:
+            working_order_count = self.working_order.filter(contract='FUTURE').count()
+            filled_order_count = self.filled_order.filter(contract='FUTURE').count()
+            cancelled_order_count = self.cancelled_order.filter(contract='FUTURE').count()
+            total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        except AttributeError:
+            working_order_count = 0
+            filled_order_count = 0
+            cancelled_order_count = 0
+            total_order_count = 0
 
         total_holding_count = holding_position.count()
         profit_holding_count = profit_position.count()
@@ -308,10 +319,16 @@ class SaveStatDay(object):
         profit_position = self.position_forex.filter(pl_open__gt=0)
         loss_position = self.position_forex.filter(pl_open__lt=0)
 
-        working_order_count = self.working_order.filter(contract='FOREX').count()
-        filled_order_count = self.filled_order.filter(contract='FOREX').count()
-        cancelled_order_count = self.cancelled_order.filter(contract='FOREX').count()
-        total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        try:
+            working_order_count = self.working_order.filter(contract='FOREX').count()
+            filled_order_count = self.filled_order.filter(contract='FOREX').count()
+            cancelled_order_count = self.cancelled_order.filter(contract='FOREX').count()
+            total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        except AttributeError:
+            working_order_count = 0
+            filled_order_count = 0
+            cancelled_order_count = 0
+            total_order_count = 0
 
         total_holding_count = holding_position.count()
         profit_holding_count = profit_position.count()
@@ -361,10 +378,16 @@ class SaveStatDay(object):
         loss_day_sum = 0.0
         bp_effect_sum = 0.0
 
-        working_order_count = self.working_order.filter(spread='STOCK').count()
-        filled_order_count = self.filled_order.filter(spread='STOCK').count()
-        cancelled_order_count = self.cancelled_order.filter(spread='STOCK').count()
-        total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        try:
+            working_order_count = self.working_order.filter(spread='STOCK').count()
+            filled_order_count = self.filled_order.filter(spread='STOCK').count()
+            cancelled_order_count = self.cancelled_order.filter(spread='STOCK').count()
+            total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        except AttributeError:
+            working_order_count = 0
+            filled_order_count = 0
+            cancelled_order_count = 0
+            total_order_count = 0
 
         position_instruments = list()
         for position_instrument in self.position_instrument.all():
@@ -431,10 +454,16 @@ class SaveStatDay(object):
         loss_day_sum = 0.0
         bp_effect_sum = 0.0
 
-        working_order_count = self.working_order.filter(spread='SINGLE').count()
-        filled_order_count = self.filled_order.filter(spread='SINGLE').count()
-        cancelled_order_count = self.cancelled_order.filter(spread='SINGLE').count()
-        total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        try:
+            working_order_count = self.working_order.filter(spread='SINGLE').count()
+            filled_order_count = self.filled_order.filter(spread='SINGLE').count()
+            cancelled_order_count = self.cancelled_order.filter(spread='SINGLE').count()
+            total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        except AttributeError:
+            working_order_count = 0
+            filled_order_count = 0
+            cancelled_order_count = 0
+            total_order_count = 0
 
         position_instruments = list()
         for position_instrument in self.position_instrument.all():
@@ -497,18 +526,22 @@ class SaveStatDay(object):
         loss_day_sum = 0.0
         bp_effect_sum = 0.0
 
-        exclude_cond = Q(
-            spread='FUTURE') | Q(spread='FOREX') | Q(spread='STOCK') \
-                       | Q(spread='SINGLE') | Q(spread='COVERED')
+        exclude_cond = Q(spread='FUTURE') | Q(spread='FOREX') | Q(spread='STOCK') | \
+                       Q(spread='SINGLE') | Q(spread='COVERED')
 
-        working_order_count = len(self.working_order.exclude(exclude_cond)
-                                  .values_list('underlying__symbol', flat=True).distinct())
-        filled_order_count = len(self.filled_order.exclude(exclude_cond)
-                                 .values_list('underlying__symbol', flat=True).distinct())
-        cancelled_order_count = len(self.cancelled_order.exclude(exclude_cond)
-                                    .values_list('underlying__symbol', flat=True).distinct())
-
-        total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        try:
+            working_order_count = len(self.working_order.exclude(exclude_cond)
+                                      .values_list('underlying__symbol', flat=True).distinct())
+            filled_order_count = len(self.filled_order.exclude(exclude_cond)
+                                     .values_list('underlying__symbol', flat=True).distinct())
+            cancelled_order_count = len(self.cancelled_order.exclude(exclude_cond)
+                                        .values_list('underlying__symbol', flat=True).distinct())
+            total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        except AttributeError:
+            working_order_count = 0
+            filled_order_count = 0
+            cancelled_order_count = 0
+            total_order_count = 0
 
         position_instruments = list()
         for position_instrument in self.position_instrument.all():
@@ -571,14 +604,19 @@ class SaveStatDay(object):
         loss_day_sum = 0.0
         bp_effect_sum = 0.0
 
-        working_order_count = len(self.working_order.filter(spread='COVERED')
-                                  .values_list('underlying__symbol', flat=True).distinct())
-        filled_order_count = len(self.filled_order.filter(spread='COVERED')
-                                 .values_list('underlying__symbol', flat=True).distinct())
-        cancelled_order_count = len(self.cancelled_order.filter(spread='COVERED')
-                                    .values_list('underlying__symbol', flat=True).distinct())
-
-        total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        try:
+            working_order_count = len(self.working_order.filter(spread='COVERED')
+                                      .values_list('underlying__symbol', flat=True).distinct())
+            filled_order_count = len(self.filled_order.filter(spread='COVERED')
+                                     .values_list('underlying__symbol', flat=True).distinct())
+            cancelled_order_count = len(self.cancelled_order.filter(spread='COVERED')
+                                        .values_list('underlying__symbol', flat=True).distinct())
+            total_order_count = working_order_count + filled_order_count + cancelled_order_count
+        except AttributeError:
+            working_order_count = 0
+            filled_order_count = 0
+            cancelled_order_count = 0
+            total_order_count = 0
 
         position_instruments = list()
         for position_instrument in self.position_instrument.all():
@@ -649,5 +687,3 @@ class SaveStatDay(object):
             theta_sum=theta_sum,
             vega_sum=vega_sum
         )
-
-

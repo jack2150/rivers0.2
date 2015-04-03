@@ -55,8 +55,8 @@ class Stage(object):
         """
         return PositionStage(
             stage_name='PROFIT',
-            left_status='decreasing',
-            right_status='profiting'
+            left_status='DECREASING',
+            right_status='PROFITING'
         )
 
     @staticmethod
@@ -67,8 +67,8 @@ class Stage(object):
         """
         return PositionStage(
             stage_name='LOSS',
-            left_status='recovering',
-            right_status='losing'
+            left_status='RECOVERING',
+            right_status='LOSING'
         )
 
     @staticmethod
@@ -79,8 +79,8 @@ class Stage(object):
         """
         return PositionStage(
             stage_name='MAX_PROFIT',
-            left_status='vanishing',
-            right_status='guaranteeing'
+            left_status='VANISHING',
+            right_status='GUARANTEEING'
         )
 
     @staticmethod
@@ -91,8 +91,8 @@ class Stage(object):
         """
         return PositionStage(
             stage_name='MAX_LOSS',
-            left_status='easing',
-            right_status='worst'
+            left_status='EASING',
+            right_status='WORST'
         )
 
 

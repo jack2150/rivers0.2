@@ -246,40 +246,47 @@ def statement_import_all(request):
                     statement = glob.glob('%s/*.csv' % folder)[0]
                     file_date = os.path.basename(statement)[0:10]
 
-                    acc_data = open(os.path.join(
-                        folder, '%s-AccountStatement.csv' % file_date)
-                    ).read()
-                    pos_data = open(os.path.join(
-                        folder, '%s-PositionStatement.csv' % file_date)
-                    ).read()
-                    ta_data = open(os.path.join(
-                        folder, '%s-TradeActivity.csv' % file_date)
-                    ).read()
+                    acc_data = pos_data = ta_data = ''
+                    acc_file = os.path.join(folder, '%s-AccountStatement.csv' % file_date)
+                    pos_file = os.path.join(folder, '%s-PositionStatement.csv' % file_date)
+                    ta_file = os.path.join(folder, '%s-TradeActivity.csv' % file_date)
 
                     statement = Statement()
                     statement.date = real_date
-                    statement.account_statement = acc_data
-                    statement.position_statement = pos_data
-                    statement.trade_activity = ta_data
+
+                    if os.path.exists(acc_file):
+                        acc_data = open(acc_file).read()
+                        statement.account_statement = acc_data
+                    if os.path.exists(pos_file):
+                        pos_data = open(pos_file).read()
+                        statement.position_statement = pos_data
+                    if os.path.exists(ta_file):
+                        ta_data = open(ta_file).read()
+                        statement.trade_activity = ta_data
+
                     statement.save()
 
-                    account_summary_id = SaveAccountStatement(
-                        date=real_date,
-                        statement=statement,
-                        file_data=acc_data
-                    ).save_all()
+                    if acc_data:
+                        account_summary_id = SaveAccountStatement(
+                            date=real_date,
+                            statement=statement,
+                            file_data=acc_data
+                        ).save_all()
 
-                    position_summary_id = SavePositionStatement(
-                        date=real_date,
-                        statement=statement,
-                        file_data=pos_data
-                    ).save_all()
+                    if pos_data:
+                        position_summary_id = SavePositionStatement(
+                            date=real_date,
+                            statement=statement,
+                            file_data=pos_data
+                        ).save_all()
 
-                    trade_summary_id = SaveTradeActivity(
-                        date=real_date,
-                        statement=statement,
-                        file_data=ta_data
-                    ).save_all()
+                    trade_summary_id = 0
+                    if ta_data:
+                        trade_summary_id = SaveTradeActivity(
+                            date=real_date,
+                            statement=statement,
+                            file_data=ta_data
+                        ).save_all()
 
                     # save stat day
                     SaveStatDay(statement).save_all()
