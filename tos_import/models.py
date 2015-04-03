@@ -73,10 +73,10 @@ class Future(models.Model):
 
 
 class Forex(models.Model):
-    symbol = models.CharField(max_length=10, help_text='Forex exchange between two currency.')
-    description = models.CharField(
-        max_length=100, null=True, blank=True, help_text='Description of two currency.'
-    )
+    symbol = models.CharField(max_length=10, verbose_name='Symbol',
+                              help_text='Forex exchange between two currency.')
+    description = models.CharField(max_length=100, null=True, blank=True, verbose_name='Description',
+                                   help_text='Description of two currency.')
 
     def json(self):
         """

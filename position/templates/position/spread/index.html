@@ -4,12 +4,16 @@
 {% block title %}Position spreads: {{ date }}{% endblock %}
 
 {% block extrahead %}
+  <!-- jquery ui -->
+  <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}"/>
+
+  <!-- jquery ui only -->
+  <script src="{% static 'assets/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.ui.touch-punch.js' %}"></script>
+
   <!-- DataTables -->
   <script type="text/javascript" charset="utf8" src="
     {% static 'datatables-1.10.5/media/js/jquery.dataTables.js' %}"></script>
-
-  <!-- Currency -->
-  <script type="text/javascript" src="{% static 'assets/js/autoNumeric.js' %}"></script>
 {% endblock %}
 
 {% block extrastyle %}
@@ -31,7 +35,7 @@
     }
 
     .purple2, .purple2:hover {
-      color: #6d638c;
+      color: #8678ac;
     }
 
     .green2, .green2:hover {
@@ -41,6 +45,33 @@
     .spread-fast-action {
       padding-top: 2px;
     }
+
+    .label_fix1 {
+      padding-left: 1px;
+      padding-right: 5px;
+      margin-left: 0;
+      margin-right: 2px;
+    }
+
+    .label_fix2 {
+      padding-left: 1px;
+      padding-right: 1px;
+      margin-left: 0;
+      margin-right: 2px;
+    }
+
+  .stage_box_tooltip {
+    width: 360px;
+    display: none;
+    position: absolute;
+  }
+
+  .btn-empty {
+    color: #f89406;
+    padding: 0 6px;
+    background-color: transparent;
+
+  }
   </style>
 {% endblock %}
 
@@ -57,7 +88,7 @@
 {% endblock %}
 
 {% block page-header %}
-  Position spreads: {{ date }}
+  Position Instruments: {{ date }}
 {% endblock %}
 
 {% block page-header-tool %}
@@ -87,11 +118,79 @@
 {% block content %}
 <div id="content-main">
   {% include 'position/spread/instruments.html' %}
+  {% include 'position/spread/futures.html' %}
+  {% include 'position/spread/forexs.html' %}
 </div>
 {% endblock %}
 
 {% block footer_extra_script %}
   <script type="text/javascript">
+  // todo: open close tab
+
+  function getRandomInt() {
+    return Math.floor(Math.random() * (10000000));
+  }
+
+  function render_stages(data) {
+    var stages = data.split('|');
+    var result = '';
+
+    $.each(stages, function (key, stage) {
+      var label = '';
+      var icon = '';
+      var items = stage.split(',');
+      var last = items.length - 1;
+      var custom_id = getRandomInt();
+
+      switch (items[0]) {
+        case 'MAX_PROFIT':
+          label = 'label-info';
+          icon = 'fa-thumbs-up';
+          break;
+        case 'PROFIT':
+          label = 'label-success';
+          icon = 'fa-check-square';
+          break;
+        case 'EVEN':
+          label = '';
+          icon = 'fa-question-circle';
+          break;
+        case 'LOSS':
+          label = 'label-warning';
+          icon = 'fa-exclamation-triangle';
+          break;
+        case 'MAX_LOSS':
+          label = 'label-danger';
+          icon = 'fa-times-circle';
+          break;
+      }
+
+      var icon_box = '<a href="" id="a' + custom_id +'" class="stage_box label '
+          + (parseInt(items[last]) ? label + ' label_fix1' : 'label_fix2')
+          + '">' + '<i class="fix_width ace-icon fa '+ icon +
+          ' icon-only"></i>' + (parseInt(items[last]) ? items[0] : '') + '</a>';
+
+      var output = '<table id="t' + custom_id + '" class="table table-bordered stage_box_tooltip">';
+      output += '<tr><th>Name</th><td colspan="3">' + items[0] + '</td></tr>';
+      output += '<tr><th>Expression</th><td colspan="3">' + items[1] + '</td></tr>';
+      output += '<tr><th>Price A</th><td>' + items[2] + '</td>';
+      output += '<th>Amount A</th><td>' + items[3] + '</td></tr>';
+
+      if (items.length == 7) {
+        output += '<tr><th>Price B</th><td>' + items[4] + '</td>';
+        output += '<th>Amount B</th><td>' + items[5] + '</td></tr>';
+      }
+
+      output += '</table>';
+
+      result += icon_box;
+      result += output;
+    });
+
+
+    return result;
+  }
+
     function render_spread(data) {
       var icon = '';
       switch (data) {
@@ -99,7 +198,7 @@
           icon = 'fa-line-chart';
           break;
         case 'FUTURE':
-          icon = 'glyphicons-cargo';
+          icon = 'fa-bell-o';
           break;
         case 'FOREX':
           icon = 'fa-money';
@@ -172,8 +271,12 @@
       return '<span class="label ' + label + '  label-white middle">' + data + '</span>';
     }
 
-    function render_currency(data) {
+    function render_decimal2(data) {
       return parseFloat(data).toFixed(2)
+    }
+
+    function render_decimal4(data) {
+      return parseFloat(data).toFixed(4)
     }
 
     function render_price_move(data) {
@@ -185,21 +288,27 @@
     }
 
     function column_filter(section_id, columns) {
+      var render_currency = render_decimal4;
+      if (section_id == 'position_instruments') {
+        render_currency = render_decimal2;
+      }
+
       $('#' + section_id).DataTable({
 
         paging: false,
 
         "columnDefs": [
-          { "targets": 1, "render": render_currency},
-          { "targets": 2, "render": render_currency},
-          { "targets": 3, "render": render_currency},
-          { "targets": 4, "render": render_price_move},
-          { "targets": 5, "render": render_price_move},
-          { "targets": 7, "render": render_strategy},
-          { "targets": 6, "render": render_spread},
-          { "targets": 8, "render": render_stage},
-          { "targets": 9, "render": render_status},
-          { "targets": 10, "orderable": false },
+          { "targets": 1, "render": render_spread},
+          { "targets": 2, "render": render_strategy},
+          // skip 3 for hidden stage
+          { "targets": 4, "render": render_stages},
+          { "targets": 5, "render": render_status},
+          { "targets": 6, "render": render_currency},
+          { "targets": 7, "render": render_currency},
+          { "targets": 8, "render": render_price_move},
+          { "targets": 9, "render": render_price_move},
+          { "targets": 10, "render": render_price_move},
+          { "targets": 11, "orderable": false }
         ],
 
         initComplete: function () {
@@ -210,7 +319,7 @@
             var header_text = $(column.header()).text();
 
             if (columns.indexOf(header_text) > -1) {
-              var label = $('<label></label>').appendTo('#position_instruments_filters');
+              var label = $('<label></label>').appendTo("#" + section_id + "_filters");
 
               var select = $(
                       '<select class="form-control auto-width search-filter">' +
@@ -223,17 +332,14 @@
                         $(this).val()
                     );
 
-                    // todo: error filter
                     //column.search(val0 ? '^' + val + '$' : '', true, false)
                     //    .draw();
-                    if (header_text == 'Spread' || header_text == 'Stage') {
+                    if (header_text == 'Spread') {
                       column.search(val ? ' ' + val + '$' : '', true, false).draw();
                     }
                     else {
                       column.search(val ? '^' + val + '$' : '', true, false).draw();
                     }
-
-
                   });
 
               column.data().unique().sort().each(function (d, j) {
@@ -245,20 +351,30 @@
       });
 
       // search field in top
-      var filter_field = $('#position_instruments_filter');
+      var filter_field = $("#" + section_id + "_filter");
       $(filter_field).find('input').addClass('form-control search-query')
           .attr("placeholder", "Search")
-          .appendTo("#position_instruments_search_box");
+          .appendTo("#" + section_id + "_search_box");
       $(filter_field).hide();
 
-      var showing_field = $('#position_instruments_info');
-      $(showing_field).appendTo("#position_instruments_footer");
+      var showing_field = $("#" + section_id + "_info");
+      $(showing_field).appendTo("#" + section_id + "_footer");
 
     }
 
     column_filter(
         'position_instruments',
-        ['Symbol', 'Spread', 'Strategy', 'Stage', 'Status']
+        ['Spread', 'Strategy', 'Stage', 'Status']
+    );
+
+    column_filter(
+        'position_futures',
+        ['Strategy', 'Status']
+    );
+
+    column_filter(
+        'position_forexs',
+        ['Strategy', 'Status']
     );
 
     // next or previous page
@@ -283,6 +399,26 @@
     });
 
     // focus search
-    $("#position_instruments_filter").focus();
+    $("#position_instruments_search_box").find("input").focus();
+
+
+  // stage box tooltip
+  $('.stage_box').hover(function (ev) {
+    var id = $(this).attr("id");
+    id = id.substring(1);
+    $('#t' + id).stop(true, true).fadeIn();
+  }, function (ev) {
+    var id = $(this).attr("id");
+    id = id.substring(1);
+    $('#t' + id).stop(true, true).fadeOut();
+  }).on('mousemove', function (ev) {
+    var id = $(this).attr("id");
+    id = id.substring(1);
+
+    $('#t' + id).css({
+      left: ev.pageX - 200,
+      top: ev.pageY - 140
+    });
+  });
   </script>
 {% endblock %}

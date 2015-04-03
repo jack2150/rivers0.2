@@ -1,40 +1,75 @@
 {% load currency_tag verbose_name position_set %}
 
-<table class="table">
-  {% for position_future in position_futures %}
-    {% if forloop.first %}
-      <tr>
-        <th>{% verbose_name position_future.future 'symbol' %}</th>
-        <th>Last</th>
-        <th>{% verbose_name position_future 'mark' %}</th>
-        <th>{% verbose_name position_future 'mark_change' %}</th>
-        <th>{% verbose_name position_future 'pl_open' %}</th>
-        <th>{% verbose_name position_future 'pl_day' %}</th>
-        <th>Spread</th>
-        <th>Strategy</th>
-        <th>Stage</th>
-        <th>Status</th>
-        <th></th>
-      </tr>
-    {% endif %}
-    <tr>
-      <td>{{ position_future.future.symbol }}</td>
-      <td>{% get_old_price position_future %}</td>
-      <td>{{ position_future.mark|currency }}</td>
-      <td>{{ position_future.mark_change|currency }}</td>
-      <td>{{ position_future.pl_open|currency }}</td>
-      <td>{{ position_future.pl_day|currency }}</td>
-      <td>{{ position_future.position_set.name }}</td>
-      <td>{{ position_future.position_set.spread }}</td>
-      <td>
-        {% stage position_future.position_set position_future.mark %}
-      </td>
-      <td>
-        {% status position_future.position_set position_future %}
-      </td>
-      <td>
-        icon_a icon_b
-      </td>
-    </tr>
-  {% endfor %}
-</table>
+{% if position_futures %}
+  <div class="page-header" style="padding-bottom: 10px;">
+    <h1 style="padding-top: 6px;">Position Futures</h1>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" id="position_futures_heading">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="input-group">
+            <span id="position_futures_search_box"></span>
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-purple btn-sm">
+                <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+                Search
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div id="position_futures_filters"></div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+    <table id="position_futures" class="table table-striped">
+      {% for position_future in position_futures %}
+        {% if forloop.first %}
+          <thead class="padding-bottom-4" style="height: 40px;">
+          <tr>
+            <th>{% verbose_name position_future.future 'symbol' %}</th>
+            <th>Spread</th>
+            <th>Strategy</th>
+            <th>Stages</th>
+            <th>Stage</th>
+            <th>Status</th>
+            <th>Last</th>
+            <th>{% verbose_name position_future 'mark' %}</th>
+            <th>{% verbose_name position_future 'mark_change' %}</th>
+            <th>{% verbose_name position_future 'pl_open' %}</th>
+            <th>{% verbose_name position_future 'pl_day' %}</th>
+            <th></th>
+          </tr>
+          </thead>
+        {% endif %}
+        <tr>
+          <th>
+            <a href="{% url 'admin:tos_import_future_change' position_future.future.id %}">
+            {{ position_future.future.symbol }}
+            </a>
+          </th>
+          <td>{{ position_future.position_set.name }}</td>
+          <td>{{ position_future.position_set.spread }}</td>
+          <td>{% stage position_future.position_set position_future.mark %}</td>
+          <td>{% stage_box position_future.position_set position_future.mark %}</td>
+          <td>{% status position_future.position_set position_future %}</td>
+          <td>{% get_old_price position_future %}</td>
+          <td>{{ position_future.mark }}</td>
+          <td>{{ position_future.mark_change }}</td>
+          <td>{{ position_future.pl_open }}</td>
+          <td>{{ position_future.pl_day }}</td>
+          <td>
+            <i class="ace-icon fa fa-cog icon-on-right bigger-130"></i>
+            <i class="ace-icon fa fa-tachometer bigger-130"></i>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    <div class="panel-footer" id="position_futures_footer">
+    </div>
+  </div>
+{% endif %}
+

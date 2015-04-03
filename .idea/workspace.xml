@@ -1,55 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="602f9b56-60be-46d9-ae24-0e1e170de7cf" name="Default" comment="instrument equity 1-1">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templatetags/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templates/position/spread/forexs.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templates/position/spread/futures.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templates/position/spread/instruments.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templatetags/position_set.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/change_list.html" afterPath="$PROJECT_DIR$/templates/admin/change_list.html" />
+    <list default="true" id="602f9b56-60be-46d9-ae24-0e1e170de7cf" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/spread/forexs.html" afterPath="$PROJECT_DIR$/position/templates/position/spread/forexs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/spread/futures.html" afterPath="$PROJECT_DIR$/position/templates/position/spread/futures.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/spread/index.html" afterPath="$PROJECT_DIR$/position/templates/position/spread/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/combo/long_combo/long_combo.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/combo/long_combo/long_combo.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/future/long_future/long_future.py" afterPath="$PROJECT_DIR$/position/classes/stage/future/long_future/long_future.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/position_set/manager.py" afterPath="$PROJECT_DIR$/position/position_set/manager.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/models.py" afterPath="$PROJECT_DIR$/position/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistic/simple/stat_day/models.py" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/spread/instruments.html" afterPath="$PROJECT_DIR$/position/templates/position/spread/instruments.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/models.py" afterPath="$PROJECT_DIR$/tos_import/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/search_form.html" afterPath="$PROJECT_DIR$/templates/admin/search_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/combo/short_combo/short_combo.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/combo/short_combo/short_combo.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/stage.py" afterPath="$PROJECT_DIR$/position/classes/stage/stage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/tests.py" afterPath="$PROJECT_DIR$/position/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/equity/long_stock/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/equity/long_stock/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/equity/short_stock/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/equity/short_stock/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/forex/long_forex/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/forex/long_forex/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/forex/short_forex/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/forex/short_forex/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/future/long_future/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/future/long_future/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/future/short_future/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/future/short_future/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/hedge/covered_call/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/hedge/covered_call/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/hedge/covered_put/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/hedge/covered_put/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/hedge/protective_call/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/hedge/protective_call/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/hedge/protective_put/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/hedge/protective_put/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/option/long_call/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/option/long_call/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/option/long_put/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/option/long_put/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/option/naked_call/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/option/naked_call/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/option/naked_put/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/option/naked_put/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_call_backratio/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/combo/long_combo/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/combo/long_combo/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/combo/short_combo/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/combo/short_combo/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/straddle/long_straddle/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/straddle/long_straddle/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/straddle/short_straddle/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/straddle/short_straddle/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/long_strangle/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/long_strangle/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/short_strangle/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/short_strangle/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/vertical/long_call_vertical/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/vertical/long_call_vertical/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/vertical/long_put_vertical/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/vertical/long_put_vertical/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/vertical/short_call_vertical/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/vertical/short_call_vertical/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/vertical/short_put_vertical/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/spread/leg_two/vertical/short_put_vertical/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/views.py" afterPath="$PROJECT_DIR$/position/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/views.py" afterPath="$PROJECT_DIR$/tos_import/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templatetags/position_set.py" afterPath="$PROJECT_DIR$/position/templatetags/position_set.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rivers.iws" />
@@ -319,23 +277,79 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="manager.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/position/position_set/manager.py">
+      <file leaf-file-name="position_set.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/position/templatetags/position_set.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1067" max-vertical-offset="4888">
-              <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1419" max-vertical-offset="2288">
+              <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/position/position_set/controller.py">
+      <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35788262" vertical-offset="1795" max-vertical-offset="3432">
-              <caret line="81" column="37" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
+            <state vertical-scroll-proportion="-8.428572" vertical-offset="3085" max-vertical-offset="5824">
+              <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="133" selection-end-column="6" />
               <folding>
-                <element signature="e#0#30#0" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/position/templates/position/spread/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="127.02857" vertical-offset="6760" max-vertical-offset="9750">
+              <caret line="89" column="20" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="20" />
+              <folding>
+                <element signature="e#4808#5483#0#HTML" expanded="false" />
+                <element signature="e#6302#6760#0#HTML" expanded="false" />
+                <element signature="e#6797#6845#0#HTML" expanded="false" />
+                <element signature="e#6882#6930#0#HTML" expanded="false" />
+                <element signature="e#6969#7052#0#HTML" expanded="false" />
+                <element signature="e#7089#7132#0#HTML" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="instruments.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/position/templates/position/spread/instruments.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.057142" vertical-offset="1040" max-vertical-offset="2236">
+              <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="68" selection-end-column="64" />
+              <folding>
+                <element signature="n#style#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="futures.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/position/templates/position/spread/futures.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.24940048" vertical-offset="0" max-vertical-offset="2106">
+              <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forexs.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/position/templates/position/spread/forexs.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.2285714" vertical-offset="0" max-vertical-offset="2106">
+              <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -356,8 +370,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/position/classes/stage/future/short_future/short_future.py" />
-        <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_call_backratio/tests.py" />
         <option value="$PROJECT_DIR$/position/position_set/tests.py" />
         <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/combo/long_combo/tests.py" />
         <option value="$PROJECT_DIR$/position/classes/stage/spread/leg_two/combo/short_combo/short_combo.py" />
@@ -386,9 +398,6 @@
         <option value="$PROJECT_DIR$/position/classes/stage/hedge/covered_call/tests.py" />
         <option value="$PROJECT_DIR$/position/classes/stage/hedge/protective_call/tests.py" />
         <option value="$PROJECT_DIR$/position/tests.py" />
-        <option value="$PROJECT_DIR$/tos_import/models.py" />
-        <option value="$PROJECT_DIR$/position/templates/position/spread/futures.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/spread/forexs.html" />
         <option value="$PROJECT_DIR$/templates/admin/change_list.html" />
         <option value="$PROJECT_DIR$/templates/admin/search_form.html" />
         <option value="$PROJECT_DIR$/static/datatables-1.10.5/media/css/dataTables.bootstrap.css" />
@@ -400,13 +409,18 @@
         <option value="$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html" />
         <option value="$PROJECT_DIR$/position/classes/stage/equity/long_stock/tests.py" />
         <option value="$PROJECT_DIR$/position/classes/stage/equity/short_stock/tests.py" />
-        <option value="$PROJECT_DIR$/position/templatetags/position_set.py" />
         <option value="$PROJECT_DIR$/position/views.py" />
-        <option value="$PROJECT_DIR$/position/templates/position/spread/instruments.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/spread/index.html" />
         <option value="$PROJECT_DIR$/position/position_set/manager.py" />
         <option value="$PROJECT_DIR$/position/position_set/controller.py" />
         <option value="$PROJECT_DIR$/debug.log" />
+        <option value="$PROJECT_DIR$/tos_import/models.py" />
+        <option value="$PROJECT_DIR$/position/templates/position/spread/popover1.py" />
+        <option value="$PROJECT_DIR$/position/templatetags/position_set.py" />
+        <option value="$PROJECT_DIR$/position/templates/position/spread/popover1.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/spread/instruments.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/spread/index.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/spread/forexs.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/spread/futures.html" />
       </list>
     </option>
   </component>
@@ -458,6 +472,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tos_import" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -566,7 +612,7 @@
       <recent name="C:\Users\Jack\Projects\rivers\static\assets\js" />
     </key>
   </component>
-  <component name="RunManager" selected="Django tests.Test: All">
+  <component name="RunManager" selected="Django server.rivers">
     <configuration default="false" name="Test: position.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -999,7 +1045,11 @@
       <created>1427751841719</created>
       <updated>1427751841719</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="spread view...">
+      <created>1428041649265</created>
+      <updated>1428041649265</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1032,7 +1082,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30320856" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2721925" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -1091,7 +1141,8 @@
     <MESSAGE value="combo stage" />
     <MESSAGE value="ready up for spread view" />
     <MESSAGE value="instrument equity 1-1" />
-    <option name="LAST_COMMIT_MESSAGE" value="instrument equity 1-1" />
+    <MESSAGE value="spread view..." />
+    <option name="LAST_COMMIT_MESSAGE" value="spread view..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1099,20 +1150,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db_flush.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.045454547" vertical-offset="0" max-vertical-offset="572">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_reset.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="572">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_position/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6271576" vertical-offset="4291" max-vertical-offset="18616">
@@ -1199,13 +1236,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21261682" vertical-offset="0" max-vertical-offset="6396">
-          <caret line="7" column="103" selection-start-line="7" selection-start-column="103" selection-end-line="7" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/templatetags/currency_tag.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23935558" vertical-offset="0" max-vertical-offset="869">
@@ -1218,27 +1248,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19001219" vertical-offset="0" max-vertical-offset="1586">
           <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/forexs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.428571" vertical-offset="0" max-vertical-offset="1170">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/futures.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03117506" vertical-offset="0" max-vertical-offset="1196">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5304">
-          <caret line="0" column="13" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1275,14 +1284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.529976" vertical-offset="0" max-vertical-offset="834">
           <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6017052" vertical-offset="3963" max-vertical-offset="5824">
-          <caret line="203" column="12" selection-start-line="203" selection-start-column="12" selection-end-line="203" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1332,6 +1333,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="371935" max-vertical-offset="517608">
           <caret line="14318" column="42" selection-start-line="14318" selection-start-column="42" selection-end-line="14318" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1339,6 +1341,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="11.125" vertical-offset="747" max-vertical-offset="12480">
           <caret line="395" column="11" selection-start-line="395" selection-start-column="11" selection-end-line="395" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1393,30 +1396,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/position/templatetags/position_set.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8504028" vertical-offset="327" max-vertical-offset="1222">
-          <caret line="42" column="61" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/instruments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1558753" vertical-offset="520" max-vertical-offset="2080">
-          <caret line="25" column="34" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1534">
-          <caret line="2" column="77" selection-start-line="2" selection-start-column="77" selection-end-line="2" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.57767546" vertical-offset="3866" max-vertical-offset="9464">
@@ -1424,14 +1403,6 @@
           <folding>
             <element signature="e#0#29#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.361754" vertical-offset="4379" max-vertical-offset="7618">
-          <caret line="243" column="9" selection-start-line="243" selection-start-column="9" selection-end-line="243" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1447,9 +1418,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13806">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1457,7 +1425,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1067" max-vertical-offset="4888">
           <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1468,16 +1435,111 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/position/position_set/controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35788262" vertical-offset="1795" max-vertical-offset="3432">
+        <state vertical-scroll-proportion="0.5427574" vertical-offset="1795" max-vertical-offset="3432">
           <caret line="81" column="37" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/spread/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33214286" vertical-offset="26152" max-vertical-offset="28470">
+          <caret line="1020" column="6" selection-start-line="1020" selection-start-column="6" selection-end-line="1020" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.1242807" vertical-offset="0" max-vertical-offset="6396">
+          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17640187" vertical-offset="3515" max-vertical-offset="5304">
+          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="143" selection-end-column="36" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.136939" vertical-offset="405" max-vertical-offset="1534">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templatetags/position_set.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1315" max-vertical-offset="2288">
+          <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.428572" vertical-offset="3085" max-vertical-offset="5824">
+          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="133" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="127.02857" vertical-offset="6760" max-vertical-offset="9750">
+          <caret line="89" column="20" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="20" />
+          <folding>
+            <element signature="e#4808#5483#0#HTML" expanded="false" />
+            <element signature="e#6302#6760#0#HTML" expanded="false" />
+            <element signature="e#6797#6845#0#HTML" expanded="false" />
+            <element signature="e#6882#6930#0#HTML" expanded="false" />
+            <element signature="e#6969#7052#0#HTML" expanded="false" />
+            <element signature="e#7089#7132#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/instruments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.057142" vertical-offset="1040" max-vertical-offset="2236">
+          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="68" selection-end-column="64" />
+          <folding>
+            <element signature="n#style#0;n#thead#0;n#table#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/forexs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2285714" vertical-offset="0" max-vertical-offset="2106">
+          <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/futures.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24940048" vertical-offset="0" max-vertical-offset="2106">
+          <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
