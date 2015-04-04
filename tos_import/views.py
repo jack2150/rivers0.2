@@ -165,9 +165,9 @@ class PmsImportStatementsForm(forms.Form):
                 # create or update position_set
                 filled_orders = FilledOrder.objects.filter(trade_summary__id=trade_summary_id)
                 controller = PositionSetController(filled_orders)
-                controller.close_position_sets()
-                controller.create_position_sets()
-                controller.batch_update_foreign_keys()
+                controller.close_position_sets(date=real_date)
+                controller.create_position_sets(date=real_date)
+                controller.batch_update_foreign_keys(date=real_date)
 
                 self.cleaned_data['statement_id'] = statement.id
                 self.cleaned_data['statement_name'] = statement.__unicode__()
@@ -294,9 +294,9 @@ def statement_import_all(request):
                     # create or update position_set
                     filled_orders = FilledOrder.objects.filter(trade_summary__id=trade_summary_id)
                     controller = PositionSetController(filled_orders)
-                    controller.close_position_sets()
-                    controller.create_position_sets()
-                    controller.batch_update_foreign_keys()
+                    controller.close_position_sets(date=real_date)
+                    controller.create_position_sets(date=real_date)
+                    controller.batch_update_foreign_keys(date=real_date)
 
                     imported_logs.append({
                         'statement': {

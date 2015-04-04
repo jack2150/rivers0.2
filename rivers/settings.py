@@ -148,6 +148,10 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': '%s/debug.log' % BASE_DIR,
         },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler'
+        }
     },
     'loggers': {
         'django.request': {
@@ -155,5 +159,10 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+    },
+    'django': {
+        'handlers': ['console'],
+        'propagate': True,
+        'level': 'INFO',
     },
 }

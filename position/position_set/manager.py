@@ -101,7 +101,7 @@ class PositionSetManager(object):
         position_futures = list()
         position_forexs = list()
         profits_losses = list()
-        query = None
+        profit_loss_query = None
 
         position_summary_query = Q()
         account_summary_query = Q()
@@ -122,32 +122,45 @@ class PositionSetManager(object):
 
         if self.position_set.underlying:
             # update position instrument and profit loss
-            position_instruments = PositionInstrument.objects.filter(
+            PositionInstrument.objects.filter(
                 Q(underlying=self.position_set.underlying) & Q(position_set=None)
-            ).filter(position_summary_query)
-            position_instruments.update(position_set=self.position_set)
+            ).filter(position_summary_query).update(position_set=self.position_set)
 
-            query = Q(underlying=self.position_set.underlying)
+            position_instruments = PositionInstrument.objects.filter(
+                position_set=self.position_set
+            ).filter(position_summary_query)
+
+            profit_loss_query = Q(underlying=self.position_set.underlying)
 
         elif self.position_set.future:
             # update position future and profit loss
-            position_futures = PositionFuture.objects.filter(
+            PositionFuture.objects.filter(
                 Q(future=self.position_set.future) & Q(position_set=None)
-            ).filter(position_summary_query)
-            position_futures.update(position_set=self.position_set)
+            ).filter(position_summary_query).update(position_set=self.position_set)
 
-            query = Q(future=self.position_set.future)
+            position_futures = PositionFuture.objects.filter(
+                position_set=self.position_set
+            ).filter(position_summary_query)
+
+            profit_loss_query = Q(future=self.position_set.future)
 
         elif self.position_set.forex:
             # update position forex
-            position_forexs = PositionForex.objects.filter(
+            PositionForex.objects.filter(
                 Q(forex=self.position_set.forex) & Q(position_set=None)
-            ).filter(position_summary_query)
-            position_forexs.update(position_set=self.position_set)
+            ).filter(position_summary_query).update(position_set=self.position_set)
 
-        if query:
-            profits_losses = ProfitLoss.objects.filter(query).filter(account_summary_query)
-            profits_losses.update(position_set=self.position_set)
+            position_forexs = PositionForex.objects.filter(
+                position_set=self.position_set
+            ).filter(position_summary_query)
+
+        if profit_loss_query:
+            ProfitLoss.objects.filter(profit_loss_query & Q(position_set=None)).filter(
+                account_summary_query).update(position_set=self.position_set)
+
+            profits_losses = ProfitLoss.objects.filter(
+                profit_loss_query & Q(position_set=self.position_set)
+            ).filter(account_summary_query)
 
         return dict(
             filled_orders=self.filled_orders,
@@ -156,31 +169,3 @@ class PositionSetManager(object):
             position_forexs=position_forexs,
             profits_losses=profits_losses,
         )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

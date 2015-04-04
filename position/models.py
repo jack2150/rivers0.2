@@ -27,7 +27,7 @@ class PositionSet(models.Model):
     # name and spread
     name = models.CharField(max_length=100, verbose_name='Name')  # equity, option...
     spread = models.CharField(max_length=100, verbose_name='Spread')  # long stock, naked call...
-    status = models.CharField(max_length=5, verbose_name='Status', default='OPEN')  # open or close
+    status = models.CharField(max_length=7, verbose_name='Status', default='OPEN')  # open or closed or expired
 
     # underlying
     underlying = models.ForeignKey(Underlying, null=True, blank=True, default=None)
