@@ -58,17 +58,6 @@ VXX,,,,,,9.33,2.91,-2.18,1.12,-0.58%,($244.00),($8.50),$0.00
 BARCLAYS BANK PLC IPATH S&P 500 VIX SHORT TERM,0,,.00,27.47,-.31,.00,.00,.00,.00,,$0.00,$0.00,
 100 MAR 15 37 CALL,+1,21,2.67,.23,-.085,9.33,2.91,-2.18,1.12,,($244.00),($8.50),
 
-Futures and Futures Options
-Instrument,Exp,SPC,Qty,Days,Trade Price,Mark,Mrk Chng,% Change,P/L Open,P/L Day,BP Effect
-/6J,,,,,,,,-0.13%,$25.00,$75.00,"($3,300.00)"
-"Japanese Yen Futures,Jun-2015,ETH",JUN 15,1/12500000,+1,108,.008368,.008370,+.000006,,$25.00,$75.00,
-/NG,,,,,,,,+0.48%,$450.00,($100.00),"($3,520.00)"
-"Natural Gas Futures,Mar-2015,ETH",FEB4 15,1/10000,+1,-2,2.839,2.884,-.01,,$450.00,($100.00),
-/NQ,,,,,,,,-0.35%,($100.00),($175.00),"($3,960.00)"
-"E-mini Nasdaq 100 Index Futures,Jun-2015,ETH",JUN 15,1/20,-1,112,4439.75,4444.75,+8.75,,($100.00),($175.00),
-/QM,,,,,,,,+2.70%,"($3,287.50)",$0.00,($302.00)
-"NYMEX miNY Light Sweet Crude Oil Futures,Aug-2015,ETH",JUL4 15,1/500,+1,143,55.925,55.925,-.895,,$0.00,($447.50),
-
 Cash & Sweep Vehicle,"$31,041.90"
 OVERALL P/L YTD,"($6,097.22)"
 BP ADJUSTMENT,$0.00

@@ -173,6 +173,7 @@ class Spread(object):
                         )
                     )
 
+        # noinspection PyUnusedLocal
         probability = dict(
             profit=0.5,
             even=0,
@@ -181,11 +182,11 @@ class Spread(object):
         )
 
         if spread == 'COVERED':
-            name = 'HEDGE'
+            probability = dict()
         elif spread == 'SINGLE':
-            name = 'OPTION'
+            probability = dict()
         else:
-            name = 'SPREAD'
+            probability = dict()
 
         return probability
 

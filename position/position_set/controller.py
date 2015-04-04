@@ -1,6 +1,5 @@
 from django.db.models import Q
 from position.models import PositionSet
-from tos_import.statement.statement_position.models import PositionInstrument
 
 
 class PositionSetController(object):

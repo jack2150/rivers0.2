@@ -62,13 +62,31 @@
           <td>{% get_old_price position_instrument.positionequity %}</td>
           <td>{{ position_instrument.positionequity.mark }}</td>
           <td>{{ position_instrument.positionequity.mark_change }}</td>
-          <td>{{ position_instrument.pl_open }}</td>
+          <td class="pl_open">{{ position_instrument.pl_open }}</td>
           <td>{{ position_instrument.pl_day }}</td>
           <td class="action_column">
             <i class="ace-icon fa fa-cog icon-on-right bigger-130"></i>
             <i class="ace-icon fa fa-tachometer bigger-130"></i>
           </td>
         </tr>
+        {% if forloop.last %}
+          <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="hide"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th>Sum</th>
+            <th></th>
+            <th></th>
+            <td></td>
+          </tr>
+          </tfoot>
+        {% endif %}
       {% endfor %}
     </table>
     <div class="panel-footer" id="position_instruments_footer">

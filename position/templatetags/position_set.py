@@ -5,6 +5,7 @@ from django import template
 locale.setlocale(locale.LC_ALL, '')
 register = template.Library()
 
+
 @register.simple_tag
 def stage(position_set, price):
     """

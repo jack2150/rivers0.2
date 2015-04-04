@@ -4,6 +4,12 @@ from tos_import.statement.statement_position.models \
 
 
 def spread_view(request, date=''):
+    """
+    Spread view: detail stage management for all positions
+    :param request: request
+    :param date: str 2015-01-31
+    :return: render
+    """
     template = 'position/spread/index.html'
 
     position_summary = None
@@ -54,3 +60,63 @@ def spread_view(request, date=''):
     )
 
     return render(request, template, parameters)
+
+
+def profiler_view(request, id=0):
+    """
+    Profiler view for a single position_set
+    :param request: request
+    :param id: int
+    :return: render
+    """
+    template = 'position/profiler/index.html'
+
+    parameters = dict(
+
+    )
+
+    return render(request, template, parameters)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

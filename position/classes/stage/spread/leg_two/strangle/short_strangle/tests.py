@@ -11,9 +11,9 @@ class TestStageShortStrangle(TestUnitSetUpStage):
 
         self.orders = {
             'sell_call': {'contract': 'CALL', 'side': 'SELL', 'quantity': -1,
-                         'strike': 23, 'price': 0.68, 'net_price': 0.0},
+                          'strike': 23, 'price': 0.68, 'net_price': 0.0},
             'sell_put': {'contract': 'PUT', 'side': 'SELL', 'quantity': -1,
-                        'strike': 22, 'price': 0.52, 'net_price': 1.2},
+                         'strike': 22, 'price': 0.52, 'net_price': 1.2},
         }
 
         self.call_order = create_filled_order(

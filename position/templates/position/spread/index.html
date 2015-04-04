@@ -93,7 +93,11 @@
 {% endblock %}
 
 {% block page-header %}
-  Position Instruments: {{ date }}
+  {% if position_instruments %}
+    Position Instruments: {{ date }}
+  {% else %}
+    Position Spreads: {{ date }}
+  {% endif %}
 {% endblock %}
 
 {% block page-header-tool %}
@@ -122,9 +126,31 @@
 
 {% block content %}
 <div id="content-main">
-  {% include 'position/spread/instruments.html' %}
-  {% include 'position/spread/futures.html' %}
-  {% include 'position/spread/forexs.html' %}
+{% if date %}
+  {% if position_instruments or position_futures or position_forexs %}
+    {% include 'position/spread/instruments.html' %}
+    {% include 'position/spread/futures.html' %}
+    {% include 'position/spread/forexs.html' %}
+  {% else %}
+    <div class="alert alert-warning">
+      <button class="close" type="button" data-dismiss="alert">
+        <i class="ace-icon fa fa-times"></i>
+      </button>
+      <strong>Date: {{ date }} not found.</strong>
+      No position spreads (instrument or future or forex) in this date.
+      <br>
+    </div>
+  {% endif %}
+{% else %}
+  <div class="alert alert-warning">
+    <button class="close" type="button" data-dismiss="alert">
+      <i class="ace-icon fa fa-times"></i>
+    </button>
+    <strong>Empty!</strong>
+    No position instrument yet. Please import.
+    <br>
+  </div>
+{% endif %}
 </div>
 {% endblock %}
 
@@ -293,6 +319,7 @@
     function column_filter(section_id, columns) {
       var render_currency = render_decimal4;
       if (section_id == 'position_instruments') {
+        //noinspection JSValidateTypes
         render_currency = render_decimal2;
       }
 
@@ -317,6 +344,7 @@
         initComplete: function () {
           var api = this.api();
 
+          //noinspection JSUnresolvedFunction
           api.columns().indexes().flatten().each(function (i) {
             var column = api.column(i);
             var header_text = $(column.header()).text();
@@ -343,15 +371,42 @@
                     else {
                       column.search(val ? '^' + val + '$' : '', true, false).draw();
                     }
+
+                    for (var x = 9; x < 11; x++) {
+                      var sum = api.column(x, {filter: 'applied'}).data().reduce(function (a, b) {
+                        return parseFloat(a) + parseFloat(b);
+                      });
+
+                      //console.log(i + ' : ' + sum);
+                      // Update footer
+                      $(api.column(x).footer()).html(
+                          render_price_move(sum)
+                      );
+                    }
                   });
 
-              column.data().unique().sort().each(function (d, j) {
+              column.data().unique().sort().each(function (d) {
                 select.append('<option value="' + d + '">' + d + '</option>')
               });
             }
           });
+        },
+        "fnFooterCallback": function (row, data, start, end, display) {
+          var api = this.api();
+
+          for (var x = 9; x < 11; x++) {
+            var sum = api.column(x, {filter: 'applied'}).data().reduce(function (a, b) {
+              return parseFloat(a) + parseFloat(b);
+            });
+            // Update footer
+            $(api.column(x).footer()).html(
+                render_price_move(sum)
+            );
+          }
         }
       });
+
+
 
       // search field in top
       var filter_field = $("#" + section_id + "_filter");
@@ -402,15 +457,16 @@
     });
 
     // focus search
-    $("#position_instruments_search_box").find("input").focus();
+    //$("#position_instruments_search_box").find("input").focus();
+
 
 
   // stage box tooltip
-  $('.stage_box').hover(function (ev) {
+  $('.stage_box').hover(function () {
     var id = $(this).attr("id");
     id = id.substring(1);
     $('#t' + id).stop(true, true).fadeIn();
-  }, function (ev) {
+  }, function () {
     var id = $(this).attr("id");
     id = id.substring(1);
     $('#t' + id).stop(true, true).fadeOut();

@@ -2,7 +2,7 @@
 
 {% if position_forexs %}
   <div class="page-header" style="padding-bottom: 10px;">
-    <h1 style="padding-top: 6px;">Position Forexs</h1>
+    <h1 style="padding-top: 6px;">Position Forexs: {{ date }}</h1>
   </div>
 
 
@@ -34,8 +34,8 @@
             <th>{% verbose_name position_forex.forex 'symbol' %}</th>
             <th>Spread</th>
             <th>Strategy</th>
+            <th class="hide">Stage</th>
             <th>Stages</th>
-            <th>Stage</th>
             <th>Status</th>
             <th>Last</th>
             <th>{% verbose_name position_forex 'mark' %}</th>
@@ -54,7 +54,7 @@
           </th>
           <td>{{ position_forex.position_set.name }}</td>
           <td>{{ position_forex.position_set.spread }}</td>
-          <td>{% stage position_forex.position_set position_forex.mark %}</td>
+          <td class="hide">{% stage position_forex.position_set position_forex.mark %}</td>
           <td>{% stage_box position_forex.position_set position_forex.mark %}</td>
           <td>{% status position_forex.position_set position_forex %}</td>
           <td>{% get_old_price position_forex %}</td>
@@ -67,6 +67,24 @@
             <i class="ace-icon fa fa-tachometer bigger-130"></i>
           </td>
         </tr>
+        {% if forloop.last %}
+          <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="hide"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th>Sum</th>
+            <th></th>
+            <th></th>
+            <td></td>
+          </tr>
+          </tfoot>
+        {% endif %}
       {% endfor %}
     </table>
     <div class="panel-footer" id="position_forexs_footer">
