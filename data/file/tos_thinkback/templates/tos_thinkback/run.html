@@ -1,0 +1,71 @@
+{% if insert_files %}
+  <div id="import_success" class="panel panel-success">
+    <div class="panel-heading">Import success</div>
+    <table class="table">
+      {% for insert_file in insert_files %}
+        {% if forloop.first %}
+          <tr>
+            <th>No.</th>
+            <th>Path</th>
+            <th>Stock</th>
+            <th>Contract Count</th>
+            <th>Option Count</th>
+          </tr>
+        {% endif %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ insert_file.path }}</td>
+          <td>{{ insert_file.stock }}</td>
+          <td>{{ insert_file.contracts }}</td>
+          <td>{{ insert_file.options }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% else %}
+  <div id="import_success" class="alert alert-info">
+    <button class="close" type="button" data-dismiss="alert">
+      <i class="ace-icon fa fa-times"></i>
+    </button>
+    <strong>No new files.</strong>
+    Please add files into csv folder before start!
+    <br>
+  </div>
+{% endif %}
+
+{% if missing_files %}
+  <div id="missing_files" class="panel panel-danger">
+    <div class="panel-heading">Missing files</div>
+    <table class="table">
+      {% for missing_file in missing_files %}
+        {% if forloop.first %}
+          <tr>
+            <th>No.</th>
+            <th>Date</th>
+            <th>Copy*</th>
+          </tr>
+        {% endif %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ missing_file.filename }}</td>
+          <td>
+            <label>
+              <input class="form-control input-sm" value="{{ missing_file.date }}" readonly
+                     onclick="$(this).select();">
+            </label>
+          </td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="3">
+          <label for="missing_dates"></label>
+          <textarea class="form-control" rows="5" id="missing_dates"
+                    readonly onclick="$(this).select();">
+{% for missing_file in missing_files %}
+{{ missing_file.date }}{% endfor %}
+          </textarea>
+        </td>
+      </tr>
+    </table>
+  </div>
+{% endif %}

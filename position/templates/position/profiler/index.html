@@ -1,1 +1,63 @@
-profiler
+{% extends "admin/base_site.html" %}
+{% load static currency_tag verbose_name position_set %}
+
+{% block title %}Profiler: {{ position_set }}{% endblock %}
+
+{% block extrahead %}
+
+{% endblock %}
+
+{% block extrastyle %}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <li>
+    <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    Position profiler: {{ position_set }}
+  </li>
+{% endblock %}
+
+{% block page-header %}
+  Position Profiler: {{ position_set }}
+{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    <div class="row">
+      <div class="col-md-10">
+        <p>main detail section, symbol, position_set detail, current price,
+          option greek, probability</p>
+
+        <!-- position set -->
+        <p>{{ position_set.name }}</p>
+        <p>{{ position_set.spread }}</p>
+        <p>{{ position_set.status }}</p>
+        <p>{{ position_set.symbol }}</p>
+
+        <!-- profiler summary -->
+        <p>{{ profiler_summary.stage }}</p>
+        <p>{{ profiler_summary.status }}</p>
+      </div>
+      <div class="col-md-2">
+        yellow box section,
+
+        decision maker,
+
+        last close position,
+
+        historical position statistic
+      </div>
+    </div>
+    {% include 'position/profiler/table.html' %}
+
+  </div>
+{% endblock %}
+
+{% block footer_extra_script %}
+
+{% endblock %}

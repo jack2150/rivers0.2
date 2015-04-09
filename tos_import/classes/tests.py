@@ -1,6 +1,7 @@
 from datetime import datetime
 import glob
 import os
+from pprint import pprint
 from django.core.management import call_command
 
 from django.test import TestCase, SimpleTestCase
@@ -230,38 +231,30 @@ class SetUpTestDB(TestSetUp):
             print '-' * 100 + '\n'
 
 
+class TestSaveModel(TestSetUpDB):
+    def setUp(self):
+        TestSetUpDB.setUp(self)
 
+        self.items = {}
+        self.test_cls = None
+        self.expect_keys = None
 
+    def method_test_save(self):
+        if self.test_cls:
+            print 'sample date: '
+            pprint(self.items)
 
+            self.test_cls.save()
+            self.assertTrue(self.test_cls.id)
 
+            print '\n' + '%s saved!' % self.test_cls.__class__.__name__
+            print '%s id: %d' % (self.test_cls.__class__.__name__, self.test_cls.id)
 
+            print self.test_cls, '\n'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            for key in self.expect_keys:
+                result = self.test_cls.__getattribute__(key)
+                print '%s: %s' % (key, result)
+                self.assertEqual(self.items[key], result)
+        else:
+            print 'skip test...'

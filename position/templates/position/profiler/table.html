@@ -1,0 +1,32 @@
+<table class="table">
+{% for profiler_row in profiler_table %}
+  {% if forloop.first %}
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Mark</th>
+      <th>Mark Chg</th>
+      <th>% Change</th>
+      <th>PL Open</th>
+      <th>PL Day</th>
+      <th>PL YTD Open</th>
+      <th>PL YTD Day</th>
+      <th>PL YTD %</th>
+    </tr>
+    </thead>
+  {% endif %}
+  <tr>
+    <td>{{ profiler_row.date }}</td>
+    <td>{{ profiler_row.mark }}</td>
+    <td>{{ profiler_row.mark_change }}</td>
+    <td>{{ profiler_row.pct_change }}</td>
+    <td>{{ profiler_row.pl_open }}</td>
+    <td>{{ profiler_row.pl_day }}</td>
+    <td>{{ profiler_row.pl_ytd_open }}</td>
+    <td>{{ profiler_row.pl_ytd_day }}</td>
+    <td>{{ profiler_row.pl_ytd_pct }}</td>
+  </tr>
+  {% if forloop.last %}
+  {% endif %}
+{% endfor %}
+</table>

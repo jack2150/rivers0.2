@@ -56,9 +56,11 @@ INSTALLED_APPS = (
     # position
     'position',
 
-
-
-
+    # data
+    'data',
+    'data.file.tos_thinkback',
+    'data.web.google',
+    'data.web.yahoo'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -92,9 +94,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, '__test__.db'),
-    }
+    },
+    'quote': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, '__quote__.db'),
+    },
 }
 
+DATABASE_ROUTERS = ['rivers.router.DataRouter']
 
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.MD5PasswordHasher',
