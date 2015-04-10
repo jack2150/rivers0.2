@@ -16,27 +16,31 @@ class StockAdmin(admin.ModelAdmin):
     def net_change_positive(self, obj):
         return '%+.2f' % obj.net_change
 
-    volume_group.short_description = 'Net Chg'
-    volume_group.admin_order_field = 'net_change'
+    net_change_positive.short_description = 'Net Chg'
+    net_change_positive.admin_order_field = 'net_change'
 
     list_display = (
-        'symbol', 'volume_group',
+        'symbol', 'date', 'volume_group',
         'open', 'high', 'low', 'last',
         'net_change_positive'
     )
 
     fieldsets = (
-        ('Primary Field', {
+        ('Underlying', {
             'fields': (
                 'symbol',
-                'volume',
+            )
+        }),
+        ('Primary Field', {
+            'fields': (
+                'date', 'volume',
                 'open', 'high', 'low', 'last',
                 'net_change'
             )
         }),
     )
 
-    search_fields = ('symbol', )
+    search_fields = ('symbol', 'date')
 
     readonly_fields = ('symbol', )
 
@@ -49,8 +53,8 @@ class StockAdmin(admin.ModelAdmin):
 # noinspection PyMethodMayBeStatic
 class OptionContractAdmin(admin.ModelAdmin):
     list_display = (
-        'option_code', 'symbol', 'ex_month', 'ex_year',
-        'right', 'special', 'amount', 'strike', 'side',
+        'symbol', 'option_code', 'ex_month', 'ex_year',
+        'right', 'special', 'strike', 'side', 'others'
     )
 
     fieldsets = (
@@ -61,8 +65,8 @@ class OptionContractAdmin(admin.ModelAdmin):
         }),
         ('Primary Field', {
             'fields': (
-                'ex_month', 'ex_year', 'right', 'special', 'amount',
-                'strike', 'side', 'option_code'
+                'option_code', 'ex_month', 'ex_year', 'right', 'special',
+                'strike', 'side', 'others'
             )
         }),
     )
@@ -71,7 +75,10 @@ class OptionContractAdmin(admin.ModelAdmin):
         'special', 'side'
     )
 
-    search_fields = ('symbol', 'ex_month', 'ex_year', 'special', 'side', 'option_code')
+    search_fields = ('symbol', 'ex_month', 'ex_year', 'special',
+                     'side', 'option_code', 'others')
+
+    list_display_links = ('option_code', )
 
     readonly_fields = ('symbol', )
 

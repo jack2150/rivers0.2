@@ -1,10 +1,12 @@
 from glob import glob
 import os
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.db.models import Q
 from django.shortcuts import render
 from data.file.tos_thinkback.classes import OpenThinkBack
 from data.file.tos_thinkback.csv import THINKBACK_DIR
 from data.file.tos_thinkback.holidays import is_not_holiday
+from data.file.tos_thinkback.offdays import is_not_offdays
 from data.models import Stock, OptionContract, Option
 import pandas as pd
 from tos_import.models import Underlying
@@ -53,8 +55,6 @@ def tos_thinkback_import_run_view(request, symbol):
 
     #stocks = list()
     for csv in files:
-        print 'running:', os.path.basename(csv)
-
         inserted_file = dict(
             path='',
             stock=None,
@@ -65,10 +65,13 @@ def tos_thinkback_import_run_view(request, symbol):
         # get date and symbol
         date, symbol = os.path.basename(csv)[:-4].split('-StockAndOptionQuoteFor')
 
-        stock_data, option_data = OpenThinkBack(date=date, data=open(csv).read()).format()
-
         # insert stock if not exists in db
         if not Stock.objects.filter(Q(symbol=symbol) & Q(date=date)).exists():
+            # output to console
+            print 'running %s file...' % os.path.basename(csv)
+
+            stock_data, option_data = OpenThinkBack(date=date, data=open(csv).read()).format()
+
             # for view only
             inserted_file['path'] = os.path.basename(csv)
 
@@ -191,23 +194,29 @@ def tos_thinkback_import_run_view(request, symbol):
     missing_files = list()
     if Stock.objects.count() > 2:
         bdays = pd.bdate_range(
-            start=Stock.objects.order_by('date').first().date,
-            end=Stock.objects.order_by('date').last().date,
+            start=Stock.objects.filter(symbol=symbol).order_by('date').first().date,
+            end=Stock.objects.filter(symbol=symbol).order_by('date').last().date,
             freq='B'
         )
 
         for bday in bdays:
-            if not Stock.objects.filter(date=bday).exists() and \
-                    is_not_holiday(bday.strftime('%Y-%m-%d')):
-                missing_files.append(
-                    dict(
-                        filename='%s-StockAndOptionQuoteFor%s.csv' % (
-                            bday.strftime('%Y-%m-%d'), symbol
-                        ),
-                        date=bday.strftime('%m/%d/%y')
-                    )
-
+            try:
+                Stock.objects.get(
+                    Q(symbol=symbol) &
+                    Q(date=bday.strftime('%Y-%m-%d'))
                 )
+            except ObjectDoesNotExist:
+                if is_not_holiday(bday.strftime('%Y-%m-%d')) and \
+                        is_not_offdays(bday.strftime('%m/%d/%y')):
+                    missing_files.append(
+                        dict(
+                            filename='%s-StockAndOptionQuoteFor%s.csv' % (
+                                bday.strftime('%Y-%m-%d'), symbol
+                            ),
+                            date=bday.strftime('%m/%d/%y')
+                        )
+
+                    )
 
     # reset all
     #Stock.objects.all().delete()

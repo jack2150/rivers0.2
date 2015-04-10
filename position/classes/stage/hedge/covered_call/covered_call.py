@@ -13,10 +13,10 @@ class StageCoveredCall(Stage):
         self.stock_order = None
         self.option_order = None
         for filled_order in filled_orders:
-            if filled_order.option_code == 'STOCK':
+            if filled_order.contract == 'STOCK':
                 self.stock_order = filled_order
                 """:type : FilledOrder"""
-            elif filled_order.option_code == 'CALL':
+            elif filled_order.contract == 'CALL':
                 self.option_order = filled_order
                 """:type : FilledOrder"""
 

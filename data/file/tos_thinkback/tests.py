@@ -15,7 +15,9 @@ class TestOpenThinkBack(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
 
-        self.symbol = 'WFC'
+        self.symbol = 'AAPL'
+        self.year = '2015'
+        self.date = '2015-01-02'
         self.test_path = list()
         for path in glob(os.path.join(THINKBACK_DIR, '*')):
             if os.path.isdir(path):
@@ -24,9 +26,9 @@ class TestOpenThinkBack(TestSetUp):
         self.test_dir = [path for path in self.test_path if self.symbol.lower() in path].pop()
 
         # single test file
-        self.date = '2014-02-28'
         self.test_file = r'C:\Users\Jack\Projects\rivers\data/file/tos_thinkback' \
-                         r'/csv\wfc\2014\2014-02-28-StockAndOptionQuoteForWFC.csv'
+                         r'/csv\%s\%s\%s-StockAndOptionQuoteFor%s.csv' % \
+                         (self.symbol.lower(), self.year, self.date, self.symbol.upper())
 
         self.open_thinkback = OpenThinkBack(
             date=self.date,
@@ -73,7 +75,7 @@ class TestOpenThinkBack(TestSetUp):
             self.assertEqual(type(cycle['dte']), int)
             self.assertGreaterEqual(cycle['dte'], 0)
             self.assertEqual(type(cycle['line']), str)
-            self.assertGreater(cycle['start'], 12)
+            self.assertGreater(cycle['start'], 10)
             self.assertLess(cycle['start'], cycle['stop'])
 
     def test_get_cycle_options(self):
@@ -83,7 +85,7 @@ class TestOpenThinkBack(TestSetUp):
         months = [month_name[i + 1][:3].upper() for i in range(12)]
 
         contract_keys = [
-            'ex_month', 'ex_year', 'right', 'special', 'amount',
+            'ex_month', 'ex_year', 'right', 'special', 'others',
             'strike', 'side', 'option_code'
         ]
 
@@ -108,8 +110,7 @@ class TestOpenThinkBack(TestSetUp):
 
                 self.assertEqual(type(contract), dict)
                 self.assertEqual(sorted(contract.keys()), sorted(contract_keys))
-                self.assertGreaterEqual(contract['amount'], 0.0)
-                self.assertEqual(type(contract['amount']), float)
+                self.assertEqual(type(contract['others']), str)
 
                 self.assertEqual(type(contract['ex_month']), str)
                 self.assertIn(contract['ex_month'][:3], months)

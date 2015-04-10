@@ -11,7 +11,7 @@ class OpenThinkBack(OpenCSV):
                   r'Strike,Bid,Ask,Last,Mark,Delta,Gamma,Theta,Vega,Theo Price,Impl Vol,Prob.ITM,' \
                   r'Prob.OTM,Prob.Touch,Volume,Open.Int,Intrinsic,Extrinsic,Option Code,,'
 
-    CONTRACT_KEYS = ['ex_month', 'ex_year', 'right', 'special', 'amount',
+    CONTRACT_KEYS = ['ex_month', 'ex_year', 'right', 'special', 'others',
                      'strike', 'side', 'option_code']
 
     OPTION_KEYS = ['date', 'dte',
@@ -50,23 +50,31 @@ class OpenThinkBack(OpenCSV):
 
         for key, line in enumerate(self.lines):
             if line[:3] in months:
+                # JAN 09  (14)  100 (CDL 7; US$ 4.06)
+                # JAN 09  (11)  19/100 (US$ 3601.92)
+                try:
+                    others = ''
+                    open_bracket = line.rindex('(')
+                    close_bracket = line.rindex(')')
+
+                    if close_bracket == len(line) - 1:
+                        if any([x for x in ['CDL', 'US$'] if x in line]):
+                            others = line[open_bracket + 1: close_bracket]
+                            line = line[:open_bracket]
+
+                except ValueError:
+                    others = ''
+
                 # get cycle data from line
                 data = map(self.remove_brackets_only,
                            [l for l in line.split(' ') if l])
 
-                # JAN 09  (11)  19/100 (US$ 3601.92)
-                if 'US$' in data:
-                    if data[4] in ['Weeklys', 'Mini']:
-                        data = data[:5] + [float(data[6])]
-                    else:
-                        data = data[:4] + ['Standard', float(data[5])]
-                else:
-                    if len(data) == 4:
-                        data.append('Standard')
-                    data.append(0.0)
+                if len(data) == 4:
+                    data.append('Standard')
 
                 data = [int(i) if 0 < k < 3 else i for k, i in enumerate(data)]
                 dte = data.pop(2)
+                data += [others]
 
                 # if not expire yet, add into cycle
                 if dte > -1:

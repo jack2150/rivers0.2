@@ -210,15 +210,15 @@ class OrderHistory(models.Model, AccountModel):
     future = models.ForeignKey(Future, null=True, blank=True)
     forex = models.ForeignKey(Forex, null=True, blank=True)
 
-    status = models.CharField(max_length=50, verbose_name='Status')
-    pos_effect = models.CharField(max_length=50, verbose_name='Pos Effect')
+    status = models.CharField(max_length=100, verbose_name='Status')
+    pos_effect = models.CharField(max_length=100, verbose_name='Pos Effect')
     price = models.DecimalField(
         max_digits=8, decimal_places=2, default=0.0, verbose_name='Price', null=True, blank=True
     )
     contract = models.CharField(max_length=20, verbose_name='Contract')
     side = models.CharField(max_length=20, verbose_name='Side')
     time_placed = models.DateTimeField(verbose_name='Time Placed')
-    spread = models.CharField(max_length=50, verbose_name='Spread')
+    spread = models.CharField(max_length=100, verbose_name='Spread')
     expire_date = models.CharField(
         max_length=20, verbose_name='Expire Date', null=True, blank=True
     )
@@ -274,12 +274,12 @@ class TradeHistory(models.Model, AccountModel):
     forex = models.ForeignKey(Forex, null=True, blank=True)
 
     execute_time = models.DateTimeField(verbose_name='Execute Time')
-    spread = models.CharField(max_length=50, verbose_name='Spread')
+    spread = models.CharField(max_length=100, verbose_name='Spread')
     side = models.CharField(max_length=20, verbose_name='Side')
     quantity = models.IntegerField(default=0, verbose_name='Quantity')
-    pos_effect = models.CharField(max_length=50, verbose_name='Pos Effect')
+    pos_effect = models.CharField(max_length=100, verbose_name='Pos Effect')
     expire_date = models.CharField(
-        max_length=50, verbose_name='Expire Date', null=True, blank=True
+        max_length=100, verbose_name='Expire Date', null=True, blank=True
     )
     strike = models.DecimalField(
         max_digits=8, decimal_places=2, default=0.0, verbose_name='Strike', null=True, blank=True
@@ -291,7 +291,7 @@ class TradeHistory(models.Model, AccountModel):
     net_price = models.DecimalField(
         max_digits=8, decimal_places=2, default=0.0, verbose_name='Net Price', null=True, blank=True
     )
-    order_type = models.CharField(max_length=50, verbose_name='Order Type')
+    order_type = models.CharField(max_length=100, verbose_name='Order Type')
 
     def json(self):
         """
@@ -461,7 +461,7 @@ class HoldingOption(models.Model, AccountModel):
     underlying = models.ForeignKey(Underlying)
 
     option_code = models.CharField(max_length=200, verbose_name='Option Code')
-    expire_date = models.CharField(max_length=50, verbose_name='Expire Date')
+    expire_date = models.CharField(max_length=100, verbose_name='Expire Date')
     strike = models.DecimalField(max_digits=8, decimal_places=2, default=0.0, verbose_name='Strike')
     contract = models.CharField(max_length=20, verbose_name='Contract')
     quantity = models.IntegerField(default=0, verbose_name='Quantity')
@@ -516,7 +516,7 @@ class FutureStatement(models.Model, AccountModel):
     execute_date = models.DateField(verbose_name='Execute Date')
     execute_time = models.TimeField(verbose_name='Execute Time')
     contract = models.CharField(max_length=20, verbose_name='Contract')
-    ref_no = models.CharField(max_length=50, verbose_name='Reference No')
+    ref_no = models.CharField(max_length=100, verbose_name='Reference No')
     description = models.CharField(max_length=255, verbose_name='Description')
 
     fee = models.DecimalField(

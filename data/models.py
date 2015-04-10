@@ -1,8 +1,5 @@
-from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.db.models import Q
-from tos_import.models import Underlying
-
 
 decimal_field = dict(max_digits=10, decimal_places=2, default=0.0)
 
@@ -61,10 +58,7 @@ class OptionContract(models.Model):
     strike = models.DecimalField(max_length=4, verbose_name='Strike', **decimal_field)
     side = models.CharField(max_length=4, verbose_name='Side')
     option_code = models.CharField(max_length=200, verbose_name='Option Code', unique=True)
-    amount = models.DecimalField(
-        null=True, blank=True,
-        verbose_name='Amount', **decimal_field
-    )
+    others = models.CharField(max_length=200, default='', blank='', verbose_name='Others')
 
     source = models.CharField(max_length=20, default=0.0, verbose_name='Source')
 
@@ -80,7 +74,7 @@ class OptionContract(models.Model):
         self.strike = x['strike']
         self.side = x['side']
         self.option_code = x['option_code']
-        self.amount = x['amount']
+        self.others = x['others']
 
     data = property(fset=set_dict_data)
 
@@ -88,14 +82,14 @@ class OptionContract(models.Model):
         """
         Output explain this model
         """
-        return '{right} {special} {ex_month} {ex_year} {strike} {side} {amount}'.format(
+        return '{right} {special} {ex_month} {ex_year} {strike} {side} {others}'.format(
             right=self.right,
             special=self.special,
             ex_month=self.ex_month,
             ex_year=self.ex_year,
             strike=self.strike,
             side=self.side,
-            amount=self.amount if float(self.amount) > 0 else ''
+            others=self.others
         )
 
 

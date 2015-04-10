@@ -20,10 +20,9 @@ class TestStock(TestSaveModel):
         self.items = {'high': 99.99, 'last': 99.64, 'volume': 6097146.0, 'low': 98.89,
                       'date': '2015-04-02', 'open': 99.44, 'net_change': 0.49}
 
-        self.test_cls = Stock(
-            underlying=self.underlying,
-            source='tos_thinkback',
-        )
+        self.test_cls = Stock()
+        self.test_cls.source = 'tos_thinkback'
+
         self.test_cls.data = self.items
 
         self.expect_keys = ['date', 'volume', 'open', 'high', 'low', 'last',
@@ -35,7 +34,6 @@ class TestStock(TestSaveModel):
         """
         self.method_test_save()
 
-        print 'underlying: %s' % self.test_cls.underlying
         print 'source: %s' % self.test_cls.source
 
 
@@ -43,17 +41,11 @@ class TestOptionContract(TestSaveModel):
     def setUp(self):
         TestSaveModel.setUp(self)
 
-        self.underlying = Underlying(
-            symbol='IBM',
-            company='INTL BUSINESS MACHINES COM'
-        )
-        self.underlying.save()
-
         self.items = {'ex_month': 'APR1', 'ex_year': 15, 'option_code': 'JNJ150402C85',
                       'right': 100, 'side': 'CALL', 'special': 'Weeklys', 'strike': '85'}
 
         self.test_cls = OptionContract(
-            underlying=self.underlying,
+            symbol='IBM',
             source='tos_thinkback',
             **self.items
         )
@@ -67,8 +59,6 @@ class TestOptionContract(TestSaveModel):
         Test save into db
         """
         self.method_test_save()
-
-        print 'underlying: %s' % self.test_cls.underlying
         print 'source: %s' % self.test_cls.source
 
 
@@ -76,17 +66,11 @@ class TestOption(TestSaveModel):
     def setUp(self):
         TestSaveModel.setUp(self)
 
-        self.underlying = Underlying(
-            symbol='IBM',
-            company='INTL BUSINESS MACHINES COM'
-        )
-        self.underlying.save()
-
         option_contract = {'ex_month': 'APR1', 'ex_year': 15, 'option_code': 'JNJ150402C92',
                            'right': 100, 'side': 'CALL', 'special': 'Weeklys', 'strike': '92'}
 
         self.option_contract = OptionContract(
-            underlying=self.underlying,
+            symbol='IBM',
             source='tos_thinkback',
             **option_contract
         )
@@ -109,6 +93,11 @@ class TestOption(TestSaveModel):
             'open_int', 'intrinsic', 'extrinsic'
         ]
 
+    def tearDown(self):
+        TestSaveModel.tearDown(self)
+
+        OptionContract.objects.all().delete()
+
     def test_save(self):
         """
         Test save into db
@@ -122,10 +111,11 @@ class TestOption(TestSaveModel):
         Test set raw data dict into model then save
         auto create foreign key option_contract and set it
         """
-        self.items = {'ask': 14.9, 'bid': 14.55, 'date': '2015-04-02', 'delta': 0.97, 'dte': 0,
-                      'extrinsic': 0.085, 'gamma': 0.01, 'impl_vol': 159.66, 'intrinsic': 14.64,
-                      'open_int': 0.0, 'prob_itm': 96.86, 'prob_otm': 3.14, 'prob_touch': 6.18,
-                      'theo_price': 0.0, 'theta': -0.25, 'vega': 0.0, 'volume': 0.0}
+        self.items = {'mark': 14.75, 'last': 14.85, 'ask': 14.9, 'bid': 14.55, 'date': '2015-04-02',
+                      'delta': 0.97, 'dte': 0, 'extrinsic': 0.085, 'gamma': 0.01, 'impl_vol': 159.66,
+                      'intrinsic': 14.64, 'open_int': 0.0, 'prob_itm': 96.86, 'prob_otm': 3.14,
+                      'prob_touch': 6.18, 'theo_price': 0.0, 'theta': -0.25, 'vega': 0.0,
+                      'volume': 0.0}
 
         self.test_cls = Option(
             option_contract=self.option_contract

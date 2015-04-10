@@ -47,7 +47,6 @@ Filled Orders
 Cancelled Orders
 Notes,,Time Cancelled,Spread,Side,Qty,Pos Effect,Symbol,Exp,Strike,Type,PRICE,,TIF,Status
 ,,1/30/15 05:00:00,STOCK,SELL,-100,TO OPEN,KO,,,STOCK,42.20,LMT,DAY,EXPIRED
-,,,RE #472254719,,,,,,,,,,,
 ,,1/30/15 03:47:38,FOREX,BUY,+10000,TO OPEN,GBP/USD,,,FOREX,1.50489,LMT,GTC,REJECTED: Limit price must be less than or equal to 1.50482 (unsupported order characteristic)
 ,,1/30/15 03:49:59,VERTICAL,SELL,-2,TO OPEN,EBAY,MAR 15,55,CALL,.73,LMT,DAY,CANCELED
 ,,,,BUY,+2,TO OPEN,EBAY,MAR 15,57.5,CALL,,,,

@@ -14,10 +14,10 @@ class StageShortCombo(Stage):
         self.put_order = None
         # All order are call because of call vertical
         for filled_order in filled_orders:
-            if filled_order.option_code == 'CALL':
+            if filled_order.contract == 'CALL':
                 self.call_order = filled_order
                 """:type : FilledOrder"""
-            elif filled_order.option_code == 'PUT':
+            elif filled_order.contract == 'PUT':
                 self.put_order = filled_order
                 """:type : FilledOrder"""
 

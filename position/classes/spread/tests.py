@@ -5,8 +5,7 @@ from django.db.models import Q
 from position.classes.spread.spread import Spread
 from position.classes.tests import TestUnitSetUpPrepare
 from tos_import.models import Statement
-from tos_import.statement.statement_trade.models import TradeSummary
-from tos_import.statement.statement_trade.models import FilledOrder
+from tos_import.statement.statement_trade.models import TradeSummary, FilledOrder
 
 
 class TestSpread(TestUnitSetUpPrepare):
@@ -897,7 +896,7 @@ class TestSpread(TestUnitSetUpPrepare):
                             quantity=order['quantity'],
                             strike=order['strike']
                         )
-                    
+
                     )
 
                 print 'get filled order using queryset and run spread class...'
@@ -912,7 +911,7 @@ class TestSpread(TestUnitSetUpPrepare):
 
                 for order in orders:
                     order.delete()
-                    
+
                 print '-' * 80
 
     def test_get_spread_module(self):
@@ -986,46 +985,12 @@ class TestSpread(TestUnitSetUpPrepare):
         self.method_test_get_account(side='SELL', net_price=-7.36, expect='CREDIT')
         self.method_test_get_account(side='BUY', net_price=0.0, expect='BALANCE')
 
-    def method_test_get_probability(self, spread, expect):
-        """
-        Test get probability for each type of spread
-        """
-        self.filled_order = self.create_filled_order(
-            trade_summary=self.trade_summary,
-            underlying=self.underlying,
-            spread=spread,
-            contract=spread,
-        )
-
-        filled_orders = FilledOrder.objects.filter(underlying=self.underlying)
-        self.spread = Spread(filled_orders=filled_orders)
-
-        result = self.spread.get_probability()
-
-        print 'spread: %s' % spread
-        print 'result: %s, expect: %s' % (result, expect)
-        self.assertDictEqual(result, expect)
-
-        filled_orders.delete()
-
-    def test_get_probability(self):
-        """
-        Test get probability for stock, future and forex only
-        """
-        expect = dict(profit=0.5, even=0, loss=0.5, name='EVEN')
-
-        self.method_test_get_probability(spread='EQUITY', expect=expect)
-        self.method_test_get_probability(spread='FUTURE', expect=expect)
-        self.method_test_get_probability(spread='FOREX', expect=expect)
-
-    # todo: the hard part, unable to do it... skip build spread view...
-
 
 class TestGetSpread(TestUnitSetUpPrepare):
     def test_get_spread(self):
         """
-        Test save position using data in db
-        can use production database or another database for test
+        #Test save position using data in db
+        #can use production database or another database for test
         """
         try:
             statement = Statement.objects.get(date='2015-01-29')

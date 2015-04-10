@@ -156,42 +156,6 @@ class Spread(object):
 
         return account
 
-    def get_probability(self):
-        """
-        Get spread probability of (profit, even, loss)
-        :return: dict of str
-        """
-        spread = ''
-        for filled_order in self.filled_orders:
-            if spread == '':
-                spread = filled_order.spread
-            else:
-                if spread != filled_order.spread:
-                    raise ValueError(
-                        'Different name on filled_orders %s != %s' % (
-                            spread, filled_order.spread
-                        )
-                    )
-
-        # noinspection PyUnusedLocal
-        probability = dict(
-            profit=0.5,
-            even=0,
-            loss=0.5,
-            name='EVEN'
-        )
-
-        if spread == 'COVERED':
-            probability = dict()
-        elif spread == 'SINGLE':
-            probability = dict()
-        else:
-            probability = dict()
-
-        return probability
-
-    # todo: get iv, then calculate probability...
-
     def get_equity_spread(self):
         """
         Check equity spread using only quantity

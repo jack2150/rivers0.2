@@ -23,11 +23,11 @@
     </table>
   </div>
 {% else %}
-  <div id="import_success" class="alert alert-info">
+  <div id="import_success" class="alert alert-warning">
     <button class="close" type="button" data-dismiss="alert">
       <i class="ace-icon fa fa-times"></i>
     </button>
-    <strong>No new files.</strong>
+    <strong>No new files to import.</strong>
     Please add files into csv folder before start!
     <br>
   </div>
@@ -68,4 +68,13 @@
       </tr>
     </table>
   </div>
+{% else %}
+  <div id="missing_files" class="alert alert-success">
+    <button class="close" type="button" data-dismiss="alert">
+      <i class="ace-icon fa fa-times"></i>
+    </button>
+    <b>No missing file...</b>
+    <br>
+  </div>
 {% endif %}
+

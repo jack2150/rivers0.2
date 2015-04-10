@@ -55,6 +55,14 @@
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         Waiting for symbol to get start
       </div>
+
+      <div id="error_importing" class="alert alert-danger" style="display: none;">
+        <button class="close" type="button" data-dismiss="alert">
+          <i class="ace-icon fa fa-exclamation-circle "></i>
+        </button>
+        <b>Internal Server Error: Please check and debug console...</b>
+        <br>
+      </div>
     </div>
 
     <div class="col-md-3">
@@ -85,14 +93,16 @@
     $('#run_import').click(function () {
       var symbol = $('#symbol').val();
       if (symbol != '') {
-        $('#waiting_import').hide();
+        $('#error_importing').hide();
         $('#import_success').hide();
         $('#missing_files').hide();
+        $('#waiting_import').hide();
         $('#loading_icon').toggle();
 
         // console.log("{% url 'admin:tos_thinkback_import_run_view' %}" + symbol + "/");
         $("#ajax_run_result").load(
             "{% url 'admin:tos_thinkback_import_run_view' %}" + symbol + "/", function (response, status, xhr) {
+
               if (status == "success") {
                 $('#import_success').show();
                 $('#missing_files').show();
@@ -100,6 +110,10 @@
                 //var msg = "Sorry but there was an error: ";
                 //$("#error").html(msg + xhr.status + " " + xhr.statusText);
                 $('#loading_icon').toggle();
+              }
+              else if (status == "error") {
+                $('#loading_icon').toggle();
+                $('#error_importing').show();
               }
             });
       }

@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -89,15 +91,32 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
+"""
+'default': {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(BASE_DIR, '__test__.db'),
+},
+'quote': {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(BASE_DIR, '__quote__.db'),
+},
+"""
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '__test__.db'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'rivers_default',
+        'USER': 'admin',
+        'PASSWORD': 'qwer1234',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     },
     'quote': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '__quote__.db'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'rivers_quote',
+        'USER': 'admin',
+        'PASSWORD': 'qwer1234',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     },
 }
 
@@ -173,3 +192,10 @@ LOGGING = {
         'level': 'INFO',
     },
 }
+
+# test using sqlite
+if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing and django-coverage
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    DATABASES['default']['NAME'] = os.path.join(BASE_DIR, '__test__.db'),
+    DATABASES['quote']['ENGINE'] = 'django.db.backends.sqlite3'
+    DATABASES['quote']['NAME'] = os.path.join(BASE_DIR, '__quote__.db'),

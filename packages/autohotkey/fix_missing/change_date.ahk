@@ -22,7 +22,7 @@ Send {Enter}
 ; MsgBox % %Clipboard%
 
 ; wait for 3 secs
-Sleep, 3000
+Sleep, 4000
 
 ; check is trading day
 ImageSearch, FoundM, FoundN, 0, 0, A_ScreenWidth, A_ScreenHeight / 2, *3 trading_day_xl.bmp
