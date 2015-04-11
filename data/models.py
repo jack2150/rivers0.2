@@ -16,8 +16,7 @@ class Stock(models.Model):
     open = models.DecimalField(verbose_name='Open', **decimal_field)
     high = models.DecimalField(verbose_name='High', **decimal_field)
     low = models.DecimalField(verbose_name='Low', **decimal_field)
-    last = models.DecimalField(verbose_name='Last', **decimal_field)
-    net_change = models.DecimalField(verbose_name='Net Chg', **decimal_field)
+    close = models.DecimalField(verbose_name='Close', **decimal_field)
 
     source = models.CharField(max_length=20, default='tos_thinkback', verbose_name='Source')
 
@@ -31,8 +30,7 @@ class Stock(models.Model):
         self.open = x['open']
         self.high = x['high']
         self.low = x['low']
-        self.last = x['last']
-        self.net_change = x['net_change']
+        self.close = x['last']
 
     data = property(fset=set_dict_data)
 
@@ -40,8 +38,10 @@ class Stock(models.Model):
         """
         Output explain this model
         """
-        return 'StockPrice: {date}'.format(
-            date=self.date
+        return 'StockPrice: < {symbol} > {date} from {source}'.format(
+            symbol=self.symbol,
+            date=self.date,
+            source=self.source.upper()
         )
 
 
@@ -60,7 +60,7 @@ class OptionContract(models.Model):
     option_code = models.CharField(max_length=200, verbose_name='Option Code', unique=True)
     others = models.CharField(max_length=200, default='', blank='', verbose_name='Others')
 
-    source = models.CharField(max_length=20, default=0.0, verbose_name='Source')
+    source = models.CharField(max_length=20, default='tos_thinkback', verbose_name='Source')
 
     def set_dict_data(self, x):
         """

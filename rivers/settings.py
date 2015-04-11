@@ -60,9 +60,6 @@ INSTALLED_APPS = (
 
     # data
     'data',
-    'data.file.tos_thinkback',
-    'data.web.google',
-    'data.web.yahoo'
 )
 
 MIDDLEWARE_CLASSES = (

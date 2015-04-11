@@ -1,0 +1,45 @@
+{% load group_int %}
+{% if stocks %}
+  <div id="import_success" class="panel panel-success">
+    <div class="panel-heading"><b>&#60; {{ symbol }} &#62</b> Import success</div>
+    <table class="table">
+      {% for stock in stocks %}
+        {% if forloop.first %}
+          <tr>
+            <th>No.</th>
+            <th>Symbol</th>
+            <th>Date</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Volume</th>
+            <th>Source</th>
+          </tr>
+        {% endif %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ stock.symbol }}</td>
+          <td>{{ stock.date }}</td>
+          <td>{{ stock.open|floatformat }}</td>
+          <td>{{ stock.high|floatformat }}</td>
+          <td>{{ stock.low|floatformat }}</td>
+          <td>{{ stock.close|floatformat }}</td>
+          <td>{{ stock.volume|group_int }}</td>
+          <td>{{ stock.source|upper }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+{% else %}
+  <div id="import_success" class="alert alert-warning">
+    <button class="close" type="button" data-dismiss="alert">
+      <i class="ace-icon fa fa-times"></i>
+    </button>
+    <strong>No new date to import.</strong>
+    All the dates for symbol <b>&#60; {{ symbol }} &#62</b> have been imported.
+    <br>
+  </div>
+{% endif %}
+

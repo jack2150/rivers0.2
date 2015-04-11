@@ -1,6 +1,7 @@
 from django.contrib import admin
-from data.models import *
+from data.views import *
 import locale
+
 
 locale.setlocale(locale.LC_ALL, '')
 
@@ -13,16 +14,9 @@ class StockAdmin(admin.ModelAdmin):
     volume_group.short_description = 'Volume'
     volume_group.admin_order_field = 'volume'
 
-    def net_change_positive(self, obj):
-        return '%+.2f' % obj.net_change
-
-    net_change_positive.short_description = 'Net Chg'
-    net_change_positive.admin_order_field = 'net_change'
-
     list_display = (
         'symbol', 'date', 'volume_group',
-        'open', 'high', 'low', 'last',
-        'net_change_positive'
+        'open', 'high', 'low', 'close', 'source'
     )
 
     fieldsets = (
@@ -34,13 +28,12 @@ class StockAdmin(admin.ModelAdmin):
         ('Primary Field', {
             'fields': (
                 'date', 'volume',
-                'open', 'high', 'low', 'last',
-                'net_change'
+                'open', 'high', 'low', 'close', 'source'
             )
         }),
     )
 
-    search_fields = ('symbol', 'date')
+    search_fields = ('symbol', 'date', 'source')
 
     readonly_fields = ('symbol', )
 
@@ -125,7 +118,49 @@ class OptionAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
-
+# admin model
 admin.site.register(Stock, StockAdmin)
 admin.site.register(OptionContract, OptionContractAdmin)
 admin.site.register(Option, OptionAdmin)
+
+# admin view, tos thinkback csv
+admin.site.register_view(
+    'data/import/$',
+    urlname='data_select_symbol_view',
+    view=data_select_symbol_view
+)
+
+admin.site.register_view(
+    'data/symbol/stat/$',
+    urlname='data_symbol_stat_view',
+    view=data_symbol_stat_view
+)
+
+admin.site.register_view(
+    'data/symbol/stat/(?P<symbol>\w+)/$',
+    urlname='data_symbol_stat_view',
+    view=data_symbol_stat_view
+)
+
+admin.site.register_view(
+    'data/csv/import/$',
+    urlname='data_csv_import_view',
+    view=data_csv_import_view
+)
+admin.site.register_view(
+    'data/csv/import/(?P<symbol>\w+)/$',
+    urlname='data_csv_import_view',
+    view=data_csv_import_view
+)
+
+# web get google and yahoo
+admin.site.register_view(
+    'data/web/import/$',
+    urlname='data_web_import_view',
+    view=data_web_import_view
+)
+admin.site.register_view(
+    'data/web/import/(?P<symbol>\w+)/$',
+    urlname='data_web_import_view',
+    view=data_web_import_view
+)

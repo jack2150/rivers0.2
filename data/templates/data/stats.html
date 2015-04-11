@@ -1,0 +1,42 @@
+{% load group_int %}
+{% if tos_thinkback_stocks > 0 %}
+  <div class="panel panel-info">
+    <div class="panel-heading"><b>&#60; {{ symbol }} &#62</b> Data Stats</div>
+    <table id="symbol_stats" class="table">
+      <tr>
+        <th>Thinkback Stocks:</th>
+        <td class="col-md-6">{{ tos_thinkback_stocks|group_int }}</td>
+      </tr>
+
+      <tr>
+        <th>Google Stocks:</th>
+        <td class="col-md-6">{{ google_stocks|group_int }}</td>
+      </tr>
+
+      <tr>
+        <th>Yahoo Stocks:</th>
+        <td class="col-md-6">{{ yahoo_stocks|group_int }}</td>
+      </tr>
+
+      <tr>
+        <th>Start Date:</th>
+        <td>{{ start_date }}</td>
+      </tr>
+
+      <tr>
+        <th>Stop Date:</th>
+        <td>{{ stop_date }}</td>
+      </tr>
+
+      <tr>
+        <th>Contracts:</th>
+        <td>{{ option_contracts|group_int }}</td>
+      </tr>
+
+      <tr>
+        <th>Options:</th>
+        <td>{{ options|group_int }}</td>
+      </tr>
+    </table>
+  </div>
+{% endif %}

@@ -1,0 +1,206 @@
+{% extends "admin/base_site.html" %}
+{% load static currency_tag verbose_name position_set %}
+
+{% block title %}Data Import{% endblock %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'others/spinner.css' %}" type="text/css">
+{% endblock %}
+
+{% block breadcrumbs %}
+  <li>
+    <a href="{% url 'admin:index' %}">
+      <i class="ace-icon fa fa-home home-icon"></i>
+      Home
+    </a>
+  </li>
+  <li>
+    Data Import
+  </li>
+{% endblock %}
+
+{% block page-header %}
+  Data Import
+{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    <div class="col-md-9">
+      <div id="ajax_run_result"></div>
+
+      <div id="loading_icon" class="alert alert-info" role="alert" style="display: none;">
+        Importing please wait
+        <div id="fadingBarsG" style="float: left; margin: 5px 10px 0 0;">
+          <div id="fadingBarsG_1" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_2" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_3" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_4" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_5" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_6" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_7" class="fadingBarsG">
+          </div>
+          <div id="fadingBarsG_8" class="fadingBarsG">
+          </div>
+        </div>
+
+      </div>
+
+      <div id="waiting_import" class="alert alert-warning" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        Waiting for symbol to get start
+      </div>
+
+      <div id="error_importing" class="alert alert-danger" style="display: none;">
+        <button class="close" type="button" data-dismiss="alert">
+          <i class="ace-icon fa fa-exclamation-circle "></i>
+        </button>
+        <b>Internal Server Error: Please check and debug console...</b>
+        <br>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">Import Form</div>
+        <div class="panel-body">
+          <!-- source select control -->
+          <label for="source">Source from:</label>
+          <select id="source" class="form-control">
+            <option value="" selected>Source</option>
+            <option value="">---</option>
+            <option value="csv">CSV</option>
+            <option value="web">Web</option>
+          </select>
+
+          <!-- csv symbol select control -->
+          <div id="csv_symbol_section" style="display: none;">
+            <label for="csv_symbol" style="padding-top: 10px;">CSV symbol:</label>
+            <select id="csv_symbol" class="form-control">
+              <option value="">Symbol</option>
+              <option value="">---</option>
+              {% for symbol in csv_symbols %}
+                <option value="{{ symbol|lower }}">{{ symbol|upper }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <!-- web symbol select control -->
+          <div id="web_symbol_section" style="display: none;">
+            <label for="web_symbol" style="padding-top: 10px;">Web symbol:</label>
+            <select id="web_symbol" class="form-control">
+              <option value="">Symbol</option>
+              <option value="">---</option>
+              {% for symbol in web_symbols %}
+                <option value="{{ symbol|lower }}">{{ symbol|upper }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+
+          <hr>
+          <button id="run_import" class="btn btn-white btn-info btn-bold" name="_save" type="button">
+            <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>
+            Save All
+          </button>
+        </div>
+      </div>
+
+      <div id="symbol_stat"></div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer_extra_script %}
+  <script type="text/javascript">
+    function show_stat() {
+      var symbol_stat = $("#symbol_stat");
+      var source = source_select.val();
+
+      if (source == 'csv') {
+        var symbol = $("#csv_symbol").val();
+      }
+      else if (source == 'web') {
+        var symbol = $("#web_symbol").val();
+      }
+      $(symbol_stat).hide();
+      if (symbol != '') {
+        var link = "{% url 'admin:data_symbol_stat_view' %}" + symbol + "/";
+        $(symbol_stat).load(link, function (response, status, xhr) {
+          if (status == 'success') {
+            $("#symbol_stat").show();
+          }
+        });
+      }
+    }
+
+    var source_select = $("#source");
+    source_select.change(function() {
+      var source = source_select.val();
+
+      if (source == 'csv') {
+        $("#web_symbol_section").hide();
+        $("#csv_symbol_section").show();
+
+      }
+      else if (source == 'web') {
+        $("#web_symbol_section").show();
+        $("#csv_symbol_section").hide();
+      }
+
+    });
+
+    var csv_symbol_select = $("#csv_symbol");
+    var web_symbol_select = $("#web_symbol");
+
+    csv_symbol_select.change(show_stat);
+    web_symbol_select.change(show_stat);
+
+    $('#run_import').click(function () {
+      var symbol = '';
+      var link = '';
+      if (source_select.val() == 'csv') {
+        symbol = $('#csv_symbol').val();
+        link = "{% url 'admin:data_csv_import_view' %}" + symbol + "/";
+      }
+      else if (source_select.val() == 'web') {
+        symbol = $('#web_symbol').val();
+        link = "{% url 'admin:data_web_import_view' %}" + symbol + "/";
+      }
+
+      // start run
+      if (symbol != '') {
+        $('#error_importing').hide();
+        $('#import_success').hide();
+        $('#missing_files').hide();
+        $('#waiting_import').hide();
+        $('#loading_icon').toggle();
+
+        $("#ajax_run_result").load(link, function (response, status, xhr) {
+          if (status == "success") {
+            $('#import_success').show();
+            $('#missing_files').show();
+
+            //var msg = "Sorry but there was an error: ";
+            //$("#error").html(msg + xhr.status + " " + xhr.statusText);
+            $('#loading_icon').toggle();
+          }
+          else if (status == "error") {
+            $('#loading_icon').toggle();
+            $('#error_importing').show();
+          }
+        });
+      }
+    });
+
+    // reset source value
+    source_select.val('');
+    csv_symbol_select.val('');
+    web_symbol_select.val('');
+  </script>
+{% endblock %}
