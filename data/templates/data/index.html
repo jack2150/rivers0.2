@@ -48,7 +48,6 @@
           <div id="fadingBarsG_8" class="fadingBarsG">
           </div>
         </div>
-
       </div>
 
       <div id="waiting_import" class="alert alert-warning" role="alert">
@@ -166,7 +165,7 @@
       var link = '';
       if (source_select.val() == 'csv') {
         symbol = $('#csv_symbol').val();
-        link = "{% url 'admin:data_csv_import_view' %}" + symbol + "/";
+        link = "{% url 'admin:data_tos_thinkback_import_view' %}" + symbol + "/";
       }
       else if (source_select.val() == 'web') {
         symbol = $('#web_symbol').val();

@@ -1,7 +1,9 @@
+from datetime import datetime, date
 from django.shortcuts import render
+from pandas.tseries.offsets import Day
 from position.models import PositionSet
-from tos_import.statement.statement_position.models \
-    import PositionSummary, PositionInstrument, PositionFuture, PositionForex
+from tos_import.statement.statement_position.models import *
+from pandas import bdate_range, to_datetime
 
 
 def spread_view(request, date=''):
@@ -63,20 +65,62 @@ def spread_view(request, date=''):
     return render(request, template, parameters)
 
 
-def profiler_view(request, id=0):
+def profiler_view(request, position_set_id=0):
     """
     Profiler view for a single position_set
     :param request: request
-    :param id: int
+    :param position_set_id: int
     :return: render
     """
     template = 'position/profiler/index.html'
 
-    position_set = PositionSet.objects.get(id=id)
+    position_set = PositionSet.objects.get(id=position_set_id)
+    position_stages = position_set.positionstage_set.all()  # todo: here
     profiler_summary = dict()
     profiler_table = list()
 
+    # calculate days
+    filled_orders = position_set.filledorder_set.order_by('trade_summary__date').all()
+    position_instruments = position_set.positioninstrument_set.order_by('position_summary__date').all()
+
+    start_date = filled_orders.first().trade_summary.date
+    stop_date = filled_orders.last().trade_summary.date
+
+    dte = 0
+    expire_date = ''
+    if not any([x in position_set.spread for x in ('CALENDAR', 'DIAGONAL')]):
+        position_options = position_instruments.last().positionoption_set
+
+        if position_options.exists():
+            dte = position_instruments.last().positionoption_set.last().days + 1
+            dte = dte if dte > 0 else 0  # reset if already expired
+
+            expire_date = datetime.strptime((stop_date + Day(dte)).strftime('%Y-%m-%d'), '%Y-%m-%d').date()
+
+    if stop_date != start_date:
+        pass_bdays = len(bdate_range(start=start_date, end=stop_date))
+        pass_days = (stop_date - start_date).days
+    else:
+        pass_bdays = len(bdate_range(start=start_date, end=datetime.today()))
+        pass_days = (datetime.today().date() - start_date).days
+        stop_date = ''
+
+    position_dates = dict(
+        pass_bdays=pass_bdays,
+        pass_days=pass_days,
+        start_date=start_date,
+        stop_date=stop_date,
+        dte=dte,
+        expire_date=expire_date,
+    )
+
+    # todo: until here
+
     if position_set.underlying:
+        pass
+
+
+        """
         position_instruments = position_set.positioninstrument_set.order_by(
             'position_summary__date').reverse()
         profits_losses = position_set.profitloss_set.order_by('account_summary__date').reverse()
@@ -93,6 +137,12 @@ def profiler_view(request, id=0):
             # todo: next option greek, stage, status, last
             # todo: until here, wrong mark, mark change % and pl...
 
+            # todo: wrong mark, mark change and pl_open, pl_day for equity
+            # todo: options spread should be fine, the problem is hedge also wrong
+            # todo: hedge, stock price will extract from options data
+            # todo: options price is correct without calculation
+            # todo: stock price is using normal calculation
+
             profiler_table.append(
                 dict(
                     date=position_instrument.position_summary.date,
@@ -106,9 +156,12 @@ def profiler_view(request, id=0):
                     pl_ytd_pct=profit_loss.pl_pct
                 )
             )
+        """
 
     parameters = dict(
         position_set=position_set,
+        position_dates=position_dates,
+        position_stages=position_stages,
         profiler_summary=profiler_summary,
         profiler_table=profiler_table
     )

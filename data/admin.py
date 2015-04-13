@@ -144,13 +144,13 @@ admin.site.register_view(
 
 admin.site.register_view(
     'data/csv/import/$',
-    urlname='data_csv_import_view',
-    view=data_csv_import_view
+    urlname='data_tos_thinkback_import_view',
+    view=data_tos_thinkback_import_view
 )
 admin.site.register_view(
     'data/csv/import/(?P<symbol>\w+)/$',
-    urlname='data_csv_import_view',
-    view=data_csv_import_view
+    urlname='data_tos_thinkback_import_view',
+    view=data_tos_thinkback_import_view
 )
 
 # web get google and yahoo

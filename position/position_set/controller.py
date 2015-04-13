@@ -29,7 +29,7 @@ class PositionSetController(object):
         ).exclude(Q(order='ROC') | Q(order='RCL') | Q(order='ROP'))  # no forex daily adjust
 
         # get distinct symbols
-        underlyings = [Q(underlying=obj) for obj in self.filled_orders.values_list(
+        underlying_symbols = [Q(underlying=obj) for obj in self.filled_orders.values_list(
             'underlying', flat=True).distinct() if obj]
 
         future_symbols = [Q(future=obj) for obj in self.filled_orders.values_list(
@@ -38,7 +38,7 @@ class PositionSetController(object):
         forex_symbols = [Q(forex=obj) for obj in self.filled_orders.values_list(
             'forex', flat=True).distinct() if obj]
 
-        self.queries = underlyings + future_symbols + forex_symbols
+        self.queries = underlying_symbols + future_symbols + forex_symbols
 
     def create_position_sets(self, date=''):
         """
@@ -71,7 +71,7 @@ class PositionSetController(object):
 
             # save filled order into position set and all foreign keys
             if filled_orders.exists():
-                position_sets = PositionSet.objects.filter(query)
+                position_sets = PositionSet.objects.filter(query).filter(status='OPEN')
 
                 if position_sets.exists():
 
@@ -110,6 +110,6 @@ class PositionSetController(object):
                 elif position_set.future and not len(ref['position_futures']):
                     position_set.status = 'EXPIRED'
                     position_set.save()
-                elif position_set.forex and not len(ref['position_forexs']):
-                    position_set.status = 'EXPIRED'
-                    position_set.save()
+                #elif position_set.forex and not len(ref['position_forexs']):
+                #    position_set.status = 'EXPIRED'
+                #    position_set.save()

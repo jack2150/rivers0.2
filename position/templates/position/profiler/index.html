@@ -29,21 +29,66 @@
 {% block content %}
   <div id="content-main">
     <div class="row">
-      <div class="col-md-10">
-        <p>main detail section, symbol, position_set detail, current price,
-          option greek, probability</p>
-
+      <div class="col-md-3">
         <!-- position set -->
-        <p>{{ position_set.name }}</p>
-        <p>{{ position_set.spread }}</p>
-        <p>{{ position_set.status }}</p>
-        <p>{{ position_set.symbol }}</p>
+        <table class="table">
+          <tr>
+            <th>Name:</th>
+            <td>{{ position_set.name }}</td>
+          </tr>
+          <tr>
+            <th>Spread:</th>
+            <td>{{ position_set.spread }}</td>
+          </tr>
+          <tr>
+            <th>Status:</th>
+            <td>{{ position_set.status }}</td>
+          </tr>
+          <tr>
+            <th>Status:</th>
+            <td>{{ position_set.status }}</td>
+          </tr>
 
-        <!-- profiler summary -->
-        <p>{{ profiler_summary.stage }}</p>
-        <p>{{ profiler_summary.status }}</p>
+          <tr>
+            <th>Pass BDay:</th>
+            <td>{{ position_dates.pass_bdays }}</td>
+          </tr>
+          <tr>
+            <th>Pass Day:</th>
+            <td>{{ position_dates.pass_days }}</td>
+          </tr>
+          <tr>
+            <th>Start Date:</th>
+            <td>{{ position_dates.start_date }}</td>
+          </tr>
+          <tr>
+            <th>Stop Date:</th>
+            <td>{{ position_dates.stop_date }}</td>
+          </tr>
+          <tr>
+            <th>DTE:</th>
+            <td>{{ position_dates.dte }}</td>
+          </tr>
+          <tr>
+            <th>Expire Date:</th>
+            <td>{{ position_dates.expire_date }}</td>
+          </tr>
+
+        </table>
       </div>
-      <div class="col-md-2">
+
+      <div class="col-md-3">
+        <table class="table">
+          {% for position_stage in position_stages %}
+            <tr>
+              <td>*</td>
+              <td>{{ position_stage }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+
+      <div class="col-md-3">
         yellow box section,
 
         decision maker,
@@ -52,8 +97,22 @@
 
         historical position statistic
       </div>
+
+      <div class="col-md-3">
+        <p>main detail section, symbol, position_set detail, current price,
+          option greek, probability</p>
+      </div>
     </div>
-    {% include 'position/profiler/table.html' %}
+
+    {% if position_set.name == 'EQUITY' %}
+      {% include 'position/profiler/spread/equity.html' %}
+    {% elif position_set.name == 'HEDGE' %}
+      {% include 'position/profiler/spread/hedge.html' %}
+    {% elif position_set.name == 'SPREAD' %}
+      {% include 'position/profiler/spread/spread.html' %}
+    {% else %}
+      {% include 'position/profiler/spread/other.html' %}
+    {% endif %}
 
   </div>
 {% endblock %}

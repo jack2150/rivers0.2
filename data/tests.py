@@ -305,7 +305,7 @@ class TestOpenThinkBack(TestSetUp):
 
 class TestTosThinkbackImportRunView(TestSetUp):
     def test_view(self):
-        self.skipTest("Only test when necessary...")
+        #self.skipTest("Only test when necessary...")
 
         if not User.objects.exists():
             User.objects.create_superuser(
@@ -314,10 +314,10 @@ class TestTosThinkbackImportRunView(TestSetUp):
                 password='pass'
             )
         self.client.login(username='jack', password='pass')
-        self.client.login()
+        #self.client.login()
 
         response = self.client.get(
-            reverse('admin:tos_thinkback_import_run_view', args=('wfc',))
+            reverse('admin:data_tos_thinkback_import_view', args=('gild',))
         )
 
         insert_files = response.context['insert_files']
@@ -431,7 +431,7 @@ class TestDataWebImportView(TestSetUp):
         for stock in Stock.objects.all():
             print stock.symbol, stock.source, stock.date, stock.close
 
-        self.assertEqual(Stock.objects.count(), 2)
+        self.assertEqual(Stock.objects.count(), 3)
 
         response = self.client.get(
             reverse('admin:data_web_import_view', args=(test_symbol.upper(),))
@@ -466,13 +466,21 @@ class TestDataWebImportView(TestSetUp):
             'net_change': -0.12, 'open': 55.11, 'volume': 11700856.0
         }
 
-        stock_middle = Stock()
-        stock_middle.symbol = test_symbol
-        stock_middle.data = {
+        stock_google = Stock()
+        stock_google.symbol = test_symbol
+        stock_google.data = {
             'date': '2015-01-15', 'high': 51.5354, 'last': 50.72, 'low': 50.46,
             'net_change': -0.53, 'open': 51.21, 'volume': 32144687.0
         }
-        stock_middle.source = 'google'
+        stock_google.source = 'google'
+
+        stock_yahoo = Stock()
+        stock_yahoo.symbol = test_symbol
+        stock_yahoo.data = {
+            'date': '2015-01-14', 'high': 51.5354, 'last': 50.72, 'low': 50.46,
+            'net_change': -0.53, 'open': 52.21, 'volume': 32144687.0
+        }
+        stock_yahoo.source = 'yahoo'
 
         stock_last = Stock()
         stock_last.symbol = test_symbol
@@ -481,11 +489,11 @@ class TestDataWebImportView(TestSetUp):
             'net_change': -0.84, 'open': 52.2, 'volume': 21754793.0
         }
 
-        Stock.objects.bulk_create([stock_first, stock_middle, stock_last])
+        Stock.objects.bulk_create([stock_first, stock_google, stock_last])
         for stock in Stock.objects.all():
             print stock.symbol, stock.source, stock.date, stock.close
 
-        self.assertEqual(Stock.objects.count(), 25)
+        self.assertEqual(Stock.objects.count(), 46)
 
         response = self.client.get(
             reverse('admin:data_web_import_view', args=(test_symbol.upper(),))

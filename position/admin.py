@@ -192,7 +192,7 @@ admin.site.register_view(
 
 # profiler view
 admin.site.register_view(
-    'position/profiler/(?P<id>[0-9]+)/$',
+    'position/profiler/(?P<position_set_id>[0-9]+)/$',
     urlname='position_set_profiler_view',
     view=profiler_view
 )

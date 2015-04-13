@@ -34,6 +34,11 @@ class Stock(models.Model):
 
     data = property(fset=set_dict_data)
 
+    def get_data(self, symbol, source='tos_thinkback'):
+        """
+        """
+        pass
+
     def __unicode__(self):
         """
         Output explain this model
@@ -159,3 +164,5 @@ class Option(models.Model):
             option_contract=self.option_contract,
             date=self.date
         )
+
+# todo: earning, dividend, split, ipo...

@@ -1,6 +1,14 @@
 # noinspection PyUnresolvedReferences
+from pprint import pprint
 import position.classes.ready_django
+
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.urlresolvers import reverse
+from django.test.utils import setup_test_environment
+from django.test.client import Client
+from django.contrib.auth.models import User
 from django.db.models import Q
+from position.classes.tests import TestUnitSetUp
 from position.models import *
 from tos_import.classes.tests import TestSetUpDB, TestReadyFile
 from tos_import.files.real_files import real_path
@@ -9,10 +17,15 @@ from tos_import.statement.statement_account.models import AccountSummary, Profit
 from tos_import.statement.statement_position.models import PositionSummary, PositionInstrument
 from tos_import.statement.statement_trade.models import FilledOrder
 
+# ready up client
+setup_test_environment()
+
 
 class TestPositionSet(TestReadyFile):
     def setUp(self):
         TestReadyFile.setUp(self)
+
+        print type(self.client)
 
         self.items = list()
 
@@ -256,6 +269,53 @@ class TestPositionStage(TestSetUpDB):
         result = self.stage.get_status(new_price=new_price, old_price=old_price)
         print 'eval result: %s' % result
         self.assertEqual(result, 'UNKNOWN')
+
+
+class TestProfilerView(TestUnitSetUp):
+    def setUp(self):
+        """
+        Ready up and create username for login
+        """
+        TestUnitSetUp.setUp(self)
+
+        User.objects.create_superuser(
+            username='jack123',
+            email='a@b.com',
+            password='pass123'
+        )
+
+        self.client = Client()
+
+        self.client.login(username='jack123', password='pass123')
+
+    def tearDown(self):
+        """
+        Remove temp username
+        """
+        TestUnitSetUp.tearDown(self)
+        User.objects.get(username='jack123').delete()
+
+    def test_view(self):
+        # skip if using django test
+        try:
+            position_set = PositionSet.objects.filter(underlying__symbol='AAPL').first()
+            """:type: PositionSet"""
+        except ObjectDoesNotExist:
+            self.skipTest("Please use 'Unittest' for testing.\n")
+            raise ObjectDoesNotExist()
+
+        response = self.client.get(reverse('admin:position_set_profiler_view', args=(3, )))
+
+        print response.context['position_set']
+        print response.context['position_set'].status
+        print response.context['position_stages']
+        pprint(response.context['position_dates'])
+
+        #print response.context['position_stages']
+        #print response.context
+
+
+
 
 
 

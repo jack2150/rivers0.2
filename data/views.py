@@ -14,6 +14,7 @@ from rivers.settings import BASE_DIR
 
 locale.setlocale(locale.LC_ALL, '')
 THINKBACK_DIR = os.path.join(BASE_DIR, 'data/csv/')
+SKIP_DATES = ['2014-02-28']
 
 
 def data_select_symbol_view(request):
@@ -81,7 +82,7 @@ def data_symbol_stat_view(request, symbol):
     return render(request, template, parameters)
 
 
-def data_csv_import_view(request, symbol):
+def data_tos_thinkback_import_view(request, symbol):
     """
     Import a symbol folder into db
     :param request: request
@@ -94,6 +95,28 @@ def data_csv_import_view(request, symbol):
     """:type: str"""
 
     insert_files = list()
+    missing_files = list()
+
+    # move files into year folder
+    no_year_files = glob(os.path.join(THINKBACK_DIR, symbol, '*.csv'))
+    years = sorted(list(set([
+        os.path.basename(f)[:4] for f in no_year_files
+    ])))
+
+    for year in years:
+        year_dir = os.path.join(THINKBACK_DIR, symbol, year)
+
+        # make dir if not exists
+        if not os.path.isdir(year_dir):
+            os.mkdir(year_dir)
+
+        # move all year files into dir
+        for no_year_file in no_year_files:
+            #print os.path.basename(no_year_file)[:4], year
+            filename = os.path.basename(no_year_file)
+            if filename[:4] == year:
+                #print 'move ', no_year_file, ' -> ', year_dir
+                os.rename(no_year_file, os.path.join(year_dir, filename))
 
     # get all files in year folder
     files = []
@@ -114,7 +137,8 @@ def data_csv_import_view(request, symbol):
         date, symbol = os.path.basename(csv)[:-4].split('-StockAndOptionQuoteFor')
 
         # insert stock if not exists in db
-        if not Stock.objects.filter(Q(symbol=symbol) & Q(date=date)).exists():
+        query = Q(symbol=symbol) & Q(date=date) & Q(source='tos_thinkback')
+        if not Stock.objects.filter(query).exists() and date not in SKIP_DATES:
             # output to console
             print 'running %s file...' % os.path.basename(csv)
 
@@ -133,39 +157,7 @@ def data_csv_import_view(request, symbol):
             # for view only
             inserted_file['stock'] = stock
 
-            """
-            # insert option contract and options
-            options = list()
-            for contract_dict, option_dict in option_data:
-                try:
-                    option_contract = OptionContract.objects.get(
-                        option_code=contract_dict['option_code']
-                    )
-                except ObjectDoesNotExist:
-                    option_contract = OptionContract()
-                    option_contract.underlying = underlying
-                    option_contract.data = contract_dict
-                    option_contract.save()
-
-                option = Option()
-                option.option_contract = option_contract
-                option.data = option_dict
-
-                options.append(
-                    option
-                )
-
-            Option.objects.bulk_create(options)
-
-            # save options
-
-            Option.objects.bulk_create(options)
-            """
-
             option_codes = [contract['option_code'] for contract, _ in option_data]
-            #exists_option_codes = [x[0] for x in OptionContract.objects.filter(
-            #    option_code__in=option_codes
-            #).values_list('option_code')]
 
             size = 100
             exists_option_codes = list()
@@ -197,11 +189,6 @@ def data_csv_import_view(request, symbol):
 
             # for view only
             inserted_file['contracts'] = len(contracts)
-
-            #option_contracts = [
-            #    option_contract for option_contract in
-            #    OptionContract.objects.filter(option_code__in=option_codes)
-            #]
 
             option_contracts = list()
             for chunk in [option_codes[i:i + size] for i in range(0, len(option_codes), size)]:
@@ -235,9 +222,6 @@ def data_csv_import_view(request, symbol):
             # add into inserted
             insert_files.append(inserted_file)
 
-    # insert stock
-    # Stock.objects.bulk_create(stocks)
-
     # missing files between dates
     missing_files = list()
     if Stock.objects.count() > 2 and Stock.objects.filter(symbol=symbol).exists():
@@ -250,7 +234,7 @@ def data_csv_import_view(request, symbol):
         for bday in bdays:
             try:
                 Stock.objects.get(
-                    Q(symbol=symbol) &
+                    Q(symbol=symbol) & Q(source='tos_thinkback') &
                     Q(date=bday.strftime('%Y-%m-%d'))
                 )
             except ObjectDoesNotExist:
@@ -265,11 +249,6 @@ def data_csv_import_view(request, symbol):
                         )
 
                     )
-
-    # reset all
-    #Stock.objects.all().delete()
-    #OptionContract.objects.all().delete()
-    #Option.objects.all().delete()
 
     parameters = dict(
         symbol=symbol,
@@ -287,6 +266,7 @@ def data_web_import_view(request, symbol=''):
     :param request: request
     :return: render
     """
+    # noinspection PyShadowingNames
     def create_stock(symbol, index, data, source):
         """
         Create a stock object
@@ -299,8 +279,8 @@ def data_web_import_view(request, symbol=''):
         return Stock(
             symbol=symbol,
             date=index.strftime('%Y-%m-%d'),
-            open=data['High'],
-            high=data['Open'],
+            open=data['Open'],
+            high=data['High'],
             low=data['Low'],
             close=data['Close'],
             volume=data['Volume'],
