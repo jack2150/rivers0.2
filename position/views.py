@@ -1,11 +1,14 @@
 from datetime import datetime, date
+from django.db.models import Q
 from django.shortcuts import render
-from pandas.tseries.offsets import Day
+from pandas.tseries.offsets import Day, BDay, Hour, Minute
+from data.models import Stock, get_price
 from position.models import PositionSet
 from tos_import.statement.statement_position.models import *
-from pandas import bdate_range, to_datetime
+from pandas import bdate_range
 
 
+# noinspection PyShadowingNames
 def spread_view(request, date=''):
     """
     Spread view: detail stage management for all positions
@@ -74,18 +77,25 @@ def profiler_view(request, position_set_id=0):
     """
     template = 'position/profiler/index.html'
 
+    # get position set and position stages
     position_set = PositionSet.objects.get(id=position_set_id)
-    position_stages = position_set.positionstage_set.all()  # todo: here
-    profiler_summary = dict()
-    profiler_table = list()
+    position_stages = position_set.positionstage_set.all()
 
-    # calculate days
+    # display variables
+    position_prices = dict()
+    position_stocks = list()
+    position_stage_movers = list()
+    historical_position_sets = None
+
+    # foreign keys
     filled_orders = position_set.filledorder_set.order_by('trade_summary__date').all()
     position_instruments = position_set.positioninstrument_set.order_by('position_summary__date').all()
 
-    start_date = filled_orders.first().trade_summary.date
-    stop_date = filled_orders.last().trade_summary.date
+    # calculate days
+    start_date = position_instruments.first().position_summary.date
+    stop_date = position_instruments.last().position_summary.date
 
+    # get dates
     dte = 0
     expire_date = ''
     if not any([x in position_set.spread for x in ('CALENDAR', 'DIAGONAL')]):
@@ -103,7 +113,6 @@ def profiler_view(request, position_set_id=0):
     else:
         pass_bdays = len(bdate_range(start=start_date, end=datetime.today()))
         pass_days = (datetime.today().date() - start_date).days
-        stop_date = ''
 
     position_dates = dict(
         pass_bdays=pass_bdays,
@@ -114,56 +123,222 @@ def profiler_view(request, position_set_id=0):
         expire_date=expire_date,
     )
 
-    # todo: until here
-
     if position_set.underlying:
-        pass
+        if position_set.name == 'EQUITY':
+            # get stocks data
+            stocks = Stock.objects.filter(
+                Q(symbol=position_set.underlying.symbol) &
+                #Q(date__gte=start_date - BDay(1)) &
+                #Q(date__lte=stop_date) &
+                Q(date__in=[i.position_summary.date for i in position_instruments]) &
+                Q(source='google')
+            ).order_by('date')
 
-
-        """
-        position_instruments = position_set.positioninstrument_set.order_by(
-            'position_summary__date').reverse()
-        profits_losses = position_set.profitloss_set.order_by('account_summary__date').reverse()
-        profiler_summary['stage'] = position_set.get_stage(
-            price=position_instruments.first().positionequity.mark)
-        profiler_summary['status'] = position_set.current_status(
-            new_price=position_instruments.first().positionequity.mark,
-            old_price=(position_instruments.first().positionequity.mark +
-                       position_instruments.first().positionequity.mark_change)
-        )
-
-        # create a table
-        for position_instrument, profit_loss in zip(position_instruments, profits_losses):
-            # todo: next option greek, stage, status, last
-            # todo: until here, wrong mark, mark change % and pl...
-
-            # todo: wrong mark, mark change and pl_open, pl_day for equity
-            # todo: options spread should be fine, the problem is hedge also wrong
-            # todo: hedge, stock price will extract from options data
-            # todo: options price is correct without calculation
-            # todo: stock price is using normal calculation
-
-            profiler_table.append(
-                dict(
-                    date=position_instrument.position_summary.date,
-                    mark=position_instrument.positionequity.mark,
-                    mark_change=position_instrument.positionequity.mark_change,
-                    pct_change=position_instrument.pct_change,
-                    pl_open=position_instrument.pl_open,
-                    pl_day=position_instrument.pl_day,
-                    pl_ytd_open=profit_loss.pl_open,
-                    pl_ytd_day=profit_loss.pl_day,
-                    pl_ytd_pct=profit_loss.pl_pct
-                )
+            # use data use 5:30pm close price
+            stock = get_price(
+                symbol=position_set.underlying.symbol,
+                date=stop_date,
+                source='google'
             )
-        """
+
+            stock2 = get_price(
+                symbol=position_set.underlying.symbol,
+                date=stop_date - BDay(1),
+                source='google'
+            )
+
+            if not stock:
+                raise LookupError('Please import latest price data into system.')
+
+            if not stock2:
+                stock2 = stock
+
+            # create position prices
+            trade_price = filled_orders.first().price
+            trade_quantity = filled_orders.first().quantity
+
+            if position_set.spread == 'LONG_STOCK':
+                multiplier = 1
+            elif position_set.spread == 'SHORT_STOCK':
+                multiplier = -1
+            else:
+                raise ValueError('Wrong profiler section when making calculation.')
+
+            pl_open = (stock.close - trade_price) * trade_quantity
+            pl_open_pct = round(pl_open / (trade_price * trade_quantity) * 100 * multiplier, 2)
+            pl_day = (stock.close - stock2.close) * trade_quantity
+            pl_day_pct = round(pl_day / (trade_price * trade_quantity) * 100 * multiplier, 2)
+
+            # profit loss count
+            profit_open_count = 0
+            loss_open_count = 0
+            profit_day_count = 0
+            loss_day_count = 0
+
+            s_pl_day = 0
+            last_stock = stocks.first()
+            for s in stocks:
+                s_pl_open = (s.close - trade_price) * trade_quantity
+                if s_pl_open > 0:
+                    profit_open_count += 1
+                elif s_pl_open < 0:
+                    loss_open_count += 1
+
+                if s_pl_day:
+                    s_pl_day = (s.close - last_stock.close) * trade_quantity
+                else:
+                    s_pl_day = (s.close - trade_price) * trade_quantity
+
+                if s_pl_day > 0:
+                    profit_day_count += 1
+                elif s_pl_day < 0:
+                    loss_day_count += 1
+
+                last_stock = s
+
+            position_prices = dict(
+                stock=stock,
+                stock2=stock2,
+                trade_price=round(trade_price, 2),
+                trade_quantity=trade_quantity,
+
+                pl_open=pl_open,
+                pl_open_pct=pl_open_pct,
+                pl_day=pl_day,
+                pl_day_pct=pl_day_pct,
+
+                # pl open stat
+                profit_open_count=profit_open_count,
+                profit_open_count_pct=round(profit_open_count / float(len(stocks)) * 100, 2),
+                loss_open_count=loss_open_count,
+                loss_open_count_pct=round(loss_open_count / float(len(stocks)) * 100, 2),
+
+                # pl day stat
+                profit_day_count=profit_day_count,
+                profit_day_count_pct=round(profit_day_count / float(len(stocks)) * 100, 2),
+                loss_day_count=loss_day_count,
+                loss_day_count_pct=round(loss_day_count / float(len(stocks)) * 100, 2),
+
+                # stages and status
+                stage=position_set.get_stage(price=stock.close),
+                status=position_set.current_status(new_price=stock.close, old_price=stock2.close),
+
+                # price move
+                net_change=stock.close - stock2.close,
+                pct_change=(stock.close - stock2.close) / stock2.close * 100,
+
+                # time close and as date
+                date=stop_date + Hour(17) + Minute(30),
+
+                # holding
+                holding=trade_price * trade_quantity,
+                bp_effect=position_instruments.last().bp_effect,
+
+                # price move
+                pl_ytd=0,  # ytd profit loss
+            )
+
+            # create position stock, using google close data
+
+            last_stock = stocks.first()
+            for stock in stocks.filter(date__gte=start_date):
+                net_change = 0
+                pct_change = 0
+                if last_stock:
+                    net_change = stock.close - last_stock.close
+                    pct_change = round((stock.close - last_stock.close) / last_stock.close * 100, 2)
+
+                if stock.date == stop_date and position_set.status in ['CLOSE', 'EXPIRE']:
+                    stage = position_set.status
+                    status = 'UNKNOWN'
+                else:
+                    stage = position_set.get_stage(price=stock.close).stage_name
+                    status = position_set.current_status(
+                        new_price=stock.close, old_price=last_stock.close
+                    )
+
+                position_stocks.append(
+                    dict(
+                        date=stock.date,
+                        open=stock.open,
+                        high=stock.high,
+                        low=stock.low,
+                        close=stock.close,
+                        net_change=net_change,
+                        pct_change=pct_change,
+                        pl_open=round((stock.close - trade_price) * trade_quantity, 2),
+                        pl_day=net_change * trade_quantity,
+                        stage=stage,
+                        status=status,
+                    )
+                )
+
+                last_stock = stock
+
+            # create stage mover, position_stage.mover.
+            position_stage_movers = dict(
+                stages=position_stages,
+                keys=list(),
+                data=list(),
+            )
+
+            for stage in position_stages:
+                if stage.price_a:
+                    position_stage_movers['keys'].append('%s,%s.A $' % (stage.id, stage.stage_name))
+                    position_stage_movers['keys'].append('%s,%s.A' % (stage.id, stage.stage_name))
+
+                if stage.price_b:
+                    position_stage_movers['keys'].append('%s,%s.B $' % (stage.id, stage.stage_name))
+                    position_stage_movers['keys'].append('%s,%s.B' % (stage.id, stage.stage_name))
+
+            for stock in stocks.filter(date__gte=start_date):
+                m = dict(
+                    date=stock.date,
+                    close=stock.close
+                )
+
+                for stage in position_stages:
+                    if stage.price_a:
+                        m['%s,%s.A $' % (stage.id, stage.stage_name)] = stage.price_a - stock.close
+                        m['%s,%s.A' % (stage.id, stage.stage_name)] = '%+.2f (%+.2f%%)' % (
+                            float(stage.price_a - stock.close),
+                            round((stage.price_a - stock.close) / stock.close * 100, 2)
+                        )
+
+                    if stage.price_b:
+                        m['%s,%s.B $' % (stage.id, stage.stage_name)] = stage.price_b - stock.close
+                        m['%s,%s.B' % (stage.id, stage.stage_name)] = '%+.2f (%+.2f%%)' % (
+                            float(stage.price_a - stock.close),
+                            round((stage.price_b - stock.close) / stock.close * 100, 2)
+                        )
+
+                #print mover
+                position_stage_movers['data'].append(m)
+
+            # historical symbol position stat
+            historical_position_sets = PositionSet.objects.filter(
+                Q(underlying__symbol=position_set.underlying.symbol)
+            ).exclude(id=position_set.id)
+
+
+
+        elif position_set.name == 'HEDGE':
+            # use option get 4:30pm price
+            pass
+        else:
+            # use option get 4:30pm price
+            pass
 
     parameters = dict(
         position_set=position_set,
         position_dates=position_dates,
         position_stages=position_stages,
-        profiler_summary=profiler_summary,
-        profiler_table=profiler_table
+        position_instruments=position_instruments,
+        position_stocks=position_stocks,
+        position_stage_movers=position_stage_movers,
+        historical_position_sets=historical_position_sets,
+
+        position_prices=position_prices,
     )
 
     return render(request, template, parameters)

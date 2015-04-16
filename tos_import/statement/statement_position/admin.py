@@ -448,7 +448,7 @@ class PositionInstrumentAdmin(PsModelAdmin):
         return obj.positionoption_set.exclude(quantity=0).count()
 
     list_display = (
-        'position_summary_date', 'symbol', 'description', 'pct_change',
+        'position_summary_date', 'symbol', 'description',
         'delta', 'gamma', 'theta', 'vega',
         'pct_change', 'pl_open', 'profit_loss', 'pl_day', 'bp_effect',
         'equity', 'options'

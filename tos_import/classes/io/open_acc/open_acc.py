@@ -7,6 +7,7 @@ class OpenAcc(OpenCSV):
     """
     Open an account statement file and
     format then return all data as dict
+    note: remember to use 'type' for position
     """
     def __init__(self, data):
         OpenCSV.__init__(self, data)
@@ -97,7 +98,6 @@ class OpenAcc(OpenCSV):
         :param items: list
         :return: str
         """
-        result = ''
         try:
             result = str(items[1])
         except IndexError:
@@ -466,9 +466,14 @@ class OpenAcc(OpenCSV):
             prop_name='profit_loss'
         )
         """
-
         lines = self.get_lines('Profits and Losses', 'OVERALL TOTALS')
-        for line in lines[2:-1]:
+
+        if 'Unallocated Subtotal' in lines[-2]:
+            use_lines = lines[2:-2]
+        else:
+            use_lines = lines[2:-1]
+
+        for line in use_lines:
             future = self.get_future_detail(line)
             line = self.replace_dash_inside_quote(line)
             items = self.split_lines_with_dash(line)

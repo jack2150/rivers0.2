@@ -105,10 +105,10 @@ class PositionSetController(object):
                 ref = position_set.manager.update_foreign_keys(date=date)
 
                 if position_set.underlying and not len(ref['position_instruments']):
-                    position_set.status = 'EXPIRED'
+                    position_set.status = 'EXPIRE'
                     position_set.save()
                 elif position_set.future and not len(ref['position_futures']):
-                    position_set.status = 'EXPIRED'
+                    position_set.status = 'EXPIRE'
                     position_set.save()
                 #elif position_set.forex and not len(ref['position_forexs']):
                 #    position_set.status = 'EXPIRED'

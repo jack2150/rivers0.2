@@ -34,11 +34,6 @@ class Stock(models.Model):
 
     data = property(fset=set_dict_data)
 
-    def get_data(self, symbol, source='tos_thinkback'):
-        """
-        """
-        pass
-
     def __unicode__(self):
         """
         Output explain this model
@@ -164,5 +159,32 @@ class Option(models.Model):
             option_contract=self.option_contract,
             date=self.date
         )
+
+
+def get_price(symbol, date, source='tos_thinkback'):
+    """
+    Universal method that use for get price for one symbol and one date
+    :param symbol: str 'AAPL'
+    :param date: str '2015-04-02'
+    :param source: str ('tos_thinkback', 'google', 'yahoo')
+    :return: Stock
+    """
+    stocks = Stock.objects.filter(Q(symbol=symbol) & Q(date=date) & Q(source=source))
+
+    stock = None
+    if stocks.exists():
+        stock = stocks.first()
+    else:
+        stocks = Stock.objects.filter(Q(symbol=symbol) & Q(date=date))
+
+        if stocks.filter(source='tos_thinkback').exists():
+            stock = stocks.get(source='tos_thinkback')
+        elif stocks.filter(source='google').exists():
+            stock = stocks.get(source='google')
+        elif stocks.filter(source='yahoo').exists():
+            stock = stocks.get(source='yahoo')
+
+    return stock
+
 
 # todo: earning, dividend, split, ipo...

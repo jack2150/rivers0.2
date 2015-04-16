@@ -45,30 +45,7 @@ class SubPositionAdmin(admin.ModelAdmin):
 
 
 # noinspection PyMethodMayBeStatic
-class SubContextAdmin(SubPositionAdmin):
-    def context(self, obj):
-        return str(obj)
-
-    search_fields = (
-        'position_set__name',
-        'position_set__spread',
-        'position_set__status',
-        'position_set__underlying__symbol',
-        'position_set__future__symbol',
-        'position_set__forex__symbol',
-    )
-
-    list_filter = (
-        'position_set__name',
-        'position_set__spread',
-        'position_set__status'
-    )
-
-    readonly_fields = ('position_set', )
-
-
-# noinspection PyMethodMayBeStatic
-class PositionStageAdmin(SubContextAdmin):
+class PositionStageAdmin(SubPositionAdmin):
     def position(self, obj):
         return str(obj.position_set).split(':')[1]
 
@@ -98,13 +75,25 @@ class PositionStageAdmin(SubContextAdmin):
         }),
     )
 
-    list_filter = SubContextAdmin.list_filter + (
+    search_fields = (
+        'position_set__name',
+        'position_set__id',
+        'position_set__spread',
+        'position_set__status',
+        'position_set__underlying__symbol',
+        'position_set__future__symbol',
+        'position_set__forex__symbol',
         'stage_name',
     )
 
-    search_fields = SubContextAdmin.search_fields + (
+    list_filter = (
+        'position_set__name',
+        'position_set__spread',
+        'position_set__status',
         'stage_name',
     )
+
+    readonly_fields = ('position_set', )
 
     list_per_page = 30
 
@@ -191,6 +180,11 @@ admin.site.register_view(
 )
 
 # profiler view
+admin.site.register_view(
+    'position/profiler/$',
+    urlname='position_set_profiler_view',
+    view=profiler_view
+)
 admin.site.register_view(
     'position/profiler/(?P<position_set_id>[0-9]+)/$',
     urlname='position_set_profiler_view',

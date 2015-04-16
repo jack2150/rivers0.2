@@ -1,0 +1,266 @@
+{% load verbose_name currency_tag position_set %}
+<div class="row">
+  <div class="col-md-6">
+    <div id="position_stock_pl"></div>
+  </div>
+  <div class="col-md-6">
+    <div id="position_stock_close"></div>
+  </div>
+</div>
+
+
+<table id="position_stocks" class="table table-striped">
+  {% for position_stock in position_stocks %}
+    {% if forloop.first %}
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Close</th>
+        <th>Net Chg</th>
+        <th>% Change</th>
+        <th>PL Open</th>
+        <th>PL Day</th>
+        <th>Stage</th>
+        <th>Status</th>
+        <th>Open</th>
+        <th>High</th>
+        <th>Low</th>
+      </tr>
+      </thead>
+    {% endif %}
+    <tr>
+      <td>{{ position_stock.date }}</td>
+      <td>{{ position_stock.close }}</td>
+      <td>{{ position_stock.net_change }}</td>
+      <td>{{ position_stock.pct_change }}</td>
+      <td>{{ position_stock.pl_open }}</td>
+      <td>{{ position_stock.pl_day }}</td>
+      <td>{{ position_stock.stage }}</td>
+      <td>{{ position_stock.status }}</td>
+      <td>{{ position_stock.open }}</td>
+      <td>{{ position_stock.high }}</td>
+      <td>{{ position_stock.low }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+<script type="text/javascript">
+  // profit loss
+  $(function () {
+    $('#position_stock_pl').highcharts({
+      credits: {
+        enabled: false
+      },
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Position Mark : Profit Loss'
+      },
+      subtitle: {
+        text: 'source from position instruments'
+      },
+      xAxis: {
+        categories: [
+          {% for position_stock in position_stocks %}
+            '{{ position_stock.date }}',
+          {% endfor %}
+        ]
+      },
+      yAxis: {
+        title: {
+          text: 'Profit Loss'
+        }
+      },
+      plotOptions: {
+        line: {
+          dataLabels: {
+            enabled: true
+          },
+          enableMouseTracking: false
+        }
+      },
+      series: [
+        {
+          name: 'PL Open',
+          data: [
+            {% for position_stock in position_stocks %}{{ position_stock.pl_open }}, {% endfor %}
+          ]
+        },
+        {
+          name: 'PL Day',
+          data: [
+            {% for position_stock in position_stocks %}{{ position_stock.pl_day }}, {% endfor %}
+          ]
+        }
+      ]
+    });
+  });
+
+  // mark price
+  $(function () {
+    $('#position_stock_close').highcharts({
+      credits: {
+        enabled: false
+      },
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Position Mark : Stock'
+      },
+      subtitle: {
+        text: 'source from position equity'
+      },
+      xAxis: {
+        categories: [
+          {% for position_stock in position_stocks %}
+            '{{ position_stock.date }}',
+          {% endfor %}
+        ]
+      },
+      yAxis: {
+        title: {
+          text: 'Mark Price'
+        }
+      },
+      plotOptions: {
+        line: {
+          dataLabels: {
+            enabled: true
+          },
+          enableMouseTracking: false
+        }
+      },
+      series: [
+        {
+          name: 'Close',
+          data: [
+            {% for position_stock in position_stocks %}
+              {{ position_stock.close }},
+            {% endfor %}
+          ]
+        }
+      ]
+    });
+  });
+
+
+  $('#position_stocks').DataTable({
+    paging: false,
+    searching: false,
+    bInfo: false,
+    "columnDefs": [
+      {
+        targets: [1,8,9,10],
+        render: function (data) {
+          return parseFloat(data).toFixed(2)
+        }
+      },
+      {
+        targets: [2],
+        render: function (data) {
+          return (Math.sign(data) > 0 ? '+' : '') + parseFloat(data).toFixed(2)
+        }
+      },
+      {
+        targets: [3],
+        render: function (data) {
+          var icon = '';
+          if (data > 0) {
+            icon = '<i class="fa fa-arrow-up green"></i>'
+          }
+          else if (data < 0) {
+            icon = '<i class="fa fa-arrow-down red"></i>'
+          }
+
+          return icon + ' ' +
+              (Math.sign(data) > 0 ? '+' : '') + parseFloat(data).toFixed(2) + '%'
+        }
+      },
+      {
+        targets: [4,5],
+        render: function (data) {
+          var css_class = '';
+          if (data > 0) {
+            css_class = "class='green'";
+          }
+          else {
+            css_class = "class='red'";
+          }
+
+          return "<span " + css_class + ">"
+              + (Math.sign(data) > 0 ? '+' : '') + parseFloat(data).toFixed(2)
+              + "</span>"
+        }
+      },
+      {
+        targets: [6],
+        render: function (data) {
+          var icon = '';
+          var label = '';
+          switch (data) {
+            case 'MAX_PROFIT':
+              label = 'label-info';
+              icon = 'fa-thumbs-up';
+              break;
+            case 'PROFIT':
+              label = 'label-success';
+              icon = 'fa-check-square';
+              break;
+            case 'EVEN':
+              label = '';
+              icon = 'fa-question-circle';
+              break;
+            case 'LOSS':
+              label = 'label-warning';
+              icon = 'fa-exclamation-triangle';
+              break;
+            case 'MAX_LOSS':
+              label = 'label-danger';
+              icon = 'fa-times-circle';
+              break;
+            case 'CLOSE':
+              label = 'label-padtop';
+              icon = 'fa-times-circle';
+              break;
+            case 'EXPIRE':
+              label = 'label-default';
+              icon = ' fa-clock-o';
+              break;
+          }
+
+          return '<span class="label ' + label + '"><i class="ace-icon fa '
+              + icon + '"></i> ' + data + '</span>';
+        }
+      },
+      {
+        targets: [7],
+        render: function (data) {
+          var label = '';
+          switch (data) {
+            case 'VANISHING':
+            case 'DECREASING':
+            case 'LOSING':
+            case 'WORST':
+              label = 'label-warning';
+              break;
+            case 'GUARANTEEING':
+            case 'PROFITING':
+            case 'RECOVERING':
+            case 'EASING':
+              label = 'label-success ';
+              break;
+          }
+
+          return '<span class="label ' + label + '  label-white middle">' + data + '</span>';
+        }
+      }
+
+
+
+    ]
+  });
+
+
+</script>

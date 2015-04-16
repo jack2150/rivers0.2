@@ -1,0 +1,55 @@
+{% load position_set %}
+<table class="table">
+  <tr>
+    <th class="no_border_top">Position Name:</th>
+    <td class="no_border_top">{{ position_set.name }}</td>
+  </tr>
+  <tr>
+    <th>Position Spread:</th>
+    <td>{{ position_set.spread|remove_underscore }}</td>
+  </tr>
+  <tr>
+    <th>Position Status:</th>
+    <td>{{ position_set.status }}</td>
+  </tr>
+  <tr>
+    <th>Current Stage:</th>
+    <td>{{ position_prices.stage|cut:"Stage: " }}</td>
+  </tr>
+  <tr>
+    <th>Current Status:</th>
+    <td>{{ position_prices.status }}</td>
+  </tr>
+  <tr>
+    <th>Holding Day:</th>
+    <td>{{ position_dates.pass_days }} DAYS ({{ position_dates.pass_bdays }} BDAYS)</td>
+  </tr>
+  <tr>
+    <th>Holding Date:</th>
+    <td>{{ position_dates.start_date }} &#126 {{ position_dates.stop_date }}</td>
+  </tr>
+  {% if position_dates.expire_date %}
+    <tr>
+      <th>Expire Day:</th>
+      <td>{{ position_dates.expire_date }} ({{ position_dates.dte }} DTE)
+      </td>
+    </tr>
+  {% endif %}
+
+  <tr>
+    <th>Profit Opens:</th>
+    <td>{{ position_prices.profit_open_count }} ({{ position_prices.profit_open_count_pct }}%)</td>
+  </tr>
+  <tr>
+    <th>Loss Opens:</th>
+    <td>{{ position_prices.loss_open_count }} ({{ position_prices.loss_open_count_pct }}%)</td>
+  </tr>
+  <tr>
+    <th>Profit Days:</th>
+    <td>{{ position_prices.profit_day_count }} ({{ position_prices.profit_day_count_pct }}%)</td>
+  </tr>
+  <tr>
+    <th>Loss Days:</th>
+    <td>{{ position_prices.loss_day_count }} ({{ position_prices.loss_day_count_pct }}%)</td>
+  </tr>
+</table>

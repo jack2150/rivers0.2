@@ -199,11 +199,11 @@
           + '">' + '<i class="fix_width ace-icon fa '+ icon +
           ' icon-only"></i>' + (parseInt(items[last]) ? items[0] : '') + '</a>';
 
-      var output = '<table id="t' + custom_id + '" class="table table-bordered stage_box_tooltip">';
-      output += '<tr><th>Name</th><td colspan="3">' + items[0] + '</td></tr>';
-      output += '<tr><th>Expression</th><td colspan="3">' + items[1] + '</td></tr>';
-      output += '<tr><th>Price A</th><td>' + items[2] + '</td>';
-      output += '<th>Amount A</th><td>' + items[3] + '</td></tr>';
+      var output = '<table id="t' + custom_id + '" class="table table-bordered stage_box_tooltip">'
+          + '<tr><th>Name</th><td colspan="3">' + items[0] + '</td></tr>'
+          + '<tr><th>Expression</th><td colspan="3">' + items[1] + '</td></tr>'
+          + '<tr><th>Price A</th><td>' + items[2] + '</td>'
+          + '<th>Amount A</th><td>' + items[3] + '</td></tr>';
 
       if (items.length == 7) {
         output += '<tr><th>Price B</th><td>' + items[4] + '</td>';

@@ -1,4 +1,4 @@
-from tos_import.classes.tests import TestSaveModel
+from tos_import.classes.tests import TestSaveModel, TestSetUpDB
 from calendar import month_name
 from datetime import datetime
 from glob import glob
@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from data.classes import OpenThinkBack
 from data.views import THINKBACK_DIR
-from data.models import Stock, OptionContract, Option
+from data.models import *
 from tos_import.classes.tests import TestSetUp
 
 
@@ -129,6 +129,52 @@ class TestOption(TestSaveModel):
         print 'contract: %s' % self.test_cls.option_contract
 
 
+class TestGetPrice(TestSetUpDB):
+    def setUp(self):
+        TestSetUpDB.setUp(self)
+
+        self.symbol = 'IBM'
+        self.date = '2015-04-02'
+        self.source = 'tos_thinkback'
+
+        self.items = {'high': 99.99, 'last': 99.64, 'volume': 6097146.0, 'low': 98.89,
+                      'date': self.date, 'open': 99.44, 'net_change': 0.49}
+
+        self.stock = Stock()
+        self.stock.symbol = self.symbol
+        self.stock.source = self.source
+        self.stock.data = self.items
+        self.stock.save()
+
+        print Stock.objects.count()
+
+    def test_get_price(self):
+        """
+        Test get price from stocks
+        :return:
+        """
+        stock_price = get_price(symbol=self.symbol, date=self.date, source=self.source)
+
+        print 'symbol: %s, date: %s, source: %s' % (self.symbol, self.date, self.source)
+        print 'result: %s' % stock_price
+
+        print '.' * 60
+
+        self.source = 'google'
+        stock_price = get_price(symbol=self.symbol, date=self.date, source=self.source)
+
+        print 'symbol: %s, date: %s, source: %s' % (self.symbol, self.date, self.source)
+        print 'result: %s' % stock_price
+
+        print '.' * 60
+
+        self.source = 'yahoo'
+        stock_price = get_price(symbol=self.symbol, date=self.date, source=self.source)
+
+        print 'symbol: %s, date: %s, source: %s' % (self.symbol, self.date, self.source)
+        print 'result: %s' % stock_price
+
+
 class TestOpenThinkBack(TestSetUp):
     def setUp(self):
         TestSetUp.setUp(self)
@@ -144,7 +190,7 @@ class TestOpenThinkBack(TestSetUp):
         self.test_dir = [path for path in self.test_path if self.symbol.lower() in path].pop()
 
         # single test file
-        self.test_file = r'C:\Users\Jack\Projects\rivers\data' \
+        self.test_file = r'D:\rivers\data' \
                          r'/csv\%s\%s\%s-StockAndOptionQuoteFor%s.csv' % \
                          (self.symbol.lower(), self.year, self.date, self.symbol.upper())
 
@@ -305,7 +351,7 @@ class TestOpenThinkBack(TestSetUp):
 
 class TestTosThinkbackImportRunView(TestSetUp):
     def test_view(self):
-        #self.skipTest("Only test when necessary...")
+        self.skipTest("Only test when necessary...")
 
         if not User.objects.exists():
             User.objects.create_superuser(
@@ -363,6 +409,22 @@ class TestTosThinkbackImportRunView(TestSetUp):
 
 
 class TestTosThinkbackImportSelectView(TestSetUp):
+    def setUp(self):
+        TestSetUp.setUp(self)
+
+        self.symbol = 'IBM'
+        self.date = '2015-04-02'
+        self.source = 'tos_thinkback'
+
+        self.items = {'high': 99.99, 'last': 99.64, 'volume': 6097146.0, 'low': 98.89,
+                      'date': self.date, 'open': 99.44, 'net_change': 0.49}
+
+        self.stock = Stock()
+        self.stock.symbol = self.symbol
+        self.stock.source = self.source
+        self.stock.data = self.items
+        self.stock.save()
+
     def test_view(self):
         if not User.objects.exists():
             User.objects.create_superuser(
@@ -377,18 +439,25 @@ class TestTosThinkbackImportSelectView(TestSetUp):
             reverse('admin:data_select_symbol_view')
         )
 
-        symbols = response.context['symbols']
-        self.assertEqual(type(symbols), list)
+        csv_symbols = response.context['csv_symbols']
+        web_symbols = response.context['web_symbols']
+        self.assertEqual(type(csv_symbols), list)
+        self.assertEqual(type(web_symbols), list)
 
-        print 'symbol list:'
-        pprint(symbols, width=300)
+        print 'csv symbol list:'
+        pprint(csv_symbols, width=300)
+
+        print '.' * 60
+
+        print 'web symbol list:'
+        pprint(web_symbols, width=300)
 
         print 'other is all ajax...'
 
 
-class TestDataWebImportView(TestSetUp):
+class TestDataWebImportView(TestSetUpDB):
     def setUp(self):
-        TestSetUp.setUp(self)
+        TestSetUpDB.setUp(self)
 
         # create user
         User.objects.create_superuser(
@@ -398,7 +467,7 @@ class TestDataWebImportView(TestSetUp):
         )
 
     def tearDown(self):
-        TestSetUp.tearDown(self)
+        TestSetUpDB.tearDown(self)
 
         # remove user
         User.objects.filter(username='jack').delete()
@@ -431,7 +500,7 @@ class TestDataWebImportView(TestSetUp):
         for stock in Stock.objects.all():
             print stock.symbol, stock.source, stock.date, stock.close
 
-        self.assertEqual(Stock.objects.count(), 3)
+        self.assertEqual(Stock.objects.count(), 2)
 
         response = self.client.get(
             reverse('admin:data_web_import_view', args=(test_symbol.upper(),))
@@ -493,7 +562,7 @@ class TestDataWebImportView(TestSetUp):
         for stock in Stock.objects.all():
             print stock.symbol, stock.source, stock.date, stock.close
 
-        self.assertEqual(Stock.objects.count(), 46)
+        self.assertEqual(Stock.objects.count(), 45)
 
         response = self.client.get(
             reverse('admin:data_web_import_view', args=(test_symbol.upper(),))

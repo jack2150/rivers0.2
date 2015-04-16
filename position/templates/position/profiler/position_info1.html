@@ -1,0 +1,81 @@
+{% load currency_tag %}
+<table class="table">
+  <tr>
+    <th class="no_border_top">Symbol:</th>
+    <td class="col-md-7 no_border_top">{{ position_set.underlying.symbol }}</td>
+  </tr>
+  <tr>
+    <th>Close:</th>
+    <td>{{ position_prices.stock.close }}</td>
+  </tr>
+  <tr>
+    <th>Net Change:</th>
+    <td>
+      {% if position_prices.net_change > 0 %}
+        <i class="fa fa-arrow-up green"></i>
+        {{ position_prices.net_change|stringformat:"+.2f" }}
+        ({{ position_prices.pct_change|stringformat:"+.2f%%" }})
+      {% else %}
+        <i class="fa fa-arrow-down red"></i>
+        {{ position_prices.net_change|stringformat:"+.2f" }}
+        ({{ position_prices.pct_change|stringformat:"+.2f%%" }})
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <th>Trade Price:</th>
+    <td>{{ position_prices.trade_price }}</td>
+  </tr>
+  <tr>
+    <th>Quantity:</th>
+    <td>{{ position_prices.trade_quantity }}</td>
+  </tr>
+  <tr>
+    <th>PL Open</th>
+    <th>
+      {% if position_prices.pl_open > 0 %}
+        <span class="green">
+          {{ position_prices.pl_open|stringformat:"+.2f" }}
+          ({{ position_prices.pl_open_pct|stringformat:"+.2f%%" }})
+        </span>
+      {% else %}
+        <span class="red">
+          {{ position_prices.pl_open|stringformat:"+.2f" }}
+          ({{ position_prices.pl_open_pct|stringformat:"+.2f%%" }})
+        </span>
+      {% endif %}
+    </th>
+  </tr>
+  <tr>
+    <th>PL Day</th>
+    <th>
+      {% if position_prices.pl_day > 0 %}
+        <span class="green">
+          {{ position_prices.pl_day|stringformat:"+.2f" }}
+          ({{ position_prices.pl_day_pct|stringformat:"+.2f%%" }})
+        </span>
+      {% else %}
+        <span class="red">
+          {{ position_prices.pl_day|stringformat:"+.2f" }}
+          ({{ position_prices.pl_day_pct|stringformat:"+.2f%%" }})
+        </span>
+      {% endif %}
+    </th>
+  </tr>
+  <tr>
+    <th>Holding:</th>
+    <td>{{ position_prices.holding|currency }}</td>
+  </tr>
+  <tr>
+    <th>BP Effect:</th>
+    <td>{{ position_prices.bp_effect|currency }}</td>
+  </tr>
+  <tr>
+    <th>Date:</th>
+    <td>{{ position_prices.date|date }}</td>
+  </tr>
+  <tr>
+    <th>Time:</th>
+    <td>{{ position_prices.date|time|upper }}</td>
+  </tr>
+</table>

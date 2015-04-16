@@ -1,0 +1,256 @@
+{% load verbose_name currency_tag position_set %}
+<div class="row">
+  <div class="col-md-6">
+    <div id="position_instrument_pl"></div>
+  </div>
+  <div class="col-md-6">
+    <div id="position_instrument_mark"></div>
+  </div>
+</div>
+
+<table id="position_instruments" class="table table-striped">
+  {% for position_instrument in position_instruments %}
+    {% if forloop.first %}
+      <thead>
+      <tr>
+        <th>{% verbose_name position_instrument.position_summary 'date' %}</th>
+        <th>{% verbose_name position_instrument.positionequity 'mark' %}</th>
+        <th>{% verbose_name position_instrument.positionequity 'mark_change' %}</th>
+        <th>{% verbose_name position_instrument 'pct_change' %}</th>
+        <th>{% verbose_name position_instrument 'pl_open' %}</th>
+        <th>{% verbose_name position_instrument 'pl_day' %}</th>
+        <th>Stage</th>
+        <th>Status</th>
+        <th>{% verbose_name position_instrument 'bp_effect' %}</th>
+      </tr>
+      </thead>
+    {% endif %}
+    <tr>
+      <td>{{ position_instrument.position_summary.date }}</td>
+      <td>{{ position_instrument.positionequity.mark }}</td>
+      <td>{{ position_instrument.positionequity.mark_change }}</td>
+      <td>{{ position_instrument.pct_change }}</td>
+      <td>{{ position_instrument.pl_open }}</td>
+      <td>{{ position_instrument.pl_day }}</td>
+      <td>{% stage position_instrument.position_set position_instrument.positionequity.mark %}</td>
+      <td>{% status position_instrument.position_set position_instrument.positionequity %}</td>
+      <td>{{ position_instrument.bp_effect|currency }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+<script type="text/javascript">
+  // profit loss
+  $(function () {
+    $('#position_instrument_pl').highcharts({
+      credits: {
+        enabled: false
+      },
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Position Mark : Profit Loss'
+      },
+      subtitle: {
+        text: 'source from position instruments'
+      },
+      xAxis: {
+        categories: [
+          {% for position_instrument in position_instruments %}
+            '{{ position_instrument.position_summary.date }}',
+          {% endfor %}
+        ]
+      },
+      yAxis: {
+        title: {
+          text: 'Profit Loss'
+        }
+      },
+      plotOptions: {
+        line: {
+          dataLabels: {
+            enabled: true
+          },
+          enableMouseTracking: false
+        }
+      },
+      series: [
+        {
+          name: 'PL Open',
+          data: [
+            {% for position_instrument in position_instruments %}{{ position_instrument.pl_open }}, {% endfor %}
+          ]
+        },
+        {
+          name: 'PL Day',
+          data: [
+            {% for position_instrument in position_instruments %}{{ position_instrument.pl_day }}, {% endfor %}
+          ]
+        }
+      ]
+    });
+  });
+
+  // mark price
+  $(function () {
+    $('#position_instrument_mark').highcharts({
+      credits: {
+        enabled: false
+      },
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Position Mark : Stock'
+      },
+      subtitle: {
+        text: 'source from position equity'
+      },
+      xAxis: {
+        categories: [
+          {% for position_instrument in position_instruments %}
+            '{{ position_instrument.position_summary.date }}',
+          {% endfor %}
+        ]
+      },
+      yAxis: {
+        title: {
+          text: 'Mark Price'
+        }
+      },
+      plotOptions: {
+        line: {
+          dataLabels: {
+            enabled: true
+          },
+          enableMouseTracking: false
+        }
+      },
+      series: [
+        {
+          name: 'Mark',
+          data: [
+            {% for position_instrument in position_instruments %}
+              {{ position_instrument.positionequity.mark }},
+            {% endfor %}
+          ]
+        }
+      ]
+    });
+  });
+
+
+  $('#position_instruments').DataTable({
+    paging: false,
+    searching: false,
+    bInfo: false,
+    "columnDefs": [
+      {
+        targets: [1],
+        render: function (data) {
+          return parseFloat(data).toFixed(2)
+        }
+      },
+      {
+        targets: [2],
+        render: function (data) {
+          return (Math.sign(data) > 0 ? '+' : '') + parseFloat(data).toFixed(2)
+        }
+      },
+      {
+        targets: [3],
+        render: function (data) {
+          var icon = '';
+          if (data > 0) {
+            icon = '<i class="fa fa-arrow-up green"></i>'
+          }
+          else if (data < 0) {
+            icon = '<i class="fa fa-arrow-down red"></i>'
+          }
+
+          return icon + ' ' +
+              (Math.sign(data) > 0 ? '+' : '') + parseFloat(data).toFixed(2) + '%'
+        }
+      },
+      {
+        targets: [4, 5],
+        render: function (data) {
+          var css_class = '';
+          if (data > 0) {
+            css_class = "class='green'";
+          }
+          else {
+            css_class = "class='red'";
+          }
+
+          return "<span " + css_class + ">"
+              + (Math.sign(data) > 0 ? '+' : '') + parseFloat(data).toFixed(2)
+              + "</span>"
+        }
+      },
+      {
+        targets: [6],
+        render: function (data) {
+          var icon = '';
+          var label = '';
+          switch (data) {
+            case 'MAX_PROFIT':
+              label = 'label-info';
+              icon = 'fa-thumbs-up';
+              break;
+            case 'PROFIT':
+              label = 'label-success';
+              icon = 'fa-check-square';
+              break;
+            case 'EVEN':
+              label = '';
+              icon = 'fa-question-circle';
+              break;
+            case 'LOSS':
+              label = 'label-warning';
+              icon = 'fa-exclamation-triangle';
+              break;
+            case 'MAX_LOSS':
+              label = 'label-danger';
+              icon = 'fa-times-circle';
+              break;
+            case 'CLOSE':
+              label = 'label-padtop';
+              icon = 'fa-times-circle';
+              break;
+            case 'EXPIRE':
+              label = 'label-default';
+              icon = ' fa-clock-o';
+              break;
+          }
+
+          return '<span class="label ' + label + '"><i class="ace-icon fa '
+              + icon + '"></i> ' + data + '</span>';
+        }
+      },
+      {
+        targets: [7],
+        render: function (data) {
+          var label = '';
+          switch (data) {
+            case 'VANISHING':
+            case 'DECREASING':
+            case 'LOSING':
+            case 'WORST':
+              label = 'label-warning';
+              break;
+            case 'GUARANTEEING':
+            case 'PROFITING':
+            case 'RECOVERING':
+            case 'EASING':
+              label = 'label-success ';
+              break;
+          }
+
+          return '<span class="label ' + label + '  label-white middle">' + data + '</span>';
+        }
+      }
+    ]
+  });
+</script>

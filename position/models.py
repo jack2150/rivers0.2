@@ -96,7 +96,7 @@ class PositionSet(models.Model):
         Explain this model
         :rtype : str
         """
-        return 'PositionSet Id.{id}: < {symbol} > {name}.{spread}'.format(
+        return 'PositionSet:{id} < {symbol} > {name}.{spread}'.format(
             id=self.id,
             symbol=self.get_symbol(),
             name=self.name,

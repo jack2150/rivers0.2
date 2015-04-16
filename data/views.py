@@ -31,7 +31,11 @@ def data_select_symbol_view(request):
         if os.path.isdir(path)
     ]
 
-    web_symbols = [stock.symbol for stock in Stock.objects.distinct('symbol')]
+    # not support by sqlite, but support by postgresql
+    try:
+        web_symbols = [stock.symbol for stock in Stock.objects.distinct('symbol')]
+    except NotImplementedError:
+        web_symbols = [stock['symbol'] for stock in Stock.objects.values('symbol').distinct()]
 
     parameters = dict(
         csv_symbols=csv_symbols,

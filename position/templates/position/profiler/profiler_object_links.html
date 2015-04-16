@@ -1,0 +1,16 @@
+<table class="table">
+  <tr>
+    <td class="no_border_top">
+      <button id="position_set_model_link" class="btn-primary">
+        <i class="fa fa-anchor"></i>
+        &#60; {{ position_set.underlying.symbol }} &#62; PositionSet Object
+      </button>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  $("#position_set_model_link").click(function () {
+    $(location).attr('href', '{% url 'admin:position_positionset_change' position_set.id %}');
+  });
+</script>

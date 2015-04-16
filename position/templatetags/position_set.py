@@ -83,3 +83,99 @@ def get_old_price(position_equity):
     :return: float
     """
     return position_equity.mark - position_equity.mark_change
+
+
+@register.filter
+def dict_item(items, key):
+    """
+    Return key item in dict
+    :param items: dict
+    :param key: str
+    :return: str
+    """
+    return items[key]
+
+
+# noinspection PyShadowingBuiltins
+@register.filter
+def split(text, id):
+    """
+    Split a text into list and get item in it
+    :param text: str
+    :return: str
+    """
+    return text.split(',')[id]
+
+
+# noinspection PyShadowingNames
+@register.filter
+def explain(stage):
+    """
+    Stage
+    :param stage: PositionStage
+    :return: str
+    """
+    return stage.stage_expression.format(
+        current_price='price',
+        price_a=stage.price_a,
+        price_b=stage.price_b
+    )
+
+
+@register.filter
+def odd(item):
+    """
+    return true if item is odd
+    :param item: int
+    :return: int
+    """
+    return 1 if item % 2 == 0 else 0
+
+
+@register.filter
+def odd_jump1(x):
+    """
+    Return a odd jump key in for loop
+    :param x: int
+    :return: int
+    """
+    return x * 2 + 1
+
+
+@register.filter
+def odd_jump2(x):
+    """
+    Return a odd jump key in for loop
+    :param x: int
+    :return: int
+    """
+    return x * 2 + 2
+
+
+@register.filter
+def remove_underscore(x):
+    """
+    Remove underlying for str x
+    :param x: str
+    :return: str
+    """
+    return x.replace('_', ' ')
+
+
+@register.filter
+def get_close_pl(position_set):
+    """
+    Return last position instruments pl for position set
+    :param position_set: PositionSet
+    :return: float
+    """
+    position_instruments = position_set.positioninstrument_set\
+        .order_by('position_summary__date').reverse()
+
+    return float(
+        position_instruments[0].pl_day + position_instruments[1].pl_open
+    )
+
+
+
+

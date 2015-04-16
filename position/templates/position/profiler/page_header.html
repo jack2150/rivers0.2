@@ -1,0 +1,34 @@
+{% load position_set %}
+<div class="symbol-page-head">
+  <b>
+    {{ position_set.spread|remove_underscore }}
+    < {{ position_set.underlying.symbol }} >
+  </b>
+  <span>{{ position_prices.pl_open|stringformat:"+.2f" }}</span>
+
+  {% if position_prices.pl_day > 0 %}
+    <span class="green">
+      {{ position_prices.pl_day|stringformat:"+.2f" }}
+      ({{ position_prices.pl_day_pct|stringformat:"+.2f%%" }})
+    </span>
+  {% else %}
+    <span class="red">
+      {{ position_prices.pl_day|stringformat:"+.2f" }}
+      ({{ position_prices.pl_day_pct|stringformat:"+.2f%%" }})
+    </span>
+  {% endif %}
+
+  <span class="close_time">
+    {{ position_prices.date|time|upper }}
+  </span>
+</div>
+
+<div class="symbol-page-head-helper">
+  {{ position_set.underlying.company }}
+  &nbsp;&#58;&nbsp;
+  {{ position_set.name }}
+  &nbsp;&#124;&nbsp;
+  {{ position_set.spread }}
+  &nbsp;&#124;&nbsp;
+  {{ position_set.status }}
+</div>

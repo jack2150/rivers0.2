@@ -1,0 +1,63 @@
+<!-- position stages -->
+<table class="table">
+  <tr>
+    <th class="no_border_top" colspan="2">Position Stages</th>
+  </tr>
+  {% for ps in position_stages %}
+    <tr>
+      {% if ps.stage_name == 'MAX_PROFIT' %}
+        <td>
+          {% if ps.stage_name == position_prices.stage.stage_name %}
+            <span class="btn-primary"><i class="fix_width ace-icon fa
+                fa-thumbs-up icon-only"></i></span>
+          {% else %}
+            <i class="fix_width ace-icon fa fa-thumbs-up icon-only"></i>
+          {% endif %}
+          {{ ps|cut:"Stage: " }}
+        </td>
+      {% elif ps.stage_name == 'PROFIT' %}
+        <td>
+          {% if ps.stage_name == position_prices.stage.stage_name %}
+            <span class="btn-success"><i class="fix_width ace-icon fa
+                fa-check-square icon-only"></i></span>
+          {% else %}
+            <i class="fix_width ace-icon fa fa-check-square icon-only"></i>
+          {% endif %}
+          {{ ps|cut:"Stage: " }}
+        </td>
+
+      {% elif ps.stage_name == 'EVEN' %}
+
+        <td>
+          {% if ps.stage_name == position_prices.stage.stage_name %}
+            <span class="btn-default"><i class="fix_width ace-icon fa
+                fa-question-circle icon-only"></i></span>
+          {% else %}
+            <i class="fix_width ace-icon fa fa-question-circle icon-only"></i>
+          {% endif %}
+          {{ ps|cut:"Stage: " }}
+        </td>
+      {% elif ps.stage_name == 'LOSS' %}
+        <td>
+          {% if ps.stage_name == position_prices.stage.stage_name %}
+            <span class="btn-warning"><i class="fix_width ace-icon fa
+                fa-exclamation-triangle icon-only"></i></span>
+          {% else %}
+            <i class="fix_width ace-icon fa fa-exclamation-triangle icon-only"></i>
+          {% endif %}
+          {{ ps|cut:"Stage: " }}
+        </td>
+      {% elif ps.stage_name == 'MAX_LOSS' %}
+        <td>
+          {% if ps.stage_name == position_prices.stage.stage_name %}
+            <span class="btn-danger"><i class="fix_width ace-icon fa
+                fa-times-circle icon-only"></i></span>
+          {% else %}
+            <i class="fix_width ace-icon fa fa-times-circle icon-only"></i>
+          {% endif %}
+          {{ ps|cut:"Stage: " }}
+        </td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+</table>

@@ -304,15 +304,12 @@ class TestProfilerView(TestUnitSetUp):
             self.skipTest("Please use 'Unittest' for testing.\n")
             raise ObjectDoesNotExist()
 
-        response = self.client.get(reverse('admin:position_set_profiler_view', args=(3, )))
+        response = self.client.get(reverse('admin:position_set_profiler_view', args=(66, )))
 
         print response.context['position_set']
         print response.context['position_set'].status
         print response.context['position_stages']
         pprint(response.context['position_dates'])
-
-        #print response.context['position_stages']
-        #print response.context
 
 
 

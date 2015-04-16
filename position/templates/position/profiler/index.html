@@ -4,10 +4,106 @@
 {% block title %}Profiler: {{ position_set }}{% endblock %}
 
 {% block extrahead %}
+  <!-- jquery ui -->
+  <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}"/>
 
+  <!-- jquery ui only -->
+  <script src="{% static 'assets/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.ui.touch-punch.js' %}"></script>
+
+  <!-- DataTables -->
+  <script type="text/javascript" charset="utf8" src="
+    {% static 'datatables-1.10.5/media/js/jquery.dataTables.js' %}"></script>
+
+  <!-- HighCharts -->
+  <script src="{% static 'highcharts-4.1.3/js/highcharts.js' %}"></script>
 {% endblock %}
 
 {% block extrastyle %}
+  <style>
+    .symbol-page-head, .symbol-page-head-helper {
+      color: #000000;
+    }
+
+    .symbol-page-head-helper {
+      font-size: 0.5em;
+      padding-top: 4px;
+    }
+
+    .price-page-head table {
+
+    }
+
+    .price-page-head table tr th {
+      color: #808080;
+    }
+
+    .price-page-head table tr td, .price-page-head table tr th {
+
+    }
+
+    caption {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .close_time {
+      font-size: 0.6em;
+      color: #808080;
+    }
+
+    .price {
+      font-size: 36px;
+      font-weight: bold;
+      padding-right: 10px;
+
+    }
+
+    .change {
+      font-size: 28px;
+    }
+
+    .label_fix3 {
+      padding-left: 2px;
+      padding-right: 0;
+    }
+
+    .fix_width {
+      width: 20px;
+    }
+
+    .stage_box_tooltip {
+      width: 360px;
+      display: none;
+      position: absolute;
+      background-color: white;
+    }
+
+    .label-padtop {
+      padding-top: 3px;
+    }
+
+    .profiler-content {
+      padding: 0;
+    }
+
+    .yellow {
+      color: #ff9c25;
+    }
+
+    .nav-tabs li.active a, .nav-tabs li.active a:focus, .nav-tabs li.active a:hover {
+      box-shadow: 0 0 0 0;
+      border-bottom: double white 1px;
+    }
+
+    .padding10px {
+      padding: 20px;
+    }
+
+    .table th.no_border_top, .table td.no_border_top {
+      border-top: none !important;
+    }
+  </style>
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -18,103 +114,99 @@
     </a>
   </li>
   <li>
-    Position profiler: {{ position_set }}
+    <a href="{% url 'admin:position_positionset_change' position_set.id %}">
+      Position Set
+    </a>
+  </li>
+  <li>
+    {{ position_set|cut:"PositionSet " }}
   </li>
 {% endblock %}
 
 {% block page-header %}
-  Position Profiler: {{ position_set }}
+  <div class="row">
+  <div class="col-md-8">
+    {% include 'position/profiler/symbol_page_head.html' %}
+  </div>
+  <div class="col-md-4">
+
+  </div>
+  </div>
+
+
 {% endblock %}
 
 {% block content %}
   <div id="content-main">
-    <div class="row">
-      <div class="col-md-3">
-        <!-- position set -->
-        <table class="table">
-          <tr>
-            <th>Name:</th>
-            <td>{{ position_set.name }}</td>
-          </tr>
-          <tr>
-            <th>Spread:</th>
-            <td>{{ position_set.spread }}</td>
-          </tr>
-          <tr>
-            <th>Status:</th>
-            <td>{{ position_set.status }}</td>
-          </tr>
-          <tr>
-            <th>Status:</th>
-            <td>{{ position_set.status }}</td>
-          </tr>
 
-          <tr>
-            <th>Pass BDay:</th>
-            <td>{{ position_dates.pass_bdays }}</td>
-          </tr>
-          <tr>
-            <th>Pass Day:</th>
-            <td>{{ position_dates.pass_days }}</td>
-          </tr>
-          <tr>
-            <th>Start Date:</th>
-            <td>{{ position_dates.start_date }}</td>
-          </tr>
-          <tr>
-            <th>Stop Date:</th>
-            <td>{{ position_dates.stop_date }}</td>
-          </tr>
-          <tr>
-            <th>DTE:</th>
-            <td>{{ position_dates.dte }}</td>
-          </tr>
-          <tr>
-            <th>Expire Date:</th>
-            <td>{{ position_dates.expire_date }}</td>
-          </tr>
+    <!-- #section:elements.tab.option -->
+    <div class="tabbable" style="display: block">
+      <ul class="nav nav-tabs" id="myTab">
+        <li class="active">
+          <a data-toggle="tab" href="#info">
+            <i class="blue ace-icon fa fa-home bigger-120"></i>
+            Marks
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#marks">
+            <i class="blue ace-icon fa fa-money bigger-120"></i>
+            Marks
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#stocks">
+            <i class="green ace-icon fa fa-bell bigger-120"></i>
+            Stocks
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#movers">
+            <i class="yellow ace-icon fa fa-exchange bigger-120"></i>
+            Stage Movers
+          </a>
+        </li>
+      </ul>
 
-        </table>
-      </div>
+      <div class="tab-content profiler-content">
+        <div id="info" class="tab-pane in padding10px active ">
+          <div class="row">
+            <div class="col-md-3">
+              {% include 'position/profiler/position_info1.html' %}
+            </div>
+            <div class="col-md-3">
+              {% include 'position/profiler/position_info2.html' %}
+            </div>
+            <div class="col-md-3">
+              {% include 'position/profiler/position_stages.html' %}
+              {% include 'position/profiler/historical_position_sets.html' %}
+            </div>
+            <div class="col-md-3">
+              {% include 'position/profiler/profiler_object_links.html' %}
+            </div>
+          </div>
+        </div>
 
-      <div class="col-md-3">
-        <table class="table">
-          {% for position_stage in position_stages %}
-            <tr>
-              <td>*</td>
-              <td>{{ position_stage }}</td>
-            </tr>
-          {% endfor %}
-        </table>
-      </div>
+        <div id="marks" class="tab-pane in">
+          {% include 'position/profiler/position_instruments.html' %}
+        </div>
 
-      <div class="col-md-3">
-        yellow box section,
+        <div id="stocks" class="tab-pane">
+          {% include 'position/profiler/position_stocks.html' %}
+        </div>
 
-        decision maker,
-
-        last close position,
-
-        historical position statistic
-      </div>
-
-      <div class="col-md-3">
-        <p>main detail section, symbol, position_set detail, current price,
-          option greek, probability</p>
+        <div id="movers" class="tab-pane">
+          {% include 'position/profiler/position_stage_mover.html' %}
+        </div>
       </div>
     </div>
-
-    {% if position_set.name == 'EQUITY' %}
-      {% include 'position/profiler/spread/equity.html' %}
-    {% elif position_set.name == 'HEDGE' %}
-      {% include 'position/profiler/spread/hedge.html' %}
-    {% elif position_set.name == 'SPREAD' %}
-      {% include 'position/profiler/spread/spread.html' %}
-    {% else %}
-      {% include 'position/profiler/spread/other.html' %}
-    {% endif %}
-
+    <!-- /section:elements.tab.option -->
   </div>
+
+
+
+
+
 {% endblock %}
 
 {% block footer_extra_script %}
