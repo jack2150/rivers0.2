@@ -1,0 +1,192 @@
+{% if position_set.status == 'OPEN' %}
+  {% if position_opinion.saved %}
+    <div class="btn-group">
+      <button id="opinion-button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown">
+        Opinion saved
+        <span class="ace-icon fa fa-caret-down icon-on-right"></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right dropdown-warning dropdown-opinion">
+        <li class="dropdown-header2">
+          Position Opinion
+        </li>
+        <li class="divider"></li>
+        <li class="opinion-selected">
+          <span class="pull-left">
+          <i class="ace-icon fa fa-check-square-o"></i>
+          {% if position_opinion.object.direction == 'CUSTOM' %}
+            CUSTOM ...
+          {% else %}
+            {{ position_opinion.object.direction }} & {{ position_opinion.object.decision }}
+          {% endif %}
+
+          </span>
+          <span class="pull-right">
+          <i class="ace-icon fa fa-arrow-down"></i>
+          <i class="ace-icon fa fa-clock-o"></i>
+          </span>
+          &nbsp;
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a id="more-options"
+             href="{% url 'admin:position_positionopinion_change' position_opinion.object.id %}">
+            <span class="pull-left">
+              More options...
+            </span>
+            <span class="pull-right">
+              <i class="ace-icon fa fa-pencil-square-o"></i>
+            </span>
+            &nbsp;
+          </a>
+        </li>
+      </ul>
+    </div>
+  {% else %}
+    <div class="btn-group">
+      <button id="opinion-button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown">
+        Opinion
+        <span class="ace-icon fa fa-caret-down icon-on-right"></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right dropdown-warning dropdown-opinion">
+        <li class="dropdown-header2">
+          Position Opinion
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a class="position-opinions" href="#">
+            <input type="hidden" value="bull-hold">
+        <span class="pull-left">
+          BULL & Hold
+        </span>
+        <span class="pull-right">
+          <i class="ace-icon fa fa-arrow-up"></i>
+          <i class="ace-icon fa fa-clock-o"></i>
+        </span>
+            &nbsp;
+          </a>
+        </li>
+        <li>
+          <a class="position-opinions" href="#">
+            <input type="hidden" value="bear-hold">
+        <span class="pull-left">
+          BEAR & Hold
+        </span>
+        <span class="pull-right">
+          <i class="ace-icon fa fa-arrow-down"></i>
+          <i class="ace-icon fa fa-clock-o"></i>
+        </span>
+            &nbsp;
+          </a>
+        </li>
+        <li>
+          <a class="position-opinions" href="#">
+            <input type="hidden" value="bull-close">
+            <span class="pull-left">
+              BULL & Close
+            </span>
+            <span class="pull-right">
+              <i class="ace-icon fa fa-arrow-up"></i>
+              <i class="ace-icon fa fa-times-circle-o"></i>
+            </span>
+            &nbsp;
+          </a>
+        </li>
+        <li>
+          <a class="position-opinions" href="#">
+            <input type="hidden" value="bear-close">
+            <span class="pull-left">
+              BEAR & Close
+            </span>
+            <span class="pull-right">
+              <i class="ace-icon fa fa-arrow-down"></i>
+              <i class="ace-icon fa fa-times-circle-o"></i>
+            </span>
+            &nbsp;
+          </a>
+        </li>
+        <li id="custom-options">
+          <a class="position-opinions" href="#">
+            <input type="hidden" value="custom-custom">
+            <span class="pull-left">
+              CUSTOM ...
+            </span>
+            <span class="pull-right">
+              <i class="ace-icon fa fa-exclamation-circle"></i>
+              <i class="ace-icon fa fa-exclamation-circle"></i>
+            </span>
+            &nbsp;
+          </a>
+        </li>
+        <li id="bottom-divider" class="divider" style="display: none;"></li>
+        <li style="display: none;">
+          <a id="more-options" class="more-options" href="#">
+            <span class="pull-left">
+              More options...
+            </span>
+            <span class="pull-right">
+              <i class="ace-icon fa fa-pencil-square-o"></i>
+            </span>
+            &nbsp;
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <script type="text/javascript">
+      $(".position-opinions").click(function () {
+        var opinion_obj = $(this);
+        var opinion = $(this).find("input:hidden").val().split("-");
+        var opinion_content = $(this).html();
+
+        $.ajax({
+          url: "{% url 'admin:position_add_opinion_view' %}"
+              + "{{ position_set.id }}/" + opinion[0] + "/" + opinion[1] + "/"
+        })
+            .done(function (text) {
+              if (text.indexOf("success") > -1) {
+                $(".position-opinions").hide();
+                $(".custom-options").hide();
+                $("#bottom-divider").show();
+                $(opinion_obj).parent().addClass("opinion-selected");
+                $(opinion_obj).parent().append(opinion_content);
+                $(opinion_obj).parent().find("span.pull-left").prepend(
+                    "<i class='ace-icon fa fa-check-square-o'></i>"
+                );
+
+                // update more options link
+                $("#more-options").attr(
+                    "href",
+                    "{% url 'admin:position_positionopinion_change' 0 %}"
+                        .replace("0", text.split(" ")[1])
+                ).parent().show();
+
+                // opinion button change
+                $("#opinion-button").html(
+                  'Opinion saved ' + '<span class="ace-icon fa fa-caret-down icon-on-right"></span>'
+                ).removeClass("btn-warning").addClass("btn-info");
+              }
+              else {
+                alert("Error insert position opinion into database.");
+              }
+
+            })
+            .fail(function () {
+              alert("Error insert position opinion into database.");
+            });
+      });
+    </script>
+  {% endif %}
+{% else %}
+  <div class="btn-group">
+    <button id="opinion-button" class="btn btn-info btn-sm dropdown-toggle"
+            data-toggle="dropdown" disabled>
+      Opinion disabled
+      <span class="ace-icon fa fa-caret-down icon-on-right"></span>
+    </button>
+  </div>
+{% endif %}
+
+
+
+
+

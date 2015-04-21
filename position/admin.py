@@ -1,7 +1,8 @@
+from django import forms
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from position.models import *
-from position.views import spread_view, profiler_view
+from position.views import *
 from tos_import.statement.statement_account.admin import ProfitLossInline
 from tos_import.statement.statement_position.admin import \
     PositionInstrumentInline, PositionForexInline, PositionFutureInline
@@ -98,14 +99,7 @@ class PositionStageAdmin(SubPositionAdmin):
     list_per_page = 30
 
 
-class PositionSetInline(admin.TabularInline):
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    extra = 0
-
-
-class PositionStageInline(PositionSetInline):
+class PositionStageInline(admin.TabularInline):
     model = PositionStage
     fields = (
         'stage_name', 'stage_expression',
@@ -118,6 +112,11 @@ class PositionStageInline(PositionSetInline):
         'price_a', 'amount_a',
         'price_b', 'amount_b',
     )
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    extra = 0
 
 
 # noinspection PyMethodMayBeStatic,PyProtectedMember
@@ -165,8 +164,75 @@ class PositionSetAdmin(SubPositionAdmin):
     list_per_page = 30
 
 
+class PositionOpinionAdminForm(forms.ModelForm):
+    DIRECTIONS = (
+        ('CUSTOM', 'CUSTOM'),
+        ('BULL', 'BULLISH'),
+        ('BEAR', 'BEARISH'),
+    )
+
+    direction = forms.ChoiceField(choices=DIRECTIONS)
+
+    DECISIONS = (
+        ('CUSTOM', 'CUSTOM'),
+        ('HOLD', 'HOLD'),
+        ('CLOSE', 'CLOSE'),
+    )
+
+    decision = forms.ChoiceField(choices=DECISIONS)
+
+    ANALYSIS_LEVELS = (
+        ('QUICK', 'QUICK'),
+        ('SIMPLE', 'SIMPLE'),
+        ('DEEP', 'DEEP'),
+    )
+
+    analysis_level = forms.ChoiceField(choices=ANALYSIS_LEVELS)
+
+
+class PositionOpinionAdmin(admin.ModelAdmin):
+    form = PositionOpinionAdminForm
+
+    list_display = (
+        'position_set', 'date', 'direction', 'decision',
+        'analysis_level', 'description',
+        'direction_result', 'decision_result'
+    )
+
+    fieldsets = (
+        ('Foreign Key', {
+            'fields': ('position_set', )
+        }),
+        ('Primary Field', {
+            'fields': (
+                'date', 'direction', 'decision',
+                'analysis_level', 'description',
+                'direction_result', 'decision_result'
+            )
+        }),
+    )
+
+    search_fields = (
+        'position_set__name',
+        'position_set__spread',
+        'position_set__underlying__symbol',
+        'position_set__underlying__company',
+        'position_set__future__symbol',
+        'position_set__forex__symbol',
+    )
+
+    list_filter = (
+        'position_set__name',
+        'position_set__spread',
+        'position_set__status',
+    )
+
+
 admin.site.register(PositionSet, PositionSetAdmin)
 admin.site.register(PositionStage, PositionStageAdmin)
+admin.site.register(PositionOpinion, PositionOpinionAdmin)
+
+
 # spread view
 admin.site.register_view(
     'position/spread/$',
@@ -189,4 +255,17 @@ admin.site.register_view(
     'position/profiler/(?P<position_set_id>[0-9]+)/$',
     urlname='position_set_profiler_view',
     view=profiler_view
+)
+
+# opinion ajax
+admin.site.register_view(
+    'position/opinion/add/',
+    urlname='position_add_opinion_view',
+    view=position_add_opinion_view
+)
+admin.site.register_view(
+    'position/opinion/add/(?P<position_set_id>[0-9]+)/'
+    '(?P<direction>[a-z]+)/(?P<decision>[a-z]+)/$',
+    urlname='position_add_opinion_view',
+    view=position_add_opinion_view
 )

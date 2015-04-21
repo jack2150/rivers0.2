@@ -1,5 +1,7 @@
 import locale
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
+from django.db.models import Q
 from tos_import.classes.io import OpenPos
 from tos_import.models import Underlying, Statement, SaveAppModel, Future, Forex
 
@@ -86,6 +88,33 @@ class PositionInstrument(models.Model, PositionModel):
 
     # for position set
     position_set = models.ForeignKey('position.PositionSet', null=True, blank=True, default=None)
+
+    def get_real_pl_day(self):
+        """
+        Return real pl day for this instrument
+        :return: Decimal
+        """
+        try:
+            position_instruments = PositionInstrument.objects.filter(
+                Q(underlying=self.underlying) &
+                Q(position_summary__date__lt=self.position_summary.date)
+            ).order_by('position_summary__date')
+            """:type: PositionInstrument"""
+
+            if position_instruments.exists():
+                last = position_instruments.last()
+                if self.pl_open:
+                    pl_day = self.pl_open - last.pl_open
+                else:
+                    pl_day = self.pl_day
+            else:
+                pl_day = self.pl_open
+        except ObjectDoesNotExist:
+            pl_day = self.pl_open
+
+        return pl_day
+
+    real_pl_day = property(fget=get_real_pl_day)
 
     def json(self):
         """

@@ -271,6 +271,127 @@ class TestPositionStage(TestSetUpDB):
         self.assertEqual(result, 'UNKNOWN')
 
 
+class TestOpinion(TestSetUpDB):
+    def setUp(self):
+        TestSetUpDB.setUp(self)
+
+        underlying = Underlying(
+            symbol='AAPL',
+            company='Apple Inc.'
+        )
+        underlying.save()
+
+        self.position_set = PositionSet(
+            name='EQUITY',
+            spread='LONG_STOCK',
+            status='OPEN',
+            underlying=underlying
+        )
+        self.position_set.save()
+
+        self.opinion = PositionOpinion()
+        self.opinion.position_set = self.position_set
+
+        #self.opinion.date = '2015-04-19'  # auto set day +1 BDay
+        self.opinion.direction = 'BULL'
+        self.opinion.decision = 'HOLD'
+
+        self.expected_keys = [
+            'position_set', 'direction',
+            'direction_result', 'decision_result',
+            'analysis_level', 'description',
+        ]
+
+    def test_save(self):
+        """
+        Test save opinion into db
+        """
+        print 'run save...'
+        self.opinion.save()
+
+        self.assertEqual(self.opinion.position_set.id, self.position_set.id)
+        self.assertEqual(self.opinion.direction, 'BULL')
+        self.assertFalse(self.opinion.direction_result)
+        self.assertFalse(self.opinion.decision_result)
+        self.assertEqual(self.opinion.analysis_level, 'quick')
+        self.assertFalse(self.opinion.description)
+
+        # save the result
+        print 'run save after set result...'
+        self.opinion.result = True
+        self.opinion.save()
+
+        self.assertEqual(self.opinion.result, True)
+
+        # save the description
+        print 'run save after set description...'
+        self.opinion.description = 'Moving Average 50 days cross.'
+        self.opinion.save()
+
+        self.assertEqual(self.opinion.description, 'Moving Average 50 days cross.')
+
+        print 'opinion output...'
+        print self.opinion
+
+        for key in self.expected_keys:
+            print '%s: ' % key,
+            print getattr(self.opinion, key)
+
+    def test_set_direction_result(self):
+        """
+        Test set result using old price and new price
+        """
+        directions = ['BULL', 'BULL', 'BEAR', 'BEAR']
+        results = [True, False, True, False]
+        prices = [(19.55, 20.54), (20.48, 19.31), (20.48, 19.31), (19.55, 20.54)]
+
+        for (old_price, new_price), direction, result in zip(prices, directions, results):
+            print 'set direction: %s' % direction
+            self.opinion = PositionOpinion()
+            self.opinion.position_set = self.position_set
+            self.opinion.direction = direction
+            self.opinion.save()
+            print 'run save...'
+
+            print 'using old_price: %.2f and new_price: %.2f' % (old_price, new_price)
+            print 'run set_result...'
+            self.opinion.set_direction_result(
+                old_price=old_price, new_price=new_price
+            )
+
+            print 'result of opinion: %s' % self.opinion.direction_result
+            self.assertEqual(self.opinion.direction_result, result)
+
+            print '.' * 60
+
+    def test_set_decision_result(self):
+        """
+        Test set decision using old pl open and new pl open
+        """
+        decisions = ['HOLD', 'CLOSE', 'HOLD', 'CLOSE']
+        results = [True, True, False, False]
+        pl_opens = [(57.00, 84.00), (60.50, 32.00), (60.50, 32.00), (57.00, 84.00)]
+
+        for (old_pl, new_pl), decision, result in zip(pl_opens, decisions, results):
+            print 'set decision: %s' % decision
+            self.opinion = PositionOpinion()
+            self.opinion.position_set = self.position_set
+            self.opinion.decision = decision
+            self.opinion.save()
+            print 'run save...'
+
+            print 'using old_pl: %.2f, new_pl: %.2f' % (old_pl, new_pl)
+            print 'run set_result...'
+            self.opinion.set_decision_result(
+                old_pl=old_pl, new_pl=new_pl
+            )
+
+            print 'result of decision: %s' % self.opinion.decision_result
+            self.assertEqual(self.opinion.decision_result, result)
+
+            print '.' * 60
+
+
 class TestProfilerView(TestUnitSetUp):
     def setUp(self):
         """

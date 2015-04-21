@@ -1,9 +1,10 @@
 from datetime import datetime, date
 from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render
 from pandas.tseries.offsets import Day, BDay, Hour, Minute
 from data.models import Stock, get_price
-from position.models import PositionSet
+from position.models import *
 from tos_import.statement.statement_position.models import *
 from pandas import bdate_range
 
@@ -68,6 +69,32 @@ def spread_view(request, date=''):
     return render(request, template, parameters)
 
 
+def position_add_opinion_view(request, position_set_id, direction, decision):
+    """
+    Ajax add position opinion using latest date + 1 Bday
+    :param request: request
+    :param position_set_id: int
+    :param direction: str
+    :param decision: str
+    :return: HttpResponse
+    """
+    position_set = PositionSet.objects.get(id=position_set_id)
+
+    # set position opinion
+    position_opinion = PositionOpinion()
+    position_opinion.position_set = position_set
+    position_opinion.direction = direction.upper()
+    position_opinion.decision = decision.upper()
+
+    # set date
+    position_opinion.date = position_set.positioninstrument_set.order_by(
+        'position_summary__date').last().position_summary.date + BDay(1)
+
+    position_opinion.save()
+
+    return HttpResponse("success %d" % position_opinion.id, content_type="text/plain")
+
+
 def profiler_view(request, position_set_id=0):
     """
     Profiler view for a single position_set
@@ -90,6 +117,24 @@ def profiler_view(request, position_set_id=0):
     # foreign keys
     filled_orders = position_set.filledorder_set.order_by('trade_summary__date').all()
     position_instruments = position_set.positioninstrument_set.order_by('position_summary__date').all()
+
+    # opinion saved
+    position_instrument_last_date = (position_instruments.last().position_summary.date
+                                     + BDay(1)).strftime('%Y-%m-%d')
+
+    try:
+        position_opinion = position_set.positionopinion_set.order_by('date').last()
+        position_opinion_last_date = position_opinion.date.strftime('%Y-%m-%d')
+
+        if position_instrument_last_date == position_opinion_last_date:
+            position_opinion = dict(
+                object=position_opinion,
+                saved=True,
+            )
+        else:
+            position_opinion = dict(saved=False)
+    except AttributeError:
+        position_opinion = dict(saved=False)
 
     # calculate days
     start_date = position_instruments.first().position_summary.date
@@ -320,8 +365,6 @@ def profiler_view(request, position_set_id=0):
                 Q(underlying__symbol=position_set.underlying.symbol)
             ).exclude(id=position_set.id)
 
-
-
         elif position_set.name == 'HEDGE':
             # use option get 4:30pm price
             pass
@@ -339,12 +382,14 @@ def profiler_view(request, position_set_id=0):
         historical_position_sets=historical_position_sets,
 
         position_prices=position_prices,
+        position_opinion=position_opinion,
     )
 
     return render(request, template, parameters)
 
 
-
+# todo: wrong pl open and pl day for position and account for position spread view
+# todo: next decision model
 
 
 

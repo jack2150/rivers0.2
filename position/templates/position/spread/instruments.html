@@ -63,10 +63,13 @@
           <td>{{ position_instrument.positionequity.mark }}</td>
           <td>{{ position_instrument.positionequity.mark_change }}</td>
           <td class="pl_open">{{ position_instrument.pl_open }}</td>
-          <td>{{ position_instrument.pl_day }}</td>
+          <td>{{ position_instrument.real_pl_day }}</td>
           <td class="action_column">
-            <i class="ace-icon fa fa-cog icon-on-right bigger-130"></i>
-            <i class="ace-icon fa fa-tachometer bigger-130"></i>
+            <a class="stage_box label label-primary label_fix2"
+               title="{{ position_instrument.position_set.underlying.symbol }} Profiler"
+               href="{% url 'admin:position_set_profiler_view' position_instrument.position_set.id %}">
+              <i class="fix_width ace-icon fa fa-tachometer icon-only"></i>
+            </a>
           </td>
         </tr>
         {% if forloop.last %}

@@ -1,5 +1,7 @@
+from datetime import datetime
 import locale
 from django.db import models
+from pandas.tseries.offsets import BDay
 from position.position_set.manager import PositionSetManager
 from tos_import.models import Underlying, Future, Forex
 
@@ -195,4 +197,91 @@ class PositionStage(models.Model):
                 price_a=self.price_a,
                 price_b=self.price_b
             )
+        )
+
+
+class PositionOpinion(models.Model):
+    """
+    A model that track user opinion on whether the price will be go up or go down
+    for a single position only
+    """
+    position_set = models.ForeignKey(PositionSet)
+
+    date = models.DateField(
+        default=datetime.today() + BDay(1),
+        verbose_name='Date'
+    )
+
+    # opinion direction, up or down
+    direction = models.CharField(max_length=10, verbose_name='Direction')
+
+    # decision to be make
+    decision = models.CharField(max_length=100, verbose_name='Decision')
+
+    # quick, simple, deep, analysis... the way to give opinion
+    analysis_level = models.CharField(default='QUICK', max_length=10, verbose_name='Analysis Level')
+
+    # result for this opinion
+    direction_result = models.NullBooleanField(
+        default=None, null=True, blank=True, verbose_name='Direction Result'
+    )
+    decision_result = models.NullBooleanField(
+        default=None, null=True, blank=True, verbose_name='Decision Result'
+    )
+
+    # description about how, what and why this opinion is make
+    description = models.TextField(default=None, blank=True, null=True, verbose_name='Description')
+
+    def set_direction_result(self, old_price, new_price):
+        """
+        Compare old price and new price then set opinion result
+        :param old_price: float
+        :param new_price: float
+        """
+        if self.direction_result is None:
+            if new_price > old_price:  # bear
+                if self.direction == 'BULL':
+                    self.direction_result = True
+                elif self.direction == 'BEAR':
+                    self.direction_result = False
+            elif new_price < old_price:  # bull
+                if self.direction == 'BULL':
+                    self.direction_result = False
+                elif self.direction == 'BEAR':
+                    self.direction_result = True
+
+            # save result
+            self.save()
+
+    def set_decision_result(self, old_pl, new_pl):
+        """
+        Compare old price and new price then set decision result
+        :param old_pl: float
+        :param new_pl: float
+        """
+        if new_pl >= old_pl:
+            if self.decision == 'HOLD':
+                self.decision_result = True
+            else:
+                self.decision_result = False
+
+        else:
+            if self.decision == 'CLOSE':
+                self.decision_result = True
+            else:
+                self.decision_result = False
+
+        self.save()
+
+    def __unicode__(self):
+        """
+        Explain this model
+        :rtype : str
+        """
+        return 'Opinion: {symbol} {position_set} {date} {direction} {decision}'.format(
+            symbol=self.position_set.get_symbol(),
+            position_set=self.position_set.spread,
+            date=self.date.strftime('%Y-%m-%d'),
+            direction=self.direction,
+            decision=self.decision
         )
