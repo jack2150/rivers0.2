@@ -1,4 +1,4 @@
-{% if position_set.status == 'OPEN' %}
+{% if position_set.status %}
   {% if position_opinion.saved %}
     <div class="btn-group">
       <button id="opinion-button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -56,7 +56,7 @@
           <a class="position-opinions" href="#">
             <input type="hidden" value="bull-hold">
         <span class="pull-left">
-          BULL & Hold
+          BULL & HOLD
         </span>
         <span class="pull-right">
           <i class="ace-icon fa fa-arrow-up"></i>
@@ -69,7 +69,7 @@
           <a class="position-opinions" href="#">
             <input type="hidden" value="bear-hold">
         <span class="pull-left">
-          BEAR & Hold
+          BEAR & HOLD
         </span>
         <span class="pull-right">
           <i class="ace-icon fa fa-arrow-down"></i>
@@ -82,7 +82,7 @@
           <a class="position-opinions" href="#">
             <input type="hidden" value="bull-close">
             <span class="pull-left">
-              BULL & Close
+              BULL & CLOSE
             </span>
             <span class="pull-right">
               <i class="ace-icon fa fa-arrow-up"></i>
@@ -95,7 +95,7 @@
           <a class="position-opinions" href="#">
             <input type="hidden" value="bear-close">
             <span class="pull-left">
-              BEAR & Close
+              BEAR & CLOSE
             </span>
             <span class="pull-right">
               <i class="ace-icon fa fa-arrow-down"></i>
@@ -140,7 +140,8 @@
 
         $.ajax({
           url: "{% url 'admin:position_add_opinion_view' %}"
-              + "{{ position_set.id }}/" + opinion[0] + "/" + opinion[1] + "/"
+              + "{{ position_set.id }}/{{ position_prices.date|date }}/"
+              + opinion[0] + "/" + opinion[1] + "/"
         })
             .done(function (text) {
               if (text.indexOf("success") > -1) {
@@ -152,6 +153,15 @@
                 $(opinion_obj).parent().find("span.pull-left").prepend(
                     "<i class='ace-icon fa fa-check-square-o'></i>"
                 );
+
+                // redirect if it is custom
+                if (opinion[0] == 'custom' && opinion[1] == 'custom') {
+                  $(location).attr(
+                      'href',
+                      "{% url 'admin:position_positionopinion_change' 0 %}"
+                          .replace("0", text.split(" ")[1])
+                  );
+                }
 
                 // update more options link
                 $("#more-options").attr(

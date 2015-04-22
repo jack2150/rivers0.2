@@ -108,14 +108,14 @@
                     <div class="col-xs-8">
                       <table class="table stat_day_table">
                         <tr class="stat_day_header">
-                          <th>{% verbose_name stat_day_holding 'total_order_count' %}</th>
-                          <th>{% verbose_name stat_day_holding 'working_order_count' %}</th>
-                          <th>{% verbose_name stat_day_holding 'filled_order_count' %}</th>
-                          <th>{% verbose_name stat_day_holding 'cancelled_order_count' %}</th>
+                          <th>{{ stat_day_holding|verbose_name:"total_order_count" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"working_order_count" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"filled_order_count" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"cancelled_order_count" }}</th>
 
-                          <th>{% verbose_name stat_day_holding 'total_holding_count' %}</th>
-                          <th>{% verbose_name stat_day_holding 'profit_holding_count' %}</th>
-                          <th>{% verbose_name stat_day_holding 'loss_holding_count' %}</th>
+                          <th>{{ stat_day_holding|verbose_name:"total_holding_count" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"profit_holding_count" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"loss_holding_count" }}</th>
                         </tr>
                         <tr>
                           <td>{{ stat_day_holding.total_order_count }}</td>
@@ -129,15 +129,13 @@
                         </tr>
 
                         <tr class="stat_day_header">
-                          <th>{% verbose_name stat_day_holding 'pl_open_sum' %}</th>
-                          <th>{% verbose_name stat_day_holding 'profit_open_sum' %}</th>
-                          <th>{% verbose_name stat_day_holding 'loss_open_sum' %}</th>
-
-                          <th>{% verbose_name stat_day_holding 'pl_day_sum' %}</th>
-                          <th>{% verbose_name stat_day_holding 'profit_day_sum' %}</th>
-                          <th>{% verbose_name stat_day_holding 'loss_day_sum' %}</th>
-
-                          <th>{% verbose_name stat_day_holding 'bp_effect_sum' %}</th>
+                          <th>{{ stat_day_holding|verbose_name:"pl_open_sum" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"profit_open_sum" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"loss_open_sum" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"pl_day_sum" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"profit_day_sum" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"loss_day_sum" }}</th>
+                          <th>{{ stat_day_holding|verbose_name:"bp_effect_sum" }}</th>
                         </tr>
                         <tr>
                           <td>{{ stat_day_holding.pl_open_sum|currency }}</td>
@@ -155,10 +153,10 @@
                         <div class="col-xs-8 col-xs-offset-2">
                           <table class="table stat_day_table">
                             <tr class="warning2">
-                              <th>{% verbose_name option_greek 'delta_sum' %}</th>
-                              <th>{% verbose_name option_greek 'gamma_sum' %}</th>
-                              <th>{% verbose_name option_greek 'theta_sum' %}</th>
-                              <th>{% verbose_name option_greek 'vega_sum' %}</th>
+                              <th>{{ option_greek|verbose_name:"delta_sum" }}</th>
+                              <th>{{ option_greek|verbose_name:"gamma_sum" }}</th>
+                              <th>{{ option_greek|verbose_name:"theta_sum" }}</th>
+                              <th>{{ option_greek|verbose_name:"vega_sum" }}</th>
                             </tr>
                             <tr class="warning">
                               <td>{{ option_greek.delta_sum|currency }}</td>

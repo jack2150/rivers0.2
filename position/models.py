@@ -219,7 +219,7 @@ class PositionOpinion(models.Model):
     decision = models.CharField(max_length=100, verbose_name='Decision')
 
     # quick, simple, deep, analysis... the way to give opinion
-    analysis_level = models.CharField(default='QUICK', max_length=10, verbose_name='Analysis Level')
+    analysis = models.CharField(default='QUICK', max_length=10, verbose_name='Analysis')
 
     # result for this opinion
     direction_result = models.NullBooleanField(
@@ -230,7 +230,7 @@ class PositionOpinion(models.Model):
     )
 
     # description about how, what and why this opinion is make
-    description = models.TextField(default=None, blank=True, null=True, verbose_name='Description')
+    description = models.TextField(default='', blank=True, null=True, verbose_name='Description')
 
     def set_direction_result(self, old_price, new_price):
         """

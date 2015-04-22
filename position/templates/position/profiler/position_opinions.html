@@ -1,0 +1,145 @@
+{% load verbose_name %}
+{% if position_opinions %}
+  <table id="position_opinions" class="table table-striped">
+    {% for position_opinion in position_opinions %}
+      {% if forloop.first %}
+        <thead>
+        <tr>
+          <th>{{ position_opinion|verbose_name:"date" }}</th>
+          <th>{{ position_opinion|verbose_name:"analysis" }}</th>
+          <th>{{ position_opinion|verbose_name:"direction" }}</th>
+          <th>Result <i class="fa fa-question blue fix_width"></i></th>
+          <th>Bull <i class="fa fa-arrow-up green fix_width"></i></th>
+          <th>Bull <i class="fa fa-check fix_width"></i></th>
+          <th>Bull <i class="fa fa-times fix_width"></i></th>
+          <th>Bear <i class="fa fa-arrow-down red fix_width"></i></th>
+          <th>Bear <i class="fa fa-check fix_width"></i></th>
+          <th>Bear <i class="fa fa-times fix_width"></i></th>
+          <th>{{ position_opinion|verbose_name:"decision" }}</th>
+          <th>Result <i class="fa fa-question blue fix_width"></i></th>
+          <th>{{ position_opinion|verbose_name:"description" }}</th>
+        </tr>
+        </thead>
+      {% endif %}
+      <tr>
+        <td>
+          <a href="{% url 'admin:position_positionopinion_change' position_opinion.id %}">
+            {{ position_opinion.date }}
+          </a>
+        </td>
+        <td>{{ position_opinion.analysis }}</td>
+        <td>{{ position_opinion.direction }}</td>
+        <td>{{ position_opinion.direction_result }}</td>
+
+        <td>
+          {{ position_opinion.bull.count }}
+          ({{ position_opinion.bull.count_pct|stringformat:".0f%%" }})
+        </td>
+        <td>
+          {{ position_opinion.bull.correct }}
+          ({{ position_opinion.bull.correct_pct|stringformat:".0f%%" }})
+        </td>
+        <td>
+          {{ position_opinion.bull.wrong }}
+          ({{ position_opinion.bull.wrong_pct|stringformat:".0f%%" }})
+        </td>
+        <td>
+          {{ position_opinion.bear.count }}
+          ({{ position_opinion.bear.count_pct|stringformat:".0f%%" }})
+        </td>
+        <td>
+          {{ position_opinion.bear.correct }}
+          ({{ position_opinion.bear.correct_pct|stringformat:".0f%%" }})
+        </td>
+        <td>
+          {{ position_opinion.bear.wrong }}
+          ({{ position_opinion.bear.wrong_pct|stringformat:".0f%%" }})
+        </td>
+
+        <td>{{ position_opinion.decision }}</td>
+        <td>{{ position_opinion.decision_result }}</td>
+        <td>
+          {% if position_opinion.description %}
+            {{ position_opinion.description }}
+          {% else %}
+            -----
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <script type="text/javascript">
+    $('#position_opinions').DataTable({
+      paging: false,
+      searching: false,
+      bInfo: false,
+      autoWidth: false,
+      columnDefs: [
+        {
+          targets: [1],
+          render: function (data) {
+            var icon = '';
+            if (data == 'QUICK') {
+              icon = '<i class="fa fa-bolt light-blue fix_width"></i> '
+            }
+            else if (data == 'SIMPLE') {
+              icon = '<i class="fa fa-coffee blue fix_width"></i> '
+            }
+            else if (data == 'DEEP') {
+              icon = '<i class="fa fa-pie-chart purple fix_width"></i> '
+            }
+            return icon + data
+          }
+        },
+        {
+          targets: [2],
+          render: function (data) {
+            var icon = '';
+            if (data == 'BULL') {
+              icon = '<i class="fa fa-arrow-up green fix_width"></i> '
+            }
+            else if (data == 'BEAR') {
+              icon = '<i class="fa fa-arrow-down red fix_width"></i> '
+            }
+            return icon + data
+          }
+        },
+        {
+          targets: [10],
+          render: function (data) {
+            var icon = '';
+            if (data == 'HOLD') {
+              icon = '<i class="fa fa-clock-o yellow fix_width"></i> '
+            }
+            else if (data == 'CLOSE') {
+              icon = '<i class="fa fa-times blue fix_width"></i> '
+            }
+            return icon + data
+          }
+        },
+        {
+          targets: [3, 11],
+          render: function (data) {
+            var icon = '';
+            if (data == 'True') {
+              icon = '<i class="fa fa-check green fix_width"></i> '
+            }
+            else if (data == 'False') {
+              icon = '<i class="fa fa-close red fix_width"></i> '
+            }
+            return icon
+          }
+        }
+      ]
+    });
+  </script>
+{% else %}
+  <div class="pad10px">
+    <div class="alert alert-warning" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Empty:</span>
+      No opinions for this position yet.
+    </div>
+  </div>
+{% endif %}

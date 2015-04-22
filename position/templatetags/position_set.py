@@ -176,6 +176,13 @@ def get_close_pl(position_set):
         position_instruments[0].pl_day + position_instruments[1].pl_open
     )
 
-
+@register.filter
+def last(instance):
+    """
+    Any model queryset and get last item in the list
+    :param instance: model
+    :return: model
+    """
+    return list(instance)[-1]
 
 

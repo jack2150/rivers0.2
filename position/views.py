@@ -1,9 +1,10 @@
-from datetime import datetime, date
-from django.db.models import Q
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
-from django.shortcuts import render
-from pandas.tseries.offsets import Day, BDay, Hour, Minute
+from django.shortcuts import render, redirect
+from pandas.tseries.offsets import Day, Hour, Minute
+from data.holidays import is_holiday
 from data.models import Stock, get_price
+from data.offdays import is_offdays
 from position.models import *
 from tos_import.statement.statement_position.models import *
 from pandas import bdate_range
@@ -69,16 +70,36 @@ def spread_view(request, date=''):
     return render(request, template, parameters)
 
 
-def position_add_opinion_view(request, position_set_id, direction, decision):
+# noinspection PyShadowingNames,PyShadowingBuiltins
+def next_bday(date):
+    """
+    Return next bday which it is not holidays or offdays
+    :param date: str
+    :return: datetime
+    """
+    add_day = 1
+    next_bday = datetime.strptime(date, '%Y-%m-%d') + BDay(add_day)
+    # check it is not holiday
+    while is_holiday(date=next_bday.strftime('%Y-%m-%d')) \
+            or is_offdays(date=next_bday.strftime('%m/%d/%y')):
+        add_day += 1
+        next_bday = datetime.strptime(date, '%Y-%m-%d') + BDay(add_day)
+
+    return next_bday.strftime('%Y-%m-%d')
+
+
+# noinspection PyShadowingBuiltins
+def position_add_opinion_view(request, id, date, direction, decision):
     """
     Ajax add position opinion using latest date + 1 Bday
     :param request: request
-    :param position_set_id: int
+    :param date: str
+    :param id: int
     :param direction: str
     :param decision: str
     :return: HttpResponse
     """
-    position_set = PositionSet.objects.get(id=position_set_id)
+    position_set = PositionSet.objects.get(id=id)
 
     # set position opinion
     position_opinion = PositionOpinion()
@@ -87,25 +108,89 @@ def position_add_opinion_view(request, position_set_id, direction, decision):
     position_opinion.decision = decision.upper()
 
     # set date
-    position_opinion.date = position_set.positioninstrument_set.order_by(
-        'position_summary__date').last().position_summary.date + BDay(1)
+    position_opinion.date = next_bday(date)
 
     position_opinion.save()
 
     return HttpResponse("success %d" % position_opinion.id, content_type="text/plain")
 
 
-def profiler_view(request, position_set_id=0):
+def update_opinion_results(reqeust):
+    """
+    How to use:
+    update_opinion_results()
+    """
+    # get all position opinions
+    position_opinions = PositionOpinion.objects.exclude(
+        Q(direction__isnull=True) & Q(direction__isnull=True)
+    ).order_by('date')
+
+    if position_opinions.exists():
+        for position_opinion in position_opinions:
+            try:
+                position_instruments = position_opinion.position_set.positioninstrument_set.filter(
+                    position_summary__date__lte=position_opinion.date
+                ).order_by('position_summary__date').reverse()[:2]
+
+                yesterday = position_instruments[1].position_summary.date
+
+                stock0 = get_price(
+                    symbol=position_opinion.position_set.underlying.symbol,
+                    date=yesterday,
+                    source='google'
+                )
+
+                stock1 = get_price(
+                    symbol=position_opinion.position_set.underlying.symbol,
+                    date=position_opinion.date,
+                    source='google'
+                )
+
+                # start compare
+                if stock1.close > stock0.close:
+                    # is bull
+                    if position_opinion.direction == 'BULL':
+                        position_opinion.direction_result = True
+                    else:
+                        position_opinion.direction_result = False
+                elif stock1.close < stock0.close:
+                    # is bear
+                    if position_opinion.direction == 'BEAR':
+                        position_opinion.direction_result = True
+                    else:
+                        position_opinion.direction_result = False
+
+                # for pl open now
+                if position_instruments[0].pl_open > position_instruments[1].pl_open:
+                    if position_opinion.decision in ('HOLD', 'CLOSE'):
+                        position_opinion.decision_result = True
+                    else:
+                        position_opinion.decision_result = False
+                elif position_instruments[0].pl_open < position_instruments[1].pl_open:
+                    if position_opinion.decision in ('HOLD', 'CLOSE'):
+                        position_opinion.decision_result = False
+                    else:
+                        position_opinion.decision_result = True
+
+                position_opinion.save()
+            except AttributeError:
+                continue
+
+    return redirect(reverse('admin:position_positionopinion_changelist'))
+
+
+# noinspection PyShadowingNames,PyShadowingBuiltins
+def profiler_view(request, id=0, date=''):
     """
     Profiler view for a single position_set
     :param request: request
-    :param position_set_id: int
+    :param id: int
     :return: render
     """
     template = 'position/profiler/index.html'
 
     # get position set and position stages
-    position_set = PositionSet.objects.get(id=position_set_id)
+    position_set = PositionSet.objects.get(id=id)
     position_stages = position_set.positionstage_set.all()
 
     # display variables
@@ -115,18 +200,27 @@ def profiler_view(request, position_set_id=0):
     historical_position_sets = None
 
     # foreign keys
-    filled_orders = position_set.filledorder_set.order_by('trade_summary__date').all()
-    position_instruments = position_set.positioninstrument_set.order_by('position_summary__date').all()
+    if date:
+        filled_orders = position_set.filledorder_set\
+            .filter(trade_summary__date__lte=date).order_by('trade_summary__date')
+        position_instruments = position_set.positioninstrument_set \
+            .filter(position_summary__date__lte=date).order_by('position_summary__date')
+    else:
+        filled_orders = position_set.filledorder_set\
+            .order_by('trade_summary__date').all()
+        position_instruments = position_set.positioninstrument_set\
+            .order_by('position_summary__date').all()
 
-    # opinion saved
-    position_instrument_last_date = (position_instruments.last().position_summary.date
-                                     + BDay(1)).strftime('%Y-%m-%d')
+        date = position_instruments.last().position_summary.date.strftime('%Y-%m-%d')
 
+    # position opinion section
     try:
-        position_opinion = position_set.positionopinion_set.order_by('date').last()
-        position_opinion_last_date = position_opinion.date.strftime('%Y-%m-%d')
+        # opinion saved
+        bday = next_bday(date)
+        position_opinion = position_set.positionopinion_set\
+            .filter(date__lte=bday).order_by('date').last()
 
-        if position_instrument_last_date == position_opinion_last_date:
+        if bday == position_opinion.date.strftime('%Y-%m-%d'):
             position_opinion = dict(
                 object=position_opinion,
                 saved=True,
@@ -135,6 +229,39 @@ def profiler_view(request, position_set_id=0):
             position_opinion = dict(saved=False)
     except AttributeError:
         position_opinion = dict(saved=False)
+
+    # position opinions
+    position_opinions = position_set.positionopinion_set.filter(
+        date__lte=date
+    ).order_by('date')
+
+    #direction_cumsum = cumsum(position_opinions.values_list('direction_result'))
+    bull = dict(count=0, count_pct=0.0, correct=0, correct_pct=0.0, wrong=0, wrong_pct=0.0)
+    bear = dict(count=0, count_pct=0.0, correct=0, correct_pct=0.0, wrong=0, wrong_pct=0.0)
+    for count, opinion in enumerate(position_opinions, start=1):
+        if opinion.direction == 'BULL':
+            bull['count'] += 1
+            if opinion.direction_result:
+                bull['correct'] += 1
+            else:
+                bull['wrong'] += 1
+            bull['count_pct'] = round(bull['count'] / float(count) * 100, 2)
+            bull['correct_pct'] = round(bull['correct'] / float(bull['count']) * 100, 2)
+            bull['wrong_pct'] = round(bull['wrong'] / float(bull['count']) * 100, 2)
+
+        elif opinion.direction == 'BEAR':
+            bear['count'] += 1
+            if opinion.direction_result:
+                bear['correct'] += 1
+            else:
+                bear['wrong'] += 1
+            bear['count_pct'] = round(bear['count'] / float(count) * 100, 2)
+            bear['correct_pct'] = round(bear['correct'] / float(bear['count']) * 100, 2)
+            bear['wrong_pct'] = round(bear['wrong'] / float(bear['count']) * 100, 2)
+
+        # assign dict
+        opinion.bull = bull.copy()
+        opinion.bear = bear.copy()
 
     # calculate days
     start_date = position_instruments.first().position_summary.date
@@ -180,23 +307,23 @@ def profiler_view(request, position_set_id=0):
             ).order_by('date')
 
             # use data use 5:30pm close price
-            stock = get_price(
-                symbol=position_set.underlying.symbol,
-                date=stop_date,
-                source='google'
-            )
-
-            stock2 = get_price(
+            stock0 = get_price(
                 symbol=position_set.underlying.symbol,
                 date=stop_date - BDay(1),
                 source='google'
             )
 
-            if not stock:
+            stock1 = get_price(
+                symbol=position_set.underlying.symbol,
+                date=stop_date,
+                source='google'
+            )
+
+            if not stock1:
                 raise LookupError('Please import latest price data into system.')
 
-            if not stock2:
-                stock2 = stock
+            if not stock0:
+                stock0 = stock1
 
             # create position prices
             trade_price = filled_orders.first().price
@@ -209,9 +336,9 @@ def profiler_view(request, position_set_id=0):
             else:
                 raise ValueError('Wrong profiler section when making calculation.')
 
-            pl_open = (stock.close - trade_price) * trade_quantity
+            pl_open = (stock1.close - trade_price) * trade_quantity
             pl_open_pct = round(pl_open / (trade_price * trade_quantity) * 100 * multiplier, 2)
-            pl_day = (stock.close - stock2.close) * trade_quantity
+            pl_day = (stock1.close - stock0.close) * trade_quantity
             pl_day_pct = round(pl_day / (trade_price * trade_quantity) * 100 * multiplier, 2)
 
             # profit loss count
@@ -242,8 +369,8 @@ def profiler_view(request, position_set_id=0):
                 last_stock = s
 
             position_prices = dict(
-                stock=stock,
-                stock2=stock2,
+                stock=stock1,
+                stock2=stock0,
                 trade_price=round(trade_price, 2),
                 trade_quantity=trade_quantity,
 
@@ -265,12 +392,12 @@ def profiler_view(request, position_set_id=0):
                 loss_day_count_pct=round(loss_day_count / float(len(stocks)) * 100, 2),
 
                 # stages and status
-                stage=position_set.get_stage(price=stock.close),
-                status=position_set.current_status(new_price=stock.close, old_price=stock2.close),
+                stage=position_set.get_stage(price=stock1.close),
+                status=position_set.current_status(new_price=stock1.close, old_price=stock0.close),
 
                 # price move
-                net_change=stock.close - stock2.close,
-                pct_change=(stock.close - stock2.close) / stock2.close * 100,
+                net_change=stock1.close - stock0.close,
+                pct_change=(stock1.close - stock0.close) / stock0.close * 100,
 
                 # time close and as date
                 date=stop_date + Hour(17) + Minute(30),
@@ -286,39 +413,39 @@ def profiler_view(request, position_set_id=0):
             # create position stock, using google close data
 
             last_stock = stocks.first()
-            for stock in stocks.filter(date__gte=start_date):
+            for stock1 in stocks.filter(date__gte=start_date):
                 net_change = 0
                 pct_change = 0
                 if last_stock:
-                    net_change = stock.close - last_stock.close
-                    pct_change = round((stock.close - last_stock.close) / last_stock.close * 100, 2)
+                    net_change = stock1.close - last_stock.close
+                    pct_change = round((stock1.close - last_stock.close) / last_stock.close * 100, 2)
 
-                if stock.date == stop_date and position_set.status in ['CLOSE', 'EXPIRE']:
+                if stock1.date == stop_date and position_set.status in ['CLOSE', 'EXPIRE']:
                     stage = position_set.status
                     status = 'UNKNOWN'
                 else:
-                    stage = position_set.get_stage(price=stock.close).stage_name
+                    stage = position_set.get_stage(price=stock1.close).stage_name
                     status = position_set.current_status(
-                        new_price=stock.close, old_price=last_stock.close
+                        new_price=stock1.close, old_price=last_stock.close
                     )
 
                 position_stocks.append(
                     dict(
-                        date=stock.date,
-                        open=stock.open,
-                        high=stock.high,
-                        low=stock.low,
-                        close=stock.close,
+                        date=stock1.date,
+                        open=stock1.open,
+                        high=stock1.high,
+                        low=stock1.low,
+                        close=stock1.close,
                         net_change=net_change,
                         pct_change=pct_change,
-                        pl_open=round((stock.close - trade_price) * trade_quantity, 2),
+                        pl_open=round((stock1.close - trade_price) * trade_quantity, 2),
                         pl_day=net_change * trade_quantity,
                         stage=stage,
                         status=status,
                     )
                 )
 
-                last_stock = stock
+                last_stock = stock1
 
             # create stage mover, position_stage.mover.
             position_stage_movers = dict(
@@ -336,25 +463,25 @@ def profiler_view(request, position_set_id=0):
                     position_stage_movers['keys'].append('%s,%s.B $' % (stage.id, stage.stage_name))
                     position_stage_movers['keys'].append('%s,%s.B' % (stage.id, stage.stage_name))
 
-            for stock in stocks.filter(date__gte=start_date):
+            for stock1 in stocks.filter(date__gte=start_date):
                 m = dict(
-                    date=stock.date,
-                    close=stock.close
+                    date=stock1.date,
+                    close=stock1.close
                 )
 
                 for stage in position_stages:
                     if stage.price_a:
-                        m['%s,%s.A $' % (stage.id, stage.stage_name)] = stage.price_a - stock.close
+                        m['%s,%s.A $' % (stage.id, stage.stage_name)] = stage.price_a - stock1.close
                         m['%s,%s.A' % (stage.id, stage.stage_name)] = '%+.2f (%+.2f%%)' % (
-                            float(stage.price_a - stock.close),
-                            round((stage.price_a - stock.close) / stock.close * 100, 2)
+                            float(stage.price_a - stock1.close),
+                            round((stage.price_a - stock1.close) / stock1.close * 100, 2)
                         )
 
                     if stage.price_b:
-                        m['%s,%s.B $' % (stage.id, stage.stage_name)] = stage.price_b - stock.close
+                        m['%s,%s.B $' % (stage.id, stage.stage_name)] = stage.price_b - stock1.close
                         m['%s,%s.B' % (stage.id, stage.stage_name)] = '%+.2f (%+.2f%%)' % (
-                            float(stage.price_a - stock.close),
-                            round((stage.price_b - stock.close) / stock.close * 100, 2)
+                            float(stage.price_a - stock1.close),
+                            round((stage.price_b - stock1.close) / stock1.close * 100, 2)
                         )
 
                 #print mover
@@ -372,6 +499,24 @@ def profiler_view(request, position_set_id=0):
             # use option get 4:30pm price
             pass
 
+    # previous and next
+    # page navigator
+    previous_item = None
+    next_item = None
+    first_item = None
+    last_item = None
+    previous_obj = position_set.positioninstrument_set\
+        .filter(position_summary__date__lt=date).order_by('position_summary__date').reverse()
+    if previous_obj.exists():
+        first_item = previous_obj.last().position_summary.date.strftime('%Y-%m-%d')
+        previous_item = previous_obj[0].position_summary.date.strftime('%Y-%m-%d')
+
+    next_obj = position_set.positioninstrument_set\
+        .filter(position_summary__date__gt=date).order_by('position_summary__date')
+    if next_obj.exists():
+        last_item = next_obj.last().position_summary.date.strftime('%Y-%m-%d')
+        next_item = next_obj[0].position_summary.date.strftime('%Y-%m-%d')
+
     parameters = dict(
         position_set=position_set,
         position_dates=position_dates,
@@ -380,17 +525,20 @@ def profiler_view(request, position_set_id=0):
         position_stocks=position_stocks,
         position_stage_movers=position_stage_movers,
         historical_position_sets=historical_position_sets,
-
         position_prices=position_prices,
+
         position_opinion=position_opinion,
+        position_opinions=position_opinions,
+
+        previous=previous_item,
+        next=next_item,
+        first=first_item,
+        last=last_item,
     )
 
     return render(request, template, parameters)
 
-
-# todo: wrong pl open and pl day for position and account for position spread view
-# todo: next decision model
-
+# todo: opinion position info 3
 
 
 

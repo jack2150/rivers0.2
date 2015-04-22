@@ -48,6 +48,7 @@
     }
 
     .close_time {
+      width: 30px;
       font-size: 0.6em;
       color: #808080;
     }
@@ -63,13 +64,21 @@
       font-size: 28px;
     }
 
+    .label_fix2 {
+      padding-left: 1px;
+      padding-right: 1px;
+      margin-left: 0;
+      margin-right: 2px;
+    }
+
     .label_fix3 {
       padding-left: 2px;
       padding-right: 0;
     }
 
     .fix_width {
-      width: 20px;
+      width: 18px;
+      text-align: center;
     }
 
     .stage_box_tooltip {
@@ -129,6 +138,20 @@
       color: #a9a9a9;
       padding: 4px 10px 0 10px;
     }
+
+    .right_date_change {
+      padding-top: 10px;
+      text-align: right;
+    }
+
+    .update_opinions, .pad10px {
+      margin: 10px 10px 0 10px;
+      text-align: left;
+    }
+
+    .opinion-button {
+      text-align: right;
+    }
   </style>
 {% endblock %}
 
@@ -151,20 +174,17 @@
 
 {% block page-header %}
   <div class="row">
-  <div class="col-md-8">
-    {% include 'position/profiler/symbol_page_head.html' %}
+  <div class="col-md-10">
+    {% include 'position/profiler/profiler_header.html' %}
   </div>
-  <div class="col-md-4" style="text-align: right">
-    {% include 'position/profiler/opinion_buttons.html' %}
+  <div class="col-md-2 opinion-button">
+    {% include 'position/profiler/position_opinion_button.html' %}
   </div>
   </div>
-
-
 {% endblock %}
 
 {% block content %}
   <div id="content-main">
-
     <!-- #section:elements.tab.option -->
     <div class="tabbable" style="display: block">
       <ul class="nav nav-tabs" id="myTab">
@@ -176,7 +196,7 @@
         </li>
         <li>
           <a data-toggle="tab" href="#marks">
-            <i class="blue ace-icon fa fa-money bigger-120"></i>
+            <i class="green ace-icon fa fa-file-text-o bigger-120"></i>
             Marks
           </a>
         </li>
@@ -188,8 +208,14 @@
         </li>
         <li>
           <a data-toggle="tab" href="#movers">
-            <i class="yellow ace-icon fa fa-exchange bigger-120"></i>
+            <i class="yellow ace-icon fa fa-cogs bigger-120"></i>
             Stage Movers
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#opinions">
+            <i class="yellow ace-icon fa fa-comment bigger-120"></i>
+            Opinions
           </a>
         </li>
       </ul>
@@ -206,9 +232,10 @@
             <div class="col-md-3">
               {% include 'position/profiler/position_stages.html' %}
               {% include 'position/profiler/historical_position_sets.html' %}
+              {% include 'position/profiler/profiler_object_links.html' %}
             </div>
             <div class="col-md-3">
-              {% include 'position/profiler/profiler_object_links.html' %}
+              {% include 'position/profiler/position_info3.html' %}
             </div>
           </div>
         </div>
@@ -224,14 +251,16 @@
         <div id="movers" class="tab-pane">
           {% include 'position/profiler/position_stage_mover.html' %}
         </div>
+
+        <div id="opinions" class="tab-pane">
+          {% include 'position/profiler/position_opinions.html' %}
+        </div>
       </div>
     </div>
     <!-- /section:elements.tab.option -->
   </div>
 
-
-
-
+  {% include 'position/profiler/paginator.html' %}
 
 {% endblock %}
 

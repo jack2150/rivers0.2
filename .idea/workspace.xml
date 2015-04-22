@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="602f9b56-60be-46d9-ae24-0e1e170de7cf" name="Default" comment="fix some...">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templates/position/profiler/opinion_buttons.html" />
+    <list default="true" id="602f9b56-60be-46d9-ae24-0e1e170de7cf" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templates/position/admin/change_list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templates/position/profiler/paginator.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_info3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_opinions.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/admin.py" afterPath="$PROJECT_DIR$/position/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/change_list.html" afterPath="$PROJECT_DIR$/templates/admin/change_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/spread/forexs.html" afterPath="$PROJECT_DIR$/position/templates/position/spread/forexs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/spread/futures.html" afterPath="$PROJECT_DIR$/position/templates/position/spread/futures.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/index.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/spread/index.html" afterPath="$PROJECT_DIR$/position/templates/position/spread/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html" afterPath="$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/spread/instruments.html" afterPath="$PROJECT_DIR$/position/templates/position/spread/instruments.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/models.py" afterPath="$PROJECT_DIR$/position/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/statement/statement_position/models.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_position/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/position_instruments.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_instruments.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templatetags/position_set.py" afterPath="$PROJECT_DIR$/position/templatetags/position_set.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/position_stage_mover.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_stage_mover.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/position_stages.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_stages.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/profiler_object_links.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/profiler_object_links.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/tests.py" afterPath="$PROJECT_DIR$/position/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/templatetags/verbose_name.py" afterPath="$PROJECT_DIR$/tos_import/templatetags/verbose_name.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/views.py" afterPath="$PROJECT_DIR$/position/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\rivers\position\templates\position\profiler\opinion_buttons.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_opinion_button.html" />
+      <change type="MOVED" beforePath="D:\rivers\position\templates\position\profiler\symbol_page_head.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/profiler_header.html" />
     </list>
     <ignored path="rivers.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,19 +50,19 @@
     <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestDecision_test_save.coverage" NAME="Test: position.tests.TestDecision.test_save Coverage Results" MODIFIED="1429453625521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestPositionSet_test_current_stage.coverage" NAME="Test: position.tests.TestPositionSet.test_current_stage Coverage Results" MODIFIED="1427755707946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_max_profit_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_max_profit_stage Coverage Results" MODIFIED="1427698213082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_max_loss_stage Coverage Results" MODIFIED="1427697445205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_tests_TestOptionContract.coverage" NAME="Test: data.tests.TestOptionContract Coverage Results" MODIFIED="1428767979580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$holidays.coverage" NAME="holidays Coverage Results" MODIFIED="1428499628093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/file/tos_thinkback" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_max_loss_stage Coverage Results" MODIFIED="1427697445205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio2_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio2.test_create_profit_stage1 Coverage Results" MODIFIED="1427698701894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_spread_tests.coverage" NAME="Test: position.classes.spread.tests Coverage Results" MODIFIED="1428653236740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests Coverage Results" MODIFIED="1427701731892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$holidays.coverage" NAME="holidays Coverage Results" MODIFIED="1428499628093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/file/tos_thinkback" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427456837926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests Coverage Results" MODIFIED="1427701731892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_spread_tests.coverage" NAME="Test: position.classes.spread.tests Coverage Results" MODIFIED="1428653236740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_put_vertical_tests_TestStageLongPutVertical_test_create_even_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_put_vertical.tests.TestStageLongPutVertical.test_create_even_stage Coverage Results" MODIFIED="1427695731429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_option_long_call_tests_TestStageLongCall.coverage" NAME="Test: position.classes.stage.option.long_call.tests.TestStageLongCall Coverage Results" MODIFIED="1427557964121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_call_vertical_tests_TestStageLongCallVertical_test_create_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_call_vertical.tests.TestStageLongCallVertical.test_create_loss_stage Coverage Results" MODIFIED="1427695443450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_tests_TestOptionContract_test_save.coverage" NAME="Test: data.tests.TestOptionContract.test_save Coverage Results" MODIFIED="1428361496789" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Unittest__All.coverage" NAME="Unittest: All Coverage Results" MODIFIED="1428654254023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_call_vertical_tests_TestStageLongCallVertical_test_create_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_call_vertical.tests.TestStageLongCallVertical.test_create_loss_stage Coverage Results" MODIFIED="1427695443450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_strangle_long_strangle_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.strangle.long_strangle.tests Coverage Results" MODIFIED="1427687717770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Unittest__All.coverage" NAME="Unittest: All Coverage Results" MODIFIED="1428654254023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_call_vertical_tests_TestStageLongCallVertical_test_create_max_profit_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_call_vertical.tests.TestStageLongCallVertical.test_create_max_profit_stage Coverage Results" MODIFIED="1427695356065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_max_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_max_loss_stage2 Coverage Results" MODIFIED="1427457032028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_put_vertical_tests_TestStageLongPutVertical_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_put_vertical.tests.TestStageLongPutVertical.test_create_stages Coverage Results" MODIFIED="1427696638327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -74,53 +87,53 @@
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_option_long_put_tests.coverage" NAME="Test: position.classes.stage.option.long_put.tests Coverage Results" MODIFIED="1427706930685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_tests_TestTosThinkbackImportRunView.coverage" NAME="Test: data.tests.TestTosThinkbackImportRunView Coverage Results" MODIFIED="1428937781071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestStageLongCallVertical_test_create_stages.coverage" NAME="Unittest TestStageLongCallVertical.test_create_stages Coverage Results" MODIFIED="1427684855246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/long_strangle" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_call_vertical_tests_TestStageLongCallVertical_setUp.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_call_vertical.tests.TestStageLongCallVertical.setUp Coverage Results" MODIFIED="1427695450784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_tests_TestOption.coverage" NAME="Test: data.tests.TestOption Coverage Results" MODIFIED="1428370857558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_profitng_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_profitng_stage2 Coverage Results" MODIFIED="1427487139895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_call_vertical_tests_TestStageLongCallVertical_setUp.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_call_vertical.tests.TestStageLongCallVertical.setUp Coverage Results" MODIFIED="1427695450784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_call_vertical_tests_TestStageShortCallVertical_test_create_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_call_vertical.tests.TestStageShortCallVertical.test_create_loss_stage Coverage Results" MODIFIED="1427696313197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_profitng_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_profitng_stage2 Coverage Results" MODIFIED="1427487139895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestTosThinkbackImportSelectView.coverage" NAME="Test: data.file.tos_thinkback.tests.TestTosThinkbackImportSelectView Coverage Results" MODIFIED="1428571847301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo3_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo3.test_create_stages Coverage Results" MODIFIED="1427737914449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_short_straddle_tests_TestStageShortStraddle_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.short_straddle.tests.TestStageShortStraddle.test_create_profit_stage2 Coverage Results" MODIFIED="1427690587175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo3_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo3.test_create_stages Coverage Results" MODIFIED="1427737914449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestOpinion_test_set_result.coverage" NAME="Test: position.tests.TestOpinion.test_set_result Coverage Results" MODIFIED="1429451353115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_put_vertical_tests_TestStageLongPutVertical_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_put_vertical.tests.TestStageLongPutVertical.test_create_max_loss_stage Coverage Results" MODIFIED="1427696479432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_call_vertical_tests_TestStageShortCallVertical_test_create_even_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_call_vertical.tests.TestStageShortCallVertical.test_create_even_stage Coverage Results" MODIFIED="1427696162093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_strangle_short_strangle_tests_TestStageShortStrangle_test_create_max_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.strangle.short_strangle.tests.TestStageShortStrangle.test_create_max_profit_stage1 Coverage Results" MODIFIED="1427686648035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_loss_stage1 Coverage Results" MODIFIED="1427470021835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo2_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo2.test_create_stages Coverage Results" MODIFIED="1427744727196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_strangle_short_strangle_tests_TestStageShortStrangle_test_create_max_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.strangle.short_strangle.tests.TestStageShortStrangle.test_create_max_profit_stage1 Coverage Results" MODIFIED="1427686648035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_call_vertical_tests_TestStageShortCallVertical_test_create_even_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_call_vertical.tests.TestStageShortCallVertical.test_create_even_stage Coverage Results" MODIFIED="1427696162093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_short_straddle_tests_TestStageShortStraddle_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.short_straddle.tests.TestStageShortStraddle.test_create_loss_stage1 Coverage Results" MODIFIED="1427690344138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo2_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo2.test_create_stages Coverage Results" MODIFIED="1427744727196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo1_test_create_even_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo1.test_create_even_stage Coverage Results" MODIFIED="1427738275370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio2_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio2.test_create_stages Coverage Results" MODIFIED="1427698704414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestOpinion.coverage" NAME="Test: position.tests.TestOpinion Coverage Results" MODIFIED="1429482701281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo1_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo1.test_create_even_stage1 Coverage Results" MODIFIED="1427730664065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestStageShortStrangle_test_create_even_stage1.coverage" NAME="Unittest TestStageShortStrangle.test_create_even_stage1 Coverage Results" MODIFIED="1427685754230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/short_strangle" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo1_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo1.test_create_even_stage1 Coverage Results" MODIFIED="1427730664065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestOpinion.coverage" NAME="Test: position.tests.TestOpinion Coverage Results" MODIFIED="1429482701281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_short_straddle_tests_TestStageShortStraddle_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.short_straddle.tests.TestStageShortStraddle.test_create_stages Coverage Results" MODIFIED="1427690645245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo3_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo3.test_create_profit_stage1 Coverage Results" MODIFIED="1427736212178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_short_straddle_tests_TestStageShortStraddle_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.short_straddle.tests.TestStageShortStraddle.test_create_even_stage1 Coverage Results" MODIFIED="1427690241627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_short_straddle_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.short_straddle.tests Coverage Results" MODIFIED="1427690655495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$long_put_backratio.coverage" NAME="long_put_backratio Coverage Results" MODIFIED="1427467716792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio3_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_stages Coverage Results" MODIFIED="1427553542572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_short_straddle_tests_TestStageShortStraddle_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.short_straddle.tests.TestStageShortStraddle.test_create_even_stage1 Coverage Results" MODIFIED="1427690241627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_strangle_short_strangle_tests_TestStageShortStrangle_test_create_max_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.strangle.short_strangle.tests.TestStageShortStrangle.test_create_max_profit_stage2 Coverage Results" MODIFIED="1427686737545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio3_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_stages Coverage Results" MODIFIED="1427553542572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$long_put_backratio.coverage" NAME="long_put_backratio Coverage Results" MODIFIED="1427467716792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/long_put_backratio" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_even_stage1 Coverage Results" MODIFIED="1427700001248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_call_vertical_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_call_vertical.tests Coverage Results" MODIFIED="1427695716676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests.coverage" NAME="Test: data.file.tos_thinkback.tests Coverage Results" MODIFIED="1428641595224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_even_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_even_stage2 Coverage Results" MODIFIED="1427697366247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests Coverage Results" MODIFIED="1427705282115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests.coverage" NAME="Test: data.file.tos_thinkback.tests Coverage Results" MODIFIED="1428641595224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_long_straddle_tests_TestStageLongStrangle_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.long_straddle.tests.TestStageLongStrangle.test_create_stages Coverage Results" MODIFIED="1427689667751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests Coverage Results" MODIFIED="1427705282115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo2_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo2.test_create_profit_stage1 Coverage Results" MODIFIED="1427737757767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_long_straddle_tests_TestStageLongStrangle_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.long_straddle.tests.TestStageLongStrangle.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427689663496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_equity_short_stock_tests.coverage" NAME="Test: position.classes.stage.equity.short_stock.tests Coverage Results" MODIFIED="1427727465619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_stages Coverage Results" MODIFIED="1427541771862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_profit_stage1 Coverage Results" MODIFIED="1427466340061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_equity_short_stock_tests.coverage" NAME="Test: position.classes.stage.equity.short_stock.tests Coverage Results" MODIFIED="1427727465619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_tests_TestDataWebImportView.coverage" NAME="Test: data.tests.TestDataWebImportView Coverage Results" MODIFIED="1428937790454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo1_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo1.test_create_profit_stage2 Coverage Results" MODIFIED="1427744447684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_max_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_max_profit_stage1 Coverage Results" MODIFIED="1427539233463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_put_vertical_tests_TestStageLongPutVertical_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_put_vertical.tests.TestStageLongPutVertical.test_create_max_loss_stage Coverage Results" MODIFIED="1427695788588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_profit_stage1 Coverage Results" MODIFIED="1427466340061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_option_naked_put_tests.coverage" NAME="Test: position.classes.stage.option.naked_put.tests Coverage Results" MODIFIED="1427707405493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_put_vertical_tests_TestStageLongPutVertical_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_put_vertical.tests.TestStageLongPutVertical.test_create_max_loss_stage Coverage Results" MODIFIED="1427695788588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_max_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_max_profit_stage1 Coverage Results" MODIFIED="1427539233463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo1_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo1.test_create_profit_stage2 Coverage Results" MODIFIED="1427744447684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1 Coverage Results" MODIFIED="1427544283642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_profiting_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_profiting_stage2 Coverage Results" MODIFIED="1427538228811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_web_google_tests_TestTosThinkbackImportRunView_test_view.coverage" NAME="Test: data.web.google.tests.TestTosThinkbackImportRunView.test_view Coverage Results" MODIFIED="1428746777816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Unittest_TestPositionSetController_test_batch_update_foreign_keys.coverage" NAME="Unittest TestPositionSetController.test_batch_update_foreign_keys Coverage Results" MODIFIED="1428653840702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/position_set" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio2_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio2.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427698223495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Unittest_TestPositionSetController_test_batch_update_foreign_keys.coverage" NAME="Unittest TestPositionSetController.test_batch_update_foreign_keys Coverage Results" MODIFIED="1428653840702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/position_set" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_call_vertical_tests_TestStageShortCallVertical_test_create_max_profit_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_call_vertical.tests.TestStageShortCallVertical.test_create_max_profit_stage Coverage Results" MODIFIED="1427696222436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_loss_stage2 Coverage Results" MODIFIED="1427466448047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo2_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo2.test_create_loss_stage1 Coverage Results" MODIFIED="1427744072392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -137,6 +150,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_strangle_short_strangle_tests_TestStageShortStrangle_test_create_even_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.strangle.short_strangle.tests.TestStageShortStrangle.test_create_even_stage2 Coverage Results" MODIFIED="1427685769094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_even_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_even_stage2 Coverage Results" MODIFIED="1427540023458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_profit_stage1 Coverage Results" MODIFIED="1427456888067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_position_opinion_tests_TestPositionOpinionController.coverage" NAME="Test: position.position_opinion.tests.TestPositionOpinionController Coverage Results" MODIFIED="1429711561265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio2_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio2.test_create_loss_stage2 Coverage Results" MODIFIED="1427698630395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$unittest_all.coverage" NAME="unittest_all Coverage Results" MODIFIED="1427565144732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_put_vertical_tests_TestStageLongPutVertical_test_create_profit_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_put_vertical.tests.TestStageLongPutVertical.test_create_profit_stage Coverage Results" MODIFIED="1427695829678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -154,6 +168,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_option_long_put_tests_TestStageLongPut.coverage" NAME="Test: position.classes.stage.option.long_put.tests.TestStageLongPut Coverage Results" MODIFIED="1427558235671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_even_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_even_stage2 Coverage Results" MODIFIED="1427700771567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestStageLongStrangle_test_create_even_stage1.coverage" NAME="Unittest TestStageLongStrangle.test_create_even_stage1 Coverage Results" MODIFIED="1427685685096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/long_strangle" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_position_opinion_tests.coverage" NAME="Test: position.position_opinion.tests Coverage Results" MODIFIED="1429722024132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestTosThinkbackImportSelectView_test_view.coverage" NAME="Test: data.file.tos_thinkback.tests.TestTosThinkbackImportSelectView.test_view Coverage Results" MODIFIED="1428477081399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_tests_TestGetPrice_setUp.coverage" NAME="Test: data.tests.TestGetPrice.setUp Coverage Results" MODIFIED="1428936306975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$long_strangle.coverage" NAME="long_strangle Coverage Results" MODIFIED="1427683770828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/long_strangle" />
@@ -161,8 +176,10 @@
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_stages Coverage Results" MODIFIED="1427538520944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_profit_get_status1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_profit_get_status1 Coverage Results" MODIFIED="1427454324084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageLongCombo1_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageLongCombo1.test_create_max_loss_stage Coverage Results" MODIFIED="1427739305871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_position_opinion_tests_TestPositionOpinionController_test_first.coverage" NAME="Test: position.position_opinion.tests.TestPositionOpinionController.test_first Coverage Results" MODIFIED="1429711567007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestOpenThinkBack_setUp.coverage" NAME="Test: data.file.tos_thinkback.tests.TestOpenThinkBack.setUp Coverage Results" MODIFIED="1428746787758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestTosThinkbackImportRunView_test_view.coverage" NAME="Test: data.file.tos_thinkback.tests.TestTosThinkbackImportRunView.test_view Coverage Results" MODIFIED="1428477556220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$controller.coverage" NAME="controller Coverage Results" MODIFIED="1429721947913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/position_opinion" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo1_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo1.test_create_loss_stage2 Coverage Results" MODIFIED="1427744061447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestStageShortStrangle.coverage" NAME="Unittests in TestStageShortStrangle Coverage Results" MODIFIED="1427685346262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/short_strangle" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_profit_in_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_profit_in_stage1 Coverage Results" MODIFIED="1427454298135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -176,6 +193,7 @@
     <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestOpenThinkBack_test_all.coverage" NAME="Test: data.file.tos_thinkback.tests.TestOpenThinkBack.test_all Coverage Results" MODIFIED="1428571696247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_forex_short_forex_tests.coverage" NAME="Test: position.classes.stage.forex.short_forex.tests Coverage Results" MODIFIED="1427727731968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_strangle_short_strangle_tests_TestStageShortStrangle_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.strangle.short_strangle.tests.TestStageShortStrangle.test_create_profit_stage1 Coverage Results" MODIFIED="1427686277714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Unittest_TestPositionOpinionController_test_.coverage" NAME="Unittest TestPositionOpinionController.test_ Coverage Results" MODIFIED="1429728250503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/position_opinion" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_web_google_tests.coverage" NAME="Test: data.web.google.tests Coverage Results" MODIFIED="1428766554772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_profit_stage1 Coverage Results" MODIFIED="1427467622432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestSpread_test_get_probability.coverage" NAME="Unittest TestSpread.test_get_probability Coverage Results" MODIFIED="1427572872309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/spread" />
@@ -219,13 +237,13 @@
     <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestOpenThinkBack_test_single_file.coverage" NAME="Test: data.file.tos_thinkback.tests.TestOpenThinkBack.test_single_file Coverage Results" MODIFIED="1428307452919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo3.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo3 Coverage Results" MODIFIED="1427744666990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests Coverage Results" MODIFIED="1427700779325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427467527499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo1_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo1.test_create_profit_stage1 Coverage Results" MODIFIED="1427743846954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427467527499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$classes.coverage" NAME="classes Coverage Results" MODIFIED="1428322996816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/file/tos_thinkback" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_strangle_short_strangle_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.strangle.short_strangle.tests Coverage Results" MODIFIED="1427690189565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio2 Coverage Results" MODIFIED="1427553253413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio2_test_create_max_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio2.test_create_max_loss_stage2 Coverage Results" MODIFIED="1427698691465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$offdays.coverage" NAME="offdays Coverage Results" MODIFIED="1428591792877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/file/tos_thinkback" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio2_test_create_max_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio2.test_create_max_loss_stage2 Coverage Results" MODIFIED="1427698691465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_profit_stage1 Coverage Results" MODIFIED="1427541718263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_strangle_short_strangle_tests_TestStageShortStrangle_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.strangle.short_strangle.tests.TestStageShortStrangle.test_create_loss_stage1 Coverage Results" MODIFIED="1427685995913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_put_vertical_tests_TestStageLongPutVertical_test_create_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_put_vertical.tests.TestStageLongPutVertical.test_create_loss_stage Coverage Results" MODIFIED="1427695866392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -233,8 +251,9 @@
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio2_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio2.test_create_even_stage1 Coverage Results" MODIFIED="1427698220858" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_future_short_future_tests.coverage" NAME="Test: position.classes.stage.future.short_future.tests Coverage Results" MODIFIED="1427727953270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageLongCombo3_test_create_even_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageLongCombo3.test_create_even_stage Coverage Results" MODIFIED="1427738890441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427466027932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestPositionOpinionController.coverage" NAME="Unittests in TestPositionOpinionController Coverage Results" MODIFIED="1429714971961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/position_opinion" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_tests_TestGetPrice_test_get_price.coverage" NAME="Test: data.tests.TestGetPrice.test_get_price Coverage Results" MODIFIED="1428936716865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427466027932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_put_vertical_tests_TestStageLongPutVertical_test_create_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_put_vertical.tests.TestStageLongPutVertical.test_create_loss_stage Coverage Results" MODIFIED="1427696634263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_long_straddle_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.long_straddle.tests Coverage Results" MODIFIED="1427690069391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestStageLongCallVertical_test_create_even_stage.coverage" NAME="Unittest TestStageLongCallVertical.test_create_even_stage Coverage Results" MODIFIED="1427679563762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/long_strangle" />
@@ -243,8 +262,8 @@
     <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestOpenThinkBack.coverage" NAME="Test: data.file.tos_thinkback.tests.TestOpenThinkBack Coverage Results" MODIFIED="1428650989866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestSpread_test_get_account.coverage" NAME="Unittest TestSpread.test_get_account Coverage Results" MODIFIED="1427572155383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/spread" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_create_stages Coverage Results" MODIFIED="1427454587329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_max_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_max_profit_stage1 Coverage Results" MODIFIED="1427540058957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio2_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio2.test_create_even_stage1 Coverage Results" MODIFIED="1427465940030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_max_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_max_profit_stage1 Coverage Results" MODIFIED="1427540058957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_short_straddle_tests_TestStageShortStraddle_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.short_straddle.tests.TestStageShortStraddle.test_create_loss_stage2 Coverage Results" MODIFIED="1427690383428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1 Coverage Results" MODIFIED="1427467458092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio1_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio1.test_create_stages Coverage Results" MODIFIED="1427698217119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -257,54 +276,54 @@
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_stages Coverage Results" MODIFIED="1427467771752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestPositionSet_test_save.coverage" NAME="Test: position.tests.TestPositionSet.test_save Coverage Results" MODIFIED="1427752383108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_put_vertical_tests_TestStageLongPutVertical_test_create_max_profit_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_put_vertical.tests.TestStageLongPutVertical.test_create_max_profit_stage Coverage Results" MODIFIED="1427695750673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestOpenThinkBack_test_get_cycles.coverage" NAME="Test: data.file.tos_thinkback.tests.TestOpenThinkBack.test_get_cycles Coverage Results" MODIFIED="1428641469521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_tests.coverage" NAME="Test: position.tests Coverage Results" MODIFIED="1427753974429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageLongCombo1_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageLongCombo1.test_create_profit_stage1 Coverage Results" MODIFIED="1427743656714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo1_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo1.test_create_profit_stage2 Coverage Results" MODIFIED="1427737635469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestOpenThinkBack_test_get_cycles.coverage" NAME="Test: data.file.tos_thinkback.tests.TestOpenThinkBack.test_get_cycles Coverage Results" MODIFIED="1428641469521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestStageLongCallVertical_test_create_loss_stage1.coverage" NAME="Unittest TestStageLongCallVertical.test_create_loss_stage1 Coverage Results" MODIFIED="1427683840827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/long_strangle" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo1_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo1.test_create_profit_stage2 Coverage Results" MODIFIED="1427737635469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageLongCombo1_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageLongCombo1.test_create_profit_stage1 Coverage Results" MODIFIED="1427743656714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_profit_stage2 Coverage Results" MODIFIED="1427539389221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_short_straddle_tests_TestStageShortStraddle_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.short_straddle.tests.TestStageShortStraddle.test_create_profit_stage1 Coverage Results" MODIFIED="1427690502179" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestOpinion_test_set_decision_result.coverage" NAME="Test: position.tests.TestOpinion.test_set_decision_result Coverage Results" MODIFIED="1429485416106" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio3_test_create_max_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio3.test_create_max_loss_stage1 Coverage Results" MODIFIED="1427698712664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_tests_TestOpinion_test_set_decision_result.coverage" NAME="Test: position.tests.TestOpinion.test_set_decision_result Coverage Results" MODIFIED="1429485416106" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestOpenThinkBack_test_get_underlying.coverage" NAME="Test: data.file.tos_thinkback.tests.TestOpenThinkBack.test_get_underlying Coverage Results" MODIFIED="1428746901722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestOpenThinkBack_test_split.coverage" NAME="Test: data.file.tos_thinkback.tests.TestOpenThinkBack.test_split Coverage Results" MODIFIED="1428640592628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio1 Coverage Results" MODIFIED="1427553242551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__data_tests_TestStock_test_save.coverage" NAME="Test: data.tests.TestStock.test_save Coverage Results" MODIFIED="1428767966032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageLongCombo2_test_create_even_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageLongCombo2.test_create_even_stage Coverage Results" MODIFIED="1427738882842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__data_file_tos_thinkback_tests_TestOpenThinkBack_test_split.coverage" NAME="Test: data.file.tos_thinkback.tests.TestOpenThinkBack.test_split Coverage Results" MODIFIED="1428640592628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_option_naked_put_tests_TestStageNakedPut_test_create_profit_stage.coverage" NAME="Test: position.classes.stage.option.naked_put.tests.TestStageNakedPut.test_create_profit_stage Coverage Results" MODIFIED="1427707390053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageLongCombo2_test_create_even_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageLongCombo2.test_create_even_stage Coverage Results" MODIFIED="1427738882842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__data_tests_TestStock_test_save.coverage" NAME="Test: data.tests.TestStock.test_save Coverage Results" MODIFIED="1428767966032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestSpread.coverage" NAME="Unittests in TestSpread Coverage Results" MODIFIED="1427572080946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/spread" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_call_vertical_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_call_vertical.tests Coverage Results" MODIFIED="1427696325796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo2_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo2.test_create_profit_stage2 Coverage Results" MODIFIED="1427744819239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo3_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo3.test_create_even_stage1 Coverage Results" MODIFIED="1427730996605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_call_vertical_tests_TestStageShortCallVertical_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_call_vertical.tests.TestStageShortCallVertical.test_create_max_loss_stage Coverage Results" MODIFIED="1427696239896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$long_forex.coverage" NAME="long_forex Coverage Results" MODIFIED="1427727621974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/forex/long_forex" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_call_vertical_tests_TestStageShortCallVertical_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_call_vertical.tests.TestStageShortCallVertical.test_create_max_loss_stage Coverage Results" MODIFIED="1427696239896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_strangle_short_strangle_tests_TestStageShortStrangle_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.strangle.short_strangle.tests.TestStageShortStrangle.test_create_profit_stage2 Coverage Results" MODIFIED="1427686389878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__data_web_google_tests_TestTosThinkbackImportRunView_test_view_only_google_exist.coverage" NAME="Test: data.web.google.tests.TestTosThinkbackImportRunView.test_view_only_google_exist Coverage Results" MODIFIED="1428763799526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests Coverage Results" MODIFIED="1427698931828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_put_vertical_tests_TestStageLongPutVertical_test_create_max_profit_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_put_vertical.tests.TestStageLongPutVertical.test_create_max_profit_stage Coverage Results" MODIFIED="1427696477412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_hedge_protective_put_tests.coverage" NAME="Test: position.classes.stage.hedge.protective_put.tests Coverage Results" MODIFIED="1427708393750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests Coverage Results" MODIFIED="1427698931828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__data_web_google_tests_TestTosThinkbackImportRunView_test_view_only_google_exist.coverage" NAME="Test: data.web.google.tests.TestTosThinkbackImportRunView.test_view_only_google_exist Coverage Results" MODIFIED="1428763799526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_tests.coverage" NAME="Test: data.tests Coverage Results" MODIFIED="1428937796513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_hedge_protective_put_tests.coverage" NAME="Test: position.classes.stage.hedge.protective_put.tests Coverage Results" MODIFIED="1427708393750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo2_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo2.test_create_even_stage1 Coverage Results" MODIFIED="1427730717645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo2_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo2.test_create_loss_stage2 Coverage Results" MODIFIED="1427737748743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_loss_stage2 Coverage Results" MODIFIED="1427539663511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_short_straddle_tests_TestStageShortStraddle_test_create_max_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.short_straddle.tests.TestStageShortStraddle.test_create_max_profit_stage1 Coverage Results" MODIFIED="1427690633543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Unittest_TestStageLongCallVertical_test_create_profit_stage2.coverage" NAME="Unittest TestStageLongCallVertical.test_create_profit_stage2 Coverage Results" MODIFIED="1427683209082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/long_strangle" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_equity_long_stock_tests.coverage" NAME="Test: position.classes.stage.equity.long_stock.tests Coverage Results" MODIFIED="1427727475134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio2_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio2.test_create_loss_stage2 Coverage Results" MODIFIED="1427539663511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo2_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo2.test_create_loss_stage2 Coverage Results" MODIFIED="1427737748743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__data_tests_TestOption_test_set_data_dict.coverage" NAME="Test: data.tests.TestOption.test_set_data_dict Coverage Results" MODIFIED="1428371503545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_equity_long_stock_tests.coverage" NAME="Test: position.classes.stage.equity.long_stock.tests Coverage Results" MODIFIED="1427727475134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Unittest_TestStageLongCallVertical_test_create_profit_stage2.coverage" NAME="Unittest TestStageLongCallVertical.test_create_profit_stage2 Coverage Results" MODIFIED="1427683209082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/strangle/long_strangle" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests Coverage Results" MODIFIED="1427744841752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_put_vertical_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_put_vertical.tests Coverage Results" MODIFIED="1427696642676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_loss_stage1 Coverage Results" MODIFIED="1427540203397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_put_vertical_tests.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_put_vertical.tests Coverage Results" MODIFIED="1427696642676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio3_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio3.test_create_even_stage1 Coverage Results" MODIFIED="1427467322329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_option_long_call_tests.coverage" NAME="Test: position.classes.stage.option.long_call.tests Coverage Results" MODIFIED="1427707141257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_equity_long_stock_tests_TestStageLongStock.coverage" NAME="Test: position.classes.stage.equity.long_stock.tests.TestStageLongStock Coverage Results" MODIFIED="1427557317291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo3_test_create_even_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo3.test_create_even_stage Coverage Results" MODIFIED="1427744159650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_option_long_call_tests.coverage" NAME="Test: position.classes.stage.option.long_call.tests Coverage Results" MODIFIED="1427707141257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo3_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo3.test_create_loss_stage2 Coverage Results" MODIFIED="1427737893847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo3_test_create_even_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo3.test_create_even_stage Coverage Results" MODIFIED="1427744159650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageShortPutBackratio3_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageShortPutBackratio3.test_create_even_stage1 Coverage Results" MODIFIED="1427540010931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_put_backratio_tests_TestStageLongPutBackratio1_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_put_backratio.tests.TestStageLongPutBackratio1.test_create_profit_stage1 Coverage Results" MODIFIED="1427539108917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongCallBackratio1_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongCallBackratio1.test_create_even_stage1 Coverage Results" MODIFIED="1427443659332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$short_put_backratio.coverage" NAME="short_put_backratio Coverage Results" MODIFIED="1427487135766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/stage/spread/leg_two/backratio/short_put_backratio" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo1_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo1.test_create_loss_stage2 Coverage Results" MODIFIED="1427737663009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_long_call_vertical_tests_TestStageLongCallVertical_test_create_max_loss_stage.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.long_call_vertical.tests.TestStageLongCallVertical.test_create_max_loss_stage Coverage Results" MODIFIED="1427695420428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo1_test_create_loss_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo1.test_create_loss_stage2 Coverage Results" MODIFIED="1427737663009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo3_test_create_profit_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo3.test_create_profit_stage2 Coverage Results" MODIFIED="1427744330051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_short_combo_tests_TestStageShortCombo3_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.short_combo.tests.TestStageShortCombo3.test_create_loss_stage1 Coverage Results" MODIFIED="1427744247511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_combo_long_combo_tests_TestStageLongCombo1_test_create_profit_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.combo.long_combo.tests.TestStageLongCombo1.test_create_profit_stage1 Coverage Results" MODIFIED="1427737626677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -313,9 +332,9 @@
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_put_backratio_tests_TestStageLongPutBackratio1_test_even_get_status1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_put_backratio.tests.TestStageLongPutBackratio1.test_even_get_status1 Coverage Results" MODIFIED="1427454083409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Unittest_TestSpread_test_get_account_debit.coverage" NAME="Unittest TestSpread.test_get_account_debit Coverage Results" MODIFIED="1427572457499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/spread" />
     <SUITE FILE_PATH="coverage/rivers$Unittests_in_TestGetSpread.coverage" NAME="Unittests in TestGetSpread Coverage Results" MODIFIED="1428653432856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/position/classes/spread" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_long_straddle_tests_TestStageLongStrangle_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.long_straddle.tests.TestStageLongStrangle.test_create_even_stage1 Coverage Results" MODIFIED="1427689373458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio3_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_loss_stage1 Coverage Results" MODIFIED="1427553622632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_long_call_backratio_tests_TestStageLongCallBackratio3_test_create_even_stage2.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.long_call_backratio.tests.TestStageLongCallBackratio3.test_create_even_stage2 Coverage Results" MODIFIED="1427552463587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_backratio_short_call_backratio_tests_TestStageLongCallBackratio3_test_create_loss_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.backratio.short_call_backratio.tests.TestStageLongCallBackratio3.test_create_loss_stage1 Coverage Results" MODIFIED="1427553622632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_straddle_long_straddle_tests_TestStageLongStrangle_test_create_even_stage1.coverage" NAME="Test: position.classes.stage.spread.leg_two.straddle.long_straddle.tests.TestStageLongStrangle.test_create_even_stage1 Coverage Results" MODIFIED="1427689373458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rivers$Test__position_classes_stage_spread_leg_two_vertical_short_call_vertical_tests_TestStageShortCallVertical_test_create_stages.coverage" NAME="Test: position.classes.stage.spread.leg_two.vertical.short_call_vertical.tests.TestStageShortCallVertical.test_create_stages Coverage Results" MODIFIED="1427696317186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -344,24 +363,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/data/admin.py" />
-        <option value="$PROJECT_DIR$/templates/admin/footer.html" />
-        <option value="$PROJECT_DIR$/templates/admin/base.html" />
-        <option value="$PROJECT_DIR$/templates/admin/base_site.html" />
-        <option value="$PROJECT_DIR$/data/templates/data/index.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/spread/equity.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/spread/hedge.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/spread/spread.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/spread/other.html" />
-        <option value="$PROJECT_DIR$/db_flush.bat" />
-        <option value="$PROJECT_DIR$/db_reset.bat" />
-        <option value="$PROJECT_DIR$/data/models.py" />
-        <option value="$PROJECT_DIR$/data/views.py" />
-        <option value="$PROJECT_DIR$/data/tests.py" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/price.html" />
-        <option value="$PROJECT_DIR$/position/position_set/controller.py" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/price_net_change.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/symbol_page_head.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/page-head-dates.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/position_mark_pl.html" />
         <option value="$PROJECT_DIR$/tos_import/statement/statement_position/admin.py" />
@@ -369,32 +371,49 @@
         <option value="$PROJECT_DIR$/position/templates/position/profiler/position_equities.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/position_profits_losses.html" />
         <option value="$PROJECT_DIR$/tos_import/templatetags/currency_tag.py" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_stage_mover.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/position_stocks.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_instruments.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/position_page_head.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/position_dates.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/position_info.html" />
         <option value="$PROJECT_DIR$/tos_import/classes/io/open_acc/open_acc.py" />
-        <option value="$PROJECT_DIR$/debug.log" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/profiler_page_head.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/page_header.html" />
-        <option value="$PROJECT_DIR$/position/templatetags/position_set.py" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/historical_position_sets.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/position_info2.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/position_info1.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_stages.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/profiler_object_links.html" />
         <option value="$PROJECT_DIR$/opinion/models.py" />
-        <option value="$PROJECT_DIR$/position/tests.py" />
-        <option value="$PROJECT_DIR$/position/models.py" />
-        <option value="$PROJECT_DIR$/position/views.py" />
-        <option value="$PROJECT_DIR$/position/admin.py" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/index.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/opinion_buttons.html" />
         <option value="$PROJECT_DIR$/position/templates/position/spread/index.html" />
-        <option value="$PROJECT_DIR$/position/templates/position/spread/instruments.html" />
         <option value="$PROJECT_DIR$/tos_import/statement/statement_position/models.py" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/symbol_page_head.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_opinion.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_opinions.py" />
+        <option value="$PROJECT_DIR$/tos_import/templatetags/verbose_name.py" />
+        <option value="$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/spread/forexs.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/spread/futures.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/spread/instruments.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_instruments.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_stage_mover.html" />
+        <option value="$PROJECT_DIR$/position/tests.py" />
+        <option value="$PROJECT_DIR$/position/position_opinion/tests.html" />
+        <option value="$PROJECT_DIR$/position/position_opinion/tests.py" />
+        <option value="$PROJECT_DIR$/position/models.py" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_opinion_button.html" />
+        <option value="$PROJECT_DIR$/position/position_opinion/controller.py" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/paginator.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/admin/changelist.html" />
+        <option value="$PROJECT_DIR$/templates/admin/change_list.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/admin/change_list.html" />
+        <option value="$PROJECT_DIR$/debug.log" />
+        <option value="$PROJECT_DIR$/position/templatetags/position_set.py" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_info3.html" />
+        <option value="$PROJECT_DIR$/position/admin.py" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/profiler_object_links.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_stages.html" />
+        <option value="$PROJECT_DIR$/position/views.py" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_opinions.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/index.html" />
       </list>
     </option>
   </component>
@@ -430,7 +449,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -459,47 +477,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tos_import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tos_import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tos_import" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="statement_position" />
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -514,6 +496,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="position" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="position" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templatetags" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -564,9 +564,36 @@
               <option name="myItemId" value="position" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="profiler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rivers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="position" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="position" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -599,94 +626,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Django server.rivers">
-    <configuration default="false" name="Test: position.tests.TestOpinion" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="position.tests.TestOpinion" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: position.tests.TestOpinion.test_set_result" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="position.tests.TestOpinion.test_set_result" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: position.tests.TestDecision" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="position.tests.TestDecision" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test: position.tests.TestDecision.test_save" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="position.tests.TestDecision.test_save" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="Test: position.tests.TestOpinion.test_set_decision_result" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -705,6 +644,97 @@
       <option name="CUSTOM_SETTINGS" value="false" />
       <option name="USE_OPTIONS" value="false" />
       <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in TestPositionOpinionController" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="C:\Anaconda\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/position_opinion" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/position_opinion/tests.py" />
+      <option name="CLASS_NAME" value="TestPositionOpinionController" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="controller" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/position_opinion" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/position_opinion/controller.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Test: position.position_opinion.tests" type="DjangoTestsConfigurationType" factoryName="Django tests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="position.position_opinion.tests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestPositionOpinionController.test_" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="C:\Anaconda\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/position/position_opinion" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/position/position_opinion/tests.py" />
+      <option name="CLASS_NAME" value="TestPositionOpinionController" />
+      <option name="METHOD_NAME" value="test_" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
@@ -793,27 +823,7 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="rivers" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -839,7 +849,27 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="rivers" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -967,19 +997,19 @@
       <item index="0" class="java.lang.String" itemvalue="Django server.rivers" />
       <item index="1" class="java.lang.String" itemvalue="Django tests.Test: All" />
       <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest: All" />
-      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestOpinion" />
-      <item index="4" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestOpinion.test_set_result" />
-      <item index="5" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestDecision" />
-      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestDecision.test_save" />
-      <item index="7" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestOpinion.test_set_decision_result" />
+      <item index="3" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestOpinion.test_set_decision_result" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in TestPositionOpinionController" />
+      <item index="5" class="java.lang.String" itemvalue="Python.controller" />
+      <item index="6" class="java.lang.String" itemvalue="Django tests.Test: position.position_opinion.tests" />
+      <item index="7" class="java.lang.String" itemvalue="Python tests.Unittest TestPositionOpinionController.test_" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestOpinion.test_set_decision_result" />
-        <item index="1" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestOpinion" />
-        <item index="2" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestDecision" />
-        <item index="3" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestDecision.test_save" />
-        <item index="4" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestOpinion.test_set_result" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestPositionOpinionController.test_" />
+        <item index="1" class="java.lang.String" itemvalue="Django tests.Test: position.position_opinion.tests" />
+        <item index="2" class="java.lang.String" itemvalue="Python.controller" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestPositionOpinionController" />
+        <item index="4" class="java.lang.String" itemvalue="Django tests.Test: position.tests.TestOpinion.test_set_decision_result" />
       </list>
     </recent_temporary>
   </component>
@@ -1069,7 +1099,11 @@
       <created>1429211169084</created>
       <updated>1429211169084</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fix bugs..&#10;position_opinion">
+      <created>1429624444110</created>
+      <updated>1429624444110</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1101,28 +1135,28 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32705098" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2962567" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2631016" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42350334" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27937916" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44124168" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31374723" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1132,9 +1166,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32705098" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2962567" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31497326" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27937916" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1170,7 +1204,8 @@
     <MESSAGE value="data import :)" />
     <MESSAGE value="forex date bug fix" />
     <MESSAGE value="bugs fix&#10;profiler equity..." />
-    <option name="LAST_COMMIT_MESSAGE" value="bugs fix&#10;profiler equity..." />
+    <MESSAGE value="fix bugs..&#10;position_opinion" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bugs..&#10;position_opinion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1178,90 +1213,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/spread/hedge.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="156">
-          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/spread/spread.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="156">
-          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/spread/other.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="520">
-          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17951669" vertical-offset="1300" max-vertical-offset="7072">
-          <caret line="62" column="40" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/spread/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1958042" vertical-offset="25576" max-vertical-offset="27586">
-          <caret line="994" column="0" selection-start-line="994" selection-start-column="0" selection-end-line="998" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/base/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33216783" vertical-offset="1136" max-vertical-offset="2574">
-          <caret line="60" column="67" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_reset.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="51" selection-start-line="0" selection-start-column="51" selection-end-line="0" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_flush.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="51" selection-start-line="0" selection-start-column="51" selection-end-line="0" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/position_set/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11967779" vertical-offset="0" max-vertical-offset="4576">
-          <caret line="4" column="106" selection-start-line="4" selection-start-column="106" selection-end-line="4" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/holidays.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3172">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/templates/data/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5119904" vertical-offset="1315" max-vertical-offset="5460">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="68" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Anaconda/Lib/site-packages/django/db/backends/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21288837" vertical-offset="20381" max-vertical-offset="35412">
-          <caret line="794" column="0" selection-start-line="794" selection-start-column="0" selection-end-line="794" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Anaconda/Lib/site-packages/django/db/models/query.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21288837" vertical-offset="7511" max-vertical-offset="44824">
@@ -1273,13 +1224,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.50863063" vertical-offset="260" max-vertical-offset="13260">
           <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55120826" vertical-offset="4175" max-vertical-offset="5044">
-          <caret line="180" column="54" selection-start-line="180" selection-start-column="54" selection-end-line="180" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -1311,24 +1255,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/position/position_set/controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5" vertical-offset="2548" max-vertical-offset="3120">
-          <caret line="110" column="49" selection-start-line="110" selection-start-column="49" selection-end-line="110" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_position/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5813397" vertical-offset="11422" max-vertical-offset="18772">
           <caret line="458" column="23" selection-start-line="458" selection-start-column="23" selection-end-line="458" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/forexs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22781774" vertical-offset="668" max-vertical-offset="2574">
-          <caret line="33" column="64" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -1346,24 +1276,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/templatetags/verbose_name.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14959724" vertical-offset="0" max-vertical-offset="869">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/templatetags/currency_tag.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17951669" vertical-offset="0" max-vertical-offset="869">
           <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_instruments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9183922" vertical-offset="0" max-vertical-offset="6786">
-          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1374,41 +1290,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_stage_mover.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9785624" vertical-offset="2032" max-vertical-offset="3042">
-          <caret line="108" column="24" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tos_import/classes/io/open_acc/open_acc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11967779" vertical-offset="0" max-vertical-offset="13910">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/debug.log">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="837">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/symbol_page_head.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5483871" vertical-offset="0" max-vertical-offset="936">
-          <caret line="17" column="45" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/page_header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12470024" vertical-offset="0" max-vertical-offset="1014">
-          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1419,38 +1304,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/position/templatetags/position_set.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3915" max-vertical-offset="4836">
-          <caret line="164" column="16" selection-start-line="164" selection-start-column="16" selection-end-line="164" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_stocks.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.657143" vertical-offset="4160" max-vertical-offset="7046">
           <caret line="173" column="56" selection-start-line="173" selection-start-column="20" selection-end-line="173" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_info1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12470024" vertical-offset="0" max-vertical-offset="2236">
-          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_stages.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2285714" vertical-offset="0" max-vertical-offset="1768">
-          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/profiler_object_links.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3117506" vertical-offset="0" max-vertical-offset="834">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1461,85 +1318,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_info2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28057554" vertical-offset="78" max-vertical-offset="1586">
-          <caret line="12" column="33" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2747" max-vertical-offset="5200">
-          <caret line="391" column="26" selection-start-line="391" selection-start-column="26" selection-end-line="391" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2340" max-vertical-offset="6370">
-          <caret line="111" column="15" selection-start-line="111" selection-start-column="15" selection-end-line="111" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/opinion_buttons.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5148">
-          <caret line="0" column="34" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6099" max-vertical-offset="6968">
-          <caret line="242" column="19" selection-start-line="242" selection-start-column="19" selection-end-line="242" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3593179" vertical-offset="1629" max-vertical-offset="12662">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35864487" vertical-offset="5283" max-vertical-offset="7488">
-          <caret line="220" column="55" selection-start-line="220" selection-start-column="55" selection-end-line="220" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Anaconda/Lib/site-packages/django/core/exceptions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29919448" vertical-offset="0" max-vertical-offset="3718">
           <caret line="13" column="24" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="520" max-vertical-offset="3068">
-          <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
-          <folding>
-            <element signature="e#2285#3051#0" expanded="false" />
-            <element signature="e#3105#14214#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/instruments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50669914" vertical-offset="1274" max-vertical-offset="2782">
-          <caret line="65" column="48" selection-start-line="65" selection-start-column="48" selection-end-line="65" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1547,9 +1329,268 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45560747" vertical-offset="2236" max-vertical-offset="13754">
           <caret line="101" column="43" selection-start-line="101" selection-start-column="43" selection-end-line="101" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/page_header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12470024" vertical-offset="0" max-vertical-offset="1014">
+          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/profiler_header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.6285715" vertical-offset="0" max-vertical-offset="936">
+          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_info1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43645084" vertical-offset="0" max-vertical-offset="2236">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/position_set/controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.2612197" vertical-offset="0" max-vertical-offset="3120">
+          <caret line="110" column="49" selection-start-line="110" selection-start-column="49" selection-end-line="110" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/position_set/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12560387" vertical-offset="0" max-vertical-offset="9178">
+          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3709869" vertical-offset="3900" max-vertical-offset="5044">
+          <caret line="163" column="13" selection-start-line="163" selection-start-column="4" selection-end-line="163" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/holidays.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12366231" vertical-offset="0" max-vertical-offset="3172">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/offdays.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46373364" vertical-offset="0" max-vertical-offset="962">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/templatetags/verbose_name.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statistic/simple/stat_day/templates/stat_day/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.9714284" vertical-offset="3362" max-vertical-offset="8242">
+          <caret line="136" column="31" selection-start-line="136" selection-start-column="31" selection-end-line="136" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/forexs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.342857" vertical-offset="678" max-vertical-offset="2574">
+          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/instruments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36065573" vertical-offset="702" max-vertical-offset="2782">
+          <caret line="38" column="71" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/futures.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4676259" vertical-offset="676" max-vertical-offset="2600">
+          <caret line="41" column="64" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22439586" vertical-offset="7215" max-vertical-offset="11544">
+          <caret line="301" column="21" selection-start-line="301" selection-start-column="21" selection-end-line="301" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_stage_mover.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7466504" vertical-offset="2169" max-vertical-offset="2990">
+          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_instruments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2086331" vertical-offset="2854" max-vertical-offset="4342">
+          <caret line="165" column="57" selection-start-line="165" selection-start-column="12" selection-end-line="165" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5309" max-vertical-offset="7488">
+          <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9464">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_opinion_button.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.6419" vertical-offset="1274" max-vertical-offset="5408">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/paginator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="2548">
+          <caret line="59" column="12" selection-start-line="56" selection-start-column="10" selection-end-line="59" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/change_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45901638" vertical-offset="1300" max-vertical-offset="4186">
+          <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="65" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/debug.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="837">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="841">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/admin/change_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.142858" vertical-offset="0" max-vertical-offset="546">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templatetags/position_set.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4097" max-vertical-offset="5018">
+          <caret line="185" column="25" selection-start-line="185" selection-start-column="25" selection-end-line="185" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_info3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4676259" vertical-offset="468" max-vertical-offset="2548">
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4940" max-vertical-offset="7462">
+          <caret line="217" column="25" selection-start-line="217" selection-start-column="25" selection-end-line="217" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2043" max-vertical-offset="15028">
+          <caret line="176" column="24" selection-start-line="176" selection-start-column="24" selection-end-line="176" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_stages.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.342857" vertical-offset="208" max-vertical-offset="1716">
+          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/profiler_object_links.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6857142" vertical-offset="0" max-vertical-offset="884">
+          <caret line="9" column="71" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17528373" vertical-offset="1447" max-vertical-offset="12662">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_info2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2285714" vertical-offset="0" max-vertical-offset="1586">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_opinions.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56354916" vertical-offset="3092" max-vertical-offset="3926">
+          <caret line="137" column="21" selection-start-line="137" selection-start-column="14" selection-end-line="137" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3908873" vertical-offset="3496" max-vertical-offset="7124">
+          <caret line="147" column="15" selection-start-line="147" selection-start-column="15" selection-end-line="147" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>

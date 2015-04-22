@@ -181,21 +181,23 @@ class PositionOpinionAdminForm(forms.ModelForm):
 
     decision = forms.ChoiceField(choices=DECISIONS)
 
-    ANALYSIS_LEVELS = (
+    ANALYSIS = (
         ('QUICK', 'QUICK'),
         ('SIMPLE', 'SIMPLE'),
         ('DEEP', 'DEEP'),
     )
 
-    analysis_level = forms.ChoiceField(choices=ANALYSIS_LEVELS)
+    analysis = forms.ChoiceField(choices=ANALYSIS)
 
 
 class PositionOpinionAdmin(admin.ModelAdmin):
     form = PositionOpinionAdminForm
 
+    change_list_template = 'position/admin/change_list.html'
+
     list_display = (
         'position_set', 'date', 'direction', 'decision',
-        'analysis_level', 'description',
+        'analysis', 'description',
         'direction_result', 'decision_result'
     )
 
@@ -206,13 +208,14 @@ class PositionOpinionAdmin(admin.ModelAdmin):
         ('Primary Field', {
             'fields': (
                 'date', 'direction', 'decision',
-                'analysis_level', 'description',
+                'analysis', 'description',
                 'direction_result', 'decision_result'
             )
         }),
     )
 
     search_fields = (
+        'position_set__id',
         'position_set__name',
         'position_set__spread',
         'position_set__underlying__symbol',
@@ -226,6 +229,8 @@ class PositionOpinionAdmin(admin.ModelAdmin):
         'position_set__spread',
         'position_set__status',
     )
+
+    list_per_page = 20
 
 
 admin.site.register(PositionSet, PositionSetAdmin)
@@ -252,7 +257,12 @@ admin.site.register_view(
     view=profiler_view
 )
 admin.site.register_view(
-    'position/profiler/(?P<position_set_id>[0-9]+)/$',
+    'position/profiler/(?P<id>[0-9]+)/$',
+    urlname='position_set_profiler_view',
+    view=profiler_view
+)
+admin.site.register_view(
+    'position/profiler/(?P<id>[0-9]+)/(?P<date>\d{4}-\d{2}-\d{2})/$',
     urlname='position_set_profiler_view',
     view=profiler_view
 )
@@ -264,8 +274,16 @@ admin.site.register_view(
     view=position_add_opinion_view
 )
 admin.site.register_view(
-    'position/opinion/add/(?P<position_set_id>[0-9]+)/'
+    'position/opinion/add/'
+    '(?P<id>[0-9]+)/(?P<date>\d{4}-\d{2}-\d{2})/'
     '(?P<direction>[a-z]+)/(?P<decision>[a-z]+)/$',
     urlname='position_add_opinion_view',
     view=position_add_opinion_view
+)
+
+# update opinion results
+admin.site.register_view(
+    'position/opinion/set_results/',
+    urlname='update_opinion_results',
+    view=update_opinion_results
 )

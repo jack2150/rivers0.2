@@ -1,0 +1,16 @@
+{% extends "admin/change_list.html" %}
+
+{% block change-list-extra-head-button %}
+  <button id="update-opinions" class="btn btn-white btn-success btn-bold">
+    <i class="ace-icon fa fa-pencil bigger-120 green"></i>
+    Update opinion results
+  </button>
+  <script type="text/javascript">
+    $("#update-opinions").click(function () {
+      $(location).attr(
+          'href',
+          "{% url 'admin:update_opinion_results' %}"
+      );
+    });
+  </script>
+{% endblock %}

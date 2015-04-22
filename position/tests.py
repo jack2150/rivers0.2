@@ -299,7 +299,7 @@ class TestOpinion(TestSetUpDB):
         self.expected_keys = [
             'position_set', 'direction',
             'direction_result', 'decision_result',
-            'analysis_level', 'description',
+            'analysis', 'description',
         ]
 
     def test_save(self):
@@ -313,7 +313,7 @@ class TestOpinion(TestSetUpDB):
         self.assertEqual(self.opinion.direction, 'BULL')
         self.assertFalse(self.opinion.direction_result)
         self.assertFalse(self.opinion.decision_result)
-        self.assertEqual(self.opinion.analysis_level, 'quick')
+        self.assertEqual(self.opinion.analysis, 'quick')
         self.assertFalse(self.opinion.description)
 
         # save the result

@@ -4,20 +4,20 @@
 
   {% if position_prices.net_change > 0 %}
     <span class="green">
-          {{ position_prices.net_change|stringformat:"+.2f" }}
-          ({{ position_prices.pct_change|stringformat:"+.2f%%" }})
-        </span>
+      {{ position_prices.net_change|stringformat:"+.2f" }}
+      ({{ position_prices.pct_change|stringformat:"+.2f%%" }})
+    </span>
   {% else %}
     <span class="red">
-          {{ position_prices.net_change|stringformat:"+.2f" }}
-          ({{ position_prices.pct_change|stringformat:"+.2f%%" }})
-        </span>
+      {{ position_prices.net_change|stringformat:"+.2f" }}
+      ({{ position_prices.pct_change|stringformat:"+.2f%%" }})
+    </span>
   {% endif %}
 
   <span class="close_time">
-        {{ position_prices.time|time|upper }}
-      </span>
-
+    {{ position_prices.date|date }}
+    {{ position_prices.date|time|upper }}
+  </span>
 </div>
 
 <div class="symbol-page-head-helper">

@@ -30,7 +30,7 @@
         {% if forloop.first %}
           <thead class="padding-bottom-4" style="height: 40px;">
           <tr>
-            <th>{% verbose_name position_future.future 'symbol' %}</th>
+            <th>{{ position_future.future|verbose_name:"symbol" }}</th>
             <th>Spread</th>
             <th>Strategy</th>
             <th class="hide">Stage</th>
@@ -38,10 +38,10 @@
 
             <th>Status</th>
             <th>Last</th>
-            <th>{% verbose_name position_future 'mark' %}</th>
-            <th>{% verbose_name position_future 'mark_change' %}</th>
-            <th>{% verbose_name position_future 'pl_open' %}</th>
-            <th>{% verbose_name position_future 'pl_day' %}</th>
+            <th>{{ position_future|verbose_name:"mark" }}</th>
+            <th>{{ position_future|verbose_name:"mark_change" }}</th>
+            <th>{{ position_future|verbose_name:"pl_open" }}</th>
+            <th>{{ position_future|verbose_name:"pl_day" }}</th>
             <th></th>
           </tr>
           </thead>

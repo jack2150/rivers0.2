@@ -2,7 +2,7 @@ from django import template
 register = template.Library()
 
 
-@register.simple_tag
+@register.filter
 def verbose_name(instance, field_name):
     """
     Returns verbose_name for a field.

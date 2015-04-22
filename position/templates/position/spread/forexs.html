@@ -31,17 +31,17 @@
         {% if forloop.first %}
           <thead class="padding-bottom-4" style="height: 40px;">
           <tr>
-            <th>{% verbose_name position_forex.forex 'symbol' %}</th>
+            <th>{{ position_forex.forex|verbose_name:"symbol" }}</th>
             <th>Spread</th>
             <th>Strategy</th>
             <th class="hide">Stage</th>
             <th>Stages</th>
             <th>Status</th>
             <th>Last</th>
-            <th>{% verbose_name position_forex 'mark' %}</th>
-            <th>{% verbose_name position_forex 'mark_change' %}</th>
-            <th>{% verbose_name position_forex 'pl_open' %}</th>
-            <th>{% verbose_name position_forex 'pl_day' %}</th>
+            <th>{{ position_forex|verbose_name:"mark" }}</th>
+            <th>{{ position_forex|verbose_name:"mark_change" }}</th>
+            <th>{{ position_forex|verbose_name:"pl_open" }}</th>
+            <th>{{ position_forex|verbose_name:"pl_day" }}</th>
             <th></th>
           </tr>
           </thead>

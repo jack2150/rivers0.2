@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-md-12 right_date_change">
+    <div class="btn-group btn-corner">
+      <button id="first" class="btn {% if first == None %}disabled{% endif %} btn-white btn-sm btn-primary">
+        <i class="fa fa-step-backward"></i>
+        First
+      </button>
+
+      <button id="previous" class="btn {% if previous == None %}disabled{% endif %} btn-white btn-sm btn-primary">
+        Previous
+      </button>
+
+      <button id="next" class="btn {% if next == None %}disabled{% endif %} btn-white btn-sm btn-primary">
+        Next
+      </button>
+
+      <button id="last" class="btn {% if last == None %}disabled{% endif %} btn-white btn-sm btn-primary">
+        Last
+        <i class="fa fa-step-forward"></i>
+      </button>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function go_to_previous_page() {
+      {% if previous %}
+        $(location).attr(
+            'href',
+            "{% url 'admin:position_set_profiler_view' position_set.id previous %}"
+        );
+      {% endif %}
+    }
+
+    function go_to_next_page() {
+      {% if next %}
+        $(location).attr(
+            'href',
+            "{% url 'admin:position_set_profiler_view' position_set.id next %}"
+        );
+      {% endif %}
+    }
+
+    $(function () {
+      // previous
+      $("#previous").click(function () {
+        go_to_previous_page();
+      });
+
+      // next
+      $("#next").click(function () {
+        go_to_next_page();
+      });
+
+      // first
+      $("#first").click(function () {
+        {% if first %}
+          $(location).attr(
+              'href',
+              "{% url 'admin:position_set_profiler_view' position_set.id first %}"
+          );
+        {% endif %}
+      });
+
+      // last
+      $("#last").click(function () {
+        {% if last %}
+          $(location).attr(
+              'href',
+              "{% url 'admin:position_set_profiler_view' position_set.id last %}"
+          );
+        {% endif %}
+      });
+    });
+
+    // next or previous page
+    $(document).keydown(function (e) {
+      switch (e.which) {
+        case 37: // left
+          go_to_previous_page();
+          break;
+
+        case 39: // right
+          go_to_next_page();
+          break;
+
+        default:
+          return; // exit this handler for other keys
+      }
+      e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
+  </script>
+</div>

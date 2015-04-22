@@ -13,15 +13,15 @@
     {% if forloop.first %}
       <thead>
       <tr>
-        <th>{% verbose_name position_instrument.position_summary 'date' %}</th>
-        <th>{% verbose_name position_instrument.positionequity 'mark' %}</th>
-        <th>{% verbose_name position_instrument.positionequity 'mark_change' %}</th>
-        <th>{% verbose_name position_instrument 'pct_change' %}</th>
-        <th>{% verbose_name position_instrument 'pl_open' %}</th>
-        <th>{% verbose_name position_instrument 'pl_day' %}</th>
+        <th>{{ position_instrument.position_summary|verbose_name:"date" }}</th>
+        <th>{{ position_instrument.positionequity|verbose_name:"mark" }}</th>
+        <th>{{ position_instrument.positionequity|verbose_name:"mark_change" }}</th>
+        <th>{{ position_instrument|verbose_name:"pct_change" }}</th>
+        <th>{{ position_instrument|verbose_name:"pl_open" }}</th>
+        <th>{{ position_instrument|verbose_name:"pl_day" }}</th>
         <th>Stage</th>
         <th>Status</th>
-        <th>{% verbose_name position_instrument 'bp_effect' %}</th>
+        <th>{{ position_instrument|verbose_name:"bp_effect" }}</th>
       </tr>
       </thead>
     {% endif %}

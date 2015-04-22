@@ -1,0 +1,93 @@
+{% load position_set %}
+{% if position_opinions %}
+{% with last_opinion=position_opinions|last %}
+<table class="table">
+  <tr>
+    <th class="no_border_top" colspan="2">Current Opinion</th>
+  </tr>
+  <tr>
+    <th>Latest Direction:</th>
+    <td class="col-md-6">
+      {% if last_opinion.direction == 'BULL' %}
+        <i class="fa fa-arrow-up green fix_width"></i>
+      {% elif last_opinion.direction == 'BEAR' %}
+        <i class="fa fa-arrow-down red fix_width"></i>
+      {% endif %}
+      {{ last_opinion.direction }}
+    </td>
+  </tr>
+  <tr>
+    <th>Direction Result:</th>
+    <td class="col-md-6">
+    {% if last_opinion.direction_result %}
+      <i class="fa fa-check green fix_width"></i>
+    {% else %}
+      <i class="fa fa-close red fix_width"></i>
+    {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <th>BULL:</th>
+    <td>
+      {{ last_opinion.bull.count }}
+      ({{ last_opinion.bull.correct_pct|stringformat:".0f%%" }} /
+      {{ last_opinion.bull.wrong_pct|stringformat:".0f%%" }} )
+    </td>
+  </tr>
+  <tr>
+    <th>BEAR:</th>
+    <td>
+      {{ last_opinion.bear.count }}
+      ({{ last_opinion.bear.correct_pct|stringformat:".0f%%" }} /
+      {{ last_opinion.bear.wrong_pct|stringformat:".0f%%" }} )
+    </td>
+  </tr>
+  <tr>
+    <th>Latest Decision:</th>
+    <td>
+      {% if last_opinion.decision == 'HOLD' %}
+        <i class="fa fa-clock-o yellow fix_width"></i>
+      {% elif last_opinion.decision == 'CLOSE' %}
+        <i class="fa fa-times blue fix_width"></i>
+      {% endif %}
+      {{ last_opinion.decision }}
+    </td>
+  </tr>
+  <tr>
+    <th>Decision Result:</th>
+    <td class="col-md-6">
+      {% if last_opinion.decision_result %}
+        <i class="fa fa-check green fix_width"></i>
+      {% else %}
+        <i class="fa fa-close red fix_width"></i>
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <th>Analysis:</th>
+    <td>
+      {% if last_opinion.analysis == 'QUICK' %}
+        <i class="fa fa-bolt light-blue fix_width"></i>
+      {% elif last_opinion.analysis == 'SIMPLE' %}
+        <i class="fa fa-coffee blue fix_width"></i>
+      {% elif last_opinion.analysis == 'DEEP' %}
+        <i class="fa fa-pie-chart purple fix_width"></i>
+      {% endif %}
+      {{ last_opinion.analysis }}
+    </td>
+  </tr>
+  {% if last_opinion.description %}
+  <tr>
+    <th colspan="2">
+      <label for="description"><b>Description:</b></label>
+    </th>
+  </tr>
+  <tr>
+    <td class="no_border_top" colspan="2">
+      <pre>{{ last_opinion.description|capfirst }}</pre>
+    </td>
+  </tr>
+  {% endif %}
+</table>
+{% endwith %}
+{% endif %}

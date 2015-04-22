@@ -25,12 +25,10 @@
           {% endif %}
           {{ ps|cut:"Stage: " }}
         </td>
-
       {% elif ps.stage_name == 'EVEN' %}
-
         <td>
           {% if ps.stage_name == position_prices.stage.stage_name %}
-            <span class="btn-default"><i class="fix_width ace-icon fa
+            <span class="label label_fix2"><i class="fix_width ace-icon fa
                 fa-question-circle icon-only"></i></span>
           {% else %}
             <i class="fix_width ace-icon fa fa-question-circle icon-only"></i>
