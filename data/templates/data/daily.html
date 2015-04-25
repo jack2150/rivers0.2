@@ -1,0 +1,41 @@
+{% if insert_files %}
+  <div id="import_success" class="panel panel-success">
+    <div class="panel-heading">
+      <i class="ace-icon fa fa-check"></i> &nbsp;
+      Import success
+    </div>
+    <table class="table">
+      {% for insert_file in insert_files %}
+        {% if forloop.first %}
+          <tr>
+            <th>No.</th>
+            <th>Symbol</th>
+            <th>Date</th>
+            <th>Path</th>
+            <th>Stock</th>
+            <th>Contract Count</th>
+            <th>Option Count</th>
+          </tr>
+        {% endif %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ insert_file.symbol }}</td>
+          <td>{{ insert_file.date }}</td>
+          <td>{{ insert_file.path }}</td>
+          <td>{{ insert_file.stock }}</td>
+          <td>{{ insert_file.contracts }}</td>
+          <td>{{ insert_file.options }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% else %}
+  <div id="import_success" class="alert alert-warning">
+    <button class="close" type="button" data-dismiss="alert">
+      <i class="ace-icon fa fa-times"></i>
+    </button>
+    <strong>No new files to import.</strong>
+    Please add files into daily folder before start!
+    <br>
+  </div>
+{% endif %}

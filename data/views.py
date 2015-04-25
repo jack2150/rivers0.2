@@ -25,21 +25,14 @@ def data_select_symbol_view(request):
     """
     template = 'data/index.html'
 
-    csv_symbols = [
+    symbols = [
         os.path.basename(path).upper() for path in
         glob(os.path.join(THINKBACK_DIR, '*'))
-        if os.path.isdir(path)
+        if os.path.isdir(path) and '_daily' not in path
     ]
 
-    # not support by sqlite, but support by postgresql
-    try:
-        web_symbols = [stock.symbol for stock in Stock.objects.distinct('symbol')]
-    except NotImplementedError:
-        web_symbols = [stock['symbol'] for stock in Stock.objects.values('symbol').distinct()]
-
     parameters = dict(
-        csv_symbols=csv_symbols,
-        web_symbols=web_symbols
+        symbols=symbols
     )
 
     return render(request, template, parameters)
@@ -99,7 +92,6 @@ def data_tos_thinkback_import_view(request, symbol):
     """:type: str"""
 
     insert_files = list()
-    missing_files = list()
 
     # move files into year folder
     no_year_files = glob(os.path.join(THINKBACK_DIR, symbol, '*.csv'))
@@ -401,6 +393,133 @@ def data_web_import_view(request, symbol=''):
     parameters = dict(
         symbol=symbol,
         stocks=new_stocks
+    )
+
+    return render(request, template, parameters)
+
+
+def data_daily_import_view(request):
+    """
+    Import all csv files in daily folder
+    then insert web data for that date
+    :param request: request
+    :return: render
+    """
+    template = 'data/daily.html'
+
+    insert_files = list()
+
+    files = [
+        path for path in
+        glob(os.path.join(THINKBACK_DIR, '_daily', '*.csv'))
+    ]
+
+    for f in files:
+        contracts = 0
+        options = 0
+
+        # get filename and dir
+        filename = os.path.basename(f)
+        print 'running file: %s...' % filename
+        date, symbol = map(
+            lambda x: x.upper(),
+            filename[:-4].split('-StockAndOptionQuoteFor')
+        )
+
+        # file into dict
+        stock_data, option_data = OpenThinkBack(date=date, data=open(f).read()).format()
+
+        # save stock
+        stock = Stock()
+        stock.symbol = symbol
+        stock.source = 'tos_thinkback'
+        stock.data = stock_data
+        stock.save()
+
+        # save contract and option
+        for contract_dict, option_dict in option_data:
+            try:
+                contract = OptionContract.objects.get(option_code=contract_dict['option_code'])
+            except ObjectDoesNotExist:
+                contract = OptionContract()
+                contract.symbol = symbol
+                contract.source = 'tos_thinkback'
+                contract.data = contract_dict
+                contract.save()
+                contracts += 1
+
+            option = Option()
+            option.option_contract = contract
+            option.data = option_dict
+            option.save()
+            options += 1
+
+        # move file into folder
+        year = filename[:4]
+        year_dir = os.path.join(THINKBACK_DIR, symbol, year)
+
+        # make dir if not exists
+        if not os.path.isdir(year_dir):
+            os.mkdir(year_dir)
+
+        os.rename(f, os.path.join(year_dir, os.path.basename(f)))
+
+        # save data from web
+        google_data = get_data_google(
+            symbols=symbol,
+            # start='2015-04-01', end='2015-04-10',  # test only
+            start=date, end=date,
+            adjust_price=True
+        )
+
+        yahoo_data = get_data_yahoo(
+            symbols=symbol,
+            # start='2015-04-01', end='2015-04-10',  # test only
+            start=date, end=date,
+            adjust_price=True
+        )
+
+        for index, data in google_data.iterrows():
+            if int(data['Volume']) > 0:
+                google_stock = Stock(
+                    symbol=symbol,
+                    date=index.strftime('%Y-%m-%d'),
+                    open=data['Open'],
+                    high=data['High'],
+                    low=data['Low'],
+                    close=data['Close'],
+                    volume=data['Volume'],
+                    source='google'
+                )
+                google_stock.save()
+
+        for index, data in yahoo_data.iterrows():
+            if int(data['Volume']) > 0:
+                yahoo_stock = Stock(
+                    symbol=symbol,
+                    date=index.strftime('%Y-%m-%d'),
+                    open=data['Open'],
+                    high=data['High'],
+                    low=data['Low'],
+                    close=data['Close'],
+                    volume=data['Volume'],
+                    source='yahoo'
+                )
+                yahoo_stock.save()
+
+        insert_files.append(
+            dict(
+                symbol=symbol,
+                date=date,
+                path=filename,
+                stock=1,
+                contracts=contracts,
+                options=options
+            )
+        )
+
+    parameters = dict(
+        insert_files=insert_files
     )
 
     return render(request, template, parameters)

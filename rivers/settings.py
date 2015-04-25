@@ -190,6 +190,13 @@ LOGGING = {
     },
 }
 
+# no cache for development stage
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
 # test using sqlite
 if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing and django-coverage
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'

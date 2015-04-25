@@ -18,7 +18,13 @@
         <div class="col-md-7">
           <div id="position_instruments_filters"></div>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-2" style="text-align: right">
+          <button id="underlying-symbols" class="btn btn-white btn-info btn-bold">
+            <i class="ace-icon fa fa-pencil bigger-120 blue"></i>
+            Symbols
+          </button>
+
+        </div>
       </div>
     </div>
     <table id="position_instruments" class="table table-striped">
@@ -95,6 +101,28 @@
     <div class="panel-footer" id="position_instruments_footer">
     </div>
   </div>
+
+
+  <div id="dialog" title="Underlying symbols:">
+    <label for="symbol-list" class="hide">Underlying symbols:</label>
+    <textarea id="symbol-list" class="form-control" readonly>{% for position_instrument in position_instruments %}
+{{ position_instrument.underlying.symbol }}{% endfor %}</textarea>
+  </div>
+
+  <script type="text/javascript">
+    $("#dialog").dialog({
+      autoOpen: false,
+      open: function (event, ui) {
+        setTimeout("$('#dialog').dialog('close')", 5000);
+      }
+    });
+    $("#underlying-symbols").click(function () {
+      $("#dialog").dialog("open");
+    });
+    $("#symbol-list").click(function () {
+      $(this).select();
+    });
+  </script>
 {% endif %}
 
 

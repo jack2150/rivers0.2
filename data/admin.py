@@ -164,3 +164,10 @@ admin.site.register_view(
     urlname='data_web_import_view',
     view=data_web_import_view
 )
+
+# daily import csv and web
+admin.site.register_view(
+    'data/daily/import/$',
+    urlname='data_daily_import_view',
+    view=data_daily_import_view
+)

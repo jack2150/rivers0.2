@@ -175,7 +175,67 @@ class TestGetPrice(TestSetUpDB):
         print 'result: %s' % stock_price
 
 
+class TestGetOption(TestSetUpDB):
+    def setUp(self):
+        TestSetUpDB.setUp(self)
+
+        self.symbol = 'AAPL'
+        self.date = '2015-01-29'
+        self.strike = 120
+        self.expire_date = 'MAR 15'
+        self.option_code = 'AAPL150320C120'
+
+        # save option contract
+        self.option_contract = OptionContract()
+        self.option_contract.symbol = self.symbol
+        self.option_contract.data = {
+            'ex_month': 'MAR', 'ex_year': 15, 'option_code': self.option_code,
+            'right': 100, 'side': 'CALL', 'special': 'Weeklys', 'strike': '120', 'others': ''
+        }
+        self.option_contract.save()
+
+        # save option
+        self.option = Option()
+        self.option.data = {'mark': 14.75, 'last': 14.85, 'ask': 14.9, 'bid': 14.55, 'date': '2015-04-02',
+                            'delta': 0.97, 'dte': 0, 'extrinsic': 0.085, 'gamma': 0.01, 'impl_vol': 159.66,
+                            'intrinsic': 14.64, 'open_int': 0.0, 'prob_itm': 96.86, 'prob_otm': 3.14,
+                            'prob_touch': 6.18, 'theo_price': 0.0, 'theta': -0.25, 'vega': 0.0,
+                            'volume': 0.0}
+        self.option.option_contract = self.option_contract
+        self.option.date = '2015-01-29'
+        self.option.save()
+
+    def test1(self):
+        """
+        Test get option data using option code or expire date, strike
+        :return:
+        """
+        print 'run get_option using option_code and date...'
+        print 'date: %s, option_code: %s' % (self.date, self.option_code)
+        option = get_option(
+            date=self.date,
+            option_code=self.option_code
+        )
+
+        print 'option: %s' % option
+
+        print '\n' + '.' * 60 + '\n'
+        print 'run get_option using symbol, expire date, strike and date...'
+        print 'date: %s, symbol: %s, expire_date: %s, strike: %s' % (
+            self.date, self.symbol, self.expire_date, self.strike
+        )
+        option = get_option(
+            date=self.date,
+            symbol=self.symbol,
+            expire_date=self.expire_date,
+            strike=self.strike
+        )
+        print 'result'
+        print 'option: %s' % option
+
+
 class TestOpenThinkBack(TestSetUp):
+    # noinspection PyUnresolvedReferences
     def setUp(self):
         TestSetUp.setUp(self)
 
@@ -588,12 +648,23 @@ class TestDataWebImportView(TestSetUpDB):
             print '.' * 60
 
 
+class TestDataDailyImportView(TestSetUpDB):
+    def setUp(self):
+        TestSetUpDB.setUp(self)
 
+        # create user
+        User.objects.create_superuser(
+            username='jack',
+            email='a@b.com',
+            password='pass'
+        )
 
+    def test_data_daily_import_view(self):
+        """
+        Test web get google data without any google row
+        """
+        self.client.login(username='jack', password='pass')
+        self.client.login()
 
-
-
-
-
-
+        response = self.client.get(reverse('admin:data_daily_import_view'))
 

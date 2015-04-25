@@ -187,4 +187,32 @@ def get_price(symbol, date, source='tos_thinkback'):
     return stock
 
 
+def get_option(date, option_code='', symbol='', expire_date='', strike=0.0):
+    """
+    Get option data using option_code or symbol + expire date + strike
+    :param date: str
+    :param symbol: str
+    :param expire_date: str
+    :param strike: float
+    :param option_code: str
+    :return: Option
+    """
+    if option_code:
+        # using option code
+        option_contract = OptionContract.objects.get(option_code=option_code)
+        option = option_contract.option_set.get(date=date)
+    else:
+        # using symbol, expire_date, strike
+        ex_month, ex_year = expire_date.split(' ')
+        option_contract = OptionContract.objects.get(
+            Q(symbol=symbol) &
+            Q(ex_month=ex_month) &
+            Q(ex_year=ex_year) &
+            Q(strike=strike)
+        )
+        option = option_contract.option_set.get(date=date)
+
+    return option
+
+
 # todo: earning, dividend, split, ipo...

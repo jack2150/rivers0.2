@@ -80,15 +80,21 @@
           targets: [1],
           render: function (data) {
             var icon = '';
-            if (data == 'QUICK') {
-              icon = '<i class="fa fa-bolt light-blue fix_width"></i> '
+
+            switch (data) {
+              case 'QUICK':
+                icon = '<i class="fa fa-bolt light-blue fix_width"></i> ';
+                break;
+
+              case 'SIMPLE':
+                icon = '<i class="fa fa-coffee blue fix_width"></i> ';
+                break;
+
+              case 'DEEP':
+                icon = '<i class="fa fa-pie-chart purple fix_width"></i> ';
+                break;
             }
-            else if (data == 'SIMPLE') {
-              icon = '<i class="fa fa-coffee blue fix_width"></i> '
-            }
-            else if (data == 'DEEP') {
-              icon = '<i class="fa fa-pie-chart purple fix_width"></i> '
-            }
+
             return icon + data
           }
         },
@@ -96,12 +102,18 @@
           targets: [2],
           render: function (data) {
             var icon = '';
-            if (data == 'BULL') {
-              icon = '<i class="fa fa-arrow-up green fix_width"></i> '
+
+            switch (data) {
+              case 'BULL':
+                icon = '<i class="fa fa-arrow-up green fix_width"></i> '
+                break;
+              case 'BEAR':
+                icon = '<i class="fa fa-arrow-down red fix_width"></i> ';
+                break;
+              default:
+                icon = '<i class="fa fa-question grey fix_width"></i> ';
             }
-            else if (data == 'BEAR') {
-              icon = '<i class="fa fa-arrow-down red fix_width"></i> '
-            }
+
             return icon + data
           }
         },
@@ -109,12 +121,17 @@
           targets: [10],
           render: function (data) {
             var icon = '';
-            if (data == 'HOLD') {
-              icon = '<i class="fa fa-clock-o yellow fix_width"></i> '
+
+            switch (data) {
+              case 'HOLD':
+                icon = '<i class="fa fa-clock-o yellow fix_width"></i> ';
+                break;
+              case 'CLOSE':
+              case 'OPEN':
+                icon = '<i class="fa fa-gavel purple fix_width"></i> ';
+                break;
             }
-            else if (data == 'CLOSE') {
-              icon = '<i class="fa fa-times blue fix_width"></i> '
-            }
+
             return icon + data
           }
         },
@@ -122,12 +139,18 @@
           targets: [3, 11],
           render: function (data) {
             var icon = '';
-            if (data == 'True') {
-              icon = '<i class="fa fa-check green fix_width"></i> '
+
+            switch (data) {
+              case 'True':
+                icon = '<i class="fa fa-check green fix_width"></i> ';
+                break;
+              case 'False':
+                icon = '<i class="fa fa-close red fix_width"></i> '
+                break;
+              default:
+                icon = '<i class="fa fa-minus grey fix_width"></i> '
             }
-            else if (data == 'False') {
-              icon = '<i class="fa fa-close red fix_width"></i> '
-            }
+
             return icon
           }
         }

@@ -115,14 +115,43 @@ def position_add_opinion_view(request, id, date, direction, decision):
     return HttpResponse("success %d" % position_opinion.id, content_type="text/plain")
 
 
-def update_opinion_results(reqeust):
+def update_opinion_results(request):
     """
     How to use:
     update_opinion_results()
     """
+    # set open and close opinion
+    position_sets = PositionSet.objects.all()
+    for position_set in position_sets:
+
+        filled_orders = position_set.filledorder_set.all()
+        if filled_orders.filter(pos_effect='TO OPEN').exists():
+            date = filled_orders.filter(pos_effect='TO OPEN').first().trade_summary.date
+
+            if not position_set.positionopinion_set.filter(date=date).exists():
+                position_opinion = PositionOpinion()
+                position_opinion.position_set = position_set
+                position_opinion.decision = 'OPEN'
+                position_opinion.analysis = 'SIMPLE'
+                position_opinion.date = date
+                position_opinion.save()
+
+        if filled_orders.filter(pos_effect='TO CLOSE').exists():
+            date = filled_orders.filter(pos_effect='TO CLOSE').first().trade_summary.date
+
+            if not position_set.positionopinion_set.filter(date=date).exists():
+                position_opinion = PositionOpinion()
+                position_opinion.position_set = position_set
+                position_opinion.decision = 'CLOSE'
+                position_opinion.analysis = 'SIMPLE'
+                position_opinion.date = date
+                position_opinion.save()
+
     # get all position opinions
     position_opinions = PositionOpinion.objects.exclude(
-        Q(direction__isnull=True) & Q(direction__isnull=True)
+        Q(direction__isnull=True) & Q(decision__isnull=True)
+    ).exclude(
+        Q(decision='OPEN') | Q(decision='CLOSE')
     ).order_by('date')
 
     if position_opinions.exists():
@@ -235,7 +264,6 @@ def profiler_view(request, id=0, date=''):
         date__lte=date
     ).order_by('date')
 
-    #direction_cumsum = cumsum(position_opinions.values_list('direction_result'))
     bull = dict(count=0, count_pct=0.0, correct=0, correct_pct=0.0, wrong=0, wrong_pct=0.0)
     bear = dict(count=0, count_pct=0.0, correct=0, correct_pct=0.0, wrong=0, wrong_pct=0.0)
     for count, opinion in enumerate(position_opinions, start=1):
@@ -493,10 +521,10 @@ def profiler_view(request, id=0, date=''):
             ).exclude(id=position_set.id)
 
         elif position_set.name == 'HEDGE':
-            # use option get 4:30pm price
+            # use option close price
             pass
         else:
-            # use option get 4:30pm price
+            # use option close price
             pass
 
     # previous and next
@@ -538,44 +566,4 @@ def profiler_view(request, id=0, date=''):
 
     return render(request, template, parameters)
 
-# todo: opinion position info 3
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# todo: hedge, option, 2 leg spread...

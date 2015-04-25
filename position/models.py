@@ -213,7 +213,7 @@ class PositionOpinion(models.Model):
     )
 
     # opinion direction, up or down
-    direction = models.CharField(max_length=10, verbose_name='Direction')
+    direction = models.CharField(default=None, null=True, blank=True, max_length=10, verbose_name='Direction')
 
     # decision to be make
     decision = models.CharField(max_length=100, verbose_name='Decision')
