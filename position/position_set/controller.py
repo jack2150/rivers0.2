@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db.models import Q
 from position.models import PositionSet
 
@@ -81,6 +82,7 @@ class PositionSetController(object):
                     position_set.manager.filled_orders = filled_orders
                     position_set.manager.update_foreign_keys(date=date)
                     position_set.status = 'CLOSE'
+                    position_set.stop_date = filled_orders.first().trade_summary.date
                     position_set.save()
 
                     self.close_sets.append(position_set)
@@ -106,9 +108,11 @@ class PositionSetController(object):
 
                 if position_set.underlying and not len(ref['position_instruments']):
                     position_set.status = 'EXPIRE'
+                    position_set.stop_date = date
                     position_set.save()
                 elif position_set.future and not len(ref['position_futures']):
                     position_set.status = 'EXPIRE'
+                    position_set.stop_date = date
                     position_set.save()
                 #elif position_set.forex and not len(ref['position_forexs']):
                 #    position_set.status = 'EXPIRED'

@@ -31,6 +31,10 @@ class PositionSet(models.Model):
     spread = models.CharField(max_length=100, verbose_name='Spread')  # long stock, naked call...
     status = models.CharField(max_length=7, verbose_name='Status', default='OPEN')  # open or closed or expired
 
+    # dates
+    start_date = models.DateField(verbose_name='Start Date')
+    stop_date = models.DateField(null=True, verbose_name='Stop Date')
+
     # underlying
     underlying = models.ForeignKey(Underlying, null=True, blank=True, default=None)
     future = models.ForeignKey(Future, null=True, blank=True, default=None)

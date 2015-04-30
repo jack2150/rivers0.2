@@ -59,11 +59,9 @@
       <tr>
         <td colspan="3">
           <label for="missing_dates"></label>
-          <textarea class="form-control" rows="5" id="missing_dates"
-                    readonly onclick="$(this).select();">
-{% for missing_file in missing_files %}
-{{ missing_file.date }}{% endfor %}
-          </textarea>
+          <textarea class="form-control" rows="5" id="missing_dates" readonly onclick="$(this).select();">
+{% for missing_file in missing_files %}{{ missing_file.date }}
+{% endfor %}</textarea>
         </td>
       </tr>
     </table>

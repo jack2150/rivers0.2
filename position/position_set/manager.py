@@ -66,6 +66,8 @@ class PositionSetManager(object):
             self.position_set.spread = spread.spread
 
         self.position_set.status = 'OPEN'
+        if not self.position_set.start_date:
+            self.position_set.start_date = filled_order.trade_summary.date
 
         self.position_set.underlying = underlying
         self.position_set.future = future

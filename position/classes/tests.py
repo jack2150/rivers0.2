@@ -164,10 +164,7 @@ class TestUnitSetUpPrepare(TestUnitSetUp):
             Forex.objects.filter(symbol='USD/OJY').delete()
 
 
-class TestUnitSetUpDB(TestCase):
-    """
-    Using unittest not django test
-    """
+class TestPrepareOrders(TestCase):
     def setUp(self):
         """
         ready up all variables and test class

@@ -12,7 +12,7 @@ class Stock(models.Model):
     symbol = models.CharField(max_length=20, verbose_name='Symbol')
 
     date = models.DateField(verbose_name='Date')
-    volume = models.IntegerField(verbose_name='Volume')
+    volume = models.BigIntegerField(verbose_name='Volume')
     open = models.DecimalField(verbose_name='Open', **decimal_field)
     high = models.DecimalField(verbose_name='High', **decimal_field)
     low = models.DecimalField(verbose_name='Low', **decimal_field)
@@ -56,7 +56,7 @@ class OptionContract(models.Model):
     right = models.CharField(max_length=20, verbose_name='Right')
     special = models.CharField(max_length=10, verbose_name='Special')
     strike = models.DecimalField(max_length=4, verbose_name='Strike', **decimal_field)
-    side = models.CharField(max_length=4, verbose_name='Side')
+    contract = models.CharField(max_length=4, verbose_name='Contract')
     option_code = models.CharField(max_length=200, verbose_name='Option Code', unique=True)
     others = models.CharField(max_length=200, default='', blank='', verbose_name='Others')
 
@@ -72,7 +72,7 @@ class OptionContract(models.Model):
         self.right = x['right']
         self.special = x['special']
         self.strike = x['strike']
-        self.side = x['side']
+        self.contract = x['contract']
         self.option_code = x['option_code']
         self.others = x['others']
 
@@ -82,14 +82,14 @@ class OptionContract(models.Model):
         """
         Output explain this model
         """
-        return '{right} {special} {ex_month} {ex_year} {strike} {side} {others}'.format(
+        return '{right} {special} {ex_month} {ex_year} {strike} {contract}{others}'.format(
             right=self.right,
             special=self.special,
             ex_month=self.ex_month,
             ex_year=self.ex_year,
             strike=self.strike,
-            side=self.side,
-            others=self.others
+            contract=self.contract,
+            others=' (%s)' % self.others if self.others else ''
         )
 
 
@@ -155,9 +155,9 @@ class Option(models.Model):
         """
         Output explain this model
         """
-        return '{option_contract} {date}'.format(
-            option_contract=self.option_contract,
-            date=self.date
+        return '{date} {option_contract}'.format(
+            date=self.date,
+            option_contract=self.option_contract
         )
 
 
@@ -187,7 +187,7 @@ def get_price(symbol, date, source='tos_thinkback'):
     return stock
 
 
-def get_option(date, option_code='', symbol='', expire_date='', strike=0.0):
+def get_option(date, option_code='', symbol='', expire_date='', strike=0.0, contract=''):
     """
     Get option data using option_code or symbol + expire date + strike
     :param date: str
@@ -195,6 +195,7 @@ def get_option(date, option_code='', symbol='', expire_date='', strike=0.0):
     :param expire_date: str
     :param strike: float
     :param option_code: str
+    :param contract: str ('CALL', 'PUT')
     :return: Option
     """
     if option_code:
@@ -208,7 +209,8 @@ def get_option(date, option_code='', symbol='', expire_date='', strike=0.0):
             Q(symbol=symbol) &
             Q(ex_month=ex_month) &
             Q(ex_year=ex_year) &
-            Q(strike=strike)
+            Q(strike=strike) &
+            Q(contract=contract)
         )
         option = option_contract.option_set.get(date=date)
 

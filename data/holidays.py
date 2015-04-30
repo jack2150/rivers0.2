@@ -1,3 +1,5 @@
+from datetime import datetime
+
 market_holiday = [
     ("New Year's Day", '2015-01-01'),
     ('Martin Luther King, Jr. Day', '2015-01-20'),
@@ -98,6 +100,9 @@ def is_holiday(date):
     :param date: str
     :return: boolean
     """
+    if type(date) == datetime:
+        date = date.strftime('%Y-%m-%d')
+
     return True if date in [date for _, date in market_holiday] else False
 
 
@@ -107,6 +112,9 @@ def is_not_holiday(date):
     :param date: str
     :return: boolean
     """
+    if type(date) == datetime:
+        date = date.strftime('%Y-%m-%d')
+
     return True if date not in [date for _, date in market_holiday] else False
 
 

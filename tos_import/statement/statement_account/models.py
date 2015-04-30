@@ -212,9 +212,7 @@ class OrderHistory(models.Model, AccountModel):
 
     status = models.CharField(max_length=100, verbose_name='Status')
     pos_effect = models.CharField(max_length=100, verbose_name='Pos Effect')
-    price = models.DecimalField(
-        max_digits=8, decimal_places=2, default=0.0, verbose_name='Price', null=True, blank=True
-    )
+    price = models.CharField(max_length=100, verbose_name='Price')
     contract = models.CharField(max_length=20, verbose_name='Contract')
     side = models.CharField(max_length=20, verbose_name='Side')
     time_placed = models.DateTimeField(verbose_name='Time Placed')

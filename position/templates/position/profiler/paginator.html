@@ -1,20 +1,20 @@
 <div class="row">
   <div class="col-md-12 right_date_change">
     <div class="btn-group btn-corner">
-      <button id="first" class="btn {% if first == None %}disabled{% endif %} btn-white btn-sm btn-primary">
+      <button id="first" class="btn {% if paginator.first == None %}disabled{% endif %} btn-white btn-sm btn-primary">
         <i class="fa fa-step-backward"></i>
         First
       </button>
 
-      <button id="previous" class="btn {% if previous == None %}disabled{% endif %} btn-white btn-sm btn-primary">
+      <button id="previous" class="btn {% if paginator.previous == None %}disabled{% endif %} btn-white btn-sm btn-primary">
         Previous
       </button>
 
-      <button id="next" class="btn {% if next == None %}disabled{% endif %} btn-white btn-sm btn-primary">
+      <button id="next" class="btn {% if paginator.next == None %}disabled{% endif %} btn-white btn-sm btn-primary">
         Next
       </button>
 
-      <button id="last" class="btn {% if last == None %}disabled{% endif %} btn-white btn-sm btn-primary">
+      <button id="last" class="btn {% if paginator.last == None %}disabled{% endif %} btn-white btn-sm btn-primary">
         Last
         <i class="fa fa-step-forward"></i>
       </button>
@@ -23,19 +23,19 @@
 
   <script type="text/javascript">
     function go_to_previous_page() {
-      {% if previous %}
+      {% if paginator.previous %}
         $(location).attr(
             'href',
-            "{% url 'admin:position_set_profiler_view' position_set.id previous %}"
+            "{% url 'admin:position_set_profiler_view' position_set.id paginator.previous %}"
         );
       {% endif %}
     }
 
     function go_to_next_page() {
-      {% if next %}
+      {% if paginator.next %}
         $(location).attr(
             'href',
-            "{% url 'admin:position_set_profiler_view' position_set.id next %}"
+            "{% url 'admin:position_set_profiler_view' position_set.id paginator.next %}"
         );
       {% endif %}
     }
@@ -53,20 +53,20 @@
 
       // first
       $("#first").click(function () {
-        {% if first %}
+        {% if paginator.first %}
           $(location).attr(
               'href',
-              "{% url 'admin:position_set_profiler_view' position_set.id first %}"
+              "{% url 'admin:position_set_profiler_view' position_set.id paginator.first %}"
           );
         {% endif %}
       });
 
       // last
       $("#last").click(function () {
-        {% if last %}
+        {% if paginator.last %}
           $(location).attr(
               'href',
-              "{% url 'admin:position_set_profiler_view' position_set.id last %}"
+              "{% url 'admin:position_set_profiler_view' position_set.id paginator.last %}"
           );
         {% endif %}
       });

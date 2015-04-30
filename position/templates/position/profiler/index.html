@@ -174,12 +174,12 @@
 
 {% block page-header %}
   <div class="row">
-  <div class="col-md-10">
-    {% include 'position/profiler/profiler_header.html' %}
-  </div>
-  <div class="col-md-2 opinion-button">
-    {% include 'position/profiler/position_opinion_button.html' %}
-  </div>
+    <div class="col-md-10">
+      {% include 'position/profiler/page_header.html' %}
+    </div>
+    <div class="col-md-2 opinion-button">
+      {% include 'position/profiler/opinion_button.html' %}
+    </div>
   </div>
 {% endblock %}
 
@@ -201,15 +201,9 @@
           </a>
         </li>
         <li>
-          <a data-toggle="tab" href="#stocks">
+          <a data-toggle="tab" href="#stocks" id="stock_tab">
             <i class="green ace-icon fa fa-bell bigger-120"></i>
             Stocks
-          </a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#movers">
-            <i class="yellow ace-icon fa fa-cogs bigger-120"></i>
-            Stage Movers
           </a>
         </li>
         <li>
@@ -231,8 +225,8 @@
             </div>
             <div class="col-md-3">
               {% include 'position/profiler/position_stages.html' %}
-              {% include 'position/profiler/historical_position_sets.html' %}
-              {% include 'position/profiler/profiler_object_links.html' %}
+              {% include 'position/profiler/historical_positions.html' %}
+              {% include 'position/profiler/related_links.html' %}
             </div>
             <div class="col-md-3">
               {% include 'position/profiler/position_info3.html' %}
@@ -245,11 +239,7 @@
         </div>
 
         <div id="stocks" class="tab-pane">
-          {% include 'position/profiler/position_stocks.html' %}
-        </div>
-
-        <div id="movers" class="tab-pane">
-          {% include 'position/profiler/position_stage_mover.html' %}
+          {% include 'position/profiler/equity/position_stocks.html' %}
         </div>
 
         <div id="opinions" class="tab-pane">

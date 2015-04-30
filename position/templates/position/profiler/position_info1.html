@@ -1,4 +1,7 @@
-{% load currency_tag %}
+{% load currency_tag position_set %}
+{% with stock=position_stocks|last %}
+
+
 <table class="table">
   <tr>
     <th class="no_border_top">Symbol:</th>
@@ -6,76 +9,85 @@
   </tr>
   <tr>
     <th>Close:</th>
-    <td>{{ position_prices.stock.close }}</td>
+    <td>{{ stock.close }}</td>
   </tr>
   <tr>
     <th>Net Change:</th>
     <td>
-      {% if position_prices.net_change > 0 %}
+      {% if stock.net_change > 0 %}
         <i class="fa fa-arrow-up green"></i>
-        {{ position_prices.net_change|stringformat:"+.2f" }}
-        ({{ position_prices.pct_change|stringformat:"+.2f%%" }})
+        {{ stock.net_change|stringformat:"+.2f" }}
+        ({{ stock.pct_change|stringformat:"+.2f%%" }})
       {% else %}
         <i class="fa fa-arrow-down red"></i>
-        {{ position_prices.net_change|stringformat:"+.2f" }}
-        ({{ position_prices.pct_change|stringformat:"+.2f%%" }})
+        {{ stock.net_change|stringformat:"+.2f" }}
+        ({{ stock.pct_change|stringformat:"+.2f%%" }})
       {% endif %}
     </td>
   </tr>
+  {% if position_info.exit_price %}
+    <tr>
+      <th>Exit Price:</th>
+      <td>{{ position_info.exit_price|stringformat:".2f" }}</td>
+    </tr>
+  {% endif %}
   <tr>
-    <th>Trade Price:</th>
-    <td>{{ position_prices.trade_price }}</td>
+    <th>Enter Price:</th>
+    <td>{{ position_info.enter_price|stringformat:".2f" }}</td>
   </tr>
   <tr>
     <th>Quantity:</th>
-    <td>{{ position_prices.trade_quantity }}</td>
+    <td>{{ position_info.quantity|stringformat:"+.2f" }}</td>
   </tr>
   <tr>
     <th>PL Open</th>
     <th>
-      {% if position_prices.pl_open > 0 %}
+      {% if position_info.pl_open > 0 %}
         <span class="green">
-          {{ position_prices.pl_open|stringformat:"+.2f" }}
-          ({{ position_prices.pl_open_pct|stringformat:"+.2f%%" }})
+          {{ position_info.pl_open|stringformat:"+.2f" }}
+          ({{ position_info.pl_open_pct|stringformat:"+.2f%%" }})
+        </span>
+      {% elif position_info.pl_open < 0 %}
+        <span class="red">
+          {{ position_info.pl_open|stringformat:"+.2f" }}
+          ({{ position_info.pl_open_pct|stringformat:"+.2f%%" }})
         </span>
       {% else %}
-        <span class="red">
-          {{ position_prices.pl_open|stringformat:"+.2f" }}
-          ({{ position_prices.pl_open_pct|stringformat:"+.2f%%" }})
-        </span>
+        {{ position_info.pl_open|stringformat:"+.2f" }}
+        ({{ position_info.pl_open_pct|stringformat:"+.2f%%" }})
       {% endif %}
     </th>
   </tr>
   <tr>
     <th>PL Day</th>
     <th>
-      {% if position_prices.pl_day > 0 %}
+      {% if position_info.pl_day > 0 %}
         <span class="green">
-          {{ position_prices.pl_day|stringformat:"+.2f" }}
-          ({{ position_prices.pl_day_pct|stringformat:"+.2f%%" }})
+          {{ position_info.pl_day|stringformat:"+.2f" }}
+          ({{ position_info.pl_day_pct|stringformat:"+.2f%%" }})
+        </span>
+      {% elif position_info.pl_day < 0 %}
+        <span class="red">
+          {{ position_info.pl_day|stringformat:"+.2f" }}
+          ({{ position_info.pl_day_pct|stringformat:"+.2f%%" }})
         </span>
       {% else %}
-        <span class="red">
-          {{ position_prices.pl_day|stringformat:"+.2f" }}
-          ({{ position_prices.pl_day_pct|stringformat:"+.2f%%" }})
-        </span>
+        {{ position_info.pl_day|stringformat:"+.2f" }}
+        ({{ position_info.pl_day_pct|stringformat:"+.2f%%" }})
       {% endif %}
     </th>
   </tr>
   <tr>
     <th>Holding:</th>
-    <td>{{ position_prices.holding|currency }}</td>
+    <td>{{ position_info.holding|currency }}</td>
   </tr>
   <tr>
     <th>BP Effect:</th>
-    <td>{{ position_prices.bp_effect|currency }}</td>
+    <td>{{ position_info.bp_effect|currency }}</td>
   </tr>
   <tr>
     <th>Date:</th>
-    <td>{{ position_prices.date|date }}</td>
-  </tr>
-  <tr>
-    <th>Time:</th>
-    <td>{{ position_prices.date|time|upper }}</td>
+    <td>{{ position_info.date|date }} {{ position_info.date|time|upper }}</td>
   </tr>
 </table>
+{% endwith %}

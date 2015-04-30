@@ -1,4 +1,6 @@
-dates = (
+from datetime import datetime
+
+market_offdays = (
     '01/21/11',
     '05/04/11',
     '08/12/11',
@@ -19,7 +21,10 @@ def is_offdays(date):
     :param date: str
     :return: boolean
     """
-    return True if date in dates else False
+    if type(date) == datetime:
+        date = date.strftime('%m/%d/%y')
+
+    return True if date in market_offdays else False
 
 
 def is_not_offdays(date):
@@ -28,4 +33,7 @@ def is_not_offdays(date):
     :param date: str
     :return: boolean
     """
-    return True if date not in dates else False
+    if type(date) == datetime:
+        date = date.strftime('%m/%d/%y')
+
+    return True if date not in market_offdays else False

@@ -47,7 +47,7 @@ class StockAdmin(admin.ModelAdmin):
 class OptionContractAdmin(admin.ModelAdmin):
     list_display = (
         'symbol', 'option_code', 'ex_month', 'ex_year',
-        'right', 'special', 'strike', 'side', 'others'
+        'right', 'special', 'strike', 'contract', 'others'
     )
 
     fieldsets = (
@@ -59,17 +59,17 @@ class OptionContractAdmin(admin.ModelAdmin):
         ('Primary Field', {
             'fields': (
                 'option_code', 'ex_month', 'ex_year', 'right', 'special',
-                'strike', 'side', 'others'
+                'strike', 'contract', 'others'
             )
         }),
     )
 
     list_filter = (
-        'special', 'side'
+        'special', 'contract'
     )
 
     search_fields = ('symbol', 'ex_month', 'ex_year', 'special',
-                     'side', 'option_code', 'others')
+                     'contract', 'option_code', 'others')
 
     list_display_links = ('option_code', )
 
@@ -105,14 +105,14 @@ class OptionAdmin(admin.ModelAdmin):
     list_per_page = 20
 
     list_filter = (
-        'option_contract__special', 'option_contract__side'
+        'option_contract__special', 'option_contract__contract'
     )
 
     list_display_links = ('option_code', )
 
     search_fields = (
         'option_contract__symbol', 'option_contract__ex_month', 'option_contract__ex_year',
-        'option_contract__special', 'option_contract__side', 'option_contract__option_code'
+        'option_contract__special', 'option_contract__contract', 'option_contract__option_code'
     )
 
     def has_add_permission(self, request):

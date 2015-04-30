@@ -132,10 +132,11 @@ class PositionSetAdmin(SubPositionAdmin):
 
     position.admin_order_field = 'id'
 
-    list_display = ('id', 'position', 'symbol', 'name', 'spread', 'status')
+    list_display = ('id', 'position', 'symbol', 'name', 'spread', 'start_date', 'stop_date', 'status')
     list_display_links = ('position', )
 
     search_fields = (
+        'id',
         'name',
         'spread',
         'status',
@@ -155,7 +156,7 @@ class PositionSetAdmin(SubPositionAdmin):
             'fields': ('symbol', )
         }),
         ('Primary Field', {
-            'fields': ('name', 'spread', 'status')
+            'fields': ('name', 'spread', 'status', 'start_date', 'stop_date')
         }),
     )
 

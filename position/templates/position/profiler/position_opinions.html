@@ -62,7 +62,7 @@
           {% if position_opinion.description %}
             {{ position_opinion.description }}
           {% else %}
-            -----
+            <i class="fa fa-minus grey fix_width"></i>
           {% endif %}
         </td>
       </tr>
@@ -71,6 +71,7 @@
 
   <script type="text/javascript">
     $('#position_opinions').DataTable({
+      bAutoWidth: false,
       paging: false,
       searching: false,
       bInfo: false,

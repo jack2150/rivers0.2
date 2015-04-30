@@ -44,7 +44,7 @@ class TestOptionContract(TestSaveModel):
         TestSaveModel.setUp(self)
 
         self.items = {'ex_month': 'APR1', 'ex_year': 15, 'option_code': 'JNJ150402C85',
-                      'right': 100, 'side': 'CALL', 'special': 'Weeklys', 'strike': '85'}
+                      'right': 100, 'contract': 'CALL', 'special': 'Weeklys', 'strike': '85'}
 
         self.test_cls = OptionContract(
             symbol='IBM',
@@ -53,7 +53,7 @@ class TestOptionContract(TestSaveModel):
         )
 
         self.expect_keys = [
-            'ex_month', 'ex_year', 'right', 'special', 'strike', 'side', 'option_code'
+            'ex_month', 'ex_year', 'right', 'special', 'strike', 'contract', 'option_code'
         ]
 
     def test_save(self):
@@ -69,7 +69,7 @@ class TestOption(TestSaveModel):
         TestSaveModel.setUp(self)
 
         option_contract = {'ex_month': 'APR1', 'ex_year': 15, 'option_code': 'JNJ150402C92',
-                           'right': 100, 'side': 'CALL', 'special': 'Weeklys', 'strike': '92'}
+                           'right': 100, 'contract': 'CALL', 'special': 'Weeklys', 'strike': '92'}
 
         self.option_contract = OptionContract(
             symbol='IBM',
@@ -183,6 +183,7 @@ class TestGetOption(TestSetUpDB):
         self.date = '2015-01-29'
         self.strike = 120
         self.expire_date = 'MAR 15'
+        self.contract = 'CALL'
         self.option_code = 'AAPL150320C120'
 
         # save option contract
@@ -190,7 +191,7 @@ class TestGetOption(TestSetUpDB):
         self.option_contract.symbol = self.symbol
         self.option_contract.data = {
             'ex_month': 'MAR', 'ex_year': 15, 'option_code': self.option_code,
-            'right': 100, 'side': 'CALL', 'special': 'Weeklys', 'strike': '120', 'others': ''
+            'right': 100, 'contract': self.contract, 'special': 'Weeklys', 'strike': '120', 'others': ''
         }
         self.option_contract.save()
 
@@ -228,7 +229,8 @@ class TestGetOption(TestSetUpDB):
             date=self.date,
             symbol=self.symbol,
             expire_date=self.expire_date,
-            strike=self.strike
+            strike=self.strike,
+            contract=self.contract
         )
         print 'result'
         print 'option: %s' % option
@@ -310,7 +312,7 @@ class TestOpenThinkBack(TestSetUp):
 
         contract_keys = [
             'ex_month', 'ex_year', 'right', 'special', 'others',
-            'strike', 'side', 'option_code'
+            'strike', 'contract', 'option_code'
         ]
 
         option_keys = [
@@ -348,8 +350,8 @@ class TestOpenThinkBack(TestSetUp):
 
                 self.assertEqual(type(contract['right']), str)  # not int, str
 
-                self.assertEqual(type(contract['side']), str)
-                self.assertIn(contract['side'], ['CALL', 'PUT'])
+                self.assertEqual(type(contract['contract']), str)
+                self.assertIn(contract['contract'], ['CALL', 'PUT'])
 
                 self.assertEqual(type(contract['special']), str)
                 self.assertIn(contract['special'], ['Weeklys', 'Standard', 'Mini'])
@@ -499,18 +501,11 @@ class TestTosThinkbackImportSelectView(TestSetUp):
             reverse('admin:data_select_symbol_view')
         )
 
-        csv_symbols = response.context['csv_symbols']
-        web_symbols = response.context['web_symbols']
-        self.assertEqual(type(csv_symbols), list)
-        self.assertEqual(type(web_symbols), list)
+        symbols = response.context['symbols']
+        self.assertEqual(type(symbols), list)
 
         print 'csv symbol list:'
-        pprint(csv_symbols, width=300)
-
-        print '.' * 60
-
-        print 'web symbol list:'
-        pprint(web_symbols, width=300)
+        pprint(symbols, width=300)
 
         print 'other is all ajax...'
 

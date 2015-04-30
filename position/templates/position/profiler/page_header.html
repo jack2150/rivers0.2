@@ -1,25 +1,26 @@
-{% load position_set %}
+{% with stock=position_stocks|last %}
 <div class="symbol-page-head">
-  <b>
-    {{ position_set.spread|remove_underscore }}
-    < {{ position_set.underlying.symbol }} >
-  </b>
-  <span>{{ position_prices.pl_open|stringformat:"+.2f" }}</span>
+  <b>{{ position_set.underlying.symbol }}</b>
+  <span>{{ position_prices.stock.close }}</span>
 
-  {% if position_prices.pl_day > 0 %}
+  {% if stock.net_change > 0 %}
     <span class="green">
-      {{ position_prices.pl_day|stringformat:"+.2f" }}
-      ({{ position_prices.pl_day_pct|stringformat:"+.2f%%" }})
+      {{ stock.net_change|stringformat:"+.2f" }}
+      ({{ stock.pct_change|stringformat:"+.2f%%" }})
+    </span>
+  {% elif stock.net_change < 0 %}
+    <span class="red">
+      {{ stock.net_change|stringformat:"+.2f" }}
+      ({{ stock.pct_change|stringformat:"+.2f%%" }})
     </span>
   {% else %}
-    <span class="red">
-      {{ position_prices.pl_day|stringformat:"+.2f" }}
-      ({{ position_prices.pl_day_pct|stringformat:"+.2f%%" }})
+    <span>
+      {{ stock.net_change|stringformat:"+.2f" }}
+      ({{ stock.pct_change|stringformat:"+.2f%%" }})
     </span>
   {% endif %}
-
   <span class="close_time">
-    {{ position_prices.date|time|upper }}
+    {{ position_info.date|date }}
   </span>
 </div>
 
@@ -32,3 +33,4 @@
   &nbsp;&#124;&nbsp;
   {{ position_set.status }}
 </div>
+{% endwith %}

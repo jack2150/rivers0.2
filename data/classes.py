@@ -12,7 +12,7 @@ class OpenThinkBack(OpenCSV):
                   r'Prob.OTM,Prob.Touch,Volume,Open.Int,Intrinsic,Extrinsic,Option Code,,'
 
     CONTRACT_KEYS = ['ex_month', 'ex_year', 'right', 'special', 'others',
-                     'strike', 'side', 'option_code']
+                     'strike', 'contract', 'option_code']
 
     OPTION_KEYS = ['date', 'dte',
                    'last', 'mark', 'bid', 'ask', 'delta', 'gamma', 'theta', 'vega',
@@ -52,6 +52,7 @@ class OpenThinkBack(OpenCSV):
             if line[:3] in months:
                 # JAN 09  (14)  100 (CDL 7; US$ 4.06)
                 # JAN 09  (11)  19/100 (US$ 3601.92)
+                # JAN 15  (444)  150 (DDD 150)
                 try:
                     others = ''
                     open_bracket = line.rindex('(')
@@ -61,7 +62,10 @@ class OpenThinkBack(OpenCSV):
                         if any([x for x in ['CDL', 'US$'] if x in line]):
                             others = line[open_bracket + 1: close_bracket]
                             line = line[:open_bracket]
-
+                        elif line.count('(') == 2:
+                            others = line[line.rindex('(') + 1:line.rindex(')')]
+                            if others not in ['Weeklys', 'Mini', 'Quarterly']:
+                                line = line[:open_bracket]
                 except ValueError:
                     others = ''
 

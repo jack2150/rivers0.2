@@ -1,8 +1,8 @@
-from position.classes.tests import TestUnitSetUpDB
+from position.classes.tests import TestPrepareOrders
 from position.models import PositionStage
 
 
-class TestUnitSetUpStage(TestUnitSetUpDB):
+class TestUnitSetUpStage(TestPrepareOrders):
     def method_test_create_stage(self, stage, name, expression, detail):
         """
         Create even stage using filled orders data

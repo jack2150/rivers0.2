@@ -389,7 +389,11 @@ class OpenAcc(OpenCSV):
         self.convert_specific_type(self.order_history, 'time_placed', self.convert_datetime, '')
         self.convert_specific_type(self.order_history, 'quantity', int, 0)
         self.convert_specific_type(self.order_history, 'strike', float, 0.0)
-        self.convert_specific_type(self.order_history, 'price', float, 0.0)
+
+        try:
+            self.convert_specific_type(self.order_history, 'price', float, 0.0)
+        except ValueError:
+            self.convert_specific_type(self.order_history, 'price', str, '0.0')
 
     def set_holding_equity(self):
         """

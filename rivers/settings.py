@@ -88,16 +88,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-"""
-'default': {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': os.path.join(BASE_DIR, '__test__.db'),
-},
-'quote': {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': os.path.join(BASE_DIR, '__quote__.db'),
-},
-"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -116,6 +106,16 @@ DATABASES = {
         'PORT': '5432',
     },
 }
+"""
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, '__test__.db'),
+    },
+    'quote': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, '__quote__.db'),
+    },
+"""
 
 DATABASE_ROUTERS = ['rivers.router.DataRouter']
 

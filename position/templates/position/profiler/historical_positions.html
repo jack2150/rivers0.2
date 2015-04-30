@@ -1,0 +1,32 @@
+{% load position_set %}
+{% if historical_positions %}
+  <!--suppress HtmlFormInputWithoutLabel -->
+  <table class="table">
+    <tr>
+      <th class="no_border_top">Historical Position Sets:</th>
+    </tr>
+    <tr>
+      <td>
+        <select id="historical_position_sets" class="col-xs-12">
+          <option value="" selected>{{ position_set.underlying.symbol }} - Historical Position</option>
+          <option value="">-----</option>
+          {% for historical_position in historical_positions %}
+            <option value="{{ historical_position.id }}">
+              ({{ historical_position.id }})
+              {{ historical_position.spread|remove_underscore }}
+              {{ historical_position|get_close_pl|stringformat:"+.2f" }}
+            </option>
+          {% endfor %}
+        </select>
+      </td>
+    </tr>
+  </table>
+{% endif %}
+
+<script type="text/javascript">
+  $("#historical_position_sets").change(function () {
+    if ($(this).val()) {
+      $(location).attr('href', "{% url "admin:position_set_profiler_view" %}" + $(this).val());
+    }
+  });
+</script>

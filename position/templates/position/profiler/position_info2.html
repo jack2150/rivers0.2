@@ -1,4 +1,5 @@
 {% load position_set %}
+{% with stock=position_stocks|last %}
 <table class="table">
   <tr>
     <th class="no_border_top">Position Name:</th>
@@ -10,15 +11,15 @@
   </tr>
   <tr>
     <th>Position Status:</th>
-    <td>{{ position_set.status }}</td>
+    <td>{{ position_set.status  }}</td>
   </tr>
   <tr>
     <th>Current Stage:</th>
-    <td>{{ position_prices.stage|cut:"Stage: " }}</td>
+    <td>{{ position_info.stage }}</td>
   </tr>
   <tr>
     <th>Current Status:</th>
-    <td>{{ position_prices.status }}</td>
+    <td>{{ position_info.status }}</td>
   </tr>
   <tr>
     <th>Holding Day:</th>
@@ -38,18 +39,19 @@
 
   <tr>
     <th>Profit Opens:</th>
-    <td>{{ position_prices.profit_open_count }} ({{ position_prices.profit_open_count_pct }}%)</td>
+    <td>{{ stock.p_open_count }} ({{ stock.p_open_pct|stringformat:".2f" }}%)</td>
   </tr>
   <tr>
     <th>Loss Opens:</th>
-    <td>{{ position_prices.loss_open_count }} ({{ position_prices.loss_open_count_pct }}%)</td>
+    <td>{{ stock.l_open_count }} ({{ stock.l_open_pct|stringformat:".2f" }}%)</td>
   </tr>
   <tr>
     <th>Profit Days:</th>
-    <td>{{ position_prices.profit_day_count }} ({{ position_prices.profit_day_count_pct }}%)</td>
+    <td>{{ stock.p_day_count }} ({{ stock.p_day_pct|stringformat:".2f" }}%)</td>
   </tr>
   <tr>
     <th>Loss Days:</th>
-    <td>{{ position_prices.loss_day_count }} ({{ position_prices.loss_day_count_pct }}%)</td>
+    <td>{{ stock.l_day_count }} ({{ stock.l_day_pct|stringformat:".2f" }}%)</td>
   </tr>
 </table>
+{% endwith %}

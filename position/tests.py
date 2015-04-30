@@ -82,6 +82,7 @@ class TestPositionSet(TestReadyFile):
             underlying=self.underlying,
             name=self.name,
             spread=self.spread,
+            start_date=self.real_date,
         )
         position_set.save()
 
@@ -131,6 +132,7 @@ class TestPositionSet(TestReadyFile):
             underlying=self.underlying,
             name=self.name,
             spread=self.spread,
+            start_date=self.real_date,
         )
         position_set.save()
         self.position_instrument.position_set = position_set
@@ -177,7 +179,8 @@ class TestPositionStage(TestSetUpDB):
             name='EQUITY',
             spread='LONG_STOCK',
             status='OPEN',
-            underlying=underlying
+            underlying=underlying,
+            start_date='2015-04-13'
         )
         self.position_set.save()
 
@@ -285,7 +288,8 @@ class TestOpinion(TestSetUpDB):
             name='EQUITY',
             spread='LONG_STOCK',
             status='OPEN',
-            underlying=underlying
+            underlying=underlying,
+            start_date='2015-04-13'
         )
         self.position_set.save()
 
@@ -313,7 +317,7 @@ class TestOpinion(TestSetUpDB):
         self.assertEqual(self.opinion.direction, 'BULL')
         self.assertFalse(self.opinion.direction_result)
         self.assertFalse(self.opinion.decision_result)
-        self.assertEqual(self.opinion.analysis, 'quick')
+        self.assertEqual(self.opinion.analysis, 'QUICK')
         self.assertFalse(self.opinion.description)
 
         # save the result
@@ -425,12 +429,10 @@ class TestProfilerView(TestUnitSetUp):
             self.skipTest("Please use 'Unittest' for testing.\n")
             raise ObjectDoesNotExist()
 
-        response = self.client.get(reverse('admin:position_set_profiler_view', args=(66, )))
+        response = self.client.get(reverse('admin:position_set_profiler_view', args=(70, '2015-04-23')))
 
-        print response.context['position_set']
-        print response.context['position_set'].status
-        print response.context['position_stages']
-        pprint(response.context['position_dates'])
+# todo: to be continue
+
 
 
 
