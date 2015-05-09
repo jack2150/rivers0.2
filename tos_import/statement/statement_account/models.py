@@ -210,7 +210,7 @@ class OrderHistory(models.Model, AccountModel):
     future = models.ForeignKey(Future, null=True, blank=True)
     forex = models.ForeignKey(Forex, null=True, blank=True)
 
-    status = models.CharField(max_length=100, verbose_name='Status')
+    status = models.TextField(verbose_name='Status')
     pos_effect = models.CharField(max_length=100, verbose_name='Pos Effect')
     price = models.CharField(max_length=100, verbose_name='Price')
     contract = models.CharField(max_length=20, verbose_name='Contract')

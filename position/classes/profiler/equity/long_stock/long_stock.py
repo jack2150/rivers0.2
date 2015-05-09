@@ -1,4 +1,3 @@
-from decimal import Decimal
 from django.core.exceptions import ObjectDoesNotExist
 from pandas.tseries.offsets import Hour, Minute
 from position.classes.profiler.profiler import Profiler
@@ -142,19 +141,3 @@ class ProfilerLongStock(Profiler):
             )
 
         return position_stocks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

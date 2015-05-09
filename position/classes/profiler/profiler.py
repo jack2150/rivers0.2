@@ -31,12 +31,15 @@ class Profiler(object):
             if self.position_set.stop_date:
                 self.date = self.position_set.stop_date
             else:
-                self.date = datetime.today().date()
+                self.date = self.position_instruments.last().position_summary.date
         else:
             self.date = datetime.strptime(date, '%Y-%m-%d').date()
 
         self.start_date = self.position_set.start_date
-        self.stop_date = self.position_set.stop_date if self.position_set.stop_date else datetime.today()
+        if self.position_set.stop_date:
+            self.stop_date = self.position_set.stop_date
+        else:
+            self.stop_date = self.position_instruments.last().position_summary.date
 
         self.stocks = None
         """:type: QuerySet"""
@@ -193,32 +196,8 @@ class Profiler(object):
                 Q(date__in=dates) &
                 Q(source='google')
             ).order_by('date')
+
+            if len(self.stocks) < len(self.position_instruments):
+                raise LookupError('No enough stock data, please import data into db.')
         else:
             raise LookupError('Missing underlying object when get stock records.')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

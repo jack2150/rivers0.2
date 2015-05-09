@@ -181,7 +181,7 @@ class PositionSummaryAdmin(admin.ModelAdmin):
         return obj.positioninstrument_set.count()
 
     def equities(self, obj):
-        return 1 if obj.positionequity else 0
+        return obj.positionequity_set.count()
 
     def options(self, obj):
         return obj.positionoption_set.count()
@@ -219,13 +219,21 @@ class PositionSummaryAdmin(admin.ModelAdmin):
     def currency_bp_adjustment(self, obj):
         return locale.currency(obj.bp_adjustment, grouping=True)
 
+    def spread_view(self, obj):
+        return '<a class="stage_box label label-primary" style="padding: 2px 4px 0px 4px;" href="%s">' \
+               '<i class="fix_width ace-icon fa fa-book icon-only"></i></a>' \
+               % reverse('admin:position_set_spread_view', args=(obj.date, ))
+
+    spread_view.allow_tags = True
+    spread_view.short_description = ''
+
     currency_bp_adjustment.short_description = 'BP Adjustment'
     currency_bp_adjustment.admin_order_field = 'bp_adjustment'
 
     list_display = (
         'position_summary_date', 'currency_cash_sweep', 'currency_available',
         'currency_pl_ytd', 'currency_futures_bp', 'currency_bp_adjustment',
-        'instruments', 'equities', 'options', 'futures', 'forexs'
+        'instruments', 'equities', 'options', 'futures', 'forexs', 'spread_view'
     )
 
     fieldsets = (

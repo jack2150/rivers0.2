@@ -8,7 +8,7 @@ from django.contrib import admin
 
 
 # noinspection PyProtectedMember
-def base_model_list(request):
+def base_models_view(request):
     """
     List all model for admin site
     """
@@ -63,7 +63,7 @@ def base_model_list(request):
     for app in set(module['app'] for module in module_list):
         app_label_list[app] = ' '.join(map(lambda x: x.capitalize(), app.split('_')))
 
-    template = 'base/model_list.html'
+    template = 'base/models.html'
     parameters = {
         'app_parent_list': sorted(new_app_parent_list, reverse=False),
         'app_label_list': app_label_list,

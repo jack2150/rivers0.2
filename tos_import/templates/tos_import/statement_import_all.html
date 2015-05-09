@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_static title_split dict_lookup %}
 
-{% block title %}Statement Import All{% endblock %}
+{% block title %}Statement Imports{% endblock %}
 
 {% block extrahead %}
   <link rel="stylesheet" href="{% static 'assets/css/datepicker.css' %}"/>
@@ -29,13 +29,12 @@
 
 {% block breadcrumbs %}
   <li>
-    <a href="{% url 'admin:index' %}">
-      <i class="ace-icon fa fa-home home-icon"></i>
-      Home
+    <a href="{% url 'admin:tos_import_statement_changelist' %}">
+      Statement
     </a>
   </li>
   <li>
-    Statement Import All
+    Imports
   </li>
 {% endblock %}
 

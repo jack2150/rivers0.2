@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_static dict_lookup %}
 
-{% block title %}Model List{% endblock %}
+{% block title %}Models{% endblock %}
 
 {% block extrastyle %}
   <style>
@@ -31,18 +31,9 @@
 
 
 {% block breadcrumbs %}
-  <li>
-    <a href="{% url 'admin:index' %}">
-      <i class="ace-icon fa fa-home home-icon"></i>
-      Home
-    </a>
-  </li>
-  <li>
-    Model List
-  </li>
 {% endblock %}
 
-{% block page-header %}Model List{% endblock %}
+{% block page-header %}Models{% endblock %}
 
 {% block content %}
   {% for app_parent in app_parent_list %}

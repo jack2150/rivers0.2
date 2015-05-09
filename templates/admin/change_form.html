@@ -27,17 +27,6 @@
 
 {% block breadcrumbs %}
   <li>
-    <a href="{% url 'admin:index' %}">
-      <i class="ace-icon fa fa-home home-icon"></i>
-      Home
-    </a>
-  </li>
-  <li>
-    <a href="{% url 'admin:base_model_list' %}">
-      Models
-    </a>
-  </li>
-  <li>
     {% if has_change_permission %}
       <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
     {% else %}
@@ -157,9 +146,6 @@
     <!-- submit done -->
     {% block submit_buttons_top %}{% submit_row %}{% endblock %}
   </form>
-
-
-
 {% endblock %}
 
 {% block footer_extra_script %}

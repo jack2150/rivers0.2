@@ -81,13 +81,12 @@
 
 {% block breadcrumbs %}
   <li>
-    <a href="{% url 'admin:index' %}">
-      <i class="ace-icon fa fa-home home-icon"></i>
-      Home
+    <a href="{% url 'admin:statement_position_positionsummary_changelist' %}">
+      Position summarys
     </a>
   </li>
   <li>
-    Position spreads: {{ date }}
+    Position spreads {{ date }}
   </li>
 {% endblock %}
 

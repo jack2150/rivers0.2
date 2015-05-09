@@ -2,64 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="602f9b56-60be-46d9-ae24-0e1e170de7cf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/equity/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/equity/long_stock/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/equity/short_stock/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/hedge/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/hedge/covered_call/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/hedge/covered_put/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/hedge/protective_call/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/hedge/protective_put/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templates/position/profiler/historical_positions.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/equity/long_stock/long_stock.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/templates/position/profiler/equity/position_stocks.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/profiler.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/hedge/protective_call.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/equity/short_stock/short_stock.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/equity/long_stock/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/position/classes/profiler/equity/short_stock/tests.py" />
-      <change type="DELETED" beforePath="D:\rivers\position\templates\position\profiler\historical_position_sets.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\rivers\position\templates\position\profiler\position_dates.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\rivers\position\templates\position\profiler\position_stage_mover.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\rivers\position\templates\position\profiler\position_stocks.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\rivers\position\templates\position\profiler\spread\equity.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\rivers\position\templates\position\profiler\spread\hedge.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\rivers\position\templates\position\profiler\spread\other.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\rivers\position\templates\position\profiler\spread\spread.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/admin.py" afterPath="$PROJECT_DIR$/data/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/admin.py" afterPath="$PROJECT_DIR$/position/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/classes.py" afterPath="$PROJECT_DIR$/data/classes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/position_set/controller.py" afterPath="$PROJECT_DIR$/position/position_set/controller.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/templatetags/currency_tag.py" afterPath="$PROJECT_DIR$/tos_import/templatetags/currency_tag.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/holidays.py" afterPath="$PROJECT_DIR$/data/holidays.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/admin.py" afterPath="$PROJECT_DIR$/base/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/statement/statement_position/admin.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_position/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/base.html" afterPath="$PROJECT_DIR$/templates/admin/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/base_site.html" afterPath="$PROJECT_DIR$/templates/admin/base_site.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/change_form.html" afterPath="$PROJECT_DIR$/templates/admin/change_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/change_list.html" afterPath="$PROJECT_DIR$/templates/admin/change_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/templates/data/index.html" afterPath="$PROJECT_DIR$/data/templates/data/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/index.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/spread/instruments.html" afterPath="$PROJECT_DIR$/position/templates/position/spread/instruments.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/position_set/manager.py" afterPath="$PROJECT_DIR$/position/position_set/manager.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/autohotkey/fix_missing/missing_dates.txt" afterPath="$PROJECT_DIR$/packages/autohotkey/fix_missing/missing_dates.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/models.py" afterPath="$PROJECT_DIR$/data/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/models.py" afterPath="$PROJECT_DIR$/position/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/spread/index.html" afterPath="$PROJECT_DIR$/position/templates/position/spread/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/profiler/equity/long_stock/long_stock.py" afterPath="$PROJECT_DIR$/position/classes/profiler/equity/long_stock/long_stock.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/statement/statement_account/models.py" afterPath="$PROJECT_DIR$/tos_import/statement/statement_account/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/offdays.py" afterPath="$PROJECT_DIR$/data/offdays.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/classes/io/open_acc/open_acc.py" afterPath="$PROJECT_DIR$/tos_import/classes/io/open_acc/open_acc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/paginator.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/paginator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/position_info1.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_info1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/position_info2.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_info2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/position_instruments.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_instruments.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/position_opinions.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_opinions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/templates/position/profiler/position_stages.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/position_stages.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/templates/data/run_csv.html" afterPath="$PROJECT_DIR$/data/templates/data/run_csv.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rivers/settings.py" afterPath="$PROJECT_DIR$/rivers/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/tests.py" afterPath="$PROJECT_DIR$/data/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/tests.py" afterPath="$PROJECT_DIR$/position/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/tests.py" afterPath="$PROJECT_DIR$/position/classes/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/stage/tests.py" afterPath="$PROJECT_DIR$/position/classes/stage/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/views.py" afterPath="$PROJECT_DIR$/position/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/profiler/profiler.py" afterPath="$PROJECT_DIR$/position/classes/profiler/profiler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/position/classes/profiler/equity/short_stock/short_stock.py" afterPath="$PROJECT_DIR$/position/classes/profiler/equity/short_stock/short_stock.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/templates/tos_import/statement_import.html" afterPath="$PROJECT_DIR$/tos_import/templates/tos_import/statement_import.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tos_import/templates/tos_import/statement_import_all.html" afterPath="$PROJECT_DIR$/tos_import/templates/tos_import/statement_import_all.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/tests.py" afterPath="$PROJECT_DIR$/base/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base/views.py" afterPath="$PROJECT_DIR$/base/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\rivers\position\templates\position\profiler\position_opinion_button.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/opinion_button.html" />
-      <change type="MOVED" beforePath="D:\rivers\position\templates\position\profiler\profiler_header.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/page_header.html" />
-      <change type="MOVED" beforePath="D:\rivers\position\templates\position\profiler\profiler_object_links.html" afterPath="$PROJECT_DIR$/position/templates/position/profiler/related_links.html" />
+      <change type="MOVED" beforePath="D:\rivers\base\templates\base\model_list.html" afterPath="$PROJECT_DIR$/base/templates/base/models.html" />
     </list>
     <ignored path="rivers.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -431,36 +392,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="profiler.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/position/classes/profiler/profiler.py">
+      <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="5798">
-              <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4197" max-vertical-offset="5278">
+              <caret line="164" column="32" selection-start-line="164" selection-start-column="32" selection-end-line="164" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="long_stock.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/position/classes/profiler/equity/long_stock/long_stock.py">
+      <file leaf-file-name="base_site.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/admin/base_site.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="2236">
-              <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
-              <folding>
-                <element signature="e#2686#5687#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.57003653" vertical-offset="9438" max-vertical-offset="24492">
+              <caret line="381" column="27" selection-start-line="381" selection-start-column="27" selection-end-line="381" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tests.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/position/classes/profiler/equity/long_stock/tests.py">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rivers/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7905639" vertical-offset="1887" max-vertical-offset="2756">
-              <caret line="99" column="49" selection-start-line="99" selection-start-column="49" selection-end-line="99" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="5460">
+              <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -480,22 +437,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/admin/base.html" />
-        <option value="$PROJECT_DIR$/data/templates/data/daily.html" />
-        <option value="$PROJECT_DIR$/data/templates/data/index.html" />
-        <option value="$PROJECT_DIR$/data/views.py" />
-        <option value="$PROJECT_DIR$/position/templates/position/spread/instruments.html" />
-        <option value="C:/Anaconda/Lib/site-packages/django/core/handlers/base.py" />
-        <option value="$PROJECT_DIR$/data/templates/data/run_csv.html" />
-        <option value="$PROJECT_DIR$/data/classes.py" />
-        <option value="$PROJECT_DIR$/data/admin.py" />
-        <option value="$PROJECT_DIR$/data/tests.py" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/position_info1.html" />
-        <option value="$PROJECT_DIR$/data/models.py" />
-        <option value="$PROJECT_DIR$/position/classes/profiler/hedge/protective_call.py" />
-        <option value="$PROJECT_DIR$/position/classes/profiler/equity/short_stock/tests.py" />
         <option value="$PROJECT_DIR$/position/classes/profiler/hedge/__init__.py" />
-        <option value="$PROJECT_DIR$/position/classes/profiler/equity/short_stock/short_stock.py" />
         <option value="$PROJECT_DIR$/position/classes/profiler/equity/__init__.py" />
         <option value="$PROJECT_DIR$/data/holidays.py" />
         <option value="$PROJECT_DIR$/data/offdays.py" />
@@ -516,21 +458,36 @@
         <option value="$PROJECT_DIR$/position/templates/position/profiler2/position_opinions.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler2/historical_positions.html" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler2/index.html" />
-        <option value="$PROJECT_DIR$/tos_import/statement/statement_account/models.py" />
         <option value="$PROJECT_DIR$/tos_import/classes/io/open_acc/open_acc.py" />
-        <option value="$PROJECT_DIR$/debug.log" />
-        <option value="$PROJECT_DIR$/position/templates/position/profiler/index.html" />
-        <option value="$PROJECT_DIR$/position/classes/profiler/profiler.py" />
         <option value="$PROJECT_DIR$/position/templates/position/profiler/paginator.html" />
         <option value="$PROJECT_DIR$/position/views.py" />
-        <option value="$PROJECT_DIR$/rivers/settings.py" />
         <option value="$PROJECT_DIR$/position/classes/profiler/tests2.py" />
         <option value="$PROJECT_DIR$/position/tests.py" />
         <option value="$PROJECT_DIR$/position/classes/stage/tests.py" />
         <option value="$PROJECT_DIR$/position/classes/tests.py" />
         <option value="$PROJECT_DIR$/position/classes/profiler/tests.py" />
-        <option value="$PROJECT_DIR$/position/classes/profiler/equity/long_stock/long_stock.py" />
         <option value="$PROJECT_DIR$/position/classes/profiler/equity/long_stock/tests.py" />
+        <option value="$PROJECT_DIR$/position/classes/profiler/equity/long_stock/long_stock.py" />
+        <option value="$PROJECT_DIR$/position/classes/profiler/equity/short_stock/short_stock.py" />
+        <option value="$PROJECT_DIR$/position/classes/profiler/profiler.py" />
+        <option value="$PROJECT_DIR$/debug.log" />
+        <option value="$PROJECT_DIR$/tos_import/statement/statement_account/models.py" />
+        <option value="$PROJECT_DIR$/base/templates/base/model_list.html" />
+        <option value="$PROJECT_DIR$/base/views.py" />
+        <option value="$PROJECT_DIR$/base/templates/base/models.html" />
+        <option value="$PROJECT_DIR$/tos_import/templates/tos_import/statement_import.html" />
+        <option value="$PROJECT_DIR$/tos_import/templates/tos_import/statement_import_all.html" />
+        <option value="$PROJECT_DIR$/tos_import/statement/statement_position/admin.py" />
+        <option value="$PROJECT_DIR$/templates/admin/change_list.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/spread/index.html" />
+        <option value="$PROJECT_DIR$/position/templates/position/profiler/index.html" />
+        <option value="$PROJECT_DIR$/base/admin.py" />
+        <option value="$PROJECT_DIR$/base/tests.py" />
+        <option value="$PROJECT_DIR$/data/templates/data/index.html" />
+        <option value="$PROJECT_DIR$/templates/admin/change_form.html" />
+        <option value="$PROJECT_DIR$/rivers/settings.py" />
+        <option value="$PROJECT_DIR$/templates/admin/base.html" />
+        <option value="$PROJECT_DIR$/templates/admin/base_site.html" />
       </list>
     </option>
   </component>
@@ -585,148 +542,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="position" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="position" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templatetags" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="position" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="position" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="position" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="equity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rivers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="position" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="equity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="long_stock" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -738,7 +553,7 @@
     <property name="last_opened_file_path" value="D:/ace_template" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -764,7 +579,7 @@
       <recent name="C:\Users\Jack\Projects\rivers" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest TestProfilerLongStock.test_create_position_stocks">
+  <component name="RunManager" selected="Django server.rivers">
     <configuration default="false" name="Unittest TestProfiler2.test_set_stocks" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -1256,7 +1071,11 @@
       <created>1429991219982</created>
       <updated>1429991219982</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="profiler long_stock">
+      <created>1430395751474</created>
+      <updated>1430395751474</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1281,14 +1100,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32705098" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29679143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2657754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991131" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42350334" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -1296,12 +1115,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31374723" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31374723" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39800444" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1361,7 +1180,8 @@
     <MESSAGE value="fix bugs..&#10;position_opinion" />
     <MESSAGE value="equity profiler" />
     <MESSAGE value="daily flow, import daily csv and web get" />
-    <option name="LAST_COMMIT_MESSAGE" value="daily flow, import daily csv and web get" />
+    <MESSAGE value="profiler long_stock" />
+    <option name="LAST_COMMIT_MESSAGE" value="profiler long_stock" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1369,161 +1189,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="416" max-vertical-offset="6864">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47410816" vertical-offset="10274" max-vertical-offset="17160">
-          <caret line="422" column="13" selection-start-line="422" selection-start-column="13" selection-end-line="422" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22439586" vertical-offset="2717" max-vertical-offset="4576">
-          <caret line="114" column="62" selection-start-line="114" selection-start-column="62" selection-end-line="114" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/stage/hedge/covered_call/covered_call.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2860">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/profiler/hedge/protective_call.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/profiler/equity/short_stock/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/spread/spread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.283084" vertical-offset="5460" max-vertical-offset="15418">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/profiler/equity/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.029919447" vertical-offset="0" max-vertical-offset="869">
-          <caret line="1" column="54" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/profiler/hedge/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/profiler/equity/short_stock/short_stock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="208">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7905639" vertical-offset="3369" max-vertical-offset="5824">
-          <caret line="157" column="23" selection-start-line="157" selection-start-column="23" selection-end-line="157" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/offdays.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.730725" vertical-offset="301" max-vertical-offset="1170">
-          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/holidays.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7905639" vertical-offset="2329" max-vertical-offset="3380">
-          <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36448598" vertical-offset="520" max-vertical-offset="7592">
-          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/position_set/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7675234" vertical-offset="3281" max-vertical-offset="4628">
-          <caret line="68" column="14" selection-start-line="68" selection-start-column="11" selection-end-line="68" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/position_set/controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4913694" vertical-offset="2329" max-vertical-offset="3198">
-          <caret line="108" column="62" selection-start-line="108" selection-start-column="62" selection-end-line="108" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5673188" vertical-offset="4742" max-vertical-offset="7488">
-          <caret line="138" column="13" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/templatetags/currency_tag.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5684695" vertical-offset="0" max-vertical-offset="869">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_instruments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45901638" vertical-offset="3380" max-vertical-offset="6812">
-          <caret line="144" column="24" selection-start-line="144" selection-start-column="24" selection-end-line="144" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templatetags/position_set.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09274673" vertical-offset="1560" max-vertical-offset="5044">
-          <caret line="63" column="10" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/related_links.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8867235" vertical-offset="0" max-vertical-offset="884">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_info2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7194245" vertical-offset="778" max-vertical-offset="1612">
-          <caret line="53" column="47" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_info1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42206234" vertical-offset="1338" max-vertical-offset="2548">
@@ -1573,37 +1238,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_account/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5712617" vertical-offset="5283" max-vertical-offset="23972">
-          <caret line="222" column="19" selection-start-line="222" selection-start-column="19" selection-end-line="222" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#13#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/debug.log">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="156">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/position_opinions.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1664" max-vertical-offset="4550">
           <caret line="64" column="54" selection-start-line="64" selection-start-column="54" selection-end-line="64" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-69.828575" vertical-offset="2236" max-vertical-offset="6864">
-          <caret line="180" column="59" selection-start-line="180" selection-start-column="6" selection-end-line="180" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -1621,25 +1259,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/position/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4929" max-vertical-offset="6838">
-          <caret line="260" column="0" selection-start-line="260" selection-start-column="0" selection-end-line="260" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Anaconda/Lib/site-packages/django/db/models/query.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49883178" vertical-offset="7191" max-vertical-offset="44824">
           <caret line="309" column="0" selection-start-line="309" selection-start-column="0" selection-end-line="309" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rivers/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7479862" vertical-offset="2158" max-vertical-offset="5434">
-          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="116" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1703,9 +1326,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14959724" vertical-offset="1040" max-vertical-offset="7150">
           <caret line="45" column="19" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="19" />
-          <folding>
-            <element signature="e#38#74#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1713,37 +1333,229 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35903338" vertical-offset="0" max-vertical-offset="6110">
           <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/profiler/profiler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="5798">
-          <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/position/classes/profiler/equity/long_stock/long_stock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="2236">
-          <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
-          <folding>
-            <element signature="e#2686#5687#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/position/classes/profiler/equity/long_stock/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7905639" vertical-offset="1887" max-vertical-offset="2756">
-          <caret line="99" column="49" selection-start-line="99" selection-start-column="49" selection-end-line="99" selection-end-column="49" />
+        <state vertical-scroll-proportion="1.0598389" vertical-offset="1367" max-vertical-offset="2756">
+          <caret line="88" column="50" selection-start-line="88" selection-start-column="50" selection-end-line="88" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/profiler/equity/short_stock/short_stock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1542056" vertical-offset="0" max-vertical-offset="3874">
+          <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/position_set/controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.01726122" vertical-offset="2329" max-vertical-offset="3198">
+          <caret line="91" column="49" selection-start-line="91" selection-start-column="49" selection-end-line="91" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/profiler/profiler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.817757" vertical-offset="4396" max-vertical-offset="5252">
+          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.5592635" vertical-offset="5123" max-vertical-offset="13780">
+          <caret line="316" column="20" selection-start-line="316" selection-start-column="20" selection-end-line="316" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/classes/profiler/equity/long_stock/long_stock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3822">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/debug.log">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1248">
+          <caret line="0" column="34" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_account/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5205" max-vertical-offset="23894">
+          <caret line="215" column="25" selection-start-line="215" selection-start-column="25" selection-end-line="215" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35788262" vertical-offset="6059" max-vertical-offset="9464">
+          <caret line="245" column="61" selection-start-line="245" selection-start-column="55" selection-end-line="245" selection-end-column="61" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/templates/base/models.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44336176" vertical-offset="494" max-vertical-offset="2262">
+          <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/templates/tos_import/statement_import.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43645084" vertical-offset="0" max-vertical-offset="5486">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/templates/tos_import/statement_import_all.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24940048" vertical-offset="0" max-vertical-offset="5694">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34177214" vertical-offset="5839" max-vertical-offset="7488">
+          <caret line="244" column="37" selection-start-line="244" selection-start-column="13" selection-end-line="244" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11967779" vertical-offset="0" max-vertical-offset="6838">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tos_import/statement/statement_position/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50863063" vertical-offset="5252" max-vertical-offset="18824">
+          <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/profiler/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5611511" vertical-offset="3744" max-vertical-offset="6708">
+          <caret line="162" column="7" selection-start-line="162" selection-start-column="7" selection-end-line="162" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/position/templates/position/spread/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09500609" vertical-offset="2054" max-vertical-offset="12636">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="89" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/change_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3117506" vertical-offset="754" max-vertical-offset="3900">
+          <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2865362" vertical-offset="0" max-vertical-offset="2002">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17951669" vertical-offset="0" max-vertical-offset="869">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22439586" vertical-offset="1183" max-vertical-offset="2574">
+          <caret line="62" column="65" selection-start-line="62" selection-start-column="65" selection-end-line="62" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/templates/data/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3117506" vertical-offset="0" max-vertical-offset="5694">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40161106" vertical-offset="2979" max-vertical-offset="4628">
+          <caret line="128" column="36" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/change_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5602923" vertical-offset="3362" max-vertical-offset="4628">
+          <caret line="147" column="9" selection-start-line="147" selection-start-column="9" selection-end-line="147" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/assets/js/ace/ace.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3411214" vertical-offset="2860" max-vertical-offset="14040">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="869">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rivers/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="520" max-vertical-offset="5434">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/assets/js/ace/ace.sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20656136" vertical-offset="2742" max-vertical-offset="14222">
+          <caret line="112" column="42" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4197" max-vertical-offset="5278">
+          <caret line="164" column="32" selection-start-line="164" selection-start-column="32" selection-end-line="164" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/base_site.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57003653" vertical-offset="9438" max-vertical-offset="24492">
+          <caret line="381" column="27" selection-start-line="381" selection-start-column="27" selection-end-line="381" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

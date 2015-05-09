@@ -157,14 +157,8 @@
 
 {% block breadcrumbs %}
   <li>
-    <a href="{% url 'admin:index' %}">
-      <i class="ace-icon fa fa-home home-icon"></i>
-      Home
-    </a>
-  </li>
-  <li>
-    <a href="{% url 'admin:position_positionset_change' position_set.id %}">
-      Position Set
+    <a href="{% url 'admin:position_positionset_changelist' %}">
+      Position sets
     </a>
   </li>
   <li>
